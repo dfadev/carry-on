@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`plug snapshot 1`] = `
+Object {
+  "begin": [Function],
+  "commit": [Function],
+  "make": [Function],
+  "rollback": [Function],
+}
+`;
+
+exports[`transaction match 1`] = `
+Object {
+  "id": "tx",
+  "state": [Function],
+}
+`;
