@@ -1,0 +1,13 @@
+var pkg = require("./package.json");
+
+module.exports = [
+  {
+    file: pkg.unpkg,
+    format: "umd",
+    name: pkg.name,
+    sourcemap: true,
+    globals: {
+      react: "React",
+    }
+  }
+];
