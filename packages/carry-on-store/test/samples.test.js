@@ -642,13 +642,13 @@ test("multiple memoized select", () => {
   const store = dispatch => ({
     counter: 0,
     inc() {
-      dispatch(state => ({
+      return dispatch(state => ({
         ...state,
         counter: state.counter + 1
       }));
     },
     dec() {
-      dispatch(state => ({
+      return dispatch(state => ({
         ...state,
         counter: state.counter - 1
       }));
