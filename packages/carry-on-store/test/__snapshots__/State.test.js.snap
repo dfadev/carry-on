@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<State /> renders 1`] = `
+<DocumentFragment>
+  ok
+</DocumentFragment>
+`;
+
+exports[`withState path, from, and default can be a values 1`] = `
+<DocumentFragment>
+  {"lookup":"key1","state":"val1"}
+</DocumentFragment>
+`;
+
+exports[`withState renders 1`] = `
+<DocumentFragment>
+  ok
+</DocumentFragment>
+`;
+
+exports[`withState select, path, from, and default can be a function 1`] = `
+<DocumentFragment>
+  {"lookup":"key1","state":"val1"}
+</DocumentFragment>
+`;
+
+exports[`withState selection function returns array as state prop 1`] = `
+<DocumentFragment>
+  {"prop1":"ok","state":[1,2,3]}
+</DocumentFragment>
+`;
+
+exports[`withState selection function returns non Object as state prop 1`] = `
+<DocumentFragment>
+  {"prop1":"ok","state":"ok"}
+</DocumentFragment>
+`;
+
+exports[`withState selection function takes props 1`] = `
+<DocumentFragment>
+  {"prop1":"ok","state":{"thing":"ok"}}
+</DocumentFragment>
+`;

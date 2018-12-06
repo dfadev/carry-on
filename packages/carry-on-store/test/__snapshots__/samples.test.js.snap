@@ -1,0 +1,1037 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`State component can render empty and null children 1`] = `<DocumentFragment />`;
+
+exports[`custom plugin 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`custom plugin 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`custom plugin 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`custom plugin 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`default store 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`default store 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`default store 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`default store 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`from and path 1`] = `
+<DocumentFragment>
+  <div>
+    one
+  </div>
+</DocumentFragment>
+`;
+
+exports[`immer as producer 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`immer as producer 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`immer as producer 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`immer as producer 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`multiple memoized select 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 0
++       Counter: 1
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`multiple memoized select 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 1
++       Counter: 0
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`multiple memoized select 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 0
++       Counter: 1
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`multiple memoized select 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 1
++       Counter: 0
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`multiple select 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 0
++       Counter: 1
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`multiple select 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 1
++       Counter: 0
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`multiple select 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 0
++       Counter: 1
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`multiple select 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 1
++       Counter: 0
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`notifyListeners/subscribe/unsubscribe 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`notifyListeners/subscribe/unsubscribe 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 2
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`path 1`] = `
+<DocumentFragment>
+  <div>
+    one
+  </div>
+</DocumentFragment>
+`;
+
+exports[`path default value 1`] = `
+<DocumentFragment>
+  <div>
+    defaultValue
+  </div>
+</DocumentFragment>
+`;
+
+exports[`path2 1`] = `
+<DocumentFragment>
+  <div>
+    ok
+  </div>
+</DocumentFragment>
+`;
+
+exports[`query 1`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;
+
+exports[`register 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register adding pending state to store 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,11 +1,11 @@
+  <DocumentFragment>
+    <div>
+      ok
+    </div>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register adding pending state to store 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,11 +1,11 @@
+  <DocumentFragment>
+    <div>
+      ok
+    </div>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register adding pending state to store 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,11 +1,11 @@
+  <DocumentFragment>
+    <div>
+      ok
+    </div>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register adding pending state to store 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,11 +1,11 @@
+  <DocumentFragment>
+    <div>
+      ok
+    </div>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register on named store 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register on named store 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register on named store 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register on named store 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register state on connected store 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+  <DocumentFragment>
+-   <div />
++   <div>
++     1
++   </div>
+  </DocumentFragment>"
+`;
+
+exports[`register state on connected store with init as a function 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+  <DocumentFragment>
+-   <div />
++   <div>
++     1
++   </div>
+  </DocumentFragment>"
+`;
+
+exports[`select 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,10 +1,10 @@
+  <DocumentFragment>
+    <div>
+      <div />
+      <div>
+-       Counter: 0
++       Counter: 1
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`select 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,10 +1,10 @@
+  <DocumentFragment>
+    <div>
+      <div />
+      <div>
+-       Counter: 1
++       Counter: 0
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`select 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,10 +1,10 @@
+  <DocumentFragment>
+    <div>
+      <div />
+      <div>
+-       Counter: 0
++       Counter: 1
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`select 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,10 +1,10 @@
+  <DocumentFragment>
+    <div>
+      <div />
+      <div>
+-       Counter: 1
++       Counter: 0
+      </div>
+      <button>
+        +
+      </button>
+      <button>"
+`;
+
+exports[`transaction/commit/rollback 1`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;
+
+exports[`transaction/commit/rollback 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`transaction/commit/rollback 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 2
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`transaction/commit/rollback 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 2
++     Counter: 3
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`transaction/commit/rollback 5`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 3
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`transaction/commit/rollback 6`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;
+
+exports[`transaction/commit/rollback 7`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`transaction/commit/rollback 8`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 2
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`transaction/commit/rollback 9`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;
+
+exports[`transaction/commit/rollback 10`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;
+
+exports[`transaction/commit/rollback 11`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;
+
+exports[`two named stores 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 0
++       Counter: 1
+      </div>
+      <button>
+        store1 +
+      </button>
+      <button>"
+`;
+
+exports[`two named stores 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 1
++       Counter: 0
+      </div>
+      <button>
+        store1 +
+      </button>
+      <button>"
+`;
+
+exports[`two named stores 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -10,11 +10,11 @@
+        store1 -
+      </button>
+    </div>
+    <div>
+      <div>
+-       Counter: 0
++       Counter: 1
+      </div>
+      <button>
+        store2 +
+      </button>
+      <button>"
+`;
+
+exports[`two named stores 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -10,11 +10,11 @@
+        store1 -
+      </button>
+    </div>
+    <div>
+      <div>
+-       Counter: 1
++       Counter: 0
+      </div>
+      <button>
+        store2 +
+      </button>
+      <button>"
+`;
+
+exports[`two named stores 5`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 0
++       Counter: 1
+      </div>
+      <button>
+        store1 +
+      </button>
+      <button>"
+`;
+
+exports[`two named stores 6`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,9 +1,9 @@
+  <DocumentFragment>
+    <div>
+      <div>
+-       Counter: 1
++       Counter: 0
+      </div>
+      <button>
+        store1 +
+      </button>
+      <button>"
+`;
+
+exports[`two named stores 7`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -10,11 +10,11 @@
+        store1 -
+      </button>
+    </div>
+    <div>
+      <div>
+-       Counter: 0
++       Counter: 1
+      </div>
+      <button>
+        store2 +
+      </button>
+      <button>"
+`;
+
+exports[`two named stores 8`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -10,11 +10,11 @@
+        store1 -
+      </button>
+    </div>
+    <div>
+      <div>
+-       Counter: 1
++       Counter: 0
+      </div>
+      <button>
+        store2 +
+      </button>
+      <button>"
+`;
+
+exports[`unit of work with query and immer 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+  <DocumentFragment>
+    <div>
+-     <span />
++     <span>
++       yes
++     </span>
+      <button>
+        run action
+      </button>
+    </div>
+  </DocumentFragment>"
+`;
