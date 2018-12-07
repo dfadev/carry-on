@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "run-p watch test:watch",
     "watch": "lerna exec --no-sort -- \"yarn watch | cat\"",
-    "test:watch": "lerna exec --no-sort -- \"yarn test:watch | cat\""
+    "test:watch": "lerna exec --no-sort -- \"yarn test:watch | cat\"",
+    "test:cov": "lerna exec --no-sort -- \"yarn test:cov | cat\""
   }
 }
