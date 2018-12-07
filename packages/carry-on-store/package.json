@@ -1,11 +1,11 @@
 {
-  "name": "carry-on",
+  "name": "carry-on-store",
   "version": "0.0.1",
   "description": "A Store for React",
   "source": "./src/index.js",
-  "main": "./lib/carry-on.js",
-  "unpkg": "dist/carry-on.js",
-  "module": "./es/carry-on.js",
+  "main": "./lib/carry-on-store.js",
+  "unpkg": "dist/carry-on-store.js",
+  "module": "./es/carry-on-store.js",
   "scripts": {
     "clean": "rimraf lib dist es coverage",
     "format": "prettier --write \"{src,test}/**/*.js\"",
