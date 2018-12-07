@@ -1,9 +1,10 @@
 /** @format **/
+import { createContext } from "react";
 import makeStoreModule from "./core";
 import makeStateComponents from "./State";
 import makeStoreComponents from "./Store";
 
-const core = makeStoreModule();
+const core = makeStoreModule(undefined, () => ({ Context: createContext({}) }));
 const state = makeStateComponents(core);
 const store = makeStoreComponents(core);
 

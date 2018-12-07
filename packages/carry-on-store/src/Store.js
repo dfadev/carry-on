@@ -12,7 +12,8 @@ export default function makeStoreComponents({
   class Store extends Component {
     state = connect({
       ...this.props,
-      publish: nextState => this.setState(nextState)
+      publish: nextState => this.setState(nextState),
+      Context: React.createContext({})
     });
 
     // unmount failsafe to prevent setState calls after unmounting

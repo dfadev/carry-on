@@ -1,8 +1,7 @@
 /** @format **/
-import { createContext } from "react";
 import { isFunction } from "./utils";
 
-export default function makeStoreModule(defaultId) {
+export default function makeStoreModule(defaultId, extra = () => ({})) {
   // wrap a function with middleware
   const applyMiddleware = (middlewares, fn, apply) => {
     if (!Array.isArray(middlewares)) middlewares = [middlewares];
@@ -39,7 +38,7 @@ export default function makeStoreModule(defaultId) {
 
   // create a store
   function create(id) {
-    return { id, pending: [], Context: createContext({}) };
+    return Object.assign({ id, pending: [] }, extra());
   }
 
   // delete a store
