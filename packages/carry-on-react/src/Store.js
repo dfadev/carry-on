@@ -1,5 +1,5 @@
 /** @format **/
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { isFunction } from "./utils";
 
 // create an object with Store and withState components
@@ -9,12 +9,14 @@ export default function makeStoreComponents({
   connect
 }) {
   // a Component that manages state
-  class Store extends PureComponent {
+  class Store extends Component {
     state = connect({
       ...this.props,
       publish: nextState => this.setState(nextState),
       Context: React.createContext({})
     });
+
+    shouldComponentUpdate = (nextProps, nextState) => this.state !== nextState;
 
     // unmount failsafe to prevent setState calls after unmounting
     componentWillUnmount = () => deleteStore(this.props.id);
