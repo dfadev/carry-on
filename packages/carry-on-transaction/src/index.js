@@ -17,11 +17,9 @@ export default () => {
         if (transactions.length === 0) throw new Error("no tx");
         return transactions.pop()();
       },
-      make: rollbackState => () =>
-        dispatch(() => rollbackState, "Rollback", true),
       begin: () =>
         dispatch(state => {
-          transactions.push(state.plug.tx.make(state));
+          transactions.push(() => dispatch(() => state, "Rollback", true));
           return state;
         }, "Begin Transaction")
     })
