@@ -10,10 +10,10 @@
   },
   "scripts": {
     "dev": "run-p watch test:watch",
-    "watch": "lerna exec --concurrency 5 --no-sort -- \"yarn watch | cat\"",
-    "test:watch": "lerna exec --concurrency 5 --no-sort -- \"yarn test:watch | cat\"",
-    "test:cov": "lerna exec --concurrency 5 --no-sort -- \"yarn test:cov | cat\"",
-    "build": "lerna exec --concurrency 5 --no-sort -- \"yarn build | cat\""
+    "watch": "lerna exec --concurrency 5 --no-sort -- \"npm watch | cat\"",
+    "test:watch": "lerna exec --concurrency 5 --no-sort -- \"npm test:watch | cat\"",
+    "test:cov": "lerna exec --concurrency 5 --no-sort -- \"npm test:cov | cat\"",
+    "build": "lerna exec --concurrency 5 --no-sort -- \"npm build | cat\""
   },
   "dependencies": {}
 }

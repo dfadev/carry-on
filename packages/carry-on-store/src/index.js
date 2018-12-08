@@ -67,6 +67,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     else store.pending.push(init);
   };
 
+  // connect a store (should rename this?)
   const connect = ({ id, producer, publish, plugins, init } = {}) => {
     const store = useStore(id);
     if (store.dispatch) throw new Error("Already connected");
