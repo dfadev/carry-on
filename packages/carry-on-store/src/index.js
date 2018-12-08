@@ -14,26 +14,35 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
   const initMessage = "Initialize";
 
   const createPlugins = (store, plugins) => {
-    if (!plugins) return;
-
-    // create initial dispatch function
-    store.dispatch = (...args) => store.d(...args);
+    if (!plugins) {
+      store.dispatch = store.d;
+      return;
+    }
 
     // create plugins
     store.plug = {};
 
     if (!Array.isArray(plugins)) plugins = [plugins];
 
+    // dispatch
     for (const plugin of plugins) {
-      const { id, state, dispatch } = plugin;
-      if (state)
-        store.plug[id] = isFunction(state)
-          ? state(store.dispatch, store.query, store.plug)
-          : state;
+      const { dispatch } = plugin;
       if (dispatch)
         store.d = applyMiddleware(dispatch, store.d, (middleware, fn) =>
           middleware(fn, store.query, store.plug)
         );
+    }
+
+    // create initial dispatch function
+    store.dispatch = (...args) => store.d(...args);
+
+    // state
+    for (const plugin of plugins) {
+      const { id, state } = plugin;
+      if (state)
+        store.plug[id] = isFunction(state)
+          ? state(store.dispatch, store.query, store.plug)
+          : state;
     }
   };
 
