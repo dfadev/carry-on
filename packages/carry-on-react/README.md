@@ -1,4 +1,4 @@
-# carry-on
+# carry-on-react
 A store for React.
 
 #
