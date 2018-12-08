@@ -1,5 +1,5 @@
 /** @format **/
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { isFunction } from "./utils";
 
 // create an object with Store and withState components
@@ -9,7 +9,7 @@ export default function makeStoreComponents({
   connect
 }) {
   // a Component that manages state
-  class Store extends Component {
+  class Store extends PureComponent {
     state = connect({
       ...this.props,
       publish: nextState => this.setState(nextState),
