@@ -13,5 +13,3 @@ Plugins:
 - [carry-on-devtools](packages/carry-on-devtools) - use ```Redux Dev Tools``` to help debug your state and actions
 - [carry-on-notify](packages/carry-on-notify) - subscribe to state changes
 - [carry-on-transaction](packages/carry-on-transaction) - commit/rollback state
-
-
