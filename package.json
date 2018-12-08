@@ -14,5 +14,6 @@
     "test:watch": "lerna exec --concurrency 5 --no-sort -- \"yarn test:watch | cat\"",
     "test:cov": "lerna exec --concurrency 5 --no-sort -- \"yarn test:cov | cat\"",
     "build": "lerna exec --concurrency 5 --no-sort -- \"yarn build | cat\""
-  }
+  },
+  "dependencies": {}
 }
