@@ -21,7 +21,6 @@
   },
   "author": "Russ Panula <russ@dfa.net>",
   "license": "MIT",
-  "peerDependencies": {},
   "devDependencies": {
     "@ampproject/rollup-plugin-closure-compiler": "^0.6.1",
     "babel-core": "^6.26.3",
@@ -50,6 +49,5 @@
     "rollup-plugin-terser": "^1.0.1",
     "snapshot-diff": "^0.4.1"
   },
-  "dependencies": {},
   "sideEffects": false
 }

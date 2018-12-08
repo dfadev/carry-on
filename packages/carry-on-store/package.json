@@ -60,6 +60,5 @@
     "rollup-plugin-terser": "^1.0.1",
     "snapshot-diff": "^0.4.1"
   },
-  "dependencies": {},
   "sideEffects": false
 }
