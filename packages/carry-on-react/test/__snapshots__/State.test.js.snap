@@ -38,6 +38,6 @@ exports[`withState selection function returns non Object as state prop 1`] = `
 
 exports[`withState selection function takes props 1`] = `
 <DocumentFragment>
-  {"prop1":"ok","state":{"thing":"ok"}}
+  {"prop1":"ok","thing":"ok"}
 </DocumentFragment>
 `;

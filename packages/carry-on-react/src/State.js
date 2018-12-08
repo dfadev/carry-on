@@ -39,7 +39,14 @@ export default function makeStateComponents({ useStore, defaultId }) {
         select={state => select(state, props)}
         default={isFunction(def) ? def(props) : def}
       >
-        {state => <WrappedComponent {...props} state={state} />}
+        {state => {
+          const val = state && state.valueOf();
+          return val instanceof Object && !Array.isArray(state) ? (
+            <WrappedComponent {...props} {...state} />
+          ) : (
+            <WrappedComponent {...props} state={state} />
+          );
+        }}
       </State>
     );
     return WithState;
