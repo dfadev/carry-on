@@ -45,7 +45,7 @@ test("withState select, path, from, and default can be a function", () => {
   const path = (props) => props.lookup;
   const def = (props) => "default Value";
 
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     key1: "val1",
     key2: "val2"
   });
@@ -70,7 +70,7 @@ test("withState path, from, and default can be a values", () => {
   const path = "key1";
   const def = "default Value";
 
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     key1: "val1",
     key2: "val2"
   });

@@ -12,8 +12,7 @@ export default () => {
   }
 
   const plugin = {
-    id: "notify",
-    dispatch: (dispatch, query) => (action, type, ...args) => {
+    dispatch: ({ dispatch, query }) => (action, type, ...args) => {
       const state = dispatch(action, type, ...args);
       notifyListeners(state, dispatch, query);
       return state;

@@ -5,7 +5,6 @@ Object {
   "listeners": Array [],
   "plugin": Object {
     "dispatch": [Function],
-    "id": "notify",
   },
   "subscribe": [Function],
 }
@@ -16,7 +15,6 @@ Object {
   "listeners": Array [],
   "plugin": Object {
     "dispatch": [Function],
-    "id": "notify",
   },
   "subscribe": [Function],
 }
@@ -27,7 +25,6 @@ Object {
   "listeners": Array [],
   "plugin": Object {
     "dispatch": [Function],
-    "id": "notify",
   },
   "subscribe": [Function],
 }

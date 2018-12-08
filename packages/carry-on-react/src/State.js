@@ -4,8 +4,8 @@ import { isFunction, getIn } from "./utils";
 
 export default function makeStateComponents({ useStore, defaultId }) {
   // memoized children render function
-  const Comp = memo(({ children, value }) =>
-    children ? children(value) : null
+  const Comp = memo(
+    ({ children, value }) => (children ? children(value) : null)
   );
 
   const State = ({ from, path, select, children, default: def }) => {

@@ -27,11 +27,11 @@ test("subscribe is called", () => {
 
   const plugin = new devTools();
   let dispatchCount = 0;
-  const dispatch = plugin.dispatch((action, ...args) => {
+  const dispatch = plugin.dispatch({ dispatch: (action, ...args) => {
     action && action();
     dispatchCount++;
     return { id: 1 };
-  });
+  }});
 
   dispatch();
   dispatch(() => { });
@@ -68,10 +68,10 @@ test("disable timetravel works", () => {
 
   const plugin = new devTools({ timeTravel: false });
   let dispatchCount = 0;
-  const dispatch = plugin.dispatch((action, ...args) => {
+  const dispatch = plugin.dispatch({ dispatch: (action, ...args) => {
     dispatchCount++;
     return { id: 1 };
-  });
+  }});
 
   dispatch();
   dispatch(() => { });

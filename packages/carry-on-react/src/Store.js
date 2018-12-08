@@ -17,11 +17,11 @@ export default function makeStoreComponents({
     });
 
     // unmount failsafe to prevent setState calls after unmounting
-    componentWillUnmount = () => deleteStore(this.state.id);
+    componentWillUnmount = () => deleteStore(this.props.id);
 
     // render the Provider and it's children
     render = () => {
-      const { Provider } = useStore(this.state.id).Context;
+      const { Provider } = useStore(this.props.id).Context;
       return <Provider value={this.state}>{this.props.children}</Provider>;
     };
   }

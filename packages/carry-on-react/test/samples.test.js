@@ -9,7 +9,7 @@ import memoize from "memoize-state";
 
 // default store
 test("default store", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     counter: 0,
     inc() {
       return dispatch(state => ({
@@ -58,7 +58,7 @@ test("default store", () => {
 
 // two named stores
 test("two named stores", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     counter: 0,
     inc() {
       return dispatch(state => ({
@@ -78,13 +78,15 @@ test("two named stores", () => {
     <Fragment>
       <Store id="store1" init={store}>
         <State from="store1">
-          {({ counter, inc, dec }) => (
-            <div>
-              <div>Counter: {counter}</div>
-              <button onClick={inc}>store1 +</button>
-              <button onClick={dec}>store1 -</button>
-            </div>
-          )}
+          {({ counter, inc, dec }) => {
+            return (
+              <div>
+                <div>Counter: {counter}</div>
+                <button onClick={inc}>store1 +</button>
+                <button onClick={dec}>store1 -</button>
+              </div>
+            );
+          }}
         </State>
       </Store>
       <Store id="store2" init={store}>
@@ -126,7 +128,7 @@ test("two named stores", () => {
 
 // select
 test("select", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     notSelected: "item",
     counter: 0,
     inc() {
@@ -184,7 +186,7 @@ test("select", () => {
 test("query", () => {
   let marker = 0;
 
-  const store = (dispatch, query) => ({
+  const store = ({ dispatch, query }) => ({
     log(msg) {
       query(state => {
         marker++;
@@ -242,7 +244,7 @@ test("query", () => {
 
 // register
 test("register", () => {
-  register(dispatch => ({
+  register(({ dispatch }) => ({
     counter: 0,
     inc() {
       return dispatch(state => ({
@@ -293,7 +295,7 @@ test("register", () => {
 // register on named store
 test("register on named store", () => {
   register(
-    dispatch => ({
+    ({ dispatch }) => ({
       counter: 0,
       inc() {
         return dispatch(state => ({
@@ -345,7 +347,7 @@ test("register on named store", () => {
 
 // register adding pending state to store
 test("register adding pending state to store", () => {
-  const state = dispatch => ({
+  const state = ({ dispatch }) => ({
     counter: 0,
     inc() {
       return dispatch(state => ({
@@ -402,7 +404,7 @@ test("register adding pending state to store", () => {
 
 // immer as producer
 test("immer as producer", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     counter: 0,
     inc() {
       dispatch(state => void state.counter++);
@@ -446,7 +448,7 @@ test("immer as producer", () => {
 
 // path
 test("path", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     more: {
       stuff: {
         list: [{ item: "one" }, { item: "two" }]
@@ -470,7 +472,7 @@ test("path", () => {
 });
 
 test("path2", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     more: {
       stuff: {
         list: [{ item: "one" }, { item: "two" }]
@@ -495,7 +497,7 @@ test("path2", () => {
 
 // from and path
 test("from and path", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     more: {
       stuff: {
         list: [
@@ -526,7 +528,7 @@ test("from and path", () => {
 // unit of work with query and immer
 test("unit of work with query and immer", async () => {
   let rslt, rslt2;
-  const store = (dispatch, query) => ({
+  const store = ({ dispatch, query }) => ({
     action() {
       // use query with immer producer for a unit of work
       rslt = query(state => {
@@ -577,7 +579,7 @@ test("unit of work with query and immer", async () => {
 
 // multiple select
 test("multiple select", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     counter: 0,
     inc() {
       dispatch(state => ({
@@ -639,7 +641,7 @@ test("multiple select", () => {
 // multiple memoized select
 
 test("multiple memoized select", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     counter: 0,
     inc() {
       return dispatch(state => ({
@@ -705,7 +707,7 @@ test("transaction/commit/rollback", () => {
   let commitException = 0;
   let rollbackException = 0;
 
-  const store = (dispatch, query, plug) => {
+  const store = ({ dispatch, query, state }) => {
     const inc = () =>
       dispatch(
         state => ({
@@ -726,13 +728,13 @@ test("transaction/commit/rollback", () => {
 
     function beginClick(msg) {
       // start transaction
-      const state = plug.tx.begin();
+      state.begin();
     }
 
     function commitClick() {
       const before = query();
       try {
-        const after = plug.tx.commit();
+        const after = state.commit();
       } catch (e) {
         commitException += 1;
       }
@@ -742,7 +744,7 @@ test("transaction/commit/rollback", () => {
     function rollbackClick() {
       const before = query();
       try {
-        const after = plug.tx.rollback();
+        const after = state.rollback();
       } catch (e) {
         rollbackException += 1;
       }
@@ -810,7 +812,7 @@ test("transaction/commit/rollback", () => {
 
 // notifyListeners/subscribe/unsubscribe
 test("notifyListeners/subscribe/unsubscribe", () => {
-  const store = (dispatch, query, plug) => {
+  const store = ({ dispatch }) => {
     const inc = () =>
       dispatch(
         state => ({
@@ -876,7 +878,7 @@ test("notifyListeners/subscribe/unsubscribe", () => {
 });
 
 test("State component can render empty and null children", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     counter: 0,
     inc() {
       return dispatch(state => ({
@@ -958,7 +960,7 @@ test("register state on connected store with init as a function", () => {
   const { asFragment, getByText } = render(<App />);
 
   const dom = asFragment();
-  register(dispatch => ({ value: 1 }));
+  register(({ dispatch }) => ({ value: 1 }));
   const dom2 = asFragment();
 
   expect(dom).toMatchDiffSnapshot(dom2);
@@ -983,7 +985,7 @@ test("register state on connected store", () => {
 });
 
 test("path default value", () => {
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     more: {
       stuff: {
         list: [{ item: "one" }, { item: "two" }]
@@ -1010,23 +1012,22 @@ test("custom plugin", () => {
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    id: "custom",
     state: {
       thing: 1
     },
     dispatch: [
-      (dispatch, query, plug) => (...args) => {
+      ({ dispatch }) => (...args) => {
         pluginDispatchCalled++;
         return dispatch(...args);
       },
-      (dispatch, query, plug) => (...args) => {
+      ({ dispatch }) => (...args) => {
         pluginDispatchCalled++;
         return dispatch(...args);
       }
     ]
   };
 
-  const store = dispatch => ({
+  const store = ({ dispatch }) => ({
     counter: 0,
     inc() {
       return dispatch(state => ({
@@ -1079,10 +1080,10 @@ test("custom plugin", () => {
   deleteStore();
 });
 
-//test("plugin can have array of dispatch middleware", () => {
+//xtest("plugin can have array of dispatch middleware", () => {
 ////throw new Error("not implemented");
 //});
 
-//test("custom namespaced module", () => {
+//xtest("custom namespaced module", () => {
 ////throw new Error("not implemented");
 //});

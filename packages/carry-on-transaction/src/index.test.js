@@ -12,7 +12,7 @@ test("plug snapshot", () => {
     return (state = action(state));
   };
 
-  plug.tx = transaction().state(dispatch, query, plug);
+  plug.tx = transaction().state({ dispatch, query, plug });
 
   expect(plug.tx).toMatchSnapshot();
 });
@@ -25,7 +25,7 @@ test("commit", () => {
     return (state = action(state));
   };
 
-  plug.tx = transaction().state(dispatch, query, plug);
+  plug.tx = transaction().state({ dispatch, query, plug });
 
   const beginState = plug.tx.begin();
 
@@ -48,7 +48,7 @@ test("rollback", async () => {
     return (state = action(state));
   };
 
-  plug.tx = transaction().state(dispatch, query, plug);
+  plug.tx = transaction().state({ dispatch, query, plug });
 
   const beginState = plug.tx.begin();
 
@@ -70,7 +70,7 @@ test("commit no transaction throws", () => {
     return (state = action(state));
   };
 
-  plug.tx = transaction().state(dispatch, query, plug);
+  plug.tx = transaction().state({ dispatch, query, plug });
 
   expect(plug.tx.commit).toThrow();
 });
@@ -83,7 +83,7 @@ test("rollback no transaction throws", () => {
     return (state = action(state));
   };
 
-  plug.tx = transaction().state(dispatch, query, plug);
+  plug.tx = transaction().state({ dispatch, query, plug });
 
   expect(plug.tx.rollback).toThrow();
 });

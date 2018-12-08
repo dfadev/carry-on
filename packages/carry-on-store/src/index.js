@@ -13,9 +13,9 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
   // middleware initialize message type
   const initMessage = "Initialize";
 
-  const createPlugins = (store, plugins) => {
+  const createPlugins = (store, plugins = {}) => {
     // create plugins
-    store.plug = {};
+    const plug = {};
 
     if (!Array.isArray(plugins)) plugins = [plugins];
 
@@ -23,19 +23,21 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     for (const plugin of plugins) {
       const { dispatch } = plugin;
       if (dispatch)
-        store.d = applyMiddleware(dispatch, store.d, (middleware, fn) =>
-          middleware(fn, store.query, store.plug)
-        );
+        store.d = applyMiddleware(dispatch, store.d, (middleware, fn) => {
+          store.dispatch = fn;
+          return middleware(store);
+        });
     }
+
+    store.dispatch = store.d;
 
     // state
     for (const plugin of plugins) {
-      const { id, state } = plugin;
-      if (state)
-        store.plug[id] = isFunction(state)
-          ? state(store.d, store.query, store.plug)
-          : state;
+      const { state } = plugin;
+      if (state) Object.assign(plug, isFunction(state) ? state(store) : state);
     }
+
+    return plug;
   };
 
   // a map of stores
@@ -43,7 +45,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
 
   // create a store
   function create(id) {
-    return Object.assign({ id, pending: [] }, extra());
+    return Object.assign({ id, pending: [] }, extra(id));
   }
 
   // delete a store
@@ -56,17 +58,13 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
 
   // register state
   const register = (init, id = defaultId) => {
-    const { dispatch, query, pending } = useStore(id);
+    const store = useStore(id);
     // queue if no dispatch available yet
-    if (dispatch)
-      dispatch(state =>
-        Object.assign(
-          {},
-          state,
-          isFunction(init) ? init(dispatch, query) : init
-        )
+    if (store.dispatch)
+      store.dispatch(state =>
+        Object.assign({}, state, isFunction(init) ? init(store) : init)
       );
-    else pending.push(init);
+    else store.pending.push(init);
   };
 
   const connect = ({ id, producer, publish, plugins, init } = {}) => {
@@ -91,28 +89,18 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       return nextState;
     };
 
-    if (plugins) createPlugins(store, plugins);
-    store.dispatch = store.d;
+    // populate state with plugin state
+    store.state = createPlugins(store, plugins);
 
-    // create initial state
-    store.state = Object.assign(
-      {},
+    // fill state with user state
+    Object.assign(
+      store.state,
       // execute store initialization
-      isFunction(init) ? init(store.dispatch, store.query, store.plug) : init,
+      isFunction(init) ? init(store) : init,
       // execute pending store initialization
       ...store.pending.map(
-        pending =>
-          isFunction(pending)
-            ? pending(store.dispatch, store.query, store.plug)
-            : pending
-      ),
-      // add standard keys
-      {
-        dispatch: store.dispatch,
-        query: store.query,
-        plug: store.plug
-      },
-      store.id ? { id: store.id } : undefined
+        pending => (isFunction(pending) ? pending(store) : pending)
+      )
     );
 
     // initialize middleware with state

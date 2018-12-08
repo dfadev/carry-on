@@ -42,7 +42,7 @@ test("register with init as function", () => {
   const { useStore, deleteStore, connect, register } = makeStoreModule();
 
   const store = useStore();
-  register(dispatch => ({ some: "state" }));
+  register(({ dispatch }) => ({ some: "state" }));
   expect(store.pending.length).toBe(1);
   deleteStore();
 });
@@ -60,7 +60,7 @@ test("register on connected store with init as function", () => {
   const { useStore, deleteStore, connect, register } = makeStoreModule();
   const store = useStore();
   const initialState = connect();
-  register(dispatch => ({ some: "state" }));
+  register(({ dispatch }) => ({ some: "state" }));
   expect(initialState).toMatchDiffSnapshot(store.state);
   deleteStore();
 });
@@ -93,7 +93,7 @@ test("connect with pending function state", () => {
 
 test("connect with init as function", () => {
   const { useStore, deleteStore, connect } = makeStoreModule();
-  const state = connect({ init: dispatch => ({ some: "state" }) });
+  const state = connect({ init: ({ dispatch }) => ({ some: "state" }) });
   expect(state).toMatchSnapshot();
   deleteStore();
 });
@@ -167,16 +167,16 @@ test("connect with plugin with multiple middleware", () => {
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    id: "custom",
+    //id: "custom",
     state: {
       thing: 1
     },
     dispatch: [
-      (dispatch, query, plug) => (...args) => {
+      ({ dispatch }) => (...args) => {
         pluginDispatchCalled++;
         return dispatch(...args);
       },
-      (dispatch, query, plug) => (...args) => {
+      ({ dispatch }) => (...args) => {
         pluginDispatchCalled++;
         return dispatch(...args);
       }
@@ -193,16 +193,16 @@ test("connect with plugins as array", () => {
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    id: "custom",
+    //id: "custom",
     state: {
       thing: 1
     },
     dispatch: [
-      (dispatch, query, plug) => (...args) => {
+      ({ dispatch }) => (...args) => {
         pluginDispatchCalled++;
         return dispatch(...args);
       },
-      (dispatch, query, plug) => (...args) => {
+      ({ dispatch }) => (...args) => {
         pluginDispatchCalled++;
         return dispatch(...args);
       }
@@ -219,11 +219,11 @@ test("connect with plugins as non-array", () => {
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    id: "custom",
+    //id: "custom",
     state: {
       thing: 1
     },
-    dispatch: (dispatch, query, plug) => (...args) => {
+    dispatch: ({ dispatch }) => (...args) => {
       pluginDispatchCalled++;
       return dispatch(...args);
     }
@@ -239,14 +239,14 @@ test("connect with plugin, state function ", () => {
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    id: "custom",
-    state: dispatch => ({
+    //id: "custom",
+    state: ({ dispatch }) => ({
       thing: 1,
       action() {
         return dispatch(state => ({ ...state, some: "state" }));
       }
     }),
-    dispatch: (dispatch, query, plug) => (...args) => {
+    dispatch: ({ dispatch }) => (...args) => {
       pluginDispatchCalled++;
       return dispatch(...args);
     }
@@ -255,7 +255,7 @@ test("connect with plugin, state function ", () => {
   const state = connect({ plugins: plugin });
   expect(pluginDispatchCalled).toBe(1);
   const store = useStore();
-  expect(store.state.plug.custom.action()).toMatchSnapshot();
+  expect(store.state.action()).toMatchSnapshot();
   deleteStore();
 });
 
@@ -264,7 +264,7 @@ test("connect with plugin, no state and dispatch", () => {
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    id: "custom"
+    //id: "custom"
   };
 
   const state = connect({ plugins: plugin });

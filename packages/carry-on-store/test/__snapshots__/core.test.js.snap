@@ -1,94 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`connect 1`] = `
-Object {
-  "dispatch": [Function],
-  "plug": undefined,
-  "query": [Function],
-}
-`;
+exports[`connect 1`] = `Object {}`;
 
 exports[`connect with init as function 1`] = `
 Object {
-  "dispatch": [Function],
-  "plug": undefined,
-  "query": [Function],
   "some": "state",
 }
 `;
 
 exports[`connect with init as object 1`] = `
 Object {
-  "dispatch": [Function],
-  "plug": undefined,
-  "query": [Function],
   "some": "state",
 }
 `;
 
 exports[`connect with pending function state 1`] = `
 Object {
-  "dispatch": [Function],
-  "plug": undefined,
-  "query": [Function],
   "some": "state",
 }
 `;
 
 exports[`connect with pending object state 1`] = `
 Object {
-  "dispatch": [Function],
-  "plug": undefined,
-  "query": [Function],
   "some": "state",
 }
 `;
 
-exports[`connect with plugin, no state and dispatch 1`] = `
-Object {
-  "dispatch": [Function],
-  "plug": Object {},
-  "query": [Function],
-}
-`;
+exports[`connect with plugin, no state and dispatch 1`] = `Object {}`;
 
 exports[`connect with plugin, no state and dispatch 2`] = `
 Object {
-  "dispatch": [Function],
-  "plug": Object {},
-  "query": [Function],
   "some": "state",
 }
 `;
 
 exports[`connect with plugin, state function  1`] = `
 Object {
-  "dispatch": [Function],
-  "plug": Object {
-    "custom": Object {
-      "action": [Function],
-      "thing": 1,
-    },
-  },
-  "query": [Function],
+  "action": [Function],
   "some": "state",
+  "thing": 1,
 }
 `;
 
 exports[`dispatch action 1`] = `
 Object {
-  "dispatch": [Function],
-  "plug": undefined,
-  "query": [Function],
   "some": "state",
 }
 `;
 
 exports[`force dispatch 1`] = `
 Object {
-  "dispatch": [Function],
-  "plug": undefined,
-  "query": [Function],
   "some": "forced state",
 }
 `;
@@ -98,12 +59,10 @@ exports[`query with action 1`] = `
 - First value
 + Second value
 
-  Object {
-    \\"dispatch\\": [Function anonymous],
-    \\"plug\\": undefined,
-    \\"query\\": [Function anonymous],
+- Object {}
++ Object {
 +   \\"some\\": \\"state\\",
-  }"
++ }"
 `;
 
 exports[`register on connected store 1`] = `
@@ -111,12 +70,10 @@ exports[`register on connected store 1`] = `
 - First value
 + Second value
 
-  Object {
-    \\"dispatch\\": [Function anonymous],
-    \\"plug\\": undefined,
-    \\"query\\": [Function anonymous],
+- Object {}
++ Object {
 +   \\"some\\": \\"state\\",
-  }"
++ }"
 `;
 
 exports[`register on connected store with init as function 1`] = `
@@ -124,12 +81,10 @@ exports[`register on connected store with init as function 1`] = `
 - First value
 + Second value
 
-  Object {
-    \\"dispatch\\": [Function anonymous],
-    \\"plug\\": undefined,
-    \\"query\\": [Function anonymous],
+- Object {}
++ Object {
 +   \\"some\\": \\"state\\",
-  }"
++ }"
 `;
 
 exports[`useStore 1`] = `
@@ -147,20 +102,8 @@ Object {
   "pending": Array [],
   "producer": [Function],
   "query": [Function],
-  "state": Object {
-    "dispatch": [Function],
-    "id": "store1",
-    "plug": undefined,
-    "query": [Function],
-  },
+  "state": Object {},
 }
 `;
 
-exports[`useStore named 2`] = `
-Object {
-  "dispatch": [Function],
-  "id": "store1",
-  "plug": undefined,
-  "query": [Function],
-}
-`;
+exports[`useStore named 2`] = `Object {}`;

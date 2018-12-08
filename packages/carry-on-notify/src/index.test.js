@@ -27,7 +27,7 @@ test("subscribe/unsubscribe", () => {
   const notify = notifyListeners();
   expect(notify).toMatchSnapshot();
 
-  dispatch = notify.plugin.dispatch(dispatch);
+  dispatch = notify.plugin.dispatch({ dispatch });
 
   let msgRecvCount = 0;
   const fn = state => { msgRecvCount++; };

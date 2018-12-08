@@ -9,13 +9,12 @@ export default ({ timeTravel = true } = {}) => {
     devTools = window && window.__REDUX_DEVTOOLS_EXTENSION__;
 
   return {
-    id: "devTools",
-    dispatch: dispatch => (action, type = "Dispatch", ...args) => {
+    dispatch: ({ dispatch, id }) => (action, type = "Dispatch", ...args) => {
       const state = dispatch(action, type, ...args);
 
       // exit when no action
       if (!action) return state;
-      const name = state.id;
+      const name = id;
 
       // support time traveling
       if (timeTravel) {
