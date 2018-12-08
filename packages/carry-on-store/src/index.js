@@ -14,11 +14,6 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
   const initMessage = "Initialize";
 
   const createPlugins = (store, plugins) => {
-    if (!plugins) {
-      store.dispatch = store.d;
-      return;
-    }
-
     // create plugins
     store.plug = {};
 
@@ -33,15 +28,12 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
         );
     }
 
-    // create initial dispatch function
-    store.dispatch = (...args) => store.d(...args);
-
     // state
     for (const plugin of plugins) {
       const { id, state } = plugin;
       if (state)
         store.plug[id] = isFunction(state)
-          ? state(store.dispatch, store.query, store.plug)
+          ? state(store.d, store.query, store.plug)
           : state;
     }
   };
@@ -99,7 +91,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       return nextState;
     };
 
-    createPlugins(store, plugins);
+    if (plugins) createPlugins(store, plugins);
     store.dispatch = store.d;
 
     // create initial state
