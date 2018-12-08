@@ -1,6 +1,6 @@
 {
   "name": "carry-on-devtools",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "carry-on plugin to support ReduxDevTools",
   "source": "./src/index.js",
   "main": "./lib/carry-on-devtools.js",
