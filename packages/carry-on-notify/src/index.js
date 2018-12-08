@@ -2,13 +2,9 @@
 export default () => {
   const listeners = [];
 
-  function unsubscribe(idx) {
-    listeners.splice(idx, 1);
-  }
-
   function subscribe(fn) {
     const idx = listeners.push(fn);
-    return () => unsubscribe(idx - 1);
+    return () => listeners.splice(idx - 1, 1);
   }
 
   function notifyListeners(state, dispatch, query) {
