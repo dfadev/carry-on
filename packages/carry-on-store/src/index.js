@@ -108,11 +108,11 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       ),
       // add standard keys
       {
-        id: store.id,
         dispatch: store.dispatch,
         query: store.query,
         plug: store.plug
-      }
+      },
+      store.id ? { id: store.id } : undefined
     );
 
     // initialize middleware with state
