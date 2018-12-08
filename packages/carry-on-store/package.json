@@ -1,7 +1,7 @@
 {
   "name": "carry-on-store",
   "version": "0.0.3",
-  "description": "A Store for React",
+  "description": "State manager",
   "source": "./src/index.js",
   "main": "./lib/carry-on-store.js",
   "unpkg": "dist/carry-on-store.js",
