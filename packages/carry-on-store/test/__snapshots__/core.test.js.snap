@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`connect 1`] = `
+Object {
+  "dispatch": [Function],
+  "id": undefined,
+  "plug": undefined,
+  "query": [Function],
+}
+`;
+
+exports[`connect with init as function 1`] = `
+Object {
+  "dispatch": [Function],
+  "id": undefined,
+  "plug": undefined,
+  "query": [Function],
+  "some": "state",
+}
+`;
+
+exports[`connect with init as object 1`] = `
+Object {
+  "dispatch": [Function],
+  "id": undefined,
+  "plug": undefined,
+  "query": [Function],
+  "some": "state",
+}
+`;
+
+exports[`connect with pending function state 1`] = `
+Object {
+  "dispatch": [Function],
+  "id": undefined,
+  "plug": undefined,
+  "query": [Function],
+  "some": "state",
+}
+`;
+
+exports[`connect with pending object state 1`] = `
+Object {
+  "dispatch": [Function],
+  "id": undefined,
+  "plug": undefined,
+  "query": [Function],
+  "some": "state",
+}
+`;
+
+exports[`dispatch action 1`] = `
+Object {
+  "dispatch": [Function],
+  "id": undefined,
+  "plug": undefined,
+  "query": [Function],
+  "some": "state",
+}
+`;
+
+exports[`force dispatch 1`] = `
+Object {
+  "dispatch": [Function],
+  "id": undefined,
+  "plug": undefined,
+  "query": [Function],
+  "some": "forced state",
+}
+`;
+
+exports[`query with action 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+  Object {
+    \\"dispatch\\": [Function anonymous],
+    \\"id\\": undefined,
+    \\"plug\\": undefined,
+    \\"query\\": [Function anonymous],
++   \\"some\\": \\"state\\",
+  }"
+`;
+
+exports[`register on connected store 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+  Object {
+    \\"dispatch\\": [Function anonymous],
+    \\"id\\": undefined,
+    \\"plug\\": undefined,
+    \\"query\\": [Function anonymous],
++   \\"some\\": \\"state\\",
+  }"
+`;
+
+exports[`register on connected store with init as function 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+  Object {
+    \\"dispatch\\": [Function anonymous],
+    \\"id\\": undefined,
+    \\"plug\\": undefined,
+    \\"query\\": [Function anonymous],
++   \\"some\\": \\"state\\",
+  }"
+`;
+
+exports[`useStore 1`] = `
+Object {
+  "id": undefined,
+  "pending": Array [],
+}
+`;
