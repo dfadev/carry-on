@@ -82,7 +82,6 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     if (store.dispatch) throw new Error("Already connected");
 
     // the producer creates new states from old states by executing actions
-    //store.producer = producer || ((state, action) => ({ ...action(state) }));
     store.producer = producer || ((state, action) => action({ ...state }));
 
     // query provides a copy of state created by the producer
