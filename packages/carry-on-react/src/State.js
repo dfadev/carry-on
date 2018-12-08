@@ -1,5 +1,6 @@
 /** @format **/
 import React, { memo } from "react";
+import hoistNonReactStatic from 'hoist-non-react-statics';
 import { isFunction, getIn } from "./utils";
 
 export default function makeStateComponents({ useStore, defaultId }) {
@@ -49,6 +50,7 @@ export default function makeStateComponents({ useStore, defaultId }) {
         }}
       </State>
     );
+    hoistNonReactStatic(WithState, WrappedComponent);
     return WithState;
   };
 
