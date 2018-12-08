@@ -9,7 +9,7 @@ import { State, Store, withState, withStore, register, deleteStore } from "carry
 ```
 
 #
-##### Default store
+#### Default store
 #
 ```JavaScript
 const store = ({ dispatch }) => ({
@@ -43,7 +43,7 @@ const App = () => (
 );
 ```
 #
-##### Two named stores
+#### Two named stores
 #
 ```JavaScript
 const store = ({ dispatch }) => ({
@@ -90,7 +90,7 @@ const App = () => (
 );
 ```
 #
-##### State select
+#### State select
 #
 ```JavaScript
 const store = ({ dispatch }) => ({
@@ -128,7 +128,7 @@ const App = props => (
 );
 ```
 #
-##### Register state
+#### Register state
 #
 ```JavaScript
 register(({ dispatch }) => ({
@@ -163,7 +163,7 @@ const App = () => (
 ```
 
 #
-##### Register state on a named store
+#### Register state on a named store
 #
 ```JavaScript
 register(
@@ -201,7 +201,7 @@ const App = () => (
 ```
 
 #
-##### Immer as producer
+#### Immer as producer
 #
 ```JavaScript
 const store = ({ dispatch }) => ({
@@ -230,7 +230,7 @@ const App = () => (
 ```
 
 #
-##### State path
+#### State path
 #
 ```JavaScript
 const store = ({ dispatch }) => ({
@@ -253,7 +253,7 @@ const App = () => (
 ```
 
 #
-##### State path on a named store using from
+#### State path on a named store using from
 #
 ```JavaScript
 const store = ({ dispatch }) => ({
@@ -281,7 +281,7 @@ const App = () => (
 ```
 
 #
-##### Unit of work using query and immer
+#### Unit of work using query and immer
 #
 ```JavaScript
 import immer from "immer";
@@ -318,7 +318,7 @@ const App = () => (
 ```
 
 #
-##### Multiple select
+#### Multiple select
 #
 ```JavaScript
 const store = ({ dispatch }) => ({
@@ -364,7 +364,7 @@ const App = props => (
 ```
 
 #
-##### Memoized selects (you provide memoization function)
+#### Memoized selects (you provide memoization function)
 #
 ```JavaScript
 import memoize from "memoize-state";
@@ -412,7 +412,7 @@ const App = props => (
 ```
 
 #
-##### Commit/Rollback with carry-on-transaction plugin
+#### Commit/Rollback with carry-on-transaction plugin
 #
 ```JavaScript
 import transaction from "carry-on-transaction";
@@ -497,7 +497,7 @@ const App = () => (
 ```
 
 #
-##### Notify listeners plugin (subscribe/unsubscribe)
+#### Notify listeners plugin (subscribe/unsubscribe)
 #
 ```JavaScript
 import notifyListeners from "carry-on-notify";
@@ -550,7 +550,7 @@ const App = () => (
 ```
 
 #
-##### Path default value
+#### Path default value
 #
 ```JavaScript
 const store = ({ dispatch }) => ({
