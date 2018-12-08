@@ -6,7 +6,6 @@ export default () => {
   return {
     id: "tx",
     state: dispatch => ({
-      //transactions: [],
       commit: () => {
         if (transactions.length === 0) throw new Error("no tx");
         return dispatch(state => {
