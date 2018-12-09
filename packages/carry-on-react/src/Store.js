@@ -1,6 +1,6 @@
 /** @format **/
 import React, { Component } from "react";
-import hoistNonReactStatic from 'hoist-non-react-statics';
+import hoistNonReactStatic from "hoist-non-react-statics";
 import { isFunction } from "./utils";
 
 // create an object with Store and withState components
@@ -41,8 +41,7 @@ export default function makeStoreComponents({
         <WrappedComponent {...props} />
       </Store>
     );
-    hoistNonReactStatic(WithStore, WrappedComponent);
-    return WithStore;
+    return hoistNonReactStatic(WithStore, WrappedComponent);
   };
 
   return { Store, withStore };
