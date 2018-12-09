@@ -1,6 +1,6 @@
 {
   "name": "carry-on-react",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A Store for React",
   "source": "./src/index.js",
   "main": "./lib/carry-on-react.js",
@@ -34,8 +34,8 @@
     "babel-preset-optimized": "^1.0.2",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "carry-on-notify": "^0.0.6",
-    "carry-on-transaction": "^0.0.6",
+    "carry-on-notify": "^0.0.7",
+    "carry-on-transaction": "^0.0.7",
     "cross-env": "^5.2.0",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -61,7 +61,7 @@
     "snapshot-diff": "^0.4.1"
   },
   "dependencies": {
-    "carry-on-store": "^0.0.6",
+    "carry-on-store": "^0.0.7",
     "hoist-non-react-statics": "^3.2.1"
   },
   "sideEffects": false,

@@ -1,6 +1,6 @@
 {
   "name": "carry-on-transaction",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "carry-on plugin to support ReduxDevTools",
   "source": "./src/index.js",
   "main": "./lib/carry-on-transaction.js",
