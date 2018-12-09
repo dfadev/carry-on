@@ -2,6 +2,17 @@
 
 State manager for React.
 
+## Features
+
+- Uses modern React Context API
+- Minimal boilerplate
+- Multiple stores, multiple namespaces
+- Custom plugins that can provide additional state, actions, and middleware
+- Store and State components to help keep your components stateless
+- Optionally use [immer](https://github.com/mweststrate/immer) to mutate state naturally instead of rolling your own immutable state.
+
+## Examples
+
 #
 ### Import
 #
