@@ -1,7 +1,5 @@
 # carry-on-notify
 
-### carry-on plugin to add subscribe/unsubscribe support
-
 ```carry-on``` plugin that notifies subscribers when state changes.
 
 ### Usage
