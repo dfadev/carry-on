@@ -64,6 +64,5 @@
     "carry-on-store": "^0.0.8",
     "hoist-non-react-statics": "^3.2.1"
   },
-  "sideEffects": false,
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18"
 }
