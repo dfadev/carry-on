@@ -11,18 +11,15 @@ State manager for React.
 - Store and State components to help keep your components stateless
 - Optionally use [immer](https://github.com/mweststrate/immer) to mutate state naturally instead of rolling your own immutable state.
 
-## Examples
+## Import
 
-#
-### Import
-#
 ```JavaScript
 import { State, Store, withState, withStore, register, deleteStore } from "carry-on-react";
 ```
 
-#
+## Examples
+
 ### Default store
-#
 ```JavaScript
 const store = ({ dispatch }) => ({
     counter: 0,
@@ -54,9 +51,8 @@ const App = () => (
     </Store>
 );
 ```
-#
+
 ### Two named stores
-#
 ```JavaScript
 const store = ({ dispatch }) => ({
   counter: 0,
@@ -101,9 +97,8 @@ const App = () => (
   </>
 );
 ```
-#
+
 ### State select
-#
 ```JavaScript
 const store = ({ dispatch }) => ({
   notSelected: "item",
@@ -139,9 +134,8 @@ const App = props => (
   </Store>
 );
 ```
-#
+
 ### Register state
-#
 ```JavaScript
 register(({ dispatch }) => ({
   counter: 0,
@@ -174,9 +168,7 @@ const App = () => (
 );
 ```
 
-#
 ### Register state on a named store
-#
 ```JavaScript
 register(
   ({ dispatch }) => ({
@@ -212,9 +204,7 @@ const App = () => (
 );
 ```
 
-#
 ### Immer as producer
-#
 ```JavaScript
 const store = ({ dispatch }) => ({
   counter: 0,
@@ -241,9 +231,7 @@ const App = () => (
 );
 ```
 
-#
 ### State path
-#
 ```JavaScript
 const store = ({ dispatch }) => ({
   more: {
@@ -264,9 +252,7 @@ const App = () => (
 );
 ```
 
-#
 ### State path on a named store using from
-#
 ```JavaScript
 const store = ({ dispatch }) => ({
   more: {
@@ -292,9 +278,7 @@ const App = () => (
 );
 ```
 
-#
 ### Unit of work using query and immer
-#
 ```JavaScript
 import immer from "immer";
 
@@ -329,9 +313,7 @@ const App = () => (
 );
 ```
 
-#
 ### Multiple select
-#
 ```JavaScript
 const store = ({ dispatch }) => ({
   counter: 0,
@@ -375,9 +357,7 @@ const App = props => (
 );
 ```
 
-#
 ### Memoized selects (you provide memoization function)
-#
 ```JavaScript
 import memoize from "memoize-state";
 
@@ -423,9 +403,7 @@ const App = props => (
 );
 ```
 
-#
 ### Commit/Rollback with carry-on-transaction plugin
-#
 ```JavaScript
 import transaction from "carry-on-transaction";
 
@@ -508,9 +486,7 @@ const App = () => (
 
 ```
 
-#
 ### Notify listeners plugin (subscribe/unsubscribe)
-#
 ```JavaScript
 import notifyListeners from "carry-on-notify";
 
@@ -561,9 +537,7 @@ const App = () => (
 );
 ```
 
-#
 ### Path default value
-#
 ```JavaScript
 const store = ({ dispatch }) => ({
   more: {
@@ -584,9 +558,7 @@ const App = () => (
 );
 ```
 
-#
 ### Custom plugin
-#
 ```JavaScript
 let pluginDispatchCalled = 0;
 
