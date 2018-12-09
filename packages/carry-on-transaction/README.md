@@ -5,6 +5,9 @@
 ### Usage
 
 ```JavaScript
+import transaction from "carry-on-transaction";
+import { Store, State } from "carry-on-react";
+
 let commits = 0;
 let rollbacks = 0;
 let commitException = 0;
@@ -68,14 +71,14 @@ const App = () => (
   <Store init={store} plugins={[transaction()]}>
     <State>
       {({ counter, inc, dec, beginClick, commitClick, rollbackClick }) => (
-        <Fragment>
+        <>
           <div>Counter: {counter}</div>
           <button onClick={inc}>+</button>
           <button onClick={dec}>-</button>
           <button onClick={beginClick}>begin tx</button>
           <button onClick={commitClick}>commit</button>
           <button onClick={rollbackClick}>rollback</button>
-        </Fragment>
+        </>
       )}
     </State>
   </Store>
