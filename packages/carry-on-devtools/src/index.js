@@ -33,7 +33,7 @@ export default ({ timeTravel = true } = {}) => {
       }
 
       // send devtools an state update message
-      devTools.send({ type }, state, { name });
+      devTools.send({ type }, state, undefined, name);
 
       return state;
     }
