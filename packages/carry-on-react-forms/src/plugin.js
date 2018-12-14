@@ -44,7 +44,6 @@ export default (onSubmit, onReset, onValidate) => {
             cancellable = makeCancelable(
               debounceValidate(validationValues),
               vals => {
-                console.log("validate.then", vals);
                 dispatch(curState => {
                   let validatedState = setIn(curState, "form.errors", vals);
                   const isValid = Object.keys(vals).length === 0;
@@ -57,7 +56,6 @@ export default (onSubmit, onReset, onValidate) => {
                 });
               },
               err => {
-                console.log("validate.catch", err);
                 dispatch(curState =>
                   setIn(curState, "form.isValidating", false)
                 );
