@@ -36,7 +36,7 @@ export default (onSubmit, onReset, onValidate) => {
         isValid: true,
         validation: undefined,
 
-        triggerValidation: state => {
+        validate: state => {
           if (onValidate) {
             const nextState = setIn(state, "form.isValidating", true);
             const { form, ...validationValues } = nextState;
@@ -75,18 +75,13 @@ export default (onSubmit, onReset, onValidate) => {
         setFieldValue: (fieldName, value) =>
           dispatch(
             state =>
-              state.form.triggerValidation(
-                calcPristine(setIn(state, fieldName, value))
-              ),
+              state.form.validate(calcPristine(setIn(state, fieldName, value))),
             "Set Field Value"
           ),
 
         setValues: values =>
           dispatch(
-            state =>
-              state.form.triggerValidation(
-                calcPristine({ ...state, ...values })
-              ),
+            state => state.form.validate(calcPristine({ ...state, ...values })),
             "Set Values"
           ),
 
