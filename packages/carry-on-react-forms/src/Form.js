@@ -8,11 +8,16 @@ export default ({
   init,
   onSubmit,
   onReset,
+  onValidate,
   children,
   plugins = [],
   ...rest
 }) => (
-  <Store id={id} init={init} plugins={[forms(onSubmit, onReset), ...plugins]}>
+  <Store
+    id={id}
+    init={init}
+    plugins={[forms(onSubmit, onReset, onValidate), ...plugins]}
+  >
     <State
       select={({ form: { submit, reset } }) => ({ submit, reset })}
       from={id}

@@ -1,35 +1,21 @@
 /** @format **/
 import get from "lodash/get";
 import isEqualWith from "lodash/isEqualWith";
-import isEmpty from "lodash/isEmpty";
-import setWith from "lodash/setWith";
-import isString from "lodash/isString";
-import isNumber from "lodash/isNumber";
-import clone from "lodash/clone";
+import debounce from "debounce-promise";
+import { setIn, makeCancelable } from "./utils";
 
-function setIn(state, path, valueToSet) {
-  if (isEmpty(path)) return valueToSet;
-  return setWith({ ...state }, path, valueToSet, (nsValue, key) => {
-    const nextKey = path[path.lastIndexOf(key) + 1];
-    const isStringNumber = isString(nextKey) && isNumber(parseInt(nextKey, 10));
-    const result = isStringNumber ? Object(nsValue) : nsValue;
-    return clone(result);
-  });
-}
-
-export default (onSubmit, onReset) => {
+export default (onSubmit, onReset, onValidate) => {
   let origState;
 
-  const triggerValidation = state => state;
+  const debounceValidate = debounce(onValidate, 200);
+  let cancellable;
 
   const calcPristine = state =>
     setIn(
       state,
       "form.isPristine",
-      isEqualWith(
-        origState,
-        state,
-        (value1, value2, key) => (key === "form" ? true : undefined)
+      isEqualWith(origState, state, (value1, value2, key) =>
+        key === "form" ? true : undefined
       )
     );
 
@@ -50,6 +36,38 @@ export default (onSubmit, onReset) => {
         isValid: true,
         validation: undefined,
 
+        triggerValidation: state => {
+          if (onValidate) {
+            const nextState = setIn(state, "form.isValidating", true);
+            const { form, ...validationValues } = nextState;
+            cancellable && cancellable();
+            cancellable = makeCancelable(
+              debounceValidate(validationValues),
+              vals => {
+                console.log("validate.then", vals);
+                dispatch(curState => {
+                  let validatedState = setIn(curState, "form.errors", vals);
+                  const isValid = Object.keys(vals).length === 0;
+                  validatedState = setIn(
+                    validatedState,
+                    "form.isValid",
+                    isValid
+                  );
+                  return setIn(validatedState, "form.isValidating", false);
+                });
+              },
+              err => {
+                console.log("validate.catch", err);
+                dispatch(curState =>
+                  setIn(curState, "form.isValidating", false)
+                );
+              }
+            );
+            return nextState;
+          }
+          return state;
+        },
+
         hasError: fieldName =>
           query(state => get(state.form.errors, fieldName, false)),
 
@@ -59,13 +77,18 @@ export default (onSubmit, onReset) => {
         setFieldValue: (fieldName, value) =>
           dispatch(
             state =>
-              triggerValidation(calcPristine(setIn(state, fieldName, value))),
+              state.form.triggerValidation(
+                calcPristine(setIn(state, fieldName, value))
+              ),
             "Set Field Value"
           ),
 
         setValues: values =>
           dispatch(
-            state => triggerValidation(calcPristine({ ...state, ...values })),
+            state =>
+              state.form.triggerValidation(
+                calcPristine({ ...state, ...values })
+              ),
             "Set Values"
           ),
 
@@ -80,16 +103,13 @@ export default (onSubmit, onReset) => {
 
         setFieldTouched: (fieldName, touched) =>
           dispatch(
-            state =>
-              triggerValidation(
-                setIn(state, "form.touched." + fieldName, touched)
-              ),
+            state => setIn(state, "form.touched." + fieldName, touched),
             "Set Field Touched"
           ),
 
         setTouched: touched =>
           dispatch(
-            state => triggerValidation(setIn(state, "form.touched", touched)),
+            state => setIn(state, "form.touched", touched),
             "Set Touched"
           ),
 
@@ -102,10 +122,16 @@ export default (onSubmit, onReset) => {
 
         submit(e) {
           e && e.preventDefault();
+          if (query(state => state.form.isValidating)) {
+            return;
+          }
+
           dispatch(state => {
             const rslt = onSubmit && onSubmit(state);
             if (rslt) {
-              const nextState = setIn(state, "form.isPristine", true);
+              let nextState = setIn(state, "form.isPristine", true);
+              nextState = setIn(nextState, "form.errors", {});
+              nextState = setIn(nextState, "form.touched", {});
               origState = nextState;
               return nextState;
             }
