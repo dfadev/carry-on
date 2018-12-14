@@ -6,15 +6,31 @@ import { isFunction, getIn } from "./utils";
 export default function makeStateComponents({ useStore, defaultId }) {
   // memoized children render function
   const Comp = memo(
-    ({ children, value }) => (children ? children(value) : null)
+    ({ children, ...values }) =>
+      children
+        ? children(
+            values !== undefined &&
+            Object.prototype.hasOwnProperty.call(
+              values,
+              "carryOnReactNonObject"
+            )
+              ? values.carryOnReactNonObject
+              : values
+          )
+        : null
   );
+
+  const asProps = val =>
+    val instanceof Object && !Array.isArray(val)
+      ? val
+      : { carryOnReactNonObject: val };
 
   const State = ({ from, path, select, children, default: def }) => {
     const { Consumer } = useStore(from).Context;
     return (
       <Consumer>
         {state => (
-          <Comp value={select(getIn(state, path, def))}>{children}</Comp>
+          <Comp {...asProps(select(getIn(state, path, def)))}>{children}</Comp>
         )}
       </Consumer>
     );
