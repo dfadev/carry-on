@@ -3,7 +3,25 @@ import React from "react";
 import { State } from "carry-on-react";
 import get from "lodash/get";
 
-export default ({ from, path, select, default: def, children }) => (
+function getVal({ target: { type, value, checked } }) {
+  if (/number|range/.test(type)) {
+    const parsed = parseFloat(value);
+    return Number.isNaN(parsed) ? "" : parsed;
+  }
+
+  if (/checkbox/.test(type)) {
+    return checked;
+  }
+
+  return value;
+
+  //? ((parsed = parseFloat(value)), isNaN(parsed) ? "" : parsed)
+  //: /checkbox/.test(type)
+  //? checked
+  //: value;
+}
+
+export default ({ from, path, select, default: def, children, checkbox }) => (
   <State
     select={state => ({
       setFieldValue: state.form.setFieldValue,
@@ -29,9 +47,10 @@ export default ({ from, path, select, default: def, children }) => (
         touched,
         error,
         element: {
-          value,
-          onChange: e => setFieldValue(path, e.target.value),
-          onBlur: () => !isTouched(path) && setFieldTouched(path, true)
+          value: checkbox ? undefined : value,
+          onChange: e => setFieldValue(path, getVal(e)),
+          onBlur: () => !isTouched(path) && setFieldTouched(path, true),
+          checked: checkbox ? Boolean(value) : undefined
         },
         setValue: val => setFieldValue(path, val),
         setTouched: val => setFieldTouched(path, val),
