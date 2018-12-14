@@ -1,11 +1,11 @@
 {
-  "name": "carry-on-forms",
+  "name": "carry-on-react-forms",
   "version": "0.0.9",
-  "description": "carry-on plugin to support ReduxDevTools",
+  "description": "carry-on plugin to support forms",
   "source": "./src/index.js",
-  "main": "./lib/carry-on-forms.js",
-  "unpkg": "dist/carry-on-forms.js",
-  "module": "./es/carry-on-forms.js",
+  "main": "./lib/carry-on-react-forms.js",
+  "unpkg": "dist/carry-on-react-forms.js",
+  "module": "./es/carry-on-react-forms.js",
   "scripts": {
     "clean": "rimraf lib dist es coverage",
     "format": "prettier --write \"{src,test}/**/*.js\"",
@@ -21,6 +21,11 @@
   },
   "author": "Russ Panula <russ@dfa.net>",
   "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "carry-on-react": "0.0.9"
+  },
   "devDependencies": {
     "@ampproject/rollup-plugin-closure-compiler": "^0.6.1",
     "babel-core": "^6.26.3",
@@ -30,6 +35,7 @@
     "babel-preset-optimized": "^1.0.2",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "carry-on-react": "0.0.9",
     "cross-env": "^5.2.0",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -41,7 +47,11 @@
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.5.0",
     "jest-dom": "^2.1.1",
+    "lodash": "^4.17.11",
     "prettier": "^1.14.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-testing-library": "^5.3.1",
     "rimraf": "^2.6.2",
     "rollup": "^0.64.1",
     "rollup-plugin-babel": "^3.0.7",
@@ -50,5 +60,8 @@
     "snapshot-diff": "^0.4.1"
   },
   "sideEffects": false,
-  "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18"
+  "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
 }

@@ -1,0 +1,16 @@
+var pkg = require("./package.json");
+
+module.exports = [
+  {
+    file: pkg.main,
+    format: "cjs",
+    name: pkg.name,
+    sourcemap: true
+  },
+  {
+    file: pkg.module,
+    format: "esm",
+    name: pkg.name,
+    sourcemap: true
+  }
+];
