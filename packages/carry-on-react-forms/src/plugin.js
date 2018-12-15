@@ -55,7 +55,7 @@ export default (onSubmit, onReset, onValidate) => {
                   return setIn(validatedState, "form.isValidating", false);
                 }, "Validation Completed");
               },
-              err => {
+              () => {
                 dispatch(curState =>
                   setIn(curState, "form.isValidating", false)
                 );
