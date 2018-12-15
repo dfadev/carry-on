@@ -4,7 +4,7 @@ import { State } from "carry-on-react";
 
 export default ({
   store, // storeid
-  form, // formid
+  form = "form", // formid
   onSubmit,
   onReset,
   children,
