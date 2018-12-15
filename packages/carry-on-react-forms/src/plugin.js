@@ -35,29 +35,19 @@ export default (onSubmit, onReset, onValidate) => {
         isValid: true,
         validation: undefined,
 
-        validate: state => {
+        validate: (state, onSuccess) => {
           if (onValidate) {
             const nextState = setIn(state, "form.isValidating", true);
             const { form, ...validationValues } = nextState;
             cancellable && cancellable();
             cancellable = makeCancelable(
               debounceValidate(validationValues),
-              vals => {
-                dispatch(curState => {
-                  let validatedState = setIn(curState, "form.errors", vals);
-                  const isValid = Object.keys(vals).length === 0;
-                  validatedState = setIn(
-                    validatedState,
-                    "form.isValid",
-                    isValid
-                  );
-                  return setIn(validatedState, "form.isValidating", false);
-                }, "Validation Completed");
-              },
+              vals => state.form.setErrors(vals) && onSuccess(),
               () => {
                 dispatch(curState =>
                   setIn(curState, "form.isValidating", false)
                 );
+                onSuccess();
               }
             );
             return nextState;
@@ -91,7 +81,12 @@ export default (onSubmit, onReset, onValidate) => {
           ),
 
         setErrors: errors =>
-          dispatch(state => setIn(state, "form.errors", errors), "Set Errors"),
+          dispatch(state => {
+            let validatedState = setIn(state, "form.errors", errors);
+            const isValid = Object.keys(errors).length === 0;
+            validatedState = setIn(validatedState, "form.isValid", isValid);
+            return setIn(validatedState, "form.isValidating", false);
+          }, "Set Errors"),
 
         setFieldTouched: (fieldName, touched) =>
           dispatch(
@@ -114,21 +109,57 @@ export default (onSubmit, onReset, onValidate) => {
 
         submit(e) {
           e && e.preventDefault();
-          if (query(state => state.form.isValidating)) {
+          if (
+            query(state => state.form.isValidating || state.form.isSubmitting)
+          )
             return;
-          }
 
           dispatch(state => {
-            const rslt = onSubmit && onSubmit(state);
-            if (rslt) {
-              let nextState = setIn(state, "form.isPristine", true);
-              nextState = setIn(nextState, "form.errors", {});
-              nextState = setIn(nextState, "form.touched", {});
-              origState = nextState;
-              return nextState;
-            }
-            return state;
-          }, "Submit Form");
+            let nextState = setIn(state, "form.isSubmitting", true);
+            const finishSubmit = () => {
+              const { form, ...submitValues } = query();
+              Promise.resolve(onSubmit(submitValues))
+                .then(rslt => {
+                  dispatch(curState => {
+                    const submittedState = setIn(
+                      curState,
+                      "form.isSubmitting",
+                      false
+                    );
+                    if (rslt) {
+                      let validSubmitState = setIn(
+                        submittedState,
+                        "form.isPristine",
+                        true
+                      );
+                      validSubmitState = setIn(
+                        validSubmitState,
+                        "form.errors",
+                        {}
+                      );
+                      validSubmitState = setIn(
+                        validSubmitState,
+                        "form.touched",
+                        {}
+                      );
+                      origState = validSubmitState;
+                      return validSubmitState;
+                    }
+                    return submittedState;
+                  }, "End Submit");
+                })
+                .catch(() =>
+                  dispatch(curState =>
+                    setIn(curState, "form.isSubmitting", false)
+                  )
+                );
+            };
+
+            nextState = nextState.form.validate(nextState, finishSubmit);
+            if (nextState.form.isValidating) return nextState;
+            finishSubmit();
+            return nextState;
+          }, "Begin Submit");
         }
       }
     })
