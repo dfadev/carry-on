@@ -3,7 +3,7 @@ import React from "react";
 import { State } from "carry-on-react";
 
 export default ({
-  from, // storeid
+  store, // storeid
   form, // formid
   onSubmit,
   onReset,
@@ -12,7 +12,7 @@ export default ({
 }) => (
   <State
     select={({ [form]: { submit, reset } }) => ({ submit, reset })}
-    from={from}
+    from={store}
   >
     {({ submit, reset }) => (
       <form onSubmit={submit(onSubmit)} onReset={reset(onReset)} {...rest}>

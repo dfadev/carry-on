@@ -2,9 +2,9 @@
 import React from "react";
 import { State } from "carry-on-react";
 
-export default ({ select, from, form, children }) => (
+export default ({ select, store, form, children }) => (
   <State
-    from={from}
+    from={store}
     select={state => (select ? select(state[form]) : state[form])}
   >
     {children}

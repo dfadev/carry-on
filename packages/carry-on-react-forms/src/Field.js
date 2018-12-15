@@ -16,7 +16,7 @@ function getVal({ target: { type, value, checked } }) {
   return value;
 }
 
-export default ({ from, form, path, select, default: def, children, type }) => (
+export default ({ store, form, path, select, default: def, children, type }) => (
   <State
     select={state => ({
       setFieldValue: state[form].setFieldValue,
@@ -29,7 +29,7 @@ export default ({ from, form, path, select, default: def, children, type }) => (
       touched: get(state[form].touched, path, false),
       error: get(state[form].errors, path, undefined)
     })}
-    from={from}
+    from={store}
   >
     {({
       value,
