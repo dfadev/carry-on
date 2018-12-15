@@ -53,7 +53,7 @@ export default (onSubmit, onReset, onValidate) => {
                     isValid
                   );
                   return setIn(validatedState, "form.isValidating", false);
-                });
+                }, "Validation Completed");
               },
               err => {
                 dispatch(curState =>
