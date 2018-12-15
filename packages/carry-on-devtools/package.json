@@ -3,8 +3,6 @@
   "version": "0.0.9",
   "description": "carry-on plugin to support ReduxDevTools",
   "source": "./src/index.js",
-  "main": "./lib/carry-on-devtools.js",
-  "unpkg": "dist/carry-on-devtools.js",
   "module": "./es/carry-on-devtools.js",
   "scripts": {
     "clean": "rimraf lib dist es coverage",
@@ -46,7 +44,6 @@
     "rollup": "^0.64.1",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-eslint": "^5.0.0",
-    "rollup-plugin-terser": "^1.0.1",
     "snapshot-diff": "^0.4.1"
   },
   "sideEffects": false,
