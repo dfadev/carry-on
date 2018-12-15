@@ -18,11 +18,10 @@ test("subscribe is called", () => {
 
   window.__REDUX_DEVTOOLS_EXTENSION__ = {
     connect: (opts) => ({
-      subscribe
-    }),
-    send: (action, state, opts) => {
-      //no op
-    }
+      subscribe,
+      send: (action, state) => {
+      }
+    })
   };
 
   const plugin = new devTools();
@@ -59,11 +58,10 @@ test("disable timetravel works", () => {
 
   window.__REDUX_DEVTOOLS_EXTENSION__ = {
     connect: (opts) => ({
-      subscribe
-    }),
-    send: (action, state, opts) => {
-      //no op
-    }
+      subscribe,
+      send: (action, state) => {
+      }
+    })
   };
 
   const plugin = new devTools({ timeTravel: false });
