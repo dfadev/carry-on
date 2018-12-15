@@ -18,7 +18,8 @@ const external = Object.keys(pkg.dependencies || {})
   .concat(Object.keys(pkg.peerDependencies || {}))
   .concat([
     "lodash/get",
-    "lodash/isEqualWith",
+    "lodash/isEqual",
+    "lodash/memoize",
     "lodash/clone",
     "lodash/isNumber",
     "lodash/isString",

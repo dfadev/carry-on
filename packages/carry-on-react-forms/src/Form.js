@@ -1,7 +1,7 @@
 /** @format **/
 import React from "react";
 import { State, Store } from "carry-on-react";
-import forms from "./plugin";
+import form from "./plugin";
 
 export default ({
   id,
@@ -13,17 +13,13 @@ export default ({
   plugins = [],
   ...rest
 }) => (
-  <Store
-    id={id}
-    init={init}
-    plugins={[forms(onSubmit, onReset, onValidate), ...plugins]}
-  >
+  <Store id={id} plugins={[form({ init, validate: onValidate }), ...plugins]}>
     <State
       select={({ form: { submit, reset } }) => ({ submit, reset })}
       from={id}
     >
       {({ submit, reset }) => (
-        <form onSubmit={submit} onReset={reset} {...rest}>
+        <form onSubmit={submit(onSubmit)} onReset={reset(onReset)} {...rest}>
           {children}
         </form>
       )}

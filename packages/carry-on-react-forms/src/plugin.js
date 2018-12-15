@@ -1,21 +1,19 @@
 /** @format **/
-import { get, isEqualWith } from "lodash";
+import { get, isEqual, memoize } from "lodash";
 import debounce from "debounce-promise";
 import { setIn, makeCancelable } from "./utils";
 
-export default (onSubmit, onReset, onValidate) => {
+export default ({ init, validate } = {}) => {
   let origState;
 
-  const debounceValidate = debounce(onValidate, 200);
+  const debounceValidate = debounce(validate, 200);
   let cancellable;
 
   const calcPristine = state =>
     setIn(
       state,
       "form.isPristine",
-      isEqualWith(origState, state, (value1, value2, key) =>
-        key === "form" ? true : undefined
-      )
+      isEqual(origState.form.values, state.form.values)
     );
 
   return {
@@ -34,20 +32,20 @@ export default (onSubmit, onReset, onValidate) => {
         isValidating: false,
         isValid: true,
         validation: undefined,
+        values: init,
 
         validate: (state, onSuccess) => {
-          if (onValidate) {
+          if (validate) {
             const nextState = setIn(state, "form.isValidating", true);
-            const { form, ...validationValues } = nextState;
             cancellable && cancellable();
             cancellable = makeCancelable(
-              debounceValidate(validationValues),
-              vals => state.form.setErrors(vals) && onSuccess(),
+              debounceValidate(nextState.form.values),
+              vals => state.form.setErrors(vals) && onSuccess && onSuccess(),
               () => {
                 dispatch(curState =>
                   setIn(curState, "form.isValidating", false)
                 );
-                onSuccess();
+                onSuccess && onSuccess();
               }
             );
             return nextState;
@@ -64,13 +62,18 @@ export default (onSubmit, onReset, onValidate) => {
         setFieldValue: (fieldName, value) =>
           dispatch(
             state =>
-              state.form.validate(calcPristine(setIn(state, fieldName, value))),
+              state.form.validate(
+                calcPristine(setIn(state, "form.values." + fieldName, value))
+              ),
             "Set Field Value"
           ),
 
         setValues: values =>
           dispatch(
-            state => state.form.validate(calcPristine({ ...state, ...values })),
+            state =>
+              state.form.validate(
+                calcPristine(setIn(state, "form.values", values))
+              ),
             "Set Values"
           ),
 
@@ -100,14 +103,14 @@ export default (onSubmit, onReset, onValidate) => {
             "Set Touched"
           ),
 
-        reset(e) {
+        reset: memoize(onReset => e => {
           e && e.preventDefault();
           const s = dispatch(() => origState, "Reset Form");
           onReset && onReset(s);
           return s;
-        },
+        }),
 
-        submit(e) {
+        submit: memoize(onSubmit => e => {
           e && e.preventDefault();
           if (
             query(state => state.form.isValidating || state.form.isSubmitting)
@@ -117,8 +120,7 @@ export default (onSubmit, onReset, onValidate) => {
           dispatch(state => {
             let nextState = setIn(state, "form.isSubmitting", true);
             const finishSubmit = () => {
-              const { form, ...submitValues } = query();
-              Promise.resolve(onSubmit(submitValues))
+              Promise.resolve(onSubmit(query(q => q.form.values)))
                 .then(rslt => {
                   dispatch(curState => {
                     const submittedState = setIn(
@@ -160,7 +162,7 @@ export default (onSubmit, onReset, onValidate) => {
             finishSubmit();
             return nextState;
           }, "Begin Submit");
-        }
+        })
       }
     })
   };

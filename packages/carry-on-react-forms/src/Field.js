@@ -23,7 +23,9 @@ export default ({ from, path, select, default: def, children, checkbox }) => (
       isTouched: state.form.isTouched,
       setFieldTouched: state.form.setFieldTouched,
       setFieldError: state.form.setFieldError,
-      value: select ? select(get(state, path, def)) : get(state, path, def),
+      value: select
+        ? select(get(state.form.values, path, def))
+        : get(state.form.values, path, def),
       touched: get(state.form.touched, path, false),
       error: get(state.form.errors, path, undefined)
     })}
