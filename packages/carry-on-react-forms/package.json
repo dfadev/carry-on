@@ -3,8 +3,6 @@
   "version": "0.0.9",
   "description": "carry-on plugin to support forms",
   "source": "./src/index.js",
-  "main": "./lib/carry-on-react-forms.js",
-  "unpkg": "dist/carry-on-react-forms.js",
   "module": "./es/carry-on-react-forms.js",
   "scripts": {
     "clean": "rimraf lib dist es coverage",
