@@ -19,7 +19,6 @@ const external = Object.keys(pkg.dependencies || {})
   .concat([
     "lodash/get",
     "lodash/isEqual",
-    "lodash/memoize",
     "lodash/clone",
     "lodash/isNumber",
     "lodash/isString",

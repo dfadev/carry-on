@@ -18,18 +18,16 @@ const validate = vals =>
     resolve({});
   });
 
-const handleSubmit = () => {};
+const onSubmit = () => true;
 
-const handleReset = () => {};
+const onReset = () => {};
 
 const App = () => (
-  <Store id="myStore" plugins={[form({ id: "form1", init, validate })]}>
-    <Form
-      store="myStore"
-      form="form1"
-      onSubmit={handleSubmit}
-      onReset={handleReset}
-    >
+  <Store
+    id="myStore"
+    plugins={[form({ id: "form1", init, validate, onSubmit, onReset })]}
+  >
+    <Form store="myStore" form="form1">
       <Field store="myStore" form="form1" path="field">
         {field => (
           <div>
@@ -58,10 +56,10 @@ const App = () => (
       >
         {({ submit, reset, disableSubmit, disableReset }) => (
           <div>
-            <button disabled={disableSubmit} onClick={submit(handleSubmit)}>
+            <button disabled={disableSubmit} onClick={submit}>
               submit
             </button>
-            <button disabled={disableReset} onClick={reset(handleReset)}>
+            <button disabled={disableReset} onClick={reset}>
               reset
             </button>
           </div>

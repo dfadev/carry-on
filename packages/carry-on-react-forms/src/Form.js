@@ -5,8 +5,6 @@ import { State } from "carry-on-react";
 export default ({
   store, // storeid
   form = "form", // formid
-  onSubmit,
-  onReset,
   children,
   ...rest
 }) => (
@@ -15,7 +13,7 @@ export default ({
     from={store}
   >
     {({ submit, reset }) => (
-      <form onSubmit={submit(onSubmit)} onReset={reset(onReset)} {...rest}>
+      <form onSubmit={submit} onReset={reset} {...rest}>
         {children}
       </form>
     )}

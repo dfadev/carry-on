@@ -1,10 +1,13 @@
 /** @format **/
-import { get, isEqual, memoize } from "lodash";
+import { get, isEqual } from "lodash";
 import debounce from "debounce-promise";
 import { setIn, makeCancelable } from "./utils";
 
 export default (
-  { id = "form", init = {}, validate } = { init: {}, id: "form" }
+  { id = "form", init = {}, validate, onSubmit, onReset } = {
+    init: {},
+    id: "form"
+  }
 ) => {
   const typeSuffix = " (" + id + ")";
   let origState;
@@ -107,7 +110,7 @@ export default (
             "Set Touched" + typeSuffix
           ),
 
-        reset: memoize(onReset => e => {
+        reset: e => {
           e && e.preventDefault();
           const s = dispatch(
             state => setIn(state, id, origState),
@@ -115,9 +118,9 @@ export default (
           );
           onReset && onReset(s);
           return s;
-        }),
+        },
 
-        submit: memoize(onSubmit => e => {
+        submit: e => {
           e && e.preventDefault();
           if (query(state => state[id].isValidating || state[id].isSubmitting))
             return;
@@ -167,7 +170,7 @@ export default (
             finishSubmit();
             return nextState;
           }, "Begin Submit" + typeSuffix);
-        })
+        }
       }
     })
   };
