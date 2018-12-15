@@ -4,14 +4,12 @@ import { State } from "carry-on-react";
 import { get } from "lodash";
 
 function getVal({ target: { type, value, checked } }) {
-  if (/number|range/.test(type)) {
+  if (type === "number" || type === "range") {
     const parsed = parseFloat(value);
     return Number.isNaN(parsed) ? "" : parsed;
   }
 
-  if (/checkbox/.test(type)) {
-    return checked;
-  }
+  if (type === "checkbox") return checked;
 
   return value;
 }
