@@ -16,15 +16,7 @@ function getVal({ target: { type, value, checked } }) {
   return value;
 }
 
-export default ({
-  from,
-  form,
-  path,
-  select,
-  default: def,
-  children,
-  checkbox
-}) => (
+export default ({ from, form, path, select, default: def, children, type }) => (
   <State
     select={state => ({
       setFieldValue: state[form].setFieldValue,
@@ -52,10 +44,9 @@ export default ({
         touched,
         error,
         element: {
-          value: checkbox ? undefined : value,
           onChange: e => setFieldValue(path, getVal(e)),
           onBlur: () => !isTouched(path) && setFieldTouched(path, true),
-          checked: checkbox ? Boolean(value) : undefined
+          [type === "checkbox" ? "checked" : "value"]: value
         },
         setValue: val => setFieldValue(path, val),
         setTouched: val => setFieldTouched(path, val),
