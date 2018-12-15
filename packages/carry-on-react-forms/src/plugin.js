@@ -1,6 +1,5 @@
 /** @format **/
-import get from "lodash/get";
-import isEqualWith from "lodash/isEqualWith";
+import { get, isEqualWith } from "lodash";
 import debounce from "debounce-promise";
 import { setIn, makeCancelable } from "./utils";
 

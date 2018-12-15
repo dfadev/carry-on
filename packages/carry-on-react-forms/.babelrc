@@ -10,10 +10,10 @@
   ],
   "env": {
     "development": {
-      "plugins": ["external-helpers"],
+      "plugins": ["lodash", "external-helpers"],
     },
     "production": {
-      "plugins": ["external-helpers"],
+      "plugins": ["lodash", "external-helpers"],
     },
     "test": {
       "presets": ["env", "react", "stage-2"]

@@ -1,8 +1,4 @@
-import isEmpty from "lodash/isEmpty";
-import setWith from "lodash/setWith";
-import isString from "lodash/isString";
-import isNumber from "lodash/isNumber";
-import clone from "lodash/clone";
+import { isEmpty, setWith, isString, isNumber, clone } from "lodash";
 
 export function setIn(state, path, valueToSet) {
   if (isEmpty(path)) return valueToSet;

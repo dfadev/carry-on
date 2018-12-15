@@ -1,7 +1,7 @@
 /** @format **/
 import React from "react";
 import { State } from "carry-on-react";
-import get from "lodash/get";
+import { get } from "lodash";
 
 function getVal({ target: { type, value, checked } }) {
   if (/number|range/.test(type)) {
@@ -14,11 +14,6 @@ function getVal({ target: { type, value, checked } }) {
   }
 
   return value;
-
-  //? ((parsed = parseFloat(value)), isNaN(parsed) ? "" : parsed)
-  //: /checkbox/.test(type)
-  //? checked
-  //: value;
 }
 
 export default ({ from, path, select, default: def, children, checkbox }) => (
