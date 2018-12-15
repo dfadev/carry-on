@@ -73,7 +73,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     if (store.dispatch) throw new Error("Already connected");
 
     // the producer creates new states from old states by executing actions
-    store.producer = producer || ((state, action) => action({ ...state }));
+    store.producer = producer || ((state, action) => action(state));
 
     // query provides a copy of state created by the producer
     store.query = (action = identity => identity, ...args) =>
@@ -99,8 +99,8 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       // execute store initialization
       isFunction(init) ? init(store) : init,
       // execute pending store initialization
-      ...store.pending.map(
-        pending => (isFunction(pending) ? pending(store) : pending)
+      ...store.pending.map(pending =>
+        isFunction(pending) ? pending(store) : pending
       )
     );
 

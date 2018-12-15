@@ -128,7 +128,7 @@ test("query with default action", () => {
   const state = connect();
   const store = useStore();
   const q = store.query();
-  expect(state).not.toBe(q);
+  expect(state).toBe(q);
   deleteStore();
 });
 
