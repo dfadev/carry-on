@@ -16,18 +16,26 @@ function getVal({ target: { type, value, checked } }) {
   return value;
 }
 
-export default ({ from, path, select, default: def, children, checkbox }) => (
+export default ({
+  from,
+  form,
+  path,
+  select,
+  default: def,
+  children,
+  checkbox
+}) => (
   <State
     select={state => ({
-      setFieldValue: state.form.setFieldValue,
-      isTouched: state.form.isTouched,
-      setFieldTouched: state.form.setFieldTouched,
-      setFieldError: state.form.setFieldError,
+      setFieldValue: state[form].setFieldValue,
+      isTouched: state[form].isTouched,
+      setFieldTouched: state[form].setFieldTouched,
+      setFieldError: state[form].setFieldError,
       value: select
-        ? select(get(state.form.values, path, def))
-        : get(state.form.values, path, def),
-      touched: get(state.form.touched, path, false),
-      error: get(state.form.errors, path, undefined)
+        ? select(get(state[form].values, path, def))
+        : get(state[form].values, path, def),
+      touched: get(state[form].touched, path, false),
+      error: get(state[form].errors, path, undefined)
     })}
     from={from}
   >

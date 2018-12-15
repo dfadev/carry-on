@@ -3,7 +3,10 @@ import { get, isEqual, memoize } from "lodash";
 import debounce from "debounce-promise";
 import { setIn, makeCancelable } from "./utils";
 
-export default ({ init, validate } = {}) => {
+export default (
+  { id = "form", init = {}, validate } = { init: {}, id: "form" }
+) => {
+  const typeSuffix = " (" + id + ")";
   let origState;
 
   const debounceValidate = debounce(validate, 200);
@@ -12,19 +15,19 @@ export default ({ init, validate } = {}) => {
   const calcPristine = state =>
     setIn(
       state,
-      "form.isPristine",
-      isEqual(origState.form.values, state.form.values)
+      id + ".isPristine",
+      isEqual(origState.values, state[id].values)
     );
 
   return {
     dispatch: ({ dispatch }) => (action, type, ...args) => {
       const state = dispatch(action, type, ...args);
-      if (type === "Initialize") origState = state;
+      if (type === "Initialize") origState = state[id];
 
       return state;
     },
     state: ({ dispatch, query }) => ({
-      form: {
+      [id]: {
         touched: {},
         errors: {},
         isPristine: true,
@@ -36,14 +39,15 @@ export default ({ init, validate } = {}) => {
 
         validate: (state, onSuccess) => {
           if (validate) {
-            const nextState = setIn(state, "form.isValidating", true);
+            const nextState = setIn(state, id + ".isValidating", true);
             cancellable && cancellable();
             cancellable = makeCancelable(
-              debounceValidate(nextState.form.values),
-              vals => state.form.setErrors(vals) && onSuccess && onSuccess(),
+              debounceValidate(nextState[id].values),
+              vals => state[id].setErrors(vals) && onSuccess && onSuccess(),
               () => {
-                dispatch(curState =>
-                  setIn(curState, "form.isValidating", false)
+                dispatch(
+                  curState => setIn(curState, id + ".isValidating", false),
+                  "Validation Threw" + typeSuffix
                 );
                 onSuccess && onSuccess();
               }
@@ -54,114 +58,115 @@ export default ({ init, validate } = {}) => {
         },
 
         hasError: fieldName =>
-          query(state => get(state.form.errors, fieldName, false)),
+          query(state => get(state[id].errors, fieldName, false)),
 
         isTouched: fieldName =>
-          query(state => get(state.form.touched, fieldName, false)),
+          query(state => get(state[id].touched, fieldName, false)),
 
         setFieldValue: (fieldName, value) =>
           dispatch(
             state =>
-              state.form.validate(
-                calcPristine(setIn(state, "form.values." + fieldName, value))
+              state[id].validate(
+                calcPristine(setIn(state, id + ".values." + fieldName, value))
               ),
-            "Set Field Value"
+            "Set Field Value" + typeSuffix
           ),
 
         setValues: values =>
           dispatch(
             state =>
-              state.form.validate(
-                calcPristine(setIn(state, "form.values", values))
+              state[id].validate(
+                calcPristine(setIn(state, id + ".values", values))
               ),
-            "Set Values"
+            "Set Values" + typeSuffix
           ),
 
         setFieldError: (fieldName, error) =>
           dispatch(
-            state => setIn(state, "form.errors." + fieldName, error),
-            "Set Field Error"
+            state => setIn(state, id + ".errors." + fieldName, error),
+            "Set Field Error" + typeSuffix
           ),
 
         setErrors: errors =>
           dispatch(state => {
-            let validatedState = setIn(state, "form.errors", errors);
+            let validatedState = setIn(state, id + ".errors", errors);
             const isValid = Object.keys(errors).length === 0;
-            validatedState = setIn(validatedState, "form.isValid", isValid);
-            return setIn(validatedState, "form.isValidating", false);
-          }, "Set Errors"),
+            validatedState = setIn(validatedState, id + ".isValid", isValid);
+            return setIn(validatedState, id + ".isValidating", false);
+          }, "Set Errors" + typeSuffix),
 
         setFieldTouched: (fieldName, touched) =>
           dispatch(
-            state => setIn(state, "form.touched." + fieldName, touched),
-            "Set Field Touched"
+            state => setIn(state, id + ".touched." + fieldName, touched),
+            "Set Field Touched" + typeSuffix
           ),
 
         setTouched: touched =>
           dispatch(
-            state => setIn(state, "form.touched", touched),
-            "Set Touched"
+            state => setIn(state, id + ".touched", touched),
+            "Set Touched" + typeSuffix
           ),
 
         reset: memoize(onReset => e => {
           e && e.preventDefault();
-          const s = dispatch(() => origState, "Reset Form");
+          const s = dispatch(
+            state => setIn(state, id, origState),
+            "Reset Form" + typeSuffix
+          );
           onReset && onReset(s);
           return s;
         }),
 
         submit: memoize(onSubmit => e => {
           e && e.preventDefault();
-          if (
-            query(state => state.form.isValidating || state.form.isSubmitting)
-          )
+          if (query(state => state[id].isValidating || state[id].isSubmitting))
             return;
 
           dispatch(state => {
-            let nextState = setIn(state, "form.isSubmitting", true);
+            let nextState = setIn(state, id + ".isSubmitting", true);
             const finishSubmit = () => {
-              Promise.resolve(onSubmit(query(q => q.form.values)))
+              Promise.resolve(onSubmit(query(q => q[id].values)))
                 .then(rslt => {
                   dispatch(curState => {
                     const submittedState = setIn(
                       curState,
-                      "form.isSubmitting",
+                      id + ".isSubmitting",
                       false
                     );
                     if (rslt) {
                       let validSubmitState = setIn(
                         submittedState,
-                        "form.isPristine",
+                        id + ".isPristine",
                         true
                       );
                       validSubmitState = setIn(
                         validSubmitState,
-                        "form.errors",
+                        id + ".errors",
                         {}
                       );
                       validSubmitState = setIn(
                         validSubmitState,
-                        "form.touched",
+                        id + ".touched",
                         {}
                       );
-                      origState = validSubmitState;
+                      origState = validSubmitState[id];
                       return validSubmitState;
                     }
                     return submittedState;
-                  }, "End Submit");
+                  }, "End Submit" + typeSuffix);
                 })
                 .catch(() =>
                   dispatch(curState =>
-                    setIn(curState, "form.isSubmitting", false)
+                    setIn(curState, id + ".isSubmitting", false)
                   )
                 );
             };
 
-            nextState = nextState.form.validate(nextState, finishSubmit);
-            if (nextState.form.isValidating) return nextState;
+            nextState = nextState[id].validate(nextState, finishSubmit);
+            if (nextState[id].isValidating) return nextState;
             finishSubmit();
             return nextState;
-          }, "Begin Submit");
+          }, "Begin Submit" + typeSuffix);
         })
       }
     })
