@@ -1,6 +1,6 @@
 {
   "name": "carry-on-store",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "State manager",
   "source": "./src/index.js",
   "module": "./es/carry-on-store.js",
@@ -28,8 +28,8 @@
     "babel-preset-optimized": "^1.0.2",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "carry-on-notify": "0.0.9",
-    "carry-on-transaction": "0.0.9",
+    "carry-on-notify": "^0.0.10",
+    "carry-on-transaction": "^0.0.10",
     "cross-env": "^5.2.0",
     "eslint": "^5.10.0",
     "eslint-config-airbnb": "^17.1.0",
