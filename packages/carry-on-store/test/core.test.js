@@ -33,7 +33,7 @@ test("register", () => {
   const { useStore, deleteStore, connect, register } = makeStoreModule();
 
   const store = useStore();
-  register({ some: "state" });
+  register({ state: { some: "state" } });
   expect(store.pending.length).toBe(1);
   deleteStore();
 });
@@ -42,7 +42,7 @@ test("register with init as function", () => {
   const { useStore, deleteStore, connect, register } = makeStoreModule();
 
   const store = useStore();
-  register(({ dispatch }) => ({ some: "state" }));
+  register({ state: ({ dispatch }) => ({ some: "state" }) });
   expect(store.pending.length).toBe(1);
   deleteStore();
 });
@@ -51,7 +51,9 @@ test("register on connected store", () => {
   const { useStore, deleteStore, connect, register } = makeStoreModule();
   const store = useStore();
   const initialState = connect();
-  register({ some: "state" });
+  register({ state: { some: "state" } });
+  console.log(JSON.stringify(initialState));
+  console.log(JSON.stringify(store.state));
   expect(initialState).toMatchDiffSnapshot(store.state);
   deleteStore();
 });
@@ -60,7 +62,7 @@ test("register on connected store with init as function", () => {
   const { useStore, deleteStore, connect, register } = makeStoreModule();
   const store = useStore();
   const initialState = connect();
-  register(({ dispatch }) => ({ some: "state" }));
+  register({ state: ({ dispatch }) => ({ some: "state" }) });
   expect(initialState).toMatchDiffSnapshot(store.state);
   deleteStore();
 });
@@ -75,7 +77,7 @@ test("connect", () => {
 
 test("connect with pending object state", () => {
   const { useStore, deleteStore, connect, register } = makeStoreModule();
-  register({ some: "state" });
+  register({ state: { some: "state" } });
   const store = useStore();
   const state = connect();
   expect(state).toMatchSnapshot();
@@ -84,7 +86,7 @@ test("connect with pending object state", () => {
 
 test("connect with pending function state", () => {
   const { useStore, deleteStore, connect, register } = makeStoreModule();
-  register(dispatch => ({ some: "state" }));
+  register({ state: dispatch => ({ some: "state" }) });
   const store = useStore();
   const state = connect();
   expect(state).toMatchSnapshot();

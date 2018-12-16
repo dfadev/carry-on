@@ -13,10 +13,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
   // middleware initialize message type
   const initMessage = "Initialize";
 
-  const createPlugins = (store, plugins = {}) => {
-    // create plugins
-    const plug = {};
-
+  const createPlugins = (store, plugins = []) => {
     if (!Array.isArray(plugins)) plugins = [plugins];
 
     // dispatch
@@ -34,10 +31,11 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     // state
     for (const plugin of plugins) {
       const { state } = plugin;
-      if (state) Object.assign(plug, isFunction(state) ? state(store) : state);
+      if (state)
+        Object.assign(store.state, isFunction(state) ? state(store) : state);
     }
 
-    return plug;
+    return store.state;
   };
 
   // a map of stores
@@ -61,9 +59,10 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     const store = useStore(id);
     // queue if no dispatch available yet
     if (store.dispatch)
-      store.dispatch(state =>
-        Object.assign({}, state, isFunction(init) ? init(store) : init)
-      );
+      store.dispatch(() => {
+        store.state = { ...store.state };
+        return createPlugins(store, init);
+      });
     else store.pending.push(init);
   };
 
@@ -90,23 +89,19 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       return nextState;
     };
 
-    // populate state with plugin state
-    store.state = createPlugins(store, plugins);
+    // populate initial state
+    store.state = (isFunction(init) ? init(store) : init) || {};
 
-    // fill state with user state
-    Object.assign(
-      store.state,
-      // execute store initialization
-      isFunction(init) ? init(store) : init,
-      // execute pending store initialization
-      ...store.pending.map(pending =>
-        isFunction(pending) ? pending(store) : pending
-      )
-    );
+    // populate state with plugin state
+    if (plugins) {
+      if (!Array.isArray(plugins)) plugins = [plugins];
+    } else {
+      plugins = [];
+    }
+    createPlugins(store, plugins.concat(store.pending));
 
     // initialize middleware with state
-    if (plugins) store.dispatch(() => store.state, initMessage);
-
+    store.dispatch(() => store.state, initMessage);
     return store.state;
   };
 

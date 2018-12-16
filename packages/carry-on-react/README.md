@@ -137,21 +137,25 @@ const App = props => (
 
 ### Register state
 ```JavaScript
-register(({ dispatch }) => ({
-  counter: 0,
-  inc() {
-    return dispatch(state => ({
-      ...state,
-      counter: state.counter + 1
-    }));
-  },
-  dec() {
-    return dispatch(state => ({
-      ...state,
-      counter: state.counter - 1
-    }));
+register(
+  {
+    state: ({ dispatch }) => ({
+      counter: 0,
+      inc() {
+        return dispatch(state => ({
+          ...state,
+          counter: state.counter + 1
+        }));
+      },
+      dec() {
+        return dispatch(state => ({
+          ...state,
+          counter: state.counter - 1
+        }));
+      }
+    })
   }
-}));
+);
 
 const App = () => (
   <Store>
@@ -171,21 +175,23 @@ const App = () => (
 ### Register state on a named store
 ```JavaScript
 register(
-  ({ dispatch }) => ({
-    counter: 0,
-    inc() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
-  }),
+  {
+    state: ({ dispatch }) => ({
+      counter: 0,
+      inc() {
+        return dispatch(state => ({
+          ...state,
+          counter: state.counter + 1
+        }));
+      },
+      dec() {
+        return dispatch(state => ({
+          ...state,
+          counter: state.counter - 1
+        }));
+      }
+    })
+  },
   "store1"
 );
 
