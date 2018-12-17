@@ -244,21 +244,23 @@ test("query", () => {
 
 // register
 test("register", () => {
-  register(({ dispatch }) => ({
-    counter: 0,
-    inc() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
-  }));
+  register({
+    state: ({ dispatch }) => ({
+      counter: 0,
+      inc() {
+        return dispatch(state => ({
+          ...state,
+          counter: state.counter + 1
+        }));
+      },
+      dec() {
+        return dispatch(state => ({
+          ...state,
+          counter: state.counter - 1
+        }));
+      }
+    })
+  });
 
   const App = () => (
     <Store>
@@ -295,21 +297,23 @@ test("register", () => {
 // register on named store
 test("register on named store", () => {
   register(
-    ({ dispatch }) => ({
-      counter: 0,
-      inc() {
-        return dispatch(state => ({
-          ...state,
-          counter: state.counter + 1
-        }));
-      },
-      dec() {
-        return dispatch(state => ({
-          ...state,
-          counter: state.counter - 1
-        }));
-      }
-    }),
+    {
+      state: ({ dispatch }) => ({
+        counter: 0,
+        inc() {
+          return dispatch(state => ({
+            ...state,
+            counter: state.counter + 1
+          }));
+        },
+        dec() {
+          return dispatch(state => ({
+            ...state,
+            counter: state.counter - 1
+          }));
+        }
+      })
+    },
     "store1"
   );
 
@@ -363,8 +367,10 @@ test("register adding pending state to store", () => {
     }
   });
 
-  register(() => {
-    return { extraVal: "ok" };
+  register({
+    state: () => {
+      return { extraVal: "ok" };
+    }
   });
 
   const App = () => (
@@ -482,7 +488,7 @@ test("path2", () => {
 
   const App = () => (
     <Store init={store}>
-      <State path=".more.stuff.list[0].item" default="ok">
+      <State path="oops.more.stuff.list[0].item" default="ok">
         {item => {
           return <div>{item}</div>;
         }}
@@ -960,7 +966,9 @@ test("register state on connected store with init as a function", () => {
   const { asFragment, getByText } = render(<App />);
 
   const dom = asFragment();
-  register(({ dispatch }) => ({ value: 1 }));
+  register({
+    state: ({ dispatch }) => ({ value: 1 })
+  });
   const dom2 = asFragment();
 
   expect(dom).toMatchDiffSnapshot(dom2);
@@ -977,7 +985,7 @@ test("register state on connected store", () => {
   const { asFragment, getByText } = render(<App />);
 
   const dom = asFragment();
-  register({ value: 1 });
+  register({ state: { value: 1 } });
   const dom2 = asFragment();
 
   expect(dom).toMatchDiffSnapshot(dom2);
