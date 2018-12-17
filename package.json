@@ -9,6 +9,8 @@
     "npm-run-all": "^4.1.5"
   },
   "scripts": {
+    "bootstrap": "lerna bootstrap",
+
     "build-store": "cd packages/carry-on-store && npm run build",
     "build-devtools": "cd packages/carry-on-devtools && npm run build",
     "build-notify": "cd packages/carry-on-notify && npm run build",
@@ -18,7 +20,7 @@
     "build1": "run-s build-store",
     "build2": "run-p build-react build-devtools build-notify build-transaction",
     "build3": "run-s build-react-forms",
-    "build": "run-s build1 build2 build3",
+    "build": "run-s bootstrap build1 build2 build3",
 
     "test-store": "cd packages/carry-on-store && npm run test",
     "test-devtools": "cd packages/carry-on-devtools && npm run test",
@@ -29,7 +31,7 @@
     "test1": "run-s test-store",
     "test2": "run-s test-react test-devtools test-notify test-transaction",
     "test3": "run-s test-react-forms",
-    "test": "run-s test1 test2 test3",
+    "test": "run-s bootstrap test1 test2 test3",
 
     "dev": "run-p watch test:watch",
     "watch": "lerna exec --concurrency 6 --no-sort -- \"npm run watch | cat\"",
