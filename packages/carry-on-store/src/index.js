@@ -79,7 +79,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       store.producer(store.state, action, ...args);
 
     // run producer action and set state
-    store.dispatch = store.d = (action, type, force) => {
+    store.d = (action, type, force) => {
       const nextState = (store.state = force
         ? action(store.state)
         : store.producer(store.state, action));
