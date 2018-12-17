@@ -1,7 +1,7 @@
 /** @format **/
 import React, { memo } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { isFunction, getIn } from "./utils";
+import { shallowEqual, isFunction, getIn } from "./utils";
 
 export default function makeStateComponents({
   useStore,
@@ -44,16 +44,21 @@ export default function makeStateComponents({
     constructor(props) {
       super(props);
       const { from, select, path, default: def } = props;
-      this.storeState = select(getIn(useStore(from).state, path, def));
+      this.stateSelect = state => select(getIn(state, path, def));
+      this.storeState = this.stateSelect(useStore(from).state);
       this.unsubscribe = subscribe(from, this.onStateChange);
     }
 
     shouldComponentUpdate = () => false;
 
     onStateChange = state => {
-      const { select, path, default: def } = this.props;
-      this.storeState = select(getIn(state, path, def));
-      this.forceUpdate();
+      const nextState = this.stateSelect(state);
+      if (!shallowEqual(nextState, this.storeState)) {
+        this.storeState = nextState;
+        this.forceUpdate();
+      } else {
+        this.storeState = nextState;
+      }
     };
 
     componentWillUnmount = () => {
