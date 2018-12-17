@@ -43,7 +43,7 @@ export default function makeStateComponents({
   class State extends React.Component {
     constructor(props) {
       super(props);
-      const { from, select, path, def } = props;
+      const { from, select, path, default: def } = props;
       this.storeState = select(getIn(useStore(from).state, path, def));
       this.unsubscribe = subscribe(from, this.onStateChange);
     }
@@ -51,7 +51,7 @@ export default function makeStateComponents({
     shouldComponentUpdate = () => false;
 
     onStateChange = state => {
-      const { select, path, def } = this.props;
+      const { select, path, default: def } = this.props;
       this.storeState = select(getIn(state, path, def));
       this.forceUpdate();
     };
