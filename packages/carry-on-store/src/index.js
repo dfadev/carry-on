@@ -43,7 +43,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
 
   // create a store
   function create(id) {
-    return Object.assign({ id, pending: [] }, extra(id));
+    return Object.assign({ id, pending: [], listeners: [] }, extra(id));
   }
 
   // delete a store
@@ -83,6 +83,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       const nextState = (store.state = force
         ? action(store.state)
         : store.producer(store.state, action));
+      store.listeners.map(listener => listener && listener(nextState));
       if (publish && type !== initMessage) {
         publish(nextState);
       }
@@ -99,13 +100,21 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       plugins = [];
     }
     createPlugins(store, plugins.concat(store.pending));
+    delete store.pending;
 
     // initialize middleware with state
     store.dispatch(() => store.state, initMessage);
     return store.state;
   };
 
+  const subscribe = (id, fn) => {
+    const store = useStore(id);
+    const idx = store.listeners.push(fn);
+    return () => store.listeners.splice(idx - 1, 1);
+  };
+
   return {
+    subscribe,
     useStore,
     deleteStore,
     connect,
