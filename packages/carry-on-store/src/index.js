@@ -79,7 +79,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       store.producer(store.state, action, ...args);
 
     // run producer action and set state
-    store.d = (action, type, force) => {
+    store.dispatch = store.d = (action, type, force) => {
       const nextState = (store.state = force
         ? action(store.state)
         : store.producer(store.state, action));
@@ -90,8 +90,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       return nextState;
     };
 
-    // populate initial state
-    store.state = (isFunction(init) ? init(store) : init) || {};
+    store.state = {};
 
     // populate state with plugin state
     if (plugins) {
@@ -101,6 +100,9 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     }
     createPlugins(store, plugins.concat(store.pending));
     delete store.pending;
+
+    // populate initial state
+    Object.assign(store.state, isFunction(init) ? init(store) : init);
 
     // initialize middleware with state
     store.dispatch(() => store.state, initMessage);
