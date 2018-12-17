@@ -9,6 +9,16 @@
     "npm-run-all": "^4.1.5"
   },
   "scripts": {
+    "build-store": "cd packages/carry-on-store && npm run build",
+    "build-devtools": "cd packages/carry-on-devtools && npm run build",
+    "build-notify": "cd packages/carry-on-notify && npm run build",
+    "build-transaction": "cd packages/carry-on-transaction && npm run build",
+    "build-react": "cd packages/carry-on-react && npm run build",
+    "build-react-forms": "cd packages/carry-on-react-forms && npm run build",
+    "build": "run-s build1 build2",
+    "build1": "run-p build-store build-devtools build-notify build-transaction",
+    "build2": "run-s build-react build-react-forms",
+
     "dev": "run-p watch test:watch",
     "watch": "lerna exec --concurrency 6 --no-sort -- \"npm run watch | cat\"",
     "test:watch": "lerna exec --concurrency 6 --no-sort -- \"npm run test:watch | cat\"",
