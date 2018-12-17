@@ -10,7 +10,7 @@ export default function makeStoreComponents({
   connect
 }) {
   // a Component that manages state
-  class Store extends Component {
+  class ContextStore extends Component {
     state = connect({
       ...this.props,
       publish: nextState => this.setState(nextState),
@@ -29,6 +29,19 @@ export default function makeStoreComponents({
     };
   }
 
+  class Store extends Component {
+    constructor(props) {
+      super(props);
+      connect({ ...this.props });
+    }
+
+    shouldComponentUpdate = () => false;
+
+    componentWillUnmount = () => deleteStore(this.props.id);
+
+    render = () => this.props.children;
+  }
+
   // a HOC that wraps the Store component
   const withStore = (opts = {}) => WrappedComponent => {
     const WithStore = props => (
@@ -44,5 +57,20 @@ export default function makeStoreComponents({
     return hoistNonReactStatic(WithStore, WrappedComponent);
   };
 
-  return { Store, withStore };
+  // a HOC that wraps the ContextStore component
+  const withContextStore = (opts = {}) => WrappedComponent => {
+    const WithContextStore = props => (
+      <ContextStore
+        id={opts.id}
+        init={isFunction(opts.init) ? opts.init(props) : opts.init}
+        producer={opts.producer}
+        plugins={opts.plugins}
+      >
+        <WrappedComponent {...props} />
+      </ContextStore>
+    );
+    return hoistNonReactStatic(WithContextStore, WrappedComponent);
+  };
+
+  return { ContextStore, withContextStore, Store, withStore };
 }

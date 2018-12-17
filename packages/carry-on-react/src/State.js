@@ -3,7 +3,11 @@ import React, { memo } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { isFunction, getIn } from "./utils";
 
-export default function makeStateComponents({ useStore, defaultId }) {
+export default function makeStateComponents({
+  useStore,
+  defaultId,
+  subscribe
+}) {
   // memoized children render function
   const Comp = memo(
     ({ children, ...values }) =>
@@ -25,7 +29,7 @@ export default function makeStateComponents({ useStore, defaultId }) {
       ? val
       : { carryOnReactNonObject: val };
 
-  const State = ({ from, path, select, children, default: def }) => {
+  const ContextState = ({ from, path, select, children, default: def }) => {
     const { Consumer } = useStore(from).Context;
     return (
       <Consumer>
@@ -35,6 +39,31 @@ export default function makeStateComponents({ useStore, defaultId }) {
       </Consumer>
     );
   };
+
+  class State extends React.Component {
+    constructor(props) {
+      super(props);
+      const { from, select, path, def } = props;
+      this.storeState = select(getIn(useStore(from).state, path, def));
+      this.unsubscribe = subscribe(from, this.onStateChange);
+    }
+
+    shouldComponentUpdate = () => false;
+
+    onStateChange = state => {
+      const { select, path, def } = this.props;
+      this.storeState = select(getIn(state, path, def));
+      this.forceUpdate();
+    };
+
+    componentWillUnmount = () => {
+      this.unsubscribe();
+    };
+
+    render = () => (
+      <Comp {...asProps(this.storeState)}>{this.props.children}</Comp>
+    );
+  }
 
   State.defaultProps = {
     select: state => state,
@@ -69,5 +98,32 @@ export default function makeStateComponents({ useStore, defaultId }) {
     return hoistNonReactStatic(WithState, WrappedComponent);
   };
 
-  return { State, withState };
+  // a HOC that wraps the State component
+  const withContextState = ({
+    select = state => state,
+    from,
+    path,
+    def
+  } = {}) => WrappedComponent => {
+    const WithContextState = props => (
+      <ContextState
+        path={isFunction(path) ? path(props) : path}
+        from={isFunction(from) ? from(props) : from}
+        select={state => select(state, props)}
+        default={isFunction(def) ? def(props) : def}
+      >
+        {state => {
+          const val = state && state.valueOf();
+          return val instanceof Object && !Array.isArray(state) ? (
+            <WrappedComponent {...props} {...state} />
+          ) : (
+            <WrappedComponent {...props} state={state} />
+          );
+        }}
+      </ContextState>
+    );
+    return hoistNonReactStatic(WithContextState, WrappedComponent);
+  };
+
+  return { ContextState, withContextState, State, withState };
 }
