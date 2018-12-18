@@ -1,5 +1,5 @@
 /** @format **/
-import React, { memo } from "react";
+import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import { shallowEqual, isFunction, getIn } from "./utils";
 
@@ -8,39 +8,7 @@ export default function makeStateComponents({
   defaultId,
   subscribe
 }) {
-  // memoized children render function
-  const Comp = memo(
-    ({ children, ...values }) =>
-      children
-        ? children(
-            values !== undefined &&
-            Object.prototype.hasOwnProperty.call(
-              values,
-              "carryOnReactNonObject"
-            )
-              ? values.carryOnReactNonObject
-              : values
-          )
-        : null
-  );
-
-  const asProps = val =>
-    val instanceof Object && !Array.isArray(val)
-      ? val
-      : { carryOnReactNonObject: val };
-
-  const ContextState = ({ from, path, select, children, default: def }) => {
-    const { Consumer } = useStore(from).Context;
-    return (
-      <Consumer>
-        {state => (
-          <Comp {...asProps(select(getIn(state, path, def)))}>{children}</Comp>
-        )}
-      </Consumer>
-    );
-  };
-
-  class State extends React.Component {
+  class State extends Component {
     constructor(props) {
       super(props);
       const { from, select, path, default: def } = props;
@@ -100,32 +68,5 @@ export default function makeStateComponents({
     return hoistNonReactStatic(WithState, WrappedComponent);
   };
 
-  // a HOC that wraps the State component
-  const withContextState = ({
-    select = state => state,
-    from,
-    path,
-    def
-  } = {}) => WrappedComponent => {
-    const WithContextState = props => (
-      <ContextState
-        path={isFunction(path) ? path(props) : path}
-        from={isFunction(from) ? from(props) : from}
-        select={state => select(state, props)}
-        default={isFunction(def) ? def(props) : def}
-      >
-        {state => {
-          const val = state && state.valueOf();
-          return val instanceof Object && !Array.isArray(state) ? (
-            <WrappedComponent {...props} {...state} />
-          ) : (
-            <WrappedComponent {...props} state={state} />
-          );
-        }}
-      </ContextState>
-    );
-    return hoistNonReactStatic(WithContextState, WrappedComponent);
-  };
-
-  return { ContextState, withContextState, State, withState };
+  return { State, withState };
 }
