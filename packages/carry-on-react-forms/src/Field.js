@@ -24,16 +24,17 @@ export default ({
   type
 }) => (
   <State
+    path={form}
     select={state => ({
-      setFieldValue: state[form].setFieldValue,
-      isTouched: state[form].isTouched,
-      setFieldTouched: state[form].setFieldTouched,
-      setFieldError: state[form].setFieldError,
+      setFieldValue: state.setFieldValue,
+      isTouched: state.isTouched,
+      setFieldTouched: state.setFieldTouched,
+      setFieldError: state.setFieldError,
       value: select
-        ? select(get(state[form].values, path, def))
-        : get(state[form].values, path, def),
-      touched: get(state[form].touched, path, false),
-      error: get(state[form].errors, path, undefined)
+        ? select(get(state.values, path, def))
+        : get(state.values, path, def),
+      touched: get(state.touched, path, false),
+      error: get(state.errors, path, undefined)
     })}
     from={store}
   >

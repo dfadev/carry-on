@@ -9,7 +9,8 @@ export default ({
   ...rest
 }) => (
   <State
-    select={({ [form]: { submit, reset } }) => ({ submit, reset })}
+    path={form}
+    select={({ submit, reset }) => ({ submit, reset })}
     from={store}
   >
     {({ submit, reset }) => (
