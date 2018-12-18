@@ -9,6 +9,8 @@ export default ({ timeTravel = true } = {}) => {
     // check for dev tools extension
     devTools = window && window.__REDUX_DEVTOOLS_EXTENSION__;
 
+  if (!devTools) return {};
+
   return {
     dispatch: ({ dispatch, id }) => (action, type = "Dispatch", ...args) => {
       const state = dispatch(action, type, ...args);
