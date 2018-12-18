@@ -49,8 +49,6 @@ export default function makeStateComponents({
       this.unsubscribe = subscribe(from, this.onStateChange);
     }
 
-    shouldComponentUpdate = () => false;
-
     onStateChange = state => {
       const nextState = this.stateSelect(state);
       if (!shallowEqual(nextState, this.storeState)) {
@@ -61,13 +59,9 @@ export default function makeStateComponents({
       }
     };
 
-    componentWillUnmount = () => {
-      this.unsubscribe();
-    };
+    componentWillUnmount = () => this.unsubscribe();
 
-    render = () => (
-      <Comp {...asProps(this.storeState)}>{this.props.children}</Comp>
-    );
+    render = () => this.props.children(this.storeState);
   }
 
   State.defaultProps = {
