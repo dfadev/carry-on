@@ -29,7 +29,8 @@ export default function makeStateComponents({
 
     componentWillUnmount = () => this.unsubscribe();
 
-    render = () => this.props.children(this.storeState);
+    render = () =>
+      this.props.children ? this.props.children(this.storeState) : null;
   }
 
   State.defaultProps = {
@@ -62,7 +63,8 @@ export default function makeStateComponents({
         }}
       </State>
     );
-    WithState.displayName = `withState(${WrappedComponent.displayName || WrappedComponent.name})`;
+    WithState.displayName = `withState(${WrappedComponent.displayName ||
+      WrappedComponent.name})`;
     WithState.WrappedComponent = WrappedComponent;
 
     return hoistNonReactStatic(WithState, WrappedComponent);
