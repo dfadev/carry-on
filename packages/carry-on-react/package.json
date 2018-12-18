@@ -20,6 +20,7 @@
   "author": "Russ Panula <russ@dfa.net>",
   "license": "MIT",
   "peerDependencies": {
+    "carry-on-store": "^0.0.11",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
@@ -44,7 +45,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
-    "immer": "^1.9.0",
+    "immer": "^1.9.2",
     "jest": "^23.5.0",
     "jest-dom": "^2.1.1",
     "memoize-state": "^2.0.4",

@@ -20,7 +20,7 @@
   "author": "Russ Panula <russ@dfa.net>",
   "license": "MIT",
   "peerDependencies": {
-    "carry-on-react": "0.0.9",
+    "carry-on-react": "^0.0.11",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
