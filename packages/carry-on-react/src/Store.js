@@ -54,6 +54,9 @@ export default function makeStoreComponents({
         <WrappedComponent {...props} />
       </Store>
     );
+    WithStore.displayName = `withStore(${WrappedComponent.displayName || WrappedComponent.name})`;
+    WithStore.WrappedComponent = WrappedComponent;
+
     return hoistNonReactStatic(WithStore, WrappedComponent);
   };
 

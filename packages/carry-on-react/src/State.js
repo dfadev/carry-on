@@ -94,6 +94,9 @@ export default function makeStateComponents({
         }}
       </State>
     );
+    WithState.displayName = `withState(${WrappedComponent.displayName || WrappedComponent.name})`;
+    WithState.WrappedComponent = WrappedComponent;
+
     return hoistNonReactStatic(WithState, WrappedComponent);
   };
 
