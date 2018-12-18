@@ -61,7 +61,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
   const register = (init, id = defaultId) => {
     const store = useStore(id);
     // queue if no dispatch available yet
-    if (store.dispatch) createPlugins(store, init);
+    if (store.dispatch) store.dispatch(() => createPlugins(store, init));
     else store.pending.push(init);
   };
 
