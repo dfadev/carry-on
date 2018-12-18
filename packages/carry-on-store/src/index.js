@@ -1,4 +1,6 @@
 /** @format **/
+import merge from "deepmerge";
+
 export default function makeStoreModule(defaultId, extra = () => ({})) {
   const isFunction = thing =>
     !!(thing && thing.constructor && thing.call && thing.apply);
@@ -20,19 +22,20 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     for (const plugin of plugins) {
       const { dispatch } = plugin;
       if (dispatch)
-        store.d = applyMiddleware(dispatch, store.d, (middleware, fn) => {
-          store.dispatch = fn;
-          return middleware(store);
-        });
+        store.d = applyMiddleware(dispatch, store.d, (middleware, fn) =>
+          middleware({ ...store, dispatch: fn })
+        );
     }
-
-    store.dispatch = store.d;
 
     // state
     for (const plugin of plugins) {
       const { state } = plugin;
-      if (state)
-        Object.assign(store.state, isFunction(state) ? state(store) : state);
+      if (state) {
+        store.state = merge(
+          store.state,
+          isFunction(state) ? state(store) : state
+        );
+      }
     }
 
     return store.state;
@@ -58,11 +61,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
   const register = (init, id = defaultId) => {
     const store = useStore(id);
     // queue if no dispatch available yet
-    if (store.dispatch)
-      store.dispatch(() => {
-        store.state = { ...store.state };
-        return createPlugins(store, init);
-      });
+    if (store.dispatch) createPlugins(store, init);
     else store.pending.push(init);
   };
 
@@ -90,7 +89,10 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       return nextState;
     };
 
-    store.state = {};
+    store.dispatch = (...args) => store.d(...args);
+
+    // populate initial state
+    store.state = (isFunction(init) ? init(store) : init) || {};
 
     // populate state with plugin state
     if (plugins) {
@@ -100,9 +102,6 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     }
     createPlugins(store, plugins.concat(store.pending));
     delete store.pending;
-
-    // populate initial state
-    Object.assign(store.state, isFunction(init) ? init(store) : init);
 
     // initialize middleware with state
     store.dispatch(() => store.state, initMessage);

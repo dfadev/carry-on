@@ -54,5 +54,8 @@
     "snapshot-diff": "^0.4.1"
   },
   "sideEffects": false,
-  "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18"
+  "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
+  "dependencies": {
+    "deepmerge": "^3.0.0"
+  }
 }
