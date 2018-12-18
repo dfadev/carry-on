@@ -713,7 +713,7 @@ test("transaction/commit/rollback", () => {
   let commitException = 0;
   let rollbackException = 0;
 
-  const store = ({ dispatch, query, state }) => {
+  const store = ({ dispatch, query }) => {
     const inc = () =>
       dispatch(
         state => ({
@@ -734,13 +734,13 @@ test("transaction/commit/rollback", () => {
 
     function beginClick(msg) {
       // start transaction
-      state.begin();
+      query(state => state.begin());
     }
 
     function commitClick() {
       const before = query();
       try {
-        const after = state.commit();
+        const after = before.commit();
       } catch (e) {
         commitException += 1;
       }
@@ -750,7 +750,7 @@ test("transaction/commit/rollback", () => {
     function rollbackClick() {
       const before = query();
       try {
-        const after = state.rollback();
+        const after = before.rollback();
       } catch (e) {
         rollbackException += 1;
       }
