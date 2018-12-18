@@ -172,7 +172,6 @@ export default (
 
           const beginSubmitState = dispatch(state => {
             let nextState = setIn(state, id + ".isSubmitting", true);
-
             nextState = get(nextState, id).validate(nextState, finishSubmit);
             return nextState;
           }, "Begin Submit" + typeSuffix);
