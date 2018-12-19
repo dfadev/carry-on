@@ -9,7 +9,7 @@ import devTools from "carry-on-devtools";
 import { Store } from "carry-on-react";
 
 const App = () => (
-  <Store plugins={devTools}>
+  <Store plugins={devTools()}>
   </Store>
 );
 ```
