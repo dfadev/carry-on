@@ -123,8 +123,8 @@ export default (
             state => setIn(state, id, origState),
             "Reset Form" + typeSuffix
           );
-          const realOnReset = onReset && onReset(s);
-          realOnReset && realOnReset(s);
+          const realOnReset = onReset && onReset({ dispatch, query });
+          realOnReset && realOnReset(query(q => get(q, id + ".values")));
           return s;
         },
 
@@ -139,7 +139,8 @@ export default (
             return;
 
           const finishSubmit = () => {
-            const realOnSubmit = onSubmit && query(state => onSubmit(state));
+            //const realOnSubmit = onSubmit && query(state => onSubmit(state));
+            const realOnSubmit = onSubmit && onSubmit({ dispatch, query }); // query(state => onSubmit(state));
 
             Promise.resolve(
               realOnSubmit && realOnSubmit(query(q => get(q, id).values))
