@@ -1,6 +1,6 @@
 {
   "name": "carry-on-react-forms",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "carry-on plugin to support forms",
   "source": "./src/index.js",
   "module": "./es/carry-on-react-forms.js",
@@ -54,7 +54,7 @@
   "sideEffects": false,
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
   "dependencies": {
-    "carry-on-react": "0.0.11",
+    "carry-on-react": "^0.0.12",
     "debounce-promise": "^3.1.0",
     "lodash": "^4.17.11"
   }
