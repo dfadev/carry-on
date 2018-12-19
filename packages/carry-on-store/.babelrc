@@ -4,7 +4,6 @@
       "modules": false,
       "targets": { "browsers": ["last 2 versions"] }
     }],
-    "react",
     "stage-2",
     "optimized"
   ],
@@ -16,7 +15,7 @@
       "plugins": ["external-helpers"],
     },
     "test": {
-      "presets": ["env", "react", "stage-2"]
+      "presets": ["env", "stage-2"]
     }
   }
 }

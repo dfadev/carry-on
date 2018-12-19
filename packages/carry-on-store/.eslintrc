@@ -1,14 +1,11 @@
 {
   "parser": "babel-eslint",
-  "extends": ["airbnb", "prettier"],
+  "extends": ["airbnb-base", "prettier"],
   "env": { "es6": true, "browser": true },
   "rules": {
-    "react/no-multi-comp": "off",
-    "react/jsx-filename-extension": "off",
     "no-debugger": "warn",
     "no-unused-expressions": "off",
     "no-unused-vars": "warn",
-    "react/prop-types": "off",
     "no-plusplus": "off",
     "import/no-unresolved": "off",
     "no-restricted-syntax": "off",
@@ -20,6 +17,5 @@
     "no-multi-assign": "off",
     "one-var": "off",
     "prefer-destructuring": "off",
-    "react/destructuring-assignment": "off"
   }
 }
