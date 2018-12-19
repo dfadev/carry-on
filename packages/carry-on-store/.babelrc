@@ -1,21 +1,20 @@
 {
   "presets": [
-    ["env", {
-      "modules": false,
-      "targets": { "browsers": ["last 2 versions"] }
-    }],
-    "stage-2",
-    "optimized"
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 versions"
+          ]
+        }
+      }
+    ]
   ],
   "env": {
-    "development": {
-      "plugins": ["external-helpers"],
-    },
-    "production": {
-      "plugins": ["external-helpers"],
-    },
     "test": {
-      "presets": ["env", "stage-2"]
+      "presets": [ "@babel/preset-env" ],
     }
   }
 }
