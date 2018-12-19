@@ -12,9 +12,10 @@ export default ({
     path={form}
     select={({ submit, reset }) => ({ submit, reset })}
     from={store}
+    {...rest}
   >
     {({ submit, reset }) => (
-      <form onSubmit={submit} onReset={reset} {...rest}>
+      <form onSubmit={submit} onReset={reset}>
         {children}
       </form>
     )}

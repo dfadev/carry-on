@@ -2,7 +2,7 @@
 import React from "react";
 import { State } from "carry-on-react";
 
-export default ({ store, form = "form", children }) => (
+export default ({ store, form = "form", children, ...rest }) => (
   <State
     select={({ submit, reset, isPristine, isValidating, isValid }) => ({
       submit,
@@ -12,6 +12,7 @@ export default ({ store, form = "form", children }) => (
     })}
     from={store}
     path={form}
+    {...rest}
   >
     {({ submit, reset, disableSubmit, disableReset }) =>
       children({
