@@ -2,6 +2,8 @@
 import merge from "deepmerge";
 import notify from "./notify";
 
+export { default as notify } from "./notify";
+
 export default function makeStoreModule(defaultId, extra = () => ({})) {
   const isFunction = thing =>
     !!(thing && thing.constructor && thing.call && thing.apply);
