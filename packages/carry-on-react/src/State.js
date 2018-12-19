@@ -1,7 +1,7 @@
 /** @format **/
 import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { shallowEqual, isFunction, getIn } from "./utils";
+import { throttle, debounce, shallowEqual, isFunction, getIn } from "./utils";
 
 export default function makeStateComponents({
   useStore,
@@ -14,6 +14,11 @@ export default function makeStateComponents({
       const { from, select, path, default: def } = props;
       this.stateSelect = state => select(getIn(state, path, def));
       this.storeState = this.stateSelect(useStore(from).state);
+      if (this.props.throttle) {
+        this.onStateChange = throttle(this.props.throttle, this.onStateChange);
+      } else if (this.props.debounce) {
+        this.onStateChange = debounce(this.props.debounce, this.onStateChange);
+      }
       this.unsubscribe = subscribe(from, this.onStateChange);
     }
 
@@ -27,7 +32,10 @@ export default function makeStateComponents({
       }
     };
 
-    componentWillUnmount = () => this.unsubscribe();
+    componentWillUnmount = () => {
+      this.onStateChange.cancel && this.onStateChange.cancel();
+      this.unsubscribe();
+    };
 
     render = () =>
       this.props.children ? this.props.children(this.storeState) : null;
@@ -44,7 +52,9 @@ export default function makeStateComponents({
     select = state => state,
     from,
     path,
-    def
+    def,
+    throttle: slow,
+    debounce: deb
   } = {}) => WrappedComponent => {
     const WithState = props => (
       <State
@@ -52,6 +62,8 @@ export default function makeStateComponents({
         from={isFunction(from) ? from(props) : from}
         select={state => select(state, props)}
         default={isFunction(def) ? def(props) : def}
+        throttle={slow}
+        debounce={deb}
       >
         {state => {
           const val = state && state.valueOf();

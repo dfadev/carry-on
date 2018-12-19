@@ -21,7 +21,9 @@ export default ({
   select,
   default: def,
   children,
-  type
+  type,
+  throttle,
+  debounce
 }) => (
   <State
     path={form}
@@ -37,6 +39,8 @@ export default ({
       error: get(state.errors, path, undefined)
     })}
     from={store}
+    throttle={throttle}
+    debounce={debounce}
   >
     {({
       value,
