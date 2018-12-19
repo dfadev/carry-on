@@ -1,5 +1,6 @@
 /** @format **/
 import merge from "deepmerge";
+import notify from "./notify";
 
 export default function makeStoreModule(defaultId, extra = () => ({})) {
   const isFunction = thing =>
@@ -46,7 +47,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
 
   // create a store
   function create(id) {
-    return Object.assign({ id, pending: [], listeners: [] }, extra(id));
+    return Object.assign({ id, pending: [], notify: notify() }, extra(id));
   }
 
   // delete a store
@@ -66,7 +67,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
   };
 
   // connect a store (should rename this?)
-  const connect = ({ id, producer, publish, plugins, init } = {}) => {
+  const connect = ({ id, producer, plugins, init } = {}) => {
     const store = useStore(id);
     if (store.dispatch) throw new Error("Already connected");
 
@@ -78,17 +79,12 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       store.producer(store.state, action, ...args);
 
     // run producer action and set state
-    store.d = (action, type, force) => {
-      const nextState = (store.state = force
+    store.d = (action, type, force) =>
+      (store.state = force
         ? action(store.state)
         : store.producer(store.state, action));
-      store.listeners.map(listener => listener && listener(nextState));
-      if (publish && type !== initMessage) {
-        publish(nextState);
-      }
-      return nextState;
-    };
 
+    // store.d mutates according to middleware, dispatch calls the latest
     store.dispatch = (...args) => store.d(...args);
 
     // populate initial state
@@ -100,7 +96,10 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     } else {
       plugins = [];
     }
-    createPlugins(store, plugins.concat(store.pending));
+    createPlugins(
+      store,
+      [store.notify.plugin].concat(plugins.concat(store.pending))
+    );
     delete store.pending;
 
     // initialize middleware with state
@@ -108,11 +107,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     return store.state;
   };
 
-  const subscribe = (id, fn) => {
-    const store = useStore(id);
-    const idx = store.listeners.push(fn);
-    return () => store.listeners.splice(idx - 1, 1);
-  };
+  const subscribe = (id = defaultId, fn) => useStore(id).notify.subscribe(fn);
 
   return {
     subscribe,

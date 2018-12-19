@@ -90,7 +90,13 @@ exports[`register on connected store with init as function 1`] = `
 exports[`useStore 1`] = `
 Object {
   "id": undefined,
-  "listeners": Array [],
+  "notify": Object {
+    "listeners": Array [],
+    "plugin": Object {
+      "dispatch": [Function],
+    },
+    "subscribe": [Function],
+  },
   "pending": Array [],
 }
 `;
@@ -100,7 +106,13 @@ Object {
   "d": [Function],
   "dispatch": [Function],
   "id": "store1",
-  "listeners": Array [],
+  "notify": Object {
+    "listeners": Array [],
+    "plugin": Object {
+      "dispatch": [Function],
+    },
+    "subscribe": [Function],
+  },
   "producer": [Function],
   "query": [Function],
   "state": Object {},

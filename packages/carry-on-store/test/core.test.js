@@ -52,8 +52,6 @@ test("register on connected store", () => {
   const store = useStore();
   const initialState = connect();
   register({ state: { some: "state" } });
-  console.log(JSON.stringify(initialState));
-  console.log(JSON.stringify(store.state));
   expect(initialState).toMatchDiffSnapshot(store.state);
   deleteStore();
 });
@@ -138,20 +136,6 @@ test("connect to already connected store throws", () => {
   const { useStore, deleteStore, connect } = makeStoreModule();
   const state = connect();
   expect(connect).toThrow();
-  deleteStore();
-});
-
-test("publish", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
-  let marker = 0;
-  const publish = state => {
-    marker++;
-  };
-
-  const state = connect({ publish });
-  const store = useStore();
-  store.dispatch(state => ({ ...state, some: "state" }));
-  expect(marker).toBe(1);
   deleteStore();
 });
 
