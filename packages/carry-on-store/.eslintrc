@@ -3,6 +3,7 @@
   "extends": ["airbnb-base", "prettier"],
   "env": { "es6": true, "browser": true },
   "rules": {
+    "no-empty-pattern": "off",
     "no-debugger": "warn",
     "no-unused-expressions": "off",
     "no-unused-vars": "warn",
