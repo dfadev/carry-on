@@ -1,4 +1,4 @@
-import transaction from "./index";
+import transaction from "../src/transaction";
 
 test("transaction match", () => {
   expect(transaction()).toMatchSnapshot();

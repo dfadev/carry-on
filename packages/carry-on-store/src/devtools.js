@@ -1,15 +1,15 @@
 /** @format **/
 
-export default ({ timeTravel = true } = {}) => {
+export default function devTools({ timeTravel = true } = {}) {
   // dev tools connections
   const connections = [],
     subscriptions = [],
     // time travel state tracking (only for immutable state)
     time = {},
     // check for dev tools extension
-    devTools = window && window.__REDUX_DEVTOOLS_EXTENSION__;
+    devToolsExt = window && window.__REDUX_DEVTOOLS_EXTENSION__;
 
-  if (!devTools) return {};
+  if (!devToolsExt) return {};
 
   return {
     dispatch: ({ dispatch, id }) => (action, type = "Dispatch", ...args) => {
@@ -21,7 +21,7 @@ export default ({ timeTravel = true } = {}) => {
 
       let connection = connections[name];
       if (!connection)
-        connection = connections[name] = devTools.connect({ name });
+        connection = connections[name] = devToolsExt.connect({ name });
 
       // support time traveling
       if (timeTravel) {
@@ -43,4 +43,4 @@ export default ({ timeTravel = true } = {}) => {
       return state;
     }
   };
-};
+}

@@ -1,4 +1,4 @@
-import makeStoreModule from "../src";
+import { makeStoreModule } from "../src";
 
 test("useStore", () => {
   const { useStore, deleteStore, connect, register } = makeStoreModule();

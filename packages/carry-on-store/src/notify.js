@@ -1,5 +1,5 @@
 /** @format **/
-export default () => {
+export default function notify() {
   const listeners = [];
 
   function subscribe(fn) {
@@ -24,4 +24,4 @@ export default () => {
     subscribe,
     plugin
   };
-};
+}

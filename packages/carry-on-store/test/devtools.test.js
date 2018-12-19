@@ -1,4 +1,4 @@
-import devTools from "./index";
+import devTools from "../src/devtools";
 
 test("new devTools", () => {
   const plugin = new devTools();

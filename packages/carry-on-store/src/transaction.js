@@ -1,6 +1,6 @@
 /** @format **/
 
-export default () => {
+export default function transaction() {
   const transactions = [];
 
   return {
@@ -23,4 +23,4 @@ export default () => {
         }, "Begin Transaction")
     })
   };
-};
+}

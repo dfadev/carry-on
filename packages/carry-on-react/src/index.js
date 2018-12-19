@@ -1,6 +1,6 @@
 /** @format **/
 import { createContext } from "react";
-import makeStoreModule from "carry-on-store";
+import { makeStoreModule } from "carry-on-store";
 import makeStateComponents from "./State";
 import makeStoreComponents from "./Store";
 
