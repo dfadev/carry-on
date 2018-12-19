@@ -9,11 +9,5 @@ module.exports = {
     "<rootDir>/src/jest.setup.js"
   ],
   collectCoverage: true,
-  coverageDirectory: "<rootDir>/coverage/",
-  moduleNameMapper: {
-    "^carry-on-utils$":
-      "<rootDir>/node_modules/carry-on-utils/es/carry-on-utils.js",
-    "^carry-on-store$":
-      "<rootDir>/node_modules/carry-on-store/es/carry-on-store.js",
-  }
+  coverageDirectory: "<rootDir>/coverage/"
 };

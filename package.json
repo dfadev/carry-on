@@ -12,26 +12,29 @@
     "bootstrap": "lerna bootstrap",
 
     "build-store": "cd packages/carry-on-store && npm run build",
+    "build-utils": "cd packages/carry-on-utils && npm run build",
     "build-react": "cd packages/carry-on-react && npm run build",
     "build-react-forms": "cd packages/carry-on-react-forms && npm run build",
-    "build1": "run-s build-store",
+    "build1": "run-p build-store build-utils",
     "build2": "run-p build-react",
     "build3": "run-s build-react-forms",
     "build": "run-s bootstrap build1 build2 build3",
 
     "test-store": "cd packages/carry-on-store && npm run test",
+    "test-utils": "cd packages/carry-on-utils && npm run test",
     "test-react": "cd packages/carry-on-react && npm run test",
     "test-react-forms": "cd packages/carry-on-react-forms && npm run test",
-    "test1": "run-s test-store",
+    "test1": "run-s test-utils test-store",
     "test2": "run-s test-react",
     "test3": "run-s test-react-forms",
     "test": "run-s bootstrap test1 test2 test3",
 
     "watch-store": "cd packages/carry-on-store && npm run watch",
+    "watch-utils": "cd packages/carry-on-utils && npm run watch",
     "watch-react": "cd packages/carry-on-react && npm run watch",
     "watch-react-forms": "cd packages/carry-on-react-forms && npm run watch",
     "watch":
-      "run-p watch-store watch-react watch-react-forms",
+      "run-p watch-utils watch-store watch-react watch-react-forms",
 
     "dev": "run-p watch test:watch",
     "test:watch":

@@ -1,0 +1,18 @@
+module.exports = {
+  presets: [
+    [
+      "@babel/preset-env",
+      {
+        modules: false,
+        targets: {
+          browsers: ["last 2 versions"]
+        }
+      }
+    ]
+  ],
+  env: {
+    test: {
+      presets: ["@babel/preset-env"]
+    }
+  }
+};

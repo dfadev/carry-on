@@ -53,9 +53,9 @@
     "snapshot-diff": "^0.4.1"
   },
   "dependencies": {
+    "carry-on-utils": "^0.0.12",
     "carry-on-store": "^0.0.12",
-    "hoist-non-react-statics": "^3.2.1",
-    "throttle-debounce": "^2.0.1"
+    "hoist-non-react-statics": "^3.2.1"
   },
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18"
 }

@@ -1,7 +1,7 @@
 /** @format **/
 import React from "react";
 import { State } from "carry-on-react";
-import { get } from "./utils";
+import { getIn } from "carry-on-utils";
 
 function getVal({ target: { type, value, checked } }) {
   if (type === "number" || type === "range") {
@@ -32,10 +32,10 @@ export default ({
       setFieldTouched: state.setFieldTouched,
       setFieldError: state.setFieldError,
       value: select
-        ? select(get(state.values, path, def))
-        : get(state.values, path, def),
-      touched: get(state.touched, path, false),
-      error: get(state.errors, path, undefined)
+        ? select(getIn(state.values, path, def))
+        : getIn(state.values, path, def),
+      touched: getIn(state.touched, path, false),
+      error: getIn(state.errors, path, undefined)
     })}
     from={store}
     {...rest}

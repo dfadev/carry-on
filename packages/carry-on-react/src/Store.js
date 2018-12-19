@@ -1,13 +1,10 @@
 /** @format **/
 import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { isFunction } from "./utils";
+import { isFunction } from "carry-on-utils";
 
 // create an object with Store and withState components
-export default function makeStoreComponents({
-  deleteStore,
-  connect
-}) {
+export default function makeStoreComponents({ deleteStore, connect }) {
   // a Component that manages state
   class Store extends Component {
     constructor(props) {
@@ -34,7 +31,8 @@ export default function makeStoreComponents({
         <WrappedComponent {...props} />
       </Store>
     );
-    WithStore.displayName = `withStore(${WrappedComponent.displayName || WrappedComponent.name})`;
+    WithStore.displayName = `withStore(${WrappedComponent.displayName ||
+      WrappedComponent.name})`;
     WithStore.WrappedComponent = WrappedComponent;
 
     return hoistNonReactStatic(WithStore, WrappedComponent);

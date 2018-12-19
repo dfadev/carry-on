@@ -3,10 +3,19 @@ import {
   isFunction,
   isEqual,
   debouncePromise,
-  get,
+  getIn,
   setIn,
   makeCancelable
-} from "./utils";
+} from "carry-on-utils";
+
+const isValidatingKey = ".isValidating";
+const valuesKey = ".values.";
+const errorsKey = ".errors.";
+const touchedKey = ".touched.";
+const isValidKey = ".isValid";
+const isSubmittingKey = ".isSubmitting";
+const isPristineKey = ".isPristine";
+const origStateKey = ".origState";
 
 export default (
   { id = "form", init = {}, validate, onSubmit, onReset } = {
@@ -15,27 +24,23 @@ export default (
   }
 ) => {
   const typeSuffix = " (" + id + ")";
-  let origState;
 
   const debounceValidate = debouncePromise(validate, 200);
   let cancellable;
 
-  const calcPristine = state =>
-    setIn(
+  const calcPristine = state => {
+    const formState = getIn(state, id);
+    return setIn(
       state,
-      id + ".isPristine",
-      isEqual(origState.values, get(state, id).values)
+      id + isPristineKey,
+      isEqual(formState.origState.values, formState.values)
     );
+  };
 
   return {
-    dispatch: ({ dispatch }) => (action, type, ...args) => {
-      const state = dispatch(action, type, ...args);
-      if (type === "Initialize") origState = get(state, id);
-
-      return state;
-    },
     state: store => {
       const { dispatch, query } = store;
+
       const data = {
         touched: {},
         errors: {},
@@ -48,15 +53,15 @@ export default (
 
         validate: (state, onSuccess) => {
           if (validate) {
-            const nextState = setIn(state, id + ".isValidating", true);
+            const nextState = setIn(state, id + isValidatingKey, true);
             cancellable && cancellable();
             cancellable = makeCancelable(
-              debounceValidate(get(nextState, id).values),
+              debounceValidate(getIn(nextState, id).values),
               vals =>
-                get(state, id).setErrors(vals) && onSuccess && onSuccess(),
+                getIn(state, id).setErrors(vals) && onSuccess && onSuccess(),
               () => {
                 dispatch(
-                  curState => setIn(curState, id + ".isValidating", false),
+                  curState => setIn(curState, id + isValidatingKey, false),
                   "Validation Threw" + typeSuffix
                 );
                 onSuccess && onSuccess();
@@ -68,16 +73,16 @@ export default (
         },
 
         hasError: fieldName =>
-          query(state => get(get(state, id).errors, fieldName, false)),
+          query(state => getIn(getIn(state, id).errors, fieldName, false)),
 
         isTouched: fieldName =>
-          query(state => get(get(state, id).touched, fieldName, false)),
+          query(state => getIn(getIn(state, id).touched, fieldName, false)),
 
         setFieldValue: (fieldName, value) =>
           dispatch(
             state =>
-              get(state, id).validate(
-                calcPristine(setIn(state, id + ".values." + fieldName, value))
+              getIn(state, id).validate(
+                calcPristine(setIn(state, id + valuesKey + fieldName, value))
               ),
             "Set Field Value" + typeSuffix
           ),
@@ -85,15 +90,15 @@ export default (
         setValues: values =>
           dispatch(
             state =>
-              get(state, id).validate(
-                calcPristine(setIn(state, id + ".values", values))
+              getIn(state, id).validate(
+                calcPristine(setIn(state, id + valuesKey, values))
               ),
             "Set Values" + typeSuffix
           ),
 
         setFieldError: (fieldName, error) =>
           dispatch(
-            state => setIn(state, id + ".errors." + fieldName, error),
+            state => setIn(state, id + errorsKey + fieldName, error),
             "Set Field Error" + typeSuffix
           ),
 
@@ -101,30 +106,36 @@ export default (
           dispatch(state => {
             let validatedState = setIn(state, id + ".errors", errors);
             const isValid = Object.keys(errors).length === 0;
-            validatedState = setIn(validatedState, id + ".isValid", isValid);
-            return setIn(validatedState, id + ".isValidating", false);
+            validatedState = setIn(validatedState, id + isValidKey, isValid);
+            return setIn(validatedState, id + isValidatingKey, false);
           }, "Set Errors" + typeSuffix),
 
         setFieldTouched: (fieldName, touched) =>
           dispatch(
-            state => setIn(state, id + ".touched." + fieldName, touched),
+            state => setIn(state, id + touchedKey + fieldName, touched),
             "Set Field Touched" + typeSuffix
           ),
 
         setTouched: touched =>
           dispatch(
-            state => setIn(state, id + ".touched", touched),
+            state => setIn(state, id + touchedKey, touched),
             "Set Touched" + typeSuffix
           ),
 
         reset: e => {
           e && e.preventDefault();
-          const s = dispatch(
-            state => setIn(state, id, origState),
-            "Reset Form" + typeSuffix
-          );
+          const s = dispatch(state => {
+            const formState = getIn(state, id);
+            const origState = formState.origState;
+            const newFormState = {
+              ...formState,
+              ...origState,
+              origState
+            };
+            return setIn(state, id, newFormState);
+          }, "Reset Form" + typeSuffix);
           const realOnReset = onReset && onReset({ dispatch, query });
-          realOnReset && realOnReset(query(q => get(q, id + ".values")));
+          realOnReset && realOnReset(query(q => getIn(q, id + valuesKey)));
           return s;
         },
 
@@ -133,29 +144,28 @@ export default (
           if (
             query(
               state =>
-                get(state, id).isValidating || get(state, id).isSubmitting
+                getIn(state, id).isValidating || getIn(state, id).isSubmitting
             )
           )
             return;
 
           const finishSubmit = () => {
-            //const realOnSubmit = onSubmit && query(state => onSubmit(state));
-            const realOnSubmit = onSubmit && onSubmit({ dispatch, query }); // query(state => onSubmit(state));
+            const realOnSubmit = onSubmit && onSubmit({ dispatch, query });
 
             Promise.resolve(
-              realOnSubmit && realOnSubmit(query(q => get(q, id).values))
+              realOnSubmit && realOnSubmit(query(q => getIn(q, id).values))
             )
               .then(rslt => {
                 dispatch(curState => {
                   const submittedState = setIn(
                     curState,
-                    id + ".isSubmitting",
+                    id + isSubmittingKey,
                     false
                   );
                   if (rslt) {
                     let validSubmitState = setIn(
                       submittedState,
-                      id + ".isPristine",
+                      id + isPristineKey,
                       true
                     );
                     validSubmitState = setIn(
@@ -168,7 +178,16 @@ export default (
                       id + ".touched",
                       {}
                     );
-                    origState = get(validSubmitState, id);
+                    validSubmitState = setIn(
+                      validSubmitState,
+                      id + origStateKey,
+                      undefined
+                    );
+                    validSubmitState = setIn(
+                      validSubmitState,
+                      id + origStateKey,
+                      getIn(validSubmitState, id)
+                    );
                     return validSubmitState;
                   }
                   return submittedState;
@@ -176,21 +195,22 @@ export default (
               })
               .catch(() =>
                 dispatch(curState =>
-                  setIn(curState, id + ".isSubmitting", false)
+                  setIn(curState, id + isSubmittingKey, false)
                 )
               );
           };
 
           const beginSubmitState = dispatch(state => {
             let nextState = setIn(state, id + ".isSubmitting", true);
-            nextState = get(nextState, id).validate(nextState, finishSubmit);
+            nextState = getIn(nextState, id).validate(nextState, finishSubmit);
             return nextState;
           }, "Begin Submit" + typeSuffix);
 
-          if (!get(beginSubmitState, id).isValidating) finishSubmit();
+          if (!getIn(beginSubmitState, id).isValidating) finishSubmit();
         }
       };
-      return setIn({}, id, data);
+      const stage1 = setIn({}, id, data);
+      return setIn(stage1, id + origStateKey, getIn(stage1, id));
     }
   };
 };

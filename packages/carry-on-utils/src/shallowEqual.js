@@ -1,35 +1,3 @@
-export { throttle, debounce } from "throttle-debounce";
-
-// is the thing a function
-export const isFunction = thing =>
-  !!(thing && thing.constructor && thing.call && thing.apply);
-
-// from lodash
-const reEscapeChar = /\\(\\)?/g;
-const rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
-
-function stringToPath(string) {
-  const result = [];
-  if (string.charCodeAt(0) === 46 /* . */) {
-    result.push("");
-  }
-  string.replace(rePropName, (match, number, quote, subString) => {
-    result.push(
-      quote ? subString.replace(reEscapeChar, "$1") : number || match
-    );
-  });
-  return result;
-}
-
-// from formik
-export function getIn(obj, key, def, p = 0) {
-  const path = stringToPath(key);
-  while (obj && p < path.length) {
-    obj = obj[path[p++]];
-  }
-  return obj === undefined ? def : obj;
-}
-
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -53,13 +21,14 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  */
 function is(x, y) {
   // SameValue algorithm
-  if (x === y) { // Steps 1-5, 7-10
+  if (x === y) {
+    // Steps 1-5, 7-10
     // Steps 6.b-6.e: +0 != -0
     // Added the nonzero y check to make Flow happy, but it is redundant
     return x !== 0 || y !== 0 || 1 / x === 1 / y;
   } //else {
-    // Step 6.a: NaN == NaN
-    return x !== x && y !== y;
+  // Step 6.a: NaN == NaN
+  return x !== x && y !== y;
   //}
 }
 
@@ -68,13 +37,17 @@ function is(x, y) {
  * when any key has values which are not strictly equal between the arguments.
  * Returns true when the values of all keys are strictly equal.
  */
-export function shallowEqual(objA, objB) {
+export default function shallowEqual(objA, objB) {
   if (is(objA, objB)) {
     return true;
   }
 
-  if (typeof objA !== 'object' || objA === null ||
-      typeof objB !== 'object' || objB === null) {
+  if (
+    typeof objA !== "object" ||
+    objA === null ||
+    typeof objB !== "object" ||
+    objB === null
+  ) {
     return false;
   }
 
@@ -97,3 +70,4 @@ export function shallowEqual(objA, objB) {
 
   return true;
 }
+

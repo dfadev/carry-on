@@ -1,7 +1,13 @@
 /** @format **/
 import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { throttle, debounce, shallowEqual, isFunction, getIn } from "./utils";
+import {
+  throttle,
+  debounce,
+  shallowEqual,
+  isFunction,
+  getIn
+} from "carry-on-utils";
 
 export default function makeStateComponents({
   useStore,

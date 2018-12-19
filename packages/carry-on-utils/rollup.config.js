@@ -14,9 +14,10 @@ const output = [
 ];
 const eslintPlugin = eslint();
 const babelPlugin = babel();
-const external = Object.keys(pkg.dependencies || {}).concat(
-  Object.keys(pkg.peerDependencies || {})
-);
+const external = Object.keys(pkg.dependencies || {})
+  .concat(Object.keys(pkg.peerDependencies || {}))
+  .concat(["throttle-debounce"]);
+
 const defaultConfig = {
   plugins: [eslintPlugin, babelPlugin],
   input,
