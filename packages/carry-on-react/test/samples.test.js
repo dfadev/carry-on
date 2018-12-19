@@ -1,6 +1,6 @@
 /** @format **/
 import React, { Fragment } from "react";
-import notifyListeners from "carry-on-notify";
+import { notify as notifyListeners } from "carry-on-store";
 import transaction from "carry-on-transaction";
 import { deleteStore, register, State, Store } from "../src";
 import { wait, render, fireEvent, waitForElement } from "react-testing-library";
