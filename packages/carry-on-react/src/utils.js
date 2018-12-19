@@ -1,3 +1,5 @@
+export { throttle, debounce } from "throttle-debounce";
+
 // is the thing a function
 export const isFunction = thing =>
   !!(thing && thing.constructor && thing.call && thing.apply);
