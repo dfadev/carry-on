@@ -10,7 +10,8 @@ import { form, Form, FormState, Field } from "carry-on-react-forms";
 
 const init = {
   field: "value",
-  checkbox: false
+  checkbox: false,
+  slowfield: "zzz"
 };
 
 const validate = vals =>
@@ -18,9 +19,9 @@ const validate = vals =>
     resolve({});
   });
 
-const onSubmit = () => true;
+const onSubmit = ({ dispatch, query }) => values => true;
 
-const onReset = () => {};
+const onReset = ({ dispatch, query }) => values => {};
 
 const App = () => (
   <Store
@@ -40,6 +41,14 @@ const App = () => (
         {field => (
           <div>
             <input type="checkbox" {...field.element} />
+            {field.touched && field.error && <div>{field.error}</div>}
+          </div>
+        )}
+      </Field>
+      <Field store="myStore" form="form1" path="slowfield" throttle={1000}>
+        {field => (
+          <div>
+            <input {...field.element} />
             {field.touched && field.error && <div>{field.error}</div>}
           </div>
         )}
