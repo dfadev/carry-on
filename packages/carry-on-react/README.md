@@ -441,7 +441,7 @@ const store = ({ dispatch, query, state }) => {
 
   function beginClick(msg) {
     // start transaction
-    state.begin();
+    query(state => state.begin());
   }
 
   function commitClick() {
@@ -496,7 +496,7 @@ const App = () => (
 
 ### Notify listeners plugin (subscribe/unsubscribe)
 ```JavaScript
-import notifyListeners from "carry-on-notify";
+import { notify } from "carry-on-store";
 
 const store = ({ dispatch }) => {
   const inc = () =>
@@ -525,13 +525,13 @@ const store = ({ dispatch }) => {
 };
 
 let marker = 0;
-const notify = notifyListeners();
-const unsubscribe = notify.subscribe(state => {
+const notifyListeners = notify();
+const unsubscribe = notifyListeners.subscribe(state => {
   marker += 1;
 });
 
 const App = () => (
-  <Store init={store} plugins={notify.plugin}>
+  <Store init={store} plugins={notifyListeners.plugin}>
     <State>
       {({ counter, inc, dec }) => (
         <Fragment>
@@ -610,6 +610,65 @@ const store = ({ dispatch }) => ({
 
 const App = () => (
   <Store init={store} plugins={plugin}>
+    <State>
+      {({ counter, inc, dec }) => (
+        <Fragment>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </Fragment>
+      )}
+    </State>
+  </Store>
+);
+```
+
+### Custom plugin using register
+```JavaScript
+let pluginDispatchCalled = 0;
+
+const plugin = {
+  state: ({ dispatch }) => ({
+    thing: 1,
+    pluginFn() {
+      return dispatch(state => ({
+        ...state,
+        thing: state.thing + 1
+      }));
+    }
+  }),
+  dispatch: [
+    ({ dispatch }) => (...args) => {
+      pluginDispatchCalled++;
+      return dispatch(...args);
+    },
+    ({ dispatch }) => (...args) => {
+      pluginDispatchCalled++;
+      return dispatch(...args);
+    }
+  ]
+};
+
+const store = ({ dispatch }) => ({
+  counter: 0,
+  inc() {
+    return dispatch(state => ({
+      ...state,
+      counter: state.counter + 1
+    }));
+  },
+  dec() {
+    return dispatch(state => ({
+      ...state,
+      counter: state.counter - 1
+    }));
+  }
+});
+
+register(plugin);
+
+const App = () => (
+  <Store init={store}>
     <State>
       {({ counter, inc, dec }) => (
         <Fragment>
