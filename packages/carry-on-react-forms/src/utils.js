@@ -1,5 +1,9 @@
 import { isEmpty, setWith, isString, isNumber, clone } from "lodash";
 
+export { default as debounce } from "debounce-promise";
+export { isFunction, get, isEqual } from "lodash";
+
+// depends on lodash:
 export function setIn(state, path, valueToSet) {
   if (isEmpty(path)) return valueToSet;
   return setWith({ ...state }, path, valueToSet, (nsValue, key) => {

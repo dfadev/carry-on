@@ -1,10 +1,12 @@
 /** @format **/
-import { get, isEqual } from "lodash";
-import debounce from "debounce-promise";
-import { setIn, makeCancelable } from "./utils";
-
-const isFunction = thing =>
-  !!(thing && thing.constructor && thing.call && thing.apply);
+import {
+  isFunction,
+  isEqual,
+  debounce,
+  get,
+  setIn,
+  makeCancelable
+} from "./utils";
 
 export default (
   { id = "form", init = {}, validate, onSubmit, onReset } = {
@@ -50,7 +52,8 @@ export default (
             cancellable && cancellable();
             cancellable = makeCancelable(
               debounceValidate(get(nextState, id).values),
-              vals => get(state, id).setErrors(vals) && onSuccess && onSuccess(),
+              vals =>
+                get(state, id).setErrors(vals) && onSuccess && onSuccess(),
               () => {
                 dispatch(
                   curState => setIn(curState, id + ".isValidating", false),
@@ -127,13 +130,20 @@ export default (
 
         submit: e => {
           e && e.preventDefault();
-          if (query(state => get(state, id).isValidating || get(state, id).isSubmitting))
+          if (
+            query(
+              state =>
+                get(state, id).isValidating || get(state, id).isSubmitting
+            )
+          )
             return;
 
           const finishSubmit = () => {
             const realOnSubmit = onSubmit && query(state => onSubmit(state));
 
-            Promise.resolve(realOnSubmit && realOnSubmit(query(q => get(q, id).values)))
+            Promise.resolve(
+              realOnSubmit && realOnSubmit(query(q => get(q, id).values))
+            )
               .then(rslt => {
                 dispatch(curState => {
                   const submittedState = setIn(

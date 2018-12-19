@@ -1,7 +1,7 @@
 /** @format **/
 import React from "react";
 import { State } from "carry-on-react";
-import { get } from "lodash";
+import { get } from "./utils";
 
 function getVal({ target: { type, value, checked } }) {
   if (type === "number" || type === "range") {

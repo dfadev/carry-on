@@ -17,6 +17,7 @@ const babelPlugin = babel();
 const external = Object.keys(pkg.dependencies || {})
   .concat(Object.keys(pkg.peerDependencies || {}))
   .concat([
+    "lodash/isFunction",
     "lodash/get",
     "lodash/isEqual",
     "lodash/clone",
