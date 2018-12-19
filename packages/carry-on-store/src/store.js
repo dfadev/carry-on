@@ -84,7 +84,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     store.dispatch = (...args) => store.d(...args);
 
     // populate initial state
-    store.state = (isFunction(init) ? init(store) : init) || {};
+    store.state = {} = (isFunction(init) ? init(store) : init) || {};
 
     // populate state with plugin state
     if (plugins) {
