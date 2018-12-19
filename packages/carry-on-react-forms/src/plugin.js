@@ -2,7 +2,7 @@
 import {
   isFunction,
   isEqual,
-  debounce,
+  debouncePromise,
   get,
   setIn,
   makeCancelable
@@ -17,7 +17,7 @@ export default (
   const typeSuffix = " (" + id + ")";
   let origState;
 
-  const debounceValidate = debounce(validate, 200);
+  const debounceValidate = debouncePromise(validate, 200);
   let cancellable;
 
   const calcPristine = state =>

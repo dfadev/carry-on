@@ -1,6 +1,6 @@
 import { isEmpty, setWith, isString, isNumber, clone } from "lodash";
 
-export { default as debounce } from "debounce-promise";
+export { default as debouncePromise } from "debounce-promise";
 export { isFunction, get, isEqual } from "lodash";
 
 // depends on lodash:
