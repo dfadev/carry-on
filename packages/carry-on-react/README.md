@@ -4,12 +4,14 @@ State manager for React.
 
 ## Features
 
-- Uses modern React Context API
+- Uses pub/sub mechanics instead of React.Context tree walking updates
 - Minimal boilerplate
 - Multiple stores, multiple namespaces
 - Custom plugins that can provide additional state, actions, and middleware
 - Store and State components to help keep your components stateless
+- Throttle or debounce state changes to avoid stalling your ui
 - Optionally use [immer](https://github.com/mweststrate/immer) to mutate state naturally instead of rolling your own immutable state.
+- Optional form handling plugin, [carry-on-react-forms](../carry-on-react-forms)
 
 ## Import
 
