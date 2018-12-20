@@ -1,5 +1,6 @@
 import toPath from "./toPath";
 
+// Originally from micro-dash
 export function update(
   object,
   path,
@@ -18,6 +19,7 @@ export function update(
       } else {
         value = updater(value);
       }
+      // micro-dash always assigned, causing issue with proxy object
       if (current[key] !== value) current[key] = value;
       current = value;
     }
