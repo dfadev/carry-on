@@ -8,3 +8,4 @@ export { default as toPath } from "./toPath";
 export { default as getIn } from "./getIn";
 export { default as makeCancelable } from "./makeCancelable";
 export { default as setIn } from "./setIn";
+export { default as mutateSet } from "./mutateSet";
