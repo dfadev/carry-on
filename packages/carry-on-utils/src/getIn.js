@@ -2,7 +2,6 @@
 import toPath from "./toPath";
 
 export default function getIn(state, complexKey, def) {
-  // Intentionally using iteration rather than recursion
   const path = toPath(complexKey);
   let current = state;
   for (let i = 0; i < path.length; i++) {
