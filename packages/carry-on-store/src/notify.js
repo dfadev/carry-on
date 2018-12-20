@@ -4,21 +4,18 @@ export default function notify() {
 
   function subscribe(fn) {
     const idx = subscribers.push(fn);
-    return () => subscribers.splice(idx - 1, 1);
-  }
-
-  function notifySubscribers(state, dispatch, query) {
-    function callSubscriber(subscriber) {
-      return subscriber(state, dispatch, query);
-    }
-    subscribers.map(callSubscriber);
+    return function unsusbscribe() {
+      subscribers.splice(idx - 1, 1);
+    };
   }
 
   const plugin = {
     dispatch: ({ dispatch, query }) =>
       function notifyMiddleware(action, type, ...args) {
         const state = dispatch(action, type, ...args);
-        notifySubscribers(state, dispatch, query);
+        for (let i = 0; i < subscribers.length; i++) {
+          subscribers[i](state, dispatch, query);
+        }
         return state;
       }
   };
