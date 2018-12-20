@@ -17,11 +17,15 @@ const babelPlugin = babel();
 const external = Object.keys(pkg.dependencies || {}).concat(
   Object.keys(pkg.peerDependencies || {})
 );
+const watch = {
+  clearScreen: false
+};
 const defaultConfig = {
   plugins: [eslintPlugin, babelPlugin],
   input,
   output,
-  external
+  external,
+  watch
 };
 
 export default defaultConfig;
