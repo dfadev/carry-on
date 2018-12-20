@@ -1,4 +1,6 @@
 /** @format **/
+
+// from Final Form:
 import toPath from "./toPath";
 
 const setInRecursor = (current, index, path, value) => {
@@ -86,3 +88,23 @@ export default function setIn(state, key, value) {
   // only deal with Objects
   return setInRecursor(state, 0, toPath(key), value);
 }
+
+// Lodash way:
+//
+//import isEmpty from "lodash/isEmpty";
+//import setWith from "lodash/setWith";
+//import isString from "lodash/isString";
+//import isNumber from "lodash/isNumber";
+//import clone from "lodash/clone";
+
+/*
+export default function setIn(state, path, valueToSet) {
+  if (isEmpty(path)) return valueToSet;
+  return setWith({ ...state }, path, valueToSet, (nsValue, key) => {
+    const nextKey = path[path.lastIndexOf(key) + 1];
+    const isStringNumber = isString(nextKey) && isNumber(parseInt(nextKey, 10));
+    const result = isStringNumber ? Object(nsValue) : nsValue;
+    return clone(result);
+  });
+}
+*/
