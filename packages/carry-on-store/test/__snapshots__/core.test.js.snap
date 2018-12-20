@@ -91,11 +91,11 @@ exports[`useStore 1`] = `
 Object {
   "id": undefined,
   "notify": Object {
-    "listeners": Array [],
     "plugin": Object {
       "dispatch": [Function],
     },
     "subscribe": [Function],
+    "subscribers": Array [],
   },
   "pending": Array [],
 }
@@ -107,11 +107,11 @@ Object {
   "dispatch": [Function],
   "id": "store1",
   "notify": Object {
-    "listeners": Array [],
     "plugin": Object {
       "dispatch": [Function],
     },
     "subscribe": [Function],
+    "subscribers": Array [],
   },
   "producer": [Function],
   "query": [Function],

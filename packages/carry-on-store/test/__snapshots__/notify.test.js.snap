@@ -2,30 +2,30 @@
 
 exports[`notify match 1`] = `
 Object {
-  "listeners": Array [],
   "plugin": Object {
     "dispatch": [Function],
   },
   "subscribe": [Function],
+  "subscribers": Array [],
 }
 `;
 
 exports[`plug snapshot 1`] = `
 Object {
-  "listeners": Array [],
   "plugin": Object {
     "dispatch": [Function],
   },
   "subscribe": [Function],
+  "subscribers": Array [],
 }
 `;
 
 exports[`subscribe/unsubscribe 1`] = `
 Object {
-  "listeners": Array [],
   "plugin": Object {
     "dispatch": [Function],
   },
   "subscribe": [Function],
+  "subscribers": Array [],
 }
 `;

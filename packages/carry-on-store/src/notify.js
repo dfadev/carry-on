@@ -8,9 +8,10 @@ export default function notify() {
   }
 
   function notifySubscribers(state, dispatch, query) {
-    subscribers.map(function callSubscriber(subscriber) {
+    function callSubscriber(subscriber) {
       return subscriber(state, dispatch, query);
-    });
+    }
+    subscribers.map(callSubscriber);
   }
 
   const plugin = {
