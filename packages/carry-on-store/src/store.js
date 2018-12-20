@@ -75,10 +75,11 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
       store.producer(store.state, action, ...args);
 
     // run producer action and set state
-    store.d = (action, type, force) =>
-      (store.state = force
+    store.d = function core(action, type, force) {
+      return (store.state = force
         ? action(store.state)
         : store.producer(store.state, action));
+    };
 
     // store.d mutates according to middleware, dispatch calls the latest
     store.dispatch = (...args) => store.d(...args);
