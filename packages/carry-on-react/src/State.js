@@ -17,6 +17,7 @@ export default function makeStateComponents({
   class State extends Component {
     constructor(props) {
       super(props);
+      this.onStateChange = this.onStateChange.bind(this);
 
       const { from, select, path, default: def } = props;
       this.stateSelect = state => select(getIn(state, path, def));
@@ -31,7 +32,12 @@ export default function makeStateComponents({
         this.unsubscribe = subscribe(from, this.onStateChange);
     }
 
-    onStateChange = state => {
+    componentWillUnmount() {
+      this.onStateChange.cancel && this.onStateChange.cancel();
+      this.unsubscribe && this.unsubscribe();
+    }
+
+    onStateChange(state) {
       const nextState = this.stateSelect(state);
       if (!shallowEqual(nextState, this.storeState)) {
         this.storeState = nextState;
@@ -39,19 +45,14 @@ export default function makeStateComponents({
       } else {
         this.storeState = nextState;
       }
-    };
+    }
 
-    componentWillUnmount = () => {
-      this.onStateChange.cancel && this.onStateChange.cancel();
-      this.unsubscribe && this.unsubscribe();
-    };
-
-    render = () => {
+    render() {
       if (this.props.children) return this.props.children(this.storeState);
       if (this.props.render) return this.props.render(this.storeState);
 
       return null;
-    };
+    }
   }
 
   State.defaultProps = {
