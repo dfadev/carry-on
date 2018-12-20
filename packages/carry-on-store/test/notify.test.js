@@ -1,7 +1,7 @@
-import notifyListeners from "../src/notify";
+import notifySubscribers from "../src/notify";
 
 test("notify match", () => {
-  expect(notifyListeners()).toMatchSnapshot();
+  expect(notifySubscribers()).toMatchSnapshot();
 });
 
 test("plug snapshot", () => {
@@ -12,7 +12,7 @@ test("plug snapshot", () => {
     return (state = action(state));
   };
 
-  const notify = notifyListeners();
+  const notify = notifySubscribers();
   expect(notify).toMatchSnapshot();
 });
 
@@ -24,7 +24,7 @@ test("subscribe/unsubscribe", () => {
     return (state = action(state));
   };
 
-  const notify = notifyListeners();
+  const notify = notifySubscribers();
   expect(notify).toMatchSnapshot();
 
   dispatch = notify.plugin.dispatch({ dispatch });
@@ -32,13 +32,13 @@ test("subscribe/unsubscribe", () => {
   let msgRecvCount = 0;
   const fn = state => { msgRecvCount++; };
   const unsubscribe = notify.subscribe(fn);
-  expect(notify.listeners.length).toEqual(1);
+  expect(notify.subscribers.length).toEqual(1);
 
   dispatch(state => state);
   expect(msgRecvCount).toBe(1);
 
   unsubscribe();
-  expect(notify.listeners.length).toEqual(0);
+  expect(notify.subscribers.length).toEqual(0);
 
   dispatch(state => state);
   expect(msgRecvCount).toBe(1);
