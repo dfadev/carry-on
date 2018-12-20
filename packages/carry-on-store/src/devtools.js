@@ -12,35 +12,36 @@ export default function devTools({ timeTravel = true } = {}) {
   if (!devToolsExt) return {};
 
   return {
-    dispatch: ({ dispatch, id }) => (action, type = "Dispatch", ...args) => {
-      const state = dispatch(action, type, ...args);
+    dispatch: ({ dispatch, id }) =>
+      function devToolsMiddleware(action, type = "Dispatch", ...args) {
+        const state = dispatch(action, type, ...args);
 
-      // exit when no action
-      if (!action) return state;
-      const name = id;
+        // exit when no action
+        if (!action) return state;
+        const name = id;
 
-      let connection = connections[name];
-      if (!connection)
-        connection = connections[name] = devToolsExt.connect({ name });
+        let connection = connections[name];
+        if (!connection)
+          connection = connections[name] = devToolsExt.connect({ name });
 
-      // support time traveling
-      if (timeTravel) {
-        const states = time[name] || (time[name] = []);
-        states.push(state);
-        subscriptions[name] ||
-          (subscriptions[name] = connection.subscribe(
-            msg =>
-              msg.type === "DISPATCH" &&
-              msg.payload &&
-              msg.payload.type === "JUMP_TO_STATE" &&
-              dispatch(() => states[msg.payload.index], "Time Travel", true)
-          ));
+        // support time traveling
+        if (timeTravel) {
+          const states = time[name] || (time[name] = []);
+          states.push(state);
+          subscriptions[name] ||
+            (subscriptions[name] = connection.subscribe(
+              msg =>
+                msg.type === "DISPATCH" &&
+                msg.payload &&
+                msg.payload.type === "JUMP_TO_STATE" &&
+                dispatch(() => states[msg.payload.index], "Time Travel", true)
+            ));
+        }
+
+        // send devtools an state update message
+        connection.send({ type }, state);
+
+        return state;
       }
-
-      // send devtools an state update message
-      connection.send({ type }, state);
-
-      return state;
-    }
   };
 }

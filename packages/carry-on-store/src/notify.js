@@ -7,16 +7,17 @@ export default function notify() {
     return () => listeners.splice(idx - 1, 1);
   }
 
-  function notifyListeners(state, dispatch, query) {
+  function notifySubscribers(state, dispatch, query) {
     listeners.map(listener => listener(state, dispatch, query));
   }
 
   const plugin = {
-    dispatch: ({ dispatch, query }) => (action, type, ...args) => {
-      const state = dispatch(action, type, ...args);
-      notifyListeners(state, dispatch, query);
-      return state;
-    }
+    dispatch: ({ dispatch, query }) =>
+      function notifyListeners(action, type, ...args) {
+        const state = dispatch(action, type, ...args);
+        notifySubscribers(state, dispatch, query);
+        return state;
+      }
   };
 
   return {
