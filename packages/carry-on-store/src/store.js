@@ -1,5 +1,5 @@
 /** @format **/
-import merge from "deepmerge";
+import { merge } from "carry-on-utils";
 import notify from "./notify";
 
 export default function makeStoreModule(defaultId, extra = () => ({})) {
