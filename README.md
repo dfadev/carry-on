@@ -1,7 +1,6 @@
 # carry-on
 
 ### State manager
-#
 
 This is the monorepo for ```carry-on```.
 
