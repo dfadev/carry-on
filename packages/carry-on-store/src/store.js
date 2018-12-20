@@ -11,17 +11,6 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     if (!Array.isArray(middlewares)) middlewares = [middlewares];
     for (const middleware of middlewares) fn = apply(middleware, fn);
     return fn;
-    return function callMiddleware(...args) {
-      return fn(...args);
-    };
-
-    //if (!Array.isArray(middlewares)) middlewares = [middlewares];
-    //let wrappedFn = fn;
-    //for (const middleware of middlewares)
-    //wrappedFn = apply(middleware, wrappedFn);
-    //return function callMiddleware(...args) {
-    //return wrappedFn(...args);
-    //};
   };
 
   // middleware initialize message type
