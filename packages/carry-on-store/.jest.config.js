@@ -4,5 +4,9 @@ module.exports = {
   verbose: true,
   testPathIgnorePatterns: ["<rootDir>/build/", "<rootDir>/node_modules/", "<rootDir>/examples/", "<rootDir>/lib", "<rootDir>/src/jest.setup.js"],
   collectCoverage: true,
-  coverageDirectory: "<rootDir>/coverage/"
+  coverageDirectory: "<rootDir>/coverage/",
+  moduleNameMapper: {
+    "^carry-on-utils$":
+      "<rootDir>/node_modules/carry-on-utils/es/carry-on-utils.js",
+  }
 };
