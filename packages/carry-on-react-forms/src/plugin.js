@@ -9,26 +9,13 @@ import {
   makeCancelable
 } from "carry-on-utils";
 
-const isValidatingKey = ".isValidating";
-const valuesKey = ".values.";
-const errorsKey = ".errors.";
-const errorsFieldKey = ".errors";
-const touchedKey = ".touched.";
-const touchedFieldKey = ".touched";
-const isValidKey = ".isValid";
-const isSubmittingKey = ".isSubmitting";
-const isPristineKey = ".isPristine";
-const origStateKey = ".origState";
-
 export default (
-  { id = "form", init = {}, validate, onSubmit, onReset, mutate } = {
+  { id = "form", init = {}, validate, onSubmit, onReset } = {
     init: {},
     id: "form"
   }
 ) => ({
   state: ({ dispatch, query }) => {
-    const setState = mutate ? mutateSet : setIn;
-
     let cancellable;
     const debounceValidate = validate
       ? debouncePromise(validate({ dispatch, query }), 200)
@@ -36,14 +23,7 @@ export default (
 
     const typeSuffix = " (" + id + ")";
 
-    const calcPristine = state => {
-      const formState = getIn(state, id);
-      return setState(
-        state,
-        id + isPristineKey,
-        isEqual(formState.origState.values, formState.values)
-      );
-    };
+    const calcPristine = form => isEqual(form.origState.values, form.values);
 
     const stage1 = {
       touched: {},
@@ -57,23 +37,22 @@ export default (
 
       validate: (state, onSuccess) => {
         if (debounceValidate) {
-          const nextState = setState(state, id + isValidatingKey, true);
+          const form = getIn(state, id);
+          form.isValidating = true;
+
           cancellable && cancellable();
           cancellable = makeCancelable(
-            debounceValidate(getIn(nextState, id).values),
-            vals =>
-              getIn(state, id).setErrors(vals) && onSuccess && onSuccess(),
+            debounceValidate(form.values),
+            vals => form.setErrors(vals) && onSuccess && onSuccess(),
             () => {
               dispatch(
-                curState => setState(curState, id + isValidatingKey, false),
+                curState => (getIn(curState, id).isValidating = false),
                 "Validation Threw" + typeSuffix
               );
               onSuccess && onSuccess();
             }
           );
-          return nextState;
         }
-        return state;
       },
 
       hasError: fieldName =>
@@ -83,48 +62,44 @@ export default (
         query(state => getIn(getIn(state, id).touched, fieldName, false)),
 
       setFieldValue: (fieldName, value) =>
-        dispatch(
-          state =>
-            getIn(state, id).validate(
-              calcPristine(setState(state, id + valuesKey + fieldName, value))
-            ),
-          "Set Field Value" + typeSuffix
-        ),
+        dispatch(state => {
+          const form = getIn(state, id);
+          mutateSet(form.values, fieldName, value);
+          form.isPristine = calcPristine(form);
+          form.validate(state);
+        }, "Set Field Value" + typeSuffix),
 
       setValues: values =>
-        dispatch(
-          state =>
-            getIn(state, id).validate(
-              calcPristine(setState(state, id + valuesKey, values))
-            ),
-          "Set Values" + typeSuffix
-        ),
+        dispatch(state => {
+          const form = getIn(state, id);
+          form.values = values;
+          form.isPristine = calcPristine(form);
+          form.validate(state);
+        }, "Set Values" + typeSuffix),
 
       setFieldError: (fieldName, error) =>
-        dispatch(
-          state => setState(state, id + errorsKey + fieldName, error),
-          "Set Field Error" + typeSuffix
-        ),
+        dispatch(state => {
+          mutateSet(getIn(state, id).errors, fieldName, error);
+        }, "Set Field Error" + typeSuffix),
 
       setErrors: errors =>
         dispatch(state => {
-          let validatedState = setState(state, id + errorsFieldKey, errors);
-          const isValid = Object.keys(errors).length === 0;
-          validatedState = setState(validatedState, id + isValidKey, isValid);
-          return setState(validatedState, id + isValidatingKey, false);
+          const form = getIn(state, id);
+          form.errors = errors;
+          form.isValid = Object.keys(errors).length === 0;
+          form.isValidating = false;
         }, "Set Errors" + typeSuffix),
 
       setFieldTouched: (fieldName, touched) =>
-        dispatch(
-          state => setState(state, id + touchedKey + fieldName, touched),
-          "Set Field Touched" + typeSuffix
-        ),
+        dispatch(state => {
+          mutateSet(getIn(state, id).touched, fieldName, touched);
+        }, "Set Field Touched" + typeSuffix),
 
       setTouched: touched =>
-        dispatch(
-          state => setState(state, id + touchedKey, touched),
-          "Set Touched" + typeSuffix
-        ),
+        dispatch(state => {
+          const form = getIn(state, id);
+          form.touched = touched;
+        }, "Set Touched" + typeSuffix),
 
       reset: e => {
         e && e.preventDefault();
@@ -136,10 +111,10 @@ export default (
             ...origState,
             origState
           };
-          return setState(state, id, newFormState);
+          mutateSet(state, id, newFormState);
         }, "Reset Form" + typeSuffix);
         const realOnReset = onReset && onReset({ dispatch, query });
-        realOnReset && realOnReset(query(q => getIn(q, id + valuesKey)));
+        realOnReset && realOnReset(query(q => getIn(q, id).values));
         return s;
       },
 
@@ -161,59 +136,39 @@ export default (
           )
             .then(rslt => {
               dispatch(curState => {
-                const submittedState = setState(
-                  curState,
-                  id + isSubmittingKey,
-                  false
-                );
+                const form = getIn(curState, id);
+                form.isSubmitting = false;
                 if (rslt) {
-                  let validSubmitState = setState(
-                    submittedState,
-                    id + isPristineKey,
-                    true
-                  );
-                  validSubmitState = setState(
-                    validSubmitState,
-                    id + errorsFieldKey,
-                    {}
-                  );
-                  validSubmitState = setState(
-                    validSubmitState,
-                    id + touchedFieldKey,
-                    {}
-                  );
-                  validSubmitState = setState(
-                    validSubmitState,
-                    id + origStateKey,
-                    undefined
-                  );
-                  validSubmitState = setState(
-                    validSubmitState,
-                    id + origStateKey,
-                    getIn(validSubmitState, id)
-                  );
-                  return validSubmitState;
+                  form.isPristine = true;
+                  form.errors = {};
+                  form.touched = {};
+                  form.origState = undefined;
+                  form.origState = { ...form };
                 }
-                return submittedState;
               }, "End Submit" + typeSuffix);
             })
             .catch(() =>
-              dispatch(curState =>
-                setState(curState, id + isSubmittingKey, false)
-              )
+              dispatch(curState => {
+                const form = getIn(curState, id);
+                form.isSubmitting = false;
+                return curState;
+              })
             );
         };
 
         const beginSubmitState = dispatch(state => {
-          let nextState = setState(state, id + isSubmittingKey, true);
-          nextState = getIn(nextState, id).validate(nextState, finishSubmit);
-          return nextState;
+          const form = getIn(state, id);
+          form.isSubmitting = true;
+          form.validate(state, finishSubmit);
         }, "Begin Submit" + typeSuffix);
 
         if (!getIn(beginSubmitState, id).isValidating) finishSubmit();
       }
     };
     const stage2 = setIn({}, id, stage1);
-    return setIn(stage2, id + origStateKey, stage1);
+    return setIn(stage2, id + ".origState", stage1);
+    //const stage2 = {};
+    //mutateSet(stage2, id, stage1);
+    //return mutateSet(getIn(stage2, id).origState, { ...stage1 });
   }
 });
