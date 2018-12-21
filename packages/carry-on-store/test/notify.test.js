@@ -23,11 +23,12 @@ test("subscribe/unsubscribe", () => {
   let dispatch = (action, type, force, ...args) => {
     return (state = action(state));
   };
+  let getChanges = () => [];
 
   const notify = notifySubscribers();
   expect(notify).toMatchSnapshot();
 
-  dispatch = notify.plugin.dispatch({ dispatch });
+  dispatch = notify.plugin.dispatch({ dispatch, getChanges });
 
   let msgRecvCount = 0;
   const fn = state => { msgRecvCount++; };

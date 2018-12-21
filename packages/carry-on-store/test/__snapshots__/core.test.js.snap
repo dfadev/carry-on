@@ -103,8 +103,10 @@ Object {
 
 exports[`useStore named 1`] = `
 Object {
+  "changes": Array [],
   "d": [Function],
   "dispatch": [Function],
+  "getChanges": [Function],
   "id": "store1",
   "notify": Object {
     "plugin": Object {
@@ -113,7 +115,6 @@ Object {
     "subscribe": [Function],
     "subscribers": Array [],
   },
-  "producer": [Function],
   "query": [Function],
   "state": Object {},
 }
