@@ -71,7 +71,8 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
 
     // change tracking
     store.getChanges = () => store.changes;
-    store.patchCatcher = patches => {
+
+    const patchCatcher = patches => {
       const stage1 = {};
       for (let i = 0, len = patches.length; i < len; i++)
         mutateSetA(stage1, patches[i].path, true);
@@ -108,7 +109,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     store.d = function core(action, type, force) {
       return (store.state = force
         ? action(store.state)
-        : immer(store.state, action, store.patchCatcher));
+        : immer(store.state, action, patchCatcher));
     };
 
     // store.d mutates according to middleware, dispatch calls the latest
