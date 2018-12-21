@@ -1,8 +1,7 @@
 /** @format **/
 import toPath from "./toPath";
 
-export default function getIn(state, complexKey, def) {
-  const path = toPath(complexKey);
+export function getInA(state, path, def) {
   let current = state;
   for (let i = 0; i < path.length; i++) {
     const key = path[i];
@@ -17,4 +16,9 @@ export default function getIn(state, complexKey, def) {
     current = current[key];
   }
   return current === undefined ? def : current;
+}
+
+export default function getIn(state, complexKey, def) {
+  const path = toPath(complexKey);
+  return getInA(state, path, def);
 }

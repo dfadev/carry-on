@@ -34,3 +34,7 @@ function constant(value) {
 export default function mutateSet(obj, path, val) {
   return update(obj, toPath(path), constant(val));
 }
+
+export function mutateSetA(obj, path, val) {
+  return update(obj, path, constant(val));
+}
