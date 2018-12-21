@@ -1,11 +1,8 @@
 /** @format **/
-import { merge } from "carry-on-utils";
+import { merge, isFunction } from "carry-on-utils";
 import notify from "./notify";
 
 export default function makeStoreModule(defaultId, extra = () => ({})) {
-  const isFunction = thing =>
-    !!(thing && thing.constructor && thing.call && thing.apply);
-
   // wrap a function with middleware
   const applyMiddleware = (middlewares, fn, apply) => {
     if (!Array.isArray(middlewares)) middlewares = [middlewares];
