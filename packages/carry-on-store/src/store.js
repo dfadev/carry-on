@@ -1,4 +1,5 @@
 /** @format **/
+import immer from "immer";
 import { merge, isFunction, mutateSetA } from "carry-on-utils";
 import notify from "./notify";
 
@@ -60,16 +61,13 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
   };
 
   // connect a store
-  const connect = ({ id, producer, plugins, init } = {}) => {
+  const connect = ({ id, plugins, init } = {}) => {
     const store = useStore(id);
     if (store.dispatch) throw new Error("Already connected");
 
-    // the producer creates new states from old states by executing actions
-    store.producer = producer || ((state, action) => action(state));
-
     // query provides a copy of state created by the producer
     store.query = (action = identity => identity, ...args) =>
-      store.producer(store.state, action, ...args);
+      immer(store.state, action, ...args);
 
     // change tracking
     store.getChanges = () => store.changes;
@@ -110,7 +108,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     store.d = function core(action, type, force) {
       return (store.state = force
         ? action(store.state)
-        : store.producer(store.state, action, store.patchCatcher));
+        : immer(store.state, action, store.patchCatcher));
     };
 
     // store.d mutates according to middleware, dispatch calls the latest
