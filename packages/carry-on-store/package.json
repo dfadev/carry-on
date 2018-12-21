@@ -21,7 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-env": "^7.2.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.4.2",
@@ -30,13 +30,12 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-import": "^2.14.0",
-    "immer": "^1.9.2",
     "jest": "^23.5.0",
     "jest-dom": "^3.0.0",
     "memoize-state": "^2.0.4",
     "prettier": "^1.14.2",
     "rimraf": "^2.6.2",
-    "rollup": "^0.68.0",
+    "rollup": "^0.68.1",
     "rollup-plugin-babel": "^4.1.0",
     "rollup-plugin-eslint": "^5.0.0",
     "snapshot-diff": "^0.4.1"
@@ -44,6 +43,7 @@
   "sideEffects": false,
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
   "dependencies": {
-    "carry-on-utils": "^0.0.13"
+    "carry-on-utils": "0.0.13",
+    "immer": "^1.9.3"
   }
 }
