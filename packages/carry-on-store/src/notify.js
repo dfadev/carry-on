@@ -10,12 +10,14 @@ export default function notify() {
   }
 
   const plugin = {
-    dispatch: ({ dispatch, query }) =>
+    dispatch: ({ dispatch, getChanges }) =>
       function notifyMiddleware(action, type, ...args) {
         const state = dispatch(action, type, ...args);
-        for (let i = 0; i < subscribers.length; i++) {
-          subscribers[i](state, dispatch, query);
-        }
+        const changes = getChanges();
+
+        for (let i = 0; i < subscribers.length; i++)
+          subscribers[i](state, changes);
+
         return state;
       }
   };

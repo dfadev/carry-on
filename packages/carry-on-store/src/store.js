@@ -1,5 +1,5 @@
 /** @format **/
-import { merge, isFunction } from "carry-on-utils";
+import { merge, isFunction, mutateSetA } from "carry-on-utils";
 import notify from "./notify";
 
 export default function makeStoreModule(defaultId, extra = () => ({})) {
@@ -71,11 +71,46 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     store.query = (action = identity => identity, ...args) =>
       store.producer(store.state, action, ...args);
 
+    // change tracking
+    store.getChanges = () => store.changes;
+    store.patchCatcher = patches => {
+      const stage1 = {};
+      for (let i = 0, len = patches.length; i < len; i++)
+        mutateSetA(stage1, patches[i].path, true);
+
+      // precompute object walk so Object.keys is called the least amount necessary
+      const stage2 = [];
+      const queue = [];
+      queue.push({ keys: Object.keys(stage1), changes: stage1, out: stage2 });
+
+      while (queue.length > 0) {
+        const item = queue.pop();
+
+        for (let i = 0, len = item.keys.length; i < len; i++) {
+          const key = item.keys[i];
+          const changes = item.changes[key];
+          if (changes === true) {
+            item.out.push({ key, changes });
+          } else {
+            const nextChanges = [];
+            queue.push({
+              keys: Object.keys(changes),
+              changes,
+              out: nextChanges
+            });
+            item.out.push({ key, changes: nextChanges });
+          }
+        }
+      }
+
+      store.changes = stage2;
+    };
+
     // run producer action and set state
     store.d = function core(action, type, force) {
       return (store.state = force
         ? action(store.state)
-        : store.producer(store.state, action));
+        : store.producer(store.state, action, store.patchCatcher));
     };
 
     // store.d mutates according to middleware, dispatch calls the latest
