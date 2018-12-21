@@ -25,7 +25,6 @@ export default function makeStoreComponents({ deleteStore, connect }) {
       <Store
         id={opts.id}
         init={isFunction(opts.init) ? opts.init(props) : opts.init}
-        producer={opts.producer}
         plugins={opts.plugins}
       >
         <WrappedComponent {...props} />
