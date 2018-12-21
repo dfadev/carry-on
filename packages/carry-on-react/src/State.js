@@ -4,15 +4,11 @@ import hoistNonReactStatic from "hoist-non-react-statics";
 import {
   throttle,
   debounce,
-  shallowEqual,
   isFunction,
   getIn,
   mutateSet
 } from "carry-on-utils";
 import { spreadGuardsEnabled, proxyState, deproxify } from "proxyequal";
-
-// primary simplification: remove select property (keep path)
-// but this requires usage of immer for state change tracking
 
 // if this is enabled, proxyequal mutates state with an additional property
 spreadGuardsEnabled(false);
@@ -60,11 +56,8 @@ export default function makeStateComponents({
         constant
       } = this.props;
 
-      // must trap select because we don't know if changes are being tracked yet
       const init = useStore(from).state;
-
-      // need to handle default value here?
-      this.storeState = this.props.select ? this.trapSelect(init) : init;
+      this.storeState = this.trapSelect(init);
 
       if (throttleTimeout)
         this.onStateChange = throttle(throttleTimeout, this.onStateChange);
@@ -80,23 +73,9 @@ export default function makeStateComponents({
     }
 
     onStateChange = (state, changes) => {
-      // handle state change with tracking
-      if (changes) {
-        this.storeState = this.props.select ? this.trapSelect(state) : state;
-        this.forceUpdate();
-        return;
-      }
-
-      // handle state change with no tracking
-      // could use proxy equals here?
-      const select = this.props.select || (s => s);
-      const nextState = select(
-        getIn(state, this.props.path, this.props.default)
-      );
-      if (!shallowEqual(nextState, this.storeState)) {
-        this.storeState = nextState;
-        this.forceUpdate();
-      } else this.storeState = nextState;
+      if (!changes || changes.length === 0) return;
+      this.storeState = this.trapSelect(state);
+      this.forceUpdate();
     };
 
     stateSubscriber = (state, changes) =>
@@ -125,7 +104,7 @@ export default function makeStateComponents({
     };
 
     trapSelect = state => {
-      if (this.props.select === undefined) return state;
+      if (!this.props.select) return state;
       return this.trapStateQuery(
         state,
         this.props.path,
