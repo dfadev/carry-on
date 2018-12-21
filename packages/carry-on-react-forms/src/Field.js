@@ -18,44 +18,28 @@ export default ({
   store,
   form = "form",
   path,
-  select,
   default: def,
   children,
   type,
   ...rest
 }) => (
-  <State
-    path={form}
-    select={state => ({
-      setFieldValue: state.setFieldValue,
-      isTouched: state.isTouched,
-      setFieldTouched: state.setFieldTouched,
-      setFieldError: state.setFieldError,
-      value: select
-        ? select(getIn(state.values, path, def))
-        : getIn(state.values, path, def),
-      touched: getIn(state.touched, path, false),
-      error: getIn(state.errors, path, undefined)
-    })}
-    from={store}
-    {...rest}
-  >
+  <State path={form} from={store} {...rest}>
     {({
-      value,
+      values,
       touched,
-      error,
+      errors,
       setFieldValue,
       isTouched,
       setFieldTouched,
       setFieldError
     }) =>
       children({
-        touched,
-        error,
+        touched: getIn(touched, path, false),
+        error: getIn(errors, path, undefined),
         element: {
           onChange: e => setFieldValue(path, getVal(e)),
           onBlur: () => !isTouched(path) && setFieldTouched(path, true),
-          [type === "checkbox" ? "checked" : "value"]: value
+          [type === "checkbox" ? "checked" : "value"]: getIn(values, path, def)
         },
         setValue: val => setFieldValue(path, val),
         setTouched: val => setFieldTouched(path, val),

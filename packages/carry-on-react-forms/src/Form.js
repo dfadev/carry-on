@@ -8,14 +8,9 @@ export default ({
   children,
   ...rest
 }) => (
-  <State
-    path={form}
-    select={({ submit, reset }) => ({ submit, reset })}
-    from={store}
-    {...rest}
-  >
-    {({ submit, reset }) => (
-      <form onSubmit={submit} onReset={reset}>
+  <State path={form} from={store} {...rest}>
+    {state => (
+      <form onSubmit={state.submit} onReset={state.reset}>
         {children}
       </form>
     )}

@@ -3,26 +3,16 @@ import React from "react";
 import { State } from "carry-on-react";
 
 export default ({ store, form = "form", children, ...rest }) => (
-  <State
-    select={({ submit, reset, isPristine, isValidating, isValid }) => ({
-      submit,
-      reset,
-      disableSubmit: isPristine || isValidating || !isValid,
-      disableReset: isPristine || isValidating
-    })}
-    from={store}
-    path={form}
-    {...rest}
-  >
-    {({ submit, reset, disableSubmit, disableReset }) =>
+  <State from={store} path={form} {...rest}>
+    {({ submit, reset, isPristine, isValidating, isValid }) =>
       children({
         submit: {
           onClick: submit,
-          disabled: disableSubmit
+          disabled: isPristine || isValidating || !isValid
         },
         reset: {
           onClick: reset,
-          disabled: disableReset
+          disabled: isPristine || isValidating
         }
       })
     }
