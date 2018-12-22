@@ -8,37 +8,29 @@ import memoize from "memoize-state";
 
 // default store
 test("default store", () => {
-  const store = ({ dispatch }) => ({
-    counter: 0,
-    inc() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
-  });
+  const store = {
+    state: ({ dispatch }) => ({
+      counter: 0,
+      inc: () => dispatch(state => void state.counter++),
+      dec: () => dispatch(state => void state.counter--)
+    })
+  };
+
+  register(store);
 
   const App = () => (
-    <Store init={store}>
-      <State>
-        {({ counter, inc, dec }) => (
-          <Fragment>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
-          </Fragment>
-        )}
-      </State>
-    </Store>
+    <State>
+      {({ counter, inc, dec }) => (
+        <>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </>
+      )}
+    </State>
   );
 
-  const { asFragment, getByText } = render(<App />);
+  const { asFragment, getByText, debug } = render(<App />);
   let dom = asFragment();
 
   function clickDiff(text) {
@@ -57,49 +49,40 @@ test("default store", () => {
 
 // two named stores
 test("two named stores", () => {
-  const store = ({ dispatch }) => ({
-    counter: 0,
-    inc() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
-  });
+  const store = {
+    state: ({ dispatch }) => ({
+      counter: 0,
+      inc: () => dispatch(state => void state.counter++),
+      dec: () => dispatch(state => void state.counter--)
+    })
+  };
+
+  register(store, "store1");
+  register(store, "store2");
 
   const App = () => (
-    <Fragment>
-      <Store id="store1" init={store}>
-        <State from="store1">
-          {({ counter, inc, dec }) => {
-            return (
-              <div>
-                <div>Counter: {counter}</div>
-                <button onClick={inc}>store1 +</button>
-                <button onClick={dec}>store1 -</button>
-              </div>
-            );
-          }}
-        </State>
-      </Store>
-      <Store id="store2" init={store}>
-        <State from="store2">
-          {({ counter, inc, dec }) => (
+    <>
+      <State from="store1">
+        {({ counter, inc, dec }) => {
+          return (
             <div>
               <div>Counter: {counter}</div>
-              <button onClick={inc}>store2 +</button>
-              <button onClick={dec}>store2 -</button>
+              <button onClick={inc}>store1 +</button>
+              <button onClick={dec}>store1 -</button>
             </div>
-          )}
-        </State>
-      </Store>
-    </Fragment>
+          );
+        }}
+      </State>
+      <State from="store2">
+        {({ counter, inc, dec }) => (
+          <div>
+            <div>Counter: {counter}</div>
+            <button onClick={inc}>store2 +</button>
+            <button onClick={dec}>store2 -</button>
+          </div>
+        )}
+      </State>
+    </>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -127,38 +110,30 @@ test("two named stores", () => {
 
 // select
 test("select", () => {
-  const store = ({ dispatch }) => ({
-    notSelected: "item",
-    counter: 0,
-    inc() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
-  });
+  const store = {
+    state: ({ dispatch }) => ({
+      notSelected: "item",
+      counter: 0,
+      inc: () => dispatch(state => void state.counter++),
+      dec: () => dispatch(state => void state.counter--)
+    })
+  };
+
+  register(store);
 
   const select = ({ counter, inc, dec }) => ({ counter, inc, dec });
 
   const App = props => (
-    <Store init={store}>
-      <State select={select}>
-        {({ counter, inc, dec, notSelected }) => (
-          <div>
-            <div>{notSelected}</div>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
-          </div>
-        )}
-      </State>
-    </Store>
+    <State select={select}>
+      {({ counter, inc, dec, notSelected }) => (
+        <div>
+          <div>{notSelected}</div>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </div>
+      )}
+    </State>
   );
 
   const { asFragment, getByText, queryByText } = render(<App />);
@@ -185,44 +160,34 @@ test("select", () => {
 test("query", () => {
   let marker = 0;
 
-  const store = ({ dispatch, query }) => ({
-    log(msg) {
-      query(state => {
-        marker++;
-        return {
-          ...state,
-          counter: 9999
-        };
-      });
-    },
-    counter: 0,
-    inc() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
-  });
+  const store = {
+    state: ({ dispatch, query }) => ({
+      log(msg) {
+        query(state => {
+          marker++;
+          state.counter = 9999;
+          return state;
+        });
+      },
+      counter: 0,
+      inc: () => dispatch(state => void state.counter++),
+      dec: () => dispatch(state => void state.counter--)
+    })
+  };
+
+  register(store);
 
   const App = () => (
-    <Store init={store}>
-      <State>
-        {({ counter, inc, dec, log }) => (
-          <Fragment>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
-            <button onClick={log}>log</button>
-          </Fragment>
-        )}
-      </State>
-    </Store>
+    <State>
+      {({ counter, inc, dec, log }) => (
+        <>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+          <button onClick={log}>log</button>
+        </>
+      )}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -246,33 +211,21 @@ test("register", () => {
   register({
     state: ({ dispatch }) => ({
       counter: 0,
-      inc() {
-        return dispatch(state => ({
-          ...state,
-          counter: state.counter + 1
-        }));
-      },
-      dec() {
-        return dispatch(state => ({
-          ...state,
-          counter: state.counter - 1
-        }));
-      }
+      inc: () => dispatch(state => void state.counter++),
+      dec: () => dispatch(state => void state.counter--)
     })
   });
 
   const App = () => (
-    <Store>
-      <State>
-        {({ counter, inc, dec }) => (
-          <Fragment>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
-          </Fragment>
-        )}
-      </State>
-    </Store>
+    <State>
+      {({ counter, inc, dec }) => (
+        <>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </>
+      )}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -299,35 +252,23 @@ test("register on named store", () => {
     {
       state: ({ dispatch }) => ({
         counter: 0,
-        inc() {
-          return dispatch(state => ({
-            ...state,
-            counter: state.counter + 1
-          }));
-        },
-        dec() {
-          return dispatch(state => ({
-            ...state,
-            counter: state.counter - 1
-          }));
-        }
+        inc: () => dispatch(state => void state.counter++),
+        dec: () => dispatch(state => void state.counter--)
       })
     },
     "store1"
   );
 
   const App = () => (
-    <Store id="store1">
-      <State from="store1">
-        {({ counter, inc, dec }) => (
-          <Fragment>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
-          </Fragment>
-        )}
-      </State>
-    </Store>
+    <State from="store1">
+      {({ counter, inc, dec }) => (
+        <>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </>
+      )}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -350,41 +291,31 @@ test("register on named store", () => {
 
 // register adding pending state to store
 test("register adding pending state to store", () => {
-  const state = ({ dispatch }) => ({
-    counter: 0,
-    inc() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
+  register({
+    state: ({ dispatch }) => ({
+      counter: 0,
+      inc: () => dispatch(state => void state.counter++),
+      dec: () => dispatch(state => void state.counter--)
+    })
   });
 
   register({
-    state: () => {
-      return { extraVal: "ok" };
-    }
+    state: () => ({
+      extraVal: "ok"
+    })
   });
 
   const App = () => (
-    <Store init={state}>
-      <State>
-        {({ counter, inc, dec, extraVal }) => (
-          <Fragment>
-            <div>{extraVal}</div>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
-          </Fragment>
-        )}
-      </State>
-    </Store>
+    <State>
+      {({ counter, inc, dec, extraVal }) => (
+        <>
+          <div>{extraVal}</div>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </>
+      )}
+    </State>
   );
 
   const { asFragment, getByText, queryByText } = render(<App />);
@@ -407,30 +338,26 @@ test("register adding pending state to store", () => {
   deleteStore();
 });
 
-// immer as producer
+// immer as producer (redundant now, immer is always producer)
 test("immer as producer", () => {
-  const store = ({ dispatch }) => ({
-    counter: 0,
-    inc() {
-      dispatch(state => void state.counter++);
-    },
-    dec() {
-      dispatch(state => void state.counter--);
-    }
+  register({
+    state: ({ dispatch }) => ({
+      counter: 0,
+      inc: () => dispatch(state => void state.counter++),
+      dec: () => dispatch(state => void state.counter--)
+    })
   });
 
   const App = () => (
-    <Store init={store} producer={immer}>
-      <State>
-        {({ counter, inc, dec }) => (
-          <Fragment>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
-          </Fragment>
-        )}
-      </State>
-    </Store>
+    <State>
+      {({ counter, inc, dec }) => (
+        <>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </>
+      )}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -453,22 +380,22 @@ test("immer as producer", () => {
 
 // path
 test("path", () => {
-  const store = ({ dispatch }) => ({
-    more: {
-      stuff: {
-        list: [{ item: "one" }, { item: "two" }]
+  register({
+    state: ({ dispatch }) => ({
+      more: {
+        stuff: {
+          list: [{ item: "one" }, { item: "two" }]
+        }
       }
-    }
+    })
   });
 
   const App = () => (
-    <Store init={store}>
-      <State path="more.stuff.list[0].item">
-        {item => {
-          return <div>{item}</div>;
-        }}
-      </State>
-    </Store>
+    <State path="more.stuff.list[0].item">
+      {item => {
+        return <div>{item}</div>;
+      }}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -477,22 +404,22 @@ test("path", () => {
 });
 
 test("path2", () => {
-  const store = ({ dispatch }) => ({
-    more: {
-      stuff: {
-        list: [{ item: "one" }, { item: "two" }]
+  register({
+    state: ({ dispatch }) => ({
+      more: {
+        stuff: {
+          list: [{ item: "one" }, { item: "two" }]
+        }
       }
-    }
+    })
   });
 
   const App = () => (
-    <Store init={store}>
-      <State path="oops.more.stuff.list[0].item" default="ok">
-        {item => {
-          return <div>{item}</div>;
-        }}
-      </State>
-    </Store>
+    <State path="oops.more.stuff.list[0].item" default="ok">
+      {item => {
+        return <div>{item}</div>;
+      }}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -502,27 +429,30 @@ test("path2", () => {
 
 // from and path
 test("from and path", () => {
-  const store = ({ dispatch }) => ({
-    more: {
-      stuff: {
-        list: [
-          {
-            item: "one"
-          },
-          {
-            item: "two"
+  register(
+    {
+      state: ({ dispatch }) => ({
+        more: {
+          stuff: {
+            list: [
+              {
+                item: "one"
+              },
+              {
+                item: "two"
+              }
+            ]
           }
-        ]
-      }
-    }
-  });
+        }
+      })
+    },
+    "store1"
+  );
 
   const App = () => (
-    <Store init={store} id="store1">
-      <State from="store1" path="more.stuff.list[0].item">
-        {item => <div>{item}</div>}
-      </State>
-    </Store>
+    <State from="store1" path="more.stuff.list[0].item">
+      {item => <div>{item}</div>}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -533,36 +463,36 @@ test("from and path", () => {
 // unit of work with query and immer
 test("unit of work with query and immer", async () => {
   let rslt, rslt2;
-  const store = ({ dispatch, query }) => ({
-    action() {
-      // use query with immer producer for a unit of work
-      rslt = query(state => {
-        // do stuff with state
-        state.new = { ok: "0" };
-      });
+  register({
+    state: ({ dispatch, query }) => ({
+      action() {
+        // use query with immer producer for a unit of work
+        rslt = query(state => {
+          // do stuff with state
+          state.new = { ok: "0" };
+        });
 
-      rslt2 = query(state => {
-        // do some other stuff with state
-        state.other = { none: "thing" };
-      });
+        rslt2 = query(state => {
+          // do some other stuff with state
+          state.other = { none: "thing" };
+        });
 
-      return dispatch(state => {
-        state.done = "yes";
-      });
-    }
+        return dispatch(state => {
+          state.done = "yes";
+        });
+      }
+    })
   });
 
   const App = () => (
-    <Store init={store} producer={immer}>
-      <State>
-        {({ action, done }) => (
-          <div>
-            <span>{done}</span>
-            <button onClick={action}>run action</button>
-          </div>
-        )}
-      </State>
-    </Store>
+    <State>
+      {({ action, done }) => (
+        <div>
+          <span>{done}</span>
+          <button onClick={action}>run action</button>
+        </div>
+      )}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -584,107 +514,35 @@ test("unit of work with query and immer", async () => {
 
 // multiple select
 test("multiple select", () => {
-  const store = ({ dispatch }) => ({
-    counter: 0,
-    inc() {
-      dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
+  register({
+    state: ({ dispatch }) => ({
+      counter: 0,
+      inc: () => dispatch(state => void state.counter++),
+      dec: () => dispatch(state => void state.counter--)
+    })
   });
 
   const selectCounter = ({ counter }) => counter;
   const selectActions = ({ inc, dec }) => ({ inc, dec });
 
   const App = props => (
-    <Store init={store}>
-      <div>
-        <State select={selectCounter}>
-          {counter => (
-            <Fragment>
-              <div>Counter: {counter}</div>
-              <State select={selectActions}>
-                {({ inc, dec }) => (
-                  <Fragment>
-                    <button onClick={inc}>+</button>
-                    <button onClick={dec}>-</button>
-                  </Fragment>
-                )}
-              </State>
-            </Fragment>
-          )}
-        </State>
-      </div>
-    </Store>
-  );
-
-  const { asFragment, getByText } = render(<App />);
-
-  let dom = asFragment();
-
-  function clickDiff(text) {
-    fireEvent.click(getByText(text));
-    const nextDom = asFragment();
-    expect(dom).toMatchDiffSnapshot(nextDom);
-    dom = nextDom;
-  }
-
-  clickDiff("+");
-  clickDiff("-");
-  clickDiff("+");
-  clickDiff("-");
-  deleteStore();
-});
-
-// multiple memoized select
-
-test("multiple memoized select", () => {
-  const store = ({ dispatch }) => ({
-    counter: 0,
-    inc() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
-  });
-
-  const selectCounter = memoize(({ counter }) => counter);
-  const selectActions = memoize(({ inc, dec }) => ({ inc, dec }));
-
-  const App = props => (
-    <Store init={store}>
-      <div>
-        <State select={selectCounter}>
-          {counter => (
-            <Fragment>
-              <div>Counter: {counter}</div>
-              <State select={selectActions}>
-                {({ inc, dec }) => (
-                  <Fragment>
-                    <button onClick={inc}>+</button>
-                    <button onClick={dec}>-</button>
-                  </Fragment>
-                )}
-              </State>
-            </Fragment>
-          )}
-        </State>
-      </div>
-    </Store>
+    <div>
+      <State select={selectCounter}>
+        {counter => (
+          <>
+            <div>Counter: {counter}</div>
+            <State select={selectActions}>
+              {({ inc, dec }) => (
+                <Fragment>
+                  <button onClick={inc}>+</button>
+                  <button onClick={dec}>-</button>
+                </Fragment>
+              )}
+            </State>
+          </>
+        )}
+      </State>
+    </div>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -712,75 +570,52 @@ test("transaction/commit/rollback", () => {
   let commitException = 0;
   let rollbackException = 0;
 
-  const store = ({ dispatch, query }) => {
-    const inc = () =>
-      dispatch(
-        state => ({
-          ...state,
-          counter: state.counter + 1
-        }),
-        "Increment"
-      );
-
-    const dec = () =>
-      dispatch(
-        state => ({
-          ...state,
-          counter: state.counter - 1
-        }),
-        "Decrement"
-      );
-
-    function beginClick(msg) {
-      // start transaction
-      query(state => state.begin());
-    }
-
-    function commitClick() {
-      const before = query();
-      try {
-        const after = before.commit();
-      } catch (e) {
-        commitException += 1;
-      }
-      commits++;
-    }
-
-    function rollbackClick() {
-      const before = query();
-      try {
-        const after = before.rollback();
-      } catch (e) {
-        rollbackException += 1;
-      }
-      rollbacks++;
-    }
-
-    return {
+  register({
+    state: ({ dispatch, query }) => ({
       counter: 0,
-      inc,
-      dec,
-      beginClick,
-      commitClick,
-      rollbackClick
-    };
-  };
+      inc: () => dispatch(state => void state.counter++, "Decrement"),
+      dec: () => dispatch(state => void state.counter--, "Increment"),
+      beginClick(msg) {
+        query(state => state.begin());
+      },
+      commitClick() {
+        const before = query();
+        try {
+          const after = query(state => state.commit());
+          //const after = before.commit();
+        } catch (e) {
+          commitException += 1;
+        }
+        commits++;
+      },
+      rollbackClick() {
+        const before = query();
+        try {
+          const after = query(state => state.rollback());
+          //const after = before.rollback();
+        } catch (e) {
+          rollbackException += 1;
+        }
+        rollbacks++;
+      }
+    })
+  });
+
+  register(transaction());
 
   const App = () => (
-    <Store init={store} plugins={[transaction()]}>
-      <State>
-        {({ counter, inc, dec, beginClick, commitClick, rollbackClick }) => (
-          <Fragment>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
-            <button onClick={beginClick}>begin tx</button>
-            <button onClick={commitClick}>commit</button>
-            <button onClick={rollbackClick}>rollback</button>
-          </Fragment>
-        )}
-      </State>
-    </Store>
+    <State>
+      {({ counter, inc, dec, beginClick, commitClick, rollbackClick }) => (
+        <Fragment>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+          <button onClick={beginClick}>begin tx</button>
+          <button onClick={commitClick}>commit</button>
+          <button onClick={rollbackClick}>rollback</button>
+        </Fragment>
+      )}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -817,50 +652,31 @@ test("transaction/commit/rollback", () => {
 
 // notifyListeners/subscribe/unsubscribe
 test("notifyListeners/subscribe/unsubscribe", () => {
-  const store = ({ dispatch }) => {
-    const inc = () =>
-      dispatch(
-        state => ({
-          ...state,
-          counter: state.counter + 1
-        }),
-        "Increment"
-      );
-
-    const dec = () =>
-      dispatch(
-        state => ({
-          ...state,
-          counter: state.counter - 1
-        }),
-        "Decrement"
-      );
-
-    return {
+  register({
+    state: ({ dispatch, query }) => ({
       counter: 0,
-      inc,
-      dec
-    };
-  };
+      inc: () => dispatch(state => void state.counter++, "Decrement"),
+      dec: () => dispatch(state => void state.counter--, "Increment")
+    })
+  });
 
   let marker = 0;
   const notify = notifyListeners();
+  register(notify.plugin);
   const unsubscribe = notify.subscribe(state => {
     marker = 1;
   });
 
   const App = () => (
-    <Store init={store} plugins={notify.plugin}>
-      <State>
-        {({ counter, inc, dec }) => (
-          <Fragment>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
-          </Fragment>
-        )}
-      </State>
-    </Store>
+    <State>
+      {({ counter, inc, dec }) => (
+        <Fragment>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </Fragment>
+      )}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -883,27 +699,19 @@ test("notifyListeners/subscribe/unsubscribe", () => {
 });
 
 test("State component can render empty and null children", () => {
-  const store = ({ dispatch }) => ({
-    counter: 0,
-    inc() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
+  register({
+    state: ({ dispatch, query }) => ({
+      counter: 0,
+      inc: () => dispatch(state => void state.counter++, "Decrement"),
+      dec: () => dispatch(state => void state.counter--, "Increment")
+    })
   });
 
   const App = () => (
-    <Store init={store}>
+    <>
       <State />
       <State>{null}</State>
-    </Store>
+    </>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -912,55 +720,8 @@ test("State component can render empty and null children", () => {
   deleteStore();
 });
 
-test("duplicate store throws", () => {
-  const App = () => (
-    <Fragment>
-      <Store />
-      <Store />
-    </Fragment>
-  );
-
-  const prev = console.error;
-  console.error = () => {};
-  let gotException = 0;
-  try {
-    render(<App />);
-  } catch (e) {
-    gotException++;
-  }
-  expect(gotException).toBe(1);
-  console.error = prev;
-  deleteStore();
-});
-
-test("duplicate named store throws", () => {
-  const App = () => (
-    <Fragment>
-      <Store id="store1" />
-      <Store id="store1" />
-    </Fragment>
-  );
-
-  const prev = console.error;
-  console.error = () => {};
-  let gotException = 0;
-  try {
-    render(<App />);
-  } catch (e) {
-    gotException++;
-  }
-  expect(gotException).toBe(1);
-  console.error = prev;
-  deleteStore("store1");
-  deleteStore("store2");
-});
-
 test("register state on connected store with init as a function", () => {
-  const App = () => (
-    <Store init={{}}>
-      <State>{state => <div>{state.value}</div>}</State>
-    </Store>
-  );
+  const App = () => <State>{state => <div>{state.value}</div>}</State>;
 
   const { asFragment, getByText } = render(<App />);
 
@@ -975,11 +736,7 @@ test("register state on connected store with init as a function", () => {
 });
 
 test("register state on connected store", () => {
-  const App = () => (
-    <Store init={{}}>
-      <State>{state => <div>{state.value}</div>}</State>
-    </Store>
-  );
+  const App = () => <State>{state => <div>{state.value}</div>}</State>;
 
   const { asFragment, getByText } = render(<App />);
 
@@ -992,22 +749,22 @@ test("register state on connected store", () => {
 });
 
 test("path default value", () => {
-  const store = ({ dispatch }) => ({
-    more: {
-      stuff: {
-        list: [{ item: "one" }, { item: "two" }]
+  register({
+    state: ({ dispatch }) => ({
+      more: {
+        stuff: {
+          list: [{ item: "one" }, { item: "two" }]
+        }
       }
-    }
+    })
   });
 
   const App = () => (
-    <Store init={store}>
-      <State path="more.stuff.list[2].item" default="defaultValue">
-        {item => {
-          return <div>{item}</div>;
-        }}
-      </State>
-    </Store>
+    <State path="more.stuff.list[2].item" default="defaultValue">
+      {item => {
+        return <div>{item}</div>;
+      }}
+    </State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -1034,34 +791,27 @@ test("custom plugin", () => {
     ]
   };
 
-  const store = ({ dispatch }) => ({
-    counter: 0,
-    inc() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter + 1
-      }));
-    },
-    dec() {
-      return dispatch(state => ({
-        ...state,
-        counter: state.counter - 1
-      }));
-    }
-  });
+  const store = {
+    state: ({ dispatch, query }) => ({
+      counter: 0,
+      inc: () => dispatch(state => void state.counter++, "Decrement"),
+      dec: () => dispatch(state => void state.counter--, "Increment")
+    })
+  };
+
+  register(store);
+  register(plugin);
 
   const App = () => (
-    <Store init={store} plugins={plugin}>
-      <State>
-        {({ counter, inc, dec }) => (
-          <Fragment>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>+</button>
-            <button onClick={dec}>-</button>
-          </Fragment>
-        )}
-      </State>
-    </Store>
+    <State>
+      {({ counter, inc, dec }) => (
+        <Fragment>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </Fragment>
+      )}
+    </State>
   );
 
   expect(pluginDispatchCalled).toEqual(0);
@@ -1087,10 +837,10 @@ test("custom plugin", () => {
   deleteStore();
 });
 
-//xtest("plugin can have array of dispatch middleware", () => {
+//xxtest("plugin can have array of dispatch middleware", () => {
 ////throw new Error("not implemented");
 //});
 
-//xtest("custom namespaced module", () => {
+//xxtest("custom namespaced module", () => {
 ////throw new Error("not implemented");
 //});

@@ -1,4 +1,5 @@
 import transaction from "../src/transaction";
+import immer from "immer";
 
 test("transaction match", () => {
   expect(transaction()).toMatchSnapshot();
@@ -41,22 +42,27 @@ test("commit", () => {
 });
 
 test("rollback", async () => {
-  const query = () => {};
-  const plug = {};
-  let state = { plug };
+  const query = state => immer(state, s => s);
+  const state = {};
   const dispatch = (action, type, force, ...args) => {
-    return (state = action(state));
+    return immer(state, action);
   };
 
-  plug.tx = transaction().state({ dispatch, query, plug });
+  const store = {
+    dispatch: (action, type, force, ...args) => {
+      return (store.state = immer(store.state, action));
+    },
+    query,
+    state: transaction().state({ dispatch, query })
+  };
 
-  const beginState = plug.tx.begin();
+  const beginState = store.state.begin();
 
-  const newState = dispatch(state => {
-    return { ...state, newThing: 1 };
+  const newState = store.dispatch(state => {
+    state.newThing = 1;
   });
 
-  const rolledBackState = plug.tx.rollback();
+  const rolledBackState = store.state.rollback();
 
   expect(rolledBackState).toBe(beginState);
   expect(rolledBackState.newThing).toBe(undefined);
