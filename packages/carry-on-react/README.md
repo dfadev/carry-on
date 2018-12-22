@@ -8,7 +8,7 @@ State manager for React.
 - Mutate state directly
 - Multiple stores
 - Optional form handling plugin, [carry-on-react-forms](../carry-on-react-forms)
-- Use Component or the higher order component
+- Component or higher order component
 - Flexible State properties: debounce, throttle, constant, strict, select, path
 
 ## Import
