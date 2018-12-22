@@ -158,7 +158,7 @@ test("register with plugin with multiple middleware", () => {
     state: {
       thing: 1
     },
-    dispatch: [
+    middleware: [
       ({ dispatch }) => (...args) => {
         pluginDispatchCalled++;
         return dispatch(...args);
@@ -184,7 +184,7 @@ test("register with plugins dispatch as array", () => {
     state: {
       thing: 1
     },
-    dispatch: [
+    middleware: [
       ({ dispatch }) => (...args) => {
         pluginDispatchCalled++;
         return dispatch(...args);
@@ -210,7 +210,7 @@ test("register with plugins as non-array", () => {
     state: {
       thing: 1
     },
-    dispatch: ({ dispatch }) => (...args) => {
+    middleware: ({ dispatch }) => (...args) => {
       pluginDispatchCalled++;
       return dispatch(...args);
     }
@@ -233,7 +233,7 @@ test("register with plugin, state function ", () => {
         return dispatch(state => ({ ...state, some: "state" }));
       }
     }),
-    dispatch: ({ dispatch }) => (...args) => {
+    middleware: ({ dispatch }) => (...args) => {
       pluginDispatchCalled++;
       return dispatch(...args);
     }

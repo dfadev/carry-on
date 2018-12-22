@@ -3,7 +3,7 @@
 exports[`notify match 1`] = `
 Object {
   "plugin": Object {
-    "dispatch": [Function],
+    "middleware": [Function],
   },
   "subscribe": [Function],
   "subscribers": Array [],
@@ -13,7 +13,7 @@ Object {
 exports[`plug snapshot 1`] = `
 Object {
   "plugin": Object {
-    "dispatch": [Function],
+    "middleware": [Function],
   },
   "subscribe": [Function],
   "subscribers": Array [],
@@ -23,7 +23,7 @@ Object {
 exports[`subscribe/unsubscribe 1`] = `
 Object {
   "plugin": Object {
-    "dispatch": [Function],
+    "middleware": [Function],
   },
   "subscribe": [Function],
   "subscribers": Array [],

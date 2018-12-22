@@ -52,12 +52,14 @@ const createPlugins = (store, curState, plugins = []) => {
   // dispatch
   for (let i = 0, len = plugins.length; i < len; i++) {
     const plugin = plugins[i];
-    const { dispatch, state } = plugin;
-    if (dispatch) {
-      const dispatches = Array.isArray(dispatch) ? dispatch : [dispatch];
-      for (let j = 0, jlen = dispatches.length; j < jlen; j++)
-        store.d = applyMiddleware(dispatches[j], store.d, (middleware, fn) =>
-          middleware({ ...store, dispatch: fn })
+    const { middleware, state } = plugin;
+    if (middleware) {
+      const middlewares = Array.isArray(middleware) ? middleware : [middleware];
+      for (let j = 0, jlen = middlewares.length; j < jlen; j++)
+        store.d = applyMiddleware(
+          middlewares[j],
+          store.d,
+          (middlewareEntry, fn) => middlewareEntry({ ...store, dispatch: fn })
         );
     }
 

@@ -80,7 +80,7 @@ Object {
   "id": undefined,
   "notify": Object {
     "plugin": Object {
-      "dispatch": [Function],
+      "middleware": [Function],
     },
     "subscribe": [Function],
     "subscribers": Array [],
@@ -94,7 +94,7 @@ Object {
   "id": "store1",
   "notify": Object {
     "plugin": Object {
-      "dispatch": [Function],
+      "middleware": [Function],
     },
     "subscribe": [Function],
     "subscribers": Array [],

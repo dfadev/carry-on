@@ -12,7 +12,7 @@ export default function devTools({ timeTravel = true } = {}) {
   if (!devToolsExt) return {};
 
   return {
-    dispatch: ({ dispatch, id }) =>
+    middleware: ({ dispatch, id }) =>
       function devToolsMiddleware(action, type = "Dispatch", ...args) {
         const state = dispatch(action, type, ...args);
 

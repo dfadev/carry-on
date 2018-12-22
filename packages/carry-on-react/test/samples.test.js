@@ -735,7 +735,7 @@ test("custom plugin", () => {
     state: {
       thing: 1
     },
-    dispatch: [
+    middleware: [
       ({ dispatch }) => (...args) => {
         pluginDispatchCalled++;
         return dispatch(...args);
