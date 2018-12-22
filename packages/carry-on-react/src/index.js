@@ -1,10 +1,9 @@
 /** @format **/
-import { createContext } from "react";
 import { makeStoreModule } from "carry-on-store";
 import makeStateComponents from "./State";
 import makeStoreComponents from "./Store";
 
-const core = makeStoreModule(undefined, () => ({ Context: createContext({}) }));
+const core = makeStoreModule();
 const state = makeStateComponents(core);
 const store = makeStoreComponents(core);
 
