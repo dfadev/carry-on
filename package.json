@@ -15,19 +15,7 @@
     "build-utils": "cd packages/carry-on-utils && npm run build",
     "build-react": "cd packages/carry-on-react && npm run build",
     "build-react-forms": "cd packages/carry-on-react-forms && npm run build",
-    "build1": "run-p build-store build-utils",
-    "build2": "run-p build-react",
-    "build3": "run-s build-react-forms",
-    "build": "run-s bootstrap build1 build2 build3",
-
-    "test-store": "cd packages/carry-on-store && npm run test",
-    "test-utils": "cd packages/carry-on-utils && npm run test",
-    "test-react": "cd packages/carry-on-react && npm run test",
-    "test-react-forms": "cd packages/carry-on-react-forms && npm run test",
-    "test1": "run-s test-utils test-store",
-    "test2": "run-s test-react",
-    "test3": "run-s test-react-forms",
-    "test": "run-s bootstrap test1 test2 test3",
+    "build": "run-s bootstrap build-utils build-store build-react build-react-forms",
 
     "watch-store": "cd packages/carry-on-store && npm run watch",
     "watch-utils": "cd packages/carry-on-utils && npm run watch",
@@ -36,9 +24,21 @@
     "watch":
       "run-p watch-utils watch-store watch-react watch-react-forms",
 
-    "dev": "run-p watch test:watch",
+    "test-store": "cd packages/carry-on-store && npm run test",
+    "test-utils": "cd packages/carry-on-utils && npm run test",
+    "test-react": "cd packages/carry-on-react && npm run test",
+    "test-react-forms": "cd packages/carry-on-react-forms && npm run test",
+    "test": "run-s bootstrap test-utils test-store test-react test-react-forms",
+
+    "test:watch-store": "cd packages/carry-on-store && npm run test:watch",
+    "test:watch-utils": "cd packages/carry-on-utils && npm run test:watch",
+    "test:watch-react": "cd packages/carry-on-react && npm run test:watch",
+    "test:watch-react-forms": "cd packages/carry-on-react-forms && npm run test:watch",
     "test:watch":
-      "lerna exec --concurrency 6 --no-sort -- \"npm run test:watch | cat\"",
+      "run-p test:watch-utils test:watch-store test:watch-react test:watch-react-forms",
+
+    "dev": "run-p watch test:watch",
+
     "test:cov":
       "lerna exec --concurrency 6 --no-sort -- \"npm run test:cov | cat\"",
     "clean": "lerna exec --concurrency 6 --no-sort -- \"npm run clean | cat\""
