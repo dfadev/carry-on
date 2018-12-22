@@ -10,15 +10,15 @@ import {
 } from "carry-on-utils";
 
 export default (
-  { id = "form", init = {}, validate, onSubmit, onReset } = {
+  { id = "form", init = {}, onValidate, onSubmit, onReset } = {
     init: {},
     id: "form"
   }
 ) => ({
   state: ({ dispatch, query }) => {
     let cancellable;
-    const debounceValidate = validate
-      ? debouncePromise(validate({ dispatch, query }), 200)
+    const debounceValidate = onValidate
+      ? debouncePromise(onValidate({ dispatch, query }), 200)
       : undefined;
 
     const typeSuffix = " (" + id + ")";
