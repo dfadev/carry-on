@@ -20,13 +20,16 @@ function compareChanges(changes, affected) {
   while (queue.length > 0) {
     const item = queue.pop();
     const entries = item.changes;
+
     for (let i = 0, len = entries.length; i < len; i++) {
       const entry = entries[i];
       const key = entry.key;
       const affectedValue = item.affected[key];
+
       if (affectedValue === true) return true;
       if (affectedValue !== undefined) {
         const nextChanges = entry.changes;
+
         if (nextChanges === true) return true;
         queue.push({
           changes: nextChanges,
