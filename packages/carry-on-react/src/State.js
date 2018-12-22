@@ -10,6 +10,7 @@ spreadGuardsEnabled(false);
 
 export default function makeStateComponents({
   useStore,
+  connect,
   defaultId,
   subscribe
 }) {
@@ -18,6 +19,8 @@ export default function makeStateComponents({
 
     constructor(props) {
       super(props);
+      connect({ id: props.from });
+
       const {
         from,
         throttle: throttleTimeout,

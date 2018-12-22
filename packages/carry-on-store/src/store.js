@@ -63,7 +63,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
   // connect a store
   const connect = ({ id, plugins, init } = {}) => {
     const store = useStore(id);
-    if (store.dispatch) throw new Error("Already connected");
+    if (store.dispatch) return store.state;
 
     // query provides a copy of state created by the producer
     store.query = (action = identity => identity, ...args) =>
