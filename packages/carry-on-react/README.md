@@ -8,14 +8,13 @@ State manager for React.
 - Mutate state directly
 - Multiple stores
 - Optional form handling plugin, [carry-on-react-forms](../carry-on-react-forms)
-- Debounce or throttle render updates
 - Use Component or the higher order component
-- Flexible State properties: constant, strict, select, path
+- Flexible State properties: debounce, throttle, constant, strict, select, path
 
 ## Import
 
 ```JavaScript
-import { State, Store, withState, withStore, register, deleteStore } from "carry-on-react";
+import { State, withState, register, deleteStore } from "carry-on-react";
 ```
 
 ## Examples
