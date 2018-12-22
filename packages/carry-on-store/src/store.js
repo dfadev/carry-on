@@ -46,22 +46,31 @@ const applyMiddleware = (middlewares, fn, apply) => {
   return fn;
 };
 
-const createPlugins = (store, plugins = []) => {
+const createPlugins = (store, curState, plugins = []) => {
   if (!Array.isArray(plugins)) plugins = [plugins];
 
   // dispatch
   for (let i = 0, len = plugins.length; i < len; i++) {
     const plugin = plugins[i];
     const { dispatch, state } = plugin;
-    if (dispatch)
-      store.d = applyMiddleware(dispatch, store.d, (middleware, fn) =>
-        middleware({ ...store, dispatch: fn })
-      );
+    if (dispatch) {
+      const dispatches = Array.isArray(dispatch) ? dispatch : [dispatch];
+      for (let j = 0, jlen = dispatches.length; j < jlen; j++)
+        store.d = applyMiddleware(dispatches[j], store.d, (middleware, fn) =>
+          middleware({ ...store, dispatch: fn })
+        );
+    }
 
-    if (state)
-      mutateMerge(store.state, isFunction(state) ? state(store) : state);
+    if (state) {
+      const states = Array.isArray(state) ? state : [state];
+      for (let j = 0, jlen = states.length; j < jlen; j++)
+        mutateMerge(
+          curState,
+          isFunction(states[j]) ? states[j](store) : states[j]
+        );
+    }
   }
-  return store.state;
+  return curState;
 };
 
 // create a store
@@ -85,7 +94,8 @@ export default function makeStoreModule(defaultId) {
   const register = (init, id = defaultId) => {
     const store = useStore(id);
     // queue if no dispatch available yet
-    if (store.dispatch) store.dispatch(() => createPlugins(store, init));
+    if (store.dispatch)
+      store.dispatch(state => createPlugins(store, state, init));
     else store.pending.push(init);
   };
 
@@ -122,7 +132,7 @@ export default function makeStoreModule(defaultId) {
 
     const plugins = [store.notify.plugin, ...store.pending];
 
-    createPlugins(store, plugins);
+    createPlugins(store, store.state, plugins);
     delete store.pending;
 
     // initialize middleware with state

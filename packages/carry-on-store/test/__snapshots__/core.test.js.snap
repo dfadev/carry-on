@@ -2,18 +2,6 @@
 
 exports[`connect 1`] = `Object {}`;
 
-exports[`connect with init as function 1`] = `
-Object {
-  "some": "state",
-}
-`;
-
-exports[`connect with init as object 1`] = `
-Object {
-  "some": "state",
-}
-`;
-
 exports[`connect with pending function state 1`] = `
 Object {
   "some": "state",
@@ -23,22 +11,6 @@ Object {
 exports[`connect with pending object state 1`] = `
 Object {
   "some": "state",
-}
-`;
-
-exports[`connect with plugin, no state and dispatch 1`] = `Object {}`;
-
-exports[`connect with plugin, no state and dispatch 2`] = `
-Object {
-  "some": "state",
-}
-`;
-
-exports[`connect with plugin, state function  1`] = `
-Object {
-  "action": [Function],
-  "some": "state",
-  "thing": 1,
 }
 `;
 
@@ -87,6 +59,22 @@ exports[`register on connected store with init as function 1`] = `
 + }"
 `;
 
+exports[`register with plugin, no state and dispatch 1`] = `Object {}`;
+
+exports[`register with plugin, no state and dispatch 2`] = `
+Object {
+  "some": "state",
+}
+`;
+
+exports[`register with plugin, state function  1`] = `
+Object {
+  "action": [Function],
+  "some": "state",
+  "thing": 1,
+}
+`;
+
 exports[`useStore 1`] = `
 Object {
   "id": undefined,
@@ -103,10 +91,6 @@ Object {
 
 exports[`useStore named 1`] = `
 Object {
-  "changes": Array [],
-  "d": [Function],
-  "dispatch": [Function],
-  "getChanges": [Function],
   "id": "store1",
   "notify": Object {
     "plugin": Object {
@@ -115,8 +99,7 @@ Object {
     "subscribe": [Function],
     "subscribers": Array [],
   },
-  "query": [Function],
-  "state": Object {},
+  "pending": Array [],
 }
 `;
 

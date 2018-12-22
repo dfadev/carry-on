@@ -91,19 +91,21 @@ test("connect with pending function state", () => {
   deleteStore();
 });
 
-test("connect with init as function", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
-  const state = connect({ init: ({ dispatch }) => ({ some: "state" }) });
-  expect(state).toMatchSnapshot();
-  deleteStore();
-});
+//test("connect with init as function", () => {
+  //// connect with init no longer supported, use register instead
+  //const { useStore, deleteStore, connect } = makeStoreModule();
+  //const state = connect({ init: ({ dispatch }) => ({ some: "state" }) });
+  //expect(state).toMatchSnapshot();
+  //deleteStore();
+//});
 
-test("connect with init as object", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
-  const state = connect({ init: { some: "state" } });
-  expect(state).toMatchSnapshot();
-  deleteStore();
-});
+//test("connect with init as object", () => {
+  //// connect with init no longer supported, use register instead
+  //const { useStore, deleteStore, connect } = makeStoreModule();
+  //const state = connect({ init: { some: "state" } });
+  //expect(state).toMatchSnapshot();
+  //deleteStore();
+//});
 
 test("dispatch action", () => {
   const { useStore, deleteStore, connect } = makeStoreModule();
@@ -132,10 +134,10 @@ test("query with default action", () => {
   deleteStore();
 });
 
-test("connect to already connected store throws", () => {
+test("connect to already connected store succeeds", () => {
   const { useStore, deleteStore, connect } = makeStoreModule();
   const state = connect();
-  expect(connect).toThrow();
+  expect(connect).not.toThrow();
   deleteStore();
 });
 
@@ -148,12 +150,11 @@ test("force dispatch", () => {
   deleteStore();
 });
 
-test("connect with plugin with multiple middleware", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
+test("register with plugin with multiple middleware", () => {
+  const { useStore, deleteStore, connect, register } = makeStoreModule();
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    //id: "custom",
     state: {
       thing: 1
     },
@@ -169,17 +170,17 @@ test("connect with plugin with multiple middleware", () => {
     ]
   };
 
-  const state = connect({ plugins: [plugin] });
+  register(plugin);
+  const state = connect();
   expect(pluginDispatchCalled).toBe(2);
   deleteStore();
 });
 
-test("connect with plugins as array", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
+test("register with plugins dispatch as array", () => {
+  const { useStore, deleteStore, connect, register } = makeStoreModule();
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    //id: "custom",
     state: {
       thing: 1
     },
@@ -195,17 +196,17 @@ test("connect with plugins as array", () => {
     ]
   };
 
-  const state = connect({ plugins: [plugin] });
+  register(plugin);
+  const state = connect();
   expect(pluginDispatchCalled).toBe(2);
   deleteStore();
 });
 
-test("connect with plugins as non-array", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
+test("register with plugins as non-array", () => {
+  const { useStore, deleteStore, connect, register } = makeStoreModule();
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    //id: "custom",
     state: {
       thing: 1
     },
@@ -215,17 +216,17 @@ test("connect with plugins as non-array", () => {
     }
   };
 
-  const state = connect({ plugins: plugin });
+  register(plugin);
+  const state = connect();
   expect(pluginDispatchCalled).toBe(1);
   deleteStore();
 });
 
-test("connect with plugin, state function ", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
+test("register with plugin, state function ", () => {
+  const { useStore, deleteStore, connect, register } = makeStoreModule();
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    //id: "custom",
     state: ({ dispatch }) => ({
       thing: 1,
       action() {
@@ -238,22 +239,24 @@ test("connect with plugin, state function ", () => {
     }
   };
 
-  const state = connect({ plugins: plugin });
+  register(plugin);
+  const state = connect();
   expect(pluginDispatchCalled).toBe(1);
   const store = useStore();
   expect(store.state.action()).toMatchSnapshot();
   deleteStore();
 });
 
-test("connect with plugin, no state and dispatch", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
+test("register with plugin, no state and dispatch", () => {
+  const { useStore, deleteStore, connect, register } = makeStoreModule();
   let pluginDispatchCalled = 0;
 
   const plugin = {
     //id: "custom"
   };
 
-  const state = connect({ plugins: plugin });
+  register(plugin);
+  const state = connect();
   expect(state).toMatchSnapshot();
   const store = useStore();
   store.dispatch(state => ({ ...state, some: "state" }));
