@@ -21,23 +21,21 @@ import { State, withState, register, deleteStore } from "carry-on-react";
 
 ### Default store
 ```JavaScript
-const store = {
+register({
   state: ({ dispatch }) => ({
     counter: 0,
     inc: () => dispatch(state => void state.counter++),
     dec: () => dispatch(state => void state.counter--)
   })
-};
-
-register(store);
+});
 
 const App = () => (
   <State>
-    {({ counter, inc, dec }) => (
+    {state => (
       <>
-        <div>Counter: {counter}</div>
-        <button onClick={inc}>+</button>
-        <button onClick={dec}>-</button>
+        <div>Counter: {state.counter}</div>
+        <button onClick={state.inc}>+</button>
+        <button onClick={state.dec}>-</button>
       </>
     )}
   </State>
@@ -60,22 +58,20 @@ register(store, "store2");
 const App = () => (
   <>
     <State from="store1">
-      {({ counter, inc, dec }) => {
-        return (
-          <div>
-            <div>Counter: {counter}</div>
-            <button onClick={inc}>store1 +</button>
-            <button onClick={dec}>store1 -</button>
-          </div>
-        );
-      }}
+      {state => (
+        <div>
+          <div>Counter: {state.counter}</div>
+          <button onClick={state.inc}>+</button>
+          <button onClick={state.dec}>-</button>
+        </div>
+      )}
     </State>
     <State from="store2">
       {({ counter, inc, dec }) => (
         <div>
           <div>Counter: {counter}</div>
-          <button onClick={inc}>store2 +</button>
-          <button onClick={dec}>store2 -</button>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
         </div>
       )}
     </State>
@@ -85,16 +81,14 @@ const App = () => (
 
 ### State select
 ```JavaScript
-const store = {
+register({
   state: ({ dispatch }) => ({
     notSelected: "item",
     counter: 0,
     inc: () => dispatch(state => void state.counter++),
     dec: () => dispatch(state => void state.counter--)
   })
-};
-
-register(store);
+});
 
 const select = ({ counter, inc, dec }) => ({ counter, inc, dec });
 
