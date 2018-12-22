@@ -6,7 +6,8 @@ import {
   getIn,
   setIn,
   mutateSet,
-  makeCancelable
+  makeCancelable,
+  mutateMerge
 } from "carry-on-utils";
 
 export default (
@@ -39,11 +40,12 @@ export default (
         if (debounceValidate) {
           const form = getIn(state, id);
           form.isValidating = true;
+          const setErrors = form.setErrors;
 
           cancellable && cancellable();
           cancellable = makeCancelable(
             debounceValidate(form.values),
-            vals => form.setErrors(vals) && onSuccess && onSuccess(),
+            errorInfo => setErrors(errorInfo) && onSuccess && onSuccess(),
             () => {
               dispatch(
                 curState => (getIn(curState, id).isValidating = false),
@@ -84,11 +86,14 @@ export default (
           mutateSet(getIn(state, id).errors, fieldName, error);
         }, "Set Field Error" + typeSuffix),
 
-      setErrors: errors =>
+      setErrors: ({ errors, isValid, merge = true }) =>
         dispatch(state => {
           const form = getIn(state, id);
-          form.errors = errors;
-          form.isValid = Object.keys(errors).length === 0;
+
+          if (merge) mutateMerge(form.errors, errors);
+          else form.errors = errors;
+
+          form.isValid = isValid;
           form.isValidating = false;
         }, "Set Errors" + typeSuffix),
 
@@ -97,10 +102,13 @@ export default (
           mutateSet(getIn(state, id).touched, fieldName, touched);
         }, "Set Field Touched" + typeSuffix),
 
-      setTouched: touched =>
+      setTouched: (touched, merge = true) =>
         dispatch(state => {
           const form = getIn(state, id);
-          form.touched = touched;
+          if (merge)
+            mutateMerge(form.touched, touched);
+          else
+            form.touched = touched;
         }, "Set Touched" + typeSuffix),
 
       reset: e => {
