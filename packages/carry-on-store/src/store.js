@@ -127,11 +127,8 @@ export default function makeStoreModule(defaultId) {
 
     // populate initial state
     store.state = {};
-
     store.pending.sort((a, b) => (b.priority || 0) - (a.priority || 0));
-
     const plugins = [store.notify.plugin, ...store.pending];
-
     createPlugins(store, store.state, plugins);
     delete store.pending;
 
