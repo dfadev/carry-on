@@ -5,77 +5,111 @@
 ### Usage
 
 ```JavaScript
-import { Store } from "carry-on-react";
-import { form, Form, FormState, Field } from "carry-on-react-forms";
+import { register, Store, State } from "carry-on-react";
+import { form, Form, FormButtons, Field } from "carry-on-react-forms";
 
-const init = {
-  field: "value",
-  checkbox: false,
-  slowfield: "zzz"
-};
+register({
+  state: {
+    siteConfig: {
+      name: "Hello World",
+      byline: "the timeless greeting"
+    }
+  }
+});
 
-const validate = vals =>
-  new Promise((resolve, reject) => {
-    resolve({});
-  });
+register({
+  state: ({ dispatch }) => ({
+    counter: {
+      value: 0,
+      inc: () => dispatch(state => void state.counter.value++, "Inc"),
+      dec: () => dispatch(state => void state.counter.value--, "Dec")
+    }
+  })
+});
 
-const onSubmit = ({ dispatch, query }) => values => true;
-
-const onReset = ({ dispatch, query }) => values => {};
+register(
+  form({
+    init: {
+      field: "value",
+      checkbox: false,
+      slowfield: "zzz"
+    },
+    onSubmit: ({ dispatch, query }) => values => true,
+    onReset: ({ dispatch, query }) => values => {},
+    onValidate: ({ dispatch, query }) => vals =>
+      new Promise((resolve, reject) => {
+        resolve({
+          isValid: true,
+          errors: {
+            field: "invalid"
+          }
+        });
+      })
+  })
+);
 
 const App = () => (
-  <Store
-    id="myStore"
-    plugins={[form({ id: "form1", init, validate, onSubmit, onReset })]}
-  >
-    <Form store="myStore" form="form1">
-      <Field store="myStore" form="form1" path="field">
-        {field => (
+  <div>
+    <State constant>
+      {({ siteConfig: { name, byline } }) => (
+        <>
+          <h1>{name}</h1>
+          <h6>{byline}</h6>
+        </>
+      )}
+    </State>
+    <hr />
+    <h4>Magical Counter</h4>
+    <State debounce={500}>
+      {({ counter: { value, inc, dec } }) => (
+        <>
+          <div>{value}</div>
+          <button onClick={inc}>inc</button>
+          <button onClick={dec}>dec</button>
+        </>
+      )}
+    </State>
+    <hr />
+    <Form>
+      <Field path="field">
+        {({ element, touched, error }) => (
           <div>
-            <input {...field.element} />
-            {field.touched && field.error && <div>{field.error}</div>}
+            <input {...element} />
+            {touched && error && <div>{error}</div>}
           </div>
         )}
       </Field>
-      <Field store="myStore" form="form1" path="checkbox" type="checkbox">
-        {field => (
+      <hr />
+      <Field path="checkbox" type="checkbox">
+        {({ element, touched, error }) => (
           <div>
-            <input type="checkbox" {...field.element} />
-            {field.touched && field.error && <div>{field.error}</div>}
+            <input type="checkbox" {...element} />
+            {touched && error && <div>{error}</div>}
           </div>
         )}
       </Field>
-      <Field store="myStore" form="form1" path="slowfield" throttle={1000}>
-        {field => (
+      <hr />
+      <Field path="slowfield" throttle={1000}>
+        {({ element, touched, error }) => (
           <div>
-            <input {...field.element} />
-            {field.touched && field.error && <div>{field.error}</div>}
+            <input {...element} />
+            {touched && error && <div>{error}</div>}
           </div>
         )}
       </Field>
-      <FormState
-        select={({ submit, reset, isPristine, isValidating, isValid }) => ({
-          submit,
-          reset,
-          disableSubmit: isPristine || isValidating || !isValid,
-          disableReset: isPristine || isValidating
-        })}
-        store="myStore"
-        form="form1"
-      >
-        {({ submit, reset, disableSubmit, disableReset }) => (
+      <hr />
+      <FormButtons>
+        {({ submit, reset }) => (
           <div>
-            <button disabled={disableSubmit} onClick={submit}>
-              submit
-            </button>
-            <button disabled={disableReset} onClick={reset}>
-              reset
-            </button>
+            <button {...submit}>submit</button>
+            <button {...reset}>reset</button>
           </div>
         )}
-      </FormState>
+      </FormButtons>
+      <hr />
     </Form>
-  </Store>
+  </div>
 );
+
 
 ```
