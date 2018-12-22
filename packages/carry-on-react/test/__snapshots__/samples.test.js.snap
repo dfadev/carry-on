@@ -146,74 +146,6 @@ exports[`from and path 1`] = `
 </DocumentFragment>
 `;
 
-exports[`immer as producer 1`] = `
-"Snapshot Diff:
-- First value
-+ Second value
-
-@@ -1,8 +1,8 @@
-  <DocumentFragment>
-    <div>
--     Counter: 0
-+     Counter: 1
-    </div>
-    <button>
-      +
-    </button>
-    <button>"
-`;
-
-exports[`immer as producer 2`] = `
-"Snapshot Diff:
-- First value
-+ Second value
-
-@@ -1,8 +1,8 @@
-  <DocumentFragment>
-    <div>
--     Counter: 1
-+     Counter: 0
-    </div>
-    <button>
-      +
-    </button>
-    <button>"
-`;
-
-exports[`immer as producer 3`] = `
-"Snapshot Diff:
-- First value
-+ Second value
-
-@@ -1,8 +1,8 @@
-  <DocumentFragment>
-    <div>
--     Counter: 0
-+     Counter: 1
-    </div>
-    <button>
-      +
-    </button>
-    <button>"
-`;
-
-exports[`immer as producer 4`] = `
-"Snapshot Diff:
-- First value
-+ Second value
-
-@@ -1,8 +1,8 @@
-  <DocumentFragment>
-    <div>
--     Counter: 1
-+     Counter: 0
-    </div>
-    <button>
-      +
-    </button>
-    <button>"
-`;
-
 exports[`multiple select 1`] = `
 "Snapshot Diff:
 - First value
@@ -946,7 +878,7 @@ exports[`two named stores 8`] = `
       <button>"
 `;
 
-exports[`unit of work with query and immer 1`] = `
+exports[`unit of work with query 1`] = `
 "Snapshot Diff:
 - First value
 + Second value

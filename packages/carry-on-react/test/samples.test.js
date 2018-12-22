@@ -3,8 +3,6 @@ import React, { Fragment } from "react";
 import { notify as notifyListeners, transaction } from "carry-on-store";
 import { deleteStore, register, State, Store } from "../src";
 import { wait, render, fireEvent, waitForElement } from "react-testing-library";
-import immer from "immer";
-import memoize from "memoize-state";
 
 // default store
 test("default store", () => {
@@ -338,46 +336,6 @@ test("register adding pending state to store", () => {
   deleteStore();
 });
 
-// immer as producer (redundant now, immer is always producer)
-test("immer as producer", () => {
-  register({
-    state: ({ dispatch }) => ({
-      counter: 0,
-      inc: () => dispatch(state => void state.counter++),
-      dec: () => dispatch(state => void state.counter--)
-    })
-  });
-
-  const App = () => (
-    <State>
-      {({ counter, inc, dec }) => (
-        <>
-          <div>Counter: {counter}</div>
-          <button onClick={inc}>+</button>
-          <button onClick={dec}>-</button>
-        </>
-      )}
-    </State>
-  );
-
-  const { asFragment, getByText } = render(<App />);
-
-  let dom = asFragment();
-
-  function clickDiff(text) {
-    fireEvent.click(getByText(text));
-    const nextDom = asFragment();
-    expect(dom).toMatchDiffSnapshot(nextDom);
-    dom = nextDom;
-  }
-
-  clickDiff("+");
-  clickDiff("-");
-  clickDiff("+");
-  clickDiff("-");
-  deleteStore();
-});
-
 // path
 test("path", () => {
   register({
@@ -460,13 +418,13 @@ test("from and path", () => {
   deleteStore("store1");
 });
 
-// unit of work with query and immer
-test("unit of work with query and immer", async () => {
+// unit of work with query
+test("unit of work with query", async () => {
   let rslt, rslt2;
   register({
     state: ({ dispatch, query }) => ({
       action() {
-        // use query with immer producer for a unit of work
+        // use query for a unit of work
         rslt = query(state => {
           // do stuff with state
           state.new = { ok: "0" };
