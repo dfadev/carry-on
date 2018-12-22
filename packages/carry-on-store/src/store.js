@@ -136,7 +136,7 @@ export default function makeStoreModule(defaultId) {
     delete store.pending;
 
     // initialize middleware with state
-    store.dispatch(() => store.state, initMessage);
+    store.dispatch(state => state, initMessage);
     return store.state;
   };
 
