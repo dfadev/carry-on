@@ -582,7 +582,6 @@ test("transaction/commit/rollback", () => {
         const before = query();
         try {
           const after = query(state => state.commit());
-          //const after = before.commit();
         } catch (e) {
           commitException += 1;
         }
@@ -592,7 +591,6 @@ test("transaction/commit/rollback", () => {
         const before = query();
         try {
           const after = query(state => state.rollback());
-          //const after = before.rollback();
         } catch (e) {
           rollbackException += 1;
         }
