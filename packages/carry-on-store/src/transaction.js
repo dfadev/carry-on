@@ -4,7 +4,7 @@ export default function transaction() {
   const transactions = [];
 
   return {
-    state: ({ dispatch }) => ({
+    state: ({ dispatch, query }) => ({
       commit: () => {
         if (transactions.length === 0) throw new Error("no tx");
         return dispatch(state => {
@@ -18,7 +18,10 @@ export default function transaction() {
       },
       begin: () =>
         dispatch(state => {
-          transactions.push(() => dispatch(() => state, "Rollback", true));
+          const rollbackState = query();
+          transactions.push(() =>
+            dispatch(() => rollbackState, "Rollback", true)
+          );
           return state;
         }, "Begin Transaction")
     })
