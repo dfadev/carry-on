@@ -78,7 +78,7 @@ export default (
       setValues: values =>
         dispatch(state => {
           const form = getInA(state, idPath);
-          form.values = values;
+          if (form.values !== values) form.values = values;
           const pristine = calcPristine(form);
           if (pristine !== form.isPristine) form.isPristine = pristine;
           form.validate(state);
@@ -96,8 +96,9 @@ export default (
           if (merge) mutateMerge(form.errors, errors);
           else form.errors = errors;
 
-          form.isValid = isValid;
-          form.isValidating = false;
+          if (form.isValid !== isValid) form.isValid = isValid;
+
+          if (form.isValidating) form.isValidating = false;
         }, "Set Errors" + typeSuffix),
 
       setFieldTouched: (fieldName, touched) =>
@@ -132,11 +133,10 @@ export default (
       submit: e => {
         e && e.preventDefault();
         if (
-          query(
-            state =>
-              getInA(state, idPath).isValidating ||
-              getInA(state, idPath).isSubmitting
-          )
+          query(state => {
+            const form = getInA(state, idPath);
+            return form.isValidating || form.isSubmitting;
+          })
         )
           return;
 
@@ -151,9 +151,9 @@ export default (
                 const form = getInA(curState, idPath);
                 form.isSubmitting = false;
                 if (rslt) {
-                  form.isPristine = true;
-                  form.errors = {};
-                  form.touched = {};
+                  if (!form.isPristine) form.isPristine = true;
+                  if (Object.keys(form.errors).length > 0) form.errors = {};
+                  if (Object.keys(form.touched).length > 0) form.touched = {};
                   form.origState = undefined;
                   form.origState = { ...form };
                 }
@@ -162,7 +162,7 @@ export default (
             .catch(() =>
               dispatch(curState => {
                 const form = getInA(curState, idPath);
-                form.isSubmitting = false;
+                if (form.isSubmitting) form.isSubmitting = false;
                 return curState;
               })
             );
