@@ -4,7 +4,6 @@ import {
   isEqual,
   debouncePromise,
   getIn,
-  setIn,
   mutateSet,
   makeCancelable,
   mutateMerge
@@ -175,10 +174,9 @@ export default (
         if (!getIn(beginSubmitState, id).isValidating) finishSubmit();
       }
     };
-    const stage2 = setIn({}, id, stage1);
-    return setIn(stage2, id + ".origState", stage1);
-    //const stage2 = {};
-    //mutateSet(stage2, id, stage1);
-    //return mutateSet(getIn(stage2, id).origState, { ...stage1 });
+    const stage2 = mutateSet({}, id, stage1);
+    const form = getIn(stage2, id);
+    form.origState = { ...stage1 };
+    return stage2;
   }
 });
