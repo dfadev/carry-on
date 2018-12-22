@@ -108,6 +108,7 @@ export default function makeStateComponents({
 
     render() {
       const renderFn = this.props.children || this.props.render;
+      if (!renderFn) return null;
       return this.props.select
         ? renderFn(this.storeState)
         : this.trapRender(renderFn);
