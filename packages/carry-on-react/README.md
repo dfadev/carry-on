@@ -9,7 +9,7 @@ State manager for React.
 - Multiple stores
 - Optional form handling plugin, [carry-on-react-forms](../carry-on-react-forms)
 - Component or higher order component
-- Flexible State properties: debounce, throttle, constant, strict, select, path
+- Flexible State properties: debounce, throttle, constant, strict, select, path, from
 
 ## Import
 
