@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-testing-library";
-import { withState, State, Store, deleteStore } from "../src";
+import { withState, State, deleteStore, register } from "../src";
 
 test("<State /> renders", () => {
   const { asFragment } = render(<State>{() => "ok"}</State>);
@@ -32,7 +32,7 @@ test("withState selection function returns non Object as state prop", () => {
 });
 
 test("withState selection function returns array as state prop", () => {
-  const select = (state, props) => [1,2,3];
+  const select = (state, props) => [1, 2, 3];
   const Comp = withState({ select })(props => JSON.stringify(props));
   const { asFragment } = render(<Comp prop1="ok" />);
   expect(asFragment()).toMatchSnapshot();
@@ -41,22 +41,22 @@ test("withState selection function returns array as state prop", () => {
 
 test("withState select, path, from, and default can be a function", () => {
   const select = (state, props) => state;
-  const from = (props) => undefined;
-  const path = (props) => props.lookup;
-  const def = (props) => "default Value";
+  const from = props => undefined;
+  const path = props => props.lookup;
+  const def = props => "default Value";
 
-  const store = ({ dispatch }) => ({
-    key1: "val1",
-    key2: "val2"
+  register({
+    state: ({ dispatch }) => ({
+      key1: "val1",
+      key2: "val2"
+    })
   });
 
-  const Comp = withState({ select, from, path, def })(props => JSON.stringify(props));
-
-  const App = props => (
-    <Store init={store}>
-      <Comp lookup="key1" />
-    </Store>
+  const Comp = withState({ select, from, path, def })(props =>
+    JSON.stringify(props)
   );
+
+  const App = props => <Comp lookup="key1" />;
 
   const { asFragment } = render(<App />);
 
@@ -70,18 +70,18 @@ test("withState path, from, and default can be a values", () => {
   const path = "key1";
   const def = "default Value";
 
-  const store = ({ dispatch }) => ({
-    key1: "val1",
-    key2: "val2"
+  register({
+    state: ({ dispatch }) => ({
+      key1: "val1",
+      key2: "val2"
+    })
   });
 
-  const Comp = withState({ select, from, path, def })(props => JSON.stringify(props));
-
-  const App = props => (
-    <Store init={store}>
-      <Comp lookup="key1" />
-    </Store>
+  const Comp = withState({ select, from, path, def })(props =>
+    JSON.stringify(props)
   );
+
+  const App = props => <Comp lookup="key1" />;
 
   const { asFragment } = render(<App />);
 
