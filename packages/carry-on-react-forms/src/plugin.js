@@ -65,7 +65,8 @@ export default (
         dispatch(state => {
           const form = getIn(state, id);
           mutateSet(form.values, fieldName, value);
-          form.isPristine = calcPristine(form);
+          const pristine = calcPristine(form);
+          if (pristine !== form.isPristine) form.isPristine = pristine;
           form.validate(state);
         }, "Set Field Value" + typeSuffix),
 
@@ -73,7 +74,8 @@ export default (
         dispatch(state => {
           const form = getIn(state, id);
           form.values = values;
-          form.isPristine = calcPristine(form);
+          const pristine = calcPristine(form);
+          if (pristine !== form.isPristine) form.isPristine = pristine;
           form.validate(state);
         }, "Set Values" + typeSuffix),
 
