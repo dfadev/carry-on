@@ -19,7 +19,7 @@ export default function makeStateComponents({
 
     constructor(props) {
       super(props);
-      connect({ id: props.from });
+      connect(props.from);
 
       const {
         from,

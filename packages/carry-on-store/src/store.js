@@ -1,48 +1,77 @@
 /** @format **/
 import immer from "immer";
-import { merge, isFunction, mutateSetA } from "carry-on-utils";
+import { mutateMerge, isFunction, mutateSetA } from "carry-on-utils";
 import notify from "./notify";
 
-export default function makeStoreModule(defaultId, extra = () => ({})) {
-  // wrap a function with middleware
-  const applyMiddleware = (middlewares, fn, apply) => {
-    if (!Array.isArray(middlewares)) middlewares = [middlewares];
-    for (const middleware of middlewares) fn = apply(middleware, fn);
-    return fn;
-  };
+// middleware initialize message type
+const initMessage = "Initialize";
 
-  // middleware initialize message type
-  const initMessage = "Initialize";
+function calculateChangesIndex(patches) {
+  const stage1 = {};
+  for (let i = 0, len = patches.length; i < len; i++)
+    mutateSetA(stage1, patches[i].path, true);
 
-  const createPlugins = (store, plugins = []) => {
-    if (!Array.isArray(plugins)) plugins = [plugins];
+  // precompute object walk so Object.keys is called the least amount necessary
+  const stage2 = [];
+  const queue = [];
+  queue.push({ keys: Object.keys(stage1), changes: stage1, out: stage2 });
 
-    // dispatch
-    for (const plugin of plugins) {
-      const { dispatch } = plugin;
-      if (dispatch)
-        store.d = applyMiddleware(dispatch, store.d, (middleware, fn) =>
-          middleware({ ...store, dispatch: fn })
-        );
+  while (queue.length > 0) {
+    const item = queue.pop();
+
+    for (let i = 0, len = item.keys.length; i < len; i++) {
+      const key = item.keys[i];
+      const changes = item.changes[key];
+      if (changes === true) {
+        item.out.push({ key, changes });
+      } else {
+        const nextChanges = [];
+        queue.push({
+          keys: Object.keys(changes),
+          changes,
+          out: nextChanges
+        });
+        item.out.push({ key, changes: nextChanges });
+      }
     }
+  }
 
-    // state
-    const plug = {};
-    for (const plugin of plugins) {
-      const { state } = plugin;
-      if (state) Object.assign(plug, isFunction(state) ? state(store) : state);
-    }
+  return stage2;
+}
 
-    return merge(store.state, plug);
-  };
+// wrap a function with middleware
+const applyMiddleware = (middlewares, fn, apply) => {
+  if (!Array.isArray(middlewares)) middlewares = [middlewares];
+  for (const middleware of middlewares) fn = apply(middleware, fn);
+  return fn;
+};
 
+const createPlugins = (store, plugins = []) => {
+  if (!Array.isArray(plugins)) plugins = [plugins];
+
+  // dispatch
+  for (let i = 0, len = plugins.length; i < len; i++) {
+    const plugin = plugins[i];
+    const { dispatch, state } = plugin;
+    if (dispatch)
+      store.d = applyMiddleware(dispatch, store.d, (middleware, fn) =>
+        middleware({ ...store, dispatch: fn })
+      );
+
+    if (state)
+      mutateMerge(store.state, isFunction(state) ? state(store) : state);
+  }
+  return store.state;
+};
+
+// create a store
+function create(id) {
+  return { id, pending: [], notify: notify() };
+}
+
+export default function makeStoreModule(defaultId) {
   // a map of stores
   const stores = {};
-
-  // create a store
-  function create(id) {
-    return Object.assign({ id, pending: [], notify: notify() }, extra(id));
-  }
 
   // delete a store
   function deleteStore(id = defaultId) {
@@ -61,7 +90,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
   };
 
   // connect a store
-  const connect = ({ id, plugins, init } = {}) => {
+  const connect = id => {
     const store = useStore(id);
     if (store.dispatch) return store.state;
 
@@ -73,36 +102,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     store.getChanges = () => store.changes;
 
     const patchCatcher = patches => {
-      const stage1 = {};
-      for (let i = 0, len = patches.length; i < len; i++)
-        mutateSetA(stage1, patches[i].path, true);
-
-      // precompute object walk so Object.keys is called the least amount necessary
-      const stage2 = [];
-      const queue = [];
-      queue.push({ keys: Object.keys(stage1), changes: stage1, out: stage2 });
-
-      while (queue.length > 0) {
-        const item = queue.pop();
-
-        for (let i = 0, len = item.keys.length; i < len; i++) {
-          const key = item.keys[i];
-          const changes = item.changes[key];
-          if (changes === true) {
-            item.out.push({ key, changes });
-          } else {
-            const nextChanges = [];
-            queue.push({
-              keys: Object.keys(changes),
-              changes,
-              out: nextChanges
-            });
-            item.out.push({ key, changes: nextChanges });
-          }
-        }
-      }
-
-      store.changes = stage2;
+      store.changes = calculateChangesIndex(patches);
     };
 
     // run producer action and set state
@@ -116,18 +116,13 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     store.dispatch = (...args) => store.d(...args);
 
     // populate initial state
-    store.state = {} = (isFunction(init) ? init(store) : init) || {};
+    store.state = {};
 
-    // populate state with plugin state
-    if (plugins) {
-      if (!Array.isArray(plugins)) plugins = [plugins];
-    } else {
-      plugins = [];
-    }
-    store.state = createPlugins(
-      store,
-      [store.notify.plugin].concat(plugins.concat(store.pending))
-    );
+    store.pending.sort((a, b) => (b.priority || 0) - (a.priority || 0));
+
+    const plugins = [store.notify.plugin, ...store.pending];
+
+    createPlugins(store, plugins);
     delete store.pending;
 
     // initialize middleware with state
@@ -135,6 +130,7 @@ export default function makeStoreModule(defaultId, extra = () => ({})) {
     return store.state;
   };
 
+  // subscribe to state changes
   const subscribe = (id = defaultId, fn) => useStore(id).notify.subscribe(fn);
 
   return {
