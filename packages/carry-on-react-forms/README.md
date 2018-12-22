@@ -5,7 +5,7 @@
 ### Usage
 
 ```JavaScript
-import { register, Store, State } from "carry-on-react";
+import { register, State } from "carry-on-react";
 import { form, Form, FormButtons, Field } from "carry-on-react-forms";
 
 register({
