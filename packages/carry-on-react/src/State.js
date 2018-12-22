@@ -62,17 +62,22 @@ export default function makeStateComponents({
       }
 
       const pathedState = getIn(state, path, def);
-      const trappedState = proxyState(pathedState);
-      const selectedState = select(trappedState.state);
-      //trappedState.seal(); // this doesn't seem to remove the extra prop
-      const affected = trappedState.affected;
-      const deproxified = deproxify(selectedState);
-      const finalState =
-        deproxified !== undefined ? deproxified : selectedState;
 
-      this.affectedStateKeys = createAffectedKeysIndex(path, affected);
+      if (this.props.strict || this.affectedStateKeys === undefined) {
+        const trappedState = proxyState(pathedState);
+        const selectedState = select(trappedState.state);
+        trappedState.seal(); // this doesn't seem to remove the extra prop
+        const affected = trappedState.affected;
+        const deproxified = deproxify(selectedState);
+        const finalState =
+          deproxified !== undefined ? deproxified : selectedState;
 
-      return finalState;
+        this.affectedStateKeys = createAffectedKeysIndex(path, affected);
+
+        return finalState;
+      }
+
+      return select(pathedState);
     };
 
     trapSelect = state => {
