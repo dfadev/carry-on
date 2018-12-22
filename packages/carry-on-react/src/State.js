@@ -109,31 +109,28 @@ export default function makeStateComponents({
 
     trapSelect = state => {
       if (!this.props.select) return state;
-      return this.trapStateQuery(
-        state,
-        this.props.path,
-        this.props.default,
-        this.props.select
-      );
+      const { path, default: def, select, constant } = this.props;
+      return this.trapStateQuery(state, path, def, select, constant);
     };
 
     trapRender = renderFn => {
-      if (this.prevStoreState === this.storeState)
-        return this.prevFinalRenderedState;
+      if (this.prevStoreState === this.storeState) return this.prevFinalState;
 
-      if (this.props.constant && this.prevFinalRenderedState)
-        return this.prevFinalRenderedState;
+      if (this.props.constant && this.prevFinalState)
+        return this.prevFinalState;
 
-      const finalRenderedState = this.trapStateQuery(
+      const { path, default: def, constant } = this.props;
+      const finalState = this.trapStateQuery(
         this.storeState,
-        this.props.path,
-        this.props.default,
-        renderFn
+        path,
+        def,
+        renderFn,
+        constant
       );
 
       this.prevStoreState = this.storeState;
-      this.prevFinalRenderedState = finalRenderedState;
-      return finalRenderedState;
+      this.prevFinalState = finalState;
+      return finalState;
     };
 
     render() {
