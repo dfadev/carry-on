@@ -79,9 +79,7 @@ export default function makeStateComponents({
     };
 
     stateSubscriber = (state, changes) =>
-      (changes === undefined ||
-        this.affectedStateKeys === undefined ||
-        compareChanges(changes, this.affectedStateKeys)) &&
+      compareChanges(changes, this.affectedStateKeys) &&
       this.onStateChange(state, changes);
 
     trapStateQuery = (state, path, def, select) => {
