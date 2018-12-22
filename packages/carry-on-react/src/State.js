@@ -82,7 +82,13 @@ export default function makeStateComponents({
       compareChanges(changes, this.affectedStateKeys) &&
       this.onStateChange(state, changes);
 
-    trapStateQuery = (state, path, def, select) => {
+    trapStateQuery = (state, path, def, select, constant) => {
+      if (constant) {
+        const pathedState = getIn(state, path, def);
+        const selectedState = select(pathedState);
+        return selectedState;
+      }
+
       const pathedState = getIn(state, path, def);
       const trappedState = proxyState(pathedState);
       const selectedState = select(trappedState.state);
