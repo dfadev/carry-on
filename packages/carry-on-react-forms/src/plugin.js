@@ -4,9 +4,11 @@ import {
   isEqual,
   debouncePromise,
   getIn,
+  getInA,
   mutateSet,
   makeCancelable,
-  mutateMerge
+  mutateMerge,
+  toPath
 } from "carry-on-utils";
 
 export default (
@@ -23,6 +25,8 @@ export default (
 
     const typeSuffix = " (" + id + ")";
 
+    const idPath = toPath(id);
+
     const calcPristine = form => isEqual(form.origState.values, form.values);
 
     const stage1 = {
@@ -37,7 +41,7 @@ export default (
 
       validate: (state, onSuccess) => {
         if (debounceValidate) {
-          const form = getIn(state, id);
+          const form = getInA(state, idPath);
           form.isValidating = true;
           const setErrors = form.setErrors;
 
@@ -47,7 +51,7 @@ export default (
             errorInfo => setErrors(errorInfo) && onSuccess && onSuccess(),
             () => {
               dispatch(
-                curState => (getIn(curState, id).isValidating = false),
+                curState => (getInA(curState, idPath).isValidating = false),
                 "Validation Threw" + typeSuffix
               );
               onSuccess && onSuccess();
@@ -57,14 +61,14 @@ export default (
       },
 
       hasError: fieldName =>
-        query(state => getIn(getIn(state, id).errors, fieldName, false)),
+        query(state => getIn(getInA(state, idPath).errors, fieldName, false)),
 
       isTouched: fieldName =>
-        query(state => getIn(getIn(state, id).touched, fieldName, false)),
+        query(state => getIn(getInA(state, idPath).touched, fieldName, false)),
 
       setFieldValue: (fieldName, value) =>
         dispatch(state => {
-          const form = getIn(state, id);
+          const form = getInA(state, idPath);
           mutateSet(form.values, fieldName, value);
           const pristine = calcPristine(form);
           if (pristine !== form.isPristine) form.isPristine = pristine;
@@ -73,7 +77,7 @@ export default (
 
       setValues: values =>
         dispatch(state => {
-          const form = getIn(state, id);
+          const form = getInA(state, idPath);
           form.values = values;
           const pristine = calcPristine(form);
           if (pristine !== form.isPristine) form.isPristine = pristine;
@@ -82,12 +86,12 @@ export default (
 
       setFieldError: (fieldName, error) =>
         dispatch(state => {
-          mutateSet(getIn(state, id).errors, fieldName, error);
+          mutateSet(getInA(state, idPath).errors, fieldName, error);
         }, "Set Field Error" + typeSuffix),
 
       setErrors: ({ errors, isValid, merge = true }) =>
         dispatch(state => {
-          const form = getIn(state, id);
+          const form = getInA(state, idPath);
 
           if (merge) mutateMerge(form.errors, errors);
           else form.errors = errors;
@@ -98,22 +102,20 @@ export default (
 
       setFieldTouched: (fieldName, touched) =>
         dispatch(state => {
-          mutateSet(getIn(state, id).touched, fieldName, touched);
+          mutateSet(getInA(state, idPath).touched, fieldName, touched);
         }, "Set Field Touched" + typeSuffix),
 
       setTouched: (touched, merge = true) =>
         dispatch(state => {
-          const form = getIn(state, id);
-          if (merge)
-            mutateMerge(form.touched, touched);
-          else
-            form.touched = touched;
+          const form = getInA(state, idPath);
+          if (merge) mutateMerge(form.touched, touched);
+          else form.touched = touched;
         }, "Set Touched" + typeSuffix),
 
       reset: e => {
         e && e.preventDefault();
         const s = dispatch(state => {
-          const formState = getIn(state, id);
+          const formState = getInA(state, idPath);
           const origState = formState.origState;
           const newFormState = {
             ...formState,
@@ -123,7 +125,7 @@ export default (
           mutateSet(state, id, newFormState);
         }, "Reset Form" + typeSuffix);
         const realOnReset = onReset && onReset({ dispatch, query });
-        realOnReset && realOnReset(query(q => getIn(q, id).values));
+        realOnReset && realOnReset(query(q => getInA(q, idPath).values));
         return s;
       },
 
@@ -132,7 +134,8 @@ export default (
         if (
           query(
             state =>
-              getIn(state, id).isValidating || getIn(state, id).isSubmitting
+              getInA(state, idPath).isValidating ||
+              getInA(state, idPath).isSubmitting
           )
         )
           return;
@@ -141,11 +144,11 @@ export default (
           const realOnSubmit = onSubmit && onSubmit({ dispatch, query });
 
           Promise.resolve(
-            realOnSubmit && realOnSubmit(query(q => getIn(q, id).values))
+            realOnSubmit && realOnSubmit(query(q => getInA(q, idPath).values))
           )
             .then(rslt => {
               dispatch(curState => {
-                const form = getIn(curState, id);
+                const form = getInA(curState, idPath);
                 form.isSubmitting = false;
                 if (rslt) {
                   form.isPristine = true;
@@ -158,7 +161,7 @@ export default (
             })
             .catch(() =>
               dispatch(curState => {
-                const form = getIn(curState, id);
+                const form = getInA(curState, idPath);
                 form.isSubmitting = false;
                 return curState;
               })
@@ -166,16 +169,16 @@ export default (
         };
 
         const beginSubmitState = dispatch(state => {
-          const form = getIn(state, id);
+          const form = getInA(state, idPath);
           form.isSubmitting = true;
           form.validate(state, finishSubmit);
         }, "Begin Submit" + typeSuffix);
 
-        if (!getIn(beginSubmitState, id).isValidating) finishSubmit();
+        if (!getInA(beginSubmitState, idPath).isValidating) finishSubmit();
       }
     };
     const stage2 = mutateSet({}, id, stage1);
-    const form = getIn(stage2, id);
+    const form = getInA(stage2, idPath);
     form.origState = { ...stage1 };
     return stage2;
   }
