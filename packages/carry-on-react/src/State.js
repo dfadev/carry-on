@@ -1,46 +1,12 @@
 /** @format **/
 import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import {
-  throttle,
-  debounce,
-  isFunction,
-  getIn,
-  mutateSet
-} from "carry-on-utils";
+import { throttle, debounce, isFunction, getIn } from "carry-on-utils";
 import { spreadGuardsEnabled, proxyState, deproxify } from "proxyequal";
+import { compareChanges, createAffectedKeysIndex } from "./changeTracking";
 
 // if this is enabled, proxyequal mutates state with an additional property
 spreadGuardsEnabled(false);
-
-function compareChanges(changes, affected) {
-  const queue = [];
-  queue.push({ changes, affected });
-
-  while (queue.length > 0) {
-    const item = queue.pop();
-    const entries = item.changes;
-
-    for (let i = 0, len = entries.length; i < len; i++) {
-      const entry = entries[i];
-      const key = entry.key;
-      const affectedValue = item.affected[key];
-
-      if (affectedValue === true) return true;
-      if (affectedValue !== undefined) {
-        const nextChanges = entry.changes;
-
-        if (nextChanges === true) return true;
-        queue.push({
-          changes: nextChanges,
-          affected: affectedValue
-        });
-      }
-    }
-  }
-
-  return false;
-}
 
 export default function makeStateComponents({
   useStore,
@@ -101,11 +67,7 @@ export default function makeStateComponents({
       const finalState =
         deproxified !== undefined ? deproxified : selectedState;
 
-      if (affected !== undefined) {
-        this.affectedStateKeys = {};
-        for (let i = 0; i < affected.length; i++)
-          mutateSet(this.affectedStateKeys, path + affected[i], true);
-      } else this.affectedStateKeys = undefined;
+      this.affectedStateKeys = createAffectedKeysIndex(path, affected);
 
       return finalState;
     };
