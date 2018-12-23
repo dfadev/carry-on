@@ -11,8 +11,6 @@ import {
 import ReactDOM from "react-dom";
 
 export default class State extends Component {
-  affectedStateKeys = undefined;
-
   constructor(props) {
     super(props);
     const { from, throttle: t, debounce: d, constant } = props;
