@@ -39,7 +39,7 @@ const setInRecursor = (current, index, path, value) => {
         }
         return undefined;
       }
-      const { [key]: _removed, ...final } = current;
+      const { [key]: removed, ...final } = current;
       return final;
     }
     // set result in key
