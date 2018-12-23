@@ -50,7 +50,7 @@ const create = id => ({ id, pending: [], notify: notify() });
 // a map of stores
 let stores = {};
 
-// initialize the map of stores
+// initialize the map of stores (delete all)
 export const initStores = () => (stores = {});
 
 // delete a store
