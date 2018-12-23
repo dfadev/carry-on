@@ -1,6 +1,6 @@
 {
   "name": "carry-on-store",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "State manager",
   "source": "./src/index.js",
   "module": "./es/carry-on-store.js",
@@ -43,7 +43,7 @@
   "sideEffects": false,
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
   "dependencies": {
-    "carry-on-utils": "0.0.13",
+    "carry-on-utils": "^0.0.14",
     "immer": "^1.9.3",
     "proxyequal": "^2.0.1"
   }
