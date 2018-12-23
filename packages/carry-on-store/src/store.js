@@ -64,7 +64,7 @@ export const register = (init, id) => {
   const store = useStore(id);
   // queue if no dispatch available yet
   if (store.dispatch)
-    store.dispatch(state => createPlugins(store, state, init));
+    store.dispatch(state => createPlugins(store, state, init), initMessageType);
   else store.pending.push(init);
 };
 
