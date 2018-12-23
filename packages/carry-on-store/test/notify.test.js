@@ -8,7 +8,7 @@ test("plug snapshot", () => {
   const plug = {};
   let state = { plug };
   const query = () => state;
-  const dispatch = (action, type, force, ...args) => {
+  const dispatch = (action, type) => {
     return (state = action(state));
   };
 
@@ -20,7 +20,7 @@ test("subscribe/unsubscribe", () => {
   const plug = {};
   let state = { plug };
   const query = () => state;
-  let dispatch = (action, type, force, ...args) => {
+  let dispatch = (action, type) => {
     return (state = action(state));
   };
   let getChanges = () => [];

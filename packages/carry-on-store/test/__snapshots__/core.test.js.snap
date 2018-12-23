@@ -20,12 +20,6 @@ Object {
 }
 `;
 
-exports[`force dispatch 1`] = `
-Object {
-  "some": "forced state",
-}
-`;
-
 exports[`query with action 1`] = `
 "Snapshot Diff:
 - First value

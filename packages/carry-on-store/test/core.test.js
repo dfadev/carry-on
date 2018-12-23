@@ -106,14 +106,6 @@ test("connect to already connected store succeeds", () => {
   deleteStore();
 });
 
-test("force dispatch", () => {
-  const state = connect();
-  const store = useStore();
-  store.dispatch(state => ({ ...state, some: "forced state" }), "", true);
-  expect(store.state).toMatchSnapshot();
-  deleteStore();
-});
-
 test("register with plugin with multiple middleware", () => {
   let pluginDispatchCalled = 0;
 

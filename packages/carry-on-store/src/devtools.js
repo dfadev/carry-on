@@ -33,17 +33,13 @@ export default function devTools({ timeTravel = true } = {}) {
                 msg.type === "DISPATCH" &&
                 msg.payload &&
                 msg.payload.type === "JUMP_TO_STATE" &&
-                dispatch(
-                  s => {
-                    if (s === undefined) s = {};
-                    const keys = Object.keys(s);
-                    for (let i = 0, len = keys.length; i < len; i++)
-                      delete s[keys[i]];
-                    return Object.assign(s, states[msg.payload.index]);
-                  },
-                  "Time Travel",
-                  true
-                )
+                dispatch(s => {
+                  if (s === undefined) s = {};
+                  const keys = Object.keys(s);
+                  for (let i = 0, len = keys.length; i < len; i++)
+                    delete s[keys[i]];
+                  return Object.assign(s, states[msg.payload.index]);
+                }, "Time Travel")
             ));
         }
 

@@ -83,11 +83,7 @@ export const connect = (id, wrap) => {
   const patchCatcher = patches => (store.changes = calculateChanges(patches));
 
   // run producer action and set state
-  store.d = function core(action, type, force) {
-    return (store.state = force
-      ? immer(store.state, action, patchCatcher) //action(store.state)
-      : immer(store.state, action, patchCatcher));
-  };
+  store.d = action => (store.state = immer(store.state, action, patchCatcher));
 
   // store.d mutates according to middleware, dispatch calls the latest
   store.dispatch = (...args) => store.d(...args);

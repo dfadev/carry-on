@@ -9,7 +9,7 @@ test("plug snapshot", () => {
   const plug = {};
   let state = { plug };
   const query = () => state;
-  const dispatch = (action, type, force, ...args) => {
+  const dispatch = (action, type) => {
     return (state = action(state));
   };
 
@@ -22,7 +22,7 @@ test("commit", () => {
   const query = () => {};
   const plug = {};
   let state = { plug };
-  const dispatch = (action, type, force, ...args) => {
+  const dispatch = (action, type) => {
     return (state = action(state));
   };
 
@@ -44,12 +44,12 @@ test("commit", () => {
 test("rollback", async () => {
   const query = state => immer(state, s => s);
   const state = {};
-  const dispatch = (action, type, force, ...args) => {
+  const dispatch = (action, type) => {
     return immer(state, action);
   };
 
   const store = {
-    dispatch: (action, type, force, ...args) => {
+    dispatch: (action, type) => {
       return (store.state = immer(store.state, action));
     },
     query,
@@ -72,7 +72,7 @@ test("commit no transaction throws", () => {
   const query = () => {};
   const plug = {};
   let state = { plug };
-  const dispatch = (action, type, force, ...args) => {
+  const dispatch = (action, type) => {
     return (state = action(state));
   };
 
@@ -85,7 +85,7 @@ test("rollback no transaction throws", () => {
   const query = () => {};
   const plug = {};
   let state = { plug };
-  const dispatch = (action, type, force, ...args) => {
+  const dispatch = (action, type) => {
     return (state = action(state));
   };
 
