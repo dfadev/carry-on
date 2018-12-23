@@ -85,7 +85,7 @@ export const connect = (id, wrap) => {
   // run producer action and set state
   store.d = function core(action, type, force) {
     return (store.state = force
-      ? action(store.state)
+      ? immer(store.state, action, patchCatcher) //action(store.state)
       : immer(store.state, action, patchCatcher));
   };
 

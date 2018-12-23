@@ -1,5 +1,4 @@
 /** @format **/
-
 export default function devTools({ timeTravel = true } = {}) {
   // dev tools connections
   const connections = [],
@@ -12,7 +11,7 @@ export default function devTools({ timeTravel = true } = {}) {
   if (!devToolsExt) return {};
 
   return {
-    middleware: ({ dispatch, id }) =>
+    middleware: ({ dispatch, id, query }) =>
       function devToolsMiddleware(action, type = "Dispatch", ...args) {
         const state = dispatch(action, type, ...args);
 
@@ -34,7 +33,17 @@ export default function devTools({ timeTravel = true } = {}) {
                 msg.type === "DISPATCH" &&
                 msg.payload &&
                 msg.payload.type === "JUMP_TO_STATE" &&
-                dispatch(() => states[msg.payload.index], "Time Travel", true)
+                dispatch(
+                  s => {
+                    if (s === undefined) s = {};
+                    const keys = Object.keys(s);
+                    for (let i = 0, len = keys.length; i < len; i++)
+                      delete s[keys[i]];
+                    return Object.assign(s, states[msg.payload.index]);
+                  },
+                  "Time Travel",
+                  true
+                )
             ));
         }
 

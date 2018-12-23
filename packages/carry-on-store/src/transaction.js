@@ -20,7 +20,18 @@ export default function transaction() {
         dispatch(state => {
           const rollbackState = query();
           transactions.push(() =>
-            dispatch(() => rollbackState, "Rollback", true)
+            dispatch(
+              s => {
+                if (s === undefined) s = {};
+                const keys = Object.keys(s);
+                for (let i = 0, len = keys.length; i < len; i++)
+                  delete s[keys[i]];
+                const newState = Object.assign(s, rollbackState);
+                return newState;
+              },
+              "Rollback",
+              true
+            )
           );
           return state;
         }, "Begin Transaction")
