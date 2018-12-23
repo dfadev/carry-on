@@ -55,7 +55,7 @@ export function trackChanges(state, select) {
   };
 }
 
-export function calculateChangesIndex(patches) {
+export function calculateChanges(patches) {
   const stage1 = {};
   for (let i = 0, len = patches.length; i < len; i++)
     mutateSetA(stage1, patches[i].path, true);

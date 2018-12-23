@@ -2,7 +2,7 @@
 import immer from "immer";
 import { mutateMerge, isFunction } from "carry-on-utils";
 import notify from "./notify";
-import { calculateChangesIndex } from "./changeTracking";
+import { calculateChanges } from "./changeTracking";
 
 // middleware initialize message type
 export const initMessageType = "Initialize";
