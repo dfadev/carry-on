@@ -17,7 +17,6 @@ const applyMiddleware = (middlewares, fn, apply) => {
 const createPlugins = (store, curState, plugins = []) => {
   if (!Array.isArray(plugins)) plugins = [plugins];
 
-  // dispatch
   for (let i = 0, len = plugins.length; i < len; i++) {
     const plugin = plugins[i];
     const { middleware, state } = plugin;
