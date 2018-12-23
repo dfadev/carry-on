@@ -9,7 +9,7 @@ function getVal({ target: { type, value, checked } }) {
     return Number.isNaN(parsed) ? "" : parsed;
   }
 
-  if (type === "checkbox") return checked;
+  if (type === "checkbox" || type === "radio") return checked;
 
   return value;
 }
@@ -39,7 +39,9 @@ export default ({
         element: {
           onChange: e => setFieldValue(path, getVal(e)),
           onBlur: () => !isTouched(path) && setFieldTouched(path, true),
-          [type === "checkbox" ? "checked" : "value"]: getIn(values, path, def)
+          [type === "checkbox" || type === "radio"
+            ? "checked"
+            : "value"]: getIn(values, path, def)
         },
         setValue: val => setFieldValue(path, val),
         setTouched: val => setFieldTouched(path, val),
