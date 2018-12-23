@@ -15,7 +15,10 @@ export default class State extends Component {
 
   constructor(props) {
     super(props);
-    connect(props.from, ReactDOM.unstable_batchedUpdates);
+    connect(
+      props.from,
+      ReactDOM.unstable_batchedUpdates
+    );
 
     const {
       from,
