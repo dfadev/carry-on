@@ -5,7 +5,6 @@ export { default as isEqual } from "fast-deep-equal";
 export { merge as mutateMerge } from "micro-dash";
 
 export { default as isFunction } from "./isFunction";
-export { default as shallowEqual } from "./shallowEqual";
 export { default as toPath } from "./toPath";
 export { default as getIn, getInA } from "./getIn";
 export { default as makeCancelable } from "./makeCancelable";
