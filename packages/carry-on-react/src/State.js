@@ -8,13 +8,14 @@ import {
   trackChanges,
   compareChanges
 } from "carry-on-store";
+import ReactDOM from "react-dom";
 
 export default class State extends Component {
   affectedStateKeys = undefined;
 
   constructor(props) {
     super(props);
-    connect(props.from);
+    connect(props.from, ReactDOM.unstable_batchedUpdates);
 
     const {
       from,
@@ -42,7 +43,8 @@ export default class State extends Component {
   onStateChange = (state, changes) => {
     if (!changes || changes.length === 0) return;
     this.storeState = this.trapSelect(state);
-    this.forceUpdate();
+    //this.forceUpdate();
+    this.setState({}, () => {});
   };
 
   stateSubscriber = (state, changes) =>

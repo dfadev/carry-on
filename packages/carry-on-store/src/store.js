@@ -15,7 +15,7 @@ const applyMiddleware = (middlewares, fn, apply) => {
 };
 
 const createPlugins = (store, curState, plugins = []) => {
-  const { id, query, getChanges } = store;
+  const { id, query, getChanges, wrap } = store;
   if (!Array.isArray(plugins)) plugins = [plugins];
 
   for (let i = 0, len = plugins.length; i < len; i++) {
@@ -28,7 +28,7 @@ const createPlugins = (store, curState, plugins = []) => {
           middlewares[j],
           store.d,
           (middlewareEntry, fn) =>
-            middlewareEntry({ query, id, dispatch: fn, getChanges })
+            middlewareEntry({ query, id, dispatch: fn, getChanges, wrap })
         );
     }
 
@@ -69,7 +69,7 @@ export const register = (init, id) => {
 };
 
 // connect a store
-export const connect = id => {
+export const connect = (id, wrap) => {
   const store = useStore(id);
   if (store.dispatch) return store.state;
 
@@ -91,6 +91,9 @@ export const connect = id => {
 
   // store.d mutates according to middleware, dispatch calls the latest
   store.dispatch = (...args) => store.d(...args);
+
+  // wrap change notifications to allow for external batch updates
+  store.wrap = wrap;
 
   // populate initial state
   store.state = {};
