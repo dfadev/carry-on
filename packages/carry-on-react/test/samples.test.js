@@ -1,7 +1,12 @@
 /** @format **/
 import React, { Fragment } from "react";
-import { notify as notifyListeners, transaction } from "carry-on-store";
-import { deleteStore, register, State, Store } from "../src";
+import {
+  register,
+  deleteStore,
+  notify as notifyListeners,
+  transaction,
+  State
+} from "../src";
 import { wait, render, fireEvent, waitForElement } from "react-testing-library";
 
 // default store

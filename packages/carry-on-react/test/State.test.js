@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "react-testing-library";
-import { withState, State, deleteStore, register } from "../src";
+import { deleteStore, register, withState, State } from "../src";
 
 test("<State /> renders", () => {
   const { asFragment } = render(<State>{() => "ok"}</State>);

@@ -1,16 +1,12 @@
-import { makeStoreModule } from "../src";
+import { useStore, deleteStore, connect, register } from "../src";
 
 test("useStore", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
-
   const store = useStore();
   expect(store).toMatchSnapshot();
   deleteStore();
 });
 
 test("useStore named", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
-
   const store = useStore("store1");
   const state = connect({ id: "store1" });
   expect(store).toMatchSnapshot();
@@ -19,8 +15,6 @@ test("useStore named", () => {
 });
 
 test("deleteStore", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
-
   const store = useStore("store1");
   store.marker = 1;
   expect(store.marker).toBe(1);
@@ -30,8 +24,6 @@ test("deleteStore", () => {
 });
 
 test("register", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
-
   const store = useStore();
   register({ state: { some: "state" } });
   expect(store.pending.length).toBe(1);
@@ -39,8 +31,6 @@ test("register", () => {
 });
 
 test("register with init as function", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
-
   const store = useStore();
   register({ state: ({ dispatch }) => ({ some: "state" }) });
   expect(store.pending.length).toBe(1);
@@ -48,7 +38,6 @@ test("register with init as function", () => {
 });
 
 test("register on connected store", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
   const store = useStore();
   const initialState = connect();
   register({ state: { some: "state" } });
@@ -57,7 +46,6 @@ test("register on connected store", () => {
 });
 
 test("register on connected store with init as function", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
   const store = useStore();
   const initialState = connect();
   register({ state: ({ dispatch }) => ({ some: "state" }) });
@@ -66,7 +54,6 @@ test("register on connected store with init as function", () => {
 });
 
 test("connect", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
   const store = useStore();
   const state = connect();
   expect(state).toMatchSnapshot();
@@ -74,7 +61,6 @@ test("connect", () => {
 });
 
 test("connect with pending object state", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
   register({ state: { some: "state" } });
   const store = useStore();
   const state = connect();
@@ -83,7 +69,6 @@ test("connect with pending object state", () => {
 });
 
 test("connect with pending function state", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
   register({ state: dispatch => ({ some: "state" }) });
   const store = useStore();
   const state = connect();
@@ -91,24 +76,7 @@ test("connect with pending function state", () => {
   deleteStore();
 });
 
-//test("connect with init as function", () => {
-  //// connect with init no longer supported, use register instead
-  //const { useStore, deleteStore, connect } = makeStoreModule();
-  //const state = connect({ init: ({ dispatch }) => ({ some: "state" }) });
-  //expect(state).toMatchSnapshot();
-  //deleteStore();
-//});
-
-//test("connect with init as object", () => {
-  //// connect with init no longer supported, use register instead
-  //const { useStore, deleteStore, connect } = makeStoreModule();
-  //const state = connect({ init: { some: "state" } });
-  //expect(state).toMatchSnapshot();
-  //deleteStore();
-//});
-
 test("dispatch action", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
   const state = connect();
   const store = useStore();
   store.dispatch(state => ({ ...state, some: "state" }));
@@ -117,7 +85,6 @@ test("dispatch action", () => {
 });
 
 test("query with action", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
   const state = connect();
   const store = useStore();
   const q = store.query(state => ({ ...state, some: "state" }));
@@ -126,7 +93,6 @@ test("query with action", () => {
 });
 
 test("query with default action", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
   const state = connect();
   const store = useStore();
   const q = store.query();
@@ -135,14 +101,12 @@ test("query with default action", () => {
 });
 
 test("connect to already connected store succeeds", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
   const state = connect();
   expect(connect).not.toThrow();
   deleteStore();
 });
 
 test("force dispatch", () => {
-  const { useStore, deleteStore, connect } = makeStoreModule();
   const state = connect();
   const store = useStore();
   store.dispatch(state => ({ ...state, some: "forced state" }), "", true);
@@ -151,7 +115,6 @@ test("force dispatch", () => {
 });
 
 test("register with plugin with multiple middleware", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
   let pluginDispatchCalled = 0;
 
   const plugin = {
@@ -177,7 +140,6 @@ test("register with plugin with multiple middleware", () => {
 });
 
 test("register with plugins dispatch as array", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
   let pluginDispatchCalled = 0;
 
   const plugin = {
@@ -203,7 +165,6 @@ test("register with plugins dispatch as array", () => {
 });
 
 test("register with plugins as non-array", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
   let pluginDispatchCalled = 0;
 
   const plugin = {
@@ -223,7 +184,6 @@ test("register with plugins as non-array", () => {
 });
 
 test("register with plugin, state function ", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
   let pluginDispatchCalled = 0;
 
   const plugin = {
@@ -248,7 +208,6 @@ test("register with plugin, state function ", () => {
 });
 
 test("register with plugin, no state and dispatch", () => {
-  const { useStore, deleteStore, connect, register } = makeStoreModule();
   let pluginDispatchCalled = 0;
 
   const plugin = {

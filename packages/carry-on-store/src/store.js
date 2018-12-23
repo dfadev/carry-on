@@ -5,7 +5,7 @@ import notify from "./notify";
 import { calculateChangesIndex } from "./changeTracking";
 
 // middleware initialize message type
-const initMessage = "Initialize";
+export const initMessageType = "Initialize";
 
 // wrap a function with middleware
 const applyMiddleware = (middlewares, fn, apply) => {
@@ -48,74 +48,66 @@ function create(id) {
   return { id, pending: [], notify: notify() };
 }
 
-export default function makeStoreModule(defaultId) {
-  // a map of stores
-  const stores = {};
+const defaultId = undefined;
 
-  // delete a store
-  function deleteStore(id = defaultId) {
-    delete stores[id];
-  }
+// a map of stores
+const stores = {};
 
-  // lookup a store
-  const useStore = (id = defaultId) => stores[id] || (stores[id] = create(id));
-
-  // register state
-  const register = (init, id = defaultId) => {
-    const store = useStore(id);
-    // queue if no dispatch available yet
-    if (store.dispatch)
-      store.dispatch(state => createPlugins(store, state, init));
-    else store.pending.push(init);
-  };
-
-  // connect a store
-  const connect = id => {
-    const store = useStore(id);
-    if (store.dispatch) return store.state;
-
-    // query provides a copy of state created by the producer
-    store.query = (action = identity => identity, ...args) =>
-      immer(store.state, action, ...args);
-
-    // change tracking
-    store.getChanges = () => store.changes;
-
-    const patchCatcher = patches => {
-      store.changes = calculateChangesIndex(patches);
-    };
-
-    // run producer action and set state
-    store.d = function core(action, type, force) {
-      return (store.state = force
-        ? action(store.state)
-        : immer(store.state, action, patchCatcher));
-    };
-
-    // store.d mutates according to middleware, dispatch calls the latest
-    store.dispatch = (...args) => store.d(...args);
-
-    // populate initial state
-    store.state = {};
-    store.pending.sort((a, b) => (b.priority || 0) - (a.priority || 0));
-    const plugins = [store.notify.plugin, ...store.pending];
-    createPlugins(store, store.state, plugins);
-    delete store.pending;
-
-    // initialize middleware with state
-    store.dispatch(state => state, initMessage);
-    return store.state;
-  };
-
-  // subscribe to state changes
-  const subscribe = (id = defaultId, fn) => useStore(id).notify.subscribe(fn);
-
-  return {
-    subscribe,
-    useStore,
-    deleteStore,
-    connect,
-    defaultId,
-    register
-  };
+// delete a store
+export function deleteStore(id = defaultId) {
+  delete stores[id];
 }
+
+// lookup a store
+export const useStore = (id = defaultId) =>
+  stores[id] || (stores[id] = create(id));
+
+// register state
+export const register = (init, id = defaultId) => {
+  const store = useStore(id);
+  // queue if no dispatch available yet
+  if (store.dispatch)
+    store.dispatch(state => createPlugins(store, state, init));
+  else store.pending.push(init);
+};
+
+// connect a store
+export const connect = id => {
+  const store = useStore(id);
+  if (store.dispatch) return store.state;
+
+  // query provides a copy of state created by the producer
+  store.query = (action = identity => identity, ...args) =>
+    immer(store.state, action, ...args);
+
+  // change tracking
+  store.getChanges = () => store.changes;
+
+  const patchCatcher = patches => {
+    store.changes = calculateChangesIndex(patches);
+  };
+
+  // run producer action and set state
+  store.d = function core(action, type, force) {
+    return (store.state = force
+      ? action(store.state)
+      : immer(store.state, action, patchCatcher));
+  };
+
+  // store.d mutates according to middleware, dispatch calls the latest
+  store.dispatch = (...args) => store.d(...args);
+
+  // populate initial state
+  store.state = {};
+  store.pending.sort((a, b) => (b.priority || 0) - (a.priority || 0));
+  createPlugins(store, store.state, [store.notify.plugin, ...store.pending]);
+  delete store.pending;
+
+  // initialize middleware with state
+  store.dispatch(state => state, initMessageType);
+  return store.state;
+};
+
+// subscribe to state changes
+export const subscribe = (id = defaultId, fn) =>
+  useStore(id).notify.subscribe(fn);

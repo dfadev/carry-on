@@ -34,7 +34,7 @@ export function compareChanges(changes, affected) {
   return false;
 }
 
-export function createAffectedKeysIndex(affected) {
+function createAffectedKeysIndex(affected) {
   const affectedStateKeys = {};
   for (let i = 0, len = affected.length; i < len; i++)
     mutateSet(affectedStateKeys, affected[i], true);
