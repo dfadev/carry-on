@@ -46,8 +46,7 @@ export default class State extends Component {
   onStateChange = (state, changes) => {
     if (!changes || changes.length === 0) return;
     this.storeState = this.trapSelect(state);
-    //this.forceUpdate();
-    this.setState({}, () => {});
+    this.forceUpdate();
   };
 
   stateSubscriber = (state, changes) =>
