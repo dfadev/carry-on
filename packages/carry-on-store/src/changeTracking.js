@@ -1,9 +1,5 @@
 /** @format **/
-import { mutateSet, mutateSetA } from "carry-on-utils";
-import { spreadGuardsEnabled, proxyState, deproxify } from "proxyequal";
-
-// if this is enabled, proxyequal mutates state with an additional property
-spreadGuardsEnabled(false);
+import { proxyState, deproxify, mutateSetA } from "carry-on-utils";
 
 export function compareChanges(changes, affected) {
   const queue = [];
@@ -34,24 +30,17 @@ export function compareChanges(changes, affected) {
   return false;
 }
 
-function createAffectedKeysIndex(affected) {
-  const affectedStateKeys = {};
-  for (let i = 0, len = affected.length; i < len; i++)
-    mutateSet(affectedStateKeys, affected[i], true);
-  return affectedStateKeys;
-}
-
 export function trackChanges(state, select) {
   const trappedState = proxyState(state);
   const selectedState = select(trappedState.state);
-  trappedState.seal(); // this doesn't seem to remove the extra prop
+  trappedState.seal();
   const affected = trappedState.affected;
   const deproxified = deproxify(selectedState);
   const finalState = deproxified !== undefined ? deproxified : selectedState;
 
   return {
     finalState,
-    affected: createAffectedKeysIndex(affected)
+    affected
   };
 }
 
