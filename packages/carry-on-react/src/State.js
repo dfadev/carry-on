@@ -15,25 +15,17 @@ export default class State extends Component {
 
   constructor(props) {
     super(props);
+    const { from, throttle: t, debounce: d, constant } = props;
+
     connect(
-      props.from,
+      from,
       ReactDOM.unstable_batchedUpdates
     );
 
-    const {
-      from,
-      throttle: throttleTimeout,
-      debounce: debounceTimeout,
-      constant
-    } = this.props;
+    this.storeState = this.trapSelect(useStore(from).query());
 
-    const init = useStore(from).state;
-    this.storeState = this.trapSelect(init);
-
-    if (throttleTimeout)
-      this.onStateChange = throttle(throttleTimeout, this.onStateChange);
-    else if (debounceTimeout)
-      this.onStateChange = debounce(debounceTimeout, this.onStateChange);
+    if (t) this.onStateChange = throttle(t, this.onStateChange);
+    else if (d) this.onStateChange = debounce(d, this.onStateChange);
 
     if (!constant) this.unsubscribe = subscribe(from, this.stateSubscriber);
   }
@@ -53,14 +45,10 @@ export default class State extends Component {
     compareChanges(changes, this.affectedStateKeys) &&
     this.onStateChange(state, changes);
 
-  trapStateQuery = (state, path, def, select, constant) => {
-    if (constant) {
-      const pathedState = getIn(state, path, def);
-      const selectedState = select(pathedState);
-      return selectedState;
-    }
-
+  trapStateQuery = (state, select) => {
+    const { path, default: def, constant } = this.props;
     const pathedState = getIn(state, path, def);
+    if (constant) return select(pathedState);
 
     if (this.props.strict || this.affectedStateKeys === undefined) {
       const { finalState, affected } = trackChanges(pathedState, select);
@@ -73,24 +61,14 @@ export default class State extends Component {
 
   trapSelect = state => {
     if (!this.props.select) return state;
-    const { path, default: def, select, constant } = this.props;
-    return this.trapStateQuery(state, path, def, select, constant);
+    return this.trapStateQuery(state, this.props.select);
   };
 
   trapRender = renderFn => {
     if (this.prevStoreState === this.storeState) return this.prevFinalState;
-
     if (this.props.constant && this.prevFinalState) return this.prevFinalState;
 
-    const { path, default: def, constant } = this.props;
-    const finalState = this.trapStateQuery(
-      this.storeState,
-      path,
-      def,
-      renderFn,
-      constant
-    );
-
+    const finalState = this.trapStateQuery(this.storeState, renderFn);
     this.prevStoreState = this.storeState;
     this.prevFinalState = finalState;
     return finalState;
