@@ -15,6 +15,7 @@ const applyMiddleware = (middlewares, fn, apply) => {
 };
 
 const createPlugins = (store, curState, plugins = []) => {
+  const { id, query, getChanges } = store;
   if (!Array.isArray(plugins)) plugins = [plugins];
 
   for (let i = 0, len = plugins.length; i < len; i++) {
@@ -26,7 +27,8 @@ const createPlugins = (store, curState, plugins = []) => {
         store.d = applyMiddleware(
           middlewares[j],
           store.d,
-          (middlewareEntry, fn) => middlewareEntry({ ...store, dispatch: fn })
+          (middlewareEntry, fn) =>
+            middlewareEntry({ query, id, dispatch: fn, getChanges })
         );
     }
 
@@ -43,26 +45,22 @@ const createPlugins = (store, curState, plugins = []) => {
 };
 
 // create a store
-function create(id) {
-  return { id, pending: [], notify: notify() };
-}
-
-const defaultId = undefined;
+const create = id => ({ id, pending: [], notify: notify() });
 
 // a map of stores
-const stores = {};
+let stores = {};
+
+// initialize the map of stores
+export const initStores = () => (stores = {});
 
 // delete a store
-export function deleteStore(id = defaultId) {
-  delete stores[id];
-}
+export const deleteStore = id => delete stores[id];
 
 // lookup a store
-export const useStore = (id = defaultId) =>
-  stores[id] || (stores[id] = create(id));
+export const useStore = id => stores[id] || (stores[id] = create(id));
 
 // register state
-export const register = (init, id = defaultId) => {
+export const register = (init, id) => {
   const store = useStore(id);
   // queue if no dispatch available yet
   if (store.dispatch)
@@ -82,9 +80,7 @@ export const connect = id => {
   // change tracking
   store.getChanges = () => store.changes;
 
-  const patchCatcher = patches => {
-    store.changes = calculateChangesIndex(patches);
-  };
+  const patchCatcher = patches => (store.changes = calculateChanges(patches));
 
   // run producer action and set state
   store.d = function core(action, type, force) {
@@ -108,5 +104,4 @@ export const connect = id => {
 };
 
 // subscribe to state changes
-export const subscribe = (id = defaultId, fn) =>
-  useStore(id).notify.subscribe(fn);
+export const subscribe = (id, fn) => useStore(id).notify.subscribe(fn);
