@@ -44,6 +44,7 @@
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
   "dependencies": {
     "carry-on-utils": "0.0.13",
-    "immer": "^1.9.3"
+    "immer": "^1.9.3",
+    "proxyequal": "^2.0.1"
   }
 }

@@ -1,12 +1,14 @@
 /** @format **/
 import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { throttle, debounce, isFunction, getIn } from "carry-on-utils";
-import { spreadGuardsEnabled, proxyState, deproxify } from "proxyequal";
-import { compareChanges, createAffectedKeysIndex } from "./changeTracking";
-
-// if this is enabled, proxyequal mutates state with an additional property
-spreadGuardsEnabled(false);
+import {
+  throttle,
+  debounce,
+  isFunction,
+  getIn,
+  mutateSet
+} from "carry-on-utils";
+import { trackChanges, compareChanges } from "carry-on-store";
 
 export default function makeStateComponents({
   useStore,
@@ -64,16 +66,10 @@ export default function makeStateComponents({
       const pathedState = getIn(state, path, def);
 
       if (this.props.strict || this.affectedStateKeys === undefined) {
-        const trappedState = proxyState(pathedState);
-        const selectedState = select(trappedState.state);
-        trappedState.seal(); // this doesn't seem to remove the extra prop
-        const affected = trappedState.affected;
-        const deproxified = deproxify(selectedState);
-        const finalState =
-          deproxified !== undefined ? deproxified : selectedState;
-
-        this.affectedStateKeys = createAffectedKeysIndex(path, affected);
-
+        const { finalState, affected } = trackChanges(pathedState, select);
+        this.affectedStateKeys = path
+          ? mutateSet({}, path, affected)
+          : affected;
         return finalState;
       }
 
