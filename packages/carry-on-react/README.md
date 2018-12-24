@@ -4,17 +4,18 @@ State manager for React.
 
 ## Features
 
-- No selector necessary, automatic change tracking
+- No selector necessary
+- Batch update only changed components
 - Mutate state directly
 - Multiple stores
-- Optional form handling plugin, [carry-on-react-forms](../carry-on-react-forms)
 - Component or higher order component
-- Flexible State properties: debounce, throttle, constant, strict, select, path, from
+- Optional form handling: [carry-on-react-forms](../carry-on-react-forms)
+- Flexible properties: debounce, throttle, constant, strict, select, path, from
 
 ## Import
 
 ```JavaScript
-import { State, withState, register, deleteStore } from "carry-on-react";
+import { State, withState, register } from "carry-on-react";
 ```
 
 ## Examples
