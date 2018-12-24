@@ -1,6 +1,6 @@
 /** @format **/
 import { Component } from "react";
-import { throttle, debounce, getIn, mutateSet } from "carry-on-utils";
+import { log, throttle, debounce, getIn, mutateSet } from "carry-on-utils";
 import {
   useStore,
   connect,
@@ -11,6 +11,10 @@ import {
 import ReactDOM from "react-dom";
 
 export default class State extends Component {
+  static Debug = false;
+
+  static Verbose = false;
+
   constructor(props) {
     super(props);
     const { from, throttle: t, debounce: d, constant } = props;
@@ -19,6 +23,8 @@ export default class State extends Component {
       from,
       ReactDOM.unstable_batchedUpdates
     );
+
+    this.setupDebug();
 
     this.storeState = this.trapSelect(useStore(from).get());
 
@@ -33,28 +39,71 @@ export default class State extends Component {
     this.unsubscribe && this.unsubscribe();
   }
 
+  setupDebug = () => {
+    this.debug = State.Debug || this.props.debug;
+    if (!this.debug) return;
+    this.verbose = State.verbose || this.props.verbose;
+
+    let id = this.props.id ? "State:" + this.props.id : "State";
+    if (this.props.path) {
+      id += ":" + this.props.path;
+    }
+
+    this.log = log(id);
+    this.log.state.isEnabled = true;
+  };
+
   onStateChange = (state, changes) => {
-    if (!changes || changes.length === 0) return;
+    if (!changes || changes.length === 0) {
+      if (this.debug) this.log.debug("`no changes`");
+      return;
+    }
+
+    if (this.debug && (this.props.debounce || this.props.throttle))
+      this.log.debug("`delayed changes`", changes);
+
     this.storeState = this.trapSelect(state);
     this.forceUpdate();
   };
 
-  stateSubscriber = (state, changes) =>
-    compareChanges(changes, this.affectedStateKeys) &&
+  stateSubscriber = (state, changes) => {
+    const hasChanges = compareChanges(changes, this.affectedStateKeys);
+    if (!hasChanges) {
+      if (this.debug && this.verbose) {
+        this.log.debug(
+          "_no update_",
+          changes,
+          "watch:",
+          this.affectedStateKeys
+        );
+      }
+      return;
+    }
+
+    if (this.debug)
+      this.log.debug("`update`", changes, "watch:", this.affectedStateKeys);
+
     this.onStateChange(state, changes);
+  };
 
   trapStateQuery = (state, select) => {
     const { path, default: def, constant } = this.props;
     const pathedState = getIn(state, path, def);
-    if (constant) return select(pathedState);
+    if (constant) {
+      const finalState = select(pathedState);
+      if (this.debug) this.log.debug("`select` _constant_");
+      return finalState;
+    }
 
     if (this.props.strict || this.affectedStateKeys === undefined) {
       const { finalState, affected } = trackChanges(pathedState, select);
       this.affectedStateKeys = path ? mutateSet({}, path, affected) : affected;
+      if (this.debug) this.log.debug("`watch`", this.affectedStateKeys);
       return finalState;
     }
 
-    return select(pathedState);
+    const finalState = select(pathedState);
+    return finalState;
   };
 
   trapSelect = state => {
@@ -63,10 +112,23 @@ export default class State extends Component {
   };
 
   trapRender = renderFn => {
-    if (this.prevStoreState === this.storeState) return this.prevFinalState;
-    if (this.props.constant && this.prevFinalState) return this.prevFinalState;
+    if (this.prevStoreState === this.storeState) {
+      if (this.debug && this.verbose)
+        this.log.debug("*skip render* `prevState === nextState`");
+      return this.prevFinalState;
+    }
+
+    if (this.props.constant && this.prevFinalState) {
+      if (this.debug && this.verbose)
+        this.log.debug("*skip render* _constant_");
+      return this.prevFinalState;
+    }
 
     const finalState = this.trapStateQuery(this.storeState, renderFn);
+    if (this.debug)
+      if (this.props.constant) this.log.debug("`render` _constant_");
+      else this.log.debug("`render`");
+
     this.prevStoreState = this.storeState;
     this.prevFinalState = finalState;
     return finalState;
@@ -75,9 +137,14 @@ export default class State extends Component {
   render() {
     const renderFn = this.props.children || this.props.render;
     if (!renderFn) return null;
-    return this.props.select
-      ? renderFn(this.storeState)
-      : this.trapRender(renderFn);
+
+    if (this.props.select) {
+      if (this.debug)
+        if (this.props.constant) this.log.debug("`render` _constant_");
+        else this.log.debug("`render`");
+      return renderFn(this.storeState);
+    }
+    return this.trapRender(renderFn);
   }
 }
 

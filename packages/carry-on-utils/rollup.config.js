@@ -16,7 +16,7 @@ const eslintPlugin = eslint();
 const babelPlugin = babel();
 const external = Object.keys(pkg.dependencies || {})
   .concat(Object.keys(pkg.peerDependencies || {}))
-  .concat(["deepmerge", "throttle-debounce"]);
+  .concat(["throttle-debounce", "logdown"]);
 const watch = {
   clearScreen: false
 };
