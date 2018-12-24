@@ -91,7 +91,7 @@ export default class State extends Component {
     const pathedState = getIn(state, path, def);
     if (constant) {
       const finalState = select(pathedState);
-      if (this.debug) this.log.debug("`select` _constant_");
+      if (this.debug) this.log.debug("`get` _constant_");
       return finalState;
     }
 
