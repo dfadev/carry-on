@@ -1,14 +1,15 @@
 # carry-on-react
 
-State manager for React.
+State manager for React. Requires [Proxy](https://caniuse.com/#feat=proxy).
 
 ## Features
 
+- Mutate state directly
 - No selector necessary
 - Batch update only changed components
-- Mutate state directly
 - Multiple stores
 - Component or higher order component
+- Middleware
 - Optional form handling: [carry-on-react-forms](../carry-on-react-forms)
 - Flexible properties: debounce, throttle, constant, strict, select, path, from
 
@@ -21,6 +22,7 @@ import { State, withState, register } from "carry-on-react";
 ## Examples
 
 ### Default store
+
 ```JavaScript
 register({
   state: ({ set }) => ({
@@ -44,6 +46,7 @@ const App = () => (
 ```
 
 ### Two named stores
+
 ```JavaScript
 const store = {
   state: ({ set }) => ({
@@ -81,6 +84,7 @@ const App = () => (
 ```
 
 ### State select
+
 ```JavaScript
 register({
   state: ({ set }) => ({
@@ -108,6 +112,7 @@ const App = props => (
 ```
 
 ### Register state
+
 ```JavaScript
 register({
   state: ({ set }) => ({
@@ -131,6 +136,7 @@ const App = () => (
 ```
 
 ### Register state on a named store
+
 ```JavaScript
 register(
   {
@@ -157,6 +163,7 @@ const App = () => (
 ```
 
 ### State path
+
 ```JavaScript
 register({
   state: ({ set }) => ({
@@ -178,6 +185,7 @@ const App = () => (
 ```
 
 ### State path with default
+
 ```JavaScript
 register({
   state: ({ set }) => ({
@@ -199,6 +207,7 @@ const App = () => (
 ```
 
 ### State path on a named store using from
+
 ```JavaScript
 register(
   {
@@ -229,6 +238,7 @@ const App = () => (
 ```
 
 ### Unit of work using get
+
 ```JavaScript
 let rslt, rslt2;
 register({
@@ -266,6 +276,7 @@ const App = () => (
 ```
 
 ### Multiple select
+
 ```JavaScript
 register({
   state: ({ set }) => ({
