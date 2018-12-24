@@ -124,14 +124,14 @@ function proxyfy(state, onGet, suffix = "", ProxyMap) {
 
 export const proxyState = (object, _ProxyMap) => {
   const affected = {};
-  const set = new Set();
+  const keysUsed = new Set();
   const ProxyMap = _ProxyMap || new WeakMap();
   let sealed = false;
 
   const onKeyUse = key => {
     if (sealed) return;
-    if (!set.has(key)) {
-      set.add(key);
+    if (!keysUsed.has(key)) {
+      keysUsed.add(key);
       mutateSet(affected, key, true);
     }
   };
@@ -145,7 +145,7 @@ export const proxyState = (object, _ProxyMap) => {
     unseal: () => (sealed = false),
     reset: () => {
       affected.length = 0;
-      set.clear();
+      keysUsed.clear();
     },
     replaceState(state) {
       this.state = createState(state);
