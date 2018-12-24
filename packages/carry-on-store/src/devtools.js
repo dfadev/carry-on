@@ -12,7 +12,7 @@ export default function devTools({ timeTravel = true } = {}) {
 
   return {
     middleware: ({ set, id }) =>
-      function devToolsMiddleware(action, type = "Dispatch", ...args) {
+      function devToolsMiddleware(action, type = "Set", ...args) {
         const state = set(action, type, ...args);
 
         // exit when no action
