@@ -15,7 +15,7 @@ const applyMiddleware = (middlewares, fn, apply) => {
 };
 
 const createPlugins = (store, curState, plugins = []) => {
-  const { id, query, getChanges, wrap } = store;
+  const { id, dispatch, query, getChanges, wrap } = store;
   if (!Array.isArray(plugins)) plugins = [plugins];
 
   for (let i = 0, len = plugins.length; i < len; i++) {
@@ -37,7 +37,9 @@ const createPlugins = (store, curState, plugins = []) => {
       for (let j = 0, jlen = states.length; j < jlen; j++)
         mutateMerge(
           curState,
-          isFunction(states[j]) ? states[j](store) : states[j]
+          isFunction(states[j])
+            ? states[j]({ id, dispatch, query, getChanges })
+            : states[j]
         );
     }
   }
