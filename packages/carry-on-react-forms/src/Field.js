@@ -28,15 +28,20 @@ export default ({
       values,
       touched,
       errors,
+      visited,
       setFieldValue,
+      hasVisited,
       isTouched,
+      setFieldVisited,
       setFieldTouched,
       setFieldError
     }) =>
       children({
         touched: getIn(touched, path, false),
         error: getIn(errors, path, undefined),
+        visited: getIn(visited, path, false),
         element: {
+          onFocus: e => !hasVisited(path) && setFieldVisited(path, true),
           onChange: e => setFieldValue(path, getVal(e)),
           onBlur: () => !isTouched(path) && setFieldTouched(path, true),
           [type === "checkbox" || type === "radio"
@@ -44,6 +49,7 @@ export default ({
             : "value"]: getIn(values, path, def)
         },
         setValue: val => setFieldValue(path, val),
+        setVisited: val => setFieldVisited(path, val),
         setTouched: val => setFieldTouched(path, val),
         setError: val => setFieldError(path, val)
       })

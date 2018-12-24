@@ -30,6 +30,7 @@ export default (
     const calcPristine = form => isEqual(form.origState.values, form.values);
 
     const stage1 = {
+      visited: {},
       touched: {},
       errors: {},
       isPristine: true,
@@ -62,6 +63,9 @@ export default (
 
       hasError: fieldName =>
         query(state => getIn(getInA(state, idPath).errors, fieldName, false)),
+
+      hasVisited: fieldName =>
+        query(state => getIn(getInA(state, idPath).visited, fieldName, false)),
 
       isTouched: fieldName =>
         query(state => getIn(getInA(state, idPath).touched, fieldName, false)),
@@ -100,6 +104,11 @@ export default (
 
           if (form.isValidating) form.isValidating = false;
         }, "Set Errors" + typeSuffix),
+
+      setFieldVisited: (fieldName, visited) =>
+        dispatch(state => {
+          mutateSet(getInA(state, idPath).visited, fieldName, visited);
+        }, "Set Field Visited" + typeSuffix),
 
       setFieldTouched: (fieldName, touched) =>
         dispatch(state => {
@@ -153,6 +162,7 @@ export default (
                 if (rslt) {
                   if (!form.isPristine) form.isPristine = true;
                   if (Object.keys(form.errors).length > 0) form.errors = {};
+                  if (Object.keys(form.visited).length > 0) form.visited = {};
                   if (Object.keys(form.touched).length > 0) form.touched = {};
                   form.origState = undefined;
                   form.origState = { ...form };
@@ -177,6 +187,7 @@ export default (
         if (!getInA(beginSubmitState, idPath).isValidating) finishSubmit();
       }
     };
+
     const stage2 = mutateSet({}, id, stage1);
     const form = getInA(stage2, idPath);
     form.origState = { ...stage1 };
