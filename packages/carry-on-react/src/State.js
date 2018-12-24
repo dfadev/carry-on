@@ -42,7 +42,7 @@ export default class State extends Component {
   setupDebug = () => {
     this.debug = State.Debug || this.props.debug;
     if (!this.debug) return;
-    this.verbose = State.verbose || this.props.verbose;
+    this.verbose = State.Verbose || this.props.verbose;
 
     let id = this.props.id ? "State:" + this.props.id : "State";
     if (this.props.path) {
