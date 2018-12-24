@@ -11,8 +11,8 @@ export default function notify() {
 
   const plugin = {
     middleware: ({ set, getChanges, wrap }) =>
-      function notifyMiddleware(action, type, ...args) {
-        const state = set(action, type, ...args);
+      function notifyMiddleware(action, type, opts, ...args) {
+        const state = set(action, type, opts, ...args);
         const changes = getChanges();
 
         const notifySubs = () => {
@@ -20,8 +20,8 @@ export default function notify() {
             subscribers[i](state, changes);
         };
 
-        if (wrap) wrap(notifySubs);
-        else notifySubs();
+        if (!wrap || (opts && opts.immediate)) notifySubs();
+        else wrap(notifySubs);
 
         return state;
       }
