@@ -231,7 +231,7 @@ const App = () => (
 ```JavaScript
 let rslt, rslt2;
 register({
-  state: ({ set, get }) => ({
+  state: ({ get, set }) => ({
     action() {
       // use get for a unit of work
       rslt = get(state => {

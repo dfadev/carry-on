@@ -34,9 +34,9 @@ register(
       checkbox: false,
       slowfield: "zzz"
     },
-    onSubmit: ({ set, get }) => values => true,
-    onReset: ({ set, get }) => values => {},
-    onValidate: ({ set, get }) => vals =>
+    onSubmit: ({ get, set }) => values => true,
+    onReset: ({ get, set }) => values => {},
+    onValidate: ({ get, set }) => vals =>
       new Promise((resolve, reject) => {
         resolve({
           isValid: true,
