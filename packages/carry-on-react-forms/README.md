@@ -18,11 +18,11 @@ register({
 });
 
 register({
-  state: ({ dispatch }) => ({
+  state: ({ set }) => ({
     counter: {
       value: 0,
-      inc: () => dispatch(state => void state.counter.value++, "Inc"),
-      dec: () => dispatch(state => void state.counter.value--, "Dec")
+      inc: () => set(state => void state.counter.value++, "Inc"),
+      dec: () => set(state => void state.counter.value--, "Dec")
     }
   })
 });
@@ -34,9 +34,9 @@ register(
       checkbox: false,
       slowfield: "zzz"
     },
-    onSubmit: ({ dispatch, query }) => values => true,
-    onReset: ({ dispatch, query }) => values => {},
-    onValidate: ({ dispatch, query }) => vals =>
+    onSubmit: ({ set, get }) => values => true,
+    onReset: ({ set, get }) => values => {},
+    onValidate: ({ set, get }) => vals =>
       new Promise((resolve, reject) => {
         resolve({
           isValid: true,

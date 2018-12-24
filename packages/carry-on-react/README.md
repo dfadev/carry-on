@@ -22,10 +22,10 @@ import { State, withState, register, deleteStore } from "carry-on-react";
 ### Default store
 ```JavaScript
 register({
-  state: ({ dispatch }) => ({
+  state: ({ set }) => ({
     counter: 0,
-    inc: () => dispatch(state => void state.counter++),
-    dec: () => dispatch(state => void state.counter--)
+    inc: () => set(state => void state.counter++),
+    dec: () => set(state => void state.counter--)
   })
 });
 
@@ -45,10 +45,10 @@ const App = () => (
 ### Two named stores
 ```JavaScript
 const store = {
-  state: ({ dispatch }) => ({
+  state: ({ set }) => ({
     counter: 0,
-    inc: () => dispatch(state => void state.counter++),
-    dec: () => dispatch(state => void state.counter--)
+    inc: () => set(state => void state.counter++),
+    dec: () => set(state => void state.counter--)
   })
 };
 
@@ -82,11 +82,11 @@ const App = () => (
 ### State select
 ```JavaScript
 register({
-  state: ({ dispatch }) => ({
+  state: ({ set }) => ({
     notSelected: "item",
     counter: 0,
-    inc: () => dispatch(state => void state.counter++),
-    dec: () => dispatch(state => void state.counter--)
+    inc: () => set(state => void state.counter++),
+    dec: () => set(state => void state.counter--)
   })
 });
 
@@ -109,10 +109,10 @@ const App = props => (
 ### Register state
 ```JavaScript
 register({
-  state: ({ dispatch }) => ({
+  state: ({ set }) => ({
     counter: 0,
-    inc: () => dispatch(state => void state.counter++),
-    dec: () => dispatch(state => void state.counter--)
+    inc: () => set(state => void state.counter++),
+    dec: () => set(state => void state.counter--)
   })
 });
 
@@ -133,10 +133,10 @@ const App = () => (
 ```JavaScript
 register(
   {
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       counter: 0,
-      inc: () => dispatch(state => void state.counter++),
-      dec: () => dispatch(state => void state.counter--)
+      inc: () => set(state => void state.counter++),
+      dec: () => set(state => void state.counter--)
     })
   },
   "store1"
@@ -158,7 +158,7 @@ const App = () => (
 ### State path
 ```JavaScript
 register({
-  state: ({ dispatch }) => ({
+  state: ({ set }) => ({
     more: {
       stuff: {
         list: [{ item: "one" }, { item: "two" }]
@@ -179,7 +179,7 @@ const App = () => (
 ### State path with default
 ```JavaScript
 register({
-  state: ({ dispatch }) => ({
+  state: ({ set }) => ({
     more: {
       stuff: {
         list: [{ item: "one" }, { item: "two" }]
@@ -201,7 +201,7 @@ const App = () => (
 ```JavaScript
 register(
   {
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       more: {
         stuff: {
           list: [
@@ -227,27 +227,25 @@ const App = () => (
 );
 ```
 
-### Unit of work using query and immer
+### Unit of work using get
 ```JavaScript
-import immer from "immer";
-
 let rslt, rslt2;
 register({
-  state: ({ dispatch, query }) => ({
+  state: ({ set, get }) => ({
     action() {
-      // use query with immer producer for a unit of work
-      rslt = query(state => {
+      // use get for a unit of work
+      rslt = get(state => {
         // do stuff with state
         state.new = { ok: "0" };
       });
 
-      rslt2 = query(state => {
+      rslt2 = get(state => {
         // do some other stuff with state
         state.other = { none: "thing" };
       });
 
       // rslt and rslt2 are now two different versions of the original state
-      return dispatch(state => {
+      return set(state => {
         state.done = "yes";
       });
     }
@@ -269,10 +267,10 @@ const App = () => (
 ### Multiple select
 ```JavaScript
 register({
-  state: ({ dispatch }) => ({
+  state: ({ set }) => ({
     counter: 0,
-    inc: () => dispatch(state => void state.counter++),
-    dec: () => dispatch(state => void state.counter--)
+    inc: () => set(state => void state.counter++),
+    dec: () => set(state => void state.counter--)
   })
 });
 
