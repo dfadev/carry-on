@@ -80,10 +80,10 @@ export const connect = (id, wrap) => {
   // change tracking
   store.getChanges = () => store.changes;
 
-  const patchCatcher = patches => (store.changes = calculateChanges(patches));
+  const patcher = patches => (store.changes = calculateChanges(patches));
 
   // run producer action and set state
-  store.d = action => (store.state = immer(store.state, action, patchCatcher));
+  store.d = action => (store.state = immer(store.state, action, patcher));
 
   // store.d mutates according to middleware, set calls the latest
   store.set = (...args) => store.d(...args);
