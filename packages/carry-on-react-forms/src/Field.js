@@ -41,7 +41,7 @@ export default ({
         error: getIn(errors, path, undefined),
         visited: getIn(visited, path, false),
         element: {
-          onFocus: e => !hasVisited(path) && setFieldVisited(path, true),
+          onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
           onChange: e => setFieldValue(path, getVal(e)),
           onBlur: () => !isTouched(path) && setFieldTouched(path, true),
           [type === "checkbox" || type === "radio"
