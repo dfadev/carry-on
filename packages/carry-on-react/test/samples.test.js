@@ -12,10 +12,10 @@ import { wait, render, fireEvent, waitForElement } from "react-testing-library";
 // default store
 test("default store", () => {
   const store = {
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       counter: 0,
-      inc: () => dispatch(state => void state.counter++),
-      dec: () => dispatch(state => void state.counter--)
+      inc: () => set(state => void state.counter++),
+      dec: () => set(state => void state.counter--)
     })
   };
 
@@ -53,10 +53,10 @@ test("default store", () => {
 // two named stores
 test("two named stores", () => {
   const store = {
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       counter: 0,
-      inc: () => dispatch(state => void state.counter++),
-      dec: () => dispatch(state => void state.counter--)
+      inc: () => set(state => void state.counter++),
+      dec: () => set(state => void state.counter--)
     })
   };
 
@@ -114,11 +114,11 @@ test("two named stores", () => {
 // select
 test("select", () => {
   const store = {
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       notSelected: "item",
       counter: 0,
-      inc: () => dispatch(state => void state.counter++),
-      dec: () => dispatch(state => void state.counter--)
+      inc: () => set(state => void state.counter++),
+      dec: () => set(state => void state.counter--)
     })
   };
 
@@ -159,22 +159,22 @@ test("select", () => {
   deleteStore();
 });
 
-// query
-test("query", () => {
+// get
+test("get", () => {
   let marker = 0;
 
   const store = {
-    state: ({ dispatch, query }) => ({
+    state: ({ set, get }) => ({
       log(msg) {
-        query(state => {
+        get(state => {
           marker++;
           state.counter = 9999;
           return state;
         });
       },
       counter: 0,
-      inc: () => dispatch(state => void state.counter++),
-      dec: () => dispatch(state => void state.counter--)
+      inc: () => set(state => void state.counter++),
+      dec: () => set(state => void state.counter--)
     })
   };
 
@@ -212,10 +212,10 @@ test("query", () => {
 // register
 test("register", () => {
   register({
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       counter: 0,
-      inc: () => dispatch(state => void state.counter++),
-      dec: () => dispatch(state => void state.counter--)
+      inc: () => set(state => void state.counter++),
+      dec: () => set(state => void state.counter--)
     })
   });
 
@@ -253,10 +253,10 @@ test("register", () => {
 test("register on named store", () => {
   register(
     {
-      state: ({ dispatch }) => ({
+      state: ({ set }) => ({
         counter: 0,
-        inc: () => dispatch(state => void state.counter++),
-        dec: () => dispatch(state => void state.counter--)
+        inc: () => set(state => void state.counter++),
+        dec: () => set(state => void state.counter--)
       })
     },
     "store1"
@@ -295,10 +295,10 @@ test("register on named store", () => {
 // register adding pending state to store
 test("register adding pending state to store", () => {
   register({
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       counter: 0,
-      inc: () => dispatch(state => void state.counter++),
-      dec: () => dispatch(state => void state.counter--)
+      inc: () => set(state => void state.counter++),
+      dec: () => set(state => void state.counter--)
     })
   });
 
@@ -344,7 +344,7 @@ test("register adding pending state to store", () => {
 // path
 test("path", () => {
   register({
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       more: {
         stuff: {
           list: [{ item: "one" }, { item: "two" }]
@@ -368,7 +368,7 @@ test("path", () => {
 
 test("path2", () => {
   register({
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       more: {
         stuff: {
           list: [{ item: "one" }, { item: "two" }]
@@ -394,7 +394,7 @@ test("path2", () => {
 test("from and path", () => {
   register(
     {
-      state: ({ dispatch }) => ({
+      state: ({ set }) => ({
         more: {
           stuff: {
             list: [
@@ -423,24 +423,24 @@ test("from and path", () => {
   deleteStore("store1");
 });
 
-// unit of work with query
-test("unit of work with query", async () => {
+// unit of work with get
+test("unit of work with get", async () => {
   let rslt, rslt2;
   register({
-    state: ({ dispatch, query }) => ({
+    state: ({ set, get }) => ({
       action() {
-        // use query for a unit of work
-        rslt = query(state => {
+        // use get for a unit of work
+        rslt = get(state => {
           // do stuff with state
           state.new = { ok: "0" };
         });
 
-        rslt2 = query(state => {
+        rslt2 = get(state => {
           // do some other stuff with state
           state.other = { none: "thing" };
         });
 
-        return dispatch(state => {
+        return set(state => {
           state.done = "yes";
         });
       }
@@ -478,10 +478,10 @@ test("unit of work with query", async () => {
 // multiple select
 test("multiple select", () => {
   register({
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       counter: 0,
-      inc: () => dispatch(state => void state.counter++),
-      dec: () => dispatch(state => void state.counter--)
+      inc: () => set(state => void state.counter++),
+      dec: () => set(state => void state.counter--)
     })
   });
 
@@ -534,26 +534,26 @@ test("transaction/commit/rollback", () => {
   let rollbackException = 0;
 
   register({
-    state: ({ dispatch, query }) => ({
+    state: ({ set, get }) => ({
       counter: 0,
-      inc: () => dispatch(state => void state.counter++, "Decrement"),
-      dec: () => dispatch(state => void state.counter--, "Increment"),
+      inc: () => set(state => void state.counter++, "Decrement"),
+      dec: () => set(state => void state.counter--, "Increment"),
       beginClick(msg) {
-        query(state => state.begin());
+        get(state => state.begin());
       },
       commitClick() {
-        const before = query();
+        const before = get();
         try {
-          const after = query(state => state.commit());
+          const after = get(state => state.commit());
         } catch (e) {
           commitException += 1;
         }
         commits++;
       },
       rollbackClick() {
-        const before = query();
+        const before = get();
         try {
-          const after = query(state => state.rollback());
+          const after = get(state => state.rollback());
         } catch (e) {
           rollbackException += 1;
         }
@@ -614,10 +614,10 @@ test("transaction/commit/rollback", () => {
 // notifyListeners/subscribe/unsubscribe
 test("notifyListeners/subscribe/unsubscribe", () => {
   register({
-    state: ({ dispatch, query }) => ({
+    state: ({ set, get }) => ({
       counter: 0,
-      inc: () => dispatch(state => void state.counter++, "Decrement"),
-      dec: () => dispatch(state => void state.counter--, "Increment")
+      inc: () => set(state => void state.counter++, "Decrement"),
+      dec: () => set(state => void state.counter--, "Increment")
     })
   });
 
@@ -661,10 +661,10 @@ test("notifyListeners/subscribe/unsubscribe", () => {
 
 test("State component can render empty and null children", () => {
   register({
-    state: ({ dispatch, query }) => ({
+    state: ({ set, get }) => ({
       counter: 0,
-      inc: () => dispatch(state => void state.counter++, "Decrement"),
-      dec: () => dispatch(state => void state.counter--, "Increment")
+      inc: () => set(state => void state.counter++, "Decrement"),
+      dec: () => set(state => void state.counter--, "Increment")
     })
   });
 
@@ -688,7 +688,7 @@ test("register state on connected store with init as a function", () => {
 
   const dom = asFragment();
   register({
-    state: ({ dispatch }) => ({ value: 1 })
+    state: ({ set }) => ({ value: 1 })
   });
   const dom2 = asFragment();
 
@@ -711,7 +711,7 @@ test("register state on connected store", () => {
 
 test("path default value", () => {
   register({
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       more: {
         stuff: {
           list: [{ item: "one" }, { item: "two" }]
@@ -741,22 +741,22 @@ test("custom plugin", () => {
       thing: 1
     },
     middleware: [
-      ({ dispatch }) => (...args) => {
+      ({ set }) => (...args) => {
         pluginDispatchCalled++;
-        return dispatch(...args);
+        return set(...args);
       },
-      ({ dispatch }) => (...args) => {
+      ({ set }) => (...args) => {
         pluginDispatchCalled++;
-        return dispatch(...args);
+        return set(...args);
       }
     ]
   };
 
   const store = {
-    state: ({ dispatch, query }) => ({
+    state: ({ set, get }) => ({
       counter: 0,
-      inc: () => dispatch(state => void state.counter++, "Decrement"),
-      dec: () => dispatch(state => void state.counter--, "Increment")
+      inc: () => set(state => void state.counter++, "Decrement"),
+      dec: () => set(state => void state.counter--, "Increment")
     })
   };
 
@@ -798,7 +798,7 @@ test("custom plugin", () => {
   deleteStore();
 });
 
-//xxtest("plugin can have array of dispatch middleware", () => {
+//xxtest("plugin can have array of set middleware", () => {
 ////throw new Error("not implemented");
 //});
 

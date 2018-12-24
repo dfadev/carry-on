@@ -14,13 +14,7 @@ Object {
 }
 `;
 
-exports[`dispatch action 1`] = `
-Object {
-  "some": "state",
-}
-`;
-
-exports[`query with action 1`] = `
+exports[`get with action 1`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -53,9 +47,9 @@ exports[`register on connected store with init as function 1`] = `
 + }"
 `;
 
-exports[`register with plugin, no state and dispatch 1`] = `Object {}`;
+exports[`register with plugin, no state and set 1`] = `Object {}`;
 
-exports[`register with plugin, no state and dispatch 2`] = `
+exports[`register with plugin, no state and set 2`] = `
 Object {
   "some": "state",
 }
@@ -66,6 +60,12 @@ Object {
   "action": [Function],
   "some": "state",
   "thing": 1,
+}
+`;
+
+exports[`set action 1`] = `
+Object {
+  "some": "state",
 }
 `;
 

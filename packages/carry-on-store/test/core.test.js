@@ -32,7 +32,7 @@ test("register", () => {
 
 test("register with init as function", () => {
   const store = useStore();
-  register({ state: ({ dispatch }) => ({ some: "state" }) });
+  register({ state: ({ set }) => ({ some: "state" }) });
   expect(store.pending.length).toBe(1);
   deleteStore();
 });
@@ -48,7 +48,7 @@ test("register on connected store", () => {
 test("register on connected store with init as function", () => {
   const store = useStore();
   const initialState = connect();
-  register({ state: ({ dispatch }) => ({ some: "state" }) });
+  register({ state: ({ set }) => ({ some: "state" }) });
   expect(initialState).toMatchDiffSnapshot(store.state);
   deleteStore();
 });
@@ -69,33 +69,33 @@ test("connect with pending object state", () => {
 });
 
 test("connect with pending function state", () => {
-  register({ state: dispatch => ({ some: "state" }) });
+  register({ state: set => ({ some: "state" }) });
   const store = useStore();
   const state = connect();
   expect(state).toMatchSnapshot();
   deleteStore();
 });
 
-test("dispatch action", () => {
+test("set action", () => {
   const state = connect();
   const store = useStore();
-  store.dispatch(state => ({ ...state, some: "state" }));
+  store.set(state => ({ ...state, some: "state" }));
   expect(store.state).toMatchSnapshot();
   deleteStore();
 });
 
-test("query with action", () => {
+test("get with action", () => {
   const state = connect();
   const store = useStore();
-  const q = store.query(state => ({ ...state, some: "state" }));
+  const q = store.get(state => ({ ...state, some: "state" }));
   expect(state).toMatchDiffSnapshot(q);
   deleteStore();
 });
 
-test("query with default action", () => {
+test("get with default action", () => {
   const state = connect();
   const store = useStore();
-  const q = store.query();
+  const q = store.get();
   expect(state).toBe(q);
   deleteStore();
 });
@@ -114,13 +114,13 @@ test("register with plugin with multiple middleware", () => {
       thing: 1
     },
     middleware: [
-      ({ dispatch }) => (...args) => {
+      ({ set }) => (...args) => {
         pluginDispatchCalled++;
-        return dispatch(...args);
+        return set(...args);
       },
-      ({ dispatch }) => (...args) => {
+      ({ set }) => (...args) => {
         pluginDispatchCalled++;
-        return dispatch(...args);
+        return set(...args);
       }
     ]
   };
@@ -131,7 +131,7 @@ test("register with plugin with multiple middleware", () => {
   deleteStore();
 });
 
-test("register with plugins dispatch as array", () => {
+test("register with plugins set as array", () => {
   let pluginDispatchCalled = 0;
 
   const plugin = {
@@ -139,13 +139,13 @@ test("register with plugins dispatch as array", () => {
       thing: 1
     },
     middleware: [
-      ({ dispatch }) => (...args) => {
+      ({ set }) => (...args) => {
         pluginDispatchCalled++;
-        return dispatch(...args);
+        return set(...args);
       },
-      ({ dispatch }) => (...args) => {
+      ({ set }) => (...args) => {
         pluginDispatchCalled++;
-        return dispatch(...args);
+        return set(...args);
       }
     ]
   };
@@ -163,9 +163,9 @@ test("register with plugins as non-array", () => {
     state: {
       thing: 1
     },
-    middleware: ({ dispatch }) => (...args) => {
+    middleware: ({ set }) => (...args) => {
       pluginDispatchCalled++;
-      return dispatch(...args);
+      return set(...args);
     }
   };
 
@@ -179,15 +179,15 @@ test("register with plugin, state function ", () => {
   let pluginDispatchCalled = 0;
 
   const plugin = {
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       thing: 1,
       action() {
-        return dispatch(state => ({ ...state, some: "state" }));
+        return set(state => ({ ...state, some: "state" }));
       }
     }),
-    middleware: ({ dispatch }) => (...args) => {
+    middleware: ({ set }) => (...args) => {
       pluginDispatchCalled++;
-      return dispatch(...args);
+      return set(...args);
     }
   };
 
@@ -199,7 +199,7 @@ test("register with plugin, state function ", () => {
   deleteStore();
 });
 
-test("register with plugin, no state and dispatch", () => {
+test("register with plugin, no state and set", () => {
   let pluginDispatchCalled = 0;
 
   const plugin = {
@@ -210,7 +210,7 @@ test("register with plugin, no state and dispatch", () => {
   const state = connect();
   expect(state).toMatchSnapshot();
   const store = useStore();
-  store.dispatch(state => ({ ...state, some: "state" }));
+  store.set(state => ({ ...state, some: "state" }));
   expect(store.state).toMatchSnapshot();
   deleteStore();
 });

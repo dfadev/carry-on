@@ -15,7 +15,7 @@ const applyMiddleware = (middlewares, fn, apply) => {
 };
 
 const createPlugins = (store, curState, plugins = []) => {
-  const { id, dispatch, query, getChanges, wrap } = store;
+  const { id, get, set, getChanges, wrap } = store;
   if (!Array.isArray(plugins)) plugins = [plugins];
 
   for (let i = 0, len = plugins.length; i < len; i++) {
@@ -28,7 +28,7 @@ const createPlugins = (store, curState, plugins = []) => {
           middlewares[j],
           store.d,
           (middlewareEntry, fn) =>
-            middlewareEntry({ query, id, dispatch: fn, getChanges, wrap })
+            middlewareEntry({ id, get, set: fn, getChanges, wrap })
         );
     }
 
@@ -37,9 +37,7 @@ const createPlugins = (store, curState, plugins = []) => {
       for (let j = 0, jlen = states.length; j < jlen; j++)
         mutateMerge(
           curState,
-          isFunction(states[j])
-            ? states[j]({ id, dispatch, query, getChanges })
-            : states[j]
+          isFunction(states[j]) ? states[j]({ id, get, set }) : states[j]
         );
     }
   }
@@ -64,19 +62,19 @@ export const useStore = id => stores[id] || (stores[id] = create(id));
 // register state
 export const register = (init, id) => {
   const store = useStore(id);
-  // queue if no dispatch available yet
-  if (store.dispatch)
-    store.dispatch(state => createPlugins(store, state, init), initMessageType);
+  // queue if no set available yet
+  if (store.set)
+    store.set(state => createPlugins(store, state, init), initMessageType);
   else store.pending.push(init);
 };
 
 // connect a store
 export const connect = (id, wrap) => {
   const store = useStore(id);
-  if (store.dispatch) return store.state;
+  if (store.set) return store.state;
 
-  // query provides a copy of state created by the producer
-  store.query = (action = identity => identity, ...args) =>
+  // get provides a copy of state created by the producer
+  store.get = (action = identity => identity, ...args) =>
     immer(store.state, action, ...args);
 
   // change tracking
@@ -87,8 +85,8 @@ export const connect = (id, wrap) => {
   // run producer action and set state
   store.d = action => (store.state = immer(store.state, action, patchCatcher));
 
-  // store.d mutates according to middleware, dispatch calls the latest
-  store.dispatch = (...args) => store.d(...args);
+  // store.d mutates according to middleware, set calls the latest
+  store.set = (...args) => store.d(...args);
 
   // wrap change notifications to allow for external batch updates
   store.wrap = wrap;
@@ -100,7 +98,7 @@ export const connect = (id, wrap) => {
   delete store.pending;
 
   // initialize middleware with state
-  store.dispatch(state => state, initMessageType);
+  store.set(state => state, initMessageType);
   return store.state;
 };
 

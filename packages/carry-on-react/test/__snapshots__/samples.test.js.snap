@@ -146,6 +146,11 @@ exports[`from and path 1`] = `
 </DocumentFragment>
 `;
 
+exports[`get 1`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;
+
 exports[`multiple select 1`] = `
 "Snapshot Diff:
 - First value
@@ -274,11 +279,6 @@ exports[`path2 1`] = `
     ok
   </div>
 </DocumentFragment>
-`;
-
-exports[`query 1`] = `
-"Snapshot Diff:
-Compared values have no visual difference."
 `;
 
 exports[`register 1`] = `
@@ -878,7 +878,7 @@ exports[`two named stores 8`] = `
       <button>"
 `;
 
-exports[`unit of work with query 1`] = `
+exports[`unit of work with get 1`] = `
 "Snapshot Diff:
 - First value
 + Second value

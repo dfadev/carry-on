@@ -11,9 +11,9 @@ export default function devTools({ timeTravel = true } = {}) {
   if (!devToolsExt) return {};
 
   return {
-    middleware: ({ dispatch, id }) =>
+    middleware: ({ set, id }) =>
       function devToolsMiddleware(action, type = "Dispatch", ...args) {
-        const state = dispatch(action, type, ...args);
+        const state = set(action, type, ...args);
 
         // exit when no action
         if (!action) return state;
@@ -33,7 +33,7 @@ export default function devTools({ timeTravel = true } = {}) {
                 msg.type === "DISPATCH" &&
                 msg.payload &&
                 msg.payload.type === "JUMP_TO_STATE" &&
-                dispatch(s => {
+                set(s => {
                   if (s === undefined) s = {};
                   const keys = Object.keys(s);
                   for (let i = 0, len = keys.length; i < len; i++)

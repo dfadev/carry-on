@@ -8,7 +8,7 @@ test("plug snapshot", () => {
   const plug = {};
   let state = { plug };
   const query = () => state;
-  const dispatch = (action, type) => {
+  const set = (action, type) => {
     return (state = action(state));
   };
 
@@ -20,7 +20,7 @@ test("subscribe/unsubscribe", () => {
   const plug = {};
   let state = { plug };
   const query = () => state;
-  let dispatch = (action, type) => {
+  let set = (action, type) => {
     return (state = action(state));
   };
   let getChanges = () => [];
@@ -28,19 +28,19 @@ test("subscribe/unsubscribe", () => {
   const notify = notifySubscribers();
   expect(notify).toMatchSnapshot();
 
-  dispatch = notify.plugin.middleware({ dispatch, getChanges });
+  set = notify.plugin.middleware({ set, getChanges });
 
   let msgRecvCount = 0;
   const fn = state => { msgRecvCount++; };
   const unsubscribe = notify.subscribe(fn);
   expect(notify.subscribers.length).toEqual(1);
 
-  dispatch(state => state);
+  set(state => state);
   expect(msgRecvCount).toBe(1);
 
   unsubscribe();
   expect(notify.subscribers.length).toEqual(0);
 
-  dispatch(state => state);
+  set(state => state);
   expect(msgRecvCount).toBe(1);
 });

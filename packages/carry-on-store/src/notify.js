@@ -10,9 +10,9 @@ export default function notify() {
   }
 
   const plugin = {
-    middleware: ({ dispatch, getChanges, wrap }) =>
+    middleware: ({ set, getChanges, wrap }) =>
       function notifyMiddleware(action, type, ...args) {
-        const state = dispatch(action, type, ...args);
+        const state = set(action, type, ...args);
         const changes = getChanges();
 
         const notifySubs = () => {

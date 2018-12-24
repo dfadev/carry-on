@@ -17,10 +17,10 @@ export default (
     id: "form"
   }
 ) => ({
-  state: ({ dispatch, query }) => {
+  state: ({ set, get }) => {
     let cancellable;
     const debounceValidate = onValidate
-      ? debouncePromise(onValidate({ dispatch, query }), 200)
+      ? debouncePromise(onValidate({ set, get }), 200)
       : undefined;
 
     const typeSuffix = " (" + id + ")";
@@ -38,7 +38,7 @@ export default (
       isValidating: false,
       isValid: true,
       validation: undefined,
-      values: isFunction(init) ? init({ dispatch, query }) : init,
+      values: isFunction(init) ? init({ set, get }) : init,
 
       validate: (state, onSuccess) => {
         if (debounceValidate) {
@@ -51,7 +51,7 @@ export default (
             debounceValidate(form.values),
             errorInfo => setErrors(errorInfo) && onSuccess && onSuccess(),
             () => {
-              dispatch(
+              set(
                 curState => (getInA(curState, idPath).isValidating = false),
                 "Validation Threw" + typeSuffix
               );
@@ -62,16 +62,16 @@ export default (
       },
 
       hasError: fieldName =>
-        query(state => getIn(getInA(state, idPath).errors, fieldName, false)),
+        get(state => getIn(getInA(state, idPath).errors, fieldName, false)),
 
       hasVisited: fieldName =>
-        query(state => getIn(getInA(state, idPath).visited, fieldName, false)),
+        get(state => getIn(getInA(state, idPath).visited, fieldName, false)),
 
       isTouched: fieldName =>
-        query(state => getIn(getInA(state, idPath).touched, fieldName, false)),
+        get(state => getIn(getInA(state, idPath).touched, fieldName, false)),
 
       setFieldValue: (fieldName, value) =>
-        dispatch(state => {
+        set(state => {
           const form = getInA(state, idPath);
           mutateSet(form.values, fieldName, value);
           const pristine = calcPristine(form);
@@ -80,7 +80,7 @@ export default (
         }, "Set Field Value" + typeSuffix),
 
       setValues: values =>
-        dispatch(state => {
+        set(state => {
           const form = getInA(state, idPath);
           if (form.values !== values) form.values = values;
           const pristine = calcPristine(form);
@@ -89,12 +89,12 @@ export default (
         }, "Set Values" + typeSuffix),
 
       setFieldError: (fieldName, error) =>
-        dispatch(state => {
+        set(state => {
           mutateSet(getInA(state, idPath).errors, fieldName, error);
         }, "Set Field Error" + typeSuffix),
 
       setErrors: ({ errors, isValid, merge = true }) =>
-        dispatch(state => {
+        set(state => {
           const form = getInA(state, idPath);
 
           if (merge) mutateMerge(form.errors, errors);
@@ -106,17 +106,17 @@ export default (
         }, "Set Errors" + typeSuffix),
 
       setFieldVisited: (fieldName, visited) =>
-        dispatch(state => {
+        set(state => {
           mutateSet(getInA(state, idPath).visited, fieldName, visited);
         }, "Set Field Visited" + typeSuffix),
 
       setFieldTouched: (fieldName, touched) =>
-        dispatch(state => {
+        set(state => {
           mutateSet(getInA(state, idPath).touched, fieldName, touched);
         }, "Set Field Touched" + typeSuffix),
 
       setTouched: (touched, merge = true) =>
-        dispatch(state => {
+        set(state => {
           const form = getInA(state, idPath);
           if (merge) mutateMerge(form.touched, touched);
           else form.touched = touched;
@@ -124,7 +124,7 @@ export default (
 
       reset: e => {
         e && e.preventDefault();
-        const s = dispatch(state => {
+        const s = set(state => {
           const formState = getInA(state, idPath);
           const origState = formState.origState;
           const newFormState = {
@@ -134,15 +134,15 @@ export default (
           };
           mutateSet(state, id, newFormState);
         }, "Reset Form" + typeSuffix);
-        const realOnReset = onReset && onReset({ dispatch, query });
-        realOnReset && realOnReset(query(q => getInA(q, idPath).values));
+        const realOnReset = onReset && onReset({ set, get });
+        realOnReset && realOnReset(get(q => getInA(q, idPath).values));
         return s;
       },
 
       submit: e => {
         e && e.preventDefault();
         if (
-          query(state => {
+          get(state => {
             const form = getInA(state, idPath);
             return form.isValidating || form.isSubmitting;
           })
@@ -150,13 +150,13 @@ export default (
           return;
 
         const finishSubmit = () => {
-          const realOnSubmit = onSubmit && onSubmit({ dispatch, query });
+          const realOnSubmit = onSubmit && onSubmit({ set, get });
 
           Promise.resolve(
-            realOnSubmit && realOnSubmit(query(q => getInA(q, idPath).values))
+            realOnSubmit && realOnSubmit(get(q => getInA(q, idPath).values))
           )
             .then(rslt => {
-              dispatch(curState => {
+              set(curState => {
                 const form = getInA(curState, idPath);
                 form.isSubmitting = false;
                 if (rslt) {
@@ -170,7 +170,7 @@ export default (
               }, "End Submit" + typeSuffix);
             })
             .catch(() =>
-              dispatch(curState => {
+              set(curState => {
                 const form = getInA(curState, idPath);
                 if (form.isSubmitting) form.isSubmitting = false;
                 return curState;
@@ -178,7 +178,7 @@ export default (
             );
         };
 
-        const beginSubmitState = dispatch(state => {
+        const beginSubmitState = set(state => {
           const form = getInA(state, idPath);
           form.isSubmitting = true;
           form.validate(state, finishSubmit);

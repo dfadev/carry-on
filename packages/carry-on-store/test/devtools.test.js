@@ -25,26 +25,26 @@ test("subscribe is called", () => {
   };
 
   const plugin = new devTools();
-  let dispatchCount = 0;
-  const dispatch = plugin.middleware({ dispatch: (action, ...args) => {
+  let setCount = 0;
+  const set = plugin.middleware({ set: (action, ...args) => {
     action && action();
-    dispatchCount++;
+    setCount++;
     return { id: 1 };
   }});
 
-  dispatch();
-  dispatch(() => { });
+  set();
+  set(() => { });
 
   expect(subscribeCalled).toBe(1);
-  expect(dispatchCount).toBe(2);
+  expect(setCount).toBe(2);
 
   msgFn({ type: "DISPATCH", payload: { type: "JUMP_TO_STATE", index: 0 } });
 
-  expect(dispatchCount).toBe(3);
+  expect(setCount).toBe(3);
 
   msgFn({ type: "OTHER" });
 
-  expect(dispatchCount).toBe(3);
+  expect(setCount).toBe(3);
 });
 
 
@@ -65,25 +65,25 @@ test("disable timetravel works", () => {
   };
 
   const plugin = new devTools({ timeTravel: false });
-  let dispatchCount = 0;
-  const dispatch = plugin.middleware({ dispatch: (action, ...args) => {
-    dispatchCount++;
+  let setCount = 0;
+  const set = plugin.middleware({ set: (action, ...args) => {
+    setCount++;
     return { id: 1 };
   }});
 
-  dispatch();
-  dispatch(() => { });
+  set();
+  set(() => { });
 
   expect(subscribeCalled).toBe(0);
-  expect(dispatchCount).toBe(2);
+  expect(setCount).toBe(2);
 
   msgFn && msgFn({ type: "DISPATCH", payload: { type: "JUMP_TO_STATE", index: 0 } });
 
-  expect(dispatchCount).toBe(2);
+  expect(setCount).toBe(2);
 
   msgFn && msgFn({ type: "OTHER", payload: { type: "JUMP_TO_STATE", index: 0 } });
 
-  expect(dispatchCount).toBe(2);
+  expect(setCount).toBe(2);
 });
 
 

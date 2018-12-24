@@ -4,10 +4,10 @@ export default function transaction() {
   const transactions = [];
 
   return {
-    state: ({ dispatch, query }) => ({
+    state: ({ set, get }) => ({
       commit: () => {
         if (transactions.length === 0) throw new Error("no tx");
-        return dispatch(state => {
+        return set(state => {
           transactions.pop();
           return state;
         }, "Commit");
@@ -17,10 +17,10 @@ export default function transaction() {
         return transactions.pop()();
       },
       begin: () =>
-        dispatch(state => {
-          const rollbackState = query();
+        set(state => {
+          const rollbackState = get();
           transactions.push(() =>
-            dispatch(s => {
+            set(s => {
               if (s === undefined) s = {};
               const keys = Object.keys(s);
               for (let i = 0, len = keys.length; i < len; i++)

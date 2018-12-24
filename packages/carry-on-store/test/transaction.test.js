@@ -8,29 +8,29 @@ test("transaction match", () => {
 test("plug snapshot", () => {
   const plug = {};
   let state = { plug };
-  const query = () => state;
-  const dispatch = (action, type) => {
+  const get = () => state;
+  const set = (action, type) => {
     return (state = action(state));
   };
 
-  plug.tx = transaction().state({ dispatch, query, plug });
+  plug.tx = transaction().state({ set, get, plug });
 
   expect(plug.tx).toMatchSnapshot();
 });
 
 test("commit", () => {
-  const query = () => {};
+  const get = () => {};
   const plug = {};
   let state = { plug };
-  const dispatch = (action, type) => {
+  const set = (action, type) => {
     return (state = action(state));
   };
 
-  plug.tx = transaction().state({ dispatch, query, plug });
+  plug.tx = transaction().state({ set, get, plug });
 
   const beginState = plug.tx.begin();
 
-  const newState = dispatch(state => {
+  const newState = set(state => {
     return { ...state, newThing: 1 };
   });
   expect(newState.newThing).toBe(1);
@@ -42,23 +42,23 @@ test("commit", () => {
 });
 
 test("rollback", async () => {
-  const query = state => immer(state, s => s);
+  const get = state => immer(state, s => s);
   const state = {};
-  const dispatch = (action, type) => {
+  const set = (action, type) => {
     return immer(state, action);
   };
 
   const store = {
-    dispatch: (action, type) => {
+    set: (action, type) => {
       return (store.state = immer(store.state, action));
     },
-    query,
-    state: transaction().state({ dispatch, query })
+    get,
+    state: transaction().state({ set, get })
   };
 
   const beginState = store.state.begin();
 
-  const newState = store.dispatch(state => {
+  const newState = store.set(state => {
     state.newThing = 1;
   });
 
@@ -69,27 +69,27 @@ test("rollback", async () => {
 });
 
 test("commit no transaction throws", () => {
-  const query = () => {};
+  const get = () => {};
   const plug = {};
   let state = { plug };
-  const dispatch = (action, type) => {
+  const set = (action, type) => {
     return (state = action(state));
   };
 
-  plug.tx = transaction().state({ dispatch, query, plug });
+  plug.tx = transaction().state({ set, get, plug });
 
   expect(plug.tx.commit).toThrow();
 });
 
 test("rollback no transaction throws", () => {
-  const query = () => {};
+  const get = () => {};
   const plug = {};
   let state = { plug };
-  const dispatch = (action, type) => {
+  const set = (action, type) => {
     return (state = action(state));
   };
 
-  plug.tx = transaction().state({ dispatch, query, plug });
+  plug.tx = transaction().state({ set, get, plug });
 
   expect(plug.tx.rollback).toThrow();
 });

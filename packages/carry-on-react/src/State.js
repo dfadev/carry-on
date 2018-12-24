@@ -20,7 +20,7 @@ export default class State extends Component {
       ReactDOM.unstable_batchedUpdates
     );
 
-    this.storeState = this.trapSelect(useStore(from).query());
+    this.storeState = this.trapSelect(useStore(from).get());
 
     if (t) this.onStateChange = throttle(t, this.onStateChange);
     else if (d) this.onStateChange = debounce(d, this.onStateChange);

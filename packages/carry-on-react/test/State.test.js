@@ -46,7 +46,7 @@ test("withState select, path, from, and default can be a function", () => {
   const def = props => "default Value";
 
   register({
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       key1: "val1",
       key2: "val2"
     })
@@ -71,7 +71,7 @@ test("withState path, from, and default can be a values", () => {
   const def = "default Value";
 
   register({
-    state: ({ dispatch }) => ({
+    state: ({ set }) => ({
       key1: "val1",
       key2: "val2"
     })
