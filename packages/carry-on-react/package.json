@@ -1,6 +1,6 @@
 {
   "name": "carry-on-react",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "A Store for React",
   "source": "./src/index.js",
   "module": "./es/carry-on-react.js",
@@ -51,8 +51,8 @@
     "snapshot-diff": "^0.4.1"
   },
   "dependencies": {
-    "carry-on-store": "^0.0.24",
-    "carry-on-utils": "^0.0.24",
+    "carry-on-store": "^0.0.25",
+    "carry-on-utils": "^0.0.25",
     "hoist-non-react-statics": "^3.2.1"
   },
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18"
