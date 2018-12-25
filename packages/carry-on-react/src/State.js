@@ -17,16 +17,16 @@ export default class State extends Component {
 
   constructor(props) {
     super(props);
-    const { from, throttle: t, debounce: d, constant } = props;
-
-    connect(
-      from,
-      ReactDOM.unstable_batchedUpdates
-    );
-
     this.setupDebug();
 
-    this.storeState = this.trapSelect(useStore(from).get());
+    const { from, throttle: t, debounce: d, constant } = props;
+
+    this.storeState = this.trapSelect(
+      connect(
+        from,
+        ReactDOM.unstable_batchedUpdates
+      )
+    );
 
     if (t) this.onStateChange = throttle(t, this.onStateChange);
     else if (d) this.onStateChange = debounce(d, this.onStateChange);
