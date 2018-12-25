@@ -1,5 +1,5 @@
 /** @format **/
-import immer from "immer";
+import produce, { nothing } from "immer";
 import { mutateMerge, isFunction } from "carry-on-utils";
 import notify from "./notify";
 import { calculateChanges } from "./changeTracking";
@@ -73,9 +73,14 @@ export const connect = (id, wrap) => {
   const store = useStore(id);
   if (store.set) return store.state;
 
+  const runAction = action => state => {
+    const rslt = action(state);
+    if (rslt === undefined) return nothing;
+  };
+
   // get provides a copy of state created by the producer
   store.get = (action = identity => identity, ...args) =>
-    immer(store.state, action, ...args);
+    produce(store.state, runAction(action), ...args);
 
   // change tracking
   store.getChanges = () => store.changes;
@@ -83,7 +88,7 @@ export const connect = (id, wrap) => {
   const patcher = patches => (store.changes = calculateChanges(patches));
 
   // run producer action and set state
-  store.d = action => (store.state = immer(store.state, action, patcher));
+  store.d = action => (store.state = produce(store.state, action, patcher));
 
   // store.d mutates according to middleware, set calls the latest
   store.set = (...args) => store.d(...args);
