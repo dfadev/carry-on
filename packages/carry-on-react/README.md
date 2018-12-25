@@ -22,7 +22,7 @@ import { State, withState, register } from "carry-on-react";
 # `register({ `*`state`*`, `*`middleware`*`, `*`priority`*` }, `*`id`*`)`
 
 |Parameter|Description|
-|---|---|---|
+|---|---|
 |`state`|Function or object that represents the state to register|
 |`middleware`|Function that acts as middleware wrapped around an action|
 |`priority`|State is registered in a random order unless a priority is specified.  Higher priority state is registered first.|
@@ -31,6 +31,7 @@ import { State, withState, register } from "carry-on-react";
  # Registering *`state`*:
 
 The *`set`* function is used to change state and the *`get`* function to retrieve state.
+
 |Function|Description|
 |---|---|
 |`set(state => {}, `*`type`*`)`|Calls a function that mutates the passed state.  Optionally specify a string `type` to display when viewing state changes in Dev Tools.|
@@ -92,6 +93,7 @@ register({ state }, "store2");
 # `<State ...>`
 
 All properties are optional.
+
 |Property|Description|
 |---|---|
 |`render` or `children` | The render function.  This function will be called with the state as it's first parameter.|
