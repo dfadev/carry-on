@@ -1,4 +1,6 @@
 /** @format **/
+import { isEqual } from "carry-on-utils";
+
 export default function devTools({ timeTravel = true } = {}) {
   // dev tools connections
   const connections = [],
@@ -36,9 +38,22 @@ export default function devTools({ timeTravel = true } = {}) {
                 set(s => {
                   if (s === undefined) s = {};
                   const keys = Object.keys(s);
-                  for (let i = 0, len = keys.length; i < len; i++)
-                    delete s[keys[i]];
-                  return Object.assign(s, states[msg.payload.index]);
+                  const tt = states[msg.payload.index];
+                  const ttKeys = Object.keys(tt);
+
+                  for (let i = 0, len = keys.length; i < len; i++) {
+                    const key = keys[i];
+                    if (!ttKeys.includes(key)) delete s[key];
+                  }
+
+                  for (let i = 0, len = ttKeys.length; i < len; i++) {
+                    const key = ttKeys[i];
+                    const oldVal = s[key];
+                    const newVal = tt[key];
+                    if (!isEqual(oldVal, newVal)) s[key] = newVal;
+                  }
+
+                  return s;
                 }, "Time Travel")
             ));
         }
