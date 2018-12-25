@@ -1,6 +1,7 @@
 /** @format **/
 export default function makeCancelable(promise, onfulfilled, onrejected) {
   let hasCanceled = false;
+
   new Promise((resolve, reject) =>
     promise
       .then(val => (hasCanceled ? reject({ isCanceled: true }) : resolve(val)))
@@ -13,6 +14,7 @@ export default function makeCancelable(promise, onfulfilled, onrejected) {
       }
     })
     .catch(onrejected);
+
   return function cancel() {
     hasCanceled = true;
   };

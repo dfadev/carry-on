@@ -3,21 +3,15 @@ function keys(object) {
 }
 
 function forOwn(object, iteratee) {
-  for (const key of keys(object)) {
-    if (iteratee(object[key], key) === false) {
-      break;
-    }
-  }
+  for (const key of keys(object))
+    if (iteratee(object[key], key) === false) break;
   return object;
 }
 
 function forEach(collection, iteratee) {
   if (Array.isArray(collection)) {
-    for (let i = 0, l = collection.length; i < l; ++i) {
-      if (iteratee(collection[i], i) === false) {
-        break;
-      }
-    }
+    for (let i = 0, l = collection.length; i < l; ++i)
+      if (iteratee(collection[i], i) === false) break;
   } else {
     forOwn(collection, iteratee);
   }
@@ -25,12 +19,12 @@ function forEach(collection, iteratee) {
 }
 
 function clone(value) {
-  if (Array.isArray(value)) {
+  if (Array.isArray(value))
     return value.slice();
-  }
-  if (value instanceof Object) {
+
+  if (value instanceof Object)
     return Object.assign({}, value);
-  }
+
   return value;
 }
 
