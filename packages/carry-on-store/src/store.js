@@ -1,6 +1,6 @@
 /** @format **/
 import produce, { nothing } from "immer";
-import { mutateMerge, isFunction } from "carry-on-utils";
+import { forceArray, mutateMerge, isFunction } from "carry-on-utils";
 import notify from "./notify";
 import { calculateChanges } from "./changeTracking";
 
@@ -9,20 +9,23 @@ export const initMessageType = "Initialize";
 
 // wrap a function with middleware
 const applyMiddleware = (middlewares, fn, apply) => {
-  if (!Array.isArray(middlewares)) middlewares = [middlewares];
-  for (const middleware of middlewares) fn = apply(middleware, fn);
+  middlewares = forceArray(middlewares);
+  for (let i = 0, len = middlewares.length; i < len; i++)
+    fn = apply(middlewares[i], fn);
+
   return fn;
 };
 
+// merge state and middleware into the store
 const createPlugins = (store, curState, plugins = []) => {
   const { id, get, set, getChanges, wrap } = store;
-  if (!Array.isArray(plugins)) plugins = [plugins];
+  plugins = forceArray(plugins);
 
   for (let i = 0, len = plugins.length; i < len; i++) {
-    const plugin = plugins[i];
-    const { middleware, state } = plugin;
+    const { middleware, state } = plugins[i];
+
     if (middleware) {
-      const middlewares = Array.isArray(middleware) ? middleware : [middleware];
+      const middlewares = forceArray(middleware);
       for (let j = 0, jlen = middlewares.length; j < jlen; j++)
         store.d = applyMiddleware(
           middlewares[j],
@@ -33,7 +36,7 @@ const createPlugins = (store, curState, plugins = []) => {
     }
 
     if (state) {
-      const states = Array.isArray(state) ? state : [state];
+      const states = forceArray(state);
       for (let j = 0, jlen = states.length; j < jlen; j++)
         mutateMerge(
           curState,
@@ -73,19 +76,17 @@ export const connect = (id, wrap) => {
   const store = useStore(id);
   if (store.set) return store.state;
 
-  const runAction = action => state => {
+  const runGetAction = action => state => {
     const rslt = action(state);
-
     return rslt === undefined ? nothing : rslt;
   };
 
   // get provides a copy of state created by the producer
   store.get = (action = identity => identity, ...args) =>
-    produce(store.state, runAction(action), ...args);
+    produce(store.state, runGetAction(action), ...args);
 
   // change tracking
   store.getChanges = () => store.changes;
-
   const patcher = patches => (store.changes = calculateChanges(patches));
 
   // run producer action and set state
