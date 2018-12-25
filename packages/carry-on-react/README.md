@@ -21,7 +21,7 @@ import { State, withState, register } from "carry-on-react";
 
 # `register({ `*`state`*`, `*`middleware`*`, `*`priority`*` }, `*`id`*`)`
 
-|Parameter|Description 
+|Parameter|Description|
 |--|--|--|
 |`state`|Function or object that represents the state to register|
 |`middleware`|Function that acts as middleware wrapped around an action|
@@ -32,9 +32,9 @@ import { State, withState, register } from "carry-on-react";
 
 The *`set`* function is used to change state and the *`get`* function to retrieve state.
 |Function|Description|
---|--
-`set(state => {}, `*`type`*`)`|Calls a function that mutates the passed state.  Optionally specify a string `type` to display when viewing state changes in Dev Tools.
-`get(state => {})`|Calls a function that queries the passed state and returns the result.
+|--|--|
+|`set(state => {}, `*`type`*`)`|Calls a function that mutates the passed state.  Optionally specify a string `type` to display when viewing state changes in Dev Tools.|
+|`get(state => {})`|Calls a function that queries the passed state and returns the result.|
 
 
 ```JavaScript
@@ -92,20 +92,20 @@ register({ state }, "store2");
 # `<State ...>`
 
 All properties are optional.
-|Property|Description 
+|Property|Description|
 |--|--|--|
-|`render` or `children` | The render function.  This function will be called with the state as it's first parameter.
-|`from`|What store to retrieve state from.
+|`render` or `children` | The render function.  This function will be called with the state as it's first parameter.|
+|`from`|What store to retrieve state from.|
 |`path`|The state path to retrieve.  Specified as a dotted path string, with support for arrays.  Sample: `"my.field.path[10].name"`|
 |`select`|A function that selects the required state.|
-|`constant`| When true, the `State` component will query state and render only once.
-|`strict`| When true, the `State` will track accessed keys on every update instead of on just the first one.
-|`default`|The default value when the state is undefined.
-|`throttle`|Milliseconds to throttle change requests
-|`debounce`|Milliseconds to debounce change requests
-|`debug`|When true, log messages regarding state changes will be printed to the `console`.
-|`verbose`|When true, verbose log messages are printed to the `console`. 
-|`id`|Debug log uses this to identify components
+|`constant`| When true, the `State` component will query state and render only once.|
+|`strict`| When true, the `State` will track accessed keys on every update instead of on just the first one.|
+|`default`|The default value when the state is undefined.|
+|`throttle`|Milliseconds to throttle change requests|
+|`debounce`|Milliseconds to debounce change requests|
+|`debug`|When true, log messages regarding state changes will be printed to the `console`.|
+|`verbose`|When true, verbose log messages are printed to the `console`.|
+|`id`|Debug log uses this to identify components|
 
 # Using `State`:
 
@@ -220,8 +220,8 @@ These functions generally are not necessary, but may be useful in certain situat
 |--|--|--|
 |`initStores()`|Delete all stores.  Useful in hot reload situations when you need to reset the store on a reload.|
 |`useStore(`*`id`*`)`|Get the store object|
-|`deleteStore(`*`id`*`)`|Delete a store
-|`subscribe(id, fn)`|Subscribe to state changes. `fn` signature is `(state, changes) => { ... }`  Returns an `unsubscribe` function.
+|`deleteStore(`*`id`*`)`|Delete a store|
+|`subscribe(id, fn)`|Subscribe to state changes. `fn` signature is `(state, changes) => { ... }`  Returns an `unsubscribe` function.|
 
 # License
 MIT
