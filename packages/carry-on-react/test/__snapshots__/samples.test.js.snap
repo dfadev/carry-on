@@ -151,6 +151,11 @@ exports[`get 1`] = `
 Compared values have no visual difference."
 `;
 
+exports[`get returns undefined 1`] = `
+"Snapshot Diff:
+Compared values have no visual difference."
+`;
+
 exports[`multiple select 1`] = `
 "Snapshot Diff:
 - First value
@@ -876,22 +881,4 @@ exports[`two named stores 8`] = `
         store2 +
       </button>
       <button>"
-`;
-
-exports[`unit of work with get 1`] = `
-"Snapshot Diff:
-- First value
-+ Second value
-
-  <DocumentFragment>
-    <div>
--     <span />
-+     <span>
-+       yes
-+     </span>
-      <button>
-        run action
-      </button>
-    </div>
-  </DocumentFragment>"
 `;

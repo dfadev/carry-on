@@ -423,37 +423,38 @@ test("from and path", () => {
   deleteStore("store1");
 });
 
-// unit of work with get
-test("unit of work with get", async () => {
-  let rslt, rslt2;
-  register({
+test("get returns undefined", () => {
+  let marker = 0;
+
+  const store = {
     state: ({ set, get }) => ({
-      action() {
-        // use get for a unit of work
-        rslt = get(state => {
-          // do stuff with state
-          state.new = { ok: "0" };
+      log(msg) {
+        let rslt = get(state => {
+          return undefined;
+          //state.counter = 9999;
+          //return state;
         });
-
-        rslt2 = get(state => {
-          // do some other stuff with state
-          state.other = { none: "thing" };
-        });
-
-        return set(state => {
-          state.done = "yes";
-        });
-      }
+        if (rslt === undefined) {
+          marker++;
+        } else console.log(rslt);
+      },
+      counter: 0,
+      inc: () => set(state => void state.counter++),
+      dec: () => set(state => void state.counter--)
     })
-  });
+  };
+
+  register(store);
 
   const App = () => (
     <State>
-      {({ action, done }) => (
-        <div>
-          <span>{done}</span>
-          <button onClick={action}>run action</button>
-        </div>
+      {({ counter, inc, dec, log }) => (
+        <>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+          <button onClick={log}>log</button>
+        </>
       )}
     </State>
   );
@@ -469,9 +470,8 @@ test("unit of work with get", async () => {
     dom = nextDom;
   }
 
-  clickDiff("run action");
-  expect(rslt.new.ok).toEqual("0");
-  expect(rslt2.other.none).toEqual("thing");
+  clickDiff("log");
+  expect(marker).toEqual(1);
   deleteStore();
 });
 
