@@ -22,7 +22,7 @@ import { State, withState, register } from "carry-on-react";
 # `register({ `*`state`*`, `*`middleware`*`, `*`priority`*` }, `*`id`*`)`
 
 |Parameter|Description|
-|--|--|--|
+|---|---|---|
 |`state`|Function or object that represents the state to register|
 |`middleware`|Function that acts as middleware wrapped around an action|
 |`priority`|State is registered in a random order unless a priority is specified.  Higher priority state is registered first.|
@@ -32,7 +32,7 @@ import { State, withState, register } from "carry-on-react";
 
 The *`set`* function is used to change state and the *`get`* function to retrieve state.
 |Function|Description|
-|--|--|
+|---|---|
 |`set(state => {}, `*`type`*`)`|Calls a function that mutates the passed state.  Optionally specify a string `type` to display when viewing state changes in Dev Tools.|
 |`get(state => {})`|Calls a function that queries the passed state and returns the result.|
 
@@ -93,7 +93,7 @@ register({ state }, "store2");
 
 All properties are optional.
 |Property|Description|
-|--|--|--|
+|---|---|
 |`render` or `children` | The render function.  This function will be called with the state as it's first parameter.|
 |`from`|What store to retrieve state from.|
 |`path`|The state path to retrieve.  Specified as a dotted path string, with support for arrays.  Sample: `"my.field.path[10].name"`|
@@ -217,7 +217,7 @@ const App = () => (
 These functions generally are not necessary, but may be useful in certain situations.
 
 |Function|Description|
-|--|--|--|
+|---|---|
 |`initStores()`|Delete all stores.  Useful in hot reload situations when you need to reset the store on a reload.|
 |`useStore(`*`id`*`)`|Get the store object|
 |`deleteStore(`*`id`*`)`|Delete a store|
