@@ -11,3 +11,4 @@ export { default as getIn, getInA } from "./getIn";
 export { default as makeCancelable } from "./makeCancelable";
 export { default as mutateSet, mutateSetA } from "./mutateSet";
 export * from "./proxyState";
+export { default as forceArray } from "./forceArray";

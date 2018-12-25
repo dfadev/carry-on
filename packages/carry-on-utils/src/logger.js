@@ -1,3 +1,4 @@
+/** @format **/
 const colors = {
   0: "#F2777A",
   1: "#F99157",

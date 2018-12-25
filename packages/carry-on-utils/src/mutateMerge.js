@@ -1,32 +1,6 @@
-function keys(object) {
-  return object ? Object.getOwnPropertyNames(object) : [];
-}
-
-function forOwn(object, iteratee) {
-  for (const key of keys(object))
-    if (iteratee(object[key], key) === false) break;
-  return object;
-}
-
-function forEach(collection, iteratee) {
-  if (Array.isArray(collection)) {
-    for (let i = 0, l = collection.length; i < l; ++i)
-      if (iteratee(collection[i], i) === false) break;
-  } else {
-    forOwn(collection, iteratee);
-  }
-  return collection;
-}
-
-function clone(value) {
-  if (Array.isArray(value))
-    return value.slice();
-
-  if (value instanceof Object)
-    return Object.assign({}, value);
-
-  return value;
-}
+/** @format **/
+import forEach from "./forEach";
+import clone from "./clone";
 
 export default function mutateMerge(object, ...sources) {
   for (const source of sources) {

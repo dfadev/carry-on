@@ -1,3 +1,4 @@
+/** @format **/
 // copy-paste from https://github.com/nx-js/observer-util/blob/master/src/builtIns/index.js
 
 // built-in object can not be wrapped by Proxies, or, to be clear - unfreezed
@@ -33,19 +34,23 @@ const handlers = new Map([
   [Float64Array, false]
 ]);
 
+/* eslint-disable no-nested-ternary */
+const globalObj =
+  typeof global !== "undefined"
+    ? global
+    : typeof self !== "undefined"
+      ? self
+      : typeof window !== "undefined"
+        ? window
+        : {};
 
-// eslint-disable-next-line
-const globalObj = typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : typeof window !== 'undefined' ? window : {};
-
-export function shouldInstrument({constructor}) {
-  const isBuiltIn = (
-    typeof constructor === 'function' &&
+export function shouldInstrument({ constructor }) {
+  const isBuiltIn =
+    typeof constructor === "function" &&
     constructor.name in globalObj &&
-    globalObj[constructor.name] === constructor
-  );
+    globalObj[constructor.name] === constructor;
   return !isBuiltIn || handlers.has(constructor);
 }
 
-export const getCollectionHandlers = ({constructor}) => (
-  handlers.get(constructor)
-)
+export const getCollectionHandlers = ({ constructor }) =>
+  handlers.get(constructor);
