@@ -23,7 +23,7 @@ export default ({
   type,
   ...rest
 }) => (
-  <State path={form} from={store} {...rest}>
+  <State path={form} from={store} {...rest} strict>
     {({
       values,
       touched,
