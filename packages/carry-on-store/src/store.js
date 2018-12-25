@@ -75,7 +75,8 @@ export const connect = (id, wrap) => {
 
   const runAction = action => state => {
     const rslt = action(state);
-    if (rslt === undefined) return nothing;
+
+    return rslt === undefined ? nothing : rslt;
   };
 
   // get provides a copy of state created by the producer
