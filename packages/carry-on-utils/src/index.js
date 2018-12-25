@@ -2,8 +2,8 @@
 export { throttle, debounce } from "throttle-debounce";
 export { default as debouncePromise } from "debounce-promise";
 export { default as isEqual } from "fast-deep-equal";
-export { default as log } from "logdown";
 
+export { default as logger } from "./logger";
 export { default as mutateMerge } from "./mutateMerge";
 export { default as isFunction } from "./isFunction";
 export { default as toPath } from "./toPath";
