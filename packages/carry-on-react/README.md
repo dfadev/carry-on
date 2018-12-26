@@ -19,7 +19,7 @@ import { State, withState, register } from "carry-on-react";
 ```
 
 
-# `register({ `*`state`*`, `*`middleware`*`, `*`priority`*` }, `*`id`*`)`
+# `register(`*`[`*`{ `*`state`*`, `*`middleware`*`, `*`priority`*` }`*`]`*`, `*`id`*`)`
 
 |Parameter|Description|
 |---|---|
