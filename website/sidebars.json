@@ -1,0 +1,12 @@
+{
+  "docs": {
+    "carry-on": ["index"],
+    "carry-on-store": ["register", "subscribe", "deleteStore", "useStore", "initStores"],
+    "carry-on-react": ["State", "withState"],
+    "carry-on-react-forms": ["form", "Form", "Field", "FormButtons", "FormState"],
+    "carry-on-utils": ["toPath"]
+  },
+  "docs-other": {
+    "First Category": ["doc4", "doc5"]
+  }
+}
