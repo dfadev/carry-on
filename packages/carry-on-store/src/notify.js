@@ -18,14 +18,18 @@ export default function notify() {
         const changes = getChanges && getChanges();
 
         const notifySubs = () => {
+          const notifyThese = [];
           for (const item of subscribers.entries()) {
             const [fn, watch] = item;
-            if (watch === undefined) fn(state, changes);
+            if (watch === undefined) notifyThese.push(fn);
             else {
               const hasChanges = compareChanges(changes, watch);
-              if (hasChanges) fn(state, changes);
+              if (hasChanges) notifyThese.push(fn);
             }
           }
+
+          for (let i = 0, len = notifyThese.length; i < len; i++)
+            notifyThese[i](state, changes, watch);
         };
 
         if (!wrap || (opts && opts.immediate)) notifySubs();
