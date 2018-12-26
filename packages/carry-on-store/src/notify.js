@@ -29,7 +29,7 @@ export default function notify() {
           }
 
           for (let i = 0, len = notifyThese.length; i < len; i++)
-            notifyThese[i](state, changes, watch);
+            notifyThese[i](state, changes);
         };
 
         if (!wrap || (opts && opts.immediate)) notifySubs();
