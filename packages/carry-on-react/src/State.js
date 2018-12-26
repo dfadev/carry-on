@@ -47,9 +47,7 @@ export default class State extends Component {
     this.verbose = State.Verbose || this.props.verbose;
 
     let id = this.props.id ? "State:" + this.props.id : "State";
-    if (this.props.path) {
-      id += ":" + this.props.path;
-    }
+    if (this.props.path) id += ":" + this.props.path;
 
     this.log = logger(id);
   };
@@ -83,8 +81,9 @@ export default class State extends Component {
     }
 
     if (this.props.strict || this.watch === undefined) {
-      const { finalState, affected } = trackChanges(pathedState, select);
-      this.watch = path ? mutateSet({}, path, affected) : affected;
+      const [finalState, watch] = trackChanges(pathedState, select);
+      this.watch = path ? mutateSet({}, path, watch) : watch;
+      if (this.debug) this.log("watch", this.watch);
 
       this.unsubscribe = subscribe(
         this.props.from,
@@ -92,7 +91,6 @@ export default class State extends Component {
         this.watch
       );
 
-      if (this.debug) this.log("watch", this.watch);
       return finalState;
     }
 

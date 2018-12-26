@@ -1,9 +1,9 @@
 /** @format **/
 import { keys, proxyState, deproxify, mutateSetA } from "carry-on-utils";
 
-export function compareChanges(changes, affected) {
+export function compareChanges(changes, watch) {
   const queue = [];
-  queue.push({ changes, affected });
+  queue.push({ changes, watch });
 
   while (queue.length > 0) {
     const item = queue.pop();
@@ -12,16 +12,16 @@ export function compareChanges(changes, affected) {
     for (let i = 0, len = entries.length; i < len; i++) {
       const entry = entries[i];
       const key = entry.key;
-      const affectedValue = item.affected[key];
+      const watchValue = item.watch[key];
 
-      if (affectedValue === true) return true;
-      if (affectedValue !== undefined) {
+      if (watchValue === true) return true;
+      if (watchValue !== undefined) {
         const nextChanges = entry.changes;
 
         if (nextChanges === true) return true;
         queue.push({
           changes: nextChanges,
-          affected: affectedValue
+          watch: watchValue
         });
       }
     }
@@ -34,14 +34,11 @@ export function trackChanges(state, select) {
   const trappedState = proxyState(state);
   const selectedState = select(trappedState.state);
   trappedState.seal();
-  const affected = trappedState.affected;
+  const watch = trappedState.affected;
   const deproxified = deproxify(selectedState);
   const finalState = deproxified !== undefined ? deproxified : selectedState;
 
-  return {
-    finalState,
-    affected
-  };
+  return [finalState, watch];
 }
 
 export function calculateChanges(patches) {
