@@ -8,7 +8,8 @@ import {
   mutateSet,
   makeCancelable,
   mutateMerge,
-  toPath
+  toPath,
+  keys
 } from "carry-on-utils";
 
 export default (
@@ -161,9 +162,9 @@ export default (
                 form.isSubmitting = false;
                 if (rslt) {
                   if (!form.isPristine) form.isPristine = true;
-                  if (Object.keys(form.errors).length > 0) form.errors = {};
-                  if (Object.keys(form.visited).length > 0) form.visited = {};
-                  if (Object.keys(form.touched).length > 0) form.touched = {};
+                  if (keys(form.errors).length > 0) form.errors = {};
+                  if (keys(form.visited).length > 0) form.visited = {};
+                  if (keys(form.touched).length > 0) form.touched = {};
                   form.origState = undefined;
                   form.origState = { ...form };
                 }

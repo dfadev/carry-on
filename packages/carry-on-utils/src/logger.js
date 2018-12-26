@@ -1,4 +1,6 @@
 /** @format **/
+import keys from "./keys";
+
 const colors = {
   0: "#F2777A",
   1: "#F99157",
@@ -13,7 +15,7 @@ const colors = {
   silver: "#dddddd"
 };
 
-const clr = Object.keys(colors).map(item => colors[item]);
+const clr = keys(colors).map(item => colors[item]);
 let currentClr = 0;
 
 export default function logger(id) {

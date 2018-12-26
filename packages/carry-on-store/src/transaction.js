@@ -1,4 +1,5 @@
 /** @format **/
+import { keys } from "carry-on-utils";
 
 export default function transaction() {
   const transactions = [];
@@ -22,9 +23,9 @@ export default function transaction() {
           transactions.push(() =>
             set(s => {
               if (s === undefined) s = {};
-              const keys = Object.keys(s);
-              for (let i = 0, len = keys.length; i < len; i++)
-                delete s[keys[i]];
+              const keyList = keys(s);
+              for (let i = 0, len = keyList.length; i < len; i++)
+                delete s[keyList[i]];
               const newState = Object.assign(s, rollbackState);
               return newState;
             }, "Rollback")

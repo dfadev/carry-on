@@ -1,5 +1,5 @@
 /** @format **/
-import { isEqual } from "carry-on-utils";
+import { keys, isEqual } from "carry-on-utils";
 
 export default function devTools({ timeTravel = true } = {}) {
   // dev tools connections
@@ -37,12 +37,12 @@ export default function devTools({ timeTravel = true } = {}) {
                 msg.payload.type === "JUMP_TO_STATE" &&
                 set(s => {
                   if (s === undefined) s = {};
-                  const keys = Object.keys(s);
+                  const keyList = keys(s);
                   const tt = states[msg.payload.index];
-                  const ttKeys = Object.keys(tt);
+                  const ttKeys = keys(tt);
 
-                  for (let i = 0, len = keys.length; i < len; i++) {
-                    const key = keys[i];
+                  for (let i = 0, len = keyList.length; i < len; i++) {
+                    const key = keyList[i];
                     if (!ttKeys.includes(key)) delete s[key];
                   }
 

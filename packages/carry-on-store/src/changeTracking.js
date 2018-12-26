@@ -1,5 +1,5 @@
 /** @format **/
-import { proxyState, deproxify, mutateSetA } from "carry-on-utils";
+import { keys, proxyState, deproxify, mutateSetA } from "carry-on-utils";
 
 export function compareChanges(changes, affected) {
   const queue = [];
@@ -49,10 +49,10 @@ export function calculateChanges(patches) {
   for (let i = 0, len = patches.length; i < len; i++)
     mutateSetA(stage1, patches[i].path, true);
 
-  // precompute object walk so Object.keys is called the least amount necessary
+  // precompute object walk so keys is called the least amount necessary
   const stage2 = [];
   const queue = [];
-  queue.push({ keys: Object.keys(stage1), changes: stage1, out: stage2 });
+  queue.push({ keys: keys(stage1), changes: stage1, out: stage2 });
 
   while (queue.length > 0) {
     const item = queue.pop();
@@ -65,7 +65,7 @@ export function calculateChanges(patches) {
       } else {
         const nextChanges = [];
         queue.push({
-          keys: Object.keys(changes),
+          keys: keys(changes),
           changes,
           out: nextChanges
         });
