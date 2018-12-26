@@ -6,7 +6,8 @@ module.exports = {
     "<rootDir>/node_modules/",
     "<rootDir>/examples/",
     "<rootDir>/lib",
-    "<rootDir>/src/jest.setup.js"
+    "<rootDir>/src/jest.setup.js",
+    "<rootDir>/test/jest.setup.js"
   ],
   collectCoverage: true,
   coverageDirectory: "<rootDir>/coverage/"

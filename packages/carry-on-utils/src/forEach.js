@@ -1,7 +1,7 @@
 /** @format **/
 import keys from "./keys";
 
-function forOwn(object, iteratee) {
+export function forOwn(object, iteratee) {
   for (const key of keys(object))
     if (iteratee(object[key], key) === false) break;
   return object;
