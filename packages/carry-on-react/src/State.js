@@ -1,12 +1,7 @@
 /** @format **/
 import { Component } from "react";
 import { logger, throttle, debounce, getIn, mutateSet } from "carry-on-utils";
-import {
-  connect,
-  subscribe,
-  trackChanges,
-  compareChanges
-} from "carry-on-store";
+import { connect, subscribe, trackChanges } from "carry-on-store";
 import ReactDOM from "react-dom";
 
 export default class State extends Component {
@@ -18,7 +13,7 @@ export default class State extends Component {
     super(props);
     this.setupDebug();
 
-    const { from, throttle: t, debounce: d, constant } = props;
+    const { from, throttle: t, debounce: d } = props;
 
     this.storeState = this.trapSelect(
       connect(
@@ -29,9 +24,17 @@ export default class State extends Component {
 
     if (t) this.onStateChange = throttle(t, this.onStateChange);
     else if (d) this.onStateChange = debounce(d, this.onStateChange);
-
-    if (!constant) this.unsubscribe = subscribe(from, this.stateSubscriber);
   }
+
+  shouldComponentUpdate = () => {
+    const constant = this.props.constant;
+    const update = this.prevStoreState !== this.storeState && !constant;
+    if (this.verbose && !update) {
+      if (constant) this.log("-skip render", "constant");
+      else this.log("-skip render", "prevState === nextState");
+    }
+    return update;
+  };
 
   componentWillUnmount() {
     this.onStateChange.cancel && this.onStateChange.cancel();
@@ -65,16 +68,7 @@ export default class State extends Component {
   };
 
   stateSubscriber = (state, changes) => {
-    const hasChanges = compareChanges(changes, this.affectedStateKeys);
-    if (!hasChanges) {
-      if (this.debug && this.verbose) {
-        this.log("-no update", changes, "watch:", this.affectedStateKeys);
-      }
-      return;
-    }
-
-    if (this.debug)
-      this.log("update", changes, "watch:", this.affectedStateKeys);
+    if (this.debug) this.log("update", changes, "watch:", this.watch);
 
     this.onStateChange(state, changes);
   };
@@ -88,10 +82,17 @@ export default class State extends Component {
       return finalState;
     }
 
-    if (this.props.strict || this.affectedStateKeys === undefined) {
+    if (this.props.strict || this.watch === undefined) {
       const { finalState, affected } = trackChanges(pathedState, select);
-      this.affectedStateKeys = path ? mutateSet({}, path, affected) : affected;
-      if (this.debug) this.log("watch", this.affectedStateKeys);
+      this.watch = path ? mutateSet({}, path, affected) : affected;
+
+      this.unsubscribe = subscribe(
+        this.props.from,
+        this.stateSubscriber,
+        this.watch
+      );
+
+      if (this.debug) this.log("watch", this.watch);
       return finalState;
     }
 
@@ -105,17 +106,6 @@ export default class State extends Component {
   };
 
   trapRender = renderFn => {
-    if (this.prevStoreState === this.storeState) {
-      if (this.debug && this.verbose)
-        this.log("-skip render", "prevState === nextState");
-      return this.prevFinalState;
-    }
-
-    if (this.props.constant && this.prevFinalState) {
-      if (this.debug && this.verbose) this.log("-skip render", "constant");
-      return this.prevFinalState;
-    }
-
     const finalState = this.trapStateQuery(this.storeState, renderFn);
     if (this.debug)
       if (this.props.constant) this.log("render", "constant");

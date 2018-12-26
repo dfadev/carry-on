@@ -6,7 +6,7 @@ Object {
     "middleware": [Function],
   },
   "subscribe": [Function],
-  "subscribers": Array [],
+  "subscribers": Map {},
 }
 `;
 
@@ -16,7 +16,7 @@ Object {
     "middleware": [Function],
   },
   "subscribe": [Function],
-  "subscribers": Array [],
+  "subscribers": Map {},
 }
 `;
 
@@ -26,6 +26,6 @@ Object {
     "middleware": [Function],
   },
   "subscribe": [Function],
-  "subscribers": Array [],
+  "subscribers": Map {},
 }
 `;

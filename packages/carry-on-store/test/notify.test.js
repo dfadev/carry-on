@@ -33,13 +33,13 @@ test("subscribe/unsubscribe", () => {
   let msgRecvCount = 0;
   const fn = state => { msgRecvCount++; };
   const unsubscribe = notify.subscribe(fn);
-  expect(notify.subscribers.length).toEqual(1);
+  expect(notify.subscribers.size).toEqual(1);
 
   set(state => state);
   expect(msgRecvCount).toBe(1);
 
   unsubscribe();
-  expect(notify.subscribers.length).toEqual(0);
+  expect(notify.subscribers.size).toEqual(0);
 
   set(state => state);
   expect(msgRecvCount).toBe(1);

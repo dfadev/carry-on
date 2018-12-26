@@ -110,4 +110,5 @@ export const connect = (id, wrap) => {
 };
 
 // subscribe to state changes
-export const subscribe = (id, fn) => useStore(id).notify.subscribe(fn);
+export const subscribe = (id, fn, watch) =>
+  useStore(id).notify.subscribe(fn, watch);
