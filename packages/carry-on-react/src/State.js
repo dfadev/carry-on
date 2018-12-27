@@ -26,16 +26,6 @@ export default class State extends Component {
     else if (d) this.onStateChange = debounce(d, this.onStateChange);
   }
 
-  shouldComponentUpdate = () => {
-    const constant = this.props.constant;
-    const update = this.prevStoreState !== this.storeState && !constant;
-    if (this.verbose && !update) {
-      if (constant) this.log("-skip render", "constant");
-      else this.log("-skip render", "prevState === nextState");
-    }
-    return update;
-  };
-
   componentWillUnmount() {
     this.onStateChange.cancel && this.onStateChange.cancel();
     this.unsubscribe && this.unsubscribe();
@@ -104,6 +94,17 @@ export default class State extends Component {
   };
 
   trapRender = renderFn => {
+    if (this.prevStoreState === this.storeState) {
+      if (this.debug && this.verbose)
+        this.log("-skip render", "prevState === nextState");
+      return this.prevFinalState;
+    }
+
+    if (this.props.constant && this.prevFinalState) {
+      if (this.debug && this.verbose) this.log("-skip render", "constant");
+      return this.prevFinalState;
+    }
+
     const finalState = this.trapStateQuery(this.storeState, renderFn);
     if (this.debug)
       if (this.props.constant) this.log("render", "constant");
