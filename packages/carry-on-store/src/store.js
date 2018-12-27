@@ -17,9 +17,8 @@ const applyMiddleware = (middlewares, fn, apply) => {
 };
 
 // merge state and middleware into the store
-const createPlugins = (store, curState, plugins = []) => {
+const createPlugins = (store, curState, plugins) => {
   const { id, get, set, getChanges, wrap } = store;
-  plugins = forceArray(plugins);
 
   for (let i = 0, len = plugins.length; i < len; i++) {
     const { middleware, state } = plugins[i];
@@ -65,10 +64,11 @@ export const useStore = id => stores[id] || (stores[id] = create(id));
 // register state
 export const register = (init, id) => {
   const store = useStore(id);
+  init = forceArray(init);
   // queue if no set available yet
   if (store.set)
     store.set(state => createPlugins(store, state, init), initMessageType);
-  else store.pending.push(init);
+  else store.pending.push(...init);
 };
 
 // connect a store
