@@ -1,6 +1,5 @@
 /** @format **/
 import { keys, isEqual } from "carry-on-utils";
-import producer from "immer";
 
 export default function devTools({ timeTravel = true } = {}) {
   // dev tools connections
