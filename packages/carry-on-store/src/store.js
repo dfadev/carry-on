@@ -18,7 +18,7 @@ const applyMiddleware = (middlewares, fn, apply) => {
 
 // merge state and middleware into the store
 const createPlugins = (store, curState, plugins) => {
-  const { id, get, set, getChanges, wrap } = store;
+  const { id, get, set, getChanges, isNested, wrap } = store;
 
   for (let i = 0, len = plugins.length; i < len; i++) {
     const { middleware, state } = plugins[i];
@@ -30,7 +30,7 @@ const createPlugins = (store, curState, plugins) => {
           middlewares[j],
           store.d,
           (middlewareEntry, fn) =>
-            middlewareEntry({ id, get, set: fn, getChanges, wrap })
+            middlewareEntry({ id, get, set: fn, getChanges, wrap, isNested })
         );
     }
 
@@ -91,24 +91,29 @@ export const connect = (id, wrap) => {
 
   store.nestedSet = false;
   store.nestedState = undefined;
+  store.isNested = () => store.nestedSet;
 
   // run producer action and set state
   store.d = action => {
-    const runRootSet = state => {
-      store.nestedSet = true;
-      store.nestedState = state;
-      const rslt = action(state);
-      store.nestedSet = false;
-      store.nestedState = undefined;
-      return rslt;
-    };
+    if (!store.nestedSet) {
+      const runRootSet = state => {
+        store.nestedSet = true;
+        store.nestedState = state;
+        const rslt = action(state);
+        store.nestedSet = false;
+        store.nestedState = undefined;
+        return rslt;
+      };
 
-    return (store.state = produce(store.state, runRootSet, patcher));
+      return (store.state = produce(store.state, runRootSet, patcher));
+    }
+
+    action(store.nestedState);
+    return store.nestedState;
   };
 
   // store.d is mutated by middleware registration, set calls the latest
-  store.set = (action, ...args) =>
-    store.nestedSet ? action(store.nestedState) : store.d(action, ...args);
+  store.set = (...args) => store.d(...args);
 
   // wrap change notifications to allow for external batch updates
   store.wrap = wrap;
