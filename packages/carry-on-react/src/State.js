@@ -1,7 +1,7 @@
 /** @format **/
 import { Component } from "react";
 import { logger, throttle, debounce, getIn, mutateSet } from "carry-on-utils";
-import { connect, subscribe, trackChanges } from "carry-on-store";
+import { connect, subscribe, watchGet } from "carry-on-store";
 import ReactDOM from "react-dom";
 
 export default class State extends Component {
@@ -71,7 +71,7 @@ export default class State extends Component {
     }
 
     if (this.props.strict || this.watch === undefined) {
-      const [finalState, watch] = trackChanges(pathedState, select);
+      const [finalState, watch] = watchGet(pathedState, select);
       this.watch = path ? mutateSet({}, path, watch) : watch;
       if (this.debug) this.log("watch", this.watch);
 
