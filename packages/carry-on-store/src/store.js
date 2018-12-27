@@ -89,11 +89,26 @@ export const connect = (id, wrap) => {
   store.getChanges = () => store.changes;
   const patcher = patches => (store.changes = calculateChanges(patches));
 
-  // run producer action and set state
-  store.d = action => (store.state = produce(store.state, action, patcher));
+  store.nestedSet = false;
+  store.nestedState = undefined;
 
-  // store.d mutates according to middleware, set calls the latest
-  store.set = (...args) => store.d(...args);
+  // run producer action and set state
+  store.d = action => {
+    const runRootSet = state => {
+      store.nestedSet = true;
+      store.nestedState = state;
+      const rslt = action(state);
+      store.nestedSet = false;
+      store.nestedState = undefined;
+      return rslt;
+    };
+
+    return (store.state = produce(store.state, runRootSet, patcher));
+  };
+
+  // store.d is mutated by middleware registration, set calls the latest
+  store.set = (action, ...args) =>
+    store.nestedSet ? action(store.nestedState) : store.d(action, ...args);
 
   // wrap change notifications to allow for external batch updates
   store.wrap = wrap;
