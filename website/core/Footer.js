@@ -24,6 +24,7 @@ class Footer extends React.Component {
   render() {
     return (
       <footer className="nav-footer" id="footer">
+          {/*
         <section className="sitemap">
           <a href={this.props.config.baseUrl} className="nav-home">
             {this.props.config.footerIcon && (
@@ -38,13 +39,10 @@ class Footer extends React.Component {
           <div>
             <h5>Docs</h5>
             <a href={this.docUrl('index.html', this.props.language)}>
-              Getting Started (or other categories)
-            </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
-              Guides (or other categories)
+              Getting Started
             </a>
             <a href={this.docUrl('doc3.html', this.props.language)}>
-              API Reference (or other categories)
+              API Reference
             </a>
           </div>
           <div>
@@ -82,7 +80,9 @@ class Footer extends React.Component {
             </a>
           </div>
         </section>
+          */}
 
+        {/*
         <a
           href="https://code.facebook.com/projects/"
           target="_blank"
@@ -95,6 +95,7 @@ class Footer extends React.Component {
             height="45"
           />
         </a>
+        */}
         <section className="copyright">{this.props.config.copyright}</section>
       </footer>
     );

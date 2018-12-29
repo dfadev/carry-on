@@ -3,58 +3,80 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "State manager",
+    "tagline": "State container for React",
     "docs": {
-      "api": {
-        "title": "API"
+      "api/carry-on-react-forms/Field": {
+        "title": "Field"
       },
-      "deleteStore": {
+      "api/carry-on-react-forms/form": {
+        "title": "form"
+      },
+      "api/carry-on-react-forms/Form": {
+        "title": "Form"
+      },
+      "api/carry-on-react-forms/FormButtons": {
+        "title": "FormButtons"
+      },
+      "api/carry-on-react-forms/FormState": {
+        "title": "FormState"
+      },
+      "api/carry-on-react/State": {
+        "title": "<State ...>"
+      },
+      "api/carry-on-react/withState": {
+        "title": "withState"
+      },
+      "api/carry-on-store/abc": {
+        "title": "abc"
+      },
+      "api/carry-on-store/deleteStore": {
         "title": "deleteStore"
       },
-      "doc3": {
-        "title": "This is document number 3"
+      "api/carry-on-store/devTools": {
+        "title": "devTools"
       },
-      "index": {
-        "title": "About",
-        "sidebar_label": "About"
-      },
-      "doc4": {
-        "title": "Other Document"
-      },
-      "doc5": {
-        "title": "Fifth Document"
-      },
-      "initStores": {
+      "api/carry-on-store/initStores": {
         "title": "initStores"
       },
-      "register": {
+      "api/carry-on-store/notify": {
+        "title": "notify"
+      },
+      "api/carry-on-store/register": {
         "title": "register"
       },
-      "State": {
-        "title": "State"
-      },
-      "subscribe": {
+      "api/carry-on-store/subscribe": {
         "title": "subscribe"
       },
-      "useStore": {
+      "api/carry-on-store/transaction": {
+        "title": "transaction"
+      },
+      "api/carry-on-store/useStore": {
         "title": "useStore"
       },
-      "withState": {
-        "title": "withState"
+      "api/index": {
+        "title": "Info"
+      },
+      "index": {
+        "title": "Getting Started"
+      },
+      "examples/index": {
+        "title": "Examples"
+      },
+      "registeringState": {
+        "title": "Registering State"
+      },
+      "usingState": {
+        "title": "Using State"
       }
     },
     "links": {
-      "Docs": "Docs",
+      "Overview": "Overview",
       "API": "API",
-      "Help": "Help"
+      "GitHub": "GitHub"
     },
     "categories": {
-      "carry-on": "carry-on",
-      "carry-on-store": "carry-on-store",
-      "carry-on-react": "carry-on-react",
-      "carry-on-react-forms": "carry-on-react-forms",
-      "carry-on-utils": "carry-on-utils",
-      "First Category": "First Category"
+      "Overview": "Overview",
+      "API": "API"
     }
   },
   "pages-strings": {

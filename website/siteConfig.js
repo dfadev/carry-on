@@ -22,7 +22,7 @@ const users = [
 
 const siteConfig = {
   title: 'carry-on', // Title for your website.
-  tagline: 'State manager',
+  tagline: 'State container for React',
   url: 'https://github.com/dfadev/', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -38,19 +38,20 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
-    {doc: 'index', label: 'Docs'},
-    {doc: 'api', label: 'API'},
-    {page: 'help', label: 'Help'},
+    {doc: 'index', label: 'Overview'},
+    {doc: 'api/index', label: 'API'},
+    { href: "https://github.com/dfadev/carry-on", label: "GitHub" },
+    //{page: 'help', label: 'Help'},
     //{blog: true, label: 'Blog'},
   ],
 
   // If you have users set above, you add it here:
-  users,
+  //users,
 
   /* path to images for header/footer */
   headerIcon: 'img/card-travel.svg',
   footerIcon: 'img/card-travel.svg',
-  favicon: 'img/favicon.png',
+  favicon: 'img/favicon.ico',
 
   /* Colors for website */
   colors: {

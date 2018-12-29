@@ -60,13 +60,16 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <Logo img_src={`${baseUrl}img/docusaurus.svg`} />
+        <Logo img_src={`${baseUrl}img/card-travel.svg`} />
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
-            <Button href="#try">Try It Out</Button>
+            <Button href={docUrl('')}>Get Started</Button>
+            <Button href={docUrl('examples/')}>Try It Out</Button>
+            {/*
             <Button href={docUrl('doc1.html')}>Example Link</Button>
             <Button href={docUrl('doc2.html')}>Example Link 2</Button>
+            */}
           </PromoSection>
         </div>
       </SplashContainer>
@@ -106,7 +109,7 @@ class Index extends React.Component {
         {[
           {
             content: 'Talk about trying this out',
-            image: `${baseUrl}img/docusaurus.svg`,
+            image: `${baseUrl}img/card-travel.svg`,
             imageAlign: 'left',
             title: 'Try it Out',
           },
@@ -120,7 +123,7 @@ class Index extends React.Component {
           {
             content:
               'This is another description of how this project is useful',
-            image: `${baseUrl}img/docusaurus.svg`,
+            image: `${baseUrl}img/card-travel.svg`,
             imageAlign: 'right',
             title: 'Description',
           },
@@ -133,7 +136,7 @@ class Index extends React.Component {
         {[
           {
             content: 'Talk about learning how to use this',
-            image: `${baseUrl}img/docusaurus.svg`,
+            image: `${baseUrl}img/card-travel.svg`,
             imageAlign: 'right',
             title: 'Learn How',
           },
@@ -145,16 +148,22 @@ class Index extends React.Component {
       <Block layout="fourColumn">
         {[
           {
-            content: 'This is the content of my feature',
-            image: `${baseUrl}img/docusaurus.svg`,
+            content: 'Write less.',
+            image: `${baseUrl}img/card-travel.svg`,
             imageAlign: 'top',
-            title: 'Feature One',
+            title: 'Optional Selectors',
           },
           {
-            content: 'The content of my second feature',
-            image: `${baseUrl}img/docusaurus.svg`,
+            content: 'Mutate state naturally.',
+            image: `${baseUrl}img/card-travel.svg`,
             imageAlign: 'top',
-            title: 'Feature Two',
+            title: 'Modern Immutability',
+          },
+          {
+            content: 'Actions *do* instead of *describe*.',
+            image: `${baseUrl}img/card-travel.svg`,
+            imageAlign: 'top',
+            title: 'Actions Are Functions',
           },
         ]}
       </Block>
@@ -194,11 +203,15 @@ class Index extends React.Component {
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           <Features />
+          {/*
           <FeatureCallout />
           <LearnHow />
           <TryOut />
+          */}
+          {/*
           <Description />
           <Showcase />
+          */}
         </div>
       </div>
     );

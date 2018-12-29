@@ -1,12 +1,43 @@
 {
   "docs": {
-    "carry-on": ["index"],
-    "carry-on-store": ["register", "subscribe", "deleteStore", "useStore", "initStores"],
-    "carry-on-react": ["State", "withState"],
-    "carry-on-react-forms": ["form", "Form", "Field", "FormButtons", "FormState"],
-    "carry-on-utils": ["toPath"]
-  },
-  "docs-other": {
-    "First Category": ["doc4", "doc5"]
+    "Overview": [
+      "index",
+      "registeringState",
+      "usingState",
+      "examples/index"
+    ],
+    "API": [
+      "api/index",
+      {
+        "type": "subcategory",
+        "label": "carry-on-store",
+        "ids": [
+          "api/carry-on-store/deleteStore",
+          "api/carry-on-store/initStores",
+          "api/carry-on-store/register",
+          "api/carry-on-store/subscribe",
+          "api/carry-on-store/useStore"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "carry-on-react",
+        "ids": [
+          "api/carry-on-react/State",
+          "api/carry-on-react/withState"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "carry-on-react-forms",
+        "ids": [
+          "api/carry-on-react-forms/Field",
+          "api/carry-on-react-forms/form",
+          "api/carry-on-react-forms/Form",
+          "api/carry-on-react-forms/FormButtons",
+          "api/carry-on-react-forms/FormState"
+        ]
+      }
+    ]
   }
 }

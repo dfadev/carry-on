@@ -1,7 +1,8 @@
 ---
 id: State
-title: State
+title: <State ...>
 ---
+
 ## Properties
 
 All properties are optional.
