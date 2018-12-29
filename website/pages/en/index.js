@@ -148,7 +148,7 @@ class Index extends React.Component {
       <Block layout="fourColumn">
         {[
           {
-            content: 'Write less.',
+            content: 'Write less code.',
             image: `${baseUrl}img/card-travel.svg`,
             imageAlign: 'top',
             title: 'Optional Selectors',

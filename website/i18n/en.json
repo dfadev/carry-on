@@ -26,9 +26,6 @@
       "api/carry-on-react/withState": {
         "title": "withState"
       },
-      "api/carry-on-store/abc": {
-        "title": "abc"
-      },
       "api/carry-on-store/deleteStore": {
         "title": "deleteStore"
       },
