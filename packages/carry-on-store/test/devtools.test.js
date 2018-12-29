@@ -26,7 +26,7 @@ test("subscribe is called", () => {
 
   const plugin = new devTools();
   let setCount = 0;
-  const set = plugin.middleware({ set: (action, ...args) => {
+  const set = plugin.middleware({ isNested: () => false, set: (action, ...args) => {
     action && action();
     setCount++;
     return { id: 1 };
@@ -66,7 +66,7 @@ test("disable timetravel works", () => {
 
   const plugin = new devTools({ timeTravel: false });
   let setCount = 0;
-  const set = plugin.middleware({ set: (action, ...args) => {
+  const set = plugin.middleware({ isNested: () => false, set: (action, ...args) => {
     setCount++;
     return { id: 1 };
   }});

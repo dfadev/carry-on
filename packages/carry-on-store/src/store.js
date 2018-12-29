@@ -17,9 +17,8 @@ const applyMiddleware = (middlewares, fn, apply) => {
 };
 
 // merge state and middleware into the store
-const createPlugins = (store, curState, plugins = []) => {
-  const { id, get, set, getChanges, wrap } = store;
-  plugins = forceArray(plugins);
+const createPlugins = (store, curState, plugins) => {
+  const { id, get, set, getChanges, isNested, wrap } = store;
 
   for (let i = 0, len = plugins.length; i < len; i++) {
     const { middleware, state } = plugins[i];
@@ -31,7 +30,7 @@ const createPlugins = (store, curState, plugins = []) => {
           middlewares[j],
           store.d,
           (middlewareEntry, fn) =>
-            middlewareEntry({ id, get, set: fn, getChanges, wrap })
+            middlewareEntry({ id, get, set: fn, getChanges, wrap, isNested })
         );
     }
 
@@ -65,10 +64,11 @@ export const useStore = id => stores[id] || (stores[id] = create(id));
 // register state
 export const register = (init, id) => {
   const store = useStore(id);
+  init = forceArray(init);
   // queue if no set available yet
   if (store.set)
     store.set(state => createPlugins(store, state, init), initMessageType);
-  else store.pending.push(init);
+  else store.pending.push(...init);
 };
 
 // connect a store
@@ -89,10 +89,30 @@ export const connect = (id, wrap) => {
   store.getChanges = () => store.changes;
   const patcher = patches => (store.changes = calculateChanges(patches));
 
-  // run producer action and set state
-  store.d = action => (store.state = produce(store.state, action, patcher));
+  store.nestedSet = false;
+  store.nestedState = undefined;
+  store.isNested = () => store.nestedSet;
 
-  // store.d mutates according to middleware, set calls the latest
+  // run producer action and set state
+  store.d = action => {
+    if (!store.nestedSet) {
+      const runRootSet = state => {
+        store.nestedSet = true;
+        store.nestedState = state;
+        const rslt = action(state);
+        store.nestedSet = false;
+        store.nestedState = undefined;
+        return rslt;
+      };
+
+      return (store.state = produce(store.state, runRootSet, patcher));
+    }
+
+    action(store.nestedState);
+    return store.nestedState;
+  };
+
+  // store.d is mutated by middleware registration, set calls the latest
   store.set = (...args) => store.d(...args);
 
   // wrap change notifications to allow for external batch updates

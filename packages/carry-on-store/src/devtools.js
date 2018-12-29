@@ -13,7 +13,7 @@ export default function devTools({ timeTravel = true } = {}) {
   if (!devToolsExt) return {};
 
   return {
-    middleware: ({ set, id }) =>
+    middleware: ({ set, id, isNested }) =>
       function devToolsMiddleware(action, type = "Set", ...args) {
         const state = set(action, type, ...args);
 
@@ -28,7 +28,15 @@ export default function devTools({ timeTravel = true } = {}) {
         // support time traveling
         if (timeTravel) {
           const states = time[name] || (time[name] = []);
-          states.push(state);
+          if (isNested()) {
+            // can't save nested state because it'll be revoked by the parent
+            // so just use the last state for now
+            const len = states.length;
+            const idx = len - 1;
+            const lastState = idx > -1 ? states[idx] : undefined;
+            states.push(lastState);
+          } else states.push(state);
+
           subscriptions[name] ||
             (subscriptions[name] = connection.subscribe(
               msg =>

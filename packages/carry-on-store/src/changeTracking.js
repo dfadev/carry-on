@@ -30,7 +30,7 @@ export function compareChanges(changes, watch) {
   return false;
 }
 
-export function trackChanges(state, select) {
+export function watchGet(state, select) {
   const trappedState = proxyState(state);
   const selectedState = select(trappedState.state);
   trappedState.seal();
