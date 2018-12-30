@@ -1,6 +1,8 @@
 # carry-on
 
-### State manager
+### State container for React
+
+https://dfadev.github.io/carry-on
 
 This is the monorepo for ```carry-on```.
 
