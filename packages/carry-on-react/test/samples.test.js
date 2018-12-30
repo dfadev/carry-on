@@ -5,9 +5,14 @@ import {
   deleteStore,
   notify as notifyListeners,
   transaction,
-  State
+  State,
+  initStores
 } from "../src";
 import { wait, render, fireEvent, waitForElement } from "react-testing-library";
+
+afterEach(() => {
+  initStores();
+});
 
 // default store
 test("default store", () => {
