@@ -14,7 +14,7 @@ import { register } from "carry-on-store";
 ### As a function
 
 State can be defined by a function accepting one parameter.  The parameter
-passed is an object containing the keys `id`, `get`, and `set`.
+passed is a plain object containing the keys `id`, `get`, and `set`.
 
 `id` is the store instance identifier.  It will be undefined for the default
 store.
@@ -45,6 +45,50 @@ const state = {
   nested: {
     field1: "value1",
     field2: "value2"
+  }
+};
+```
+
+### Actions
+
+Actions are defined by functions inside the state object:
+
+```JavaScript
+const state = ({ get, set }) => {
+  action1() { ... },
+  action2() { ... },
+  action3() { ... }
+};
+
+```
+
+#### Get
+
+When an action only needs read access to the current state, it uses the `get` 
+function:
+
+```JavaScript
+const state = ({ get, set }) => {
+  logValue() {
+    get(state => {
+      console.log("value is", state.value);
+    });
+  },
+};
+
+```
+
+#### Set
+
+An action uses the `set` function to change state values.
+
+```JavaScript
+const state = ({ get, set }) => {
+  field: "",
+  setField(val) {
+    set(state => {
+      state.field = val;
+    });
   }
 };
 ```
@@ -111,3 +155,4 @@ register([
 { state: state2 }
 ]);
 ```
+

@@ -28,11 +28,11 @@ register({
 const App = () => (
   <State>
     {state => (
-      <>
+      <div>
         <div>Counter: {state.counter}</div>
         <button onClick={state.inc}>+</button>
         <button onClick={state.dec}>-</button>
-      </>
+      </div>
     )}
   </State>
 );

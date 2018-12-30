@@ -80,7 +80,7 @@ const App = props => (
 
 ### Strict
 
-The list of state fields monitored does not change once created.  You can force
+The list of monitored state fields does not change once created.  You can force
 every render to be monitored by specifying the `strict` property.
 
 ```JavaScript

@@ -2,12 +2,53 @@
 id: subscribe
 title: subscribe
 ---
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac euismod odio, eu consequat dui. Nullam molestie consectetur risus id imperdiet. Proin sodales ornare turpis, non mollis massa ultricies id. Nam at nibh scelerisque, feugiat ante non, dapibus tortor. Vivamus volutpat diam quis tellus elementum bibendum. Praesent semper gravida velit quis aliquam. Etiam in cursus neque. Nam lectus ligula, malesuada et mauris a, bibendum faucibus mi. Phasellus ut interdum felis. Phasellus in odio pulvinar, porttitor urna eget, fringilla lectus. Aliquam sollicitudin est eros. Mauris consectetur quam vitae mauris interdum hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+## Import
+```JavaScript
+import { subscribe } from "carry-on-store";
+```
 
-Duis et egestas libero, imperdiet faucibus ipsum. Sed posuere eget urna vel feugiat. Vivamus a arcu sagittis, fermentum urna dapibus, congue lectus. Fusce vulputate porttitor nisl, ac cursus elit volutpat vitae. Nullam vitae ipsum egestas, convallis quam non, porta nibh. Morbi gravida erat nec neque bibendum, eu pellentesque velit posuere. Fusce aliquam erat eu massa eleifend tristique.
+## `subscribe(callback, `*`watch`*`, `*`storeId`*`)`
 
-Sed consequat sollicitudin ipsum eget tempus. Integer a aliquet velit. In justo nibh, pellentesque non suscipit eget, gravida vel lacus. Donec odio ante, malesuada in massa quis, pharetra tristique ligula. Donec eros est, tristique eget finibus quis, semper non nisl. Vivamus et elit nec enim ornare placerat. Sed posuere odio a elit cursus sagittis.
+Subscribe to state changes.  Returns a function that will unsubscribe.
 
-Phasellus feugiat purus eu tortor ultrices finibus. Ut libero nibh, lobortis et libero nec, dapibus posuere eros. Sed sagittis euismod justo at consectetur. Nulla finibus libero placerat, cursus sapien at, eleifend ligula. Vivamus elit nisl, hendrerit ac nibh eu, ultrices tempus dui. Nam tellus neque, commodo non rhoncus eu, gravida in risus. Nullam id iaculis tortor.
+|Parameter|Description|
+|---|---|
+|`callback`|Function to call when state changes.|
+|`storeId`|The name of the store to subscribe to.|
+|`watch`|Optional object representing state keys to subscribe to|
 
-Nullam at odio in sem varius tempor sit amet vel lorem. Etiam eu hendrerit nisl. Fusce nibh mauris, vulputate sit amet ex vitae, congue rhoncus nisl. Sed eget tellus purus. Nullam tempus commodo erat ut tristique. Cras accumsan massa sit amet justo consequat eleifend. Integer scelerisque vitae tellus id consectetur.
+
+## Subscribe to all changes
+
+Only specifying the callback will subscribe to all state changes.
+
+```JavaScript
+const stateChanged = (state, changes) => {
+  console.log("state changed", state, changes);
+};
+
+subscribe(stateChanged);
+```
+
+## Subscribe to some changes
+
+Specifying the `watch` parameter allows you to control what state changes will
+execute the `callback` function.
+
+In this example, any changes to the fields `field1`, `nested`, and 
+`nested.field` will cause the `callback` function to execute.
+
+```JavaScript
+const stateChanged = (state, changes) => {
+  console.log("state changed", state, changes);
+};
+
+const watches = {
+  field1: true,
+  nested: {
+    field: true
+  }
+};
+
+subscribe(stateChanged, watches);
+```

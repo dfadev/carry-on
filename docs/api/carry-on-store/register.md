@@ -2,16 +2,21 @@
 id: register
 title: register
 ---
-## `register(`*`[`*`{ `*`state`*`, `*`middleware`*`, `*`priority`*` }`*`]`*`, `*`id`*`)`
+## Import
+```JavaScript
+import { register } from "carry-on-store";
+```
+
+## `register(`*`[`*`{ `*`state`*`, `*`middleware`*`, `*`priority`*` }`*`]`*`, `*`storeId`*`)`
 
 |Parameter|Description|
 |---|---|
 |`state`|Function or object that represents the state to register|
 |`middleware`|Function that acts as middleware wrapped around an action|
 |`priority`|State is registered in a random order unless a priority is specified.  Higher priority state is registered first.|
-|`id`|The name of the store to register state in.|
+|`storeId`|The name of the store to register state in.|
 
- # Registering *`state`*:
+## Registering state:
 
 The *`set`* function is used to change state and the *`get`* function to retrieve state.
 
@@ -36,41 +41,4 @@ const state = ({ get, set }) => ({
 
 register({ state });
 ```
-
-
-
-When *`register`* is called multiple times it merges state, potentially into a running store:
-
-```JavaScript
-register({
-	state: {
-	  field1: "value1"
-	}
-});
-
-register({
-	state: {
-	  field2: "value2"
-	}
-});
-
-// The store's state will look like:
-//{
-//	field1: "value1",
-//	field2: "value2"
-//}
-```
-
-
-
-Use multiple stores with the *`id`* parameter:
-```JavaScript
-const state = {
-	field1: "value1"
-};
-
-register({ state }, "store1");
-register({ state }, "store2");
-```
-
 
