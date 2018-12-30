@@ -51,7 +51,7 @@ const siteConfig = {
   /* path to images for header/footer */
   headerIcon: 'img/card-travel.svg',
   footerIcon: 'img/card-travel.svg',
-  favicon: 'img/favicon/favicon.ico',
+  favicon: 'img/favicon.ico',
 
   /* Colors for website */
   colors: {
