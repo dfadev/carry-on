@@ -1,6 +1,8 @@
 # carry-on-forms
 
-```carry-on``` plugin to add React form components
+Read the documentation at: https://dfadev.github.io/carry-on
+
+`carry-on` plugin to add React form components
 
 ### Usage
 
