@@ -23,8 +23,8 @@ const users = [
 const siteConfig = {
   title: 'carry-on', // Title for your website.
   tagline: 'State container for React',
-  url: 'https://github.com/dfadev/', // Your website URL
-  baseUrl: '/', // Base URL for your project */
+  url: 'https://dfadev.github.io/', // Your website URL
+  baseUrl: '/carry-on/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
@@ -51,11 +51,11 @@ const siteConfig = {
   /* path to images for header/footer */
   headerIcon: 'img/card-travel.svg',
   footerIcon: 'img/card-travel.svg',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon/favicon.ico',
 
   /* Colors for website */
   colors: {
-    primaryColor: '#9696B0',
+    primaryColor: '#6696B0',
     secondaryColor: '#404040',
   },
 
