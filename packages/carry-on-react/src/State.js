@@ -76,9 +76,9 @@ export default class State extends Component {
       if (this.debug) this.log("watch", this.watch);
 
       this.unsubscribe = subscribe(
-        this.props.from,
         this.stateSubscriber,
-        this.watch
+        this.watch,
+        this.props.from
       );
 
       return finalState;
