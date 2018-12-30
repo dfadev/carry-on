@@ -71,7 +71,7 @@ export const register = (init, id) => {
   else store.pending.push(...init);
 };
 
-// connect a store
+// connect a store --> register pending state, setup dispatch, initialize state
 export const connect = (id, wrap) => {
   const store = useStore(id);
   if (store.set) return store.state;
