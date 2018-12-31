@@ -1,5 +1,7 @@
 # carry-on
 
+# STATUS: WIP
+
 ### State container for React
 
 https://dfadev.github.io/carry-on
