@@ -72,7 +72,8 @@ function proxyfy(state, onGet, suffix = "", ProxyMap) {
   }
 
   proxyValue = (key, value) => {
-    const thisId = suffix ? suffix + "." + key : key;
+    // suffix should be prefix???
+    const thisId = suffix ? suffix + '["' + key + '"]' : key;
     const type = typeof value;
 
     onGet(thisId);
