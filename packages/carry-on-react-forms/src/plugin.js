@@ -12,23 +12,34 @@ import {
   keys
 } from "carry-on-utils";
 
-export default (
-  { id = "form", init = {}, onValidate, onSubmit, onReset } = {
-    init: {},
-    id: "form"
-  }
-) => ({
+export default ({
+  id = "form",
+  initialValues,
+  onValidate,
+  onSubmit,
+  onReset
+}) => ({
   state: ({ set, get }) => {
+    const idPath = toPath(id);
+
     let cancellable;
+
+    if (onValidate === undefined) {
+      const formStateOnValidate = get(q => getInA(q, idPath).onValidate);
+      if (formStateOnValidate !== undefined)
+        onValidate = () => formStateOnValidate;
+    }
+
     const debounceValidate = onValidate
       ? debouncePromise(onValidate({ set, get }), 200)
       : undefined;
 
     const typeSuffix = " (" + id + ")";
 
-    const idPath = toPath(id);
-
     const calcPristine = form => isEqual(form.origState.values, form.values);
+
+    if (initialValues === undefined)
+      initialValues = get(q => getInA(q, idPath).initialValues || {});
 
     const stage1 = {
       visited: {},
@@ -39,27 +50,29 @@ export default (
       isValidating: false,
       isValid: true,
       validation: undefined,
-      values: isFunction(init) ? init({ set, get }) : init,
+      values: isFunction(initialValues)
+        ? initialValues({ set, get })
+        : initialValues,
 
       validate: (state, onSuccess) => {
-        if (debounceValidate) {
-          const form = getInA(state, idPath);
-          form.isValidating = true;
-          const setErrors = form.setErrors;
+        if (!debounceValidate) return;
 
-          cancellable && cancellable();
-          cancellable = makeCancelable(
-            debounceValidate(form.values),
-            errorInfo => setErrors(errorInfo) && onSuccess && onSuccess(),
-            () => {
-              set(
-                curState => (getInA(curState, idPath).isValidating = false),
-                "Validation Threw" + typeSuffix
-              );
-              onSuccess && onSuccess();
-            }
-          );
-        }
+        const form = getInA(state, idPath);
+        form.isValidating = true;
+        const setErrors = form.setErrors;
+
+        cancellable && cancellable();
+        cancellable = makeCancelable(
+          debounceValidate(form.values),
+          errorInfo => setErrors(errorInfo) && onSuccess && onSuccess(),
+          () => {
+            set(
+              curState => (getInA(curState, idPath).isValidating = false),
+              "Validation Threw" + typeSuffix
+            );
+            onSuccess && onSuccess();
+          }
+        );
       },
 
       hasError: fieldName =>
@@ -135,6 +148,10 @@ export default (
           };
           mutateSet(state, id, newFormState);
         }, "Reset Form" + typeSuffix);
+        if (onReset === undefined) {
+          const formStateOnReset = get(q => getInA(q, idPath).onReset);
+          if (formStateOnReset) onReset = () => formStateOnReset;
+        }
         const realOnReset = onReset && onReset({ set, get });
         realOnReset && realOnReset(get(q => getInA(q, idPath).values));
         return s;
@@ -151,6 +168,10 @@ export default (
           return;
 
         const finishSubmit = () => {
+          if (onSubmit === undefined) {
+            const formStateOnSubmit = get(q => getInA(q, idPath).onSubmit);
+            if (formStateOnSubmit) onSubmit = () => formStateOnSubmit;
+          }
           const realOnSubmit = onSubmit && onSubmit({ set, get });
 
           Promise.resolve(
