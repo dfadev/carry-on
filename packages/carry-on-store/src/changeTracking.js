@@ -1,5 +1,5 @@
 /** @format **/
-import { keys, proxyState, deproxify, mutateSetA } from "carry-on-utils";
+import { keys, mutateSetA } from "carry-on-utils";
 
 export function compareChanges(changes, watch) {
   const queue = [];
@@ -28,17 +28,6 @@ export function compareChanges(changes, watch) {
   }
 
   return false;
-}
-
-export function watchGet(state, select) {
-  const trappedState = proxyState(state);
-  const selectedState = select(trappedState.state);
-  trappedState.seal();
-  const watch = trappedState.affected;
-  const deproxified = deproxify(selectedState);
-  const finalState = deproxified !== undefined ? deproxified : selectedState;
-
-  return [finalState, watch];
 }
 
 export function calculateChanges(patches) {

@@ -1,6 +1,6 @@
 /** @format **/
 import { Component } from "react";
-import { logger, throttle, debounce, getIn, mutateSet } from "carry-on-utils";
+import { logger, throttle, debounce, getIn } from "carry-on-utils";
 import { connect, subscribe, watchGet } from "carry-on-store";
 import ReactDOM from "react-dom";
 
@@ -62,17 +62,16 @@ export default class State extends Component {
   };
 
   trapStateQuery = (state, select) => {
-    const { path, default: def, constant } = this.props;
-    const pathedState = getIn(state, path, def);
+    const { from, path, default: def, constant } = this.props;
     if (constant) {
-      const finalState = select(pathedState);
+      const finalState = select(getIn(state, path, def));
       if (this.debug) this.log("get", "constant");
       return finalState;
     }
 
     if (this.props.strict || this.watch === undefined) {
-      const [finalState, watch] = watchGet(pathedState, select);
-      this.watch = path ? mutateSet({}, path, watch) : watch;
+      const [finalState, watch] = watchGet(state, select, path, def, from);
+      this.watch = watch;
       if (this.debug) this.log("watch", this.watch);
 
       this.unsubscribe = subscribe(
@@ -84,7 +83,7 @@ export default class State extends Component {
       return finalState;
     }
 
-    const finalState = select(pathedState);
+    const finalState = select(getIn(state, path, def));
     return finalState;
   };
 

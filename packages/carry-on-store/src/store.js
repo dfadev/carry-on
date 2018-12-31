@@ -1,6 +1,13 @@
 /** @format **/
-import produce, { nothing } from "immer";
-import { forceArray, mutateMerge, isFunction } from "carry-on-utils";
+import produce from "immer";
+import {
+  proxyState,
+  deproxify,
+  forceArray,
+  mutateMerge,
+  isFunction,
+  getIn
+} from "carry-on-utils";
 import notify from "./notify";
 import { calculateChanges } from "./changeTracking";
 
@@ -76,14 +83,12 @@ export const connect = (id, wrap) => {
   const store = useStore(id);
   if (store.set) return store.state;
 
-  const runGetAction = action => state => {
-    const rslt = action(state);
-    return rslt === undefined ? nothing : rslt;
+  // get provides either the current state or the trapped state
+  store.get = action => {
+    const state =
+      store.trappedState !== undefined ? store.trappedState.state : store.state;
+    return action ? action(state) : state;
   };
-
-  // get provides a copy of state created by the producer
-  store.get = (action = identity => identity, ...args) =>
-    produce(store.state, runGetAction(action), ...args);
 
   // change tracking
   store.getChanges = () => store.changes;
@@ -132,3 +137,22 @@ export const connect = (id, wrap) => {
 // subscribe to state changes
 export const subscribe = (fn, watch, id) =>
   useStore(id).notify.subscribe(fn, watch);
+
+// watch fields a select function uses
+export function watchGet(state, select, path, def, id) {
+  const store = useStore(id);
+
+  const trappedState = proxyState(state);
+  store.trappedState = trappedState;
+
+  const pathedState = getIn(trappedState.state, path, def);
+
+  const selectedState = select(pathedState);
+  trappedState.seal();
+  store.trappedState = undefined;
+  const watch = trappedState.affected;
+  const deproxified = deproxify(selectedState);
+  const finalState = deproxified !== undefined ? deproxified : selectedState;
+
+  return [finalState, watch];
+}
