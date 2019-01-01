@@ -21,11 +21,12 @@ export default ({
 }) => ({
   state: ({ set, get }) => {
     const idPath = toPath(id);
+    const curForm = (state = get()) => getInA(state, idPath);
 
     let cancellable;
 
     if (onValidate === undefined) {
-      const formStateOnValidate = get(q => getInA(q, idPath).onValidate);
+      const formStateOnValidate = curForm().onValidate;
       if (formStateOnValidate !== undefined)
         onValidate = () => formStateOnValidate;
     }
@@ -39,7 +40,7 @@ export default ({
     const calcPristine = form => isEqual(form.origState.values, form.values);
 
     if (initialValues === undefined)
-      initialValues = get(q => getInA(q, idPath).initialValues || {});
+      initialValues = curForm().initialValues || {};
 
     const stage1 = {
       visited: {},
@@ -57,7 +58,7 @@ export default ({
       validate: (state, onSuccess) => {
         if (!debounceValidate) return;
 
-        const form = getInA(state, idPath);
+        const form = curForm(state);
         form.isValidating = true;
         const setErrors = form.setErrors;
 
@@ -67,7 +68,7 @@ export default ({
           errorInfo => setErrors(errorInfo) && onSuccess && onSuccess(),
           () => {
             set(
-              curState => (getInA(curState, idPath).isValidating = false),
+              curState => (curForm(curState).isValidating = false),
               "Validation Threw" + typeSuffix
             );
             onSuccess && onSuccess();
@@ -75,18 +76,15 @@ export default ({
         );
       },
 
-      hasError: fieldName =>
-        get(state => getIn(getInA(state, idPath).errors, fieldName, false)),
+      hasError: fieldName => getIn(curForm().errors, fieldName, false),
 
-      hasVisited: fieldName =>
-        get(state => getIn(getInA(state, idPath).visited, fieldName, false)),
+      hasVisited: fieldName => getIn(curForm().visited, fieldName, false),
 
-      isTouched: fieldName =>
-        get(state => getIn(getInA(state, idPath).touched, fieldName, false)),
+      isTouched: fieldName => getIn(curForm().touched, fieldName, false),
 
       setFieldValue: (fieldName, value) =>
         set(state => {
-          const form = getInA(state, idPath);
+          const form = curForm(state);
           mutateSet(form.values, fieldName, value);
           const pristine = calcPristine(form);
           if (pristine !== form.isPristine) form.isPristine = pristine;
@@ -95,7 +93,7 @@ export default ({
 
       setValues: values =>
         set(state => {
-          const form = getInA(state, idPath);
+          const form = curForm(state);
           if (form.values !== values) form.values = values;
           const pristine = calcPristine(form);
           if (pristine !== form.isPristine) form.isPristine = pristine;
@@ -104,12 +102,12 @@ export default ({
 
       setFieldError: (fieldName, error) =>
         set(state => {
-          mutateSet(getInA(state, idPath).errors, fieldName, error);
+          mutateSet(curForm(state).errors, fieldName, error);
         }, "Set Field Error" + typeSuffix),
 
       setErrors: ({ errors, isValid, merge = true }) =>
         set(state => {
-          const form = getInA(state, idPath);
+          const form = curForm(state);
 
           if (merge) mutateMerge(form.errors, errors);
           else form.errors = errors;
@@ -121,17 +119,17 @@ export default ({
 
       setFieldVisited: (fieldName, visited) =>
         set(state => {
-          mutateSet(getInA(state, idPath).visited, fieldName, visited);
+          mutateSet(curForm(state).visited, fieldName, visited);
         }, "Set Field Visited" + typeSuffix),
 
       setFieldTouched: (fieldName, touched) =>
         set(state => {
-          mutateSet(getInA(state, idPath).touched, fieldName, touched);
+          mutateSet(curForm(state).touched, fieldName, touched);
         }, "Set Field Touched" + typeSuffix),
 
       setTouched: (touched, merge = true) =>
         set(state => {
-          const form = getInA(state, idPath);
+          const form = curForm(state);
           if (merge) mutateMerge(form.touched, touched);
           else form.touched = touched;
         }, "Set Touched" + typeSuffix),
@@ -139,7 +137,7 @@ export default ({
       reset: e => {
         e && e.preventDefault();
         const s = set(state => {
-          const formState = getInA(state, idPath);
+          const formState = curForm(state);
           const origState = formState.origState;
           const newFormState = {
             ...formState,
@@ -149,11 +147,11 @@ export default ({
           mutateSet(state, id, newFormState);
         }, "Reset Form" + typeSuffix);
         if (onReset === undefined) {
-          const formStateOnReset = get(q => getInA(q, idPath).onReset);
+          const formStateOnReset = curForm().onReset;
           if (formStateOnReset) onReset = () => formStateOnReset;
         }
         const realOnReset = onReset && onReset({ set, get });
-        realOnReset && realOnReset(get(q => getInA(q, idPath).values));
+        realOnReset && realOnReset(curForm().values);
         return s;
       },
 
@@ -161,7 +159,7 @@ export default ({
         e && e.preventDefault();
         if (
           get(state => {
-            const form = getInA(state, idPath);
+            const form = curForm(state);
             return form.isValidating || form.isSubmitting;
           })
         )
@@ -169,17 +167,15 @@ export default ({
 
         const finishSubmit = () => {
           if (onSubmit === undefined) {
-            const formStateOnSubmit = get(q => getInA(q, idPath).onSubmit);
+            const formStateOnSubmit = curForm().onSubmit;
             if (formStateOnSubmit) onSubmit = () => formStateOnSubmit;
           }
           const realOnSubmit = onSubmit && onSubmit({ set, get });
 
-          Promise.resolve(
-            realOnSubmit && realOnSubmit(get(q => getInA(q, idPath).values))
-          )
+          Promise.resolve(realOnSubmit && realOnSubmit(curForm().values))
             .then(rslt => {
               set(curState => {
-                const form = getInA(curState, idPath);
+                const form = curForm(curState);
                 form.isSubmitting = false;
                 if (rslt) {
                   if (!form.isPristine) form.isPristine = true;
@@ -193,20 +189,19 @@ export default ({
             })
             .catch(() =>
               set(curState => {
-                const form = getInA(curState, idPath);
+                const form = curForm(curState);
                 if (form.isSubmitting) form.isSubmitting = false;
-                return curState;
               })
             );
         };
 
         const beginSubmitState = set(state => {
-          const form = getInA(state, idPath);
+          const form = curForm(state);
           form.isSubmitting = true;
           form.validate(state, finishSubmit);
         }, "Begin Submit" + typeSuffix);
 
-        if (!getInA(beginSubmitState, idPath).isValidating) finishSubmit();
+        if (!curForm(beginSubmitState).isValidating) finishSubmit();
       }
     };
 
