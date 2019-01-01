@@ -1,6 +1,6 @@
 # carry-on
 
-# STATUS: WIP
+# STATUS: WIP SUBJECT TO CHANGE
 
 ### State container for React
 

@@ -1,5 +1,7 @@
 # carry-on-react
 
+# STATUS: WIP SUBJECT TO CHANGE
+
 State container for React. Requires [Proxy](https://caniuse.com/#feat=proxy).
 
 Read the documentation at: https://dfadev.github.io/carry-on
