@@ -10,7 +10,8 @@ export default function mutateMerge(object, ...sources) {
       if (myValue instanceof Object && typeof myValue !== "function") {
         value = mutateMerge(clone(myValue), value);
       }
-      object[key] = value;
+      // don't assign if we don't need to
+      if (object[key] !== value) object[key] = value;
     });
   }
   return object;
