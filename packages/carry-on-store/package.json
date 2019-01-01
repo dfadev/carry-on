@@ -44,5 +44,9 @@
   "dependencies": {
     "carry-on-utils": "^0.0.31",
     "immer": "^1.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfadev/carry-on.git"
   }
 }

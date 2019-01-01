@@ -55,5 +55,9 @@
   "dependencies": {
     "carry-on-react": "^0.0.31",
     "carry-on-utils": "^0.0.31"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfadev/carry-on.git"
   }
 }

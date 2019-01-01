@@ -43,5 +43,9 @@
     "debounce-promise": "^3.1.0",
     "fast-deep-equal": "^2.0.1",
     "throttle-debounce": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfadev/carry-on.git"
   }
 }
