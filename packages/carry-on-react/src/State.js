@@ -26,9 +26,14 @@ export default class State extends Component {
     else if (d) this.onStateChange = debounce(d, this.onStateChange);
   }
 
+  componentDidMount() {
+    this.props.onMount && this.props.onMount(connect(this.props.from));
+  }
+
   componentWillUnmount() {
     this.onStateChange.cancel && this.onStateChange.cancel();
     this.unsubscribe && this.unsubscribe();
+    this.props.onUnmount && this.props.onUnmount(connect(this.props.from));
   }
 
   setupDebug = () => {
