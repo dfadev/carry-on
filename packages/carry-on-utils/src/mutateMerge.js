@@ -10,8 +10,10 @@ export default function mutateMerge(object, ...sources) {
       if (myValue instanceof Object && typeof myValue !== "function") {
         value = mutateMerge(clone(myValue), value);
       }
-      // don't assign if we don't need to
-      if (object[key] !== value) object[key] = value;
+      // assign undefined to maybe sparse array
+      if (value === undefined && Array.isArray(object)) object[key] = value;
+      // don't assign if we don't need to, assign undefined to maybe sparse array
+      else if (object[key] !== value) object[key] = value;
     });
   }
   return object;
