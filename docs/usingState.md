@@ -227,4 +227,24 @@ State.Debug = true;
 State.Verbose = true;
 ```
 
+## Lifecycle Events
+
+Use the `onMount` and `onUnmount` properties when you need to execute
+actions during those lifecycle events.
+
+```JavaScript
+const App = props => (
+  <State
+    onMount={state => { console.log("State mounted", state); }}
+    onUnmount={state => { console.log("State unmounted", state); }}
+  >
+    {state => ({
+      <div>
+        {state.field}
+      </div>
+    })}
+  </State>
+);
+
+```
 

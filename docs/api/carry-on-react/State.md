@@ -21,6 +21,8 @@ All properties are optional.
 |`debug`|When true, log messages regarding state changes will be printed to the `console`.|
 |`verbose`|When true, verbose log messages are printed to the `console`.|
 |`id`|Debug log uses this to identify components|
+|`onMount`|Called with the current state when the component mounts.|
+|`onUnmount`|Called with the current state when the component unmounts.|
 
 ## Accessing
 
