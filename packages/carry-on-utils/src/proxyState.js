@@ -75,9 +75,8 @@ function proxyfy(state, onGet, suffix = "", ProxyMap) {
     // suffix should be prefix???
     const thisId = suffix ? suffix + '["' + key + '"]' : key;
     const type = typeof value;
-    const isArray = Array.isArray(value);
 
-    onGet(thisId, isArray);
+    onGet(thisId);
 
     if (shouldProxy(type)) {
       return proxyfy(value, onGet, thisId, ProxyMap);
@@ -130,13 +129,11 @@ export const proxyState = (object, _ProxyMap) => {
   const ProxyMap = _ProxyMap || new WeakMap();
   let sealed = false;
 
-  const onKeyUse = (key, isArray) => {
+  const onKeyUse = key => {
     if (sealed) return;
     if (!keysUsed.has(key)) {
       keysUsed.add(key);
       mutateSet(affected, key, true);
-      if (isArray) mutateSet(affected, key + ".length", true);
-      else mutateSet(affected, key, true);
     }
   };
 
