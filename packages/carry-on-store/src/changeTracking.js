@@ -32,8 +32,17 @@ export function compareChanges(changes, watch) {
 
 export function calculateChanges(patches) {
   const stage1 = {};
-  for (let i = 0, len = patches.length; i < len; i++)
-    mutateSetA(stage1, patches[i].path, true);
+  for (let i = 0, len = patches.length; i < len; i++) {
+    const patch = patches[i];
+    // force paths to be strings so the change index doesn't contain arrays
+    const patchPath = patch.path.map(String);
+
+    if (patch.op === "add") {
+      mutateSetA(stage1, patchPath, true);
+      // fake a change to length since immer doesn't track it for add op
+      mutateSetA(stage1, patch.path.slice(0, -1).concat("length"), true);
+    } else mutateSetA(stage1, patchPath, true);
+  }
 
   // precompute object walk so keys is called the least amount necessary
   const stage2 = [];
