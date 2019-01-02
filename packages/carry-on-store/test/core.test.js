@@ -79,7 +79,9 @@ test("connect with pending function state", () => {
 test("set action", () => {
   const state = connect();
   const store = useStore();
-  store.set(state => ({ ...state, some: "state" }));
+  store.set(state => {
+    state.some = "state";
+  });
   expect(store.state).toMatchSnapshot();
   deleteStore();
 });
@@ -182,7 +184,7 @@ test("register with plugin, state function ", () => {
     state: ({ set }) => ({
       thing: 1,
       action() {
-        return set(state => ({ ...state, some: "state" }));
+        return set(state => void (state.some = "state"));
       }
     }),
     middleware: ({ set }) => (...args) => {
@@ -210,7 +212,7 @@ test("register with plugin, no state and set", () => {
   const state = connect();
   expect(state).toMatchSnapshot();
   const store = useStore();
-  store.set(state => ({ ...state, some: "state" }));
+  store.set(state => void (state.some = "state"));
   expect(store.state).toMatchSnapshot();
   deleteStore();
 });

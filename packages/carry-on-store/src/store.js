@@ -104,10 +104,10 @@ export const connect = (id, wrap) => {
       const runRootSet = state => {
         store.nestedSet = true;
         store.nestedState = state;
-        const rslt = action(state);
+        action(state);
         store.nestedSet = false;
         store.nestedState = undefined;
-        return rslt;
+        return state;
       };
 
       return (store.state = produce(store.state, runRootSet, patcher));
