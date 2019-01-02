@@ -29,6 +29,9 @@ export default function logger(id) {
   const actionStyle2 = "color:" + colors.yellow;
   const infoStyle = "color:" + colors.gray + ";font-style:italic";
 
+  // eslint-disable-next-line
+  const isNative = console.log.toString().includes("native");
+
   return function log(action, ...result) {
     let prefix = "%c%s %c %s ";
     let actStyle;
@@ -43,6 +46,7 @@ export default function logger(id) {
     }
 
     const items = [idStyle, id, actStyle, act];
+    const objs = [];
 
     for (let i = 0, len = result.length; i < len; i++) {
       const logItem = result[i];
@@ -50,13 +54,17 @@ export default function logger(id) {
         prefix += "%c %s ";
         items.push(infoStyle);
         items.push(logItem);
-      } else {
+      } else if (isNative) {
         prefix += "%o";
         items.push(logItem);
+      } else {
+        objs.push(logItem);
       }
     }
 
     // eslint-disable-next-line
     console.log(prefix, ...items);
+    // eslint-disable-next-line
+    if (!isNative) console.log(...objs);
   };
 }
