@@ -32,6 +32,9 @@ export default function transaction() {
           );
           return state;
         }, "Begin Transaction")
-    })
+    }),
+    dispose: () => {
+      transactions.length = 0;
+    }
   };
 }

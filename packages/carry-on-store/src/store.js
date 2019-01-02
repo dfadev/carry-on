@@ -28,7 +28,7 @@ const createPlugins = (store, curState, plugins) => {
   const { id, get, set, getChanges, isNested, wrap } = store;
 
   for (let i = 0, len = plugins.length; i < len; i++) {
-    const { middleware, state } = plugins[i];
+    const { middleware, state, dispose } = plugins[i];
 
     if (middleware) {
       const middlewares = forceArray(middleware);
@@ -49,21 +49,36 @@ const createPlugins = (store, curState, plugins) => {
           isFunction(states[j]) ? states[j]({ id, get, set }) : states[j]
         );
     }
+
+    if (dispose) store.dispose.push(dispose);
   }
   return curState;
 };
 
 // create a store
-const create = id => ({ id, pending: [], notify: notify() });
+const create = id => ({ id, dispose: [], pending: [], notify: notify() });
 
 // a map of stores
 let stores = {};
 
-// initialize the map of stores (delete all)
-export const initStores = () => (stores = {});
-
 // delete a store
-export const deleteStore = id => delete stores[id];
+export const deleteStore = id => {
+  const store = stores[id];
+  if (!store) return;
+
+  for (let i = 0, len = store.dispose.length; i < len; i++) store.dispose[i]();
+
+  delete stores[id];
+};
+
+// initialize the map of stores (delete all)
+export const initStores = () => {
+  const storeKeys = Object.keys(stores);
+  for (let i = 0, len = storeKeys.length; i < len; i++)
+    deleteStore(storeKeys[i]);
+
+  stores = {};
+};
 
 // lookup a store
 export const useStore = id => stores[id] || (stores[id] = create(id));

@@ -71,9 +71,11 @@ Object {
 
 exports[`useStore 1`] = `
 Object {
+  "dispose": Array [],
   "id": undefined,
   "notify": Object {
     "plugin": Object {
+      "dispose": [Function],
       "middleware": [Function],
     },
     "subscribe": [Function],
@@ -85,9 +87,11 @@ Object {
 
 exports[`useStore named 1`] = `
 Object {
+  "dispose": Array [],
   "id": "store1",
   "notify": Object {
     "plugin": Object {
+      "dispose": [Function],
       "middleware": [Function],
     },
     "subscribe": [Function],

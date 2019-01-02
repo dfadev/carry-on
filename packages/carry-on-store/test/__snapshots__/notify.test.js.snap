@@ -3,6 +3,7 @@
 exports[`notify match 1`] = `
 Object {
   "plugin": Object {
+    "dispose": [Function],
     "middleware": [Function],
   },
   "subscribe": [Function],
@@ -13,6 +14,7 @@ Object {
 exports[`plug snapshot 1`] = `
 Object {
   "plugin": Object {
+    "dispose": [Function],
     "middleware": [Function],
   },
   "subscribe": [Function],
@@ -23,6 +25,7 @@ Object {
 exports[`subscribe/unsubscribe 1`] = `
 Object {
   "plugin": Object {
+    "dispose": [Function],
     "middleware": [Function],
   },
   "subscribe": [Function],

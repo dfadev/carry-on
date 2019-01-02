@@ -3,8 +3,8 @@ import { keys, isEqual } from "carry-on-utils";
 
 export default function devTools({ timeTravel = true } = {}) {
   // dev tools connections
-  const connections = [],
-    subscriptions = [],
+  const connections = {},
+    subscriptions = {},
     // time travel state tracking (only for immutable state)
     time = {},
     // check for dev tools extension
@@ -70,6 +70,16 @@ export default function devTools({ timeTravel = true } = {}) {
         connection.send({ type }, state);
 
         return state;
+      },
+
+    dispose: () => {
+      const subscriptionKeys = Object.keys(subscriptions);
+      for (let i = 0, len = subscriptionKeys.length; i < len; i++) {
+        const key = subscriptionKeys[i];
+        subscriptions[key]();
+        delete subscriptions[key];
+        delete connections[key];
       }
+    }
   };
 }

@@ -10,6 +10,7 @@ Object {
 
 exports[`transaction match 1`] = `
 Object {
+  "dispose": [Function],
   "state": [Function],
 }
 `;

@@ -38,7 +38,10 @@ export default function notify() {
         else wrap(notifySubs);
 
         return state;
-      }
+      },
+    dispose: () => {
+      subscribers.clear();
+    }
   };
 
   return {
