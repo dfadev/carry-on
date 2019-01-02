@@ -94,7 +94,10 @@ export default class State extends Component {
     // handle constant
     if (constant) {
       const finalState = select(getIn(state, path, def));
+
+      // log the constant query
       if (this.debug) this.log("get", "constant");
+
       return finalState;
     }
 
@@ -141,6 +144,7 @@ export default class State extends Component {
       // log a skip message because this update could probably be fixed upstream
       if (this.debug && this.verbose)
         this.log("-skip render", "prevState === nextState");
+
       return this.prevFinalState;
     }
 
@@ -148,6 +152,7 @@ export default class State extends Component {
     if (this.props.constant && this.prevFinalState) {
       // log a skip message because this update could probably be fixed upstream
       if (this.debug && this.verbose) this.log("-skip render", "constant");
+
       return this.prevFinalState;
     }
 
@@ -178,6 +183,7 @@ export default class State extends Component {
       if (this.debug)
         if (this.props.constant) this.log("render", "constant");
         else this.log("render");
+
       // execute the render function with the selected state
       return renderFn(this.storeState);
     }
