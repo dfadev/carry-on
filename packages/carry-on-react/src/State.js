@@ -1,7 +1,7 @@
 /** @format **/
 import { Component } from "react";
 import { logger, throttle, debounce, getIn } from "carry-on-utils";
-import { connect, subscribe, watchGet } from "carry-on-store";
+import { register, connect, subscribe, watchGet } from "carry-on-store";
 import ReactDOM from "react-dom";
 
 export default class State extends Component {
@@ -14,6 +14,8 @@ export default class State extends Component {
     this.setupDebug();
 
     const { from, throttle: t, debounce: d } = props;
+
+    if (this.props.register) register(this.props.register, from);
 
     this.storeState = this.trapSelect(
       connect(
