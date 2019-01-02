@@ -30,8 +30,10 @@ const createPlugins = (store, curState, plugins) => {
   for (let i = 0, len = plugins.length; i < len; i++) {
     const { middleware, state, dispose } = plugins[i];
 
+    // update middleware chain
     if (middleware) {
       const middlewares = forceArray(middleware);
+
       for (let j = 0, jlen = middlewares.length; j < jlen; j++)
         store.d = applyMiddleware(
           middlewares[j],
@@ -41,17 +43,21 @@ const createPlugins = (store, curState, plugins) => {
         );
     }
 
+    // merge state into store
     if (state) {
       store.plugState = curState;
       const states = forceArray(state);
+
       for (let j = 0, jlen = states.length; j < jlen; j++)
         mutateMerge(
           curState,
           isFunction(states[j]) ? states[j]({ id, get, set }) : states[j]
         );
+
       store.plugState = undefined;
     }
 
+    // add dispose callback
     if (dispose) store.dispose.push(dispose);
   }
   return curState;
@@ -68,6 +74,7 @@ export const deleteStore = id => {
   const store = stores[id];
   if (!store) return;
 
+  // call all dispose callbacks
   for (let i = 0, len = store.dispose.length; i < len; i++) store.dispose[i]();
 
   delete stores[id];
@@ -75,6 +82,7 @@ export const deleteStore = id => {
 
 // initialize the map of stores (delete all)
 export const initStores = () => {
+  // delete all existing stores
   const storeKeys = Object.keys(stores);
   for (let i = 0, len = storeKeys.length; i < len; i++)
     deleteStore(storeKeys[i]);
@@ -164,9 +172,7 @@ export function watchGet(state, select, path, def, id) {
 
   const trappedState = proxyState(state);
   store.trappedState = trappedState;
-
   const pathedState = getIn(trappedState.state, path, def);
-
   const selectedState = select(pathedState);
   trappedState.seal();
   store.trappedState = undefined;
