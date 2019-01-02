@@ -42,12 +42,14 @@ const createPlugins = (store, curState, plugins) => {
     }
 
     if (state) {
+      store.plugState = curState;
       const states = forceArray(state);
       for (let j = 0, jlen = states.length; j < jlen; j++)
         mutateMerge(
           curState,
           isFunction(states[j]) ? states[j]({ id, get, set }) : states[j]
         );
+      store.plugState = undefined;
     }
 
     if (dispose) store.dispose.push(dispose);
@@ -100,8 +102,11 @@ export const connect = (id, wrap) => {
 
   // get provides either the current state or the trapped state
   store.get = action => {
-    const state =
-      store.trappedState !== undefined ? store.trappedState.state : store.state;
+    let state;
+    if (store.plugState) state = store.plugState;
+    else if (store.trappedState) state = store.trappedState.state;
+    else state = store.state;
+
     return action ? action(state) : state;
   };
 
