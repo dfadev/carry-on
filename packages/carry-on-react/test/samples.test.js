@@ -1,13 +1,13 @@
 /** @format **/
 import React, { Fragment } from "react";
+import { State } from "../src";
 import {
   register,
   deleteStore,
   notify as notifyListeners,
   transaction,
-  State,
   initStores
-} from "../src";
+} from "carry-on-store";
 import { wait, render, fireEvent, waitForElement } from "react-testing-library";
 
 afterEach(() => {
