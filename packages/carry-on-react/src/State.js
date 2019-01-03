@@ -1,8 +1,16 @@
 /** @format **/
 import { Component } from "react";
-import { logger, throttle, debounce, getIn } from "carry-on-utils";
+import {
+  shallowEqual,
+  logger,
+  throttle,
+  debounce,
+  getIn
+} from "carry-on-utils";
 import { register, connect, subscribe, watchGet } from "carry-on-store";
 import ReactDOM from "react-dom";
+
+const ignoreProps = ["children"];
 
 export default class State extends Component {
   static Debug = false;
@@ -11,13 +19,19 @@ export default class State extends Component {
 
   constructor(props) {
     super(props);
+    this.setup();
+  }
+
+  // setup this component
+  setup = (first = true) => {
     // setup debugging
     this.setupDebug();
+    this.reset();
 
-    const { from, throttle: t, debounce: d } = props;
+    const { from, throttle: t, debounce: d, register: reg } = this.props;
 
     // register state if requested
-    if (this.props.register) register(this.props.register, from);
+    if (first && reg) register(reg, from);
 
     // setup the initial store state
     this.storeState = this.trapSelect(
@@ -28,9 +42,25 @@ export default class State extends Component {
     );
 
     // apply throttle or debounce
-    if (t) this.onStateChange = throttle(t, this.onStateChange);
-    else if (d) this.onStateChange = debounce(d, this.onStateChange);
-  }
+    if (t) this.onStateChange = throttle(t, this.origOnStateChange);
+    else if (d) this.onStateChange = debounce(d, this.origOnStateChange);
+    else this.onStateChange = this.origOnStateChange;
+  };
+
+  // reset internal state
+  reset = () => {
+    this.watch = undefined;
+    this.prevStoreState = undefined;
+    this.prevFinalState = undefined;
+
+    // cancel any pending debounced/throttled state changes
+    this.onStateChange &&
+      this.onStateChange.cancel &&
+      this.onStateChange.cancel();
+
+    // unsubscribe from state changes
+    this.unsubscribe && this.unsubscribe();
+  };
 
   componentDidMount() {
     // call onMount handler
@@ -38,11 +68,7 @@ export default class State extends Component {
   }
 
   componentWillUnmount() {
-    // cancel any pending debounced/throttled state changes
-    this.onStateChange.cancel && this.onStateChange.cancel();
-
-    // unsubscribe from state changes
-    this.unsubscribe && this.unsubscribe();
+    this.reset();
 
     // call onUnmount handler
     this.props.onUnmount && this.props.onUnmount(connect(this.props.from));
@@ -66,7 +92,7 @@ export default class State extends Component {
   };
 
   // process a state change
-  onStateChange = (state, changes) => {
+  origOnStateChange = (state, changes) => {
     if (!changes || changes.length === 0) {
       if (this.debug) this.log("`no changes`");
       return;
@@ -136,6 +162,28 @@ export default class State extends Component {
 
     return this.trapStateQuery(state, this.props.select);
   };
+
+  shouldComponentUpdate(nextProps) {
+    const storeState = this.prevStoreState === this.storeState;
+    if (!storeState) {
+      if (this.debug) this.log("shouldComponentUpdate", "store state change");
+      return true;
+    }
+
+    // ignore children changes -- if you need a reset use render property
+    // instead of children
+    const shallowEq = shallowEqual(this.props, nextProps, ignoreProps);
+    if (!shallowEq) {
+      if (this.debug) this.log("shouldComponentUpdate", "props change");
+      this.setup(false);
+      return true;
+    }
+
+    if (this.debug && this.verbose)
+      this.log("-shouldComponentUpdate", "skip render");
+
+    return false;
+  }
 
   // trap a render function, tracking fields accessed
   trapRender = renderFn => {
