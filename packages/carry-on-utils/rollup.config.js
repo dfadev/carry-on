@@ -14,9 +14,9 @@ const output = [
 ];
 const eslintPlugin = eslint();
 const babelPlugin = babel();
-const external = Object.keys(pkg.dependencies || {})
-  .concat(Object.keys(pkg.peerDependencies || {}))
-  .concat(["throttle-debounce", "logdown"]);
+const external = Object.keys(pkg.dependencies || {}).concat(
+  Object.keys(pkg.peerDependencies || {})
+);
 const watch = {
   clearScreen: false
 };
