@@ -13,3 +13,4 @@ export { default as mutateSet, mutateSetA } from "./mutateSet";
 export * from "./proxyState";
 export { default as forceArray } from "./forceArray";
 export { default as keys } from "./keys";
+export { default as shallowEqual } from "./shallowEqual";
