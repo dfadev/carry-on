@@ -23,8 +23,9 @@ export default ({
       {state => {
         // fix String/Number/Boolean instanceof
         const val = state && state.valueOf();
+        const type = typeof val;
         // spread object props, or deliver as "state" prop if it's not an object
-        return val instanceof Object && !Array.isArray(state) ? (
+        return type === "object" && !Array.isArray(state) ? (
           <WrappedComponent {...props} {...state} />
         ) : (
           <WrappedComponent {...props} state={state} />
