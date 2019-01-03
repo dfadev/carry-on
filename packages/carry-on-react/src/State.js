@@ -19,11 +19,11 @@ export default class State extends Component {
 
   constructor(props) {
     super(props);
-    this.setup();
+    this.setup(true);
   }
 
   // setup this component
-  setup = (first = true) => {
+  setup = first => {
     // setup debugging
     this.setupDebug();
     this.reset();
@@ -72,6 +72,28 @@ export default class State extends Component {
 
     // call onUnmount handler
     this.props.onUnmount && this.props.onUnmount(connect(this.props.from));
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const storeState = this.prevStoreState === this.storeState;
+    if (!storeState) {
+      if (this.debug) this.log("shouldComponentUpdate", "store state change");
+      return true;
+    }
+
+    // ignore children changes -- if you need a reset use render property
+    // instead of children
+    const shallowEq = shallowEqual(this.props, nextProps, ignoreProps);
+    if (!shallowEq) {
+      if (this.debug) this.log("shouldComponentUpdate", "props change");
+      this.setup();
+      return true;
+    }
+
+    if (this.debug && this.verbose)
+      this.log("-shouldComponentUpdate", "skip render");
+
+    return false;
   }
 
   // setup debugging
@@ -162,28 +184,6 @@ export default class State extends Component {
 
     return this.trapStateQuery(state, this.props.select);
   };
-
-  shouldComponentUpdate(nextProps) {
-    const storeState = this.prevStoreState === this.storeState;
-    if (!storeState) {
-      if (this.debug) this.log("shouldComponentUpdate", "store state change");
-      return true;
-    }
-
-    // ignore children changes -- if you need a reset use render property
-    // instead of children
-    const shallowEq = shallowEqual(this.props, nextProps, ignoreProps);
-    if (!shallowEq) {
-      if (this.debug) this.log("shouldComponentUpdate", "props change");
-      this.setup(false);
-      return true;
-    }
-
-    if (this.debug && this.verbose)
-      this.log("-shouldComponentUpdate", "skip render");
-
-    return false;
-  }
 
   // trap a render function, tracking fields accessed
   trapRender = renderFn => {
