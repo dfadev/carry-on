@@ -32,7 +32,13 @@ export default (renderFn, stateProps) => {
       finalProps.onUnmount = state => origOnUnmount(state, props);
     }
 
-    return <State {...finalProps}>{state => renderFn(props, state)}</State>;
+    return (
+      <State {...finalProps}>
+        {state =>
+          renderFn.length === 1 ? renderFn(state) : renderFn(props, state)
+        }
+      </State>
+    );
   };
 
   Component.displayName = (stateProps && stateProps.id) || "CarryOn";
