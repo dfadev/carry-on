@@ -39,7 +39,7 @@
         "title": "initStores"
       },
       "api/carry-on-store/notify": {
-        "title": "notify"
+        "title": "api/carry-on-store/notify"
       },
       "api/carry-on-store/register": {
         "title": "register"
@@ -48,7 +48,7 @@
         "title": "subscribe"
       },
       "api/carry-on-store/transaction": {
-        "title": "transaction"
+        "title": "api/carry-on-store/transaction"
       },
       "api/carry-on-store/useStore": {
         "title": "useStore"
