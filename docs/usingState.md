@@ -270,38 +270,48 @@ const Menu = carryOn((props, state) => (
 
 const Content = carryOn((props, state) => <div>{state.site.content}</div>);
 
-const state = {
-  site: {
-    components: {
-      nav: Nav,
-      menu: Menu,
-      content: Content
-    },
-    menu: ["one", "two", "three"],
-    nav: ["a", "b", "c"],
-    content: "The content"
-  }
-};
-
-register({ state });
-
-const App = carryOn((
-  // Component props
-  { title, className },
-  // Store state
+const App = carryOn(
+  // Use object parameter to specify State properties
   {
-    site: {
-      components: { nav: Nav, menu: Menu, content: Content }
+    // id is used for log messages and the component's displayName
+    id: "App",
+    // use of register property:
+    register: {
+      state: {
+        site: {
+          components: {
+            nav: Nav,
+            menu: Menu,
+            content: Content
+          },
+          menu: ["one", "two", "three"],
+          nav: ["a", "b", "c"],
+          content: "The content"
+        }
+      }
+    },
+    // components dont change
+    constant: true
+  },
+  // Use function parameter to specify render function
+  (
+    // Component props
+    { title, className },
+    // Store state
+    {
+      site: {
+        components: { nav: Nav, menu: Menu, content: Content }
+      }
     }
-  }
-) => (
-  <div className={className}>
-    <h1>{title}</h1>
-    <Nav />
-    <Menu />
-    <div>
-      <Content />
+  ) => (
+    <div className={className}>
+      <h1>{title}</h1>
+      <Nav />
+      <Menu />
+      <div>
+        <Content />
+      </div>
     </div>
-  </div>
-));
+  )
+);
 ```
