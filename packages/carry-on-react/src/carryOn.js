@@ -10,7 +10,7 @@ export default (renderFn, stateProps) => {
     stateProps = actualStateProps;
   }
 
-  return ({ from, debug, verbose, ...props }) => {
+  const Component = ({ from, debug, verbose, ...props }) => {
     const propProps = {
       from,
       debug,
@@ -34,4 +34,8 @@ export default (renderFn, stateProps) => {
 
     return <State {...finalProps}>{state => renderFn(props, state)}</State>;
   };
+
+  Component.displayName = (stateProps && stateProps.id) || "CarryOn";
+
+  return Component;
 };
