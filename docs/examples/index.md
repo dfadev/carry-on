@@ -219,44 +219,6 @@ const App = () => (
 );
 ```
 
-## Unit of work using get
-
-```JavaScript
-let rslt, rslt2;
-register({
-  state: ({ get, set }) => ({
-    action() {
-      // use get for a unit of work
-      rslt = get(state => {
-        // do stuff with state
-        state.new = { ok: "0" };
-      });
-
-      rslt2 = get(state => {
-        // do some other stuff with state
-        state.other = { none: "thing" };
-      });
-
-      // rslt and rslt2 are now two different versions of the original state
-      return set(state => {
-        state.done = "yes";
-      });
-    }
-  })
-});
-
-const App = () => (
-  <State>
-    {({ action, done }) => (
-      <div>
-        <span>{done}</span>
-        <button onClick={action}>run action</button>
-      </div>
-    )}
-  </State>
-);
-```
-
 ## Multiple select
 
 ```JavaScript
