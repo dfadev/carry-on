@@ -1,0 +1,6 @@
+---
+id: createStaticHistory
+title: createStaticHistory
+---
+
+

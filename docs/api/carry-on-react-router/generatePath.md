@@ -1,0 +1,6 @@
+---
+id: generatePath
+title: generatePath
+---
+
+

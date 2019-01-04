@@ -20,6 +20,39 @@
       "api/carry-on-react-forms/FormState": {
         "title": "FormState"
       },
+      "api/carry-on-react-router/createStaticHistory": {
+        "title": "createStaticHistory"
+      },
+      "api/carry-on-react-router/generatePath": {
+        "title": "generatePath"
+      },
+      "api/carry-on-react-router/Link": {
+        "title": "Link"
+      },
+      "api/carry-on-react-router/matchPath": {
+        "title": "matchPath"
+      },
+      "api/carry-on-react-router/NavLink": {
+        "title": "NavLink"
+      },
+      "api/carry-on-react-router/Prompt": {
+        "title": "Prompt"
+      },
+      "api/carry-on-react-router/Redirect": {
+        "title": "Redirect"
+      },
+      "api/carry-on-react-router/Route": {
+        "title": "Route"
+      },
+      "api/carry-on-react-router/RouteMap": {
+        "title": "RouteMap"
+      },
+      "api/carry-on-react-router/Switch": {
+        "title": "Switch"
+      },
+      "api/carry-on-react-router/withRouter": {
+        "title": "withRouter"
+      },
       "api/carry-on-react/carryOn": {
         "title": "carryOn"
       },
