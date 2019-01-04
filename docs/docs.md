@@ -12,7 +12,8 @@ npm install --save carry-on-react
 ## Import
 
 ```JavaScript
-import { State, withState, register } from "carry-on-react";
+import { State } from "carry-on-react";
+import { register } from "carry-on-store";
 ```
 
 ## Simple store
