@@ -12,5 +12,5 @@ import { initStores } from "carry-on-store";
 Removes all stores.
 
 ```JavaScript
-initStore();
+initStores();
 ```
