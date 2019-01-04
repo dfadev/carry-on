@@ -14,7 +14,10 @@ const RouteMap = carryOn(
         Component,
         match: route && hist.matchPath(route)
       }))
-      .filter(item => item.match !== null);
+      .filter(item => item.match !== null)
+      .sort(
+        item => (item.route === undefined || item.match === undefined ? 1 : -1)
+      );
 
     if (matches.length === 0) return null;
     const { Component, match } = matches[0];
