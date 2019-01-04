@@ -1,0 +1,66 @@
+{
+  "name": "carry-on-react-router",
+  "version": "0.0.38",
+  "description": "carry-on plugin to support routing",
+  "source": "./src/index.js",
+  "module": "./es/carry-on-react-router.js",
+  "scripts": {
+    "clean": "rimraf lib dist es coverage",
+    "format": "prettier --write \"{src,test}/**/*.js\"",
+    "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
+    "lint": "eslint src test",
+    "pretest": "npm run build",
+    "test": "cross-env BABEL_ENV=test jest --config ./.jest.config.js",
+    "test:watch": "npm test -- --watchAll",
+    "test:cov": "npm test -- --coverage",
+    "build": "rollup -c rollup.config.js",
+    "build-dev": "rollup -c rollup.config.js --configDebug",
+    "watch": "npm run build -- -w"
+  },
+  "author": "Russ Panula <russ@dfa.net>",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.4.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.5.0",
+    "prettier": "^1.14.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-testing-library": "^5.4.0",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.68.2",
+    "rollup-plugin-babel": "^4.0.1",
+    "rollup-plugin-eslint": "^5.0.0",
+    "snapshot-diff": "^0.4.1"
+  },
+  "sideEffects": false,
+  "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
+  "dependencies": {
+    "carry-on-react": "^0.0.38",
+    "carry-on-utils": "^0.0.38",
+    "history": "^4.7.2",
+    "hoist-non-react-statics": "^3.2.1",
+    "path-to-regexp": "^2.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfadev/carry-on.git"
+  }
+}
