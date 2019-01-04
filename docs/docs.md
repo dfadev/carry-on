@@ -10,6 +10,7 @@ npm install --save carry-on-react
 ```
 
 ## Import
+
 ```JavaScript
 import { State, withState, register } from "carry-on-react";
 ```
@@ -37,4 +38,3 @@ const App = () => (
   </State>
 );
 ```
-

@@ -20,6 +20,9 @@
       "api/carry-on-react-forms/FormState": {
         "title": "FormState"
       },
+      "api/carry-on-react/carryOn": {
+        "title": "carryOn"
+      },
       "api/carry-on-react/State": {
         "title": "<State ...>"
       },

@@ -2,7 +2,9 @@
 id: initStores
 title: initStores
 ---
+
 ## Import
+
 ```JavaScript
 import { initStores } from "carry-on-store";
 ```

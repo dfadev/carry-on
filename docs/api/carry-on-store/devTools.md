@@ -2,7 +2,9 @@
 id: devTools
 title: devTools
 ---
+
 ## Import
+
 ```JavaScript
 import { register, devTools } from "carry-on-store";
 ```

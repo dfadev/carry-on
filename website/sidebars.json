@@ -25,7 +25,8 @@
         "label": "carry-on-react",
         "ids": [
           "api/carry-on-react/State",
-          "api/carry-on-react/withState"
+          "api/carry-on-react/withState",
+          "api/carry-on-react/carryOn"
         ]
       },
       {

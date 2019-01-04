@@ -2,21 +2,22 @@
 id: subscribe
 title: subscribe
 ---
+
 ## Import
+
 ```JavaScript
 import { subscribe } from "carry-on-store";
 ```
 
-## `subscribe(callback, `*`watch`*`, `*`storeId`*`)`
+## `subscribe(callback,`_`watch`_`,`_`storeId`_`)`
 
-Subscribe to state changes.  Returns a function that will unsubscribe.
+Subscribe to state changes. Returns a function that will unsubscribe.
 
-|Parameter|Description|
-|---|---|
-|`callback`|Function to call when state changes.|
-|`storeId`|The name of the store to subscribe to.|
-|`watch`|Optional object representing state keys to subscribe to|
-
+| Parameter  | Description                                             |
+| ---------- | ------------------------------------------------------- |
+| `callback` | Function to call when state changes.                    |
+| `watch`    | Optional object representing state keys to subscribe to |
+| `storeId`  | The name of the store to subscribe to.                  |
 
 ## Subscribe to all changes
 
@@ -35,7 +36,7 @@ subscribe(stateChanged);
 Specifying the `watch` parameter allows you to control what state changes will
 execute the `callback` function.
 
-In this example, any changes to the fields `field1`, `nested`, and 
+In this example, any changes to the fields `field1`, `nested`, and
 `nested.field` will cause the `callback` function to execute.
 
 ```JavaScript

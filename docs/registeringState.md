@@ -13,10 +13,10 @@ import { register } from "carry-on-store";
 
 ### As a function
 
-State can be defined by a function accepting one parameter.  The parameter
+State can be defined by a function accepting one parameter. The parameter
 passed is a plain object containing the keys `id`, `get`, and `set`.
 
-`id` is the store instance identifier.  It will be undefined for the default
+`id` is the store instance identifier. It will be undefined for the default
 store.
 
 `get` is a function that actions use to query the current state.
@@ -59,12 +59,11 @@ const state = ({ get, set }) => {
   action2() { ... },
   action3() { ... }
 };
-
 ```
 
 #### Get
 
-When an action only needs read access to the current state, it uses the `get` 
+When an action only needs read access to the current state, it uses the `get`
 function:
 
 ```JavaScript
@@ -75,7 +74,6 @@ const state = ({ get, set }) => {
     });
   },
 };
-
 ```
 
 #### Set
@@ -95,8 +93,8 @@ const state = ({ get, set }) => {
 
 ## Register
 
-State is registered with a store instance.  You may specify a store instance
-identifier as the second parameter to `register`.  Omitting this parameter will
+State is registered with a store instance. You may specify a store instance
+identifier as the second parameter to `register`. Omitting this parameter will
 register state with the default store.
 
 ### Register on default store:
@@ -155,4 +153,3 @@ register([
 { state: state2 }
 ]);
 ```
-

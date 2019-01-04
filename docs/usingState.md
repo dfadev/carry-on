@@ -13,7 +13,7 @@ import { State } from "carry-on-react";
 
 ### Default store
 
-The child node of a `State` component is a render function.  The render function
+The child node of a `State` component is a render function. The render function
 is given the store state as it's first parameter.
 
 ```JavaScript
@@ -26,7 +26,6 @@ const App = props => (
     })}
   </State>
 );
-
 ```
 
 ### Named store
@@ -43,15 +42,14 @@ const App = props => (
     })}
   </State>
 );
-
 ```
 
 ## Access tracking
 
-In the above examples there are no selectors indicating which fields the `State` 
-component should subscribe to.  This is because when the render function is 
-executed the state is monitored for usage via a Proxy.  The usage tracking is 
-then used to determine which state fields will cause the `State` component to 
+In the above examples there are no selectors indicating which fields the `State`
+component should subscribe to. This is because when the render function is
+executed the state is monitored for usage via a Proxy. The usage tracking is
+then used to determine which state fields will cause the `State` component to
 update.
 
 In the next example, the first `State` component will update when `field1`
@@ -80,7 +78,7 @@ const App = props => (
 
 ### Strict
 
-The list of monitored state fields does not change once created.  You can force
+The list of monitored state fields does not change once created. You can force
 every render to be monitored by specifying the `strict` property.
 
 ```JavaScript
@@ -97,7 +95,7 @@ const App = props => (
 
 ## Constant
 
-If the state needed is constant, the `constant` property will prevent any 
+If the state needed is constant, the `constant` property will prevent any
 render updates after the first render.
 
 ```JavaScript
@@ -130,7 +128,7 @@ const App = props => (
 
 ## Select
 
-An optional selector can be used with the `select` property.  When the `select`
+An optional selector can be used with the `select` property. When the `select`
 property is used, access tracking will be applied to the `select` function and
 not the render function.
 
@@ -166,7 +164,7 @@ const App = props => (
 ## Delayed updates
 
 In some cases, state change updates may arrive too quickly for a component to
-sensibly make use of.  The `throttle` and `debounce` properties will apply the
+sensibly make use of. The `throttle` and `debounce` properties will apply the
 corresponding delay to any state change updates a `State` component is
 subscribed to.
 
@@ -245,6 +243,57 @@ const App = props => (
     })}
   </State>
 );
-
 ```
 
+## carryOn factory
+
+The `carryOn` factory function is available as shorthand for a typical stateful component:
+
+```JavaScript
+import { carryOn } from "carry-on-react";
+
+const Nav = carryOn((props, state) => (
+  <ul>{state.site.nav.map(item => <li key={item}>{item}</li>)}</ul>
+));
+
+const Menu = carryOn((props, state) => (
+  <ul>{state.site.menu.map(item => <li key={item}>item</li>)}</ul>
+));
+
+const Content = carryOn((props, state) => (<div>{state.site.content}</div>));
+
+const state = {
+  site: {
+    components: {
+      nav: Nav,
+      menu: Menu,
+      content: Content
+    },
+    menu: ["one", "two", "three"],
+    nav: ["a", "b", "c"],
+    content: "Read This"
+  }
+};
+
+register({ state });
+
+const App = carryOn((
+  // Component props
+  { title, className },
+  // Store state
+  {
+    site: {
+      components: { nav, menu, content }
+    }
+  }
+) => (
+  <div className={className}>
+    <h1>{title}</h1>
+    <nav />
+    <menu />
+    <div>
+      <content />
+    </div>
+  </div>
+));
+```
