@@ -13,6 +13,7 @@ export default function devTools({ timeTravel = true } = {}) {
   if (!devToolsExt) return {};
 
   return {
+    priority: Number.NEGATIVE_INFINITY,
     middleware: ({ set, id, isNested }) =>
       function devToolsMiddleware(action, type = "Set", ...args) {
         const state = set(action, type, ...args);
