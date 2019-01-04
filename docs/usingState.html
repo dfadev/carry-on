@@ -233,39 +233,49 @@ const Menu = carryOn((props, state) =&gt; (
 
 const Content = carryOn((props, state) =&gt; &lt;div&gt;{state.site.content}&lt;/div&gt;);
 
-const state = {
-  site: {
-    components: {
-      nav: Nav,
-      menu: Menu,
-      content: Content
-    },
-    menu: ["one", "two", "three"],
-    nav: ["a", "b", "c"],
-    content: "The content"
-  }
-};
-
-register({ state });
-
-const App = carryOn((
-  // Component props
-  { title, className },
-  // Store state
+const App = carryOn(
+  // Use object parameter to specify State properties
   {
-    site: {
-      components: { nav: Nav, menu: Menu, content: Content }
+    // id is used for log messages and the component's displayName
+    id: "App",
+    // use of register property:
+    register: {
+      state: {
+        site: {
+          components: {
+            nav: Nav,
+            menu: Menu,
+            content: Content
+          },
+          menu: ["one", "two", "three"],
+          nav: ["a", "b", "c"],
+          content: "The content"
+        }
+      }
+    },
+    // components dont change
+    constant: true
+  },
+  // Use function parameter to specify render function
+  (
+    // Component props
+    { title, className },
+    // Store state
+    {
+      site: {
+        components: { nav: Nav, menu: Menu, content: Content }
+      }
     }
-  }
-) =&gt; (
-  &lt;div className={className}&gt;
-    &lt;h1&gt;{title}&lt;/h1&gt;
-    &lt;Nav /&gt;
-    &lt;Menu /&gt;
-    &lt;div&gt;
-      &lt;Content /&gt;
+  ) =&gt; (
+    &lt;div className={className}&gt;
+      &lt;h1&gt;{title}&lt;/h1&gt;
+      &lt;Nav /&gt;
+      &lt;Menu /&gt;
+      &lt;div&gt;
+        &lt;Content /&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
-  &lt;/div&gt;
-));
+  )
+);
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/carry-on/docs/registeringState"><span class="arrow-prev">← </span><span>Registering State</span></a><a class="docs-next button" href="/carry-on/docs/examples/index"><span>Examples</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#import">Import</a></li><li><a href="#basic-usage">Basic usage</a><ul class="toc-headings"><li><a href="#default-store">Default store</a></li><li><a href="#named-store">Named store</a></li></ul></li><li><a href="#access-tracking">Access tracking</a><ul class="toc-headings"><li><a href="#strict">Strict</a></li></ul></li><li><a href="#constant">Constant</a></li><li><a href="#path">Path</a></li><li><a href="#select">Select</a></li><li><a href="#default-value">Default value</a></li><li><a href="#delayed-updates">Delayed updates</a><ul class="toc-headings"><li><a href="#throttle">Throttle</a></li><li><a href="#debounce">Debounce</a></li></ul></li><li><a href="#debugging">Debugging</a><ul class="toc-headings"><li><a href="#global">Global</a></li></ul></li><li><a href="#lifecycle-events">Lifecycle Events</a></li><li><a href="#carryon-factory">carryOn factory</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 Russ Panula</section></footer></div></body></html>
