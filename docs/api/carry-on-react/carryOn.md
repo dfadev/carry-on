@@ -17,14 +17,22 @@ A convenience function for creating a React component that can access store stat
 import { carryOn } from "carry-on-react";
 
 const Nav = carryOn((props, state) => (
-  <ul>{state.site.nav.map(item => <li key={item}>{item}</li>)}</ul>
+  <ul>
+    {state.site.nav.map(item => (
+      <li key={item}>{item}</li>
+    ))}
+  </ul>
 ));
 
 const Menu = carryOn((props, state) => (
-  <ul>{state.site.menu.map(item => <li key={item}>item</li>)}</ul>
+  <ul>
+    {state.site.menu.map(item => (
+      <li key={item}>{item}</li>
+    ))}
+  </ul>
 ));
 
-const Content = carryOn((props, state) => (<div>{state.site.content}</div>));
+const Content = carryOn((props, state) => <div>{state.site.content}</div>);
 
 const state = {
   site: {
@@ -35,7 +43,7 @@ const state = {
     },
     menu: ["one", "two", "three"],
     nav: ["a", "b", "c"],
-    content: "Read This"
+    content: "The content"
   }
 };
 
@@ -47,16 +55,16 @@ const App = carryOn((
   // Store state
   {
     site: {
-      components: { nav, menu, content }
+      components: { nav: Nav, menu: Menu, content: Content }
     }
   }
 ) => (
   <div className={className}>
     <h1>{title}</h1>
-    <nav />
-    <menu />
+    <Nav />
+    <Menu />
     <div>
-      <content />
+      <Content />
     </div>
   </div>
 ));
