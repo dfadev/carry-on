@@ -12,7 +12,7 @@ const Routes = carryOn(
       routeList = getIn(state, "routes");
       if (routeList === undefined) routeList = getIn(state, "site.routes");
       if (routeList === undefined) routeList = getIn(state, "app.routes");
-    }
+    } else routeList = getIn(state, routes);
 
     let found;
     for (let i = 0, len = routeList.length; i < len; i++) {
