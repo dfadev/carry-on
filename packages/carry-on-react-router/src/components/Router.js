@@ -10,9 +10,13 @@ import {
 import createStaticHistory from "../createStaticHistory";
 import router from "../router";
 
+const hasRegistered = false;
+
 export class Router extends Component {
   constructor(props) {
     super(props);
+    if (hasRegistered) return;
+    hasRegistered = true;
     register(router(props.history, props.path), props.store);
   }
 
