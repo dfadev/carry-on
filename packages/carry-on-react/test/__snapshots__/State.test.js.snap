@@ -18,12 +18,6 @@ exports[`withState renders 1`] = `
 </DocumentFragment>
 `;
 
-exports[`withState select, path, from, and default can be a function 1`] = `
-<DocumentFragment>
-  {"lookup":"key1","state":"val1"}
-</DocumentFragment>
-`;
-
 exports[`withState selection function returns array as state prop 1`] = `
 <DocumentFragment>
   {"prop1":"ok","state":[1,2,3]}
@@ -33,11 +27,5 @@ exports[`withState selection function returns array as state prop 1`] = `
 exports[`withState selection function returns non Object as state prop 1`] = `
 <DocumentFragment>
   {"prop1":"ok","state":"ok"}
-</DocumentFragment>
-`;
-
-exports[`withState selection function takes props 1`] = `
-<DocumentFragment>
-  {"prop1":"ok","thing":"ok"}
 </DocumentFragment>
 `;

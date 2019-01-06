@@ -16,16 +16,8 @@ test("withState renders", () => {
   deleteStore();
 });
 
-test("withState selection function takes props", () => {
-  const select = (state, props) => ({ thing: props.prop1 });
-  const Comp = withState({ select })(props => JSON.stringify(props));
-  const { asFragment } = render(<Comp prop1="ok" />);
-  expect(asFragment()).toMatchSnapshot();
-  deleteStore();
-});
-
 test("withState selection function returns non Object as state prop", () => {
-  const select = (state, props) => props.prop1;
+  const select = state => "ok";
   const Comp = withState({ select })(props => JSON.stringify(props));
   const { asFragment } = render(<Comp prop1="ok" />);
   expect(asFragment()).toMatchSnapshot();
@@ -36,31 +28,6 @@ test("withState selection function returns array as state prop", () => {
   const select = (state, props) => [1, 2, 3];
   const Comp = withState({ select })(props => JSON.stringify(props));
   const { asFragment } = render(<Comp prop1="ok" />);
-  expect(asFragment()).toMatchSnapshot();
-  deleteStore();
-});
-
-test("withState select, path, from, and default can be a function", () => {
-  const select = (state, props) => state;
-  const from = props => undefined;
-  const path = props => props.lookup;
-  const def = props => "default Value";
-
-  register({
-    state: ({ set }) => ({
-      key1: "val1",
-      key2: "val2"
-    })
-  });
-
-  const Comp = withState({ select, from, path, def })(props =>
-    JSON.stringify(props)
-  );
-
-  const App = props => <Comp lookup="key1" />;
-
-  const { asFragment } = render(<App />);
-
   expect(asFragment()).toMatchSnapshot();
   deleteStore();
 });
