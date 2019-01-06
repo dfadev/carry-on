@@ -129,7 +129,7 @@ export const connect = (id, wrap) => {
   // run producer action and set state
   store.d = action => {
     if (!store.nestedSet) {
-      const runRootSet = state => {
+      const rootSet = function rootSet(state) {
         store.nestedSet = true;
         store.nestedState = state;
         action(state);
@@ -138,7 +138,7 @@ export const connect = (id, wrap) => {
         return state;
       };
 
-      return (store.state = produce(store.state, runRootSet, patcher));
+      return (store.state = produce(store.state, rootSet, patcher));
     }
 
     action(store.nestedState);
