@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A <Link> accepts a string \`to\` prop 1`] = `
+<DocumentFragment>
+  <a
+    href="/the/path?the=query#the-hash"
+  >
+    link
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <Link> accepts an object \`to\` prop 1`] = `
+<DocumentFragment>
+  <a
+    href="/the/path?the=query#the-hash"
+  >
+    link
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <Link> renders with no props 1`] = `
+<DocumentFragment>
+  <a
+    href=""
+  >
+    link
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <Link> with no pathname, resolves using the current location 1`] = `
+<DocumentFragment>
+  <a
+    href="/somewhere?rendersWithPathname=true"
+  >
+    link
+  </a>
+</DocumentFragment>
+`;
