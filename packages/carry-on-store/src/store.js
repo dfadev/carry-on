@@ -39,7 +39,15 @@ const createPlugins = (store, curState, plugins) => {
           middlewares[j],
           store.d,
           (middlewareEntry, fn) =>
-            middlewareEntry({ id, get, set: fn, getChanges, wrap, isNested })
+            middlewareEntry({
+              id,
+              get,
+              set,
+              next: fn,
+              getChanges,
+              wrap,
+              isNested
+            })
         );
     }
 

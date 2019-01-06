@@ -26,11 +26,12 @@ test("subscribe is called", () => {
 
   const plugin = new devTools();
   let setCount = 0;
-  const set = plugin.middleware({ isNested: () => false, set: (action, ...args) => {
+  let set = (action, ...args) => {
     action && action();
     setCount++;
     return { id: 1 };
-  }});
+  };
+  set = plugin.middleware({ isNested: () => false, set, next: set });
 
   set();
   set(() => { });
@@ -66,10 +67,12 @@ test("disable timetravel works", () => {
 
   const plugin = new devTools({ timeTravel: false });
   let setCount = 0;
-  const set = plugin.middleware({ isNested: () => false, set: (action, ...args) => {
+  let set = (action, ...args) => {
+    action && action();
     setCount++;
     return { id: 1 };
-  }});
+  };
+  set = plugin.middleware({ isNested: () => false, set, next: set });
 
   set();
   set(() => { });

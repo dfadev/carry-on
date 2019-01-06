@@ -116,13 +116,13 @@ test("register with plugin with multiple middleware", () => {
       thing: 1
     },
     middleware: [
-      ({ set }) => (...args) => {
+      ({ next }) => (...args) => {
         pluginDispatchCalled++;
-        return set(...args);
+        return next(...args);
       },
-      ({ set }) => (...args) => {
+      ({ next }) => (...args) => {
         pluginDispatchCalled++;
-        return set(...args);
+        return next(...args);
       }
     ]
   };
@@ -141,13 +141,13 @@ test("register with plugins set as array", () => {
       thing: 1
     },
     middleware: [
-      ({ set }) => (...args) => {
+      ({ next }) => (...args) => {
         pluginDispatchCalled++;
-        return set(...args);
+        return next(...args);
       },
-      ({ set }) => (...args) => {
+      ({ next }) => (...args) => {
         pluginDispatchCalled++;
-        return set(...args);
+        return next(...args);
       }
     ]
   };
@@ -165,9 +165,9 @@ test("register with plugins as non-array", () => {
     state: {
       thing: 1
     },
-    middleware: ({ set }) => (...args) => {
+    middleware: ({ next }) => (...args) => {
       pluginDispatchCalled++;
-      return set(...args);
+      return next(...args);
     }
   };
 
@@ -187,9 +187,9 @@ test("register with plugin, state function ", () => {
         return set(state => void (state.some = "state"));
       }
     }),
-    middleware: ({ set }) => (...args) => {
+    middleware: ({ next }) => (...args) => {
       pluginDispatchCalled++;
-      return set(...args);
+      return next(...args);
     }
   };
 

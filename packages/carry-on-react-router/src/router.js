@@ -14,7 +14,10 @@ const router = (history = createBrowserHistory(), path = "app.history") => {
 
   // router state
   const state = ({ get, set }) => {
-    history.listen(
+    const prevHist = getInA(get(), history);
+    if (prevHist !== undefined) prevHist.unlisten();
+
+    const unlisten = history.listen(
       () =>
         !isPaused &&
         set(s => {
@@ -54,7 +57,14 @@ const router = (history = createBrowserHistory(), path = "app.history") => {
     }
 
     const stage = {
+      unlisten,
       ...history,
+      match: {
+        path: "/",
+        url: "/",
+        params: {},
+        isExact: history.location.pathname === "/"
+      },
       handleClick,
       getHref,
       matchPath: opts => matchPath(get().app.history.location.pathname, opts)
@@ -64,8 +74,8 @@ const router = (history = createBrowserHistory(), path = "app.history") => {
   };
 
   // router middleware
-  const middleware = ({ get, set, isNested }) => (action, type, ...args) => {
-    const nextState = set(action, type, ...args);
+  const middleware = ({ get, next, isNested }) => (action, type, ...args) => {
+    const nextState = next(action, type, ...args);
     if (isNested() || type !== "Time Travel") return nextState;
 
     // time travel should replace history location

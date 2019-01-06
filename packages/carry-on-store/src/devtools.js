@@ -14,12 +14,16 @@ export default function devTools({ timeTravel = true } = {}) {
 
   return {
     priority: Number.NEGATIVE_INFINITY,
-    middleware: ({ set, id, isNested }) =>
+    middleware: ({ next, set, id, isNested }) =>
       function devToolsMiddleware(action, type = "Set", ...args) {
-        const state = set(action, type, ...args);
+        const state = next(action, type, ...args);
 
         // exit when no action
         if (!action) return state;
+
+        // prevent infinite loop
+        if (type === "Time Travel") return state;
+
         const name = id;
 
         let connection = connections[name];
