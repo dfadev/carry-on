@@ -30,16 +30,22 @@ export default class State extends Component {
 
     const { from, throttle: t, debounce: d, register: reg } = this.props;
 
-    // register state if requested
-    if (first && reg) register(reg, from);
-
-    // setup the initial store state
-    this.storeState = this.trapSelect(
-      connect(
-        from,
-        ReactDOM.unstable_batchedUpdates
-      )
-    );
+    // setup the initial store state, registering state if requested
+    if (first && reg) {
+      let state = register(reg, from);
+      if (state === undefined)
+        state = connect(
+          from,
+          ReactDOM.unstable_batchedUpdates
+        );
+      this.storeState = this.trapSelect(state);
+    } else
+      this.storeState = this.trapSelect(
+        connect(
+          from,
+          ReactDOM.unstable_batchedUpdates
+        )
+      );
 
     // apply throttle or debounce
     if (t) this.onStateChange = throttle(t, this.origOnStateChange);
