@@ -1,7 +1,6 @@
 /** @format **/
 import React from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
-import { isFunction } from "carry-on-utils";
 import State from "./State";
 
 // a HOC that wraps the State component
