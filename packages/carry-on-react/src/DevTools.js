@@ -4,7 +4,7 @@ import { register, devTools } from "carry-on-store";
 export default class DevTools extends Component {
   constructor(props) {
     super(props);
-    register(devTools());
+    register(devTools(), props.store);
   }
 
   render() {
