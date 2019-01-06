@@ -12,7 +12,7 @@ import notify from "./notify";
 import { calculateChanges } from "./changeTracking";
 
 // middleware initialize message type
-export const initMessageType = "Initialize";
+export const initMessageType = "Register";
 
 // wrap a function with middleware
 const applyMiddleware = (middlewares, fn, apply) => {
