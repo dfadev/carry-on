@@ -28,6 +28,8 @@ export class Router extends Component {
 export class MemoryRouter extends Component {
   constructor(props) {
     super(props);
+    if (hasRegistered) return;
+    hasRegistered = true;
     register(router(createMemoryHistory(props), props.path), props.store);
   }
 
@@ -39,6 +41,8 @@ export class MemoryRouter extends Component {
 export class BrowserRouter extends Component {
   constructor(props) {
     super(props);
+    if (hasRegistered) return;
+    hasRegistered = true;
     register(router(createBrowserHistory(props), props.path), props.store);
   }
 
@@ -50,6 +54,8 @@ export class BrowserRouter extends Component {
 export class HashRouter extends Component {
   constructor(props) {
     super(props);
+    if (hasRegistered) return;
+    hasRegistered = true;
     register(router(createHashHistory(props), props.path), props.store);
   }
 
@@ -61,6 +67,8 @@ export class HashRouter extends Component {
 export class StaticRouter extends Component {
   constructor(props) {
     super(props);
+    if (hasRegistered) return;
+    hasRegistered = true;
     register(router(createStaticHistory(props), props.path), props.store);
   }
 
