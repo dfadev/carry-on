@@ -10,7 +10,7 @@ import {
 import createStaticHistory from "../createStaticHistory";
 import router from "../router";
 
-const hasRegistered = false;
+let hasRegistered = false;
 
 export class Router extends Component {
   constructor(props) {

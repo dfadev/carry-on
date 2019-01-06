@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { register, devTools } from "carry-on-store";
 
-const hasRegistered = false;
+let hasRegistered = false;
 
 export default class DevTools extends Component {
   constructor(props) {
