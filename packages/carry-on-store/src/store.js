@@ -99,8 +99,13 @@ export const register = (init, id) => {
   init = forceArray(init);
   // queue if no set available yet
   if (store.set)
-    store.set(state => createPlugins(store, state, init), initMessageType);
-  else store.pending.push(...init);
+    return store.set(
+      state => createPlugins(store, state, init),
+      initMessageType
+    );
+
+  store.pending.push(...init);
+  return undefined;
 };
 
 // connect a store --> register pending state, setup dispatch, initialize state
