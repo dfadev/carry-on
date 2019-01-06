@@ -38,9 +38,9 @@ export default class State extends Component {
           from,
           ReactDOM.unstable_batchedUpdates
         );
-      this.storeState = this.trapSelect(state);
+      this.trapSelect(state);
     } else
-      this.storeState = this.trapSelect(
+      this.trapSelect(
         connect(
           from,
           ReactDOM.unstable_batchedUpdates
@@ -130,7 +130,7 @@ export default class State extends Component {
     if (this.debug && (this.props.debounce || this.props.throttle))
       this.log("delayed changes", changes);
 
-    this.storeState = this.trapSelect(state);
+    this.trapSelect(state);
     this.forceUpdate();
   };
 
@@ -186,9 +186,9 @@ export default class State extends Component {
   trapSelect = state => {
     // return original state when there's no select because fields are tracked
     // in the render function
-    if (!this.props.select) return state;
-
-    return this.trapStateQuery(state, this.props.select);
+    this.storeState = this.props.select
+      ? this.trapStateQuery(state, this.props.select)
+      : state;
   };
 
   // trap a render function, tracking fields accessed
@@ -237,6 +237,9 @@ export default class State extends Component {
       if (this.debug)
         if (this.props.constant) this.log("render", "constant");
         else this.log("render");
+
+      // update prev store state
+      this.prevStoreState = this.storeState;
 
       // execute the render function with the selected state
       return renderFn(this.storeState);
