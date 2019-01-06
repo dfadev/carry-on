@@ -15,7 +15,10 @@ const Route = carryOn(
       path,
       children: childs,
       component,
-      render
+      render,
+      exact,
+      strict,
+      sensitive
     },
     state
   ) => {
@@ -24,8 +27,8 @@ const Route = carryOn(
 
     let match;
     if (computedMatch) match = computedMatch;
-    else if (path) match = hist.matchPath(props);
-    //else match = hist.match; // ???
+    else if (path) match = hist.matchPath({ path, exact, strict, sensitive });
+    else match = hist.match;
 
     const renderProps = { location, match };
 
