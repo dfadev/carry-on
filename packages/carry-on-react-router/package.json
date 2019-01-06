@@ -1,6 +1,6 @@
 {
   "name": "carry-on-react-router",
-  "version": "0.0.41",
+  "version": "0.0.42",
   "description": "carry-on plugin to support routing",
   "source": "./src/index.js",
   "module": "./es/carry-on-react-router.js",
@@ -53,9 +53,9 @@
   "sideEffects": false,
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
   "dependencies": {
-    "carry-on-react": "^0.0.41",
-    "carry-on-store": "^0.0.41",
-    "carry-on-utils": "^0.0.41",
+    "carry-on-react": "^0.0.42",
+    "carry-on-store": "^0.0.42",
+    "carry-on-utils": "^0.0.42",
     "history": "^4.7.2",
     "hoist-non-react-statics": "^3.2.1",
     "path-to-regexp": "^2.4.0"
