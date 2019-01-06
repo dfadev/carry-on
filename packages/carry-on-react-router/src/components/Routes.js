@@ -7,7 +7,13 @@ const Routes = carryOn(
   { id: "RouteMap" },
   ({ routes, history = "app.history", ...rest }, state) => {
     const hist = getIn(state, history);
-    const routeList = getIn(state, routes);
+    let routeList; // = getIn(state, routes);
+    if (routes === undefined) {
+      routeList = getIn(state, "routes");
+      if (routeList === undefined) routeList = getIn(state, "site.routes");
+      if (routeList === undefined) routeList = getIn(state, "app.routes");
+    }
+
     let found;
     for (let i = 0, len = routeList.length; i < len; i++) {
       const entry = routeList[i];
