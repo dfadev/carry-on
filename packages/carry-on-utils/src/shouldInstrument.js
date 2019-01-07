@@ -35,7 +35,7 @@ const handlers = new Map([
 ]);
 
 /* eslint-disable no-nested-ternary */
-const globalObj =
+/* istanbul ignore next */ const globalObj =
   typeof global !== "undefined"
     ? global
     : typeof self !== "undefined"

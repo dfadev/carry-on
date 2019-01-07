@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should call getCollectionHandlers 1`] = `false`;
+
+exports[`should call getCollectionHandlers 2`] = `
+Object {
+  "entries": true,
+  "forEach": true,
+  "get": true,
+  "has": true,
+  "keys": true,
+  "size": true,
+  "values": true,
+  Symbol(Symbol.iterator): true,
+}
+`;
