@@ -88,16 +88,14 @@ export default class State extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    const storeState = this.prevStoreState === this.storeState;
-    if (!storeState) {
+    if (this.prevStoreState !== this.storeState) {
       if (this.debug) this.log("shouldComponentUpdate", "store state change");
       return true;
     }
 
     // ignore children changes -- if you need a reset use render property
     // instead of children
-    const shallowEq = shallowEqual(this.props, nextProps, ignoreProps);
-    if (!shallowEq) {
+    if (!shallowEqual(this.props, nextProps, ignoreProps)) {
       if (this.debug) this.log("shouldComponentUpdate", "props change");
       this.setup();
       return true;
