@@ -2,6 +2,18 @@
 
 exports[`State component can render empty and null children 1`] = `<DocumentFragment />`;
 
+exports[`constant 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`constant debug verbose 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
 exports[`custom plugin 1`] = `
 "Snapshot Diff:
 - First value
@@ -68,6 +80,12 @@ exports[`custom plugin 4`] = `
       +
     </button>
     <button>"
+`;
+
+exports[`debug verbose 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
 `;
 
 exports[`default store 1`] = `
@@ -228,6 +246,18 @@ exports[`multiple select 4`] = `
       <button>"
 `;
 
+exports[`no changes 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`no changes with debug 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
 exports[`notifyListeners/subscribe/unsubscribe 1`] = `
 "Snapshot Diff:
 - First value
@@ -260,6 +290,90 @@ exports[`notifyListeners/subscribe/unsubscribe 2`] = `
       +
     </button>
     <button>"
+`;
+
+exports[`onmount/onunmount 1`] = `
+Object {
+  "counter": 0,
+  "dec": [Function],
+  "inc": [Function],
+}
+`;
+
+exports[`onmount/onunmount 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`onmount/onunmount 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`onmount/onunmount 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`onmount/onunmount 5`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`onmount/onunmount 6`] = `
+Object {
+  "counter": 0,
+  "dec": [Function],
+  "inc": [Function],
+}
 `;
 
 exports[`path 1`] = `
@@ -528,6 +642,151 @@ exports[`register state on connected store with init as a function 1`] = `
   </DocumentFragment>"
 `;
 
+exports[`register with State 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register with State 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register with State 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register with State 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register with multiple State 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register with multiple State 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register with multiple State 3`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 0
++     Counter: 1
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register with multiple State 4`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,8 +1,8 @@
+  <DocumentFragment>
+    <div>
+-     Counter: 1
++     Counter: 0
+    </div>
+    <button>
+      +
+    </button>
+    <button>"
+`;
+
+exports[`register with multiple State 5`] = `
+Object {
+  "counter": 0,
+  "dec": [Function],
+  "field": "value",
+  "inc": [Function],
+}
+`;
+
 exports[`select 1`] = `
 "Snapshot Diff:
 - First value
@@ -602,6 +861,24 @@ exports[`select 4`] = `
         +
       </button>
       <button>"
+`;
+
+exports[`select 5`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`select debug verbose 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`select debug verbose constant 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
 `;
 
 exports[`transaction/commit/rollback 1`] = `

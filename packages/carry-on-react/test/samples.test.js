@@ -6,7 +6,8 @@ import {
   deleteStore,
   notify as notifyListeners,
   transaction,
-  initStores
+  initStores,
+  useStore
 } from "carry-on-store";
 import { wait, render, fireEvent, waitForElement } from "react-testing-library";
 
@@ -803,6 +804,8 @@ test("custom plugin", () => {
   deleteStore();
 });
 
+test("state can register", () => {});
+
 //xxtest("plugin can have array of set middleware", () => {
 ////throw new Error("not implemented");
 //});
@@ -810,3 +813,298 @@ test("custom plugin", () => {
 //xxtest("custom namespaced module", () => {
 ////throw new Error("not implemented");
 //});
+
+test("register with State", () => {
+  const App = () => (
+    <State
+      register={{
+        state: ({ set }) => ({
+          counter: 0,
+          inc: () => set(state => void state.counter++),
+          dec: () => set(state => void state.counter--)
+        })
+      }}
+    >
+      {({ counter, inc, dec }) => (
+        <>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </>
+      )}
+    </State>
+  );
+
+  const { asFragment, getByText } = render(<App />);
+
+  let dom = asFragment();
+
+  function clickDiff(text) {
+    fireEvent.click(getByText(text));
+    const nextDom = asFragment();
+    expect(dom).toMatchDiffSnapshot(nextDom);
+    dom = nextDom;
+  }
+
+  clickDiff("+");
+  clickDiff("-");
+  clickDiff("+");
+  clickDiff("-");
+  deleteStore();
+});
+
+test("register with multiple State", () => {
+  const App = () => (
+    <>
+      <State register={{ state: { field: "value" } }} />
+      <State
+        register={{
+          state: ({ set }) => ({
+            counter: 0,
+            inc: () => set(state => void state.counter++),
+            dec: () => set(state => void state.counter--)
+          })
+        }}
+      >
+        {({ counter, inc, dec }) => (
+          <>
+            <div>Counter: {counter}</div>
+            <button onClick={inc}>+</button>
+            <button onClick={dec}>-</button>
+          </>
+        )}
+      </State>
+    </>
+  );
+
+  const { asFragment, getByText } = render(<App />);
+
+  let dom = asFragment();
+
+  function clickDiff(text) {
+    fireEvent.click(getByText(text));
+    const nextDom = asFragment();
+    expect(dom).toMatchDiffSnapshot(nextDom);
+    dom = nextDom;
+  }
+
+  clickDiff("+");
+  clickDiff("-");
+  clickDiff("+");
+  clickDiff("-");
+
+  expect(useStore().get()).toMatchSnapshot();
+
+  deleteStore();
+});
+
+test("onmount/onunmount", () => {
+  const onMount = jest.fn(state => {
+    expect(state).toMatchSnapshot();
+  });
+
+  const onUnmount = jest.fn(state => {
+    expect(state).toMatchSnapshot();
+  });
+
+  const App = () => (
+    <State
+      onMount={onMount}
+      onUnmount={onUnmount}
+      register={{
+        state: ({ set }) => ({
+          counter: 0,
+          inc: () => set(state => void state.counter++),
+          dec: () => set(state => void state.counter--)
+        })
+      }}
+    >
+      {({ counter, inc, dec }) => (
+        <>
+          <div>Counter: {counter}</div>
+          <button onClick={inc}>+</button>
+          <button onClick={dec}>-</button>
+        </>
+      )}
+    </State>
+  );
+
+  const { asFragment, getByText, unmount } = render(<App />);
+
+  let dom = asFragment();
+
+  function clickDiff(text) {
+    fireEvent.click(getByText(text));
+    const nextDom = asFragment();
+    expect(dom).toMatchDiffSnapshot(nextDom);
+    dom = nextDom;
+  }
+
+  clickDiff("+");
+  clickDiff("-");
+  clickDiff("+");
+  clickDiff("-");
+  unmount();
+  expect(onMount.mock.calls.length).toBe(1);
+  expect(onUnmount.mock.calls.length).toBe(1);
+
+  deleteStore();
+});
+
+// constant
+// constant debug
+// select
+// select debug
+test("constant", () => {
+  const App = () => (
+    <State register={{ state: { field: "value" } }} constant={true}>
+      {state => <div>{state.field.value}</div>}
+    </State>
+  );
+
+  const { asFragment } = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
+  deleteStore();
+});
+
+test("constant debug verbose", () => {
+  const App = () => (
+    <State
+      register={{ state: { field: "value" } }}
+      constant
+      debug={true}
+      verbose={true}
+    >
+      {state => <div>{state.field.value}</div>}
+    </State>
+  );
+
+  const { asFragment } = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
+  deleteStore();
+});
+
+test("debug verbose", () => {
+  const App = () => (
+    <State register={{ state: { field: "value" } }} debug={true} verbose={true}>
+      {state => <div>{state.field.value}</div>}
+    </State>
+  );
+
+  const { asFragment } = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
+  deleteStore();
+});
+
+test("select", () => {
+  const App = () => (
+    <State
+      register={{ state: { field: "value" } }}
+      select={state => state.field.value}
+    >
+      {state => <div>{state}</div>}
+    </State>
+  );
+
+  const { asFragment } = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
+  deleteStore();
+});
+
+test("select debug verbose constant", () => {
+  const App = () => (
+    <State
+      id="App"
+      path="field"
+      register={{ state: { field: "value" } }}
+      select={state => state.value}
+      debug={true}
+      verbose={true}
+      constant={true}
+    >
+      {state => <div>{state}</div>}
+    </State>
+  );
+
+  const { asFragment } = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
+  deleteStore();
+});
+
+test("select debug verbose", () => {
+  const App = () => (
+    <State
+      register={{ state: { field: "value" } }}
+      select={state => state.field.value}
+      debug={true}
+      verbose={true}
+    >
+      {state => <div>{state}</div>}
+    </State>
+  );
+
+  const { asFragment } = render(<App />);
+  expect(asFragment()).toMatchSnapshot();
+  deleteStore();
+});
+
+test("no changes", () => {
+  const App = () => (
+    <State
+      register={{
+        state: ({ set }) => ({
+          nop() {
+            set(state => {
+              //state.field = "value";
+            });
+          },
+          field: "value"
+        })
+      }}
+    >
+      {state => <div>{state.field.value}</div>}
+    </State>
+  );
+
+  const { asFragment, rerender } = render(<App />);
+  //expect(asFragment()).toMatchSnapshot();
+  useStore()
+    .get()
+    .nop();
+
+  const rer = rerender(<App />);
+  expect(asFragment()).toMatchSnapshot();
+
+  deleteStore();
+});
+
+test("no changes with debug", () => {
+  const App = () => (
+    <State
+      debug={true}
+      register={{
+        state: ({ set }) => ({
+          nop() {
+            set(state => {
+              //state.field = "value";
+            });
+          },
+          field: "value"
+        })
+      }}
+    >
+      {state => <div>{state.field.value}</div>}
+    </State>
+  );
+
+  const { asFragment, rerender } = render(<App />);
+  //expect(asFragment()).toMatchSnapshot();
+  useStore()
+    .get()
+    .nop();
+
+  const rer = rerender(<App />);
+  expect(asFragment()).toMatchSnapshot();
+
+  deleteStore();
+});

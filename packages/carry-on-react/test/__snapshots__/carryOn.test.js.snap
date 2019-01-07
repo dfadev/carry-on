@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`carryOn 1`] = `
+<DocumentFragment>
+  <div>
+    value
+  </div>
+</DocumentFragment>
+`;
+
+exports[`carryOn opts last 1`] = `
+<DocumentFragment>
+  <div>
+    value
+  </div>
+</DocumentFragment>
+`;
+
+exports[`carryOn render(props, state) 1`] = `
+<DocumentFragment>
+  <div>
+    ok
+  </div>
+</DocumentFragment>
+`;
+
+exports[`carryOn rerender doesnt recreate onmount/onunmount 1`] = `
+<DocumentFragment>
+  <div>
+    value
+  </div>
+</DocumentFragment>
+`;
+
+exports[`carryOn rerender doesnt recreate onmount/onunmount 2 1`] = `
+<DocumentFragment>
+  <div>
+    value
+  </div>
+</DocumentFragment>
+`;

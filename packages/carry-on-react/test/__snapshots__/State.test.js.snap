@@ -6,6 +6,12 @@ exports[`<State /> renders 1`] = `
 </DocumentFragment>
 `;
 
+exports[`withState asProp 1`] = `
+<DocumentFragment>
+  {"prop1":"ok","stuff":{}}
+</DocumentFragment>
+`;
+
 exports[`withState path, from, and default can be a values 1`] = `
 <DocumentFragment>
   {"lookup":"key1","state":"val1"}

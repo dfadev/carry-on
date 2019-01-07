@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-testing-library";
 import { withState, State } from "../src";
-import { deleteStore, register } from "carry-on-store";
+import { useStore, deleteStore, register } from "carry-on-store";
 
 test("<State /> renders", () => {
   const { asFragment } = render(<State>{() => "ok"}</State>);
@@ -53,6 +53,13 @@ test("withState path, from, and default can be a values", () => {
 
   const { asFragment } = render(<App />);
 
+  expect(asFragment()).toMatchSnapshot();
+  deleteStore();
+});
+
+test("withState asProp", () => {
+  const Comp = withState({ asProp: "stuff" })(props => JSON.stringify(props));
+  const { asFragment } = render(<Comp prop1="ok" />);
   expect(asFragment()).toMatchSnapshot();
   deleteStore();
 });
