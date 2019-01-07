@@ -49,7 +49,6 @@ export default function devTools({ timeTravel = true } = {}) {
                 msg.payload &&
                 msg.payload.type === "JUMP_TO_STATE" &&
                 set(s => {
-                  if (s === undefined) s = {};
                   const keyList = keys(s);
                   const tt = states[msg.payload.index];
                   const ttKeys = keys(tt);
