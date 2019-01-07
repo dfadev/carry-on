@@ -1,4 +1,4 @@
-import { getInA as get } from "../src/getIn";
+import { default as getIn, getInA as get } from "../src/getIn";
 
 describe("get()", () => {
   test("should get string keyed property values", () => {
@@ -74,5 +74,9 @@ describe("get()", () => {
       expect(get(object, path, value)).toEqual(value);
       expect(get(null, path, value)).toEqual(value);
     }
+  });
+
+  test("should call toPath", () => {
+    expect(getIn({ a: 1 }, "a")).toBe(1);
   });
 });

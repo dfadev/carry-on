@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`set() should call toPath 1`] = `
+Object {
+  "a": Object {
+    "b": Object {
+      "c": "value",
+    },
+  },
+}
+`;

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`merge() can merge dense array 1`] = `
+Object {
+  "2": undefined,
+  "3": 2,
+}
+`;

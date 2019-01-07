@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should handle a leading dot 1`] = `
+Array [
+  "",
+  "field",
+  "path",
+]
+`;
+
+exports[`should handle quoted keys 1`] = `
+Array [
+  "field",
+  "quoted.key",
+  "path",
+]
+`;

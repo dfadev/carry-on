@@ -1,5 +1,5 @@
 /** @format **/
-import { mutateSetA as set } from "../src/mutateSet";
+import { default as mutateSet, mutateSetA as set } from "../src/mutateSet";
 
 const constant = value => () => value;
 
@@ -110,5 +110,9 @@ describe("set()", () => {
     const object = {};
     set(object, ["1a", "2b", "3c"], value);
     expect(object).toEqual({ "1a": { "2b": { "3c": value } } });
+  });
+
+  test("should call toPath", () => {
+    expect(mutateSet({}, "a.b.c", "value")).toMatchSnapshot();
   });
 });

@@ -142,4 +142,15 @@ describe("merge()", function() {
     expect(source2.a).toEqual([[3, 4]]);
     expect(actual.a).toEqual([[3, 4, 3]]);
   });
+
+  test("can merge dense array", () => {
+    let source1 = [];
+    source1[2] = 1;
+
+    let source2 = [];
+    source2[3] = 2;
+
+    let actual = merge({}, source1, source2);
+    expect(actual).toMatchSnapshot();
+  });
 });
