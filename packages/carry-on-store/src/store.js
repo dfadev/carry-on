@@ -180,7 +180,7 @@ export const subscribe = (fn, watch, id) =>
   useStore(id).notify.subscribe(fn, watch);
 
 // watch fields a select function uses
-export function watchGet(state, select, path, def, id) {
+export function watchGet(state, select, path = "", def, id) {
   const store = useStore(id);
 
   const trappedState = proxyState(state);
