@@ -25,6 +25,19 @@ exports[`get with action 1`] = `
 + }"
 `;
 
+exports[`nested set works 1`] = `
+Object {
+  "lower": "value",
+  "lower2": "value2",
+  "lower3": "value3",
+  "lower4": "value4",
+  "upper": "value",
+  "upper2": "value2",
+  "upper3": "value3",
+  "upper4": "value4",
+}
+`;
+
 exports[`register on connected store 1`] = `
 "Snapshot Diff:
 - First value

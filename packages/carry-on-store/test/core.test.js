@@ -1,4 +1,12 @@
-import { useStore, deleteStore, connect, register } from "../src";
+import {
+  useStore,
+  initStores,
+  deleteStore,
+  connect,
+  subscribe,
+  register,
+  watchGet
+} from "../src";
 
 test("useStore", () => {
   const store = useStore();
@@ -216,3 +224,131 @@ test("register with plugin, no state and set", () => {
   expect(store.state).toMatchSnapshot();
   deleteStore();
 });
+
+test("init stores removes all stores", () => {
+  const store1 = useStore();
+  initStores();
+  const store2 = useStore();
+  expect(store1).not.toBe(store2);
+  deleteStore();
+});
+
+test("get returns plugState when populated", () => {
+  connect();
+  const store = useStore();
+  store.plugState = {};
+  expect(store.get()).toBe(store.plugState);
+  deleteStore();
+});
+
+test("get returns trappedState when populated", () => {
+  connect();
+  const store = useStore();
+  const state = {};
+  store.trappedState = { state };
+  expect(store.get()).toBe(state);
+  deleteStore();
+});
+
+test("nested set works", () => {
+  connect();
+  const store = useStore();
+  const set = store.set;
+  const rslt = set(state => {
+    state.upper = "value";
+    set(state => {
+      state.upper2 = "value2";
+      set(state => {
+        state.upper3 = "value3";
+        set(state => {
+          state.upper4 = "value4";
+          state.lower = "value";
+        });
+        state.lower2 = "value2";
+      });
+      state.lower3 = "value3";
+    });
+    state.lower4 = "value4";
+  });
+  expect(rslt).toMatchSnapshot();
+  deleteStore();
+});
+
+test("prioritized registration works", () => {
+  register({
+    state: {
+      p: -1
+    }
+  });
+
+  register({
+    state: {
+      p: 0
+    }
+  });
+
+  register({
+    priority: 1,
+    state: {
+      p: 1
+    }
+  });
+
+  register({
+    priority: 2,
+    state: {
+      p: 2
+    }
+  });
+
+  register({
+    priority: 3,
+    state: {
+      p: 3
+    }
+  });
+
+  connect();
+
+  const store = useStore();
+  const state = store.get();
+  expect(state.p).toBe(0);
+  deleteStore();
+});
+
+test("subscribe is called", () => {
+  connect();
+  let fnCalled = 0;
+  const fn = (state, changes) => {
+    fnCalled++;
+  };
+  subscribe(fn);
+  register({ state: { a: 1 } });
+  expect(fnCalled).toBe(1);
+  deleteStore();
+});
+
+test("subscribe with a watch works", () => {
+  connect();
+  let fnCalled = 0;
+  const fn = (state, changes) => {
+    fnCalled++;
+  };
+  register({ state: { a: { field: "value" } } });
+  const store = useStore();
+
+  const select = state => state.a;
+  const [ finalState, watch ] = watchGet(store.get(), select);
+  subscribe(fn, watch);
+
+  store.set(state => {
+    state.b = 2;
+  });
+
+  store.set(state => {
+    state.a.field = 2;
+  });
+
+  expect(fnCalled).toBe(1);
+});
+
