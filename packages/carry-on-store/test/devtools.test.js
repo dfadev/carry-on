@@ -52,7 +52,7 @@ test("subscribe is called", () => {
 test("disable timetravel works", () => {
   let subscribeCalled = 0;
   let msgFn;
-  let subscribe = (fn) => {
+  let subscribe = fn => {
     subscribeCalled++;
     msgFn = fn;
   }
@@ -75,18 +75,19 @@ test("disable timetravel works", () => {
   set = plugin.middleware({ isNested: () => false, set, next: set });
 
   set();
-  set(() => { });
+  set(() => { }, "Time Travel");
+  set();
 
   expect(subscribeCalled).toBe(0);
-  expect(setCount).toBe(2);
+  expect(setCount).toBe(3);
 
   msgFn && msgFn({ type: "DISPATCH", payload: { type: "JUMP_TO_STATE", index: 0 } });
 
-  expect(setCount).toBe(2);
+  expect(setCount).toBe(3);
 
   msgFn && msgFn({ type: "OTHER", payload: { type: "JUMP_TO_STATE", index: 0 } });
 
-  expect(setCount).toBe(2);
+  expect(setCount).toBe(3);
 });
 
 

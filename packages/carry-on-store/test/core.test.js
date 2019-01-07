@@ -350,5 +350,85 @@ test("subscribe with a watch works", () => {
   });
 
   expect(fnCalled).toBe(1);
+  deleteStore();
 });
 
+test("watch subscribe field object change", () => {
+  connect();
+  let fnCalled = 0;
+  const fn = (state, changes) => {
+    fnCalled++;
+  };
+  register({ state: { a: { field: "value" } } });
+  const store = useStore();
+
+  const select = state => state.a.field;
+  const [ finalState, watch ] = watchGet(store.get(), select);
+  subscribe(fn, watch);
+
+  store.set(state => {
+    state.b = 2;
+  });
+
+  store.set(state => {
+    state.a = 2;
+  });
+
+  expect(fnCalled).toBe(1);
+  deleteStore();
+});
+
+test("watch subscribe field value change", () => {
+  connect();
+  let fnCalled = 0;
+  const fn = (state, changes) => {
+    fnCalled++;
+  };
+  register({ state: { a: { field: "value" } } });
+  const store = useStore();
+
+  const select = state => state.a.field;
+  const [ finalState, watch ] = watchGet(store.get(), select);
+  subscribe(fn, watch);
+
+  store.set(state => {
+    state.b = 2;
+  });
+
+  store.set(state => {
+    state.a.field = 2;
+  });
+
+  expect(fnCalled).toBe(1);
+  deleteStore();
+});
+
+test("notify immediate", () => {
+  let wrapCalled = 0;
+  connect(undefined, fn => {
+    wrapCalled++;
+    fn();
+  });
+  let fnCalled = 0;
+  const fn = (state, changes) => {
+    fnCalled++;
+  };
+  register({ state: { a: { field: "value" } } });
+  const store = useStore();
+
+  const select = state => state.a.field;
+  const [ finalState, watch ] = watchGet(store.get(), select);
+  subscribe(fn, watch);
+
+  store.set(state => {
+    state.b = 2;
+  }, "Immed", { immediate: true });
+
+  store.set(state => {
+    state.a.field = 2;
+  }, "Immed", { immediate: true });
+
+  expect(fnCalled).toBe(1);
+  expect(wrapCalled).toBe(2); // Register, Register
+  deleteStore();
+});

@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`commit 2 1`] = `
+Object {
+  "begin": [Function],
+  "commit": [Function],
+  "extra": 1,
+  "rollback": [Function],
+}
+`;
+
+exports[`commit 2 2`] = `
+Object {
+  "begin": [Function],
+  "commit": [Function],
+  "rollback": [Function],
+}
+`;
+
 exports[`plug snapshot 1`] = `
 Object {
   "begin": [Function],
