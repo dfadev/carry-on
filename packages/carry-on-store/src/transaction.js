@@ -22,7 +22,6 @@ export default function transaction() {
           const rollbackState = get();
           transactions.push(() =>
             set(s => {
-              if (s === undefined) s = {};
               const keyList = keys(s);
               for (let i = 0, len = keyList.length; i < len; i++)
                 delete s[keyList[i]];
