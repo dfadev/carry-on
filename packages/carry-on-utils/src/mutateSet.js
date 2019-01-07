@@ -16,10 +16,9 @@ export function update(object, path, updater) {
       } else {
         value = updater(value);
       }
-      // assign undefined to maybe sparse array
-      if (value === undefined && Array.isArray(object)) current[key] = value;
+
       // micro-dash always assigned, causing issue with proxy object
-      else if (current[key] !== value) current[key] = value;
+      if (current[key] !== value) current[key] = value;
       current = value;
     }
   }
