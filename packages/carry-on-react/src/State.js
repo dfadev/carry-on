@@ -70,14 +70,21 @@ export default class State extends Component {
 
   componentDidMount() {
     // call onMount handler
-    this.props.onMount && this.props.onMount(connect(this.props.from));
+    if (!this.props.onMount) return;
+    const state = connect(this.props.from);
+    if (this.props.onMount.length === 2) this.props.onMount(this.props, state);
+    else this.props.onMount(state);
   }
 
   componentWillUnmount() {
     this.reset();
 
     // call onUnmount handler
-    this.props.onUnmount && this.props.onUnmount(connect(this.props.from));
+    if (!this.props.onUnmount) return;
+    const state = connect(this.props.from);
+    if (this.props.onUnmount.length === 2)
+      this.props.onUnmount(this.props, state);
+    else this.props.onUnmount(state);
   }
 
   shouldComponentUpdate(nextProps) {

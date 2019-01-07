@@ -10,38 +10,54 @@ export default (renderFn, stateProps) => {
     stateProps = actualStateProps;
   }
 
-  const Component = ({ from, debug, verbose, ...props }) => {
-    const propProps = {
-      from,
-      debug,
-      verbose
-    };
-    const fnProps = {
-      ...stateProps
-    };
-    const finalProps = mutateMerge({}, fnProps, propProps);
-    finalProps.id = props.id || (stateProps && stateProps.id);
+  class CarryOnComponent extends React.Component {
+    onMountCopy = undefined;
 
-    if (finalProps.onMount) {
-      const origOnMount = finalProps.onMount;
-      finalProps.onMount = state => origOnMount(state, props);
+    onUnmountCopy = undefined;
+
+    render() {
+      const { from, debug, verbose, ...props } = this.props;
+
+      const propProps = {
+        from,
+        debug,
+        verbose
+      };
+      const finalProps = mutateMerge({}, stateProps, propProps);
+      finalProps.id = props.id || (stateProps && stateProps.id);
+
+      if (
+        finalProps.onMount &&
+        finalProps.onMount !== this.onMountCopy &&
+        finalProps.onMount.length === 2
+      ) {
+        const origOnMount = finalProps.onMount;
+        finalProps.onMount = state => origOnMount(props, state);
+      }
+
+      if (
+        finalProps.onUnmount &&
+        finalProps.onUnmount !== this.onUnmountCopy &&
+        finalProps.onUnmount.length === 2
+      ) {
+        const origOnUnmount = finalProps.onUnmount;
+        finalProps.onUnmount = state => origOnUnmount(props, state);
+      }
+
+      this.onMountCopy = finalProps.onMount;
+      this.onUnmountCopy = finalProps.onUnmount;
+
+      return (
+        <State {...finalProps}>
+          {state =>
+            renderFn.length === 1 ? renderFn(state) : renderFn(props, state)
+          }
+        </State>
+      );
     }
 
-    if (finalProps.onUnmount) {
-      const origOnUnmount = finalProps.onUnmount;
-      finalProps.onUnmount = state => origOnUnmount(state, props);
-    }
+    static displayName = (stateProps && stateProps.id) || "CarryOn";
+  }
 
-    return (
-      <State {...finalProps}>
-        {state =>
-          renderFn.length === 1 ? renderFn(state) : renderFn(props, state)
-        }
-      </State>
-    );
-  };
-
-  Component.displayName = (stateProps && stateProps.id) || "CarryOn";
-
-  return Component;
+  return CarryOnComponent;
 };
