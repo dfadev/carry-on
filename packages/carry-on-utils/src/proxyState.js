@@ -4,6 +4,7 @@ import { getCollectionHandlers, shouldInstrument } from "./shouldInstrument";
 import mutateSet from "./mutateSet";
 
 const hasProxy = typeof Proxy !== "undefined";
+/* istanbul ignore next */
 if (!hasProxy) throw new Error("Missing Proxy support");
 const ProxyConstructor = Proxy;
 
@@ -13,9 +14,9 @@ export const isProxyfied = object =>
   object && typeof object === "object" ? ProxyToState.has(object) : false;
 
 export const deproxify = object =>
-  object && typeof object === "object"
+  (object !== undefined && typeof object === "object"
     ? ProxyToState.get(object)
-    : object || object;
+    : object) || object;
 
 const prepareObject = state => {
   // unfreeze
@@ -30,7 +31,7 @@ const prepareObject = state => {
 
 const shouldProxy = type => type === "object";
 
-function proxyfy(state, onGet, suffix = "", ProxyMap) {
+function proxyfy(state, onGet, suffix, ProxyMap) {
   if (!state) return state;
 
   const alreadyProxy = isProxyfied(state);
@@ -94,8 +95,10 @@ function proxyfy(state, onGet, suffix = "", ProxyMap) {
           return () => iterable(key, state.values());
         case "entries":
           return () => iterable(key, state.entries());
+        /* istanbul ignore next */
         case [Symbol.iterator]:
-          return iterable(key, state[Symbol.iterator]);
+          // this is broken
+          return iterable(key, state[Symbol.iterator].bind(state));
         default:
       }
     }

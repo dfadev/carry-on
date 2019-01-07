@@ -1,0 +1,292 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`proxy arrays 1`] = `Object {}`;
+
+exports[`proxy arrays 2`] = `
+Object {
+  "0": true,
+}
+`;
+
+exports[`proxy arrays 3`] = `
+Object {
+  "0": true,
+  "1": true,
+}
+`;
+
+exports[`proxy arrays 4`] = `
+Object {
+  "0": true,
+  "1": true,
+}
+`;
+
+exports[`proxy arrays 5`] = `
+Object {
+  "0": true,
+  "1": true,
+  "3": true,
+}
+`;
+
+exports[`proxy can proxy via proxy 1`] = `
+Object {
+  "b": Object {
+    "c": Object {
+      "d": 1,
+    },
+  },
+}
+`;
+
+exports[`proxy can proxy via proxy 2`] = `
+Object {
+  "c": Object {
+    "d": 1,
+  },
+}
+`;
+
+exports[`proxy handle empty case 1`] = `undefined`;
+
+exports[`proxy handle empty case 2`] = `undefined`;
+
+exports[`proxy handles freezed objects 1`] = `
+Object {
+  "a": true,
+  "b": true,
+  "c": Object {
+    "d": true,
+  },
+}
+`;
+
+exports[`proxy nested shallowEqual 1`] = `
+Object {
+  "key1": true,
+}
+`;
+
+exports[`proxy nested shallowEqual 2`] = `
+Object {
+  "key1": true,
+}
+`;
+
+exports[`proxy nested shallowEqual 3`] = `
+Object {
+  "key1": true,
+  "key2": Object {
+    "array": Object {
+      "0": true,
+    },
+  },
+  "length": 0,
+}
+`;
+
+exports[`proxy objects 1`] = `Object {}`;
+
+exports[`proxy objects 2`] = `
+Object {
+  "key1": true,
+}
+`;
+
+exports[`proxy objects 3`] = `
+Object {
+  "key1": true,
+  "length": 0,
+}
+`;
+
+exports[`proxy objects 4`] = `
+Object {
+  "key1": true,
+  "key2": Object {
+    "array": Object {
+      "0": true,
+    },
+  },
+  "length": 0,
+}
+`;
+
+exports[`proxy plain shallowEqual 1`] = `Object {}`;
+
+exports[`proxy plain shallowEqual 2`] = `
+Object {
+  "key1": true,
+}
+`;
+
+exports[`proxy plain shallowEqual 3`] = `
+Object {
+  "key1": true,
+  "length": 0,
+}
+`;
+
+exports[`proxy plain shallowEqual 4`] = `
+Object {
+  "key1": true,
+  "key2": Object {
+    "array": Object {
+      "0": true,
+    },
+  },
+  "length": 0,
+}
+`;
+
+exports[`proxy track proxy via proxy 1`] = `
+Object {
+  "b": Object {
+    "c": Object {
+      "d": true,
+    },
+  },
+}
+`;
+
+exports[`proxy track proxy via proxy 2`] = `
+Object {
+  "c": Object {
+    "d": true,
+  },
+}
+`;
+
+exports[`proxy track proxy via proxy 3`] = `
+Object {
+  "b": Object {
+    "a": true,
+    "c": Object {
+      "d": true,
+    },
+  },
+}
+`;
+
+exports[`proxy track proxy via proxy 4`] = `
+Object {
+  "a": true,
+  "c": Object {
+    "d": true,
+  },
+}
+`;
+
+exports[`proxy track proxy via proxy 5`] = `
+Object {
+  "b": Object {
+    "a": true,
+    "c": Object {
+      "d": true,
+    },
+  },
+}
+`;
+
+exports[`proxy track proxy via proxy 6`] = `
+Object {
+  "a": true,
+  "c": Object {
+    "d": true,
+  },
+}
+`;
+
+exports[`proxy track proxy via proxy 7`] = `
+Object {
+  "root": Object {
+    "b": Object {
+      "a": true,
+      "c": Object {
+        "d": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`proxy types should handle Map.entries 1`] = `
+Object {
+  "d": Object {
+    "entries": true,
+    "entries.0": Object {
+      "1": Object {
+        "sub2": true,
+      },
+    },
+  },
+}
+`;
+
+exports[`proxy types should handle Map.entries 2`] = `
+Object {
+  "d": Object {
+    "entries": true,
+    "entries.0": Object {
+      "0": true,
+      "1": Object {
+        "asymmetricMatch": true,
+        "nodeType": true,
+        "sub1": true,
+        "sub2": true,
+      },
+      "asymmetricMatch": true,
+      "length": true,
+      "nodeType": true,
+    },
+  },
+}
+`;
+
+exports[`proxy types should handle Map.get 1`] = `
+Object {
+  "d": Object {
+    "1": true,
+    "get": true,
+  },
+}
+`;
+
+exports[`proxy types should handle Map.has 1`] = `
+Object {
+  "d": Object {
+    "1": true,
+    "has": true,
+  },
+}
+`;
+
+exports[`proxy types should handle Map.keys 1`] = `
+Object {
+  "d": Object {
+    "keys": true,
+  },
+}
+`;
+
+exports[`proxy types should handle Map.values 1`] = `
+Object {
+  "d": Object {
+    "values": true,
+    "values.0": true,
+  },
+}
+`;
+
+exports[`proxy types should handle Promise 1`] = `
+Object {
+  "d": true,
+}
+`;
+
+exports[`proxy types should handle date 1`] = `
+Object {
+  "d": true,
+}
+`;
