@@ -29,7 +29,12 @@ function compilePath(path, options) {
 export default function matchPath(pathname, options = {}) {
   if (typeof options === "string") options = { path: options };
 
-  const { path, exact = false, strict = false, sensitive = false } = options;
+  const {
+    path = "",
+    exact = false,
+    strict = false,
+    sensitive = false
+  } = options;
   const { regexp, keys } = compilePath(path, { end: exact, strict, sensitive });
   const match = regexp.exec(pathname);
 
