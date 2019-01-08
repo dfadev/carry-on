@@ -1,6 +1,4 @@
 import { Component } from "react";
-//import { carryOn } from "carry-on-react";
-//import { getIn } from "carry-on-utils";
 import { register } from "carry-on-store";
 import {
   createBrowserHistory,
@@ -10,13 +8,9 @@ import {
 import createStaticHistory from "../createStaticHistory";
 import router from "../router";
 
-let hasRegistered = false;
-
 export class Router extends Component {
   constructor(props) {
     super(props);
-    if (hasRegistered) return;
-    hasRegistered = true;
     register(router(props.history, props.path), props.store);
   }
 
@@ -28,8 +22,6 @@ export class Router extends Component {
 export class MemoryRouter extends Component {
   constructor(props) {
     super(props);
-    if (hasRegistered) return;
-    hasRegistered = true;
     register(router(createMemoryHistory(props), props.path), props.store);
   }
 
@@ -41,8 +33,6 @@ export class MemoryRouter extends Component {
 export class BrowserRouter extends Component {
   constructor(props) {
     super(props);
-    if (hasRegistered) return;
-    hasRegistered = true;
     register(router(createBrowserHistory(props), props.path), props.store);
   }
 
@@ -54,8 +44,6 @@ export class BrowserRouter extends Component {
 export class HashRouter extends Component {
   constructor(props) {
     super(props);
-    if (hasRegistered) return;
-    hasRegistered = true;
     register(router(createHashHistory(props), props.path), props.store);
   }
 
@@ -67,8 +55,6 @@ export class HashRouter extends Component {
 export class StaticRouter extends Component {
   constructor(props) {
     super(props);
-    if (hasRegistered) return;
-    hasRegistered = true;
     register(router(createStaticHistory(props), props.path), props.store);
   }
 
