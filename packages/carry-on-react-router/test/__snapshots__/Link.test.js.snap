@@ -30,6 +30,54 @@ exports[`A <Link> renders with no props 1`] = `
 </DocumentFragment>
 `;
 
+exports[`A <Link> with a <HashRouter> with the "hashbang" hashType has the correct href 1`] = `
+<DocumentFragment>
+  <a
+    href="#!/foo"
+  />
+</DocumentFragment>
+`;
+
+exports[`A <Link> with a <HashRouter> with the "hashbang" hashType has the correct href with a leading slash if it is missing 1`] = `
+<DocumentFragment>
+  <a
+    href="#!/foo"
+  />
+</DocumentFragment>
+`;
+
+exports[`A <Link> with a <HashRouter> with the "noslash" hashType has the correct href 1`] = `
+<DocumentFragment>
+  <a
+    href="#foo"
+  />
+</DocumentFragment>
+`;
+
+exports[`A <Link> with a <HashRouter> with the "noslash" hashType has the correct href and removes the leading slash 1`] = `
+<DocumentFragment>
+  <a
+    href="#foo"
+  />
+</DocumentFragment>
+`;
+
+exports[`A <Link> with a <HashRouter> with the "slash" hashType has the correct href 1`] = `
+<DocumentFragment>
+  <a
+    href="#/foo"
+  />
+</DocumentFragment>
+`;
+
+exports[`A <Link> with a <HashRouter> with the "slash" hashType has the correct href with a leading slash if it is missing 1`] = `
+<DocumentFragment>
+  <a
+    href="#/foo"
+  />
+</DocumentFragment>
+`;
+
 exports[`A <Link> with no pathname, resolves using the current location 1`] = `
 <DocumentFragment>
   <a

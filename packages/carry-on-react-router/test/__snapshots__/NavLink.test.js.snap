@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A <NavLink> does not do exact matching by default 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="active"
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> does not do strict matching by default 1`] = `
+<DocumentFragment>
+  <a
+    href="/pizza/"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> isActive applies active default props when isActive returns true 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="active"
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> isActive applies activeClassName when isActive returns true 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="selected"
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> isActive does not apply custom activeClassName when isActive returns false 1`] = `
+<DocumentFragment>
+  <a
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> isActive does not apply default activeClassName when isActive returns false 1`] = `
+<DocumentFragment>
+  <a
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> the \`location\` prop is not overwritten by the current location 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="active"
+    href="/pasta"
+  >
+    Pasta!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> the \`location\` prop overrides the current location 1`] = `
+<DocumentFragment>
+  <a
+    href="/pasta"
+  >
+    Pasta!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when active applies a custom activeClassName instead of the default 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="selected"
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when active applies a custom aria-current instead of the default 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="true"
+    class="active"
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when active applies its activeStyle 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="active"
+    href="/pizza"
+    style="color: red;"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when active applies its default activeClassName 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="active"
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when active applies the default aria-current 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="active"
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when active it automatically escapes special characters in the path 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="active"
+    href="/pizza (1)"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when inactive does not apply an aria-current value if an override value is given 1`] = `
+<DocumentFragment>
+  <a
+    href="/salad"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when inactive does not apply an aria-current value if no override value is given 1`] = `
+<DocumentFragment>
+  <a
+    href="/salad"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when inactive does not apply its activeClassName 1`] = `
+<DocumentFragment>
+  <a
+    href="/salad"
+  >
+    Salad?
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when inactive does not apply its activeStyle 1`] = `
+<DocumentFragment>
+  <a
+    href="/salad"
+    style="color: black;"
+  >
+    Salad?
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> when inactive does not apply its default activeClassName 1`] = `
+<DocumentFragment>
+  <a
+    href="/salad"
+  >
+    Salad?
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> with \`exact=true\` applies custom activeClassName for exact matches 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="selected"
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> with \`exact=true\` applies custom activeClassName for partial matches 1`] = `
+<DocumentFragment>
+  <a
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> with \`exact=true\` applies default activeClassName for exact matches 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="active"
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> with \`exact=true\` does not apply default activeClassName for partial matches 1`] = `
+<DocumentFragment>
+  <a
+    href="/pizza"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> with \`strict=true\` applies custom activeClassName for strict matches 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="selected"
+    href="/pizza/"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> with \`strict=true\` applies default activeClassName for strict matches 1`] = `
+<DocumentFragment>
+  <a
+    aria-current="page"
+    class="active"
+    href="/pizza/"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> with \`strict=true\` does not apply custom activeClassName for non-strict matches 1`] = `
+<DocumentFragment>
+  <a
+    href="/pizza/"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;
+
+exports[`A <NavLink> with \`strict=true\` does not apply default activeClassName for non-strict matches 1`] = `
+<DocumentFragment>
+  <a
+    href="/pizza/"
+  >
+    Pizza!
+  </a>
+</DocumentFragment>
+`;

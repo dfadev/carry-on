@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`router matches snapshot 1`] = `
+Object {
+  "app": Object {
+    "history": Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "getHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "handleClick": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "match": Object {
+        "isExact": true,
+        "params": Object {},
+        "path": "/",
+        "url": "/",
+      },
+      "matchPath": [Function],
+      "push": [Function],
+      "replace": [Function],
+      "unlisten": [Function],
+    },
+  },
+}
+`;

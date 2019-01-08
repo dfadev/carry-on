@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BrowserRouter renders 1`] = `<DocumentFragment />`;
+
+exports[`HashRouter renders 1`] = `<DocumentFragment />`;
+
+exports[`MemoryRouter renders 1`] = `<DocumentFragment />`;
+
+exports[`Router renders 1`] = `<DocumentFragment />`;
+
+exports[`StaticRouter renders 1`] = `<DocumentFragment />`;

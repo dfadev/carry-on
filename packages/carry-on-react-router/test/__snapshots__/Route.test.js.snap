@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A <Route> does not render when it does not match 1`] = `<DocumentFragment />`;
+
+exports[`A <Route> matches using nextContext when updating 1`] = `
+<DocumentFragment>
+  <h1>
+    /sushi/spicy-tuna
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> renders when it matches 1`] = `
+<DocumentFragment>
+  <h1>
+    cupcakes
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> renders when it matches at the root URL 1`] = `
+<DocumentFragment>
+  <h1>
+    cupcakes
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> the \`children\` prop that is a function renders 1`] = `
+<DocumentFragment>
+  <h1>
+    bubblegum
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> the \`children\` prop that is an element renders 1`] = `
+<DocumentFragment>
+  <h1>
+    bubblegum
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> the \`children\` prop that is an empty array (as in Preact) ignores the children 1`] = `
+<DocumentFragment>
+  <h1>
+    bubblegum
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> the \`component\` prop renders the component 1`] = `
+<DocumentFragment>
+  <h1>
+    bubblegum
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> the \`location\` prop overrides \`context.location\` 1`] = `<DocumentFragment />`;
+
+exports[`A <Route> the \`render\` prop renders its return value 1`] = `
+<DocumentFragment>
+  <h1>
+    Mrs. Kato
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> with \`exact=true\` and \`strict=true\` does not render when the URL does not have a trailing slash 1`] = `<DocumentFragment />`;
+
+exports[`A <Route> with \`exact=true\` and \`strict=true\` does not render when the URL has a trailing slash 1`] = `<DocumentFragment />`;
+
+exports[`A <Route> with \`exact=true\` renders when the URL does not have a trailing slash 1`] = `
+<DocumentFragment>
+  <h1>
+    bubblegum
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> with \`exact=true\` renders when the URL has trailing slash 1`] = `<DocumentFragment />`;
+
+exports[`A <Route> with a unicode path is able to match 1`] = `
+<DocumentFragment>
+  <h1>
+    /パス名
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> with an array of paths doesn't remount when moving from one matching path to another 1`] = `
+<DocumentFragment>
+  <div>
+    Hello World
+  </div>
+</DocumentFragment>
+`;
+
+exports[`A <Route> with an array of paths doesn't remount when moving from one matching path to another 2`] = `
+<DocumentFragment>
+  <div>
+    Hello World
+  </div>
+</DocumentFragment>
+`;
+
+exports[`A <Route> with an array of paths matches other provided paths 1`] = `
+<DocumentFragment>
+  <div>
+    Hello World
+  </div>
+</DocumentFragment>
+`;
+
+exports[`A <Route> with an array of paths matches the first provided path 1`] = `
+<DocumentFragment>
+  <div>
+    Hello World
+  </div>
+</DocumentFragment>
+`;
+
+exports[`A <Route> with an array of paths provides the matched path as a string 1`] = `
+<DocumentFragment>
+  <div>
+    /hello/world
+  </div>
+</DocumentFragment>
+`;
+
+exports[`A <Route> with dynamic segments in the path decodes them 1`] = `
+<DocumentFragment>
+  <h1>
+    a dynamic segment
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Route> with escaped special characters in the path is able to match 1`] = `
+<DocumentFragment>
+  <h1>
+    /pizza (1)
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`route renders 1`] = `
+<DocumentFragment>
+  <div>
+    ok
+  </div>
+</DocumentFragment>
+`;
