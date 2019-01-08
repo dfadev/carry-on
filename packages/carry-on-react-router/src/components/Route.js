@@ -30,7 +30,7 @@ const Route = carryOn(
     else if (path) match = hist.matchPath({ path, exact, strict, sensitive });
     else match = hist.match;
 
-    const renderProps = { location, match };
+    const renderProps = { location, match, history: hist };
 
     let children = childs;
     if (Array.isArray(children) && children.length === 0) children = null;
