@@ -19,6 +19,9 @@ const clr = keys(colors).map(item => colors[item]);
 let currentClr = 0;
 
 export default function logger(id) {
+  if (document.documentMode || /Edge/.test(navigator.userAgent))
+    return console.log;
+
   const color = clr[currentClr];
   currentClr++;
   if (currentClr >= 6) currentClr = 0;
