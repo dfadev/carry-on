@@ -31,6 +31,7 @@ const Route = carryOn(
     else match = hist.match;
 
     const renderProps = { location, match, history: hist };
+    if (hist.staticContext) renderProps.staticContext = hist.staticContext;
 
     let children = childs;
     if (Array.isArray(children) && children.length === 0) children = null;
