@@ -43,6 +43,7 @@
     "prettier": "^1.14.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-is": "^16.7.0",
     "react-testing-library": "^5.4.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.68.2",
@@ -58,7 +59,7 @@
     "carry-on-utils": "^0.0.43",
     "history": "^4.7.2",
     "hoist-non-react-statics": "^3.2.1",
-    "path-to-regexp": "^2.4.0"
+    "path-to-regexp": "^1.7.0"
   },
   "repository": {
     "type": "git",
