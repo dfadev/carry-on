@@ -20,6 +20,7 @@ let currentClr = 0;
 
 export default function logger(id) {
   if (document.documentMode || /Edge/.test(navigator.userAgent))
+    // eslint-disable-next-line
     return console.log;
 
   const color = clr[currentClr];
