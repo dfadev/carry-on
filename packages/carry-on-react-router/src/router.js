@@ -15,7 +15,7 @@ const router = (history = createBrowserHistory(), path = "app.history") => {
   // router state
   const state = ({ get, set }) => {
     const prevHist = getInA(get(), history);
-    if (prevHist !== undefined) prevHist.unlisten();
+    if (prevHist !== undefined && prevHist.unlisten) prevHist.unlisten();
 
     const unlisten = history.listen(
       () =>
