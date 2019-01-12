@@ -29,13 +29,18 @@ function compilePath(path, options) {
 function matchPath(pathname, options = {}) {
   if (typeof options === "string") options = { path: options };
 
-  const { path = "", exact = false, strict = false, sensitive = false } = options;
+  const {
+    path = "",
+    exact = false,
+    strict = false,
+    sensitive = false
+  } = options;
 
   const paths = [].concat(path);
 
-  return paths.reduce((matched, path) => {
+  return paths.reduce((matched, item) => {
     if (matched) return matched;
-    const { regexp, keys } = compilePath(path, {
+    const { regexp, keys } = compilePath(item, {
       end: exact,
       strict,
       sensitive
@@ -50,8 +55,8 @@ function matchPath(pathname, options = {}) {
     if (exact && !isExact) return null;
 
     return {
-      path, // the path used to match
-      url: path === "/" && url === "" ? "/" : url, // the matched portion of the URL
+      path: item, // the path used to match
+      url: item === "/" && url === "" ? "/" : url, // the matched portion of the URL
       isExact, // whether or not we matched exactly
       params: keys.reduce((memo, key, index) => {
         memo[key.name] = values[index];

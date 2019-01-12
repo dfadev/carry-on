@@ -8,7 +8,6 @@ function compilePath(path) {
   if (cache[path]) return cache[path];
 
   const generator = pathToRegexp.compile(path);
-
   if (cacheCount < cacheLimit) {
     cache[path] = generator;
     cacheCount++;
