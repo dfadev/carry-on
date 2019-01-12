@@ -1,4 +1,6 @@
 import React from "react";
+import { initStores } from "carry-on-store";
+
 //import ReactDOM from "react-dom";
 import {
   Router,
@@ -8,8 +10,6 @@ import {
   StaticRouter
 } from "../src/components/Router";
 import { render } from "react-testing-library";
-
-import renderStrict from "./utils/renderStrict";
 
 it("Router renders", () => {
   const { asFragment } = render(<Router history={history} />);
@@ -36,3 +36,41 @@ it("StaticRouter renders", () => {
   expect(asFragment()).toMatchSnapshot();
 });
 
+describe("A <Router>", () => {
+  afterEach(() => {
+    initStores();
+  });
+
+  describe("with no children", () => {
+    it("does not throw an error", () => {
+      expect(() => {
+        render(<Router />);
+      }).not.toThrow();
+    });
+  });
+
+  describe("with one child", () => {
+    it("does not throw an error", () => {
+      expect(() => {
+        render(
+          <Router>
+            <p>Bar</p>
+          </Router>
+        );
+      }).not.toThrow();
+    });
+  });
+
+  describe("with more than one child", () => {
+    it("does not throw an error", () => {
+      expect(() => {
+        render(
+          <Router>
+            <p>Bubblegum</p>
+            <p>Cupcakes</p>
+          </Router>
+        );
+      }).not.toThrow();
+    });
+  });
+});

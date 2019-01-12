@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A <Switch> can use a \`location\` prop instead of \`router.location\` 1`] = `
+<DocumentFragment>
+  <h1>
+    two
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Switch> does not render a second <Redirect> that also matches the URL 1`] = `
+<DocumentFragment>
+  <h1>
+    two
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Switch> does not render a second <Route> that also matches the URL 1`] = `
+<DocumentFragment>
+  <h1>
+    one
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Switch> handles comments 1`] = `
+<DocumentFragment>
+  <div>
+    cup
+  </div>
+</DocumentFragment>
+`;
+
+exports[`A <Switch> renders a Redirect with no \`path\` prop 1`] = `
+<DocumentFragment>
+  <h1>
+    one
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Switch> renders a Route with no \`path\` prop 1`] = `
+<DocumentFragment>
+  <h1>
+    two
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Switch> renders the first <Redirect> that matches the URL 1`] = `
+<DocumentFragment>
+  <h1>
+    two
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Switch> renders the first <Route> that matches the URL 1`] = `
+<DocumentFragment>
+  <h1>
+    one
+  </h1>
+</DocumentFragment>
+`;
+
+exports[`A <Switch> renders with non-element children 1`] = `
+<DocumentFragment>
+  <h1>
+    one
+  </h1>
+</DocumentFragment>
+`;

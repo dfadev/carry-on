@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Integration Tests renders multiple matching routes 1`] = `
+<DocumentFragment>
+  <div>
+    <aside>
+      <h1>
+        Mrs. Schiffman
+      </h1>
+    </aside>
+    <main>
+      <h1>
+        Mrs. Burton
+      </h1>
+    </main>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Integration Tests renders nested matches 1`] = `
+<DocumentFragment>
+  <div>
+    <h1>
+      Ms. Tripp
+    </h1>
+    <h2>
+      Mrs. Schiffman
+    </h2>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Integration Tests renders only as deep as the matching Route 1`] = `
+<DocumentFragment>
+  <div>
+    <h1>
+      Ms. Tripp
+    </h1>
+  </div>
+</DocumentFragment>
+`;

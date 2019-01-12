@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A <StaticRouter> knows how to serialize location objects 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> reports push redirects on the context object 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> reports redirects on the context object 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> with a basename adds the basename to push redirect URLs 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> with a basename adds the basename to redirect URLs 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> with a basename strips the basename from location pathnames 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> with a string location prop parses the location into an object 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> with a string location prop with a URL-encoded pathname decodes the pathname 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> with an object location prop adds missing properties 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> with an object location prop with a URL-encoded pathname decodes the pathname 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> with no basename createHref does not append extra leading slash 1`] = `
+<DocumentFragment>
+  <a
+    href="/test-path-please-ignore"
+  />
+</DocumentFragment>
+`;

@@ -80,7 +80,13 @@ exports[`A <Route> with \`exact=true\` renders when the URL does not have a trai
 </DocumentFragment>
 `;
 
-exports[`A <Route> with \`exact=true\` renders when the URL has trailing slash 1`] = `<DocumentFragment />`;
+exports[`A <Route> with \`exact=true\` renders when the URL has trailing slash 1`] = `
+<DocumentFragment>
+  <h1>
+    bubblegum
+  </h1>
+</DocumentFragment>
+`;
 
 exports[`A <Route> with a unicode path is able to match 1`] = `
 <DocumentFragment>
@@ -125,7 +131,7 @@ exports[`A <Route> with an array of paths matches the first provided path 1`] = 
 exports[`A <Route> with an array of paths provides the matched path as a string 1`] = `
 <DocumentFragment>
   <div>
-    /hello/world
+    /world
   </div>
 </DocumentFragment>
 `;
