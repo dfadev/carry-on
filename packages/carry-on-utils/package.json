@@ -1,6 +1,6 @@
 {
   "name": "carry-on-utils",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "description": "common utils for carry-on",
   "source": "./src/index.js",
   "module": "./es/carry-on-utils.js",
