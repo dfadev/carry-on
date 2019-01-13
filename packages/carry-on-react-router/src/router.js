@@ -66,11 +66,8 @@ const router = (history = createBrowserHistory(), path = "app.history") => {
       },
       handleClick,
       getHref,
-      matchPath: opts => {
-        const hist = getInA(get(), historyPath);
-        const match = matchPath(hist.location.pathname, opts);
-        return match;
-      }
+      matchPath: opts =>
+        matchPath(getInA(get(), historyPath).location.pathname, opts)
     };
 
     return mutateSetA({}, historyPath, stage);
