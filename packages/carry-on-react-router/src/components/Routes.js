@@ -4,7 +4,7 @@ import { carryOn } from "carry-on-react";
 import { getIn } from "carry-on-utils";
 
 const Routes = carryOn(
-  { id: "RouteMap" },
+  { id: "Routes" },
   ({ routes, history = "app.history", ...rest }, state) => {
     const hist = getIn(state, history);
     let routeList; // = getIn(state, routes);
