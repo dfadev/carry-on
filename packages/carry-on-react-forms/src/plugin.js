@@ -21,7 +21,7 @@ export default ({
 }) => ({
   state: ({ set, get }) => {
     const idPath = toPath(id);
-    const curForm = (state = get()) => getInA(state, idPath);
+    const curForm = (state = get()) => getInA(state, idPath, {});
 
     let cancellable;
 
