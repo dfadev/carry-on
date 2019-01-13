@@ -6,7 +6,6 @@ import { createMemoryHistory, createHashHistory } from "history";
 import Link from "../src/components/Link";
 import { Router, HashRouter } from "../src/components/Router";
 import router from "../src/router";
-import renderStrict from "./utils/renderStrict";
 import { render } from "react-testing-library";
 
 beforeEach(() => {
