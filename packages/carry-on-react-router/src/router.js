@@ -23,7 +23,6 @@ const router = (history = createBrowserHistory(), path = "app.history") => {
         set(s => {
           const hist = getInA(s, historyPath);
           mutateMerge(hist, history);
-          hist.match = matchPath(history.location.pathname, "/");
         }, "History Change")
     );
 
@@ -69,15 +68,14 @@ const router = (history = createBrowserHistory(), path = "app.history") => {
       getHref,
       matchPath: opts => {
         const hist = getInA(get(), historyPath);
-        return matchPath(hist.location.pathname, opts);
+        const match = matchPath(hist.location.pathname, opts);
 
-        //getInA(
-        //set(s => {
-        //const hist = getInA(s, historyPath);
-        //hist.match = matchPath(hist.location.pathname, opts);
-        //}),
-        //historyPath
-        //).match
+        set(s => {
+          const hist = getInA(s, historyPath);
+          hist.match = match;
+        });
+
+        return match;
       }
     };
 
