@@ -7,6 +7,7 @@ function isEmptyChildren(children) {
 }
 
 const Route = carryOn(
+  { id: "Route" },
   (
     {
       history = "app.history",

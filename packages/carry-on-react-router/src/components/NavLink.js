@@ -9,6 +9,7 @@ function joinClassnames(...classnames) {
 const escapedRE = /([.+*?=^!:${}()[\]|/\\])/g;
 
 const NavLink = carryOn(
+  { id: "NavLink" },
   (
     {
       history = "app.history",
