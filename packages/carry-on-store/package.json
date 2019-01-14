@@ -26,24 +26,24 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "cross-env": "^5.2.0",
-    "eslint": "^5.11.0",
+    "eslint": "^5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-prettier": "^3.4.0",
     "eslint-plugin-import": "^2.14.0",
     "jest": "^23.6.0",
     "jest-dom": "^3.0.0",
     "prettier": "^1.15.3",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.68.2",
-    "rollup-plugin-babel": "^4.1.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.1.0",
+    "rollup-plugin-babel": "^4.3.0",
     "rollup-plugin-eslint": "^5.0.0",
-    "snapshot-diff": "^0.4.1"
+    "snapshot-diff": "^0.4.2"
   },
   "sideEffects": false,
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
   "dependencies": {
     "carry-on-utils": "^0.0.47",
-    "immer": "^1.9.3"
+    "immer": "^1.10.4"
   },
   "repository": {
     "type": "git",
