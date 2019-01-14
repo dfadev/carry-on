@@ -10,6 +10,28 @@ const output = [
     format: "esm",
     name: pkg.name,
     sourcemap: true
+  },
+  {
+    file: pkg.main,
+    format: "cjs",
+    name: pkg.name,
+    sourcemap: true
+  },
+  {
+    file: pkg.browser,
+    format: "umd",
+    name: pkg.name,
+    sourcemap: true,
+    globals: {
+      react: "React",
+      "carry-on-utils": "carryOnUtils",
+      "carry-on-store": "carryOnStore",
+      "hoist-non-react-statics": "hoistNonReactStatic",
+      history: "history",
+      "history/createBrowserHistory": "createBrowserHistory",
+      "path-to-regexp": "pathToRegExp",
+      "carry-on-react": "carryOnReact"
+    }
   }
 ];
 const eslintPlugin = eslint();

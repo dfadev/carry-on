@@ -10,6 +10,22 @@ const output = [
     format: "esm",
     name: pkg.name,
     sourcemap: true
+  },
+  {
+    file: pkg.main,
+    format: "cjs",
+    name: pkg.name,
+    sourcemap: true
+  },
+  {
+    file: pkg.browser,
+    format: "umd",
+    name: pkg.name,
+    sourcemap: true,
+    globals: {
+      immer: "immer",
+      "carry-on-utils": "carryOnUtils"
+    }
   }
 ];
 const eslintPlugin = eslint();

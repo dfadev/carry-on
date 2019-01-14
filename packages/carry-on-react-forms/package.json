@@ -3,7 +3,9 @@
   "version": "0.0.47",
   "description": "carry-on plugin to support forms",
   "source": "./src/index.js",
-  "module": "./es/carry-on-react-forms.js",
+  "module": "./dist/carry-on-react-forms.esm.js",
+  "main": "./dist/carry-on-react-forms.cjs.js",
+  "browser": "./dist/carry-on-react-forms.umd.js",
   "scripts": {
     "clean": "rimraf lib dist es coverage",
     "format": "prettier --write \"{src,test}/**/*.js\"",

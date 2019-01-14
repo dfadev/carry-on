@@ -3,7 +3,9 @@
   "version": "0.0.47",
   "description": "common utils for carry-on",
   "source": "./src/index.js",
-  "module": "./es/carry-on-utils.js",
+  "module": "./dist/carry-on-utils.esm.js",
+  "main": "./dist/carry-on-utils.cjs.js",
+  "browser": "./dist/carry-on-utils.umd.js",
   "scripts": {
     "clean": "rimraf lib dist es coverage",
     "format": "prettier --write \"{src,test}/**/*.js\"",

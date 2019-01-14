@@ -3,7 +3,9 @@
   "version": "0.0.47",
   "description": "State manager",
   "source": "./src/index.js",
-  "module": "./es/carry-on-store.js",
+  "module": "./dist/carry-on-store.esm.js",
+  "main": "./dist/carry-on-store.cjs.js",
+  "browser": "./dist/carry-on-store.umd.js",
   "scripts": {
     "clean": "rimraf lib dist es coverage",
     "format": "prettier --write \"{src,test}/**/*.js\"",

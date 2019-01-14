@@ -3,7 +3,9 @@
   "version": "0.0.47",
   "description": "carry-on plugin to support routing",
   "source": "./src/index.js",
-  "module": "./es/carry-on-react-router.js",
+  "module": "./dist/carry-on-react-router.esm.js",
+  "main": "./dist/carry-on-react-router.cjs.js",
+  "browser": "./dist/carry-on-react-router.umd.js",
   "scripts": {
     "clean": "rimraf lib dist es coverage",
     "format": "prettier --write \"{src,test}/**/*.js\"",

@@ -3,7 +3,9 @@
   "version": "0.0.47",
   "description": "A Store for React",
   "source": "./src/index.js",
-  "module": "./es/carry-on-react.js",
+  "module": "./dist/carry-on-react.esm.js",
+  "main": "./dist/carry-on-react.cjs.js",
+  "browser": "./dist/carry-on-react.umd.js",
   "scripts": {
     "clean": "rimraf lib dist es coverage",
     "format": "prettier --write \"{src,test}/**/*.js\"",

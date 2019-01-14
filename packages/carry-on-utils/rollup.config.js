@@ -10,6 +10,23 @@ const output = [
     format: "esm",
     name: pkg.name,
     sourcemap: true
+  },
+  {
+    file: pkg.main,
+    format: "cjs",
+    name: pkg.name,
+    sourcemap: true
+  },
+  {
+    file: pkg.browser,
+    format: "umd",
+    name: pkg.name,
+    sourcemap: true,
+    globals: {
+      "throttle-debounce": "throttleDebounce",
+      "debounce-promise": "debouncePromise",
+      "react-fast-compare": "reactFastCompare"
+    }
   }
 ];
 const eslintPlugin = eslint();
