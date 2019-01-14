@@ -7,6 +7,6 @@ module.exports = {
   coverageDirectory: "<rootDir>/coverage/",
   moduleNameMapper: {
     "^carry-on-utils$":
-      "<rootDir>/node_modules/carry-on-utils/es/carry-on-utils.js",
+      "<rootDir>/node_modules/carry-on-utils/dist/carry-on-utils.esm.js",
   }
 };

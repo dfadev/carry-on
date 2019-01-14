@@ -12,10 +12,10 @@ module.exports = {
   coverageDirectory: "<rootDir>/coverage/",
   moduleNameMapper: {
     "^carry-on-utils$":
-      "<rootDir>/node_modules/carry-on-utils/es/carry-on-utils.js",
+      "<rootDir>/node_modules/carry-on-utils/dist/carry-on-utils.esm.js",
     "^carry-on-store$":
-      "<rootDir>/node_modules/carry-on-store/es/carry-on-store.js",
+      "<rootDir>/node_modules/carry-on-store/dist/carry-on-store.esm.js",
     "^carry-on-react$":
-      "<rootDir>/node_modules/carry-on-react/es/carry-on-react.js",
+      "<rootDir>/node_modules/carry-on-react/dist/carry-on-react.esm.js",
   }
 };
