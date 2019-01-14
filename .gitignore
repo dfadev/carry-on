@@ -67,3 +67,5 @@ TODO.md
 website/build
 website/package-lock.json
 website/yarn.lock
+
+dist/
