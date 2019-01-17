@@ -81,7 +81,12 @@ const router = (history = createBrowserHistory(), path = "app.history") => {
     // time travel should replace history location
     isPaused = true;
     const hist = getInA(get(), historyPath);
-    hist.replace(hist.location);
+    if (
+      window.location.pathname !== hist.location.pathname ||
+      window.location.search !== hist.location.search ||
+      window.location.hash !== hist.location.hash
+    )
+      hist.replace(hist.location);
     isPaused = false;
 
     return nextState;
