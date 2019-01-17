@@ -1,5 +1,5 @@
 /** @format **/
-import { Component } from "react";
+import React, { Component } from "react";
 import {
   shallowEqual,
   logger,
@@ -9,13 +9,22 @@ import {
 } from "carry-on-utils";
 import { register, connect, subscribe, watchGet } from "carry-on-store";
 import ReactDOM from "react-dom";
+import StoreContext from "./StoreContext";
 
 const ignoreProps = ["children"];
+
+export const Data = props => (
+  <StoreContext.Consumer>
+    {from => <State from={from} {...props} />}
+  </StoreContext.Consumer>
+);
 
 export default class State extends Component {
   static Debug = false;
 
   static Verbose = false;
+
+  static contextType = StoreContext;
 
   constructor(props) {
     super(props);
