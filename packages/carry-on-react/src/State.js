@@ -11,7 +11,7 @@ import { register, connect, subscribe, watchGet } from "carry-on-store";
 import ReactDOM from "react-dom";
 import StoreContext from "./StoreContext";
 
-const ignoreProps = ["children"];
+const ignoreProps = [];
 
 export const Data = props => (
   <StoreContext.Consumer>
