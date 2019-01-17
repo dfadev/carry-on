@@ -12,6 +12,7 @@ const Link = carryOn(
       to,
       onClick,
       target,
+      force,
       ...rest
     },
     state
@@ -21,7 +22,7 @@ const Link = carryOn(
     return (
       <a
         {...rest}
-        onClick={handleClick({ replace, to, onClick, target })}
+        onClick={handleClick({ replace, to, onClick, target, force })}
         href={getHref(to)}
         ref={innerRef}
       />

@@ -27,7 +27,7 @@ const router = (history = createBrowserHistory(), path = "app.history") => {
     );
 
     // create an event handler for a link click
-    const handleClick = ({ onClick, target, replace, to }) => event => {
+    const handleClick = ({ onClick, target, replace, to, force }) => event => {
       if (onClick) onClick(event);
 
       if (
@@ -40,7 +40,8 @@ const router = (history = createBrowserHistory(), path = "app.history") => {
 
         const method = replace ? history.replace : history.push;
 
-        method(to);
+        if (force) window.location = to;
+        else method(to);
       }
     };
 
