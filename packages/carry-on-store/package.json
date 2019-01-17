@@ -1,6 +1,6 @@
 {
   "name": "carry-on-store",
-  "version": "0.0.48",
+  "version": "0.0.49",
   "description": "State manager",
   "source": "./src/index.js",
   "module": "./dist/carry-on-store.esm.js",
@@ -44,7 +44,7 @@
   "sideEffects": false,
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
   "dependencies": {
-    "carry-on-utils": "^0.0.48",
+    "carry-on-utils": "^0.0.49",
     "immer": "^1.10.4"
   },
   "repository": {
