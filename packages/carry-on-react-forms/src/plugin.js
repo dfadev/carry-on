@@ -100,6 +100,15 @@ export default ({
           form.validate(state);
         }, "Set Values" + typeSuffix),
 
+      setInitialValues: values =>
+        set(state => {
+          const form = curForm(state);
+          const vals = isFunction(values) ? values({ set, get }) : values;
+          form.initialValues = form.values = vals;
+          form.isPristine = true;
+          form.isValid = true;
+        }, "Set Initial Values" + typeSuffix),
+
       setFieldError: (fieldName, error) =>
         set(state => {
           mutateSet(curForm(state).errors, fieldName, error);
