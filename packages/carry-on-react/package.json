@@ -1,6 +1,6 @@
 {
   "name": "carry-on-react",
-  "version": "0.0.50",
+  "version": "0.0.51",
   "description": "A Store for React",
   "source": "./src/index.js",
   "module": "./dist/carry-on-react.esm.js",
@@ -54,8 +54,8 @@
   },
   "dependencies": {
     "@testing-library/react": "^9.3.2",
-    "carry-on-store": "^0.0.50",
-    "carry-on-utils": "^0.0.50",
+    "carry-on-store": "^0.0.51",
+    "carry-on-utils": "^0.0.51",
     "hoist-non-react-statics": "^3.3.1"
   },
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
