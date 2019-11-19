@@ -1,4 +1,5 @@
 /** @format **/
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import State from "./State";

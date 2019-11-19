@@ -1,4 +1,6 @@
 /** @format **/
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-curly-newline */
 import React from "react";
 import { mutateMerge } from "carry-on-utils";
 import State from "./State";
@@ -55,9 +57,8 @@ export default (renderFn, stateProps) => {
         </State>
       );
     }
-
-    static displayName = (stateProps && stateProps.id) || "CarryOn";
   }
+  CarryOnComponent.displayName = (stateProps && stateProps.id) || "CarryOn";
 
   return CarryOnComponent;
 };

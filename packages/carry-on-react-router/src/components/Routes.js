@@ -1,4 +1,5 @@
 /** @format **/
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import { carryOn } from "carry-on-react";
 import { getIn } from "carry-on-utils";

@@ -1,14 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-//import { MemoryRouter, HashRouter, Link } from "react-router-dom";
-import { register, initStores } from "carry-on-store";
-import { createMemoryHistory, createHashHistory } from "history";
+import { initStores } from "carry-on-store";
+import { createMemoryHistory } from "history";
 import Link from "../src/components/Link";
 import { Router, HashRouter } from "../src/components/Router";
-import router from "../src/router";
-import { render } from "react-testing-library";
+import { render } from "@testing-library/react";
 
 beforeEach(() => {
+  window.location.replace("/");
   initStores();
 });
 
@@ -76,11 +75,6 @@ describe("A <Link>", () => {
   });
 
   describe("with a <HashRouter>", () => {
-    afterEach(() => {
-      window.history.replaceState(null, "", "#");
-      //register(router(createHashHistory()));
-    });
-
     function createLinkNode(hashType, to) {
       const { asFragment } = render(
         <HashRouter hashType={hashType}>

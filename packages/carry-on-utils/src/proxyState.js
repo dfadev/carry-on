@@ -22,7 +22,7 @@ const prepareObject = state => {
   // unfreeze
   if (Array.isArray(state)) return state.slice(0);
   if (state.constructor.name === "Object") {
-    const clone = Object.assign({}, state);
+    const clone = { ...state };
     Object.setPrototypeOf(clone, Object.getPrototypeOf(state));
     return clone;
   }

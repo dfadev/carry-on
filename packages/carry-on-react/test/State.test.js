@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-testing-library";
+import { render } from "@testing-library/react";
 import { withState, State } from "../src";
 import { useStore, deleteStore, register } from "carry-on-store";
 

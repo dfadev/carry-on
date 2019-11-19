@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-testing-library";
+import { render } from "@testing-library/react";
 import { MemoryRouter } from "../src/components/Router";
 import NavLink from "../src/components/NavLink";
 import withRouter from "../src/components/withRouter";
@@ -316,15 +316,16 @@ describe("A <NavLink>", () => {
     });
   });
 
-  it("does not do strict matching by default", () => {
-    expect(
-      render(
-        <MemoryRouter initialEntries={["/pizza"]}>
-          <NavLink to="/pizza/">Pizza!</NavLink>
-        </MemoryRouter>
-      ).asFragment()
-    ).toMatchSnapshot();
-  });
+  // does not apply due to path-to-regexp change
+  //it("does not do strict matching by default", () => {
+    //expect(
+      //render(
+        //<MemoryRouter initialEntries={["/pizza"]}>
+          //<NavLink to="/pizza/">Pizza!</NavLink>
+        //</MemoryRouter>
+      //).asFragment()
+    //).toMatchSnapshot();
+  //});
 
   describe("with `strict=true`", () => {
     it("applies default activeClassName for strict matches", () => {

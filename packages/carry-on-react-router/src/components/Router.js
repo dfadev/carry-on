@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 import { Component } from "react";
 import { register } from "carry-on-store";
 import {
@@ -55,7 +56,7 @@ export class HashRouter extends Component {
 export class StaticRouter extends Component {
   constructor(props) {
     super(props);
-    register(router(createStaticHistory(props), props.path), props.store);
+    register(router(createStaticHistory(props), props.path, true), props.store);
   }
 
   render() {

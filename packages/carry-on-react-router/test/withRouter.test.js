@@ -1,11 +1,9 @@
 import React from "react";
-import { render } from "react-testing-library";
-import { createMemoryHistory as createHistory } from "history";
-import { register, connect } from "carry-on-store";
-import { MemoryRouter, StaticRouter, Router } from "../src/components/Router";
+import { render } from "@testing-library/react";
+import { MemoryRouter, StaticRouter } from "../src/components/Router";
 import Route from "../src/components/Route";
 import withRouter from "../src/components/withRouter";
-import { initStores } from "carry-on-store";
+import { initStores, connect } from "carry-on-store";
 import * as ReactIs from "react-is";
 
 describe("withRouter", () => {

@@ -1,4 +1,5 @@
 /** @format **/
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from "react";
 import {
   shallowEqual,
@@ -23,8 +24,6 @@ export default class State extends Component {
   static Debug = false;
 
   static Verbose = false;
-
-  static contextType = StoreContext;
 
   constructor(props) {
     super(props);
@@ -263,6 +262,8 @@ export default class State extends Component {
     return this.trapRender(renderFn);
   }
 }
+
+State.contextType = StoreContext;
 
 State.defaultProps = {
   path: ""

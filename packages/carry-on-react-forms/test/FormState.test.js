@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-testing-library";
+import { render } from "@testing-library/react";
 import Form from "../src/Form";
 import Field from "../src/Field";
 import FormButtons from "../src/FormButtons";

@@ -1,4 +1,6 @@
 /** @format **/
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/jsx-curly-newline */
 import React from "react";
 import { State } from "carry-on-react";
 import FormContext from "./FormContext";

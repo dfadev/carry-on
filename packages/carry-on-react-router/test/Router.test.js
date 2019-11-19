@@ -1,7 +1,6 @@
 import React from "react";
 import { initStores } from "carry-on-store";
 
-//import ReactDOM from "react-dom";
 import {
   Router,
   BrowserRouter,
@@ -9,7 +8,7 @@ import {
   HashRouter,
   StaticRouter
 } from "../src/components/Router";
-import { render } from "react-testing-library";
+import { render } from "@testing-library/react";
 
 it("Router renders", () => {
   const { asFragment } = render(<Router history={history} />);

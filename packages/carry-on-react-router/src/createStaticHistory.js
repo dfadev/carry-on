@@ -47,15 +47,20 @@ function noop() {}
 export default function createStaticHistory(props = {}) {
   const staticContext = props.context || {};
 
-  const navigateTo = (location, action) => {
+  const navigateTo = (path, action, setContext) => {
     const { basename = "" } = props;
-    staticContext.action = action;
-    staticContext.location = addBasename(basename, createLocation(location));
-    staticContext.url = createURL(staticContext.location);
+    setContext(() => {
+      const location = addBasename(basename, createLocation(path));
+      const url = createURL(location);
+      const r = { action, location, url };
+      return r;
+    });
   };
 
-  const handlePush = location => navigateTo(location, "PUSH");
-  const handleReplace = location => navigateTo(location, "REPLACE");
+  const handlePush = setContext => location =>
+    navigateTo(location, "PUSH", setContext);
+  const handleReplace = setContext => location =>
+    navigateTo(location, "REPLACE", setContext);
   const handleListen = () => noop;
   const handleBlock = () => noop;
 

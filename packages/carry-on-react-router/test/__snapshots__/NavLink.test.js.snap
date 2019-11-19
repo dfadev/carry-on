@@ -12,18 +12,6 @@ exports[`A <NavLink> does not do exact matching by default 1`] = `
 </DocumentFragment>
 `;
 
-exports[`A <NavLink> does not do strict matching by default 1`] = `
-<DocumentFragment>
-  <a
-    aria-current="page"
-    class="active"
-    href="/pizza/"
-  >
-    Pizza!
-  </a>
-</DocumentFragment>
-`;
-
 exports[`A <NavLink> isActive applies active default props when isActive returns true 1`] = `
 <DocumentFragment>
   <a

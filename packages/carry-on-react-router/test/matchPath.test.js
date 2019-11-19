@@ -86,9 +86,10 @@ describe("matchPath", () => {
 
   describe("cache", () => {
     it("creates a cache entry for each exact/strict pair", () => {
+      // this test is busted due to trailing slash issue in path-to-regexp
       // true/false and false/true will collide when adding booleans
       const trueFalse = matchPath("/one/two", {
-        path: "/one/two/",
+        path: "/one/two",
         exact: true,
         strict: false
       });

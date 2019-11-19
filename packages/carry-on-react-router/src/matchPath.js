@@ -1,5 +1,5 @@
 /** @format **/
-import pathToRegexp from "path-to-regexp";
+import { pathToRegexp } from "path-to-regexp";
 
 const cache = {};
 const cacheLimit = 10000;

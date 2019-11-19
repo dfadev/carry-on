@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-testing-library";
+import { render } from "@testing-library/react";
 import { initStores } from "carry-on-store";
 import { MemoryRouter } from "../src/components/Router";
 import Route from "../src/components/Route";

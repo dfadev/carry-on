@@ -2,13 +2,77 @@
 
 exports[`A <StaticRouter> knows how to serialize location objects 1`] = `<DocumentFragment />`;
 
+exports[`A <StaticRouter> knows how to serialize location objects 2`] = `
+Object {
+  "action": "REPLACE",
+  "location": Object {
+    "hash": "",
+    "pathname": "/somewhere-else",
+    "search": "",
+  },
+  "url": "/somewhere-else",
+}
+`;
+
 exports[`A <StaticRouter> reports push redirects on the context object 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> reports push redirects on the context object 2`] = `
+Object {
+  "action": "PUSH",
+  "location": Object {
+    "hash": "",
+    "pathname": "/somewhere-else",
+    "search": "",
+    "state": undefined,
+  },
+  "url": "/somewhere-else",
+}
+`;
 
 exports[`A <StaticRouter> reports redirects on the context object 1`] = `<DocumentFragment />`;
 
+exports[`A <StaticRouter> reports redirects on the context object 2`] = `
+Object {
+  "action": "REPLACE",
+  "location": Object {
+    "hash": "",
+    "pathname": "/somewhere-else",
+    "search": "",
+    "state": undefined,
+  },
+  "url": "/somewhere-else",
+}
+`;
+
 exports[`A <StaticRouter> with a basename adds the basename to push redirect URLs 1`] = `<DocumentFragment />`;
 
+exports[`A <StaticRouter> with a basename adds the basename to push redirect URLs 2`] = `
+Object {
+  "action": "PUSH",
+  "location": Object {
+    "hash": "",
+    "pathname": "/the-base/somewhere-else",
+    "search": "",
+    "state": undefined,
+  },
+  "url": "/the-base/somewhere-else",
+}
+`;
+
 exports[`A <StaticRouter> with a basename adds the basename to redirect URLs 1`] = `<DocumentFragment />`;
+
+exports[`A <StaticRouter> with a basename adds the basename to redirect URLs 2`] = `
+Object {
+  "action": "REPLACE",
+  "location": Object {
+    "hash": "",
+    "pathname": "/the-base/somewhere-else",
+    "search": "",
+    "state": undefined,
+  },
+  "url": "/the-base/somewhere-else",
+}
+`;
 
 exports[`A <StaticRouter> with a basename strips the basename from location pathnames 1`] = `<DocumentFragment />`;
 

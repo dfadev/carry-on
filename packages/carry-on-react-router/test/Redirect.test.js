@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-testing-library";
+import { render } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 import { register, connect } from "carry-on-store";
 import { MemoryRouter, Router } from "../src/components/Router";

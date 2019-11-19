@@ -9,7 +9,12 @@ import {
   initStores,
   useStore
 } from "carry-on-store";
-import { wait, render, fireEvent, waitForElement } from "react-testing-library";
+import {
+  wait,
+  render,
+  fireEvent,
+  waitForElement
+} from "@testing-library/react";
 
 afterEach(() => {
   initStores();
@@ -174,7 +179,6 @@ test("get", () => {
       log(msg) {
         get(state => {
           marker++;
-          state.counter = 9999;
           return state;
         });
       },

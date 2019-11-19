@@ -1,6 +1,5 @@
-import 'react-testing-library/cleanup-after-each'
 import { toMatchDiffSnapshot } from "snapshot-diff";
-import { cleanup } from "react-testing-library";
+import { cleanup } from "@testing-library/react";
 
 expect.extend({ toMatchDiffSnapshot });
 afterEach(cleanup);
