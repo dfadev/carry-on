@@ -69,3 +69,5 @@ website/package-lock.json
 website/yarn.lock
 
 dist/
+
+yarn.lock
