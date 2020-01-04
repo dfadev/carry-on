@@ -40,7 +40,10 @@ const external = Object.keys(pkg.dependencies || {}).concat(
   Object.keys(pkg.peerDependencies || {})
 );
 const watch = {
-  clearScreen: false
+  clearScreen: false,
+  chokidar: {
+    usePolling: true
+  }
 };
 const defaultConfig = {
   plugins: [eslintPlugin, babelPlugin],

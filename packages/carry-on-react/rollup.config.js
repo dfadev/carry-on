@@ -23,7 +23,7 @@ const output = [
     name: pkg.name,
     sourcemap: true,
     globals: {
-      "react": "React",
+      react: "React",
       "carry-on-utils": "carryOnUtils",
       "carry-on-store": "carryOnStore",
       "react-dom": "ReactDOM",
@@ -37,7 +37,10 @@ const external = Object.keys(pkg.dependencies || {}).concat(
   Object.keys(pkg.peerDependencies || {})
 );
 const watch = {
-  clearScreen: false
+  clearScreen: false,
+  chokidar: {
+    usePolling: true
+  }
 };
 const defaultConfig = {
   plugins: [eslintPlugin, babelPlugin],
