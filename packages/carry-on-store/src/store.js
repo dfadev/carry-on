@@ -25,7 +25,7 @@ const applyMiddleware = (middlewares, fn, apply) => {
 
 // merge state and middleware into the store
 const createPlugins = (store, curState, plugins) => {
-  const { id, get, set, getChanges, isNested, wrap } = store;
+  const { id, get, set, getChanges, getPatches, isNested, wrap } = store;
 
   for (let i = 0, len = plugins.length; i < len; i++) {
     const { middleware, state, dispose } = plugins[i];
@@ -45,6 +45,7 @@ const createPlugins = (store, curState, plugins) => {
               set,
               next: fn,
               getChanges,
+              getPatches,
               wrap,
               isNested
             })
@@ -131,9 +132,15 @@ export const connect = (id, wrap) => {
     return action ? action(state) : state;
   };
 
+  // patching
+  store.getPatches = () => store.patches;
+
   // change tracking
   store.getChanges = () => store.changes;
-  const patcher = patches => (store.changes = calculateChanges(patches));
+  const patcher = patches => {
+    store.patches = patches;
+    store.changes = calculateChanges(patches);
+  };
 
   store.nestedSet = false;
   store.nestedState = undefined;
