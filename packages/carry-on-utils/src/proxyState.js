@@ -19,6 +19,8 @@ export const deproxify = object =>
     : object) || object;
 
 const prepareObject = state => {
+  if (!Object.isFrozen(state)) return state;
+
   // unfreeze
   if (Array.isArray(state)) return state.slice(0);
   if (state.constructor.name === "Object") {
