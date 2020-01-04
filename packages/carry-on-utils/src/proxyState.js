@@ -99,8 +99,7 @@ function proxyfy(state, onGet, suffix, ProxyMap) {
           return () => iterable(key, state.entries());
         /* istanbul ignore next */
         case [Symbol.iterator]:
-          // this is broken
-          return iterable(key, state[Symbol.iterator].bind(state));
+          return iterable(key, state[Symbol.iterator]);
         default:
       }
     }
