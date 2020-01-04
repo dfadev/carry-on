@@ -132,7 +132,7 @@ export const proxyState = (object, _ProxyMap) => {
   const affected = {};
   const keysUsed = new Set();
   const ProxyMap = _ProxyMap || new WeakMap();
-  let sealed = false;
+  let sealed = 0;
 
   const onKeyUse = key => {
     if (sealed) return;
@@ -147,15 +147,17 @@ export const proxyState = (object, _ProxyMap) => {
   return {
     affected,
     state: createState(object),
-    seal: () => (sealed = true),
-    unseal: () => (sealed = false),
+    seal: () => sealed++,
+    unseal: () => sealed--,
     reset: () => {
       affected.length = 0;
+      sealed = 0;
       keysUsed.clear();
     },
     replaceState(state) {
       this.state = createState(state);
       this.unseal();
+      sealed = 0;
       return this;
     }
   };
