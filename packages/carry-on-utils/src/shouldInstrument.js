@@ -53,7 +53,7 @@ export function shouldInstrument({ constructor }) {
     typeof constructor === "function" &&
     name in globalObj &&
     globalObj[name] === constructor;
-  return !isBuiltIn || handlers.hasOwnProperty(name);
+  return !isBuiltIn || Object.prototype.hasOwnProperty.call(handlers, name);
 }
 
 export const getCollectionHandlers = ({ constructor }) =>
