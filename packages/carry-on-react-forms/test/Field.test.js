@@ -43,7 +43,7 @@ it("should render a simple input field", () => {
 
 it("should render a simple input field in named form", () => {
   const { asFragment } = render(
-    <Form form="theform" register={formState("theform")}>
+    <Form id="theform" register={formState("theform")}>
       <Field path="field1">
         {state => {
           expect(state).toMatchSnapshot("prop match");
