@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useCarryOn renders 1`] = `
+<DocumentFragment>
+  ok
+</DocumentFragment>
+`;
