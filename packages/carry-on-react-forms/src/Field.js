@@ -28,7 +28,7 @@ export default ({
 }) => (
   <FormContext.Consumer>
     {({ store, form } = { store: propStore, form: propForm }) => (
-      <State path={form} from={store} {...rest} strict>
+      <State id={path} path={form} from={store} {...rest} strict>
         {({
           values,
           touched,
