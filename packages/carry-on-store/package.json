@@ -22,22 +22,22 @@
   "author": "Russ Panula <russ@dfa.net>",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/plugin-transform-modules-commonjs": "^7.7.0",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.7.1",
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
     "@testing-library/jest-dom": "^4.2.4",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "cross-env": "^6.0.3",
-    "eslint": "^6.6.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.6.0",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.19.1",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
     "rimraf": "^3.0.0",
-    "rollup": "^1.27.0",
+    "rollup": "^1.28.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-eslint": "^7.0.0",
     "snapshot-diff": "^0.6.1"
@@ -45,9 +45,9 @@
   "sideEffects": false,
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
   "dependencies": {
-    "@babel/runtime": "^7.7.2",
+    "@babel/runtime": "^7.7.7",
     "carry-on-utils": "^0.0.51",
-    "immer": "^5.0.0"
+    "immer": "^5.1.0"
   },
   "repository": {
     "type": "git",
