@@ -37,7 +37,7 @@ All properties are optional.
 
 | Property    | Description                                                                                                                |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `asProp`    | Specify what prop to pass to the wrapped component.                                                                        |
+| `asProp`    | Specify what prop to pass the state to the wrapped component as.                                                                        |
 | `from`      | What store to retrieve state from.                                                                                         |
 | `path`      | The state path to retrieve. Specified as a dotted path string, with support for arrays. Sample: `"my.field.path[10].name"` |
 | `select`    | A function that selects the required state.                                                                                |
