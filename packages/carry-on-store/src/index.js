@@ -1,4 +1,8 @@
 /** @format **/
+import { enablePatches } from "immer";
+
+enablePatches();
+
 export * from "./store";
 export * from "./changeTracking";
 export { default as notify } from "./notify";
