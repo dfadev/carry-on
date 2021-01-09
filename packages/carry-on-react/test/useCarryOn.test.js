@@ -15,7 +15,6 @@ const FnComp = () => {
     select: state => state.item1
   });
 
-  console.log(stuff);
   return "ok";
 };
 

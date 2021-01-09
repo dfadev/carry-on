@@ -14,7 +14,7 @@ const router = (
 ) => {
   let isPaused = false;
   const historyPath = toPath(path);
-    //console.log(history.location);
+  //console.log(history.location);
 
   // router state
   const state = ({ get, set }) => {
@@ -86,9 +86,8 @@ const router = (
       },
       handleClick,
       getHref,
-      matchPath: opts => {
-        return matchPath(getInA(get(), historyPath).location.pathname, opts);
-      }
+      matchPath: opts =>
+        matchPath(getInA(get(), historyPath).location.pathname, opts)
     };
 
     if (useSetContext) {

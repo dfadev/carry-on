@@ -31,26 +31,25 @@ const useField = ({ path, type, default: def, ...opts }) => {
       setFieldVisited,
       setFieldTouched,
       setFieldError
-    } = {}) => {
-      console.log(path);
-      return {
-        touched: getIn(touched, path, false),
-        error: getIn(errors, path, undefined),
-        visited: getIn(visited, path, false),
-        element: {
-          onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
-          onChange: e => setFieldValue(path, getVal(e)),
-          onBlur: () => !isTouched(path) && setFieldTouched(path, true),
-          [type === "checkbox" || type === "radio"
-            ? "checked"
-            : "value"]: getIn(values, path, def)
-        },
-        setValue: val => setFieldValue(path, val),
-        setVisited: val => setFieldVisited(path, val),
-        setTouched: val => setFieldTouched(path, val),
-        setError: val => setFieldError(path, val)
-      };
-    }
+    } = {}) => ({
+      touched: getIn(touched, path, false),
+      error: getIn(errors, path, undefined),
+      visited: getIn(visited, path, false),
+      element: {
+        onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
+        onChange: e => setFieldValue(path, getVal(e)),
+        onBlur: () => !isTouched(path) && setFieldTouched(path, true),
+        [type === "checkbox" || type === "radio" ? "checked" : "value"]: getIn(
+          values,
+          path,
+          def
+        )
+      },
+      setValue: val => setFieldValue(path, val),
+      setVisited: val => setFieldVisited(path, val),
+      setTouched: val => setFieldTouched(path, val),
+      setError: val => setFieldError(path, val)
+    })
   });
 
   return storeState;

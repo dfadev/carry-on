@@ -446,7 +446,7 @@ test("get returns undefined", () => {
         });
         if (rslt === undefined) {
           marker++;
-        } else console.log(rslt);
+        } //else console.log(rslt);
       },
       counter: 0,
       inc: () => set(state => void state.counter++),
