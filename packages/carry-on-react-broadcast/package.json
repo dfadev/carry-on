@@ -1,0 +1,44 @@
+{
+  "name": "carry-on-react-broadcast",
+  "version": "1.0.0-alpha.0",
+  "private": true,
+  "dependencies": {
+    "automerge": "^0.14.1",
+    "carry-on-react": "^1.0.0-alpha.0",
+    "carry-on-react-router": "^1.0.0-alpha.0",
+    "carry-on-store": "^1.0.0-alpha.0",
+    "carry-on-utils": "^1.0.0-alpha.0",
+    "craco": "^0.0.3",
+    "immer": "^8.0.0",
+    "ky": "^0.26.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1",
+    "utp-native": "^2.2.2"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "duplicate-package-checker-webpack-plugin": "^3.0.0",
+    "webpack-bundle-analyzer": "^4.3.0"
+  }
+}
