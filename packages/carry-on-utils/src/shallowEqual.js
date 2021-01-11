@@ -3,7 +3,6 @@ const hasOwnProperty = Object.prototype.hasOwnProperty;
  * inlined Object.is polyfill to avoid requiring consumers ship their own
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
  */
-
 function is(x, y) {
   // SameValue algorithm
   if (x === y) {
@@ -16,12 +15,12 @@ function is(x, y) {
   // eslint-disable-next-line
   return x !== x && y !== y;
 }
+
 /**
  * Performs equality by iterating through keys on an object and returning false
  * when any key has values which are not strictly equal between the arguments.
  * Returns true when the values of all keys are strictly equal.
  */
-
 export default function shallowEqual(objA, objB, ignore = []) {
   if (is(objA, objB)) {
     return true;
