@@ -100,11 +100,11 @@ export const initStores = () => {
 };
 
 // lookup a store
-export const useStore = id => stores[id] || (stores[id] = create(id));
+export const getStore = id => stores[id] || (stores[id] = create(id));
 
 // register state
 export const register = (init, id) => {
-  const store = useStore(id);
+  const store = getStore(id);
   init = forceArray(init);
   // queue if no set available yet
   if (store.set)
@@ -119,7 +119,7 @@ export const register = (init, id) => {
 
 // connect a store --> register pending state, setup dispatch, initialize state
 export const connect = (id, wrap) => {
-  const store = useStore(id);
+  const store = getStore(id);
   if (store.set) return store.state;
 
   // get provides either the current state or the trapped state
@@ -186,11 +186,11 @@ export const connect = (id, wrap) => {
 
 // subscribe to state changes
 export const subscribe = (fn, watch, id) =>
-  useStore(id).notify.subscribe(fn, watch);
+  getStore(id).notify.subscribe(fn, watch);
 
 // watch fields a select function uses
 export function watchGet(state, select, path = "", def, id) {
-  const store = useStore(id);
+  const store = getStore(id);
 
   const trappedState = proxyState(state);
   store.trappedState = trappedState;

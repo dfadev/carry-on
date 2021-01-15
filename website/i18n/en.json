@@ -68,6 +68,9 @@
       "api/carry-on-store/devTools": {
         "title": "devTools"
       },
+      "api/carry-on-store/getStore": {
+        "title": "getStore"
+      },
       "api/carry-on-store/initStores": {
         "title": "initStores"
       },
@@ -82,9 +85,6 @@
       },
       "api/carry-on-store/transaction": {
         "title": "api/carry-on-store/transaction"
-      },
-      "api/carry-on-store/useStore": {
-        "title": "useStore"
       },
       "api/index": {
         "title": "Info"

@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { withState, State, useCarryOn } from "../src";
-import { useStore, deleteStore, register } from "carry-on-store";
+import { getStore, deleteStore, register } from "carry-on-store";
 
 const FnComp = () => {
   const stuff = useCarryOn({ 

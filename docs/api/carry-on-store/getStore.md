@@ -1,15 +1,15 @@
 ---
-id: useStore
-title: useStore
+id: getStore
+title: getStore
 ---
 
 ## Import
 
 ```JavaScript
-import { useStore } from "carry-on-store";
+import { getStore } from "carry-on-store";
 ```
 
-## `useStore(`_`storeId`_`)`
+## `getStore(`_`storeId`_`)`
 
 Retrieves a store instance. The default store is returned if storeId isn't
 specfied.
@@ -21,5 +21,5 @@ specfied.
 ## Example
 
 ```JavaScript
-const store = useStore();
+const store = getStore();
 ```

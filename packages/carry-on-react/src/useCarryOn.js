@@ -4,7 +4,7 @@ import {
   connect,
   subscribe,
   watchGet,
-  useStore
+  getStore
 } from "carry-on-store";
 import { logger, throttle, debounce, getIn } from "carry-on-utils";
 import ReactDOM from "react-dom";
@@ -27,7 +27,7 @@ const useCarryOn = (opts, optional = {}) => {
     strict
   } = opts || {};
 
-  const store = useStore(from);
+  const store = getStore(from);
   const [storeState, setStoreState] = useState();
   const [watch, setWatch] = useState();
   const [unsubscribe, setUnsubscribe] = useState();

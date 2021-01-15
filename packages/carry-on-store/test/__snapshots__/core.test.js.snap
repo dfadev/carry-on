@@ -82,7 +82,7 @@ Object {
 }
 `;
 
-exports[`useStore 1`] = `
+exports[`getStore 1`] = `
 Object {
   "dispose": Array [],
   "id": undefined,
@@ -98,7 +98,7 @@ Object {
 }
 `;
 
-exports[`useStore named 1`] = `
+exports[`getStore named 1`] = `
 Object {
   "dispose": Array [],
   "id": "store1",
@@ -114,4 +114,4 @@ Object {
 }
 `;
 
-exports[`useStore named 2`] = `Object {}`;
+exports[`getStore named 2`] = `Object {}`;

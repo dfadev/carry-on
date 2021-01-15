@@ -7,7 +7,7 @@ import {
   notify as notifyListeners,
   transaction,
   initStores,
-  useStore
+  getStore
 } from "carry-on-store";
 import {
   wait,
@@ -897,7 +897,7 @@ test("register with multiple State", () => {
   clickDiff("+");
   clickDiff("-");
 
-  expect(useStore().get()).toMatchSnapshot();
+  expect(getStore().get()).toMatchSnapshot();
 
   deleteStore();
 });
@@ -1072,7 +1072,7 @@ test("no changes", () => {
 
   const { asFragment, rerender } = render(<App />);
   //expect(asFragment()).toMatchSnapshot();
-  useStore()
+  getStore()
     .get()
     .nop();
 
@@ -1103,7 +1103,7 @@ test("no changes with debug", () => {
 
   const { asFragment, rerender } = render(<App />);
   //expect(asFragment()).toMatchSnapshot();
-  useStore()
+  getStore()
     .get()
     .nop();
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { initStores, connect, useStore } from "carry-on-store";
+import { initStores, connect, getStore } from "carry-on-store";
 import Route from "../src/components/Route";
 import Prompt from "../src/components/Prompt";
 import Redirect from "../src/components/Redirect";
@@ -35,7 +35,7 @@ describe("A <StaticRouter>", () => {
       ).asFragment()
     ).toMatchSnapshot();
 
-    expect(useStore().get().app.history.staticContext).toMatchSnapshot();
+    expect(getStore().get().app.history.staticContext).toMatchSnapshot();
   });
 
   it("reports push redirects on the context object", () => {
@@ -49,7 +49,7 @@ describe("A <StaticRouter>", () => {
       ).asFragment()
     ).toMatchSnapshot();
 
-    expect(useStore().get().app.history.staticContext).toMatchSnapshot();
+    expect(getStore().get().app.history.staticContext).toMatchSnapshot();
   });
 
   describe("with a string location prop", () => {
@@ -153,7 +153,7 @@ describe("A <StaticRouter>", () => {
       ).asFragment()
     ).toMatchSnapshot();
 
-    expect(useStore().get().app.history.staticContext).toMatchSnapshot();
+    expect(getStore().get().app.history.staticContext).toMatchSnapshot();
   });
 
   describe("with a basename", () => {
@@ -192,7 +192,7 @@ describe("A <StaticRouter>", () => {
         ).asFragment()
       ).toMatchSnapshot();
 
-      expect(useStore().get().app.history.staticContext).toMatchSnapshot();
+      expect(getStore().get().app.history.staticContext).toMatchSnapshot();
     });
 
     it("adds the basename to push redirect URLs", () => {
@@ -206,7 +206,7 @@ describe("A <StaticRouter>", () => {
         ).asFragment()
       ).toMatchSnapshot();
 
-      expect(useStore().get().app.history.staticContext).toMatchSnapshot();
+      expect(getStore().get().app.history.staticContext).toMatchSnapshot();
     });
   });
 

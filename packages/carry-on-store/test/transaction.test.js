@@ -1,6 +1,6 @@
 import transaction from "../src/transaction";
 import immer from "immer";
-import { deleteStore, register, useStore, connect } from "../src";
+import { deleteStore, register, getStore, connect } from "../src";
 
 test("transaction match", () => {
   expect(transaction()).toMatchSnapshot();
@@ -100,7 +100,7 @@ test("dispose", () => {
 });
 
 test("commit 2", () => {
-  const store = useStore();
+  const store = getStore();
   register(transaction());
   connect();
   store.get().begin();
