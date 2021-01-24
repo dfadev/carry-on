@@ -1,6 +1,6 @@
 {
   "name": "carry-on-store",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "description": "State manager",
   "source": "./src/index.js",
   "module": "./dist/carry-on-store.esm.js",

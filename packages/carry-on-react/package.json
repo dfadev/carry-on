@@ -1,6 +1,6 @@
 {
   "name": "carry-on-react",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0",
   "description": "A Store for React",
   "source": "./src/index.js",
   "module": "./dist/carry-on-react.esm.js",
@@ -54,7 +54,7 @@
     "snapshot-diff": "^0.8.1"
   },
   "dependencies": {
-    "carry-on-store": "^1.0.0-alpha.0",
+    "carry-on-store": "^1.0.0",
     "carry-on-utils": "^1.0.0-alpha.0",
     "hoist-non-react-statics": "^3.3.2"
   },
