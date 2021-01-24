@@ -1,13 +1,13 @@
 {
   "name": "carry-on-react-broadcast",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "dependencies": {
     "automerge": "^0.14.1",
-    "carry-on-react": "^1.0.1",
-    "carry-on-react-router": "^1.0.1",
-    "carry-on-store": "^1.0.1",
-    "carry-on-utils": "^1.0.1",
+    "carry-on-react": "^1.0.2",
+    "carry-on-react-router": "^1.0.2",
+    "carry-on-store": "^1.0.2",
+    "carry-on-utils": "^1.0.2",
     "craco": "^0.0.3",
     "immer": "^8.0.0",
     "ky": "^0.26.0",
