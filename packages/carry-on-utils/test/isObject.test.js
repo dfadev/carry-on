@@ -8,7 +8,7 @@ describe("isObject()", () => {
   });
 
   test("should return true when passed a function", () => {
-    const result = isObject(function() {});
+    const result = isObject(function () {});
     expect(result).toBe(true);
   });
 

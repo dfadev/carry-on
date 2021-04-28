@@ -219,15 +219,15 @@ describe("A <Route>", () => {
     // path-to-regexp does not support this mode of operation
     //
     //it("renders when the URL has trailing slash", () => {
-      //const text = "bubblegum";
+    //const text = "bubblegum";
 
-      //expect(
-        //render(
-          //<MemoryRouter initialEntries={["/somepath"]}>
-            //<Route exact path="/somepath/" render={() => <h1>{text}</h1>} />
-          //</MemoryRouter>
-        //).asFragment()
-      //).toMatchSnapshot();
+    //expect(
+    //render(
+    //<MemoryRouter initialEntries={["/somepath"]}>
+    //<Route exact path="/somepath/" render={() => <h1>{text}</h1>} />
+    //</MemoryRouter>
+    //).asFragment()
+    //).toMatchSnapshot();
     //});
 
     describe("and `strict=true`", () => {

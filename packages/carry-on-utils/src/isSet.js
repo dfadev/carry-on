@@ -1,3 +1,3 @@
 export default function isSet(target) {
-	return target instanceof Set
+  return target instanceof Set;
 }

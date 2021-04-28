@@ -64,12 +64,12 @@ const tests = [
     objA: 0,
     objB: -0,
     result: false
-  },
+  }
 ];
 
-describe("shallowEqual", function() {
-  tests.forEach(function(test) {
-    it("should " + test.should, function() {
+describe("shallowEqual", function () {
+  tests.forEach(function (test) {
+    it("should " + test.should, function () {
       expect(shallowEqual(test.objA, test.objB)).toBe(test.result);
     });
   });

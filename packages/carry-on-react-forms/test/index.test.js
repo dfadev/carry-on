@@ -1,5 +1,4 @@
-test("", () => {
-});
+test("", () => {});
 
 /*
 const formData = {

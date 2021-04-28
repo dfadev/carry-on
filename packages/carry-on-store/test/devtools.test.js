@@ -184,7 +184,7 @@ test("tt", () => {
 
   const plugin = new devTools({ timeTravel: true });
   let setCount = 0;
-  let state = { };
+  let state = {};
   let set = (action, ...args) => {
     setCount++;
     state = action && action(state);

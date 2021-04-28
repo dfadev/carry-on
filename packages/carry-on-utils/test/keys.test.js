@@ -2,7 +2,7 @@ import keys from "../src/keys";
 
 describe("keys()", () => {
   test("makes no special accommodations for `arguments` objects (unlike lodash)", () => {
-    const args = (function(..._) {
+    const args = (function (..._) {
       return arguments;
     })(1, 2, 3);
     expect(keys(args).sort()).toEqual(["0", "1", "2", "callee", "length"]);
@@ -42,7 +42,7 @@ describe("keys()", () => {
   });
 
   test("should return keys for custom properties on `arguments` objects", () => {
-    const args = (function(..._) {
+    const args = (function (..._) {
       return arguments;
     })(1, 2, 3);
     args.a = 1;
@@ -51,7 +51,7 @@ describe("keys()", () => {
 
   test("should not include inherited string keyed properties of `arguments` objects", () => {
     Object.prototype.a = 1;
-    const args = (function(..._) {
+    const args = (function (..._) {
       return arguments;
     })(1, 2, 3);
 
@@ -78,7 +78,7 @@ describe("keys()", () => {
   });
 
   test("should work with array-like objects", () => {
-    expect(keys({ "0": "a", length: 1 }).sort()).toEqual(["0", "length"]);
+    expect(keys({ 0: "a", length: 1 }).sort()).toEqual(["0", "length"]);
   });
 
   test("should return an empty array when `object` is nullish", () => {

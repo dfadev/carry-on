@@ -4,7 +4,7 @@ import { withState, State, useCarryOn } from "../src";
 import { getStore, deleteStore, register } from "carry-on-store";
 
 const FnComp = () => {
-  const stuff = useCarryOn({ 
+  const stuff = useCarryOn({
     debug: true,
     verbose: true,
     register: {
@@ -24,4 +24,3 @@ test("useCarryOn renders", () => {
   expect(asFragment()).toMatchSnapshot();
   deleteStore();
 });
-

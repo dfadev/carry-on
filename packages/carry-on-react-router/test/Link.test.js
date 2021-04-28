@@ -21,18 +21,26 @@ describe("A <Link>", () => {
   it("throws with no Router", () => {
     const orig = console.error;
     console.error = () => {};
-    expect(() => render(<Link/>)).toThrow();
+    expect(() => render(<Link />)).toThrow();
     console.error = orig;
   });
 
   it("renders with no props", () => {
-    const { asFragment } = render(<Router><Link>link</Link></Router>);
+    const { asFragment } = render(
+      <Router>
+        <Link>link</Link>
+      </Router>
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it("accepts a string `to` prop", () => {
     const to = "/the/path?the=query#the-hash";
-    const { asFragment } = render(<Router><Link to={to}>link</Link></Router>);
+    const { asFragment } = render(
+      <Router>
+        <Link to={to}>link</Link>
+      </Router>
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -43,7 +51,11 @@ describe("A <Link>", () => {
       hash: "#the-hash"
     };
 
-    const { asFragment } = render(<Router><Link to={to}>link</Link></Router>);
+    const { asFragment } = render(
+      <Router>
+        <Link to={to}>link</Link>
+      </Router>
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -54,7 +66,6 @@ describe("A <Link>", () => {
       </Router>
     );
     expect(asFragment()).toMatchSnapshot();
-
   });
 
   it("exposes its ref via an innerRef prop", done => {

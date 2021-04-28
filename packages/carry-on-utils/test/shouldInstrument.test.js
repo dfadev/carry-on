@@ -1,4 +1,7 @@
-import { getCollectionHandlers, shouldInstrument } from "../src/shouldInstrument";
+import {
+  getCollectionHandlers,
+  shouldInstrument
+} from "../src/shouldInstrument";
 
 const tests = [
   {
@@ -80,12 +83,12 @@ const tests = [
     should: "return false for number",
     obj: 1,
     result: false
-  },
+  }
 ];
 
-describe("shouldInstrument", function() {
-  tests.forEach(function(test) {
-    it("should " + test.should, function() {
+describe("shouldInstrument", function () {
+  tests.forEach(function (test) {
+    it("should " + test.should, function () {
       expect(shouldInstrument(test.obj)).toBe(test.result);
     });
   });

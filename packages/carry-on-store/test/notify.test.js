@@ -28,10 +28,16 @@ test("subscribe/unsubscribe", () => {
   const notify = notifySubscribers();
   expect(notify).toMatchSnapshot();
 
-  set = notify.plugin.middleware({ isNested: () => false, next: set, getChanges });
+  set = notify.plugin.middleware({
+    isNested: () => false,
+    next: set,
+    getChanges
+  });
 
   let msgRecvCount = 0;
-  const fn = state => { msgRecvCount++; };
+  const fn = state => {
+    msgRecvCount++;
+  };
   const unsubscribe = notify.subscribe(fn);
   expect(notify.subscribers.size).toEqual(1);
 

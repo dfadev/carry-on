@@ -6,7 +6,6 @@ import Route from "../src/components/Route";
 import Switch from "../src/components/Switch";
 
 describe("A <Switch>", () => {
-
   afterEach(() => {
     initStores();
   });

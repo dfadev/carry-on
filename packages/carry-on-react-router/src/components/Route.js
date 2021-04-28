@@ -29,10 +29,8 @@ const Route = carryOn(
 
     let match;
     if (computedMatch) match = computedMatch;
-    else if (path)
-      match = hist.matchPath({ path, exact, strict, sensitive });
-    else 
-      match = hist.match;
+    else if (path) match = hist.matchPath({ path, exact, strict, sensitive });
+    else match = hist.match;
 
     return (
       <RouterContext.Consumer>

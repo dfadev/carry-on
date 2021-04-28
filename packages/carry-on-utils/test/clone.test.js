@@ -2,24 +2,24 @@ import clone from "../src/clone";
 import { forOwn } from "../src/forEach";
 import isObject from "../src/isObject";
 
-describe("clone()", function() {
-  test("should return an empty object if empty given", function() {
+describe("clone()", function () {
+  test("should return an empty object if empty given", function () {
     expect(clone({})).toEqual({});
   });
 
-  test("should return an object with the same properties", function() {
+  test("should return an object with the same properties", function () {
     expect(clone({ a: 1, b: 2, c: 3 })).toEqual({ a: 1, b: 2, c: 3 });
   });
 
-  test("should return an object with nested properties", function() {
+  test("should return an object with nested properties", function () {
     expect(clone({ a: 1, b: { foo: "bar" }, c: { bar: "foo" } })).toEqual({
       a: 1,
       b: { foo: "bar" },
-      c: { bar: "foo" },
+      c: { bar: "foo" }
     });
   });
 
-  test("should not mutate the original object", function() {
+  test("should not mutate the original object", function () {
     let object = { a: 1, b: 2, c: 3 };
     let result = clone(object);
 
@@ -27,7 +27,7 @@ describe("clone()", function() {
     expect(result).not.toBe(object);
   });
 
-  test("should shallow clone", function() {
+  test("should shallow clone", function () {
     let object = { a: 1, b: { foo: "bar" }, c: { bar: "foo" } };
     let result = clone(object);
 
@@ -49,14 +49,14 @@ describe("clone()", function() {
 
   const clonable = {
     arrays: ["a", ""],
-    "array-like objects": { "0": "a", length: 1 },
+    "array-like objects": { 0: "a", length: 1 },
     booleans: false,
     "null values": null,
     numbers: 0,
     objects: { a: 0, b: 1, c: 2 },
     strings: "a",
     "undefined values": undefined,
-    "objects with object values": { b: ["B"], c: { C: 1 } },
+    "objects with object values": { b: ["B"], c: { C: 1 } }
   };
   forOwn(clonable, (object, kind) => {
     test("should clone " + kind, () => {
@@ -79,7 +79,7 @@ describe("clone()", function() {
       propertyIsEnumerable: 4,
       toLocaleString: 5,
       toString: 6,
-      valueOf: 7,
+      valueOf: 7
     };
 
     const actual = clone(object);

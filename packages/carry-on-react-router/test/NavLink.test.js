@@ -318,13 +318,13 @@ describe("A <NavLink>", () => {
 
   // does not apply due to path-to-regexp change
   //it("does not do strict matching by default", () => {
-    //expect(
-      //render(
-        //<MemoryRouter initialEntries={["/pizza"]}>
-          //<NavLink to="/pizza/">Pizza!</NavLink>
-        //</MemoryRouter>
-      //).asFragment()
-    //).toMatchSnapshot();
+  //expect(
+  //render(
+  //<MemoryRouter initialEntries={["/pizza"]}>
+  //<NavLink to="/pizza/">Pizza!</NavLink>
+  //</MemoryRouter>
+  //).asFragment()
+  //).toMatchSnapshot();
   //});
 
   describe("with `strict=true`", () => {

@@ -7,7 +7,7 @@ describe("set()", () => {
   test("creates an array (only) for missing integer keys", () => {
     const object = [];
     set(object, [1, "b", 3.7, 4], value);
-    expect(object).toEqual([, { b: { "3.7": [, , , , value] } }]);
+    expect(object).toEqual([, { b: { 3.7: [, , , , value] } }]);
   });
 
   /** documented difference from lodash */
@@ -91,7 +91,7 @@ describe("set()", () => {
     const actual = set(object, ["a", "1", "b", "c"], value);
 
     expect(actual).toBe(object);
-    expect(actual).toEqual({ a: { "1": { b: { c: value } } } });
+    expect(actual).toEqual({ a: { 1: { b: { c: value } } } });
     expect("0" in object.a).toBe(false);
   });
 

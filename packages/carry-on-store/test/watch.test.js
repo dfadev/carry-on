@@ -1,11 +1,4 @@
-import {
-  getStore,
-  deleteStore,
-  connect,
-  register,
-  watch,
-  Watch
-} from "../src";
+import { getStore, deleteStore, connect, register, watch, Watch } from "../src";
 
 test("watch", async () => {
   Watch.Debug = true;
@@ -50,4 +43,3 @@ test("watch", async () => {
 
   deleteStore();
 });
-

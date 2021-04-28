@@ -24,7 +24,7 @@ function doReduce(iterationFn, collection, iteratee, accumulator, initAccum) {
   return accumulator;
 }
 
-describe("merge()", function() {
+describe("merge()", function () {
   test("only clones as much as it needs to", () => {
     const o1 = { a: { b: 2 }, c: { d: 4 } };
     const o2 = { a: { b: -2 } };
@@ -38,27 +38,27 @@ describe("merge()", function() {
   // stolen from https://github.com/healthiers/mini-dash
   //
 
-  test("should return empty object when single empty object given", function() {
+  test("should return empty object when single empty object given", function () {
     expect(merge({})).toEqual({});
   });
 
-  test("should return empty object when multiple empty objects given", function() {
+  test("should return empty object when multiple empty objects given", function () {
     expect(merge({}, {}, {})).toEqual({});
   });
 
-  test("should return the union of 2 properties", function() {
+  test("should return the union of 2 properties", function () {
     expect(merge({ a: 1 }, { b: 2 })).toEqual({ a: 1, b: 2 });
   });
 
-  test("should return the union of 3 properties", function() {
+  test("should return the union of 3 properties", function () {
     expect(merge({ a: 1 }, { b: 2 }, { c: 3 })).toEqual({ a: 1, b: 2, c: 3 });
   });
 
-  test("should have the rightmost property", function() {
+  test("should have the rightmost property", function () {
     expect(merge({ a: 1 }, { a: 2 }, { a: 3 })).toEqual({ a: 3 });
   });
 
-  test("should mutate (only) the first input", function() {
+  test("should mutate (only) the first input", function () {
     let first = { a: 1 };
     let second = { b: 2 };
     let third = { c: 3 };

@@ -138,18 +138,10 @@ const useCarryOn = (opts, optional = {}) => {
     if (reg) {
       let state = register(reg, from);
       if (state === undefined)
-        state = connect(
-          from,
-          ReactDOM.unstable_batchedUpdates
-        );
+        state = connect(from, ReactDOM.unstable_batchedUpdates);
       return trapSelect(state);
     }
-    return trapSelect(
-      connect(
-        from,
-        ReactDOM.unstable_batchedUpdates
-      )
-    );
+    return trapSelect(connect(from, ReactDOM.unstable_batchedUpdates));
   }, [from]);
 
   return [storeState === undefined ? initialState : storeState, store.set];

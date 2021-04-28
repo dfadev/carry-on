@@ -5,7 +5,9 @@ const noop = () => {};
 describe("forEach()", () => {
   test("works for null & undefined", () => {
     let marker = 0;
-    const spy = () => { marker++; };
+    const spy = () => {
+      marker++;
+    };
     forEach(null, spy);
     forEach(undefined, spy);
     expect(marker).toBe(0);
@@ -16,11 +18,15 @@ describe("forEach()", () => {
     const logger = (val, idx) => {
       args.push([val, idx]);
       if (idx === 2) return false;
-    }
+    };
 
     forEach([1, 2, 3, 4], logger);
 
-    expect(args).toEqual([[1, 0], [2, 1], [3, 2]]);
+    expect(args).toEqual([
+      [1, 0],
+      [2, 1],
+      [3, 2]
+    ]);
   });
 
   test("can exit early when iterating objects", () => {
@@ -28,11 +34,15 @@ describe("forEach()", () => {
     const logger = (...a) => {
       args.push(a);
       if (a[0] === 3) return false;
-    }
+    };
 
     forEach({ a: 1, b: 2, c: 3, d: 4 }, logger);
 
-    expect(args).toEqual([[1, "a"], [2, "b"], [3, "c"]]);
+    expect(args).toEqual([
+      [1, "a"],
+      [2, "b"],
+      [3, "c"]
+    ]);
   });
 
   test("should provide correct iteratee arguments", () => {
@@ -43,7 +53,11 @@ describe("forEach()", () => {
 
     forEach([1, 2, 3], logger);
 
-    expect(args).toEqual([[1, 0], [2, 1], [3, 2]]);
+    expect(args).toEqual([
+      [1, 0],
+      [2, 1],
+      [3, 2]
+    ]);
   });
 
   test("should treat sparse arrays as dense", () => {
@@ -52,11 +66,15 @@ describe("forEach()", () => {
     array[2] = 3;
     const logger = (...a) => {
       args.push(a);
-    }
+    };
 
     forEach(array, logger);
 
-    expect(args).toEqual([[1, 0], [undefined, 1], [3, 2]]);
+    expect(args).toEqual([
+      [1, 0],
+      [undefined, 1],
+      [3, 2]
+    ]);
   });
 
   test("should not iterate custom properties of arrays", () => {

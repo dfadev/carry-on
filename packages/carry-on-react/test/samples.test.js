@@ -1072,9 +1072,7 @@ test("no changes", () => {
 
   const { asFragment, rerender } = render(<App />);
   //expect(asFragment()).toMatchSnapshot();
-  getStore()
-    .get()
-    .nop();
+  getStore().get().nop();
 
   const rer = rerender(<App />);
   expect(asFragment()).toMatchSnapshot();
@@ -1103,9 +1101,7 @@ test("no changes with debug", () => {
 
   const { asFragment, rerender } = render(<App />);
   //expect(asFragment()).toMatchSnapshot();
-  getStore()
-    .get()
-    .nop();
+  getStore().get().nop();
 
   const rer = rerender(<App />);
   expect(asFragment()).toMatchSnapshot();

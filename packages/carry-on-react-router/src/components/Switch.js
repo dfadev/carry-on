@@ -7,7 +7,7 @@ const Switch = carryOn(
   { id: "Switch" },
   ({ location: loc, children, history = "app.history" }, state) => {
     const hist = getIn(state, history);
-    const location = loc || hist.location; 
+    const location = loc || hist.location;
 
     let element, match;
 

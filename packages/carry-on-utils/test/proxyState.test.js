@@ -338,8 +338,8 @@ describe("proxy", () => {
   });
 
   //it("deproxify", () => {
-    //expect(deproxify({ a: 1 })).toMatchSnapshot();
-    //const p = proxyState({ a: new Map([[1, { b: 2 }]]) });
-    //expect(deproxify(p.state.a)).toMatchSnapshot();
+  //expect(deproxify({ a: 1 })).toMatchSnapshot();
+  //const p = proxyState({ a: new Map([[1, { b: 2 }]]) });
+  //expect(deproxify(p.state.a)).toMatchSnapshot();
   //});
 });
