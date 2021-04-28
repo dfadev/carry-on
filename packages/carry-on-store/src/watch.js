@@ -1,9 +1,17 @@
 /** @format **/
-import { debounce, isFunction, getIn, logger, throttle } from "carry-on-utils";
+import {
+  debounce,
+  isFunction,
+  getIn,
+  logger,
+  register,
+  throttle
+} from "carry-on-utils";
 import { connect, watchGet, subscribe } from "./store";
 
 export class Watch {
   static Debug = false;
+
   static Verbose = false;
 
   constructor(opts) {
@@ -108,8 +116,8 @@ export class Watch {
     // handle watched fields index is not yet available or strict is on
     if (this.watch === undefined || this.opts.strict) {
       // execute a query, watching the fields accessed
-      const [finalState, watch] = watchGet(state, select, path, def, from);
-      this.watch = watch;
+      const [finalState, wg] = watchGet(state, select, path, def, from);
+      this.watch = wg;
 
       // log the newly created watch fields index
       if (this.debug) this.log("watch", this.watch);
@@ -209,7 +217,6 @@ export function watch(fn, storeId) {
       strict: true
     });
     return ws.unsubscribe;
-  } else {
-    return new Watch({ path: "", ...fn }).unsubscribe;
   }
+  return new Watch({ path: "", ...fn }).unsubscribe;
 }
