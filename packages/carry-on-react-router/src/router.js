@@ -14,7 +14,6 @@ const router = (
 ) => {
   let isPaused = false;
   const historyPath = toPath(path);
-  //console.log(history.location);
 
   // router state
   const state = ({ get, set }) => {
@@ -30,7 +29,6 @@ const router = (
         }, "History Change")
     );
 
-    //console.log("creating router", prevHist, path);
     // create an event handler for a link click
     const handleClick = ({ onClick, target, replace, to, force }) => event => {
       if (onClick) onClick(event);
@@ -61,12 +59,6 @@ const router = (
           location = createLocation(to);
         }
       }
-      //const location =
-      //typeof to === "string"
-      //? //? createLocation(to, null, null, hist.location)
-      //createLocation(to)
-      //: to;
-      //const href = location ? hist.createHref(location) : "";
       const href = location ? hist.createHref(location) : "";
       return href;
     }
@@ -74,7 +66,6 @@ const router = (
     const stage = {
       unlisten,
       ...history,
-      //...wrappedHistory,
       entries: history.entries ? history.entries.slice() : [],
       location: { ...history.location },
 

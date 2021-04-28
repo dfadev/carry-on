@@ -23,8 +23,7 @@ const Redirect = carryOn(
         : to
     );
 
-    // When rendering in a static context,
-    // set the new location immediately.
+    // When rendering in a static context, set the new location immediately.
     if (hist.staticContext) {
       method(location);
       return null;
@@ -35,7 +34,7 @@ const Redirect = carryOn(
         onMount={() => {
           method(location);
         }}
-        onUpdate={(self, prevProps) => {
+        onUpdate={(_, prevProps) => {
           if (!locationsAreEqual(prevProps.to, location)) {
             method(location);
           }
