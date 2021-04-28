@@ -36,7 +36,23 @@
     "test:watch": "run-p test:watch-utils test:watch-store test:watch-react test:watch-react-forms test:watch-react-router",
     "dev": "run-p watch test:watch",
     "test:cov": "lerna exec --concurrency 6 --no-sort -- \"npm run test:cov | cat\"",
-    "clean": "lerna exec --concurrency 6 --no-sort -- \"npm run clean | cat\""
+    "clean": "lerna exec --concurrency 6 --no-sort -- \"npm run clean | cat\"",
+    "format:check:store": "cd packages/carry-on-store && npm run format:check",
+    "format:check:utils": "cd packages/carry-on-utils && npm run format:check",
+    "format:check:react": "cd packages/carry-on-react && npm run format:check",
+    "format:check:react-forms": "cd packages/carry-on-react-forms && npm run format:check",
+    "format:check:react-router": "cd packages/carry-on-react-router && npm run format:check",
+    "format:check": "run-p -s format:check:store format:check:utils format:check:react format:check:react-forms format:check:react-router",
+    "format:store": "cd packages/carry-on-store && npm run format",
+    "format:utils": "cd packages/carry-on-utils && npm run format",
+    "format:react": "cd packages/carry-on-react && npm run format",
+    "format:react-forms": "cd packages/carry-on-react-forms && npm run format",
+    "format:react-router": "cd packages/carry-on-react-router && npm run format",
+    "format": "run-p -s format:store format:utils format:react format:react-forms format:react-router"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "prettier": {
+    "trailingComma": "none",
+    "arrowParens": "avoid"
+  }
 }
