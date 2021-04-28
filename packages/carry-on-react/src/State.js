@@ -141,7 +141,11 @@ export default class State extends Component {
 
     // log if these changes have been delayed via debounce or throttle
     if (this.debug && (this.props.debounce || this.props.throttle))
-      this.log("delayed changes", changes);
+      this.log(
+        (this.props.debounce && "debounced") || "throttled",
+        "changes",
+        changes
+      );
 
     this.trapSelect(state);
     this.forceUpdate();
@@ -228,8 +232,8 @@ export default class State extends Component {
 
     // log the render
     if (this.debug)
-      if (this.props.constant) this.log("render", "constant");
-      else this.log("render");
+      if (this.props.constant) this.log("render", "fn", "constant");
+      else this.log("render", "fn");
 
     // cache the store state and the final state (result of render)
     this.prevStoreState = this.storeState;
@@ -248,8 +252,8 @@ export default class State extends Component {
     if (this.props.select) {
       // log a select render
       if (this.debug)
-        if (this.props.constant) this.log("render", "constant");
-        else this.log("render");
+        if (this.props.constant) this.log("render", "select", "constant");
+        else this.log("render", "select");
 
       // update prev store state
       this.prevStoreState = this.storeState;
