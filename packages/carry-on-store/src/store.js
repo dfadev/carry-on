@@ -1,12 +1,12 @@
 /** @format **/
 import produce from "immer";
 import {
-  proxyState,
   deproxify,
   forceArray,
-  mutateMerge,
+  getIn,
   isFunction,
-  getIn
+  mutateMerge,
+  proxyState
 } from "carry-on-utils";
 import notify from "./notify";
 import { calculateChanges } from "./changeTracking";

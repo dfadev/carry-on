@@ -42,18 +42,9 @@ export default class State extends Component {
     if (first && reg) {
       let state = register(reg, from);
       if (state === undefined)
-        state = connect(
-          from,
-          ReactDOM.unstable_batchedUpdates
-        );
+        state = connect(from, ReactDOM.unstable_batchedUpdates);
       this.trapSelect(state);
-    } else
-      this.trapSelect(
-        connect(
-          from,
-          ReactDOM.unstable_batchedUpdates
-        )
-      );
+    } else this.trapSelect(connect(from, ReactDOM.unstable_batchedUpdates));
 
     // apply throttle or debounce
     if (t) this.onStateChange = throttle(t, this.origOnStateChange);

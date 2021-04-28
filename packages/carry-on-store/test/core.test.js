@@ -338,7 +338,7 @@ test("subscribe with a watch works", () => {
   const store = getStore();
 
   const select = state => state.a;
-  const [ finalState, watch ] = watchGet(store.get(), select);
+  const [finalState, watch] = watchGet(store.get(), select);
   subscribe(fn, watch);
 
   store.set(state => {
@@ -363,7 +363,7 @@ test("watch subscribe field object change", () => {
   const store = getStore();
 
   const select = state => state.a.field;
-  const [ finalState, watch ] = watchGet(store.get(), select);
+  const [finalState, watch] = watchGet(store.get(), select);
   subscribe(fn, watch);
 
   store.set(state => {
@@ -388,7 +388,7 @@ test("watch subscribe field value change", () => {
   const store = getStore();
 
   const select = state => state.a.field;
-  const [ finalState, watch ] = watchGet(store.get(), select);
+  const [finalState, watch] = watchGet(store.get(), select);
   subscribe(fn, watch);
 
   store.set(state => {
@@ -417,16 +417,24 @@ test("notify immediate", () => {
   const store = getStore();
 
   const select = state => state.a.field;
-  const [ finalState, watch ] = watchGet(store.get(), select);
+  const [finalState, watch] = watchGet(store.get(), select);
   subscribe(fn, watch);
 
-  store.set(state => {
-    state.b = 2;
-  }, "Immed", { immediate: true });
+  store.set(
+    state => {
+      state.b = 2;
+    },
+    "Immed",
+    { immediate: true }
+  );
 
-  store.set(state => {
-    state.a.field = 2;
-  }, "Immed", { immediate: true });
+  store.set(
+    state => {
+      state.a.field = 2;
+    },
+    "Immed",
+    { immediate: true }
+  );
 
   expect(fnCalled).toBe(1);
   expect(wrapCalled).toBe(2); // Register, Register
