@@ -2,11 +2,12 @@
 id: initStores
 title: initStores
 ---
-
 ## Import
 
 ```JavaScript
+
 import { initStores } from "carry-on-store";
+
 ```
 
 ## `initStores()`
@@ -14,5 +15,7 @@ import { initStores } from "carry-on-store";
 Removes all stores.
 
 ```JavaScript
+
 initStores();
+
 ```

@@ -2,10 +2,10 @@
 id: index
 title: Examples
 ---
-
 ## Default store
 
 ```JavaScript
+
 register({
   state: ({ set }) => ({
     counter: 0,
@@ -25,11 +25,13 @@ const App = () => (
     )}
   </State>
 );
+
 ```
 
 ## Two named stores
 
 ```JavaScript
+
 const store = {
   state: ({ set }) => ({
     counter: 0,
@@ -63,11 +65,13 @@ const App = () => (
     </State>
   </>
 );
+
 ```
 
 ## State select
 
 ```JavaScript
+
 register({
   state: ({ set }) => ({
     notSelected: "item",
@@ -91,11 +95,13 @@ const App = props => (
     )}
   </State>
 );
+
 ```
 
 ## Register state
 
 ```JavaScript
+
 register({
   state: ({ set }) => ({
     counter: 0,
@@ -115,11 +121,13 @@ const App = () => (
     )}
   </State>
 );
+
 ```
 
 ## Register state on a named store
 
 ```JavaScript
+
 register(
   {
     state: ({ set }) => ({
@@ -142,11 +150,13 @@ const App = () => (
     )}
   </State>
 );
+
 ```
 
 ## State path
 
 ```JavaScript
+
 register({
   state: ({ set }) => ({
     more: {
@@ -164,11 +174,13 @@ const App = () => (
     }}
   </State>
 );
+
 ```
 
 ## State path with default
 
 ```JavaScript
+
 register({
   state: ({ set }) => ({
     more: {
@@ -186,11 +198,13 @@ const App = () => (
     }}
   </State>
 );
+
 ```
 
 ## State path on a named store using from
 
 ```JavaScript
+
 register(
   {
     state: ({ set }) => ({
@@ -217,11 +231,13 @@ const App = () => (
   </State>
 );
 );
+
 ```
 
 ## Multiple select
 
 ```JavaScript
+
 register({
   state: ({ set }) => ({
     counter: 0,
@@ -252,4 +268,5 @@ const App = props => (
     </State>
   </div>
 );
+
 ```

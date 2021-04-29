@@ -2,11 +2,12 @@
 id: usingState
 title: Using State
 ---
-
 ## Import
 
 ```JavaScript
+
 import { State } from "carry-on-react";
+
 ```
 
 ## Basic usage
@@ -17,6 +18,7 @@ The child node of a `State` component is a render function. The render function
 is given the store state as it's first parameter.
 
 ```JavaScript
+
 const App = props => (
   <State>
     {state => ({
@@ -26,6 +28,7 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ### Named store
@@ -33,6 +36,7 @@ const App = props => (
 A named store can be accessed using the `from` property:
 
 ```JavaScript
+
 const App = props => (
   <State from="Store1">
     {state => ({
@@ -42,6 +46,7 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ## Access tracking
@@ -56,6 +61,7 @@ In the next example, the first `State` component will update when `field1`
 changes, and the second `State` component will update when `field2` changes.
 
 ```JavaScript
+
 const App = props => (
   <div>
     <State>
@@ -74,6 +80,7 @@ const App = props => (
     </State>
   </div>
 );
+
 ```
 
 ### Strict
@@ -82,6 +89,7 @@ The list of monitored state fields does not change once created. You can force
 every render to be monitored by specifying the `strict` property.
 
 ```JavaScript
+
 const App = props => (
   <State strict>
     {state => ({
@@ -91,6 +99,7 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ## Constant
@@ -99,6 +108,7 @@ If the state needed is constant, the `constant` property will prevent any
 render updates after the first render.
 
 ```JavaScript
+
 const App = props => (
   <State constant>
     {state => ({
@@ -108,6 +118,7 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ## Path
@@ -115,6 +126,7 @@ const App = props => (
 A string `path` property can be used to choose a specific object or value:
 
 ```JavaScript
+
 const App = props => (
   <State path="dotted.path.array[0].field">
     {field => ({
@@ -124,6 +136,7 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ## Select
@@ -133,6 +146,7 @@ property is used, access tracking will be applied to the `select` function and
 not the render function.
 
 ```JavaScript
+
 const App = props => (
   <State select={state => state.field}>
     {field => ({
@@ -142,6 +156,7 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ## Default value
@@ -150,6 +165,7 @@ The `default` property lets you subsitute a default value when the state is
 undefined.
 
 ```JavaScript
+
 const App = props => (
   <State select={state => state.field} default="Undefined state.">
     {field => ({
@@ -159,6 +175,7 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ## Delayed updates
@@ -171,6 +188,7 @@ subscribed to.
 ### Throttle
 
 ```JavaScript
+
 const App = props => (
   <State throttle={100}>
     {state => ({
@@ -180,11 +198,13 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ### Debounce
 
 ```JavaScript
+
 const App = props => (
   <State debounce={500}>
     {state => ({
@@ -194,6 +214,7 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ## Debugging
@@ -205,6 +226,7 @@ Three properties are available for debugging.
 `id` will set an identifier to include in the log messages.
 
 ```JavaScript
+
 const App = props => (
   <State debug verbose id="Field div">
     {state => ({
@@ -214,6 +236,7 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ### Global
@@ -221,8 +244,10 @@ const App = props => (
 Debugging can be turned on for all `State` components:
 
 ```JavaScript
+
 State.Debug = true;
 State.Verbose = true;
+
 ```
 
 ## Lifecycle Events
@@ -231,6 +256,7 @@ Use the `onMount` and `onUnmount` properties when you need to execute
 actions during those lifecycle events.
 
 ```JavaScript
+
 const App = props => (
   <State
     onMount={state => { console.log("State mounted", state); }}
@@ -243,6 +269,7 @@ const App = props => (
     })}
   </State>
 );
+
 ```
 
 ## carryOn factory
@@ -250,6 +277,7 @@ const App = props => (
 The `carryOn` factory function is available as shorthand for a typical stateful component:
 
 ```JavaScript
+
 import { carryOn } from "carry-on-react";
 
 const Nav = carryOn((props, state) => (
@@ -314,4 +342,5 @@ const App = carryOn(
     </div>
   )
 );
+
 ```

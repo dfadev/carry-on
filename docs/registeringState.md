@@ -2,11 +2,12 @@
 id: registeringState
 title: Registering State
 ---
-
 ## Import
 
 ```JavaScript
+
 import { register } from "carry-on-store";
+
 ```
 
 ## Define
@@ -26,12 +27,14 @@ store.
 The function must return an object representing the initial state:
 
 ```JavaScript
+
 const state = ({ id, get, set }) => ({
   counter: 0,
   inc: () => set(state => {
     state.counter++;
   })
 });
+
 ```
 
 ### As an object
@@ -39,6 +42,7 @@ const state = ({ id, get, set }) => ({
 State can also be defined as a plain object if there are no actions that require setting and querying state.
 
 ```JavaScript
+
 const state = {
   field1: "value1",
   field2: "value2",
@@ -47,6 +51,7 @@ const state = {
     field2: "value2"
   }
 };
+
 ```
 
 ### Actions
@@ -54,11 +59,13 @@ const state = {
 Actions are defined by functions inside the state object:
 
 ```JavaScript
+
 const state = ({ get, set }) => {
   action1() { ... },
   action2() { ... },
   action3() { ... }
 };
+
 ```
 
 #### Get
@@ -67,6 +74,7 @@ When an action only needs read access to the current state, it uses the `get`
 function:
 
 ```JavaScript
+
 const state = ({ get, set }) => {
   logValue() {
     get(state => {
@@ -74,6 +82,7 @@ const state = ({ get, set }) => {
     });
   },
 };
+
 ```
 
 #### Set
@@ -81,6 +90,7 @@ const state = ({ get, set }) => {
 An action uses the `set` function to change state values.
 
 ```JavaScript
+
 const state = ({ get, set }) => {
   field: "",
   setField(val) {
@@ -89,6 +99,7 @@ const state = ({ get, set }) => {
     });
   }
 };
+
 ```
 
 ## Register
@@ -100,13 +111,17 @@ register state with the default store.
 ### Register on default store:
 
 ```JavaScript
+
 register({ state });
+
 ```
 
 ### Register on a named store:
 
 ```JavaScript
+
 register({ state }, "Store1");
+
 ```
 
 ## Multiple registrations
@@ -116,6 +131,7 @@ register({ state }, "Store1");
 When `register` is called multiple times it merges state, potentially into a running store:
 
 ```JavaScript
+
 register({
 	state: {
 	  field1: "value1"
@@ -133,6 +149,7 @@ register({
 //	field1: "value1",
 //	field2: "value2"
 //}
+
 ```
 
 ### Array of registrations
@@ -140,6 +157,7 @@ register({
 When registering more than one state, an array of registrations can be passed:
 
 ```JavaScript
+
 const state1 = {
   field1: "value1"
 };
@@ -152,4 +170,5 @@ register([
 { state: state1 },
 { state: state2 }
 ]);
+
 ```

@@ -2,23 +2,27 @@
 id: index
 title: Getting Started
 ---
-
 ## Install
 
 ```JavaScript
+
 npm install --save carry-on-react
+
 ```
 
 ## Import
 
 ```JavaScript
+
 import { State } from "carry-on-react";
 import { register } from "carry-on-store";
+
 ```
 
 ## Simple store
 
 ```JavaScript
+
 register({
   state: ({ set }) => ({
     counter: 0,
@@ -38,4 +42,5 @@ const App = () => (
     )}
   </State>
 );
+
 ```

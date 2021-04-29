@@ -2,5 +2,4 @@
 id: index
 title: Info
 ---
-
 ...
