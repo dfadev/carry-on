@@ -1,0 +1,28 @@
+{
+  "unversionedId": "examples/index",
+  "id": "examples/index",
+  "isDocsHomePage": false,
+  "title": "Examples",
+  "description": "Default store",
+  "source": "@site/../docs/examples/index.md",
+  "sourceDirName": "examples",
+  "slug": "/examples/index",
+  "permalink": "/carry-on/docs/examples/index",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "id": "index",
+    "title": "Examples"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Using State",
+    "permalink": "/carry-on/docs/usingState"
+  },
+  "next": {
+    "title": "Info",
+    "permalink": "/carry-on/docs/api/index"
+  }
+}

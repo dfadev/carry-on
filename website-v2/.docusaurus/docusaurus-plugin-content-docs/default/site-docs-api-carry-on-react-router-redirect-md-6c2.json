@@ -1,0 +1,28 @@
+{
+  "unversionedId": "api/carry-on-react-router/Redirect",
+  "id": "api/carry-on-react-router/Redirect",
+  "isDocsHomePage": false,
+  "title": "Redirect",
+  "description": "",
+  "source": "@site/../docs/api/carry-on-react-router/Redirect.md",
+  "sourceDirName": "api/carry-on-react-router",
+  "slug": "/api/carry-on-react-router/Redirect",
+  "permalink": "/carry-on/docs/api/carry-on-react-router/Redirect",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "id": "Redirect",
+    "title": "Redirect"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Prompt",
+    "permalink": "/carry-on/docs/api/carry-on-react-router/Prompt"
+  },
+  "next": {
+    "title": "Route",
+    "permalink": "/carry-on/docs/api/carry-on-react-router/Route"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "unversionedId": "api/carry-on-react-router/Link",
+  "id": "api/carry-on-react-router/Link",
+  "isDocsHomePage": false,
+  "title": "Link",
+  "description": "",
+  "source": "@site/../docs/api/carry-on-react-router/Link.md",
+  "sourceDirName": "api/carry-on-react-router",
+  "slug": "/api/carry-on-react-router/Link",
+  "permalink": "/carry-on/docs/api/carry-on-react-router/Link",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "id": "Link",
+    "title": "Link"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "generatePath",
+    "permalink": "/carry-on/docs/api/carry-on-react-router/generatePath"
+  },
+  "next": {
+    "title": "matchPath",
+    "permalink": "/carry-on/docs/api/carry-on-react-router/matchPath"
+  }
+}

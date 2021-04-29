@@ -1,0 +1,28 @@
+{
+  "unversionedId": "api/carry-on-react/carryOn",
+  "id": "api/carry-on-react/carryOn",
+  "isDocsHomePage": false,
+  "title": "carryOn",
+  "description": "Import",
+  "source": "@site/../docs/api/carry-on-react/carryOn.md",
+  "sourceDirName": "api/carry-on-react",
+  "slug": "/api/carry-on-react/carryOn",
+  "permalink": "/carry-on/docs/api/carry-on-react/carryOn",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "id": "carryOn",
+    "title": "carryOn"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "withState",
+    "permalink": "/carry-on/docs/api/carry-on-react/withState"
+  },
+  "next": {
+    "title": "Field",
+    "permalink": "/carry-on/docs/api/carry-on-react-forms/Field"
+  }
+}

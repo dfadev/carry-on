@@ -1,0 +1,24 @@
+{
+  "unversionedId": "index",
+  "id": "index",
+  "isDocsHomePage": true,
+  "title": "Getting Started",
+  "description": "Install",
+  "source": "@site/../docs/docs.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/carry-on/docs/",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "id": "index",
+    "title": "Getting Started"
+  },
+  "sidebar": "docs",
+  "next": {
+    "title": "Registering State",
+    "permalink": "/carry-on/docs/registeringState"
+  }
+}

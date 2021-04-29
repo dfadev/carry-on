@@ -1,0 +1,16 @@
+{
+  "unversionedId": "api/carry-on-store/notify",
+  "id": "api/carry-on-store/notify",
+  "isDocsHomePage": false,
+  "title": "notify",
+  "description": "id: notify",
+  "source": "@site/../docs/api/carry-on-store/notify.md",
+  "sourceDirName": "api/carry-on-store",
+  "slug": "/api/carry-on-store/notify",
+  "permalink": "/carry-on/docs/api/carry-on-store/notify",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {}
+}

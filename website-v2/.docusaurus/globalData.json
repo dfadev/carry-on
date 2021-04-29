@@ -1,0 +1,176 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/carry-on/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/carry-on/docs",
+          "mainDocId": "index",
+          "docs": [
+            {
+              "id": "api/carry-on-react-forms/Field",
+              "path": "/carry-on/docs/api/carry-on-react-forms/Field",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-forms/form",
+              "path": "/carry-on/docs/api/carry-on-react-forms/form",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-forms/Form",
+              "path": "/carry-on/docs/api/carry-on-react-forms/Form",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-forms/FormButtons",
+              "path": "/carry-on/docs/api/carry-on-react-forms/FormButtons",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-forms/FormState",
+              "path": "/carry-on/docs/api/carry-on-react-forms/FormState",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/createStaticHistory",
+              "path": "/carry-on/docs/api/carry-on-react-router/createStaticHistory",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/generatePath",
+              "path": "/carry-on/docs/api/carry-on-react-router/generatePath",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/Link",
+              "path": "/carry-on/docs/api/carry-on-react-router/Link",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/matchPath",
+              "path": "/carry-on/docs/api/carry-on-react-router/matchPath",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/NavLink",
+              "path": "/carry-on/docs/api/carry-on-react-router/NavLink",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/Prompt",
+              "path": "/carry-on/docs/api/carry-on-react-router/Prompt",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/Redirect",
+              "path": "/carry-on/docs/api/carry-on-react-router/Redirect",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/Route",
+              "path": "/carry-on/docs/api/carry-on-react-router/Route",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/RouteMap",
+              "path": "/carry-on/docs/api/carry-on-react-router/RouteMap",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/Switch",
+              "path": "/carry-on/docs/api/carry-on-react-router/Switch",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react-router/withRouter",
+              "path": "/carry-on/docs/api/carry-on-react-router/withRouter",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react/carryOn",
+              "path": "/carry-on/docs/api/carry-on-react/carryOn",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react/State",
+              "path": "/carry-on/docs/api/carry-on-react/State",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-react/withState",
+              "path": "/carry-on/docs/api/carry-on-react/withState",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-store/deleteStore",
+              "path": "/carry-on/docs/api/carry-on-store/deleteStore",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-store/devTools",
+              "path": "/carry-on/docs/api/carry-on-store/devTools",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-store/getStore",
+              "path": "/carry-on/docs/api/carry-on-store/getStore",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-store/initStores",
+              "path": "/carry-on/docs/api/carry-on-store/initStores",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-store/notify",
+              "path": "/carry-on/docs/api/carry-on-store/notify"
+            },
+            {
+              "id": "api/carry-on-store/register",
+              "path": "/carry-on/docs/api/carry-on-store/register",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-store/subscribe",
+              "path": "/carry-on/docs/api/carry-on-store/subscribe",
+              "sidebar": "docs"
+            },
+            {
+              "id": "api/carry-on-store/transaction",
+              "path": "/carry-on/docs/api/carry-on-store/transaction"
+            },
+            {
+              "id": "api/index",
+              "path": "/carry-on/docs/api/index",
+              "sidebar": "docs"
+            },
+            {
+              "id": "examples/index",
+              "path": "/carry-on/docs/examples/index",
+              "sidebar": "docs"
+            },
+            {
+              "id": "index",
+              "path": "/carry-on/docs/",
+              "sidebar": "docs"
+            },
+            {
+              "id": "registeringState",
+              "path": "/carry-on/docs/registeringState",
+              "sidebar": "docs"
+            },
+            {
+              "id": "usingState",
+              "path": "/carry-on/docs/usingState",
+              "sidebar": "docs"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "unversionedId": "api/carry-on-react-router/NavLink",
+  "id": "api/carry-on-react-router/NavLink",
+  "isDocsHomePage": false,
+  "title": "NavLink",
+  "description": "",
+  "source": "@site/../docs/api/carry-on-react-router/NavLink.md",
+  "sourceDirName": "api/carry-on-react-router",
+  "slug": "/api/carry-on-react-router/NavLink",
+  "permalink": "/carry-on/docs/api/carry-on-react-router/NavLink",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "id": "NavLink",
+    "title": "NavLink"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "matchPath",
+    "permalink": "/carry-on/docs/api/carry-on-react-router/matchPath"
+  },
+  "next": {
+    "title": "Prompt",
+    "permalink": "/carry-on/docs/api/carry-on-react-router/Prompt"
+  }
+}

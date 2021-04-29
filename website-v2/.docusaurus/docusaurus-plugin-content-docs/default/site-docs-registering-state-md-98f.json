@@ -1,0 +1,28 @@
+{
+  "unversionedId": "registeringState",
+  "id": "registeringState",
+  "isDocsHomePage": false,
+  "title": "Registering State",
+  "description": "Import",
+  "source": "@site/../docs/registeringState.md",
+  "sourceDirName": ".",
+  "slug": "/registeringState",
+  "permalink": "/carry-on/docs/registeringState",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "id": "registeringState",
+    "title": "Registering State"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Getting Started",
+    "permalink": "/carry-on/docs/"
+  },
+  "next": {
+    "title": "Using State",
+    "permalink": "/carry-on/docs/usingState"
+  }
+}

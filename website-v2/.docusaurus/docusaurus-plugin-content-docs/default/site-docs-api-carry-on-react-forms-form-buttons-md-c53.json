@@ -1,0 +1,28 @@
+{
+  "unversionedId": "api/carry-on-react-forms/FormButtons",
+  "id": "api/carry-on-react-forms/FormButtons",
+  "isDocsHomePage": false,
+  "title": "FormButtons",
+  "description": "",
+  "source": "@site/../docs/api/carry-on-react-forms/FormButtons.md",
+  "sourceDirName": "api/carry-on-react-forms",
+  "slug": "/api/carry-on-react-forms/FormButtons",
+  "permalink": "/carry-on/docs/api/carry-on-react-forms/FormButtons",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "id": "FormButtons",
+    "title": "FormButtons"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Form",
+    "permalink": "/carry-on/docs/api/carry-on-react-forms/Form"
+  },
+  "next": {
+    "title": "FormState",
+    "permalink": "/carry-on/docs/api/carry-on-react-forms/FormState"
+  }
+}

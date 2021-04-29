@@ -1,6 +1,6 @@
 ---
 id: State
-title: <State ...>
+title: "<State ...>"
 ---
 
 ## Properties

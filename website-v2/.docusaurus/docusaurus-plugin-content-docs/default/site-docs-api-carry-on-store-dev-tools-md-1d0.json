@@ -1,0 +1,28 @@
+{
+  "unversionedId": "api/carry-on-store/devTools",
+  "id": "api/carry-on-store/devTools",
+  "isDocsHomePage": false,
+  "title": "devTools",
+  "description": "Import",
+  "source": "@site/../docs/api/carry-on-store/devTools.md",
+  "sourceDirName": "api/carry-on-store",
+  "slug": "/api/carry-on-store/devTools",
+  "permalink": "/carry-on/docs/api/carry-on-store/devTools",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "id": "devTools",
+    "title": "devTools"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "deleteStore",
+    "permalink": "/carry-on/docs/api/carry-on-store/deleteStore"
+  },
+  "next": {
+    "title": "initStores",
+    "permalink": "/carry-on/docs/api/carry-on-store/initStores"
+  }
+}

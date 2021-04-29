@@ -1,0 +1,1101 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "loadedVersions": [
+        {
+          "versionName": "current",
+          "versionLabel": "Next",
+          "versionPath": "/carry-on/docs",
+          "isLast": true,
+          "routePriority": -1,
+          "sidebarFilePath": "/home/hawk/git/carry-on-git/carry-on/website-v2/sidebars.json",
+          "contentPath": "/home/hawk/git/carry-on-git/carry-on/docs",
+          "contentPathLocalized": "/home/hawk/git/carry-on-git/carry-on/website-v2/i18n/en/docusaurus-plugin-content-docs/current",
+          "mainDocId": "index",
+          "sidebars": {
+            "docs": [
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "Overview",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "index"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "registeringState"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "usingState"
+                  },
+                  {
+                    "type": "doc",
+                    "id": "examples/index"
+                  }
+                ]
+              },
+              {
+                "collapsed": true,
+                "type": "category",
+                "label": "API",
+                "items": [
+                  {
+                    "type": "doc",
+                    "id": "api/index"
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "carry-on-store",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-store/deleteStore"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-store/devTools"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-store/initStores"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-store/register"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-store/subscribe"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-store/getStore"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "carry-on-react",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react/State"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react/withState"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react/carryOn"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "carry-on-react-forms",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-forms/Field"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-forms/form"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-forms/Form"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-forms/FormButtons"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-forms/FormState"
+                      }
+                    ]
+                  },
+                  {
+                    "collapsed": true,
+                    "type": "category",
+                    "label": "carry-on-react-router",
+                    "items": [
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/createStaticHistory"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/generatePath"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/Link"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/matchPath"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/NavLink"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/Prompt"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/Redirect"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/Route"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/RouteMap"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/Switch"
+                      },
+                      {
+                        "type": "doc",
+                        "id": "api/carry-on-react-router/withRouter"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "permalinkToSidebar": {
+            "/carry-on/docs/api/carry-on-react-forms/Field": "docs",
+            "/carry-on/docs/api/carry-on-react-forms/form": "docs",
+            "/carry-on/docs/api/carry-on-react-forms/Form": "docs",
+            "/carry-on/docs/api/carry-on-react-forms/FormButtons": "docs",
+            "/carry-on/docs/api/carry-on-react-forms/FormState": "docs",
+            "/carry-on/docs/api/carry-on-react-router/createStaticHistory": "docs",
+            "/carry-on/docs/api/carry-on-react-router/generatePath": "docs",
+            "/carry-on/docs/api/carry-on-react-router/Link": "docs",
+            "/carry-on/docs/api/carry-on-react-router/matchPath": "docs",
+            "/carry-on/docs/api/carry-on-react-router/NavLink": "docs",
+            "/carry-on/docs/api/carry-on-react-router/Prompt": "docs",
+            "/carry-on/docs/api/carry-on-react-router/Redirect": "docs",
+            "/carry-on/docs/api/carry-on-react-router/Route": "docs",
+            "/carry-on/docs/api/carry-on-react-router/RouteMap": "docs",
+            "/carry-on/docs/api/carry-on-react-router/Switch": "docs",
+            "/carry-on/docs/api/carry-on-react-router/withRouter": "docs",
+            "/carry-on/docs/api/carry-on-react/carryOn": "docs",
+            "/carry-on/docs/api/carry-on-react/State": "docs",
+            "/carry-on/docs/api/carry-on-react/withState": "docs",
+            "/carry-on/docs/api/carry-on-store/deleteStore": "docs",
+            "/carry-on/docs/api/carry-on-store/devTools": "docs",
+            "/carry-on/docs/api/carry-on-store/getStore": "docs",
+            "/carry-on/docs/api/carry-on-store/initStores": "docs",
+            "/carry-on/docs/api/carry-on-store/register": "docs",
+            "/carry-on/docs/api/carry-on-store/subscribe": "docs",
+            "/carry-on/docs/api/index": "docs",
+            "/carry-on/docs/examples/index": "docs",
+            "/carry-on/docs/": "docs",
+            "/carry-on/docs/registeringState": "docs",
+            "/carry-on/docs/usingState": "docs"
+          },
+          "docs": [
+            {
+              "unversionedId": "api/carry-on-react-forms/Field",
+              "id": "api/carry-on-react-forms/Field",
+              "isDocsHomePage": false,
+              "title": "Field",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-forms/Field.md",
+              "sourceDirName": "api/carry-on-react-forms",
+              "slug": "/api/carry-on-react-forms/Field",
+              "permalink": "/carry-on/docs/api/carry-on-react-forms/Field",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "Field",
+                "title": "Field"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "carryOn",
+                "permalink": "/carry-on/docs/api/carry-on-react/carryOn"
+              },
+              "next": {
+                "title": "form",
+                "permalink": "/carry-on/docs/api/carry-on-react-forms/form"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-forms/form",
+              "id": "api/carry-on-react-forms/form",
+              "isDocsHomePage": false,
+              "title": "form",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-forms/form.md",
+              "sourceDirName": "api/carry-on-react-forms",
+              "slug": "/api/carry-on-react-forms/form",
+              "permalink": "/carry-on/docs/api/carry-on-react-forms/form",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "form",
+                "title": "form"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Field",
+                "permalink": "/carry-on/docs/api/carry-on-react-forms/Field"
+              },
+              "next": {
+                "title": "Form",
+                "permalink": "/carry-on/docs/api/carry-on-react-forms/Form"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-forms/Form",
+              "id": "api/carry-on-react-forms/Form",
+              "isDocsHomePage": false,
+              "title": "Form",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-forms/Form.md",
+              "sourceDirName": "api/carry-on-react-forms",
+              "slug": "/api/carry-on-react-forms/Form",
+              "permalink": "/carry-on/docs/api/carry-on-react-forms/Form",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "Form",
+                "title": "Form"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "form",
+                "permalink": "/carry-on/docs/api/carry-on-react-forms/form"
+              },
+              "next": {
+                "title": "FormButtons",
+                "permalink": "/carry-on/docs/api/carry-on-react-forms/FormButtons"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-forms/FormButtons",
+              "id": "api/carry-on-react-forms/FormButtons",
+              "isDocsHomePage": false,
+              "title": "FormButtons",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-forms/FormButtons.md",
+              "sourceDirName": "api/carry-on-react-forms",
+              "slug": "/api/carry-on-react-forms/FormButtons",
+              "permalink": "/carry-on/docs/api/carry-on-react-forms/FormButtons",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "FormButtons",
+                "title": "FormButtons"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Form",
+                "permalink": "/carry-on/docs/api/carry-on-react-forms/Form"
+              },
+              "next": {
+                "title": "FormState",
+                "permalink": "/carry-on/docs/api/carry-on-react-forms/FormState"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-forms/FormState",
+              "id": "api/carry-on-react-forms/FormState",
+              "isDocsHomePage": false,
+              "title": "FormState",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-forms/FormState.md",
+              "sourceDirName": "api/carry-on-react-forms",
+              "slug": "/api/carry-on-react-forms/FormState",
+              "permalink": "/carry-on/docs/api/carry-on-react-forms/FormState",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "FormState",
+                "title": "FormState"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "FormButtons",
+                "permalink": "/carry-on/docs/api/carry-on-react-forms/FormButtons"
+              },
+              "next": {
+                "title": "createStaticHistory",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/createStaticHistory"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/createStaticHistory",
+              "id": "api/carry-on-react-router/createStaticHistory",
+              "isDocsHomePage": false,
+              "title": "createStaticHistory",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/createStaticHistory.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/createStaticHistory",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/createStaticHistory",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "createStaticHistory",
+                "title": "createStaticHistory"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "FormState",
+                "permalink": "/carry-on/docs/api/carry-on-react-forms/FormState"
+              },
+              "next": {
+                "title": "generatePath",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/generatePath"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/generatePath",
+              "id": "api/carry-on-react-router/generatePath",
+              "isDocsHomePage": false,
+              "title": "generatePath",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/generatePath.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/generatePath",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/generatePath",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "generatePath",
+                "title": "generatePath"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "createStaticHistory",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/createStaticHistory"
+              },
+              "next": {
+                "title": "Link",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/Link"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/Link",
+              "id": "api/carry-on-react-router/Link",
+              "isDocsHomePage": false,
+              "title": "Link",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/Link.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/Link",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/Link",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "Link",
+                "title": "Link"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "generatePath",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/generatePath"
+              },
+              "next": {
+                "title": "matchPath",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/matchPath"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/matchPath",
+              "id": "api/carry-on-react-router/matchPath",
+              "isDocsHomePage": false,
+              "title": "matchPath",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/matchPath.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/matchPath",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/matchPath",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "matchPath",
+                "title": "matchPath"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Link",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/Link"
+              },
+              "next": {
+                "title": "NavLink",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/NavLink"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/NavLink",
+              "id": "api/carry-on-react-router/NavLink",
+              "isDocsHomePage": false,
+              "title": "NavLink",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/NavLink.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/NavLink",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/NavLink",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "NavLink",
+                "title": "NavLink"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "matchPath",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/matchPath"
+              },
+              "next": {
+                "title": "Prompt",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/Prompt"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/Prompt",
+              "id": "api/carry-on-react-router/Prompt",
+              "isDocsHomePage": false,
+              "title": "Prompt",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/Prompt.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/Prompt",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/Prompt",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "Prompt",
+                "title": "Prompt"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "NavLink",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/NavLink"
+              },
+              "next": {
+                "title": "Redirect",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/Redirect"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/Redirect",
+              "id": "api/carry-on-react-router/Redirect",
+              "isDocsHomePage": false,
+              "title": "Redirect",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/Redirect.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/Redirect",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/Redirect",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "Redirect",
+                "title": "Redirect"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Prompt",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/Prompt"
+              },
+              "next": {
+                "title": "Route",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/Route"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/Route",
+              "id": "api/carry-on-react-router/Route",
+              "isDocsHomePage": false,
+              "title": "Route",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/Route.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/Route",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/Route",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "Route",
+                "title": "Route"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Redirect",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/Redirect"
+              },
+              "next": {
+                "title": "RouteMap",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/RouteMap"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/RouteMap",
+              "id": "api/carry-on-react-router/RouteMap",
+              "isDocsHomePage": false,
+              "title": "RouteMap",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/RouteMap.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/RouteMap",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/RouteMap",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "RouteMap",
+                "title": "RouteMap"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Route",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/Route"
+              },
+              "next": {
+                "title": "Switch",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/Switch"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/Switch",
+              "id": "api/carry-on-react-router/Switch",
+              "isDocsHomePage": false,
+              "title": "Switch",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/Switch.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/Switch",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/Switch",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "Switch",
+                "title": "Switch"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "RouteMap",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/RouteMap"
+              },
+              "next": {
+                "title": "withRouter",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/withRouter"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react-router/withRouter",
+              "id": "api/carry-on-react-router/withRouter",
+              "isDocsHomePage": false,
+              "title": "withRouter",
+              "description": "",
+              "source": "@site/../docs/api/carry-on-react-router/withRouter.md",
+              "sourceDirName": "api/carry-on-react-router",
+              "slug": "/api/carry-on-react-router/withRouter",
+              "permalink": "/carry-on/docs/api/carry-on-react-router/withRouter",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "withRouter",
+                "title": "withRouter"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Switch",
+                "permalink": "/carry-on/docs/api/carry-on-react-router/Switch"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react/carryOn",
+              "id": "api/carry-on-react/carryOn",
+              "isDocsHomePage": false,
+              "title": "carryOn",
+              "description": "Import",
+              "source": "@site/../docs/api/carry-on-react/carryOn.md",
+              "sourceDirName": "api/carry-on-react",
+              "slug": "/api/carry-on-react/carryOn",
+              "permalink": "/carry-on/docs/api/carry-on-react/carryOn",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "carryOn",
+                "title": "carryOn"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "withState",
+                "permalink": "/carry-on/docs/api/carry-on-react/withState"
+              },
+              "next": {
+                "title": "Field",
+                "permalink": "/carry-on/docs/api/carry-on-react-forms/Field"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react/State",
+              "id": "api/carry-on-react/State",
+              "isDocsHomePage": false,
+              "title": "<State ...>",
+              "description": "Properties",
+              "source": "@site/../docs/api/carry-on-react/State.md",
+              "sourceDirName": "api/carry-on-react",
+              "slug": "/api/carry-on-react/State",
+              "permalink": "/carry-on/docs/api/carry-on-react/State",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "State",
+                "title": "<State ...>"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "getStore",
+                "permalink": "/carry-on/docs/api/carry-on-store/getStore"
+              },
+              "next": {
+                "title": "withState",
+                "permalink": "/carry-on/docs/api/carry-on-react/withState"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-react/withState",
+              "id": "api/carry-on-react/withState",
+              "isDocsHomePage": false,
+              "title": "withState",
+              "description": "Import",
+              "source": "@site/../docs/api/carry-on-react/withState.md",
+              "sourceDirName": "api/carry-on-react",
+              "slug": "/api/carry-on-react/withState",
+              "permalink": "/carry-on/docs/api/carry-on-react/withState",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "withState",
+                "title": "withState"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "<State ...>",
+                "permalink": "/carry-on/docs/api/carry-on-react/State"
+              },
+              "next": {
+                "title": "carryOn",
+                "permalink": "/carry-on/docs/api/carry-on-react/carryOn"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-store/deleteStore",
+              "id": "api/carry-on-store/deleteStore",
+              "isDocsHomePage": false,
+              "title": "deleteStore",
+              "description": "Import",
+              "source": "@site/../docs/api/carry-on-store/deleteStore.md",
+              "sourceDirName": "api/carry-on-store",
+              "slug": "/api/carry-on-store/deleteStore",
+              "permalink": "/carry-on/docs/api/carry-on-store/deleteStore",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "deleteStore",
+                "title": "deleteStore"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Info",
+                "permalink": "/carry-on/docs/api/index"
+              },
+              "next": {
+                "title": "devTools",
+                "permalink": "/carry-on/docs/api/carry-on-store/devTools"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-store/devTools",
+              "id": "api/carry-on-store/devTools",
+              "isDocsHomePage": false,
+              "title": "devTools",
+              "description": "Import",
+              "source": "@site/../docs/api/carry-on-store/devTools.md",
+              "sourceDirName": "api/carry-on-store",
+              "slug": "/api/carry-on-store/devTools",
+              "permalink": "/carry-on/docs/api/carry-on-store/devTools",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "devTools",
+                "title": "devTools"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "deleteStore",
+                "permalink": "/carry-on/docs/api/carry-on-store/deleteStore"
+              },
+              "next": {
+                "title": "initStores",
+                "permalink": "/carry-on/docs/api/carry-on-store/initStores"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-store/getStore",
+              "id": "api/carry-on-store/getStore",
+              "isDocsHomePage": false,
+              "title": "getStore",
+              "description": "Import",
+              "source": "@site/../docs/api/carry-on-store/getStore.md",
+              "sourceDirName": "api/carry-on-store",
+              "slug": "/api/carry-on-store/getStore",
+              "permalink": "/carry-on/docs/api/carry-on-store/getStore",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "getStore",
+                "title": "getStore"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "subscribe",
+                "permalink": "/carry-on/docs/api/carry-on-store/subscribe"
+              },
+              "next": {
+                "title": "<State ...>",
+                "permalink": "/carry-on/docs/api/carry-on-react/State"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-store/initStores",
+              "id": "api/carry-on-store/initStores",
+              "isDocsHomePage": false,
+              "title": "initStores",
+              "description": "Import",
+              "source": "@site/../docs/api/carry-on-store/initStores.md",
+              "sourceDirName": "api/carry-on-store",
+              "slug": "/api/carry-on-store/initStores",
+              "permalink": "/carry-on/docs/api/carry-on-store/initStores",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "initStores",
+                "title": "initStores"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "devTools",
+                "permalink": "/carry-on/docs/api/carry-on-store/devTools"
+              },
+              "next": {
+                "title": "register",
+                "permalink": "/carry-on/docs/api/carry-on-store/register"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-store/notify",
+              "id": "api/carry-on-store/notify",
+              "isDocsHomePage": false,
+              "title": "notify",
+              "description": "id: notify",
+              "source": "@site/../docs/api/carry-on-store/notify.md",
+              "sourceDirName": "api/carry-on-store",
+              "slug": "/api/carry-on-store/notify",
+              "permalink": "/carry-on/docs/api/carry-on-store/notify",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {}
+            },
+            {
+              "unversionedId": "api/carry-on-store/register",
+              "id": "api/carry-on-store/register",
+              "isDocsHomePage": false,
+              "title": "register",
+              "description": "Import",
+              "source": "@site/../docs/api/carry-on-store/register.md",
+              "sourceDirName": "api/carry-on-store",
+              "slug": "/api/carry-on-store/register",
+              "permalink": "/carry-on/docs/api/carry-on-store/register",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "register",
+                "title": "register"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "initStores",
+                "permalink": "/carry-on/docs/api/carry-on-store/initStores"
+              },
+              "next": {
+                "title": "subscribe",
+                "permalink": "/carry-on/docs/api/carry-on-store/subscribe"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-store/subscribe",
+              "id": "api/carry-on-store/subscribe",
+              "isDocsHomePage": false,
+              "title": "subscribe",
+              "description": "Import",
+              "source": "@site/../docs/api/carry-on-store/subscribe.md",
+              "sourceDirName": "api/carry-on-store",
+              "slug": "/api/carry-on-store/subscribe",
+              "permalink": "/carry-on/docs/api/carry-on-store/subscribe",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "subscribe",
+                "title": "subscribe"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "register",
+                "permalink": "/carry-on/docs/api/carry-on-store/register"
+              },
+              "next": {
+                "title": "getStore",
+                "permalink": "/carry-on/docs/api/carry-on-store/getStore"
+              }
+            },
+            {
+              "unversionedId": "api/carry-on-store/transaction",
+              "id": "api/carry-on-store/transaction",
+              "isDocsHomePage": false,
+              "title": "transaction",
+              "description": "id: transaction",
+              "source": "@site/../docs/api/carry-on-store/transaction.md",
+              "sourceDirName": "api/carry-on-store",
+              "slug": "/api/carry-on-store/transaction",
+              "permalink": "/carry-on/docs/api/carry-on-store/transaction",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {}
+            },
+            {
+              "unversionedId": "api/index",
+              "id": "api/index",
+              "isDocsHomePage": false,
+              "title": "Info",
+              "description": "...",
+              "source": "@site/../docs/api/index.md",
+              "sourceDirName": "api",
+              "slug": "/api/index",
+              "permalink": "/carry-on/docs/api/index",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "index",
+                "title": "Info"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Examples",
+                "permalink": "/carry-on/docs/examples/index"
+              },
+              "next": {
+                "title": "deleteStore",
+                "permalink": "/carry-on/docs/api/carry-on-store/deleteStore"
+              }
+            },
+            {
+              "unversionedId": "examples/index",
+              "id": "examples/index",
+              "isDocsHomePage": false,
+              "title": "Examples",
+              "description": "Default store",
+              "source": "@site/../docs/examples/index.md",
+              "sourceDirName": "examples",
+              "slug": "/examples/index",
+              "permalink": "/carry-on/docs/examples/index",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "index",
+                "title": "Examples"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Using State",
+                "permalink": "/carry-on/docs/usingState"
+              },
+              "next": {
+                "title": "Info",
+                "permalink": "/carry-on/docs/api/index"
+              }
+            },
+            {
+              "unversionedId": "index",
+              "id": "index",
+              "isDocsHomePage": true,
+              "title": "Getting Started",
+              "description": "Install",
+              "source": "@site/../docs/docs.md",
+              "sourceDirName": ".",
+              "slug": "/",
+              "permalink": "/carry-on/docs/",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "index",
+                "title": "Getting Started"
+              },
+              "sidebar": "docs",
+              "next": {
+                "title": "Registering State",
+                "permalink": "/carry-on/docs/registeringState"
+              }
+            },
+            {
+              "unversionedId": "registeringState",
+              "id": "registeringState",
+              "isDocsHomePage": false,
+              "title": "Registering State",
+              "description": "Import",
+              "source": "@site/../docs/registeringState.md",
+              "sourceDirName": ".",
+              "slug": "/registeringState",
+              "permalink": "/carry-on/docs/registeringState",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "registeringState",
+                "title": "Registering State"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Getting Started",
+                "permalink": "/carry-on/docs/"
+              },
+              "next": {
+                "title": "Using State",
+                "permalink": "/carry-on/docs/usingState"
+              }
+            },
+            {
+              "unversionedId": "usingState",
+              "id": "usingState",
+              "isDocsHomePage": false,
+              "title": "Using State",
+              "description": "Import",
+              "source": "@site/../docs/usingState.md",
+              "sourceDirName": ".",
+              "slug": "/usingState",
+              "permalink": "/carry-on/docs/usingState",
+              "version": "current",
+              "lastUpdatedBy": "Author",
+              "lastUpdatedAt": 1539502055,
+              "formattedLastUpdatedAt": "10/14/2018",
+              "frontMatter": {
+                "id": "usingState",
+                "title": "Using State"
+              },
+              "sidebar": "docs",
+              "previous": {
+                "title": "Registering State",
+                "permalink": "/carry-on/docs/registeringState"
+              },
+              "next": {
+                "title": "Examples",
+                "permalink": "/carry-on/docs/examples/index"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "docusaurus-plugin-content-blog": {
+    "default": null
+  },
+  "docusaurus-plugin-content-pages": {
+    "default": [
+      {
+        "type": "jsx",
+        "permalink": "/carry-on/",
+        "source": "@site/src/pages/index.js"
+      }
+    ]
+  },
+  "docusaurus-plugin-debug": {
+    "default": null
+  },
+  "docusaurus-theme-classic": {
+    "default": null
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "unversionedId": "api/index",
+  "id": "api/index",
+  "isDocsHomePage": false,
+  "title": "Info",
+  "description": "...",
+  "source": "@site/../docs/api/index.md",
+  "sourceDirName": "api",
+  "slug": "/api/index",
+  "permalink": "/carry-on/docs/api/index",
+  "version": "current",
+  "lastUpdatedBy": "Author",
+  "lastUpdatedAt": 1539502055,
+  "formattedLastUpdatedAt": "10/14/2018",
+  "frontMatter": {
+    "id": "index",
+    "title": "Info"
+  },
+  "sidebar": "docs",
+  "previous": {
+    "title": "Examples",
+    "permalink": "/carry-on/docs/examples/index"
+  },
+  "next": {
+    "title": "deleteStore",
+    "permalink": "/carry-on/docs/api/carry-on-store/deleteStore"
+  }
+}
