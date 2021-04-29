@@ -9,9 +9,9 @@
     "API": [
       "api/index",
       {
-        "type": "category",
+        "type": "subcategory",
         "label": "carry-on-store",
-        "items": [
+        "ids": [
           "api/carry-on-store/deleteStore",
           "api/carry-on-store/devTools",
           "api/carry-on-store/initStores",
@@ -21,18 +21,18 @@
         ]
       },
       {
-        "type": "category",
+        "type": "subcategory",
         "label": "carry-on-react",
-        "items": [
+        "ids": [
           "api/carry-on-react/State",
           "api/carry-on-react/withState",
           "api/carry-on-react/carryOn"
         ]
       },
       {
-        "type": "category",
+        "type": "subcategory",
         "label": "carry-on-react-forms",
-        "items": [
+        "ids": [
           "api/carry-on-react-forms/Field",
           "api/carry-on-react-forms/form",
           "api/carry-on-react-forms/Form",
@@ -41,9 +41,9 @@
         ]
       },
       {
-        "type": "category",
+        "type": "subcategory",
         "label": "carry-on-react-router",
-        "items": [
+        "ids": [
           "api/carry-on-react-router/createStaticHistory",
           "api/carry-on-react-router/generatePath",
           "api/carry-on-react-router/Link",

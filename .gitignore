@@ -72,5 +72,5 @@ dist/
 
 yarn.lock
 
-website-v2/.docusaurus
-.docusaurus
+website/.docusaurus/
+.docusaurus/
