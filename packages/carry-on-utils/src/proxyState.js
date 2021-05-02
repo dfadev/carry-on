@@ -1,5 +1,5 @@
 /** @format **/
-// original implementation from proxyequal
+// heavily based on https://github.com/theKashey/proxyequal
 import { getCollectionHandlers, shouldInstrument } from "./shouldInstrument";
 import mutateSet from "./mutateSet";
 
@@ -112,7 +112,7 @@ function proxyfy(state, onGet, suffix, ProxyMap) {
       throw new Error("can't mutate state here");
     },
 
-    get(target, prop) {
+    get(_, prop) {
       const storeValue = state[prop];
       return typeof prop === "string"
         ? proxyValue(prop, storeValue)
