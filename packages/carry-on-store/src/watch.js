@@ -208,15 +208,19 @@ export class Watch {
   }
 }
 
+const defaultWatchOptions = {
+  path: "",
+  strict: true
+};
+
 export function watch(fn, storeId) {
   if (isFunction(fn)) {
     const ws = new Watch({
-      path: "",
+      ...defaultWatchOptions,
       fn,
-      from: storeId,
-      strict: true
+      from: storeId
     });
     return ws.unsubscribe;
   }
-  return new Watch({ path: "", ...fn }).unsubscribe;
+  return new Watch({ ...defaultWatchOptions, ...fn }).unsubscribe;
 }
