@@ -17,7 +17,8 @@
           "api/carry-on-store/initStores",
           "api/carry-on-store/register",
           "api/carry-on-store/subscribe",
-          "api/carry-on-store/getStore"
+          "api/carry-on-store/getStore",
+          "api/carry-on-store/watch"
         ]
       },
       {
