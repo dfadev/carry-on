@@ -261,5 +261,18 @@ export default class State extends Component {
 State.contextType = StoreContext;
 
 State.defaultProps = {
-  path: ""
+  path: "",
+  from: undefined,
+  select: undefined,
+  constant: false,
+  strict: false,
+  default: undefined,
+  throttle: undefined,
+  debounce: undefined,
+  debug: false,
+  verbose: false,
+  id: undefined,
+  onMount: undefined,
+  onUnmount: undefined,
+  render: undefined
 };
