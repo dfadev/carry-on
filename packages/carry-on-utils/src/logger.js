@@ -18,7 +18,7 @@ const colors = {
 const clr = keys(colors).map(item => colors[item]);
 let currentClr = 0;
 
-export default function logger(id) {
+export default function logger(id, out = console.log) {
   if (document.documentMode || /Edge/.test(navigator.userAgent))
     // eslint-disable-next-line
     return console.log;
@@ -67,7 +67,7 @@ export default function logger(id) {
     }
 
     // eslint-disable-next-line
-    console.log(prefix, ...items);
+    out(prefix, ...items);
     // eslint-disable-next-line
     if (!isNative) console.log(...objs);
   };
