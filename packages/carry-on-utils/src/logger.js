@@ -18,6 +18,7 @@ const colors = {
 const clr = keys(colors).map(item => colors[item]);
 let currentClr = 0;
 
+// eslint-disable-next-line
 export default function logger(id, out = console.log) {
   if (document.documentMode || /Edge/.test(navigator.userAgent))
     // eslint-disable-next-line
@@ -34,7 +35,7 @@ export default function logger(id, out = console.log) {
   const infoStyle = "color:" + colors.gray + ";font-style:italic";
 
   // eslint-disable-next-line
-  const isNative = console.log.toString().includes("native");
+  const isNative = out.toString().includes("native");
 
   return function log(action, ...result) {
     let prefix = "%c%s %c %s ";
@@ -66,9 +67,6 @@ export default function logger(id, out = console.log) {
       }
     }
 
-    // eslint-disable-next-line
     out(prefix, ...items);
-    // eslint-disable-next-line
-    if (!isNative) console.log(...objs);
   };
 }
