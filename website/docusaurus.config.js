@@ -15,7 +15,6 @@ module.exports={
       "@docusaurus/preset-classic",
       {
         "docs": {
-          "homePageId": "index",
           "showLastUpdateAuthor": true,
           "showLastUpdateTime": true,
           "path": "../docs",
