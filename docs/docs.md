@@ -1,5 +1,6 @@
 ---
 id: index
+slug: /
 title: Getting Started
 ---
 ## Install
@@ -21,7 +22,7 @@ import { register } from "carry-on-store";
 
 ## Simple store
 
-```js
+```js live noInline
 
 register({
   state: ({ set }) => ({
@@ -43,4 +44,5 @@ const App = () => (
   </State>
 );
 
+render(<App />);
 ```
