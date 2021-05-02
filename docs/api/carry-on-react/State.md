@@ -27,7 +27,7 @@ All properties are optional.
 
 Accessing state is done using the State component:
 
-```JavaScript
+```js
 
 register({
   state: ({ set }) => ({
@@ -55,7 +55,7 @@ const App = () => (
 
 Using `debug` and `verbose` can help find problems:
 
-```JavaScript
+```js
 
 register({
   state: ({ set }) => ({
@@ -81,7 +81,7 @@ const App = () => (
 
 Enabling `debug` and `verbose` on all State components:
 
-```JavaScript
+```js
 
 register({
   state: ({ set }) => ({

@@ -4,7 +4,7 @@ title: getStore
 ---
 ## Import
 
-```JavaScript
+```js
 
 import { getStore } from "carry-on-store";
 
@@ -21,7 +21,7 @@ specfied.
 
 ## Example
 
-```JavaScript
+```js
 
 const store = getStore();
 

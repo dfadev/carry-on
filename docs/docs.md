@@ -4,7 +4,7 @@ title: Getting Started
 ---
 ## Install
 
-```JavaScript
+```bash
 
 npm install --save carry-on-react
 
@@ -12,7 +12,7 @@ npm install --save carry-on-react
 
 ## Import
 
-```JavaScript
+```js
 
 import { State } from "carry-on-react";
 import { register } from "carry-on-store";
@@ -21,7 +21,7 @@ import { register } from "carry-on-store";
 
 ## Simple store
 
-```JavaScript
+```js
 
 register({
   state: ({ set }) => ({

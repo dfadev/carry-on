@@ -4,7 +4,7 @@ title: Using State
 ---
 ## Import
 
-```JavaScript
+```js
 
 import { State } from "carry-on-react";
 
@@ -17,7 +17,7 @@ import { State } from "carry-on-react";
 The child node of a `State` component is a render function. The render function
 is given the store state as it's first parameter.
 
-```JavaScript
+```js
 
 const App = props => (
   <State>
@@ -35,7 +35,7 @@ const App = props => (
 
 A named store can be accessed using the `from` property:
 
-```JavaScript
+```js
 
 const App = props => (
   <State from="Store1">
@@ -60,7 +60,7 @@ update.
 In the next example, the first `State` component will update when `field1`
 changes, and the second `State` component will update when `field2` changes.
 
-```JavaScript
+```js
 
 const App = props => (
   <div>
@@ -88,7 +88,7 @@ const App = props => (
 The list of monitored state fields does not change once created. You can force
 every render to be monitored by specifying the `strict` property.
 
-```JavaScript
+```js
 
 const App = props => (
   <State strict>
@@ -107,7 +107,7 @@ const App = props => (
 If the state needed is constant, the `constant` property will prevent any
 render updates after the first render.
 
-```JavaScript
+```js
 
 const App = props => (
   <State constant>
@@ -125,7 +125,7 @@ const App = props => (
 
 A string `path` property can be used to choose a specific object or value:
 
-```JavaScript
+```js
 
 const App = props => (
   <State path="dotted.path.array[0].field">
@@ -145,7 +145,7 @@ An optional selector can be used with the `select` property. When the `select`
 property is used, access tracking will be applied to the `select` function and
 not the render function.
 
-```JavaScript
+```js
 
 const App = props => (
   <State select={state => state.field}>
@@ -164,7 +164,7 @@ const App = props => (
 The `default` property lets you subsitute a default value when the state is
 undefined.
 
-```JavaScript
+```js
 
 const App = props => (
   <State select={state => state.field} default="Undefined state.">
@@ -187,7 +187,7 @@ subscribed to.
 
 ### Throttle
 
-```JavaScript
+```js
 
 const App = props => (
   <State throttle={100}>
@@ -203,7 +203,7 @@ const App = props => (
 
 ### Debounce
 
-```JavaScript
+```js
 
 const App = props => (
   <State debounce={500}>
@@ -225,7 +225,7 @@ Three properties are available for debugging.
 `verbose` will log verbose debug messages.
 `id` will set an identifier to include in the log messages.
 
-```JavaScript
+```js
 
 const App = props => (
   <State debug verbose id="Field div">
@@ -243,7 +243,7 @@ const App = props => (
 
 Debugging can be turned on for all `State` components:
 
-```JavaScript
+```js
 
 State.Debug = true;
 State.Verbose = true;
@@ -255,7 +255,7 @@ State.Verbose = true;
 Use the `onMount` and `onUnmount` properties when you need to execute
 actions during those lifecycle events.
 
-```JavaScript
+```js
 
 const App = props => (
   <State
@@ -276,7 +276,7 @@ const App = props => (
 
 The `carryOn` factory function is available as shorthand for a typical stateful component:
 
-```JavaScript
+```js
 
 import { carryOn } from "carry-on-react";
 

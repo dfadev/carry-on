@@ -4,7 +4,7 @@ title: Registering State
 ---
 ## Import
 
-```JavaScript
+```js
 
 import { register } from "carry-on-store";
 
@@ -26,7 +26,7 @@ store.
 
 The function must return an object representing the initial state:
 
-```JavaScript
+```js
 
 const state = ({ id, get, set }) => ({
   counter: 0,
@@ -41,7 +41,7 @@ const state = ({ id, get, set }) => ({
 
 State can also be defined as a plain object if there are no actions that require setting and querying state.
 
-```JavaScript
+```js
 
 const state = {
   field1: "value1",
@@ -58,7 +58,7 @@ const state = {
 
 Actions are defined by functions inside the state object:
 
-```JavaScript
+```js
 
 const state = ({ get, set }) => {
   action1() { ... },
@@ -73,7 +73,7 @@ const state = ({ get, set }) => {
 When an action only needs read access to the current state, it uses the `get`
 function:
 
-```JavaScript
+```js
 
 const state = ({ get, set }) => {
   logValue() {
@@ -89,7 +89,7 @@ const state = ({ get, set }) => {
 
 An action uses the `set` function to change state values.
 
-```JavaScript
+```js
 
 const state = ({ get, set }) => {
   field: "",
@@ -110,7 +110,7 @@ register state with the default store.
 
 ### Register on default store:
 
-```JavaScript
+```js
 
 register({ state });
 
@@ -118,7 +118,7 @@ register({ state });
 
 ### Register on a named store:
 
-```JavaScript
+```js
 
 register({ state }, "Store1");
 
@@ -130,7 +130,7 @@ register({ state }, "Store1");
 
 When `register` is called multiple times it merges state, potentially into a running store:
 
-```JavaScript
+```js
 
 register({
 	state: {
@@ -156,7 +156,7 @@ register({
 
 When registering more than one state, an array of registrations can be passed:
 
-```JavaScript
+```js
 
 const state1 = {
   field1: "value1"

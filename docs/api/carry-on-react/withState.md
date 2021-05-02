@@ -4,7 +4,7 @@ title: withState
 ---
 ## Import
 
-```JavaScript
+```js
 
 import { withState } from "carry-on-react";
 
@@ -14,7 +14,7 @@ import { withState } from "carry-on-react";
 
 A higher order component that injects state into the wrapped component.
 
-```JavaScript
+```js
 
 const App = withState({ path: "counter", asProp: "counter" })(props => (
   <div>{counter}</div>
@@ -30,7 +30,7 @@ The properties used to pass state to the wrapped component are determined by:
 
 Normally you would always use the `path` or `select` options when using `withState` because without them your component would render on every state change:
 
-```JavaScript
+```js
 
 const App = withState()(props => <div>I render every state change</div>);
 

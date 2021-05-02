@@ -4,7 +4,7 @@ title: initStores
 ---
 ## Import
 
-```JavaScript
+```js
 
 import { initStores } from "carry-on-store";
 
@@ -12,9 +12,9 @@ import { initStores } from "carry-on-store";
 
 ## `initStores()`
 
-Removes all stores.
+Initialize the map of stores.  Removes all existing stores.
 
-```JavaScript
+```js
 
 initStores();
 

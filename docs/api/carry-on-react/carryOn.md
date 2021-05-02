@@ -4,7 +4,7 @@ title: carryOn
 ---
 ## Import
 
-```JavaScript
+```js
 
 import { carryOn } from "carry-on-react";
 
@@ -14,7 +14,7 @@ import { carryOn } from "carry-on-react";
 
 A convenience function for creating a React component that can access store state.
 
-```JavaScript
+```js
 
 import { carryOn } from "carry-on-react";
 

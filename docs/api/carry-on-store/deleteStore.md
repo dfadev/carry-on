@@ -4,7 +4,7 @@ title: deleteStore
 ---
 ## Import
 
-```JavaScript
+```js
 
 import { deleteStore } from "carry-on-store";
 
@@ -14,7 +14,7 @@ import { deleteStore } from "carry-on-store";
 
 Removes a store. If `id` is not specified the default store is removed.
 
-```JavaScript
+```js
 
 deleteStore();
 
