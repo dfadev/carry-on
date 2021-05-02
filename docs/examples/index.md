@@ -2,10 +2,10 @@
 id: index
 title: Examples
 ---
+
 ## Default store
 
-```JavaScript
-
+```js live noInline
 register({
   state: ({ set }) => ({
     counter: 0,
@@ -26,12 +26,12 @@ const App = () => (
   </State>
 );
 
+render(<App />);
 ```
 
 ## Two named stores
 
-```JavaScript
-
+```js live noInline
 const store = {
   state: ({ set }) => ({
     counter: 0,
@@ -66,12 +66,12 @@ const App = () => (
   </>
 );
 
+render(<App />);
 ```
 
 ## State select
 
-```JavaScript
-
+```js live noInline
 register({
   state: ({ set }) => ({
     notSelected: "item",
@@ -96,12 +96,12 @@ const App = props => (
   </State>
 );
 
+render(<App />);
 ```
 
 ## Register state
 
-```JavaScript
-
+```js live noInline
 register({
   state: ({ set }) => ({
     counter: 0,
@@ -122,12 +122,12 @@ const App = () => (
   </State>
 );
 
+render(<App />);
 ```
 
 ## Register state on a named store
 
-```JavaScript
-
+```js live noInline
 register(
   {
     state: ({ set }) => ({
@@ -151,12 +151,12 @@ const App = () => (
   </State>
 );
 
+render(<App />);
 ```
 
 ## State path
 
-```JavaScript
-
+```js live noInline
 register({
   state: ({ set }) => ({
     more: {
@@ -175,12 +175,12 @@ const App = () => (
   </State>
 );
 
+render(<App />);
 ```
 
 ## State path with default
 
-```JavaScript
-
+```js live noInline
 register({
   state: ({ set }) => ({
     more: {
@@ -199,11 +199,12 @@ const App = () => (
   </State>
 );
 
+render(<App />);
 ```
 
 ## State path on a named store using from
 
-```JavaScript
+```js live noInline
 
 register(
   {
@@ -230,14 +231,13 @@ const App = () => (
     {item => <div>{item}</div>}
   </State>
 );
-);
 
+render(<App />);
 ```
 
 ## Multiple select
 
-```JavaScript
-
+```js live noInline
 register({
   state: ({ set }) => ({
     counter: 0,
@@ -269,4 +269,5 @@ const App = props => (
   </div>
 );
 
+render(<App />);
 ```

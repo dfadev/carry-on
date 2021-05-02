@@ -28,6 +28,7 @@ module.exports={
     ]
   ],
   "plugins": [],
+  themes: ['@docusaurus/theme-live-codeblock'],
   "themeConfig": {
     "navbar": {
       "title": "carry-on",

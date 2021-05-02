@@ -12,12 +12,16 @@
     "docusaurus": "docusaurus",
     "serve": "docusaurus serve"
   },
-  "devDependencies": {},
   "dependencies": {
-    "@docusaurus/core": "2.0.0-alpha.74",
-    "@docusaurus/preset-classic": "2.0.0-alpha.74",
+    "@docusaurus/core": "2.0.0-alpha.75",
+    "@docusaurus/preset-classic": "2.0.0-alpha.75",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.75",
+    "carry-on-react": "^1.0.6",
+    "carry-on-react-forms": "^1.0.6",
+    "carry-on-react-router": "^1.0.6",
+    "carry-on-store": "^1.0.6",
     "clsx": "^1.1.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }
