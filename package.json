@@ -1,7 +1,7 @@
 {
   "name": "carry-on",
   "private": true,
-  "description": "A Store for React",
+  "description": "A state container for React and Node",
   "author": "Russ Panula <russ@dfa.net>",
   "license": "MIT",
   "devDependencies": {
