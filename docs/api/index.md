@@ -1,5 +1,0 @@
----
-id: index
-title: Info
----
-...

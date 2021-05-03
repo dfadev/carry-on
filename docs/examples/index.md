@@ -1,5 +1,6 @@
 ---
 id: index
+slug: /examples/
 title: Examples
 ---
 

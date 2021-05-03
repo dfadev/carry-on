@@ -38,12 +38,12 @@ module.exports={
       "items": [
         {
           "to": "docs/",
-          "label": "Overview",
+          "label": "Get Started",
           "position": "left"
         },
         {
-          "to": "docs/api/index",
-          "label": "API",
+          "to": "docs/examples/",
+          "label": "Examples",
           "position": "left"
         },
         {

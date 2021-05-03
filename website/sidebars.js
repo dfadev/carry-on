@@ -7,7 +7,6 @@ module.exports = {
       "examples/index"
     ],
     "API": [
-      "api/index",
       {
         "type": "category",
         "label": "carry-on-store",
@@ -15,9 +14,9 @@ module.exports = {
           "api/carry-on-store/deleteStore",
           "api/carry-on-store/devTools",
           "api/carry-on-store/initStores",
+          "api/carry-on-store/getStore",
           "api/carry-on-store/register",
           "api/carry-on-store/subscribe",
-          "api/carry-on-store/getStore",
           "api/carry-on-store/watch"
         ]
       },
