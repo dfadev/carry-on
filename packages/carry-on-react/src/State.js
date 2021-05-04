@@ -40,6 +40,7 @@ export default class State extends Component {
 
     // setup the initial store state, registering state if requested
     if (first && reg) {
+      if (this.debug) this.log("setup", "registering state", reg);
       let state = register(reg, from);
       if (state === undefined)
         state = connect(from, ReactDOM.unstable_batchedUpdates);
