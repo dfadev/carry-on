@@ -1,7 +1,7 @@
 /** @format **/
-import { enablePatches } from "immer";
+import { enableAllPlugins } from "immer";
 
-enablePatches();
+enableAllPlugins();
 
 export {
   deleteStore,

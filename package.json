@@ -5,8 +5,22 @@
   "author": "Russ Panula <russ@dfa.net>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/preset-env": "^7.14.1",
+    "@babel/preset-react": "^7.13.13",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
     "lerna": "^4.0.0",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "snapshot-diff": "^0.8.1"
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
@@ -22,20 +36,9 @@
     "watch-react-forms": "cd packages/carry-on-react-forms && npm run watch",
     "watch-react-router": "cd packages/carry-on-react-router && npm run watch",
     "watch": "run-p watch-utils watch-store watch-react watch-react-forms watch-react-router",
-    "test-store": "cd packages/carry-on-store && npm run test",
-    "test-utils": "cd packages/carry-on-utils && npm run test",
-    "test-react": "cd packages/carry-on-react && npm run test",
-    "test-react-forms": "cd packages/carry-on-react-forms && npm run test",
-    "test-react-router": "cd packages/carry-on-react-router && npm run test",
-    "test": "run-s bootstrap test-utils test-store test-react test-react-forms test-react-router",
-    "test:watch-store": "cd packages/carry-on-store && npm run test:watch",
-    "test:watch-utils": "cd packages/carry-on-utils && npm run test:watch",
-    "test:watch-react": "cd packages/carry-on-react && npm run test:watch",
-    "test:watch-react-forms": "cd packages/carry-on-react-forms && npm run test:watch",
-    "test:watch-react-router": "cd packages/carry-on-react-router && npm run test:watch",
-    "test:watch": "run-p test:watch-utils test:watch-store test:watch-react test:watch-react-forms test:watch-react-router",
-    "dev": "run-p watch test:watch",
-    "test:cov": "lerna exec --concurrency 6 --no-sort -- \"npm run test:cov | cat\"",
+    "jest": "jest",
+    "jest:watch": "jest --watchAll",
+    "jest:coverage": "jest --coverage",
     "clean": "lerna exec --concurrency 6 --no-sort -- \"npm run clean | cat\"",
     "format:check:store": "cd packages/carry-on-store && npm run format:check",
     "format:check:utils": "cd packages/carry-on-utils && npm run format:check",
@@ -50,9 +53,74 @@
     "format:react-router": "cd packages/carry-on-react-router && npm run format",
     "format": "run-p -s format:store format:utils format:react format:react-forms format:react-router"
   },
-  "dependencies": {},
   "prettier": {
     "trailingComma": "none",
     "arrowParens": "avoid"
+  },
+  "dependencies": {
+    "jest": "^26.6.3",
+    "lerna-jest": "^0.5.4"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": ["airbnb", "prettier"],
+    "env": { "es6": true, "browser": true },
+    "rules": {
+      "react/sort-comp": "off",
+      "no-restricted-globals": "off",
+      "no-nested-ternary": "off",
+      "jsx-a11y/anchor-has-content": "off",
+      "react/no-multi-comp": "off",
+      "react/jsx-filename-extension": "off",
+      "no-debugger": "warn",
+      "no-unused-expressions": "off",
+      "no-unused-vars": "warn",
+      "react/prop-types": "off",
+      "no-plusplus": "off",
+      "import/no-unresolved": "off",
+      "no-restricted-syntax": "off",
+      "no-underscore-dangle": "off",
+      "prefer-template": "off",
+      "spaced-comment": "off",
+      "no-param-reassign": "off",
+      "no-return-assign": "off",
+      "no-multi-assign": "off",
+      "one-var": "off",
+      "prefer-destructuring": "off",
+      "react/destructuring-assignment": "off",
+      "prefer-promise-reject-errors": "off"
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": [">3%"]
+          }
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          ["@babel/preset-env", { "modules": false }],
+          "@babel/preset-react"
+        ],
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs",
+          [
+            "@babel/plugin-transform-runtime",
+            {
+              "regenerator": true
+            }
+          ]
+        ]
+      }
+    },
+    "plugins": ["@babel/plugin-proposal-class-properties"]
   }
 }

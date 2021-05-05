@@ -34,8 +34,8 @@ export default function buildHelper(pkg, globals) {
         resolve(),
         eslint(),
         babel({
+          rootMode: "upward",
           exclude: ["node_modules/**"],
-          babelHelpers: "runtime"
         }),
         commonjs()
       ],
@@ -52,8 +52,8 @@ export default function buildHelper(pkg, globals) {
       plugins: [
         eslint(),
         babel({
+          rootMode: "upward",
           exclude: ["node_modules/**"],
-          babelHelpers: "runtime"
         })
       ],
       watch,
