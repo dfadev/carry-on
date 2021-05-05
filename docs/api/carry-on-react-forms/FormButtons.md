@@ -2,4 +2,18 @@
 id: FormButtons
 title: FormButtons
 ---
-<html><head /><body /></html>
+## Import
+
+```js
+
+import { FormButtons } from "carry-on-react-forms";
+
+```
+
+## `FormButtons`
+
+
+```js
+
+
+```

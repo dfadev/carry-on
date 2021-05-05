@@ -1,0 +1,60 @@
+---
+id: Form
+title: Form
+---
+import Inspector from "react-inspector";
+import { FormState } from "carry-on-react-forms";
+import { State } from "carry-on-react";
+import theme from "../../inspector-theme";
+
+## Import
+
+```js
+
+import { Form } from "carry-on-react-forms";
+
+```
+
+## `Form`
+
+
+```js live noInline
+State.Debug = true;
+State.Verbose = true;
+
+const formStateFactory = (formId = "form") => ({
+  state: ({ get, set }) => ({
+    [formId]: {
+      initialValues: {
+        field1: "value1",
+        field2: "value2"
+      },
+      onSubmit(vals) {
+        alert(JSON.stringify(vals));
+      }
+    }
+  })
+});
+
+render(
+  <Form id="myForm" register={formStateFactory("myForm")}>
+    <div>
+      <Field path="field1">
+        {field => <input {...field.element} />}
+      </Field>
+    </div>
+    <div>
+      <Field path="field2">
+        {field => <input {...field.element} />}
+      </Field>
+    </div>
+    <div>
+      <button type="submit">OK</button>
+    </div>
+  </Form>
+);
+```
+
+<State select={s => ({ ...s })}>
+  {state => <Inspector data={state} theme={theme} expandLevel={2} />}
+</State>

@@ -29,17 +29,16 @@ module.exports = {
           "api/carry-on-react/carryOn"
         ]
       },
-      //{
-        //"type": "category",
-        //"label": "carry-on-react-forms",
-        //"items": [
-          //"api/carry-on-react-forms/Field",
-          //"api/carry-on-react-forms/form",
-          //"api/carry-on-react-forms/Form",
-          //"api/carry-on-react-forms/FormButtons",
-          //"api/carry-on-react-forms/FormState"
-        //]
-      //},
+      {
+        "type": "category",
+        "label": "carry-on-react-forms",
+        "items": [
+          "api/carry-on-react-forms/Field",
+          "api/carry-on-react-forms/Form",
+          "api/carry-on-react-forms/FormButtons",
+          "api/carry-on-react-forms/FormState"
+        ]
+      },
       //{
         //"type": "category",
         //"label": "carry-on-react-router",
