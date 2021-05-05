@@ -2,6 +2,7 @@
 id: Form
 title: Form
 ---
+import BrowserOnly from "@docusaurus/BrowserOnly";
 import Inspector from "react-inspector";
 import { FormState } from "carry-on-react-forms";
 import { State } from "carry-on-react";
@@ -55,6 +56,10 @@ render(
 );
 ```
 
-<State select={s => ({ ...s })}>
-  {state => <Inspector data={state} theme={theme} expandLevel={2} />}
-</State>
+<BrowserOnly>
+  {() => {
+    <State select={s => ({ ...s })}>
+      {state => <Inspector data={state} theme={theme} expandLevel={2} />}
+    </State>
+  }}
+</BrowserOnly>
