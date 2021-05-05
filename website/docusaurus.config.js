@@ -30,6 +30,10 @@ module.exports={
   "plugins": [],
   themes: ['@docusaurus/theme-live-codeblock'],
   "themeConfig": {
+    "colorMode": {
+      defaultMode: "dark",
+      disableSwitch: true
+    },
     "navbar": {
       "title": "carry-on",
       "logo": {
