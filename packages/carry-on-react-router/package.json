@@ -18,8 +18,9 @@
   "author": "Russ Panula <russ@dfa.net>",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": ">=15.6.0",
+    "react-dom": ">=15.6.0",
+    "react-is": ">=15.6.0"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
@@ -27,9 +28,9 @@
     "@rollup/plugin-eslint": "^8.0.1",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "prettier": "^2.2.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-is": "^17.0.2",
+    "react": ">=15.6.0",
+    "react-dom": ">=15.6.0",
+    "react-is": ">=15.6.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.47.0"
   },
@@ -39,9 +40,9 @@
     "carry-on-react": "^1.0.7",
     "carry-on-store": "^1.0.7",
     "carry-on-utils": "^1.0.7",
-    "history": "^4.0.0",
-    "hoist-non-react-statics": "^3.3.2",
-    "path-to-regexp": "^6.2.0"
+    "history": ">=4.0.0 < 5",
+    "hoist-non-react-statics": ">=3.0.0",
+    "path-to-regexp": ">=6.0.0"
   },
   "repository": {
     "type": "git",
