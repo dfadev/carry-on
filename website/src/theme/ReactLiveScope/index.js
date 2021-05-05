@@ -6,15 +6,32 @@
  */
 
 import React from "react";
-import { register } from "carry-on-store";
+import { register, initStores, getStore, connect } from "carry-on-store";
 import { State } from "carry-on-react";
+import {
+  Form,
+  Field,
+  FormButtons,
+  FormContext,
+  FormState
+} from "carry-on-react-forms";
+import Inspector from "react-inspector";
 
 // Add react-live imports you need here
 const ReactLiveScope = {
   React,
   ...React,
+  connect,
   register,
-  State
+  initStores,
+  State,
+  Form,
+  Field,
+  FormButtons,
+  FormContext,
+  FormState,
+  getStore,
+  Inspector
 };
 
 export default ReactLiveScope;
