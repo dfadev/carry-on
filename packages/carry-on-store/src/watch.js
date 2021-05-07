@@ -4,10 +4,9 @@ import {
   isFunction,
   getIn,
   logger,
-  register,
   throttle
 } from "carry-on-utils";
-import { connect, watchGet, subscribe } from "./store";
+import { connect, watchGet, register, subscribe } from "./store";
 
 export class Watch {
   static Debug = false;
