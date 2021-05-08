@@ -62,7 +62,10 @@
   "eslintConfig": {
     "parser": "babel-eslint",
     "extends": ["airbnb", "prettier"],
-    "env": { "es6": true, "browser": true },
+    "env": {
+      "es6": true,
+      "browser": true
+    },
     "rules": {
       "react/sort-comp": "off",
       "no-restricted-globals": "off",
