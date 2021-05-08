@@ -1,9 +1,44 @@
 {
-  "name": "carry-on",
   "private": true,
+  "name": "carry-on",
   "description": "A state container for React and Node",
-  "author": "Russ Panula <russ@dfa.net>",
   "license": "MIT",
+  "author": "Russ Panula <russ@dfa.net>",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "run-s bootstrap build-utils build-store build-react build-react-forms build-react-router",
+    "build-react": "cd packages/carry-on-react && npm run build",
+    "build-react-forms": "cd packages/carry-on-react-forms && npm run build",
+    "build-react-router": "cd packages/carry-on-react-router && npm run build",
+    "build-store": "cd packages/carry-on-store && npm run build",
+    "build-utils": "cd packages/carry-on-utils && npm run build",
+    "clean": "lerna exec --concurrency 6 --no-sort -- \"npm run clean | cat\"",
+    "format": "run-p -s format:store format:utils format:react format:react-forms format:react-router",
+    "format:check": "run-p -s format:check:store format:check:utils format:check:react format:check:react-forms format:check:react-router",
+    "format:check:react": "cd packages/carry-on-react && npm run format:check",
+    "format:check:react-forms": "cd packages/carry-on-react-forms && npm run format:check",
+    "format:check:react-router": "cd packages/carry-on-react-router && npm run format:check",
+    "format:check:store": "cd packages/carry-on-store && npm run format:check",
+    "format:check:utils": "cd packages/carry-on-utils && npm run format:check",
+    "format:react": "cd packages/carry-on-react && npm run format",
+    "format:react-forms": "cd packages/carry-on-react-forms && npm run format",
+    "format:react-router": "cd packages/carry-on-react-router && npm run format",
+    "format:store": "cd packages/carry-on-store && npm run format",
+    "format:utils": "cd packages/carry-on-utils && npm run format",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watchAll",
+    "prettier-package-json": "prettier-package-json --write && lerna exec \"prettier-package-json --write\"",
+    "watch": "run-p watch-utils watch-store watch-react watch-react-forms watch-react-router",
+    "watch-react": "cd packages/carry-on-react && npm run watch",
+    "watch-react-forms": "cd packages/carry-on-react-forms && npm run watch",
+    "watch-react-router": "cd packages/carry-on-react-router && npm run watch",
+    "watch-store": "cd packages/carry-on-store && npm run watch",
+    "watch-utils": "cd packages/carry-on-utils && npm run watch"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.14.0"
+  },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-transform-runtime": "^7.13.15",
@@ -22,46 +57,68 @@
     "lerna": "^4.0.0",
     "lerna-jest": "^0.5.4",
     "npm-run-all": "^4.1.5",
+    "prettier-package-json": "^2.5.0",
     "snapshot-diff": "^0.8.1"
   },
-  "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "build-store": "cd packages/carry-on-store && npm run build",
-    "build-utils": "cd packages/carry-on-utils && npm run build",
-    "build-react": "cd packages/carry-on-react && npm run build",
-    "build-react-forms": "cd packages/carry-on-react-forms && npm run build",
-    "build-react-router": "cd packages/carry-on-react-router && npm run build",
-    "build": "run-s bootstrap build-utils build-store build-react build-react-forms build-react-router",
-    "watch-store": "cd packages/carry-on-store && npm run watch",
-    "watch-utils": "cd packages/carry-on-utils && npm run watch",
-    "watch-react": "cd packages/carry-on-react && npm run watch",
-    "watch-react-forms": "cd packages/carry-on-react-forms && npm run watch",
-    "watch-react-router": "cd packages/carry-on-react-router && npm run watch",
-    "watch": "run-p watch-utils watch-store watch-react watch-react-forms watch-react-router",
-    "test": "jest",
-    "test:watch": "jest --watchAll",
-    "test:coverage": "jest --coverage",
-    "clean": "lerna exec --concurrency 6 --no-sort -- \"npm run clean | cat\"",
-    "format:check:store": "cd packages/carry-on-store && npm run format:check",
-    "format:check:utils": "cd packages/carry-on-utils && npm run format:check",
-    "format:check:react": "cd packages/carry-on-react && npm run format:check",
-    "format:check:react-forms": "cd packages/carry-on-react-forms && npm run format:check",
-    "format:check:react-router": "cd packages/carry-on-react-router && npm run format:check",
-    "format:check": "run-p -s format:check:store format:check:utils format:check:react format:check:react-forms format:check:react-router",
-    "format:store": "cd packages/carry-on-store && npm run format",
-    "format:utils": "cd packages/carry-on-utils && npm run format",
-    "format:react": "cd packages/carry-on-react && npm run format",
-    "format:react-forms": "cd packages/carry-on-react-forms && npm run format",
-    "format:react-router": "cd packages/carry-on-react-router && npm run format",
-    "format": "run-p -s format:store format:utils format:react format:react-forms format:react-router"
-  },
-  "prettier": {
-    "trailingComma": "none",
-    "arrowParens": "avoid"
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": [
+              ">3%"
+            ]
+          }
+        }
+      ],
+      [
+        "@babel/preset-react"
+      ]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          "useESModules": true,
+          "corejs": 3
+        }
+      ]
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          [
+            "@babel/preset-env",
+            {
+              "modules": false
+            }
+          ],
+          [
+            "@babel/preset-react"
+          ]
+        ],
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs",
+          "@babel/plugin-proposal-class-properties",
+          [
+            "@babel/plugin-transform-runtime",
+            {
+              "corejs": 3
+            }
+          ]
+        ]
+      }
+    }
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "extends": ["airbnb", "prettier"],
+    "extends": [
+      "airbnb",
+      "prettier"
+    ],
     "env": {
       "es6": true,
       "browser": true
@@ -93,42 +150,8 @@
       "prefer-promise-reject-errors": "off"
     }
   },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "modules": false,
-          "targets": { "browsers": [">3%"] }
-        }
-      ],
-      ["@babel/preset-react"]
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      [
-        "@babel/plugin-transform-runtime",
-        {
-          "useESModules": true,
-          "corejs": 3
-        }
-      ]
-    ],
-    "env": {
-      "test": {
-        "presets": [
-          ["@babel/preset-env", { "modules": false }],
-          ["@babel/preset-react"]
-        ],
-        "plugins": [
-          "@babel/plugin-transform-modules-commonjs",
-          "@babel/plugin-proposal-class-properties",
-          ["@babel/plugin-transform-runtime", { "corejs": 3 }]
-        ]
-      }
-    }
-  },
-  "dependencies": {
-    "@babel/runtime-corejs3": "^7.14.0"
+  "prettier": {
+    "trailingComma": "none",
+    "arrowParens": "avoid"
   }
 }

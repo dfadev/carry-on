@@ -1,23 +1,30 @@
 {
   "name": "carry-on-react",
-  "type": "module",
   "version": "1.0.8",
   "description": "A Store for React",
-  "source": "./src/index.js",
-  "module": "./dist/carry-on-react.esm.js",
+  "license": "MIT",
+  "author": "Russ Panula <russ@dfa.net>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfadev/carry-on.git"
+  },
+  "type": "module",
   "main": "./dist/carry-on-react.cjs.js",
+  "module": "./dist/carry-on-react.esm.js",
   "browser": "./dist/carry-on-react.umd.js",
   "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "build-dev": "rollup -c rollup.config.js --configDebug",
     "clean": "rimraf dist",
     "format": "prettier --write \"{src,test}/**/*.js\"",
     "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
     "lint": "eslint src test",
-    "build": "rollup -c rollup.config.js",
-    "build-dev": "rollup -c rollup.config.js --configDebug",
     "watch": "npm run build -- -w"
   },
-  "author": "Russ Panula <russ@dfa.net>",
-  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.14.0",
+    "hoist-non-react-statics": "^3.3.2"
+  },
   "peerDependencies": {
     "carry-on-store": "^1.0.7",
     "carry-on-utils": "^1.0.7",
@@ -30,17 +37,11 @@
     "@rollup/plugin-eslint": "^8.0.1",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "prettier": "^2.2.1",
+    "prettier-package-json": "^2.5.0",
     "react": ">=15.6.0",
     "react-dom": ">=15.6.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.47.0"
   },
-  "dependencies": {
-    "@babel/runtime-corejs3": "^7.14.0",
-    "hoist-non-react-statics": "^3.3.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dfadev/carry-on.git"
-  }
+  "source": "./src/index.js"
 }

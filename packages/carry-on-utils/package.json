@@ -1,31 +1,25 @@
 {
   "name": "carry-on-utils",
-  "type": "module",
   "version": "1.0.8",
   "description": "common utils for carry-on",
-  "source": "./src/index.js",
-  "module": "./dist/carry-on-utils.esm.js",
+  "license": "MIT",
+  "author": "Russ Panula <russ@dfa.net>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dfadev/carry-on.git"
+  },
+  "type": "module",
   "main": "./dist/carry-on-utils.cjs.js",
+  "module": "./dist/carry-on-utils.esm.js",
   "browser": "./dist/carry-on-utils.umd.js",
   "scripts": {
+    "build": "rollup -c rollup.config.js",
+    "build-dev": "rollup -c rollup.config.js --configDebug",
     "clean": "rimraf dist",
     "format": "prettier --write \"{src,test}/**/*.js\"",
     "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
     "lint": "eslint src test",
-    "build": "rollup -c rollup.config.js",
-    "build-dev": "rollup -c rollup.config.js --configDebug",
     "watch": "npm run build -- -w"
-  },
-  "author": "Russ Panula <russ@dfa.net>",
-  "license": "MIT",
-  "devDependencies": {
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^18.1.0",
-    "@rollup/plugin-eslint": "^8.0.1",
-    "@rollup/plugin-node-resolve": "^13.0.0",
-    "prettier": "^2.2.1",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.47.0"
   },
   "sideEffects": false,
   "dependencies": {
@@ -35,8 +29,15 @@
     "react-fast-compare": "^3.2.0",
     "throttle-debounce": "^3.0.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dfadev/carry-on.git"
-  }
+  "devDependencies": {
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^18.1.0",
+    "@rollup/plugin-eslint": "^8.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "prettier": "^2.2.1",
+    "prettier-package-json": "^2.5.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.47.0"
+  },
+  "source": "./src/index.js"
 }
