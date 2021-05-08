@@ -1,7 +1,7 @@
 {
   "name": "carry-on-react",
   "type": "module",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Store for React",
   "source": "./src/index.js",
   "module": "./dist/carry-on-react.esm.js",

@@ -1,7 +1,7 @@
 {
   "name": "carry-on-react-forms",
   "type": "module",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "carry-on plugin to support forms",
   "source": "./src/index.js",
   "module": "./dist/carry-on-react-forms.esm.js",

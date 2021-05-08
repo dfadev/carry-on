@@ -1,7 +1,7 @@
 {
   "name": "carry-on-utils",
   "type": "module",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "common utils for carry-on",
   "source": "./src/index.js",
   "module": "./dist/carry-on-utils.esm.js",
