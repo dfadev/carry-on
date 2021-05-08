@@ -1,69 +1,69 @@
-module.exports={
-  "title": "carry-on",
-  "tagline": "State container for React",
-  "url": "https://dfadev.github.io/",
-  "baseUrl": "/carry-on/",
-  "organizationName": "dfadev",
-  "projectName": "carry-on",
-  "scripts": [],
-  "favicon": "img/favicon.ico",
-  "customFields": {},
-  "onBrokenLinks": "log",
-  "onBrokenMarkdownLinks": "log",
-  "presets": [
+module.exports = {
+  title: "carry-on",
+  tagline: "State container for React",
+  url: "https://dfadev.github.io/",
+  baseUrl: "/carry-on/",
+  organizationName: "dfadev",
+  projectName: "carry-on",
+  scripts: [],
+  favicon: "img/favicon.ico",
+  customFields: {},
+  onBrokenLinks: "log",
+  onBrokenMarkdownLinks: "log",
+  presets: [
     [
       "@docusaurus/preset-classic",
       {
-        "docs": {
-          "showLastUpdateAuthor": true,
-          "showLastUpdateTime": true,
-          "path": "../docs",
-          "sidebarPath": require.resolve("./sidebars.js")
+        docs: {
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
+          path: "../docs",
+          sidebarPath: require.resolve("./sidebars.js")
         },
-        "blog": {},
-        "theme": {
-          "customCss": "../src/css/customTheme.css"
+        blog: {},
+        theme: {
+          customCss: "../src/css/customTheme.css"
         }
       }
     ]
   ],
-  "plugins": [],
-  themes: ['@docusaurus/theme-live-codeblock'],
-  "themeConfig": {
-    "colorMode": {
+  plugins: [],
+  themes: ["@docusaurus/theme-live-codeblock"],
+  themeConfig: {
+    colorMode: {
       defaultMode: "dark",
       disableSwitch: true
     },
-    "navbar": {
-      "title": "carry-on",
-      "logo": {
-        "src": "img/card-travel.svg"
+    navbar: {
+      title: "carry-on",
+      logo: {
+        src: "img/card-travel.svg"
       },
-      "items": [
+      items: [
         {
-          "to": "docs/",
-          "label": "Get Started",
-          "position": "left"
+          to: "docs/",
+          label: "Get Started",
+          position: "left"
         },
         {
-          "to": "docs/examples/",
-          "label": "Examples",
-          "position": "left"
+          to: "docs/examples/",
+          label: "Examples",
+          position: "left"
         },
         {
-          "href": "https://github.com/dfadev/carry-on",
-          "label": "GitHub",
-          "position": "left"
+          href: "https://github.com/dfadev/carry-on",
+          label: "GitHub",
+          position: "left"
         }
       ]
     },
-    "image": "img/docusaurus.png",
-    "footer": {
-      "links": [],
-      "copyright": "Copyright © 2021 Russ Panula",
-      "logo": {
-        "src": "img/card-travel.svg"
+    image: "img/docusaurus.png",
+    footer: {
+      links: [],
+      copyright: "Copyright © 2021 Russ Panula",
+      logo: {
+        src: "img/card-travel.svg"
       }
     }
   }
-}
+};
