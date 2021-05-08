@@ -67,6 +67,7 @@
       "browser": true
     },
     "rules": {
+      "import/named": "error",
       "react/sort-comp": "off",
       "no-restricted-globals": "off",
       "no-nested-ternary": "off",
