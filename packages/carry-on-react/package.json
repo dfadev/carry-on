@@ -1,5 +1,6 @@
 {
   "name": "carry-on-react",
+  "type": "module",
   "version": "1.0.7",
   "description": "A Store for React",
   "source": "./src/index.js",
@@ -18,6 +19,8 @@
   "author": "Russ Panula <russ@dfa.net>",
   "license": "MIT",
   "peerDependencies": {
+    "carry-on-store": "^1.0.7",
+    "carry-on-utils": "^1.0.7",
     "react": ">=15.6.0",
     "react-dom": ">=15.6.0"
   },
@@ -33,8 +36,7 @@
     "rollup": "^2.47.0"
   },
   "dependencies": {
-    "carry-on-store": "^1.0.7",
-    "carry-on-utils": "^1.0.7",
+    "@babel/runtime-corejs3": "^7.14.0",
     "hoist-non-react-statics": "^3.3.2"
   },
   "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
