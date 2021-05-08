@@ -50,16 +50,17 @@ render(
       </Field>
     </div>
     <div>
-      <button type="submit">OK</button>
+      <button type="submit">Submit</button>
     </div>
   </Form>
 );
+
 ```
 
 <BrowserOnly>
-  {() => {
+  {() => 
     <State select={s => ({ ...s })}>
       {state => <Inspector data={state} theme={theme} expandLevel={2} />}
     </State>
-  }}
+  }
 </BrowserOnly>

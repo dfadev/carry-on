@@ -3,6 +3,11 @@ id: index
 slug: /
 title: Getting Started
 ---
+import BrowserOnly from "@docusaurus/BrowserOnly";
+import Inspector from "react-inspector";
+import { State } from "carry-on-react";
+import theme from "./inspector-theme";
+
 ## Install
 
 ```bash
@@ -46,3 +51,11 @@ const App = () => (
 
 render(<App />);
 ```
+
+<BrowserOnly>
+  {() => 
+    <State select={s => ({ ...s })}>
+      {state => <Inspector data={state} theme={theme} expandLevel={2} />}
+    </State>
+  }
+</BrowserOnly>
