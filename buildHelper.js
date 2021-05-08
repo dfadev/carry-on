@@ -27,6 +27,10 @@ export default pkg => [
       commonjs()
     ],
     watch: { clearScreen: false },
-    external: [...Object.keys(pkg.peerDependencies || {}), /@babel\/runtime/]
+    external: [
+      ...Object.keys(pkg.peerDependencies || {}),
+      ...Object.keys(pkg.dependencies || {}),
+      /@babel\/runtime/
+    ]
   }
 ];
