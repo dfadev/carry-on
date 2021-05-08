@@ -1,11 +1,5 @@
 /** @format **/
-import {
-  debounce,
-  isFunction,
-  getIn,
-  logger,
-  throttle
-} from "carry-on-utils";
+import { debounce, isFunction, getIn, logger, throttle } from "carry-on-utils";
 import { connect, watchGet, register, subscribe } from "./store";
 
 export class Watch {
