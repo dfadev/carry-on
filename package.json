@@ -99,30 +99,36 @@
         "@babel/preset-env",
         {
           "modules": false,
-          "targets": {
-            "browsers": [">3%"]
-          }
+          "targets": { "browsers": [">3%"] }
         }
       ],
-      "@babel/preset-react"
+      ["@babel/preset-react"]
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          "useESModules": true,
+          "corejs": 3
+        }
+      ]
     ],
     "env": {
       "test": {
         "presets": [
           ["@babel/preset-env", { "modules": false }],
-          "@babel/preset-react"
+          ["@babel/preset-react"]
         ],
         "plugins": [
           "@babel/plugin-transform-modules-commonjs",
-          [
-            "@babel/plugin-transform-runtime",
-            {
-              "regenerator": true
-            }
-          ]
+          "@babel/plugin-proposal-class-properties",
+          ["@babel/plugin-transform-runtime", { "corejs": 3 }]
         ]
       }
-    },
-    "plugins": ["@babel/plugin-proposal-class-properties"]
+    }
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.14.0"
   }
 }
