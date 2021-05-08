@@ -8,7 +8,7 @@
   "main": "./dist/carry-on-react-forms.cjs.js",
   "browser": "./dist/carry-on-react-forms.umd.js",
   "scripts": {
-    "clean": "rimraf lib dist es coverage",
+    "clean": "rimraf dist",
     "format": "prettier --write \"{src,test}/**/*.js\"",
     "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
     "lint": "eslint src test",

@@ -8,7 +8,7 @@
   "main": "./dist/carry-on-store.cjs.js",
   "browser": "./dist/carry-on-store.umd.js",
   "scripts": {
-    "clean": "rimraf lib dist es coverage",
+    "clean": "rimraf dist",
     "format": "prettier --write \"{src,test}/**/*.js\"",
     "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
     "lint": "eslint src test",
