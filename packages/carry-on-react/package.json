@@ -39,7 +39,6 @@
     "@babel/runtime-corejs3": "^7.14.0",
     "hoist-non-react-statics": "^3.3.2"
   },
-  "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
   "repository": {
     "type": "git",
     "url": "https://github.com/dfadev/carry-on.git"

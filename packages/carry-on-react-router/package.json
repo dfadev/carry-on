@@ -38,7 +38,6 @@
     "rollup": "^2.47.0"
   },
   "sideEffects": false,
-  "gitHead": "e21942a1d6e23d964f9b74bd1c9c3744cb7b3c18",
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.0",
     "history": ">=4.0.0 < 5",
