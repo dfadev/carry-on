@@ -2,6 +2,8 @@
 
 exports[`should render <Form> 1`] = `
 <DocumentFragment>
-  <form />
+  <form
+    id="form"
+  />
 </DocumentFragment>
 `;

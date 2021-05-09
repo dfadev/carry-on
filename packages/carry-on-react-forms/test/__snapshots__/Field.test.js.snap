@@ -22,7 +22,9 @@ Object {
 
 exports[`should render a simple input field in named form: render match 1`] = `
 <DocumentFragment>
-  <form>
+  <form
+    id="theform"
+  >
     <input
       value="value1"
     />
@@ -120,7 +122,9 @@ Object {
 
 exports[`should render a simple input field: render match 1`] = `
 <DocumentFragment>
-  <form>
+  <form
+    id="form"
+  >
     <input
       value="value1"
     />
