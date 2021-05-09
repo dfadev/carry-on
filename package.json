@@ -67,15 +67,11 @@
         {
           "modules": false,
           "targets": {
-            "browsers": [
-              ">3%"
-            ]
+            "browsers": [">3%"]
           }
         }
       ],
-      [
-        "@babel/preset-react"
-      ]
+      ["@babel/preset-react"]
     ],
     "plugins": [
       "@babel/plugin-proposal-class-properties",
@@ -96,9 +92,7 @@
               "modules": false
             }
           ],
-          [
-            "@babel/preset-react"
-          ]
+          ["@babel/preset-react"]
         ],
         "plugins": [
           "@babel/plugin-transform-modules-commonjs",
@@ -115,10 +109,7 @@
   },
   "eslintConfig": {
     "parser": "babel-eslint",
-    "extends": [
-      "airbnb",
-      "prettier"
-    ],
+    "extends": ["airbnb", "prettier"],
     "env": {
       "es6": true,
       "browser": true
