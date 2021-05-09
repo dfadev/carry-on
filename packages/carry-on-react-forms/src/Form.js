@@ -4,15 +4,36 @@ import { State } from "carry-on-react";
 import FormContext from "./FormContext";
 import plugin from "./plugin";
 
-export default ({ store, id = "form", children, register = [], ...rest }) => (
+export default ({
+  store,
+  id = "form",
+  children,
+  register = [],
+  // plugin
+  initialValues,
+  onValidate,
+  onSubmit,
+  onReset,
+  // State
+  debug,
+  verbose,
+  onMount,
+  onUnmount
+}) => (
   <FormContext.Provider value={{ store, form: id }}>
     <State
       path={id}
       from={store}
-      register={[].concat(register).concat(plugin({ id, ...rest }))}
+      register={[]
+        .concat(register)
+        .concat(plugin({ id, initialValues, onValidate, onSubmit, onReset }))}
+      debug={debug}
+      verbose={verbose}
+      onMount={onMount}
+      onUnmount={onUnmount}
     >
       {(state = {}) => (
-        <form onSubmit={state.submit} onReset={state.reset}>
+        <form id={id} onSubmit={state.submit} onReset={state.reset}>
           {children}
         </form>
       )}
