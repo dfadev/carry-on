@@ -2,26 +2,25 @@
   "name": "carry-on-react-router",
   "version": "1.0.9",
   "description": "carry-on plugin to support routing",
-  "license": "MIT",
-  "author": "Russ Panula <russ@dfa.net>",
   "repository": {
     "type": "git",
     "url": "https://github.com/dfadev/carry-on.git"
   },
+  "license": "MIT",
+  "author": "Russ Panula <russ@dfa.net>",
+  "sideEffects": false,
   "type": "module",
   "main": "./dist/carry-on-react-router.cjs.js",
   "module": "./dist/carry-on-react-router.esm.js",
+  "source": "./src/index.js",
   "browser": "./dist/carry-on-react-router.umd.js",
   "scripts": {
     "build": "rollup -c rollup.config.js",
     "build-dev": "rollup -c rollup.config.js --configDebug",
     "clean": "rimraf dist",
-    "format": "prettier --write \"{src,test}/**/*.js\"",
-    "format:check": "prettier --list-different \"{src,test}/**/*.js\"",
     "lint": "eslint src test",
     "watch": "npm run build -- -w"
   },
-  "sideEffects": false,
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.0",
     "history": ">=4.0.0 < 5",
@@ -29,25 +28,22 @@
     "path-to-regexp": ">=6.0.0",
     "react-is": ">=15.6.0"
   },
-  "peerDependencies": {
-    "carry-on-react": "^1.0.9",
-    "carry-on-store": "^1.0.9",
-    "carry-on-utils": "^1.0.9",
-    "react": ">=15.6.0",
-    "react-dom": ">=15.6.0"
-  },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^18.1.0",
     "@rollup/plugin-eslint": "^8.0.1",
     "@rollup/plugin-node-resolve": "^13.0.0",
-    "prettier": "^2.2.1",
-    "prettier-package-json": "^2.5.0",
     "react": ">=15.6.0",
     "react-dom": ">=15.6.0",
     "react-is": ">=15.6.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.47.0"
   },
-  "source": "./src/index.js"
+  "peerDependencies": {
+    "carry-on-react": "^1.0.9",
+    "carry-on-store": "^1.0.9",
+    "carry-on-utils": "^1.0.9",
+    "react": ">=15.6.0",
+    "react-dom": ">=15.6.0"
+  }
 }
