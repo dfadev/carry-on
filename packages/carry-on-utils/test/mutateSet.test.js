@@ -14,7 +14,7 @@ describe("set()", () => {
   test("assigns values even if they are the same as their destination", () => {
     for (const equalValue of ["a", ["a"], { a: 1 }, NaN]) {
       const object = {};
-      const marker = 0;
+      let marker = 0;
       const setter = () => {
         marker++;
       };
