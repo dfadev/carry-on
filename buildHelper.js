@@ -2,13 +2,14 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import eslint from "@rollup/plugin-eslint";
+import camelcase from "camelcase";
 
 export default pkg => [
   {
     input: pkg.source,
     output: [
       {
-        name: pkg.name,
+        name: camelcase(pkg.name),
         file: pkg.browser,
         format: "umd",
         sourcemap: true
