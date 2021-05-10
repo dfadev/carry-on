@@ -20,12 +20,14 @@ export default pkg => [
     plugins: [
       resolve(),
       eslint(),
+      commonjs({
+        include: /node_modules/,
+        sourcemap: false
+      }),
       babel({
         rootMode: "upward",
-        exclude: ["node_modules/**"],
         babelHelpers: "runtime"
-      }),
-      commonjs()
+      })
     ],
     watch: { clearScreen: false },
     external: [
