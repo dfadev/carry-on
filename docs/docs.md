@@ -7,7 +7,7 @@ title: Getting Started
 
 ```bash
 
-npm install --save carry-on-react
+npm install --save carry-on-store carry-on-react
 
 ```
 
