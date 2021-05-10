@@ -16,8 +16,8 @@ import {
   FormState
 } from "carry-on-react-forms";
 import Inspector from "react-inspector";
+import theme from "./inspector-theme";
 
-// Add react-live imports you need here
 const ReactLiveScope = {
   React,
   ...React,
@@ -31,7 +31,7 @@ const ReactLiveScope = {
   FormContext,
   FormState,
   getStore,
-  Inspector
+  Inspector: props => <Inspector theme={theme} {...props} />
 };
 
 export default ReactLiveScope;
