@@ -2,12 +2,6 @@
 id: Form
 title: Form
 ---
-import BrowserOnly from "@docusaurus/BrowserOnly";
-import Inspector from "react-inspector";
-import { FormState } from "carry-on-react-forms";
-import { State } from "carry-on-react";
-import theme from "../../inspector-theme";
-
 ## Import
 
 ```js
@@ -20,8 +14,7 @@ import { Form } from "carry-on-react-forms";
 
 
 ```js live noInline
-State.Debug = true;
-State.Verbose = true;
+const storeId = "form";
 
 const formStateFactory = (formId = "form") => ({
   state: ({ get, set }) => ({
@@ -38,29 +31,27 @@ const formStateFactory = (formId = "form") => ({
 });
 
 render(
-  <Form id="myForm" register={formStateFactory("myForm")}>
-    <div>
-      <Field path="field1">
-        {field => <input {...field.element} />}
-      </Field>
-    </div>
-    <div>
-      <Field path="field2">
-        {field => <input {...field.element} />}
-      </Field>
-    </div>
-    <div>
-      <button type="submit">Submit</button>
-    </div>
-  </Form>
+  <>
+    <Form id="myForm" store={storeId} register={formStateFactory("myForm")}>
+      <div>
+        <Field path="field1">
+          {field => <input {...field.element} />}
+        </Field>
+      </div>
+      <div>
+        <Field path="field2">
+          {field => <input {...field.element} />}
+        </Field>
+      </div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </Form>
+    <State from={storeId} select={s => ({ ...s })}>
+      {state => <Inspector data={state} expandLevel={5} />}
+    </State>
+  </>
 );
 
 ```
 
-<BrowserOnly>
-  {() => 
-    <State select={s => ({ ...s })}>
-      {state => <Inspector data={state} theme={theme} expandLevel={2} />}
-    </State>
-  }
-</BrowserOnly>

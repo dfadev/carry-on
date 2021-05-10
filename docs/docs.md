@@ -3,11 +3,6 @@ id: index
 slug: /
 title: Getting Started
 ---
-import BrowserOnly from "@docusaurus/BrowserOnly";
-import Inspector from "react-inspector";
-import { State } from "carry-on-react";
-import theme from "./inspector-theme";
-
 ## Install
 
 ```bash
@@ -19,15 +14,14 @@ npm install --save carry-on-react
 ## Import
 
 ```js
-
 import { State } from "carry-on-react";
 import { register } from "carry-on-store";
-
 ```
 
 ## Simple store
 
 ```js live noInline
+const storeId = "getStarted";
 
 register({
   state: ({ set }) => ({
@@ -35,27 +29,24 @@ register({
     inc: () => set(state => { state.counter++; }),
     dec: () => set(state => { state.counter--; })
   })
-});
+}, storeId);
 
 const App = () => (
-  <State>
-    {state => (
-      <div>
-        <div>Counter: {state.counter}</div>
-        <button onClick={state.inc}>+</button>
-        <button onClick={state.dec}>-</button>
-      </div>
-    )}
-  </State>
+  <>
+    <State from={storeId}>
+      {state => (
+        <div>
+          <div>Counter: {state.counter}</div>
+          <button onClick={state.inc}>+</button>
+          <button onClick={state.dec}>-</button>
+        </div>
+      )}
+    </State>
+    <State from={storeId} select={s => ({ ...s })}>
+      {state => <Inspector data={state} expandLevel={2} />}
+    </State>
+  </>
 );
 
 render(<App />);
 ```
-
-<BrowserOnly>
-  {() => 
-    <State select={s => ({ ...s })}>
-      {state => <Inspector data={state} theme={theme} expandLevel={2} />}
-    </State>
-  }
-</BrowserOnly>
