@@ -104,9 +104,9 @@ export const getStore = id => stores[id] || (stores[id] = create(id));
 
 // register state
 export const register = (init, id) => {
-  // allow storeId to be the first parameter
-  if (typeof init === 'string' || init instanceof String) {
-    let actualId = init;
+  // storeId can be the first parameter
+  if (typeof init === "string" || init instanceof String) {
+    const actualId = init;
     init = id;
     id = actualId;
   }
