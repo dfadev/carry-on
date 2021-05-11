@@ -18,7 +18,8 @@ function getVal({ target: { type, value, checked } }) {
 }
 
 export default ({
-  store: propStore,
+  from,
+  store: propStore = from,
   form: propForm = "form",
   path = "",
   default: def,

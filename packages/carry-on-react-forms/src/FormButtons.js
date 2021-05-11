@@ -6,7 +6,8 @@ import { State } from "carry-on-react";
 import FormContext from "./FormContext";
 
 export default ({
-  store: propStore,
+  from,
+  store: propStore = from,
   form: propForm = "form",
   children = () => null,
   ...rest

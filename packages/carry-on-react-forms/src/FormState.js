@@ -6,7 +6,8 @@ import FormContext from "./FormContext";
 
 export default ({
   select,
-  store: propStore,
+  from,
+  store: propStore = from,
   form: propForm = "form",
   children,
   ...rest

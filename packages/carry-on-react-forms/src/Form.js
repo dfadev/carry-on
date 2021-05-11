@@ -5,7 +5,8 @@ import FormContext from "./FormContext";
 import plugin from "./plugin";
 
 export default ({
-  store,
+  from,
+  store = from,
   id = "form",
   children,
   register = [],
