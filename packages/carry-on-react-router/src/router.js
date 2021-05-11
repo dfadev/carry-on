@@ -30,23 +30,25 @@ const router = (
     );
 
     // create an event handler for a link click
-    const handleClick = ({ onClick, target, replace, to, force }) => event => {
-      if (onClick) onClick(event);
+    const handleClick =
+      ({ onClick, target, replace, to, force }) =>
+      event => {
+        if (onClick) onClick(event);
 
-      if (
-        !event.defaultPrevented && // onClick prevented default
-        event.button === 0 && // ignore everything but left clicks
-        (!target || target === "_self") && // let browser handle "target=_blank" etc.
-        !isModifiedEvent(event) // ignore clicks with modifier keys
-      ) {
-        event.preventDefault();
+        if (
+          !event.defaultPrevented && // onClick prevented default
+          event.button === 0 && // ignore everything but left clicks
+          (!target || target === "_self") && // let browser handle "target=_blank" etc.
+          !isModifiedEvent(event) // ignore clicks with modifier keys
+        ) {
+          event.preventDefault();
 
-        const method = replace ? history.replace : history.push;
+          const method = replace ? history.replace : history.push;
 
-        if (force) window.location = to;
-        else method(to);
-      }
-    };
+          if (force) window.location = to;
+          else method(to);
+        }
+      };
 
     // create an href based on the current location
     function getHref(to) {
@@ -97,23 +99,25 @@ const router = (
   };
 
   // router middleware
-  const middleware = ({ get, next, isNested }) => (action, type, ...args) => {
-    const nextState = next(action, type, ...args);
-    if (isNested() || type !== "Time Travel") return nextState;
+  const middleware =
+    ({ get, next, isNested }) =>
+    (action, type, ...args) => {
+      const nextState = next(action, type, ...args);
+      if (isNested() || type !== "Time Travel") return nextState;
 
-    // time travel should replace history location
-    isPaused = true;
-    const hist = getInA(get(), historyPath);
-    if (
-      window.location.pathname !== hist.location.pathname ||
-      window.location.search !== hist.location.search ||
-      window.location.hash !== hist.location.hash
-    )
-      hist.replace(hist.location);
-    isPaused = false;
+      // time travel should replace history location
+      isPaused = true;
+      const hist = getInA(get(), historyPath);
+      if (
+        window.location.pathname !== hist.location.pathname ||
+        window.location.search !== hist.location.search ||
+        window.location.hash !== hist.location.hash
+      )
+        hist.replace(hist.location);
+      isPaused = false;
 
-    return nextState;
-  };
+      return nextState;
+    };
 
   return { state, middleware };
 };

@@ -124,14 +124,16 @@ test("register with plugin with multiple middleware", () => {
       thing: 1
     },
     middleware: [
-      ({ next }) => (...args) => {
-        pluginDispatchCalled++;
-        return next(...args);
-      },
-      ({ next }) => (...args) => {
-        pluginDispatchCalled++;
-        return next(...args);
-      }
+      ({ next }) =>
+        (...args) => {
+          pluginDispatchCalled++;
+          return next(...args);
+        },
+      ({ next }) =>
+        (...args) => {
+          pluginDispatchCalled++;
+          return next(...args);
+        }
     ]
   };
 
@@ -149,14 +151,16 @@ test("register with plugins set as array", () => {
       thing: 1
     },
     middleware: [
-      ({ next }) => (...args) => {
-        pluginDispatchCalled++;
-        return next(...args);
-      },
-      ({ next }) => (...args) => {
-        pluginDispatchCalled++;
-        return next(...args);
-      }
+      ({ next }) =>
+        (...args) => {
+          pluginDispatchCalled++;
+          return next(...args);
+        },
+      ({ next }) =>
+        (...args) => {
+          pluginDispatchCalled++;
+          return next(...args);
+        }
     ]
   };
 
@@ -173,10 +177,12 @@ test("register with plugins as non-array", () => {
     state: {
       thing: 1
     },
-    middleware: ({ next }) => (...args) => {
-      pluginDispatchCalled++;
-      return next(...args);
-    }
+    middleware:
+      ({ next }) =>
+      (...args) => {
+        pluginDispatchCalled++;
+        return next(...args);
+      }
   };
 
   register(plugin);
@@ -195,10 +201,12 @@ test("register with plugin, state function ", () => {
         return set(state => void (state.some = "state"));
       }
     }),
-    middleware: ({ next }) => (...args) => {
-      pluginDispatchCalled++;
-      return next(...args);
-    }
+    middleware:
+      ({ next }) =>
+      (...args) => {
+        pluginDispatchCalled++;
+        return next(...args);
+      }
   };
 
   register(plugin);

@@ -49,9 +49,8 @@ export default ({
               onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
               onChange: e => setFieldValue(path, getVal(e)),
               onBlur: () => !isTouched(path) && setFieldTouched(path, true),
-              [type === "checkbox" || type === "radio"
-                ? "checked"
-                : "value"]: getIn(values, path, def)
+              [type === "checkbox" || type === "radio" ? "checked" : "value"]:
+                getIn(values, path, def)
             },
             setValue: val => setFieldValue(path, val),
             setVisited: val => setFieldVisited(path, val),

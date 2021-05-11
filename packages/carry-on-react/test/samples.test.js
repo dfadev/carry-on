@@ -751,14 +751,16 @@ test("custom plugin", () => {
       thing: 1
     },
     middleware: [
-      ({ next }) => (...args) => {
-        pluginDispatchCalled++;
-        return next(...args);
-      },
-      ({ next }) => (...args) => {
-        pluginDispatchCalled++;
-        return next(...args);
-      }
+      ({ next }) =>
+        (...args) => {
+          pluginDispatchCalled++;
+          return next(...args);
+        },
+      ({ next }) =>
+        (...args) => {
+          pluginDispatchCalled++;
+          return next(...args);
+        }
     ]
   };
 
