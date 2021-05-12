@@ -32,10 +32,6 @@ export default function logger(id, out = console.log) {
   const actionStyle =
     "color:" + colors.yellow + ";background-color:" + colors.blue;
   const actionStyle2 = "color:" + colors.yellow;
-  const infoStyle = "color:" + colors.gray + ";font-style:italic";
-
-  // eslint-disable-next-line
-  const isNative = out.toString().includes("native");
 
   return function log(action, ...result) {
     let prefix = "%c%s %c %s ";
@@ -50,23 +46,7 @@ export default function logger(id, out = console.log) {
       act = action;
     }
 
-    const items = [idStyle, id, actStyle, act];
-    const objs = [];
-
-    for (let i = 0, len = result.length; i < len; i++) {
-      const logItem = result[i];
-      if (typeof logItem === "string") {
-        prefix += "%c %s ";
-        items.push(infoStyle);
-        items.push(logItem);
-      } else if (isNative) {
-        prefix += "%o";
-        items.push(logItem);
-      } else {
-        objs.push(logItem);
-      }
-    }
-
+    const items = [idStyle, id, actStyle, act, ...result];
     out(prefix, ...items);
   };
 }
