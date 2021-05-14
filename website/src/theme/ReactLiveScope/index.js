@@ -6,7 +6,13 @@
  */
 
 import React from "react";
-import { register, initStores, getStore, connect } from "carry-on-store";
+import {
+  register,
+  initStores,
+  getStore,
+  connect,
+  deleteStore
+} from "carry-on-store";
 import { State } from "carry-on-react";
 import {
   Form,
@@ -24,6 +30,7 @@ const ReactLiveScope = {
   connect,
   register,
   initStores,
+  deleteStore,
   State,
   Form,
   Field,
@@ -31,7 +38,20 @@ const ReactLiveScope = {
   FormContext,
   FormState,
   getStore,
-  Inspector: props => <Inspector theme={theme} {...props} />
+  StateInspector: ({ from, select = s => ({ ...s }), ...rest }) => (
+    <State from={from} select={select} {...rest}>
+      {state => (
+        <div style={{ marginBottom: "12px" }}>
+          <Inspector data={state} theme={theme} expandLevel={2} />
+        </div>
+      )}
+    </State>
+  ),
+  Inspector: props => (
+    <div style={{ marginBottom: "12px" }}>
+      <Inspector theme={theme} {...props} />
+    </div>
+  )
 };
 
 export default ReactLiveScope;
