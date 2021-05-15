@@ -5,6 +5,7 @@ import {
   forceArray,
   getIn,
   isFunction,
+  isString,
   mutateMerge,
   proxyState
 } from "carry-on-utils";
@@ -105,7 +106,7 @@ export const getStore = id => stores[id] || (stores[id] = create(id));
 // register state
 export const register = (init, id) => {
   // storeId can be the first parameter
-  if (typeof init === "string" || init instanceof String) {
+  if (isString(init)) {
     const actualId = init;
     init = id;
     id = actualId;
