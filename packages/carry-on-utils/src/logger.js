@@ -17,6 +17,7 @@ const colors = {
 
 const clr = keys(colors).map(item => colors[item]);
 let currentClr = 0;
+const prefix = "%c%s %c %s ";
 
 // eslint-disable-next-line
 export default function logger(id, out = console.log) {
@@ -34,7 +35,6 @@ export default function logger(id, out = console.log) {
   const actionStyle2 = "color:" + colors.yellow;
 
   return function log(action, ...result) {
-    let prefix = "%c%s %c %s ";
     let actStyle;
     let act;
 
