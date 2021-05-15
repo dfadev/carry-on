@@ -39,5 +39,10 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.0"
+  },
+  "exports": {
+    "require": "./dist/carry-on-react-forms.cjs.js",
+    "import": "./dist/carry-on-react-forms.esm.js",
+    "default": "./dist/carry-on-react-forms.esm.js"
   }
 }

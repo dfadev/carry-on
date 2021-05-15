@@ -34,5 +34,10 @@
     "@rollup/plugin-node-resolve": "^13.0.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.47.0"
+  },
+  "exports": {
+    "require": "./dist/carry-on-utils.cjs.js",
+    "import": "./dist/carry-on-utils.esm.js",
+    "default": "./dist/carry-on-utils.esm.js"
   }
 }

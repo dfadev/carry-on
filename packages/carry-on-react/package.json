@@ -38,5 +38,10 @@
     "carry-on-utils": "^1.0.11",
     "react": ">=15.6.0",
     "react-dom": ">=15.6.0"
+  },
+  "exports": {
+    "require": "./dist/carry-on-react.cjs.js",
+    "import": "./dist/carry-on-react.esm.js",
+    "default": "./dist/carry-on-react.esm.js"
   }
 }
