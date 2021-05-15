@@ -1,6 +1,7 @@
 /** @format **/
 import { debounce, getIn, logger, throttle } from "carry-on-utils";
-import { connect, watchGet, register, set, subscribe } from "./store";
+import { connect, watchGet, register, subscribe } from "./store";
+import set from "./set";
 
 export class Watch {
   static Debug = false;

@@ -1,6 +1,6 @@
 import transaction from "../src/transaction";
 import immer from "immer";
-import { deleteStore, register, getStore, connect } from "../src";
+import { deleteStore, register, getStore, connect, get, set } from "../src";
 
 test("transaction match", () => {
   expect(transaction()).toMatchSnapshot();
@@ -100,15 +100,14 @@ test("dispose", () => {
 });
 
 test("commit 2", () => {
-  const store = getStore();
   register(transaction());
   connect();
-  store.get().begin();
-  store.set(state => {
+  get().begin();
+  set(state => {
     state.extra = 1;
   });
-  expect(store.get()).toMatchSnapshot();
-  store.get().rollback();
-  expect(store.get()).toMatchSnapshot();
+  expect(get()).toMatchSnapshot();
+  get().rollback();
+  expect(get()).toMatchSnapshot();
   deleteStore();
 });

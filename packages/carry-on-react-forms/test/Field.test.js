@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import Form from "../src/Form";
 import Field from "../src/Field";
-import { getStore, initStores } from "carry-on-store";
+import { get, initStores } from "carry-on-store";
 
 beforeEach(() => initStores());
 
@@ -38,7 +38,7 @@ it("should render a simple input field", () => {
   );
 
   expect(asFragment()).toMatchSnapshot("render match");
-  expect(getStore().get()).toMatchSnapshot("store match");
+  expect(get()).toMatchSnapshot("store match");
 });
 
 it("should render a simple input field in named form", () => {
@@ -54,5 +54,5 @@ it("should render a simple input field in named form", () => {
   );
 
   expect(asFragment()).toMatchSnapshot("render match");
-  expect(getStore().get()).toMatchSnapshot("store match");
+  expect(get()).toMatchSnapshot("store match");
 });

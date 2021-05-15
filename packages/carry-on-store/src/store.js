@@ -26,7 +26,6 @@ const applyMiddleware = (middlewares, fn, apply) => {
 
 // merge state and middleware into the store
 const createPlugins = (store, curState, plugins) => {
-  /* eslint-disable no-shadow */
   const { id, get, set, getChanges, getPatches, isNested, wrap } = store;
 
   for (let i = 0, len = plugins.length; i < len; i++) {
@@ -212,14 +211,4 @@ export function watchGet(state, select, path = "", def, id) {
   const finalState = deproxified !== undefined ? deproxified : selectedState;
 
   return [finalState, watch];
-}
-
-export function set(fn, id) {
-  if (isString(fn)) {
-    const actualId = fn;
-    fn = id;
-    id = actualId;
-  }
-
-  getStore(id).set(fn);
 }
