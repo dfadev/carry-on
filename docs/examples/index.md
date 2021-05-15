@@ -46,9 +46,6 @@ register("store2", state);
 
 render(
   <>
-    hello <Q>{s => s.name}</Q>
-    hello <Q s={s => s.name}/>
-    hello !!name
     <State from="store1">
       {state => (
         <div>
