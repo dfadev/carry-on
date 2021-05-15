@@ -12,11 +12,11 @@ test("watch", async () => {
   register({ state: { a: { field: "value" } } });
   const store = getStore();
 
-  const unsub_ws1 = watch({ id: "WS1", fn });
+  const unsub_ws1 = watch({ id: "WS1", if: fn });
   const unsub_ws2 = watch({
     id: "WS2",
-    select: s => s.a.field,
-    fn: field => field && fnCalled++,
+    if: s => s.a.field,
+    then: field => field && fnCalled++,
     throttle: 1000
   });
 
