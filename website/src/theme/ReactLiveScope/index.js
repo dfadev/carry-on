@@ -11,7 +11,10 @@ import {
   initStores,
   getStore,
   connect,
-  deleteStore
+  deleteStore,
+  set,
+  watch,
+  Watch
 } from "carry-on-store";
 import { State } from "carry-on-react";
 import {
@@ -31,6 +34,9 @@ const ReactLiveScope = {
   register,
   initStores,
   deleteStore,
+  set,
+  watch,
+  Watch,
   State,
   Form,
   Field,
