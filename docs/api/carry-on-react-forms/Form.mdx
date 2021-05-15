@@ -35,12 +35,12 @@ render(
     <Form id="myForm" store={storeId} register={formStateFactory("myForm")}>
       <div>
         <Field path="field1">
-          {field => <input {...field.element} />}
+          {({ element }) => <input {...element} />}
         </Field>
       </div>
       <div>
         <Field path="field2">
-          {field => <input {...field.element} />}
+          {({ element }) => <input {...element} />}
         </Field>
       </div>
       <div>

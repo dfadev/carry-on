@@ -122,6 +122,10 @@ register({ state });
 
 register({ state }, "Store1");
 
+// or
+
+register("Store1", { state });
+
 ```
 
 ## Multiple registrations

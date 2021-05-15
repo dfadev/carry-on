@@ -1,0 +1,34 @@
+---
+id: modernImmutability
+title: Modern Immutability
+---
+There are various implentations of immutability in Javascript which require the developer to shift gears when working with immutable data as opposed to mutable data.
+
+`immer` implements a strategy which allows a developer to work with immutable data in a similar way as they would with mutable data.  `carry-on` uses `immer` to provide a clean concise way of changing state values without resorting to a shift in thinking.
+
+```js live noInline
+const storeId =  "immutable";
+
+deleteStore(storeId);
+connect(storeId);
+
+const store = getStore(storeId);
+
+const initialState = store.get();
+
+store.set(state => {
+  state.value1 = "abc";
+});
+
+const mutatedState = store.get();
+
+render(
+  <>
+    <h6>Initial State:</h6>
+    <Inspector data={initialState} />
+    <h6>Mutated State:</h6>
+    <Inspector data={mutatedState} />
+  </>
+)
+
+```

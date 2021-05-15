@@ -58,4 +58,7 @@ register([
 // register state into a named store
 register({ state }, "store1");
 
+// can also specify the storeId first
+register("store1", { state });
+
 ```

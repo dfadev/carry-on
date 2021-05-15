@@ -4,7 +4,11 @@ module.exports = {
       "index",
       "registeringState",
       "usingState",
-      "examples/index"
+      "examples/index",
+      "optionalSelectors",
+      "modernImmutability",
+      "actionsAreFunctions",
+      "stateDrivenFunctions"
     ],
     "API": [
       {

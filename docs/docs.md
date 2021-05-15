@@ -3,6 +3,7 @@ id: index
 slug: /
 title: Getting Started
 ---
+
 ## Install
 
 ```bash
@@ -23,13 +24,13 @@ import { register } from "carry-on-store";
 ```js live noInline
 const storeId = "getStarted";
 
-register({
+register(storeId, {
   state: ({ set }) => ({
     counter: 0,
     inc: () => set(state => { state.counter++; }),
     dec: () => set(state => { state.counter--; })
   })
-}, storeId);
+});
 
 const App = () => (
   <>
