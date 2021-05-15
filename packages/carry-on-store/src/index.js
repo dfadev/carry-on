@@ -11,7 +11,8 @@ export {
   connect,
   subscribe,
   watchGet,
-  initMessageType
+  initMessageType,
+  set
 } from "./store";
 export { compareChanges, calculateChanges } from "./changeTracking";
 export { watch, Watch } from "./watch";
