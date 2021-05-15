@@ -7,6 +7,7 @@ export { default as isEqual } from "react-fast-compare";
 export { default as isFunction } from "./isFunction";
 export { default as isMap } from "./isMap";
 export { default as isSet } from "./isSet";
+export { default as isString } from "./isString";
 export { default as keys } from "./keys";
 export { default as logger } from "./logger";
 export { default as makeCancelable } from "./makeCancelable";
