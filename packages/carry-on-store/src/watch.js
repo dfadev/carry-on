@@ -1,6 +1,6 @@
 /** @format **/
-import { debounce, isFunction, getIn, logger, throttle } from "carry-on-utils";
-import { connect, watchGet, register, subscribe } from "./store";
+import { debounce, getIn, logger, throttle } from "carry-on-utils";
+import { connect, watchGet, register, set, subscribe } from "./store";
 
 export class Watch {
   static Debug = false;
@@ -9,12 +9,12 @@ export class Watch {
 
   constructor(opts) {
     this.opts = opts;
-    this.setup(true);
+    this.setup();
     this.render();
   }
 
   // setup this component
-  setup = first => {
+  setup = () => {
     // setup debugging
     this.setupDebug();
     this.unsubscribe();
@@ -22,11 +22,11 @@ export class Watch {
     const { from, throttle: t, debounce: d, register: reg } = this.opts;
 
     // setup the initial store state, registering state if requested
-    if (first && reg) {
+    if (reg) {
       let state = register(reg, from);
       if (state === undefined) state = connect(from, this.render);
-      this.trapSelect(state);
-    } else this.trapSelect(connect(from, this.render));
+      this.storeState = state;
+    } else this.storeState = connect(from, this.render);
 
     // apply throttle or debounce
     if (t) this.onStateChange = throttle(t, this.origOnStateChange);
@@ -81,7 +81,8 @@ export class Watch {
         changes
       );
 
-    this.trapSelect(state);
+    //this.trapSelect(state);
+    this.storeState = state;
     this.render();
   };
 
@@ -94,17 +95,7 @@ export class Watch {
 
   // query state, potentially watching for fields accessed
   trapStateQuery = (state, select) => {
-    const { from, path, default: def, constant } = this.opts;
-
-    // handle constant
-    if (constant) {
-      const finalState = select(getIn(state, path, def));
-
-      // log the constant query
-      if (this.debug) this.log("get", "constant");
-
-      return finalState;
-    }
+    const { from, path, default: def } = this.opts;
 
     // handle watched fields index is not yet available or strict is on
     if (this.watch === undefined || this.opts.strict) {
@@ -133,15 +124,6 @@ export class Watch {
     return finalState;
   };
 
-  // trap a select query, tracking fields accessed
-  trapSelect = state => {
-    // return original state when there's no select because fields are tracked
-    // in the render function
-    this.storeState = this.opts.select
-      ? this.trapStateQuery(state, this.opts.select)
-      : state;
-  };
-
   // trap a render function, tracking fields accessed
   trapRender = renderFn => {
     // strict equality means we have rendered for this state already
@@ -153,21 +135,11 @@ export class Watch {
       return this.prevFinalState;
     }
 
-    // constants only execute render function once
-    if (this.opts.constant && this.prevFinalState) {
-      // log a skip message because this update could probably be fixed upstream
-      if (this.debug && this.verbose) this.log("-skip render", "constant");
-
-      return this.prevFinalState;
-    }
-
     // execute the render function, trapping fields accessed
     const finalState = this.trapStateQuery(this.storeState, renderFn);
 
     // log the render
-    if (this.debug)
-      if (this.opts.constant) this.log("render", "fn", "constant");
-      else this.log("render", "fn");
+    if (this.debug) this.log("render", "if");
 
     // cache the store state and the final state (result of render)
     this.prevStoreState = this.storeState;
@@ -177,27 +149,14 @@ export class Watch {
 
   render() {
     // select children or render as the render function
-    const renderFn = this.opts.fn || this.opts.render;
+    const renderFn = this && this.opts && this.opts.if;
 
     // no render function renders nothing
     if (!renderFn) return null;
 
-    // handle select query
-    if (this.opts.select) {
-      // log a select render
-      if (this.debug)
-        if (this.opts.constant) this.log("render", "select", "constant");
-        else this.log("render", "select");
-
-      // update prev store state
-      this.prevStoreState = this.storeState;
-
-      // execute the render function with the selected state
-      return renderFn(this.storeState);
-    }
-
-    // no select specified, trap the render function and return the result
-    return this.trapRender(renderFn);
+    const result = this.trapRender(renderFn);
+    if (result && this.opts.then) set(this.opts.then, this.opts.from);
+    return result;
   }
 }
 
@@ -206,14 +165,6 @@ const defaultWatchOptions = {
   strict: true
 };
 
-export function watch(fn, storeId) {
-  if (isFunction(fn)) {
-    const ws = new Watch({
-      ...defaultWatchOptions,
-      fn,
-      from: storeId
-    });
-    return ws.unsubscribe;
-  }
-  return new Watch({ ...defaultWatchOptions, ...fn }).unsubscribe;
+export function watch(opts) {
+  return new Watch({ ...defaultWatchOptions, ...opts }).unsubscribe;
 }
