@@ -1,11 +1,5 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from "react";
+import * as buble from "buble";
 import {
   register,
   initStores,
@@ -27,6 +21,24 @@ import {
 } from "carry-on-react-forms";
 import Inspector from "react-inspector";
 import theme from "./inspector-theme";
+
+const opts = {
+  objectAssign: Object.assign,
+  transforms: {
+    moduleImport: false,
+    dangerousForOf: true,
+    dangerousTaggedTemplateString: true
+  }
+};
+
+const origTransform = buble.transform;
+buble.transform = code => {
+  const removeImports = code
+    .split("\n")
+    .filter(line => !line.startsWith("import"))
+    .join("\n");
+  return origTransform(removeImports, opts);
+};
 
 const ReactLiveScope = {
   React,
