@@ -15,7 +15,6 @@ Read the documentation at: https://dfadev.github.io/carry-on
 - Optional form handling: [carry-on-react-forms](../carry-on-react-forms)
 - Flexible `State` properties: `debounce, throttle, constant, strict, select, path, from`
 
-
 ## Install
 
 ```JavaScript
@@ -23,6 +22,7 @@ npm install --save carry-on-react
 ```
 
 ## Import
+
 ```JavaScript
 import { State, register } from "carry-on-react";
 ```
@@ -50,4 +50,3 @@ const App = () => (
   </State>
 );
 ```
-

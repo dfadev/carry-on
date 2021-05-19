@@ -14,4 +14,3 @@ export default function get(fn, id) {
   if (!store.get) throw new Error("store not connected");
   return store.get(fn);
 }
-
