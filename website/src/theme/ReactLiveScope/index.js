@@ -12,6 +12,7 @@ import {
   getStore,
   connect,
   deleteStore,
+  get,
   set,
   watch,
   Watch
@@ -34,6 +35,7 @@ const ReactLiveScope = {
   register,
   initStores,
   deleteStore,
+  get,
   set,
   watch,
   Watch,
