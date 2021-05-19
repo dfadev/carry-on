@@ -12,16 +12,12 @@ npm install --save carry-on-store carry-on-react
 
 ```
 
-## Import
-
-```js
-import { State } from "carry-on-react";
-import { register } from "carry-on-store";
-```
-
 ## Simple store
 
 ```js live noInline
+import { State } from "carry-on-react";
+import { register } from "carry-on-store";
+
 const storeId = "getStarted";
 
 register(storeId, {
@@ -43,9 +39,7 @@ const App = () => (
         </div>
       )}
     </State>
-    <State from={storeId} select={s => ({ ...s })}>
-      {state => <Inspector data={state} expandLevel={2} />}
-    </State>
+    <StateInspector from={storeId} />
   </>
 );
 
