@@ -9,5 +9,8 @@ export default function set(fn, id) {
     id = actualId;
   }
 
-  getStore(id).set(fn);
+  const store = getStore(id);
+  if (!store) throw new Error("store does not exist");
+  if (!store.set) throw new Error("store not connected");
+  store.set(fn);
 }
