@@ -1,4 +1,3 @@
-/** @format **/
 import { keys, mutateSetA } from "carry-on-utils";
 
 export function compareChanges(changes, watch) {
@@ -9,9 +8,9 @@ export function compareChanges(changes, watch) {
     const item = queue.pop();
     const entries = item.changes;
 
-    for (let i = 0, len = entries.length; i < len; i++) {
+    for (let i = 0, len = entries.length; i < len; i += 1) {
       const entry = entries[i];
-      const key = entry.key;
+      const { key } = entry;
       const watchValue = item.watch[key];
 
       if (watchValue === true) return true;
@@ -32,7 +31,7 @@ export function compareChanges(changes, watch) {
 
 export function calculateChanges(patches) {
   const stage1 = {};
-  for (let i = 0, len = patches.length; i < len; i++) {
+  for (let i = 0, len = patches.length; i < len; i += 1) {
     const patch = patches[i];
     // force paths to be strings so the change index doesn't contain arrays
     const patchPath = patch.path.map(String);
@@ -52,7 +51,7 @@ export function calculateChanges(patches) {
   while (queue.length > 0) {
     const item = queue.pop();
 
-    for (let i = 0, len = item.keys.length; i < len; i++) {
+    for (let i = 0, len = item.keys.length; i < len; i += 1) {
       const key = item.keys[i];
       const changes = item.changes[key];
       if (changes === true) {

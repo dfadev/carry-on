@@ -1,4 +1,4 @@
-/** @format **/
+/* eslint-disable prefer-promise-reject-errors */
 export default function makeCancelable(promise, onfulfilled, onrejected) {
   let hasCanceled = false;
 

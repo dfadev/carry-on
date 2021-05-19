@@ -1,4 +1,3 @@
-/** @format **/
 // copy-paste from https://github.com/nx-js/observer-util/blob/master/src/builtIns/index.js
 
 // built-in object can not be wrapped by Proxies, or, to be clear - unfreezed
@@ -34,7 +33,7 @@ const handlers = {
   Float64Array: false
 };
 
-/* eslint-disable no-nested-ternary */
+/* eslint-disable no-nested-ternary, no-restricted-globals */
 /* istanbul ignore next */ const globalObj =
   typeof global !== "undefined"
     ? global
@@ -48,7 +47,7 @@ export function shouldInstrument({ constructor }) {
   if (!constructor) {
     return true;
   }
-  const name = constructor.name;
+  const { name } = constructor;
   const isBuiltIn =
     typeof constructor === "function" &&
     name in globalObj &&

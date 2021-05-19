@@ -1,4 +1,3 @@
-/** @format **/
 import { debounce, getIn, logger, throttle } from "carry-on-utils";
 import { connect, watchGet, register, subscribe } from "./store";
 import set from "./set";
@@ -42,12 +41,11 @@ export class Watch {
     this.prevFinalState = undefined;
 
     // cancel any pending debounced/throttled state changes
-    this.onStateChange &&
-      this.onStateChange.cancel &&
+    if (this.onStateChange && this.onStateChange.cancel)
       this.onStateChange.cancel();
 
     // unsubscribe from state changes
-    this.unsubscribeFromStore && this.unsubscribeFromStore();
+    if (this.unsubscribeFromStore) this.unsubscribeFromStore();
   };
 
   // setup debugging
@@ -60,8 +58,8 @@ export class Watch {
     this.verbose = Watch.Verbose || this.opts.verbose;
 
     // setup log prefix and logger
-    let id = this.opts.id ? "Watch:" + this.opts.id : "Watch";
-    if (this.opts.path) id += ":" + this.opts.path;
+    let id = this.opts.id ? `Watch:${this.opts.id}` : "Watch";
+    if (this.opts.path) id += `:${this.opts.path}`;
 
     // create logger function
     this.log = logger(id);
@@ -82,7 +80,6 @@ export class Watch {
         changes
       );
 
-    //this.trapSelect(state);
     this.storeState = state;
     this.render();
   };

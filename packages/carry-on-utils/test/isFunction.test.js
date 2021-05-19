@@ -1,4 +1,3 @@
-/** @format **/
 import isFunction from "../src/isFunction";
 
 describe("isFunction()", () => {

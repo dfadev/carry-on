@@ -42,7 +42,7 @@ test("commit", () => {
   expect(commitedState.newThing).toEqual(1);
 });
 
-test("rollback", async () => {
+test("rollback", () => {
   const get = state => immer(state, s => s);
   const state = {};
   const set = (action, type) => {

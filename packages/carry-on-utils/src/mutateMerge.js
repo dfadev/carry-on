@@ -1,9 +1,9 @@
-/** @format **/
 import forEach from "./forEach";
 import clone from "./clone";
 
 export default function mutateMerge(object, ...sources) {
-  for (const source of sources) {
+  for (let i = 0; i < sources.length; i += 1) {
+    const source = sources[i];
     forEach(source, (value, key) => {
       const myValue = object[key];
       // original micro-dash tries to clone functions
@@ -20,7 +20,8 @@ export default function mutateMerge(object, ...sources) {
 }
 
 export function mutateMergeStrip(object, ...sources) {
-  for (const source of sources) {
+  for (let i = 0; i < sources.length; i += 1) {
+    const source = sources[i];
     forEach(source, (value, key) => {
       const myValue = object[key];
       const myValueType = typeof myValue;

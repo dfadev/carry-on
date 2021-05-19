@@ -16,7 +16,8 @@ export class Router extends Component {
   }
 
   render() {
-    return this.props.children || null;
+    const { children } = this.props;
+    return children || null;
   }
 }
 
@@ -27,7 +28,8 @@ export class MemoryRouter extends Component {
   }
 
   render() {
-    return this.props.children || null;
+    const { children } = this.props;
+    return children || null;
   }
 }
 
@@ -38,7 +40,8 @@ export class BrowserRouter extends Component {
   }
 
   render() {
-    return this.props.children || null;
+    const { children } = this.props;
+    return children || null;
   }
 }
 
@@ -49,7 +52,8 @@ export class HashRouter extends Component {
   }
 
   render() {
-    return this.props.children || null;
+    const { children } = this.props;
+    return children || null;
   }
 }
 
@@ -60,6 +64,7 @@ export class StaticRouter extends Component {
   }
 
   render() {
-    return this.props.children || null;
+    const { children } = this.props;
+    return children || null;
   }
 }

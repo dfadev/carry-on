@@ -12,6 +12,7 @@ export default class DevTools extends Component {
   }
 
   render() {
-    return this.props.children || null;
+    const { children } = this.props;
+    return children || null;
   }
 }

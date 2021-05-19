@@ -35,8 +35,8 @@ const useCarryOn = (opts, optional = {}) => {
   // setup debugging
   const log = useMemo(() => {
     // setup log prefix and logger
-    let prefix = id ? "useCarryOn:" + id : "useCarryOn";
-    if (path) prefix += ":" + path;
+    let prefix = id ? `useCarryOn:${id}` : "useCarryOn";
+    if (path) prefix += `:${path}`;
 
     // create logger function
     return logger(prefix);
@@ -71,10 +71,10 @@ const useCarryOn = (opts, optional = {}) => {
       setWatch(undefined);
 
       // cancel any pending debounced/throttled state changes
-      onStateChange && onStateChange.cancel && onStateChange.cancel();
+      if (onStateChange && onStateChange.cancel) onStateChange.cancel();
 
       // unsubscribe from state changes
-      unsubscribe && unsubscribe();
+      if (unsubscribe) unsubscribe();
     },
     []
   );
@@ -82,8 +82,7 @@ const useCarryOn = (opts, optional = {}) => {
   const stateSubscriber = useMemo(
     () => (state, changes) => {
       if (debug) log("update", changes, "watch:", watch, "state:", state);
-
-      onStateChange && onStateChange(state, changes);
+      if (onStateChange) onStateChange(state, changes);
     },
     [debug, log, watch, onStateChange]
   );
@@ -111,7 +110,7 @@ const useCarryOn = (opts, optional = {}) => {
         if (debug) log("watch", watches);
 
         // subscribe to changes specified by the watch index
-        //setUnsubscribe(subscribe(stateSubscriber, watches, from));
+        // setUnsubscribe(subscribe(stateSubscriber, watches, from));
 
         const unsub = subscribe(stateSubscriber, watches, from);
         setUnsubscribe(() => unsub);

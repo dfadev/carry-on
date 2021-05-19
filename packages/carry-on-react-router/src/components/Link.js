@@ -20,6 +20,7 @@ const Link = carryOn(
   ) => {
     const { handleClick, getHref } = getIn(state, history);
 
+    /* eslint-disable jsx-a11y/anchor-has-content */
     return (
       <a
         {...rest}

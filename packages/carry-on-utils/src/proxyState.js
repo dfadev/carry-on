@@ -1,4 +1,3 @@
-/** @format **/
 // heavily based on https://github.com/theKashey/proxyequal
 import { getCollectionHandlers, shouldInstrument } from "./shouldInstrument";
 import mutateSet from "./mutateSet";
@@ -54,8 +53,8 @@ function proxyfy(state, onGet, suffix, ProxyMap) {
     let index = 0;
     const next = () => {
       const nextItem = iterator.next();
-      const subKey = key + "." + index;
-      index++;
+      const subKey = `${key}.${index}`;
+      index += 1;
       return {
         ...nextItem,
         get value() {
@@ -76,7 +75,7 @@ function proxyfy(state, onGet, suffix, ProxyMap) {
 
   proxyValue = (key, value) => {
     // suffix should be prefix???
-    const thisId = suffix ? suffix + '["' + key + '"]' : key;
+    const thisId = suffix ? `${suffix}["${key}"]` : key;
     const type = typeof value;
 
     onGet(thisId);
@@ -146,8 +145,12 @@ export const proxyState = (object, _ProxyMap) => {
   return {
     affected,
     state: createState(object),
-    seal: () => sealed++,
-    unseal: () => sealed--,
+    seal: () => {
+      sealed += 1;
+    },
+    unseal: () => {
+      sealed -= 1;
+    },
     reset: () => {
       affected.length = 0;
       sealed = 0;

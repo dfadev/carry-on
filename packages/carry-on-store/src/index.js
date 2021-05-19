@@ -1,4 +1,3 @@
-/** @format **/
 import { enableAllPlugins } from "immer";
 
 enableAllPlugins();

@@ -1,4 +1,4 @@
-const hasOwnProperty = Object.prototype.hasOwnProperty;
+const { hasOwnProperty } = Object.prototype;
 /**
  * inlined Object.is polyfill to avoid requiring consumers ship their own
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
@@ -42,7 +42,7 @@ export default function shallowEqual(objA, objB, ignore = []) {
     return false;
   } // Test for A's keys different from B.
 
-  for (let i = 0; i < keysA.length; i++) {
+  for (let i = 0; i < keysA.length; i += 1) {
     const key = keysA[i];
 
     if (

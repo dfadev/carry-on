@@ -1,4 +1,3 @@
-/** @format **/
 export { isProxyfied, deproxify, proxyState } from "./proxyState";
 export { default as debouncePromise } from "debounce-promise";
 export { default as forceArray } from "./forceArray";

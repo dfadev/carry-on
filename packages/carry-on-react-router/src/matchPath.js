@@ -1,4 +1,3 @@
-/** @format **/
 import { pathToRegexp } from "path-to-regexp";
 
 const cache = {};
@@ -17,7 +16,7 @@ function compilePath(path, options) {
 
   if (cacheCount < cacheLimit) {
     pathCache[path] = result;
-    cacheCount++;
+    cacheCount += 1;
   }
 
   return result;

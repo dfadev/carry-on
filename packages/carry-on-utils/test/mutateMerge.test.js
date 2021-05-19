@@ -1,4 +1,3 @@
-/** @format **/
 import merge from "../src/mutateMerge";
 import forEach from "../src/forEach";
 

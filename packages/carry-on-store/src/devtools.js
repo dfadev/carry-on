@@ -1,14 +1,14 @@
-/** @format **/
 import { keys, isEqual } from "carry-on-utils";
 
 export default function devTools({ timeTravel = true } = {}) {
   // dev tools connections
-  const connections = {},
-    subscriptions = {},
-    // time travel state tracking (only for immutable state)
-    time = {},
-    // check for dev tools extension
-    devToolsExt = window && window.__REDUX_DEVTOOLS_EXTENSION__;
+  const connections = {};
+  const subscriptions = {};
+  // time travel state tracking (only for immutable state)
+  const time = {};
+  // check for dev tools extension
+  /* eslint-disable no-underscore-dangle */
+  const devToolsExt = window && window.__REDUX_DEVTOOLS_EXTENSION__;
 
   if (!devToolsExt) return {};
 
@@ -28,6 +28,7 @@ export default function devTools({ timeTravel = true } = {}) {
 
         let connection = connections[name];
         if (!connection)
+          /* eslint-disable-next-line no-multi-assign */
           connection = connections[name] = devToolsExt.connect({ name });
 
         // support time traveling
@@ -42,8 +43,8 @@ export default function devTools({ timeTravel = true } = {}) {
             states.push(lastState);
           } else states.push(state);
 
-          subscriptions[name] ||
-            (subscriptions[name] = connection.subscribe(
+          if (!subscriptions[name])
+            subscriptions[name] = connection.subscribe(
               msg =>
                 msg.type === "DISPATCH" &&
                 msg.payload &&
@@ -53,12 +54,12 @@ export default function devTools({ timeTravel = true } = {}) {
                   const tt = states[msg.payload.index];
                   const ttKeys = keys(tt);
 
-                  for (let i = 0, len = keyList.length; i < len; i++) {
+                  for (let i = 0, len = keyList.length; i < len; i += 1) {
                     const key = keyList[i];
                     if (!ttKeys.includes(key)) delete s[key];
                   }
 
-                  for (let i = 0, len = ttKeys.length; i < len; i++) {
+                  for (let i = 0, len = ttKeys.length; i < len; i += 1) {
                     const key = ttKeys[i];
                     const oldVal = s[key];
                     const newVal = tt[key];
@@ -67,7 +68,7 @@ export default function devTools({ timeTravel = true } = {}) {
 
                   return s;
                 }, "Time Travel")
-            ));
+            );
         }
 
         // send devtools an state update message
@@ -78,7 +79,7 @@ export default function devTools({ timeTravel = true } = {}) {
 
     dispose: () => {
       const subscriptionKeys = Object.keys(subscriptions);
-      for (let i = 0, len = subscriptionKeys.length; i < len; i++) {
+      for (let i = 0, len = subscriptionKeys.length; i < len; i += 1) {
         const key = subscriptionKeys[i];
         subscriptions[key]();
         delete subscriptions[key];

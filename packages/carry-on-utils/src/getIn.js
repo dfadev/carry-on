@@ -1,9 +1,8 @@
-/** @format **/
 import toPath from "./toPath";
 
 export function getInA(state, path, def) {
   let current = state;
-  for (let i = 0; i < path.length; i++) {
+  for (let i = 0; i < path.length; i += 1) {
     const key = path[i];
     if (
       current === undefined ||

@@ -1,6 +1,6 @@
 import { getStore, deleteStore, connect, register, watch, Watch } from "../src";
 
-test("watch", async () => {
+test("watch", () => {
   Watch.Debug = true;
   Watch.Verbose = true;
 

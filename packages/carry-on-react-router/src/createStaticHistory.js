@@ -1,7 +1,7 @@
 import { createLocation, createPath } from "history";
 
 function addLeadingSlash(path) {
-  return path.charAt(0) === "/" ? path : "/" + path;
+  return path.charAt(0) === "/" ? path : `/${path}`;
 }
 
 function addBasename(basename, location) {

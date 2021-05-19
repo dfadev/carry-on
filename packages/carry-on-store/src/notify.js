@@ -1,4 +1,3 @@
-/** @format **/
 import { compareChanges } from "./changeTracking";
 
 export default function notify() {
@@ -21,16 +20,19 @@ export default function notify() {
 
         const notifySubs = () => {
           const notifyThese = [];
-          for (const item of subscribers.entries()) {
-            const [fn, watch] = item;
+          const entries = subscribers.entries();
+          let entry = entries.next();
+          while (!entry.done) {
+            const [fn, watch] = entry.value;
             if (watch === undefined) notifyThese.push(fn);
             else {
               const hasChanges = compareChanges(changes, watch);
               if (hasChanges) notifyThese.push(fn);
             }
+            entry = entries.next();
           }
 
-          for (let i = 0, len = notifyThese.length; i < len; i++)
+          for (let i = 0, len = notifyThese.length; i < len; i += 1)
             notifyThese[i](state, changes);
         };
 

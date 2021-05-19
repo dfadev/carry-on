@@ -1,12 +1,11 @@
-/** @format **/
 import toPath from "./toPath";
 
 // Originally from micro-dash
 export function update(object, path, updater) {
   if (object && path.length) {
     let current = object;
-    const length = path.length;
-    for (let i = 0; i < length; ++i) {
+    const { length } = path;
+    for (let i = 0; i < length; i += 1) {
       const key = path[i];
       let value = current[key];
       if (i < length - 1) {

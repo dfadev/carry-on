@@ -1,4 +1,3 @@
-/** @format **/
 import {
   isFunction,
   isEqual,
@@ -35,7 +34,7 @@ export default ({
       ? debouncePromise(onValidate({ set, get }), 200)
       : undefined;
 
-    const typeSuffix = " (" + id + ")";
+    const typeSuffix = ` (${id})`;
 
     const calcPristine = form => isEqual(form.origState.values, form.values);
 
@@ -60,18 +59,17 @@ export default ({
 
         const form = curForm(state);
         form.isValidating = true;
-        const setErrors = form.setErrors;
+        const { setErrors } = form;
 
-        cancellable && cancellable();
+        if (cancellable) cancellable();
         cancellable = makeCancelable(
           debounceValidate(form.values),
           errorInfo => setErrors(errorInfo) && onSuccess && onSuccess(),
           () => {
-            set(
-              curState => (curForm(curState).isValidating = false),
-              "Validation Threw" + typeSuffix
-            );
-            onSuccess && onSuccess();
+            set(curState => {
+              curForm(curState).isValidating = false;
+            }, `Validation Threw${typeSuffix}`);
+            if (onSuccess) onSuccess();
           }
         );
       },
@@ -89,7 +87,7 @@ export default ({
           const pristine = calcPristine(form);
           if (pristine !== form.isPristine) form.isPristine = pristine;
           form.validate(state);
-        }, "Set Field Value" + typeSuffix),
+        }, `Set Field Value${typeSuffix}`),
 
       setValues: values =>
         set(state => {
@@ -98,21 +96,22 @@ export default ({
           const pristine = calcPristine(form);
           if (pristine !== form.isPristine) form.isPristine = pristine;
           form.validate(state);
-        }, "Set Values" + typeSuffix),
+        }, `Set Values${typeSuffix}`),
 
       setInitialValues: values =>
         set(state => {
           const form = curForm(state);
           const vals = isFunction(values) ? values({ set, get }) : values;
-          form.initialValues = form.values = vals;
+          form.initialValues = vals;
+          form.values = vals;
           form.isPristine = true;
           form.isValid = true;
-        }, "Set Initial Values" + typeSuffix),
+        }, `Set Initial Values${typeSuffix}`),
 
       setFieldError: (fieldName, error) =>
         set(state => {
           mutateSet(curForm(state).errors, fieldName, error);
-        }, "Set Field Error" + typeSuffix),
+        }, `Set Field Error${typeSuffix}`),
 
       setErrors: ({ errors, isValid, merge = true }) =>
         set(state => {
@@ -124,48 +123,48 @@ export default ({
           if (form.isValid !== isValid) form.isValid = isValid;
 
           if (form.isValidating) form.isValidating = false;
-        }, "Set Errors" + typeSuffix),
+        }, `Set Errors${typeSuffix}`),
 
       setFieldVisited: (fieldName, visited) =>
         set(state => {
           mutateSet(curForm(state).visited, fieldName, visited);
-        }, "Set Field Visited" + typeSuffix),
+        }, `Set Field Visited${typeSuffix}`),
 
       setFieldTouched: (fieldName, touched) =>
         set(state => {
           mutateSet(curForm(state).touched, fieldName, touched);
-        }, "Set Field Touched" + typeSuffix),
+        }, `Set Field Touched${typeSuffix}`),
 
       setTouched: (touched, merge = true) =>
         set(state => {
           const form = curForm(state);
           if (merge) mutateMerge(form.touched, touched);
           else form.touched = touched;
-        }, "Set Touched" + typeSuffix),
+        }, `Set Touched${typeSuffix}`),
 
       reset: e => {
-        e && e.preventDefault();
+        if (e) e.preventDefault();
         const s = set(state => {
           const formState = curForm(state);
-          const origState = formState.origState;
+          const { origState } = formState;
           const newFormState = {
             ...formState,
             ...origState,
             origState
           };
           mutateSet(state, id, newFormState);
-        }, "Reset Form" + typeSuffix);
+        }, `Reset Form${typeSuffix}`);
         if (onReset === undefined) {
           const formStateOnReset = curForm().onReset;
           if (formStateOnReset) onReset = () => formStateOnReset;
         }
         const realOnReset = onReset && onReset({ set, get });
-        realOnReset && realOnReset(curForm().values);
+        if (realOnReset) realOnReset(curForm().values);
         return s;
       },
 
       submit: e => {
-        e && e.preventDefault();
+        if (e) e.preventDefault();
         if (
           get(state => {
             const form = curForm(state);
@@ -194,7 +193,7 @@ export default ({
                   form.origState = undefined;
                   form.origState = { ...form };
                 }
-              }, "End Submit" + typeSuffix);
+              }, `End Submit${typeSuffix}`);
             })
             .catch(() =>
               set(curState => {
@@ -208,7 +207,7 @@ export default ({
           const form = curForm(state);
           form.isSubmitting = true;
           form.validate(state, finishSubmit);
-        }, "Begin Submit" + typeSuffix);
+        }, `Begin Submit${typeSuffix}`);
 
         if (!curForm(beginSubmitState).isValidating) finishSubmit();
       }

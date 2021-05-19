@@ -33,23 +33,24 @@ const NavLink = carryOn(
     },
     state
   ) => {
-    const hist = getIn(state, history),
-      location = loc || hist.location,
-      path = typeof to === "object" ? to.pathname : to,
-      escapedPath = path && path.replace(escapedRE, "\\$1"),
-      match = hist.matchPath({
-        path: escapedPath,
-        exact,
-        strict,
-        sensitive
-      }),
-      isActive = !!(isActiveProp ? isActiveProp(match, location) : match),
-      className = isActive
-        ? joinClassnames(classNameProp, activeClassName)
-        : classNameProp,
-      style = isActive ? { ...styleProp, ...activeStyle } : styleProp,
-      { handleClick, getHref } = hist;
+    const hist = getIn(state, history);
+    const location = loc || hist.location;
+    const path = typeof to === "object" ? to.pathname : to;
+    const escapedPath = path && path.replace(escapedRE, "\\$1");
+    const match = hist.matchPath({
+      path: escapedPath,
+      exact,
+      strict,
+      sensitive
+    });
+    const isActive = !!(isActiveProp ? isActiveProp(match, location) : match);
+    const className = isActive
+      ? joinClassnames(classNameProp, activeClassName)
+      : classNameProp;
+    const style = isActive ? { ...styleProp, ...activeStyle } : styleProp;
+    const { handleClick, getHref } = hist;
 
+    /* eslint-disable jsx-a11y/anchor-has-content */
     return (
       <a
         {...rest}

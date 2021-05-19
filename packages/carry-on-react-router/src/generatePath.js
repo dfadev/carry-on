@@ -10,7 +10,7 @@ function compilePath(path) {
   const generator = compile(path);
   if (cacheCount < cacheLimit) {
     cache[path] = generator;
-    cacheCount++;
+    cacheCount += 1;
   }
 
   return generator;

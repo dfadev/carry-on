@@ -2,15 +2,18 @@ import React from "react";
 
 class Lifecycle extends React.Component {
   componentDidMount() {
-    if (this.props.onMount) this.props.onMount.call(this, this);
+    const { onMount } = this.props;
+    if (onMount) onMount.call(this, this);
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.onUpdate) this.props.onUpdate.call(this, this, prevProps);
+    const { onUpdate } = this.props;
+    if (onUpdate) onUpdate.call(this, this, prevProps);
   }
 
   componentWillUnmount() {
-    if (this.props.onUnmount) this.props.onUnmount.call(this, this);
+    const { onUnmount } = this.props;
+    if (onUnmount) onUnmount.call(this, this);
   }
 
   render() {

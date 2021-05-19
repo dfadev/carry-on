@@ -12,6 +12,7 @@ const Redirect = carryOn(
     const hist = getIn(state, history);
     const method = push ? hist.push : hist.replace;
 
+    /* eslint-disable no-nested-ternary */
     const location = createLocation(
       computedMatch
         ? typeof to === "string"

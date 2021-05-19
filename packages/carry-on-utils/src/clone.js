@@ -1,4 +1,3 @@
-/** @format **/
 export default function clone(value) {
   if (Array.isArray(value)) return value.slice();
   const type = typeof value;

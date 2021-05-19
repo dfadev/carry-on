@@ -1,4 +1,3 @@
-/** @format **/
 import produce from "immer";
 import {
   deproxify,
@@ -18,7 +17,7 @@ export const initMessageType = "Register";
 // wrap a function with middleware
 const applyMiddleware = (middlewares, fn, apply) => {
   middlewares = forceArray(middlewares);
-  for (let i = 0, len = middlewares.length; i < len; i++)
+  for (let i = 0, len = middlewares.length; i < len; i += 1)
     fn = apply(middlewares[i], fn);
 
   return fn;
@@ -28,14 +27,14 @@ const applyMiddleware = (middlewares, fn, apply) => {
 const createPlugins = (store, curState, plugins) => {
   const { id, get, set, getChanges, getPatches, isNested, wrap } = store;
 
-  for (let i = 0, len = plugins.length; i < len; i++) {
+  for (let i = 0, len = plugins.length; i < len; i += 1) {
     const { middleware, state, dispose } = plugins[i];
 
     // update middleware chain
     if (middleware) {
       const middlewares = forceArray(middleware);
 
-      for (let j = 0, jlen = middlewares.length; j < jlen; j++)
+      for (let j = 0, jlen = middlewares.length; j < jlen; j += 1)
         store.d = applyMiddleware(
           middlewares[j],
           store.d,
@@ -58,7 +57,7 @@ const createPlugins = (store, curState, plugins) => {
       store.plugState = curState;
       const states = forceArray(state);
 
-      for (let j = 0, jlen = states.length; j < jlen; j++)
+      for (let j = 0, jlen = states.length; j < jlen; j += 1)
         mutateMerge(
           curState,
           isFunction(states[j]) ? states[j]({ id, get, set }) : states[j]
@@ -85,7 +84,8 @@ export const deleteStore = id => {
   if (!store) return;
 
   // call all dispose callbacks
-  for (let i = 0, len = store.dispose.length; i < len; i++) store.dispose[i]();
+  for (let i = 0, len = store.dispose.length; i < len; i += 1)
+    store.dispose[i]();
 
   delete stores[id];
 };
@@ -94,13 +94,14 @@ export const deleteStore = id => {
 export const initStores = () => {
   // delete all existing stores
   const storeKeys = Object.keys(stores);
-  for (let i = 0, len = storeKeys.length; i < len; i++)
+  for (let i = 0, len = storeKeys.length; i < len; i += 1)
     deleteStore(storeKeys[i]);
 
   stores = {};
 };
 
 // lookup a store
+/* eslint-disable-next-line no-return-assign */
 export const getStore = id => stores[id] || (stores[id] = create(id));
 
 // register state
@@ -168,7 +169,8 @@ export const connect = (id, wrap) => {
         return state;
       };
 
-      return (store.state = produce(store.state, rootSet, patcher));
+      store.state = produce(store.state, rootSet, patcher);
+      return store.state;
     }
 
     action(store.nestedState);

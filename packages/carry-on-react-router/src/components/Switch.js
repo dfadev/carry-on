@@ -9,7 +9,8 @@ const Switch = carryOn(
     const hist = getIn(state, history);
     const location = loc || hist.location;
 
-    let element, match;
+    let element;
+    let match;
 
     React.Children.forEach(children, child => {
       if (match == null && React.isValidElement(child)) {

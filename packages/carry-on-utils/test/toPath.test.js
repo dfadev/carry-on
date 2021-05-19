@@ -1,4 +1,3 @@
-/** @format **/
 import toPath from "../src/toPath";
 
 test("should handle a leading dot", () => {

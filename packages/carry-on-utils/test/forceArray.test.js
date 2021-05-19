@@ -1,4 +1,3 @@
-/** @format **/
 import forceArray from "../src/forceArray";
 
 describe("forceArray()", () => {

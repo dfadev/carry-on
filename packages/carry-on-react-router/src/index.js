@@ -1,4 +1,3 @@
-/** @format **/
 export { default as router } from "./router";
 export { default as matchPath } from "./matchPath";
 export { default as Link } from "./components/Link";

@@ -1,4 +1,3 @@
-/** @format **/
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import { carryOn } from "carry-on-react";
@@ -16,7 +15,7 @@ const Routes = carryOn(
     } else routeList = getIn(state, routes);
 
     let found;
-    for (let i = 0, len = routeList.length; i < len; i++) {
+    for (let i = 0, len = routeList.length; i < len; i += 1) {
       const entry = routeList[i];
       if (entry !== undefined) {
         if (entry.route === undefined) {

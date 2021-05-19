@@ -1,4 +1,3 @@
-/** @format **/
 import keys from "./keys";
 
 const colors = {
@@ -26,13 +25,12 @@ export default function logger(id, out = console.log) {
     return console.log;
 
   const color = clr[currentClr];
-  currentClr++;
+  currentClr += 1;
   if (currentClr >= 6) currentClr = 0;
 
-  const idStyle = "color:" + color + ";font-weight:900";
-  const actionStyle =
-    "color:" + colors.yellow + ";background-color:" + colors.blue;
-  const actionStyle2 = "color:" + colors.yellow;
+  const idStyle = `color:${color};font-weight:900`;
+  const actionStyle = `color:${colors.yellow};background-color:${colors.blue}`;
+  const actionStyle2 = `color:${colors.yellow}`;
 
   return function log(action, ...result) {
     let actStyle;

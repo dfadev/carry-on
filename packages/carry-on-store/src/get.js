@@ -1,4 +1,3 @@
-/** @format **/
 import { isString } from "carry-on-utils";
 import { getStore } from "./store";
 

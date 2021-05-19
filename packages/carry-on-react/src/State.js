@@ -1,4 +1,3 @@
-/** @format **/
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from "react";
 import {
@@ -30,6 +29,50 @@ export default class State extends Component {
     this.setup(true);
   }
 
+  componentDidMount() {
+    // call onMount handler
+    const { onMount, from } = this.props;
+
+    if (!onMount) return;
+
+    const state = connect(from);
+    if (onMount.length === 2) onMount(this.props, state);
+    else onMount(state);
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (this.prevStoreState !== this.storeState) {
+      if (this.debug) this.log("shouldComponentUpdate", "store state change");
+      return true;
+    }
+
+    // ignore children changes -- if you need a reset use render property
+    // instead of children
+    if (!shallowEqual(this.props, nextProps, ignoreProps)) {
+      if (this.debug) this.log("shouldComponentUpdate", "props change");
+      this.setup();
+      return true;
+    }
+
+    if (this.debug && this.verbose)
+      this.log("-shouldComponentUpdate", "skip render");
+
+    return false;
+  }
+
+  componentWillUnmount() {
+    this.reset();
+
+    // call onUnmount handler
+    const { onUnmount, from } = this.props;
+
+    if (!onUnmount) return;
+
+    const state = connect(from);
+    if (onUnmount.length === 2) onUnmount(this.props, state);
+    else onUnmount(state);
+  }
+
   // setup this component
   setup = first => {
     // setup debugging
@@ -53,6 +96,25 @@ export default class State extends Component {
     else this.onStateChange = this.origOnStateChange;
   };
 
+  // setup debugging
+  setupDebug = () => {
+    // set component debug flag
+    const { debug, verbose, id, path } = this.props;
+
+    this.debug = State.Debug || debug;
+    if (!debug) return;
+
+    // set component verbose flag
+    this.verbose = State.Verbose || verbose;
+
+    // setup log prefix and logger
+    let loggerId = id ? `State:${id}` : "State";
+    if (path) loggerId += `:${path}`;
+
+    // create logger function
+    this.log = logger(loggerId);
+  };
+
   // reset internal state
   reset = () => {
     this.watch = undefined;
@@ -60,68 +122,11 @@ export default class State extends Component {
     this.prevFinalState = undefined;
 
     // cancel any pending debounced/throttled state changes
-    this.onStateChange &&
-      this.onStateChange.cancel &&
+    if (this.onStateChange && this.onStateChange.cancel)
       this.onStateChange.cancel();
 
     // unsubscribe from state changes
-    this.unsubscribe && this.unsubscribe();
-  };
-
-  componentDidMount() {
-    // call onMount handler
-    if (!this.props.onMount) return;
-    const state = connect(this.props.from);
-    if (this.props.onMount.length === 2) this.props.onMount(this.props, state);
-    else this.props.onMount(state);
-  }
-
-  componentWillUnmount() {
-    this.reset();
-
-    // call onUnmount handler
-    if (!this.props.onUnmount) return;
-    const state = connect(this.props.from);
-    if (this.props.onUnmount.length === 2)
-      this.props.onUnmount(this.props, state);
-    else this.props.onUnmount(state);
-  }
-
-  shouldComponentUpdate(nextProps) {
-    if (this.prevStoreState !== this.storeState) {
-      if (this.debug) this.log("shouldComponentUpdate", "store state change");
-      return true;
-    }
-
-    // ignore children changes -- if you need a reset use render property
-    // instead of children
-    if (!shallowEqual(this.props, nextProps, ignoreProps)) {
-      if (this.debug) this.log("shouldComponentUpdate", "props change");
-      this.setup();
-      return true;
-    }
-
-    if (this.debug && this.verbose)
-      this.log("-shouldComponentUpdate", "skip render");
-
-    return false;
-  }
-
-  // setup debugging
-  setupDebug = () => {
-    // set component debug flag
-    this.debug = State.Debug || this.props.debug;
-    if (!this.debug) return;
-
-    // set component verbose flag
-    this.verbose = State.Verbose || this.props.verbose;
-
-    // setup log prefix and logger
-    let id = this.props.id ? "State:" + this.props.id : "State";
-    if (this.props.path) id += ":" + this.props.path;
-
-    // create logger function
-    this.log = logger(id);
+    if (this.unsubscribe) this.unsubscribe();
   };
 
   // process a state change
@@ -132,12 +137,10 @@ export default class State extends Component {
     }
 
     // log if these changes have been delayed via debounce or throttle
-    if (this.debug && (this.props.debounce || this.props.throttle))
-      this.log(
-        (this.props.debounce && "debounced") || "throttled",
-        "changes",
-        changes
-      );
+    const { debounce: d, throttle: t } = this.props;
+
+    if (this.debug && (d || t))
+      this.log((d && "debounced") || "throttled", "changes", changes);
 
     this.trapSelect(state);
     this.forceUpdate();
@@ -152,7 +155,7 @@ export default class State extends Component {
 
   // query state, potentially watching for fields accessed
   trapStateQuery = (state, select) => {
-    const { from, path, default: def, constant } = this.props;
+    const { from, path, default: def, constant, strict } = this.props;
 
     // handle constant
     if (constant) {
@@ -165,7 +168,7 @@ export default class State extends Component {
     }
 
     // handle watched fields index is not yet available or strict is on
-    if (this.watch === undefined || this.props.strict) {
+    if (this.watch === undefined || strict) {
       // execute a query, watching the fields accessed
       const [finalState, watch] = watchGet(state, select, path, def, from);
       this.watch = watch;
@@ -174,11 +177,7 @@ export default class State extends Component {
       if (this.debug) this.log("watch", this.watch);
 
       // subscribe to changes specified by the watch index
-      this.unsubscribe = subscribe(
-        this.stateSubscriber,
-        this.watch,
-        this.props.from
-      );
+      this.unsubscribe = subscribe(this.stateSubscriber, this.watch, from);
 
       return finalState;
     }
@@ -195,9 +194,8 @@ export default class State extends Component {
   trapSelect = state => {
     // return original state when there's no select because fields are tracked
     // in the render function
-    this.storeState = this.props.select
-      ? this.trapStateQuery(state, this.props.select)
-      : state;
+    const { select } = this.props;
+    this.storeState = select ? this.trapStateQuery(state, select) : state;
   };
 
   // trap a render function, tracking fields accessed
@@ -212,7 +210,9 @@ export default class State extends Component {
     }
 
     // constants only execute render function once
-    if (this.props.constant && this.prevFinalState) {
+    const { constant } = this.props;
+
+    if (constant && this.prevFinalState) {
       // log a skip message because this update could probably be fixed upstream
       if (this.debug && this.verbose) this.log("-skip render", "constant");
 
@@ -224,7 +224,7 @@ export default class State extends Component {
 
     // log the render
     if (this.debug)
-      if (this.props.constant) this.log("render", "fn", "constant");
+      if (constant) this.log("render", "fn", "constant");
       else this.log("render", "fn");
 
     // cache the store state and the final state (result of render)
@@ -234,17 +234,19 @@ export default class State extends Component {
   };
 
   render() {
+    const { children, render, select, constant } = this.props;
+
     // select children or render as the render function
-    const renderFn = this.props.children || this.props.render;
+    const renderFn = children || render;
 
     // no render function renders nothing
     if (!renderFn) return null;
 
     // handle select query
-    if (this.props.select) {
+    if (select) {
       // log a select render
       if (this.debug)
-        if (this.props.constant) this.log("render", "select", "constant");
+        if (constant) this.log("render", "select", "constant");
         else this.log("render", "select");
 
       // update prev store state

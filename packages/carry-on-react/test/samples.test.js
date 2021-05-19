@@ -1,4 +1,3 @@
-/** @format **/
 import React, { Fragment } from "react";
 import { State } from "../src";
 import {

@@ -1,4 +1,3 @@
-/** @format **/
 import { default as mutateSet, mutateSetA as set } from "../src/mutateSet";
 
 const constant = value => () => value;

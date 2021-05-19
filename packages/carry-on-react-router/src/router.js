@@ -1,4 +1,3 @@
-/** @format **/
 import { mutateSetA, mutateMerge, toPath, getInA } from "carry-on-utils";
 import { createLocation, createBrowserHistory } from "history";
 import matchPath from "./matchPath";
