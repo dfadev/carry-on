@@ -26,7 +26,7 @@ register(storeId, {
 connect(storeId);
 
 // simple vocabulary for watch readability
-const positiveValue = ({ value }) => value > -1;
+const positiveValue = ({ value }) => value >= 0;
 const logValue = ({ logs, value }) => logs.push("watch value=" + value);
 const bigLogs = ({ logs: { length } }) => length > 10;
 const trimLogs = ({ logs }) => logs.shift();
