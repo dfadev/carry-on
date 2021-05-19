@@ -11,7 +11,7 @@ import {
   watch,
   Watch
 } from "carry-on-store";
-import { State } from "carry-on-react";
+import { State, carryOn } from "carry-on-react";
 import {
   Form,
   Field,
@@ -52,6 +52,7 @@ const ReactLiveScope = {
   watch,
   Watch,
   State,
+  carryOn,
   Form,
   Field,
   FormButtons,

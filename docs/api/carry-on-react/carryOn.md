@@ -2,20 +2,18 @@
 id: carryOn
 title: carryOn
 ---
+
 ## Import
 
 ```js
-
 import { carryOn } from "carry-on-react";
-
 ```
 
 ## `carryOn(`_`opt`_`,`_`renderFn`_`)`
 
 A convenience function for creating a React component that can access store state.
 
-```js
-
+```js live noInline
 import { carryOn } from "carry-on-react";
 
 const Nav = carryOn((props, state) => (
@@ -62,7 +60,7 @@ const App = carryOn(
   // Use function parameter to specify render function
   (
     // Component props
-    { title, className },
+    { title },
     // Store state
     {
       site: {
@@ -70,7 +68,7 @@ const App = carryOn(
       }
     }
   ) => (
-    <div className={className}>
+    <div>
       <h1>{title}</h1>
       <Nav />
       <Menu />
@@ -81,11 +79,12 @@ const App = carryOn(
   )
 );
 
+render(<App title="CarryOn" />);
 ```
 
 ## Parameters
 
 | Parameter | Description                                                                            |
 | --------- | -------------------------------------------------------------------------------------- |
-| opt       | An object specifying the props to pass to the underlying `State` component.     |
+| opt       | An object specifying the props to pass to the underlying `State` component.            |
 | renderFn  | A render function called with props and store state. It should return a React element. |
