@@ -1,5 +1,5 @@
 /** @format **/
-export * from "./proxyState";
+export { isProxyfied, deproxify, proxyState } from "./proxyState";
 export { default as debouncePromise } from "debounce-promise";
 export { default as forceArray } from "./forceArray";
 export { default as getIn, getInA } from "./getIn";
