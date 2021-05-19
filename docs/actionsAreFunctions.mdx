@@ -7,6 +7,9 @@ An action function mutates state and is stored as part of the state it mutates.
 The state an action function modifies must be modified by code executing inside a call to the `set` function provided by the store when registering state.
 
 ```jsx live noInline
+import { register } from "carry-on-store";
+import { State } from "carry-on-react";
+
 const storeId = "actionsAreFunctions";
 
 register(
