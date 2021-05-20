@@ -102,7 +102,7 @@ export default class State extends Component {
     const { debug, verbose, id, path } = this.props;
 
     this.debug = State.Debug || debug;
-    if (!debug) return;
+    if (!this.debug) return;
 
     // set component verbose flag
     this.verbose = State.Verbose || verbose;
