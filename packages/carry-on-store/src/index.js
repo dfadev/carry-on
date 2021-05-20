@@ -10,7 +10,9 @@ export {
   connect,
   subscribe,
   watchGet,
-  initMessageType
+  initMessageType,
+  debugStore,
+  debugStores
 } from "./store";
 export { compareChanges, calculateChanges } from "./changeTracking";
 export { watch, Watch } from "./watch";

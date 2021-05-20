@@ -5,6 +5,7 @@ import {
   getIn,
   isFunction,
   isString,
+  logger,
   mutateMerge,
   proxyState
 } from "carry-on-utils";
@@ -13,6 +14,12 @@ import { calculateChanges } from "./changeTracking";
 
 // middleware initialize message type
 export const initMessageType = "Register";
+
+// debug all stores flag
+let Debug = false;
+export function debugStores(enabled) {
+  Debug = enabled;
+}
 
 // wrap a function with middleware
 const applyMiddleware = (middlewares, fn, apply) => {
@@ -73,7 +80,13 @@ const createPlugins = (store, curState, plugins) => {
 };
 
 // create a store
-const create = id => ({ id, dispose: [], pending: [], notify: notify() });
+const create = id => ({
+  id,
+  dispose: [],
+  pending: [],
+  notify: notify(),
+  log: logger(id || "")
+});
 
 // a map of stores
 let stores = {};
@@ -114,22 +127,28 @@ export const register = (init, id) => {
   }
 
   const store = getStore(id);
-  init = forceArray(init);
+  const inits = forceArray(init);
   // queue if no set available yet
-  if (store.set)
+  if (store.set) {
+    if (Debug || store.debug) store.log("register queued", init);
     return store.set(
-      state => createPlugins(store, state, init),
+      state => createPlugins(store, state, inits),
       initMessageType
     );
+  }
 
-  store.pending.push(...init);
+  if (Debug || store.debug) store.log("register", init);
+  store.pending.push(...inits);
   return undefined;
 };
 
 // connect a store --> register pending state, setup dispatch, initialize state
 export const connect = (id, wrap) => {
   const store = getStore(id);
-  if (store.set) return store.state;
+  if (store.set) {
+    // if (Debug || store.debug) store.log("reconnect", store.state);
+    return store.state;
+  }
 
   // get provides either the current state or the trapped state
   store.get = action => {
@@ -138,6 +157,7 @@ export const connect = (id, wrap) => {
     else if (store.trappedState) state = store.trappedState.state;
     else state = store.state;
 
+    if (Debug || store.debug) store.log("get", state);
     return action ? action(state) : state;
   };
 
@@ -149,6 +169,8 @@ export const connect = (id, wrap) => {
   const patcher = patches => {
     store.patches = patches;
     store.changes = calculateChanges(patches);
+    if (Debug || store.debug)
+      store.log("getChanges", "patches", patches, "changes", store.changes);
   };
 
   store.nestedSet = false;
@@ -166,6 +188,7 @@ export const connect = (id, wrap) => {
           store.nestedSet = false;
           store.nestedState = undefined;
         }
+        if (Debug || store.debug) store.log("set");
         return state;
       };
 
@@ -173,6 +196,7 @@ export const connect = (id, wrap) => {
       return store.state;
     }
 
+    if (Debug || store.debug) store.log("nested set", action);
     action(store.nestedState);
     return store.nestedState;
   };
@@ -191,6 +215,8 @@ export const connect = (id, wrap) => {
 
   // initialize middleware with state
   store.set(state => state, initMessageType);
+  if (Debug || store.debug) store.log("connect", "state", store.state);
+
   return store.state;
 };
 
@@ -212,5 +238,10 @@ export function watchGet(state, select, path = "", def, id) {
   const deproxified = deproxify(selectedState);
   const finalState = deproxified !== undefined ? deproxified : selectedState;
 
+  if (Debug || store.debug) store.log("watchGet", "watch", watch);
   return [finalState, watch];
+}
+
+export function debugStore(id, val = true) {
+  getStore(id).debug = val;
 }

@@ -23,6 +23,7 @@ export class Watch {
 
     // setup the initial store state, registering state if requested
     if (reg) {
+      if (this.debug) this.log("setup", "registering state", reg);
       let state = register(reg, from);
       if (state === undefined) state = connect(from, this.render);
       this.storeState = state;

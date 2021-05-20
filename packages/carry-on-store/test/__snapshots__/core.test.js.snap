@@ -25,6 +25,42 @@ exports[`get with action 1`] = `
 + }"
 `;
 
+exports[`getStore 1`] = `
+Object {
+  "dispose": Array [],
+  "id": undefined,
+  "log": [Function],
+  "notify": Object {
+    "plugin": Object {
+      "dispose": [Function],
+      "middleware": [Function],
+    },
+    "subscribe": [Function],
+    "subscribers": Map {},
+  },
+  "pending": Array [],
+}
+`;
+
+exports[`getStore named 1`] = `
+Object {
+  "dispose": Array [],
+  "id": "store1",
+  "log": [Function],
+  "notify": Object {
+    "plugin": Object {
+      "dispose": [Function],
+      "middleware": [Function],
+    },
+    "subscribe": [Function],
+    "subscribers": Map {},
+  },
+  "pending": Array [],
+}
+`;
+
+exports[`getStore named 2`] = `Object {}`;
+
 exports[`nested set works 1`] = `
 Object {
   "lower": "value",
@@ -81,37 +117,3 @@ Object {
   "some": "state",
 }
 `;
-
-exports[`getStore 1`] = `
-Object {
-  "dispose": Array [],
-  "id": undefined,
-  "notify": Object {
-    "plugin": Object {
-      "dispose": [Function],
-      "middleware": [Function],
-    },
-    "subscribe": [Function],
-    "subscribers": Map {},
-  },
-  "pending": Array [],
-}
-`;
-
-exports[`getStore named 1`] = `
-Object {
-  "dispose": Array [],
-  "id": "store1",
-  "notify": Object {
-    "plugin": Object {
-      "dispose": [Function],
-      "middleware": [Function],
-    },
-    "subscribe": [Function],
-    "subscribers": Map {},
-  },
-  "pending": Array [],
-}
-`;
-
-exports[`getStore named 2`] = `Object {}`;
