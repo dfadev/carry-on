@@ -9,7 +9,9 @@ import {
   get,
   set,
   watch,
-  Watch
+  Watch,
+  debugStore,
+  debugStores
 } from "carry-on-store";
 import { State, carryOn } from "carry-on-react";
 import {
@@ -21,6 +23,9 @@ import {
 } from "carry-on-react-forms";
 import Inspector from "react-inspector";
 import theme from "./inspector-theme";
+
+debugStores(true);
+State.Debug = true;
 
 const opts = {
   objectAssign: Object.assign,
@@ -59,6 +64,8 @@ const ReactLiveScope = {
   FormContext,
   FormState,
   getStore,
+  debugStore,
+  debugStores,
   StateInspector: ({ from, select = s => ({ ...s }), ...rest }) => (
     <State from={from} select={select} {...rest}>
       {state => (
