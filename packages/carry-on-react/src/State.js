@@ -99,7 +99,7 @@ export default class State extends Component {
   // setup debugging
   setupDebug = () => {
     // set component debug flag
-    const { debug, verbose, id, path } = this.props;
+    const { debug, verbose, id, path, from } = this.props;
 
     this.debug = State.Debug || debug;
     if (!this.debug) return;
@@ -110,6 +110,7 @@ export default class State extends Component {
     // setup log prefix and logger
     let loggerId = id ? `State:${id}` : "State";
     if (path) loggerId += `:${path}`;
+    if (from) loggerId = `${from}.${loggerId}`;
 
     // create logger function
     this.log = logger(loggerId);
