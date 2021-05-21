@@ -18,4 +18,6 @@ for (let c of config.projects) {
     });
 }
 
+config.collectCoverageFrom = [ "**/src/*.js" ];
+
 module.exports = config;
