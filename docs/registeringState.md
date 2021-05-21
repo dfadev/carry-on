@@ -31,7 +31,7 @@ The function must return an object representing the initial state:
 const state = ({ id, get, set }) => ({
   counter: 0,
   inc: () => set(state => {
-    state.counter++;
+    state.counter += 1;
   })
 });
 

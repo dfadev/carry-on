@@ -26,17 +26,15 @@ register(
 );
 
 render(
-  <>
-    <State from={storeId}>
-      {state => (
-        <div>
-          <div>Counter: {state.counter}</div>
-          <button onClick={state.inc}>+</button>
-          <button onClick={state.dec}>-</button>
-        </div>
-      )}
-    </State>
-    <StateInspector from={storeId} />
-  </>
+  <State from={storeId}>
+    {({ counter, inc, dec }) => (
+      <>
+        <div>Counter: {counter}</div>
+        <button onClick={inc}>+</button>
+        <button onClick={dec}>-</button>
+        <StateInspector from={storeId} />
+      </>
+    )}
+  </State>
 );
 ```

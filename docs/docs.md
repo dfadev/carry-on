@@ -23,25 +23,21 @@ const storeId = "getStarted";
 register(storeId, {
   state: ({ set }) => ({
     counter: 0,
-    inc: () => set(state => { state.counter++; }),
-    dec: () => set(state => { state.counter--; })
+    inc: () => set(state => { state.counter += 1; }),
+    dec: () => set(state => { state.counter -= 1; })
   })
 });
 
-const App = () => (
-  <>
-    <State from={storeId}>
-      {state => (
-        <div>
-          <div>Counter: {state.counter}</div>
-          <button onClick={state.inc}>+</button>
-          <button onClick={state.dec}>-</button>
-        </div>
-      )}
-    </State>
-    <StateInspector from={storeId} />
-  </>
+render(
+  <State from={storeId}>
+    {({ counter, inc, dec }) => (
+      <>
+        <div>Counter: {counter}</div>
+        <button onClick={inc}>+</button>
+        <button onClick={dec}>-</button>
+        <StateInspector from={storeId} />
+      </>
+    )}
+  </State>
 );
-
-render(<App />);
 ```

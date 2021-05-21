@@ -34,7 +34,7 @@ const trimLogs = ({ logs }) => logs.shift();
 set(storeId, ({ subscriptions }) => {
   const interval = setInterval(() => {
     set(storeId, state => {
-      state.value++;
+      state.value += 1;
       state.logs.push("setInterval value=" + state.value);
     });
   }, 1000);
