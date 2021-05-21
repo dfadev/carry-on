@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import { get, initStores } from "carry-on-store";
 import Form from "../src/Form";
 import Field from "../src/Field";
-import { get, initStores } from "carry-on-store";
 
 beforeEach(() => initStores());
 

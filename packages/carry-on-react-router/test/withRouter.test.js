@@ -1,10 +1,10 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import { initStores, connect } from "carry-on-store";
+import * as ReactIs from "react-is";
 import { MemoryRouter, StaticRouter } from "../src/components/Router";
 import Route from "../src/components/Route";
 import withRouter from "../src/components/withRouter";
-import { initStores, connect } from "carry-on-store";
-import * as ReactIs from "react-is";
 
 describe("withRouter", () => {
   afterEach(() => {
@@ -32,7 +32,7 @@ describe("withRouter", () => {
   });
 
   it("provides the parent match as a prop to the wrapped component", () => {
-    let parentMatch, props;
+    let parentMatch; let props;
 
     const PropsChecker = withRouter(p => {
       props = p;
@@ -57,7 +57,7 @@ describe("withRouter", () => {
   });
 
   it("works when parent match is null", () => {
-    let parentMatch, props;
+    let parentMatch; let props;
 
     const PropChecker = withRouter(p => {
       props = p;

@@ -7,7 +7,7 @@ describe("isFunction()", () => {
   });
 
   test("should return true when passed a function", () => {
-    const result = isFunction(function () {});
+    const result = isFunction(() => {});
     expect(result).toBe(true);
   });
 

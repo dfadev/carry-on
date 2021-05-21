@@ -86,9 +86,9 @@ const tests = [
   }
 ];
 
-describe("shouldInstrument", function () {
-  tests.forEach(function (test) {
-    it("should " + test.should, function () {
+describe("shouldInstrument", () => {
+  tests.forEach((test) => {
+    it(`should ${  test.should}`, () => {
       expect(shouldInstrument(test.obj)).toBe(test.result);
     });
   });

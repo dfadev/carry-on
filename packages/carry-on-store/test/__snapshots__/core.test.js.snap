@@ -104,7 +104,7 @@ Object {
 }
 `;
 
-exports[`register with plugin, state function  1`] = `
+exports[`register with plugin, state function 1`] = `
 Object {
   "action": [Function],
   "some": "state",

@@ -11,18 +11,18 @@ describe("A <StaticRouter>", () => {
     initStores();
   });
 
-  //describe("with a history prop", () => {
-  //it("logs a warning", () => {
-  //jest.spyOn(console, "warn").mockImplementation(() => {});
+  // describe("with a history prop", () => {
+  // it("logs a warning", () => {
+  // jest.spyOn(console, "warn").mockImplementation(() => {});
 
-  //const history = {};
-  //renderStrict(<StaticRouter history={history} />, node);
+  // const history = {};
+  // renderStrict(<StaticRouter history={history} />, node);
 
-  //expect(console.warn).toHaveBeenCalledWith(
-  //expect.stringContaining("<StaticRouter> ignores the history prop")
-  //);
-  //});
-  //});
+  // expect(console.warn).toHaveBeenCalledWith(
+  // expect.stringContaining("<StaticRouter> ignores the history prop")
+  // );
+  // });
+  // });
 
   it("reports redirects on the context object", () => {
     const context = {};

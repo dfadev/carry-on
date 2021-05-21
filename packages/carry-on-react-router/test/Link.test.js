@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { initStores } from "carry-on-store";
 import { createMemoryHistory } from "history";
+import { render } from "@testing-library/react";
 import Link from "../src/components/Link";
 import { Router, HashRouter } from "../src/components/Router";
-import { render } from "@testing-library/react";
 
 beforeEach(() => {
   window.location.replace("/");
@@ -62,7 +62,7 @@ describe("A <Link>", () => {
   it("with no pathname, resolves using the current location", () => {
     const { asFragment } = render(
       <Router history={createMemoryHistory({ initialEntries: ["/somewhere"] })}>
-        <Link to={"?rendersWithPathname=true"}>link</Link>
+        <Link to="?rendersWithPathname=true">link</Link>
       </Router>
     );
     expect(asFragment()).toMatchSnapshot();

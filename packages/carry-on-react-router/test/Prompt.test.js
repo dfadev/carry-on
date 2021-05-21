@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { createMemoryHistory as createHistory } from "history";
+import { initStores } from "carry-on-store";
 import { MemoryRouter, Router } from "../src/components/Router";
 import Prompt from "../src/components/Prompt";
-import { initStores } from "carry-on-store";
 
 describe("A <Prompt>", () => {
   afterEach(() => {
@@ -28,7 +28,7 @@ describe("A <Prompt>", () => {
     });
 
     const history = createHistory({
-      getUserConfirmation: getUserConfirmation
+      getUserConfirmation
     });
 
     render(
@@ -52,7 +52,7 @@ describe("A <Prompt>", () => {
       });
 
       const history = createHistory({
-        getUserConfirmation: getUserConfirmation
+        getUserConfirmation
       });
 
       render(

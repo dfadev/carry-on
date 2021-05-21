@@ -103,30 +103,30 @@ describe("A <Switch>", () => {
     ).toMatchSnapshot();
   });
 
-  //it("handles subsequent redirects", () => {
-  //const App = (
-  //<MemoryRouter initialEntries={["/one"]}>
-  //<Switch>
-  //<Redirect path="/one" to="/two" />
-  //<Redirect path="/two" to="/three" />
-  //<Route path="/three" render={() => <h1>three</h1>} />
-  //</Switch>
-  //</MemoryRouter>
-  //);
+  // it("handles subsequent redirects", () => {
+  // const App = (
+  // <MemoryRouter initialEntries={["/one"]}>
+  // <Switch>
+  // <Redirect path="/one" to="/two" />
+  // <Redirect path="/two" to="/three" />
+  // <Route path="/three" render={() => <h1>three</h1>} />
+  // </Switch>
+  // </MemoryRouter>
+  // );
 
-  //const { asFragment, rerender } = render(App);
+  // const { asFragment, rerender } = render(App);
 
-  //expect(asFragment()).toMatchSnapshot();
-  //rerender(App);
-  //expect(asFragment()).toMatchSnapshot();
-  //rerender(App);
-  //expect(asFragment()).toMatchSnapshot();
+  // expect(asFragment()).toMatchSnapshot();
+  // rerender(App);
+  // expect(asFragment()).toMatchSnapshot();
+  // rerender(App);
+  // expect(asFragment()).toMatchSnapshot();
 
-  ////waitForRedirects(() => {
-  ////expect(node.innerHTML).toContain("three");
-  ////done();
-  ////});
-  //});
+  /// /waitForRedirects(() => {
+  /// /expect(node.innerHTML).toContain("three");
+  /// /done();
+  /// /});
+  // });
 
   it("handles comments", () => {
     expect(

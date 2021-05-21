@@ -191,7 +191,7 @@ test("register with plugins as non-array", () => {
   deleteStore();
 });
 
-test("register with plugin, state function ", () => {
+test("register with plugin, state function", () => {
   let pluginDispatchCalled = 0;
 
   const plugin = {
@@ -218,10 +218,10 @@ test("register with plugin, state function ", () => {
 });
 
 test("register with plugin, no state and set", () => {
-  let pluginDispatchCalled = 0;
+  const pluginDispatchCalled = 0;
 
   const plugin = {
-    //id: "custom"
+    // id: "custom"
   };
 
   register(plugin);
@@ -261,7 +261,7 @@ test("get returns trappedState when populated", () => {
 test("nested set works", () => {
   connect();
   const store = getStore();
-  const set = store.set;
+  const {set} = store;
   const rslt = set(state => {
     state.upper = "value";
     set(state => {

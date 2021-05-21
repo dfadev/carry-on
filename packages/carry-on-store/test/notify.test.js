@@ -8,9 +8,7 @@ test("plug snapshot", () => {
   const plug = {};
   let state = { plug };
   const query = () => state;
-  const set = (action, type) => {
-    return (state = action(state));
-  };
+  const set = (action, type) => (state = action(state));
 
   const notify = notifySubscribers();
   expect(notify).toMatchSnapshot();
@@ -20,10 +18,8 @@ test("subscribe/unsubscribe", () => {
   const plug = {};
   let state = { plug };
   const query = () => state;
-  let set = (action, type) => {
-    return (state = action(state));
-  };
-  let getChanges = () => [];
+  let set = (action, type) => (state = action(state));
+  const getChanges = () => [];
 
   const notify = notifySubscribers();
   expect(notify).toMatchSnapshot();

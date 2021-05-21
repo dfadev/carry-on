@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { State } from "../src";
 import {
   register,
   deleteStore,
@@ -14,6 +13,7 @@ import {
   fireEvent,
   waitForElement
 } from "@testing-library/react";
+import { State } from "../src";
 
 afterEach(() => {
   initStores();
@@ -76,15 +76,13 @@ test("two named stores", () => {
   const App = () => (
     <>
       <State from="store1">
-        {({ counter, inc, dec }) => {
-          return (
+        {({ counter, inc, dec }) => (
             <div>
               <div>Counter: {counter}</div>
               <button onClick={inc}>store1 +</button>
               <button onClick={dec}>store1 -</button>
             </div>
-          );
-        }}
+          )}
       </State>
       <State from="store2">
         {({ counter, inc, dec }) => (
@@ -364,9 +362,7 @@ test("path", () => {
 
   const App = () => (
     <State path="more.stuff.list[0].item">
-      {item => {
-        return <div>{item}</div>;
-      }}
+      {item => <div>{item}</div>}
     </State>
   );
 
@@ -388,9 +384,7 @@ test("path2", () => {
 
   const App = () => (
     <State path="oops.more.stuff.list[0].item" default="ok">
-      {item => {
-        return <div>{item}</div>;
-      }}
+      {item => <div>{item}</div>}
     </State>
   );
 
@@ -438,14 +432,14 @@ test("get returns undefined", () => {
   const store = {
     state: ({ set, get }) => ({
       log(msg) {
-        let rslt = get(state => {
-          return undefined;
-          //state.counter = 9999;
-          //return state;
-        });
+        const rslt = get(state => 
+           undefined
+          // state.counter = 9999;
+          // return state;
+        );
         if (rslt === undefined) {
           marker++;
-        } //else console.log(rslt);
+        } // else console.log(rslt);
       },
       counter: 0,
       inc: () => set(state => void state.counter++),
@@ -505,10 +499,10 @@ test("multiple select", () => {
             <div>Counter: {counter}</div>
             <State select={selectActions}>
               {({ inc, dec }) => (
-                <Fragment>
+                <>
                   <button onClick={inc}>+</button>
                   <button onClick={dec}>-</button>
-                </Fragment>
+                </>
               )}
             </State>
           </>
@@ -576,14 +570,14 @@ test("transaction/commit/rollback", () => {
   const App = () => (
     <State>
       {({ counter, inc, dec, beginClick, commitClick, rollbackClick }) => (
-        <Fragment>
+        <>
           <div>Counter: {counter}</div>
           <button onClick={inc}>+</button>
           <button onClick={dec}>-</button>
           <button onClick={beginClick}>begin tx</button>
           <button onClick={commitClick}>commit</button>
           <button onClick={rollbackClick}>rollback</button>
-        </Fragment>
+        </>
       )}
     </State>
   );
@@ -610,11 +604,11 @@ test("transaction/commit/rollback", () => {
   clickDiff("commit");
 
   clickDiff("commit");
-  //await wait(() => expect(commits).toBe(2));
+  // await wait(() => expect(commits).toBe(2));
   expect(commits).toBe(2);
   expect(commitException).toEqual(1);
   clickDiff("rollback");
-  //await wait(() => expect(rollbacks).toBe(2));
+  // await wait(() => expect(rollbacks).toBe(2));
   expect(rollbacks).toBe(2);
   expect(rollbackException).toEqual(1);
   deleteStore();
@@ -640,11 +634,11 @@ test("notifyListeners/subscribe/unsubscribe", () => {
   const App = () => (
     <State>
       {({ counter, inc, dec }) => (
-        <Fragment>
+        <>
           <div>Counter: {counter}</div>
           <button onClick={inc}>+</button>
           <button onClick={dec}>-</button>
-        </Fragment>
+        </>
       )}
     </State>
   );
@@ -685,7 +679,7 @@ test("State component can render empty and null children", () => {
   );
 
   const { asFragment, getByText } = render(<App />);
-  let dom = asFragment();
+  const dom = asFragment();
   expect(dom).toMatchSnapshot();
   deleteStore();
 });
@@ -731,9 +725,7 @@ test("path default value", () => {
 
   const App = () => (
     <State path="more.stuff.list[2].item" default="defaultValue">
-      {item => {
-        return <div>{item}</div>;
-      }}
+      {item => <div>{item}</div>}
     </State>
   );
 
@@ -777,11 +769,11 @@ test("custom plugin", () => {
   const App = () => (
     <State>
       {({ counter, inc, dec }) => (
-        <Fragment>
+        <>
           <div>Counter: {counter}</div>
           <button onClick={inc}>+</button>
           <button onClick={dec}>-</button>
-        </Fragment>
+        </>
       )}
     </State>
   );
@@ -811,13 +803,13 @@ test("custom plugin", () => {
 
 test("state can register", () => {});
 
-//xxtest("plugin can have array of set middleware", () => {
-////throw new Error("not implemented");
-//});
+// xxtest("plugin can have array of set middleware", () => {
+/// /throw new Error("not implemented");
+// });
 
-//xxtest("custom namespaced module", () => {
-////throw new Error("not implemented");
-//});
+// xxtest("custom namespaced module", () => {
+/// /throw new Error("not implemented");
+// });
 
 test("register with State", () => {
   const App = () => (
@@ -962,7 +954,7 @@ test("onmount/onunmount", () => {
 // select debug
 test("constant", () => {
   const App = () => (
-    <State register={{ state: { field: "value" } }} constant={true}>
+    <State register={{ state: { field: "value" } }} constant>
       {state => <div>{state.field.value}</div>}
     </State>
   );
@@ -977,8 +969,8 @@ test("constant debug verbose", () => {
     <State
       register={{ state: { field: "value" } }}
       constant
-      debug={true}
-      verbose={true}
+      debug
+      verbose
     >
       {state => <div>{state.field.value}</div>}
     </State>
@@ -991,7 +983,7 @@ test("constant debug verbose", () => {
 
 test("debug verbose", () => {
   const App = () => (
-    <State register={{ state: { field: "value" } }} debug={true} verbose={true}>
+    <State register={{ state: { field: "value" } }} debug verbose>
       {state => <div>{state.field.value}</div>}
     </State>
   );
@@ -1023,9 +1015,9 @@ test("select debug verbose constant", () => {
       path="field"
       register={{ state: { field: "value" } }}
       select={state => state.value}
-      debug={true}
-      verbose={true}
-      constant={true}
+      debug
+      verbose
+      constant
     >
       {state => <div>{state}</div>}
     </State>
@@ -1041,8 +1033,8 @@ test("select debug verbose", () => {
     <State
       register={{ state: { field: "value" } }}
       select={state => state.field.value}
-      debug={true}
-      verbose={true}
+      debug
+      verbose
     >
       {state => <div>{state}</div>}
     </State>
@@ -1060,7 +1052,7 @@ test("no changes", () => {
         state: ({ set }) => ({
           nop() {
             set(state => {
-              //state.field = "value";
+              // state.field = "value";
             });
           },
           field: "value"
@@ -1072,7 +1064,7 @@ test("no changes", () => {
   );
 
   const { asFragment, rerender } = render(<App />);
-  //expect(asFragment()).toMatchSnapshot();
+  // expect(asFragment()).toMatchSnapshot();
   get().nop();
 
   const rer = rerender(<App />);
@@ -1084,12 +1076,12 @@ test("no changes", () => {
 test("no changes with debug", () => {
   const App = () => (
     <State
-      debug={true}
+      debug
       register={{
         state: ({ set }) => ({
           nop() {
             set(state => {
-              //state.field = "value";
+              // state.field = "value";
             });
           },
           field: "value"
@@ -1101,7 +1093,7 @@ test("no changes with debug", () => {
   );
 
   const { asFragment, rerender } = render(<App />);
-  //expect(asFragment()).toMatchSnapshot();
+  // expect(asFragment()).toMatchSnapshot();
   get().nop();
 
   const rer = rerender(<App />);

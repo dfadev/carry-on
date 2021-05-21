@@ -67,9 +67,9 @@ const tests = [
   }
 ];
 
-describe("shallowEqual", function () {
-  tests.forEach(function (test) {
-    it("should " + test.should, function () {
+describe("shallowEqual", () => {
+  tests.forEach((test) => {
+    it(`should ${  test.should}`, () => {
       expect(shallowEqual(test.objA, test.objB)).toBe(test.result);
     });
   });

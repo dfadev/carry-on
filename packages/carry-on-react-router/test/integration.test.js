@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import { initStores } from "carry-on-store";
 import { MemoryRouter, Router } from "../src/components/Router";
 import Route from "../src/components/Route";
-import { initStores } from "carry-on-store";
 
 describe("Integration Tests", () => {
   afterEach(() => {

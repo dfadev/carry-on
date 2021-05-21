@@ -2,16 +2,16 @@ import clone from "../src/clone";
 import { forOwn } from "../src/forEach";
 import isObject from "../src/isObject";
 
-describe("clone()", function () {
-  test("should return an empty object if empty given", function () {
+describe("clone()", () => {
+  test("should return an empty object if empty given", () => {
     expect(clone({})).toEqual({});
   });
 
-  test("should return an object with the same properties", function () {
+  test("should return an object with the same properties", () => {
     expect(clone({ a: 1, b: 2, c: 3 })).toEqual({ a: 1, b: 2, c: 3 });
   });
 
-  test("should return an object with nested properties", function () {
+  test("should return an object with nested properties", () => {
     expect(clone({ a: 1, b: { foo: "bar" }, c: { bar: "foo" } })).toEqual({
       a: 1,
       b: { foo: "bar" },
@@ -19,17 +19,17 @@ describe("clone()", function () {
     });
   });
 
-  test("should not mutate the original object", function () {
-    let object = { a: 1, b: 2, c: 3 };
-    let result = clone(object);
+  test("should not mutate the original object", () => {
+    const object = { a: 1, b: 2, c: 3 };
+    const result = clone(object);
 
     expect(result).toEqual(object);
     expect(result).not.toBe(object);
   });
 
-  test("should shallow clone", function () {
-    let object = { a: 1, b: { foo: "bar" }, c: { bar: "foo" } };
-    let result = clone(object);
+  test("should shallow clone", () => {
+    const object = { a: 1, b: { foo: "bar" }, c: { bar: "foo" } };
+    const result = clone(object);
 
     expect(result).toEqual(object);
     expect(result).not.toBe(object);
@@ -59,7 +59,7 @@ describe("clone()", function () {
     "objects with object values": { b: ["B"], c: { C: 1 } }
   };
   forOwn(clonable, (object, kind) => {
-    test("should clone " + kind, () => {
+    test(`should clone ${  kind}`, () => {
       const actual = clone(object);
 
       expect(actual).toEqual(object);

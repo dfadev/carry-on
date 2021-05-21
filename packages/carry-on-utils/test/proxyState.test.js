@@ -41,9 +41,7 @@ describe("proxy", () => {
       key1: 1,
       key2: 2
     };
-    const A3 = Object.assign({}, A1, {
-      key1: 2
-    });
+    const A3 = { ...A1, key1: 2};
     const A4 = {
       key1: 1,
       key2: {
@@ -84,9 +82,7 @@ describe("proxy", () => {
       key1: 1,
       key2: 2
     };
-    const A3 = Object.assign({}, A1, {
-      key1: 2
-    });
+    const A3 = { ...A1, key1: 2};
     const A4 = {
       key1: 1,
       key2: A1.key2
@@ -167,11 +163,11 @@ describe("proxy", () => {
     const p0 = proxyState(A);
     const p1 = proxyState(p0.state.root);
     const p2 = proxyState(p1.state.b);
-    p2.state.c.d; //++;
+    p2.state.c.d; // ++;
 
     expect(p1.affected).toMatchSnapshot();
     expect(p2.affected).toMatchSnapshot();
-    p2.state.a; //++;
+    p2.state.a; // ++;
 
     expect(p1.affected).toMatchSnapshot();
     expect(p2.affected).toMatchSnapshot();
@@ -210,7 +206,7 @@ describe("proxy", () => {
     const O2 = Object.freeze(O1);
 
     const trapped = proxyState(O2);
-    const state = trapped.state;
+    const {state} = trapped;
     const read = state.a + state.b + state.c.d;
     expect(read).toEqual(7);
     expect(trapped.affected).toMatchSnapshot();
@@ -303,21 +299,21 @@ describe("proxy", () => {
       expect(p.affected).toMatchSnapshot();
     });
 
-    //it('should handle Map.iterator', () => {
-    //const A = {d: new Map([[1, 2]])};
-    //const p = proxyState(A);
-    //const B = p.state;
+    // it('should handle Map.iterator', () => {
+    // const A = {d: new Map([[1, 2]])};
+    // const p = proxyState(A);
+    // const B = p.state;
 
-    //const realMap = [];
-    //for (const item of new Map([[1, 2]]))
-    //realMap.push(item);
+    // const realMap = [];
+    // for (const item of new Map([[1, 2]]))
+    // realMap.push(item);
 
-    //const proxyMap = [];
-    //for (const item of B.d)
-    //proxyMap.push(item);
+    // const proxyMap = [];
+    // for (const item of B.d)
+    // proxyMap.push(item);
 
-    //expect(proxyMap).toEqual(realMap);
-    //})
+    // expect(proxyMap).toEqual(realMap);
+    // })
   });
 
   describe("set", () => {
@@ -337,9 +333,9 @@ describe("proxy", () => {
     expect(isProxyfied("1")).toBe(false);
   });
 
-  //it("deproxify", () => {
-  //expect(deproxify({ a: 1 })).toMatchSnapshot();
-  //const p = proxyState({ a: new Map([[1, { b: 2 }]]) });
-  //expect(deproxify(p.state.a)).toMatchSnapshot();
-  //});
+  // it("deproxify", () => {
+  // expect(deproxify({ a: 1 })).toMatchSnapshot();
+  // const p = proxyState({ a: new Map([[1, { b: 2 }]]) });
+  // expect(deproxify(p.state.a)).toMatchSnapshot();
+  // });
 });

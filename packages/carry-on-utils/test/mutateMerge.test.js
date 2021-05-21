@@ -23,7 +23,7 @@ function doReduce(iterationFn, collection, iteratee, accumulator, initAccum) {
   return accumulator;
 }
 
-describe("merge()", function () {
+describe("merge()", () => {
   test("only clones as much as it needs to", () => {
     const o1 = { a: { b: 2 }, c: { d: 4 } };
     const o2 = { a: { b: -2 } };
@@ -37,30 +37,30 @@ describe("merge()", function () {
   // stolen from https://github.com/healthiers/mini-dash
   //
 
-  test("should return empty object when single empty object given", function () {
+  test("should return empty object when single empty object given", () => {
     expect(merge({})).toEqual({});
   });
 
-  test("should return empty object when multiple empty objects given", function () {
+  test("should return empty object when multiple empty objects given", () => {
     expect(merge({}, {}, {})).toEqual({});
   });
 
-  test("should return the union of 2 properties", function () {
+  test("should return the union of 2 properties", () => {
     expect(merge({ a: 1 }, { b: 2 })).toEqual({ a: 1, b: 2 });
   });
 
-  test("should return the union of 3 properties", function () {
+  test("should return the union of 3 properties", () => {
     expect(merge({ a: 1 }, { b: 2 }, { c: 3 })).toEqual({ a: 1, b: 2, c: 3 });
   });
 
-  test("should have the rightmost property", function () {
+  test("should have the rightmost property", () => {
     expect(merge({ a: 1 }, { a: 2 }, { a: 3 })).toEqual({ a: 3 });
   });
 
-  test("should mutate (only) the first input", function () {
-    let first = { a: 1 };
-    let second = { b: 2 };
-    let third = { c: 3 };
+  test("should mutate (only) the first input", () => {
+    const first = { a: 1 };
+    const second = { b: 2 };
+    const third = { c: 3 };
 
     expect(merge(first, second, third)).toEqual({ a: 1, b: 2, c: 3 });
 
@@ -143,13 +143,13 @@ describe("merge()", function () {
   });
 
   test("can merge dense array", () => {
-    let source1 = [];
+    const source1 = [];
     source1[2] = 1;
 
-    let source2 = [];
+    const source2 = [];
     source2[3] = 2;
 
-    let actual = merge({}, source1, source2);
+    const actual = merge({}, source1, source2);
     expect(actual).toMatchSnapshot();
   });
 });

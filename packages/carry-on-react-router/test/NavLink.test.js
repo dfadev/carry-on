@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import { initStores } from "carry-on-store";
 import { MemoryRouter } from "../src/components/Router";
 import NavLink from "../src/components/NavLink";
 import withRouter from "../src/components/withRouter";
-import { initStores } from "carry-on-store";
 
 describe("A <NavLink>", () => {
   afterEach(() => {
@@ -80,7 +80,7 @@ describe("A <NavLink>", () => {
       }).not.toThrow();
     });
 
-    it("it automatically escapes special characters in the path", () => {
+    it("automatically escapes special characters in the path", () => {
       expect(
         render(
           <MemoryRouter initialEntries={["/pizza (1)"]}>
@@ -317,15 +317,15 @@ describe("A <NavLink>", () => {
   });
 
   // does not apply due to path-to-regexp change
-  //it("does not do strict matching by default", () => {
-  //expect(
-  //render(
-  //<MemoryRouter initialEntries={["/pizza"]}>
-  //<NavLink to="/pizza/">Pizza!</NavLink>
-  //</MemoryRouter>
-  //).asFragment()
-  //).toMatchSnapshot();
-  //});
+  // it("does not do strict matching by default", () => {
+  // expect(
+  // render(
+  // <MemoryRouter initialEntries={["/pizza"]}>
+  // <NavLink to="/pizza/">Pizza!</NavLink>
+  // </MemoryRouter>
+  // ).asFragment()
+  // ).toMatchSnapshot();
+  // });
 
   describe("with `strict=true`", () => {
     it("applies default activeClassName for strict matches", () => {

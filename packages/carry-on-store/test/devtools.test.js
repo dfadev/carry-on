@@ -11,7 +11,7 @@ test("new devTools with opts", () => {
 test("subscribe is called", () => {
   let subscribeCalled = 0;
   let msgFn;
-  let subscribe = fn => {
+  const subscribe = fn => {
     subscribeCalled++;
     msgFn = fn;
   };
@@ -50,7 +50,7 @@ test("subscribe is called", () => {
 test("disable timetravel works", () => {
   let subscribeCalled = 0;
   let msgFn;
-  let subscribe = fn => {
+  const subscribe = fn => {
     subscribeCalled++;
     msgFn = fn;
   };
@@ -93,7 +93,7 @@ test("dispose", () => {
   let subscribeCalled = 0;
   let unsubscribeCalled = 0;
   let msgFn;
-  let subscribe = fn => {
+  const subscribe = fn => {
     subscribeCalled++;
     msgFn = fn;
     return () => {
@@ -127,7 +127,7 @@ test("dispose", () => {
 test("nested", () => {
   let subscribeCalled = 0;
   let msgFn;
-  let subscribe = fn => {
+  const subscribe = fn => {
     subscribeCalled++;
     msgFn = fn;
   };
@@ -170,7 +170,7 @@ test("nested", () => {
 test("tt", () => {
   let subscribeCalled = 0;
   let msgFn;
-  let subscribe = fn => {
+  const subscribe = fn => {
     subscribeCalled++;
     msgFn = fn;
   };

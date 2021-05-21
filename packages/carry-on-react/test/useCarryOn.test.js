@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { withState, State, useCarryOn } from "../src";
 import { getStore, deleteStore, register } from "carry-on-store";
+import { withState, State, useCarryOn } from "../src";
 
 const FnComp = () => {
   const stuff = useCarryOn({
@@ -19,7 +19,7 @@ const FnComp = () => {
 };
 
 test("useCarryOn renders", () => {
-  //register({ state: { item1: "value1" } });
+  // register({ state: { item1: "value1" } });
   const { asFragment } = render(<FnComp />);
   expect(asFragment()).toMatchSnapshot();
   deleteStore();

@@ -139,7 +139,7 @@ exports[`A <NavLink> when active applies the default aria-current 1`] = `
 </DocumentFragment>
 `;
 
-exports[`A <NavLink> when active it automatically escapes special characters in the path 1`] = `
+exports[`A <NavLink> when active automatically escapes special characters in the path 1`] = `
 <DocumentFragment>
   <a
     aria-current="page"

@@ -1,9 +1,9 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { createMemoryHistory as createHistory } from "history";
+import { initStores } from "carry-on-store";
 import { MemoryRouter, Router } from "../src/components/Router";
 import Route from "../src/components/Route";
-import { initStores } from "carry-on-store";
 
 it("route renders", () => {
   expect(
@@ -22,15 +22,15 @@ describe("A <Route>", () => {
     initStores();
   });
 
-  //describe("without a <Router>", () => {
-  //it("throws an error", () => {
-  //jest.spyOn(console, "error").mockImplementation(() => {});
+  // describe("without a <Router>", () => {
+  // it("throws an error", () => {
+  // jest.spyOn(console, "error").mockImplementation(() => {});
 
-  //expect(() => {
-  //renderStrict(<Route />, node);
-  //}).toThrow(/You should not use <Route> outside a <Router>/);
-  //});
-  //});
+  // expect(() => {
+  // renderStrict(<Route />, node);
+  // }).toThrow(/You should not use <Route> outside a <Router>/);
+  // });
+  // });
 
   it("renders when it matches", () => {
     const text = "cupcakes";
@@ -162,13 +162,13 @@ describe("A <Route>", () => {
       );
 
       expect(mount).toHaveBeenCalledTimes(1);
-      //expect(node.innerHTML).toContain("Hello World");
+      // expect(node.innerHTML).toContain("Hello World");
       expect(asFragment()).toMatchSnapshot();
 
       history.push("/world/somewhere/else");
 
       expect(mount).toHaveBeenCalledTimes(1);
-      //expect(node.innerHTML).toContain("Hello World");
+      // expect(node.innerHTML).toContain("Hello World");
       expect(asFragment()).toMatchSnapshot();
     });
   });
@@ -218,17 +218,17 @@ describe("A <Route>", () => {
 
     // path-to-regexp does not support this mode of operation
     //
-    //it("renders when the URL has trailing slash", () => {
-    //const text = "bubblegum";
+    // it("renders when the URL has trailing slash", () => {
+    // const text = "bubblegum";
 
-    //expect(
-    //render(
-    //<MemoryRouter initialEntries={["/somepath"]}>
-    //<Route exact path="/somepath/" render={() => <h1>{text}</h1>} />
-    //</MemoryRouter>
-    //).asFragment()
-    //).toMatchSnapshot();
-    //});
+    // expect(
+    // render(
+    // <MemoryRouter initialEntries={["/somepath"]}>
+    // <Route exact path="/somepath/" render={() => <h1>{text}</h1>} />
+    // </MemoryRouter>
+    // ).asFragment()
+    // ).toMatchSnapshot();
+    // });
 
     describe("and `strict=true`", () => {
       it("does not render when the URL has a trailing slash", () => {
@@ -337,26 +337,26 @@ describe("A <Route>", () => {
         ).toMatchSnapshot();
       });
 
-      //describe("that returns `undefined`", () => {
-      //it("logs a warning to the console and renders nothing", () => {
-      //jest.spyOn(console, "warn").mockImplementation(() => {});
+      // describe("that returns `undefined`", () => {
+      // it("logs a warning to the console and renders nothing", () => {
+      // jest.spyOn(console, "warn").mockImplementation(() => {});
 
-      //expect(render(
-      //<MemoryRouter initialEntries={["/"]}>
-      //<Route path="/" children={() => undefined} />
-      //</MemoryRouter>,
-      //node
-      //);
+      // expect(render(
+      // <MemoryRouter initialEntries={["/"]}>
+      // <Route path="/" children={() => undefined} />
+      // </MemoryRouter>,
+      // node
+      // );
 
-      //expect(node.innerHTML).toEqual("");
+      // expect(node.innerHTML).toEqual("");
 
-      //expect(console.warn).toHaveBeenCalledWith(
-      //expect.stringContaining(
-      //"You returned `undefined` from the `children` function"
-      //)
-      //);
-      //});
-      //});
+      // expect(console.warn).toHaveBeenCalledWith(
+      // expect.stringContaining(
+      // "You returned `undefined` from the `children` function"
+      // )
+      // );
+      // });
+      // });
     });
 
     describe("that is an empty array (as in Preact)", () => {
@@ -418,9 +418,7 @@ describe("A <Route>", () => {
             return <Component ref={forwardedRef} {...rest} />;
           }
         }
-        return React.forwardRef((props, ref) => {
-          return <ForwardComponent {...props} forwardedRef={ref} />;
-        });
+        return React.forwardRef((props, ref) => <ForwardComponent {...props} forwardedRef={ref} />);
       }
 
       const history = createHistory();
