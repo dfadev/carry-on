@@ -23,7 +23,8 @@
     "watch-react-forms": "cd packages/carry-on-react-forms && npm run watch",
     "watch-react-router": "cd packages/carry-on-react-router && npm run watch",
     "watch-store": "cd packages/carry-on-store && npm run watch",
-    "watch-utils": "cd packages/carry-on-utils && npm run watch"
+    "watch-utils": "cd packages/carry-on-utils && npm run watch",
+    "lint": "eslint packages/**/src/**"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.0"
