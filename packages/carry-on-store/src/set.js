@@ -1,7 +1,7 @@
 import { isString } from "carry-on-utils";
 import { getStore } from "./store";
 
-export default function set(fn, id) {
+export default function set(fn, id, type) {
   if (isString(fn)) {
     const actualId = fn;
     fn = id;
@@ -10,5 +10,5 @@ export default function set(fn, id) {
 
   const store = getStore(id);
   if (!store) throw new Error("store does not exist");
-  store.set(fn);
+  store.set(fn, type);
 }
