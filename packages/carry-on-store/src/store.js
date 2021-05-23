@@ -199,7 +199,7 @@ export const connect = (id, wrap) => {
       const rootSet = function rootSet(state) {
         store.nestedSet = true;
         store.nestedState = state;
-        action(state);
+        action(state, id);
         if (store.nestedState === state) {
           store.nestedSet = false;
           store.nestedState = undefined;
@@ -213,7 +213,7 @@ export const connect = (id, wrap) => {
     }
 
     if (Debug || store.debug) store.log("nested set");
-    action(store.nestedState);
+    action(store.nestedState, id);
     return store.nestedState;
   };
 
