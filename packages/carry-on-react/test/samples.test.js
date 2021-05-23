@@ -77,12 +77,12 @@ test("two named stores", () => {
     <>
       <State from="store1">
         {({ counter, inc, dec }) => (
-            <div>
-              <div>Counter: {counter}</div>
-              <button onClick={inc}>store1 +</button>
-              <button onClick={dec}>store1 -</button>
-            </div>
-          )}
+          <div>
+            <div>Counter: {counter}</div>
+            <button onClick={inc}>store1 +</button>
+            <button onClick={dec}>store1 -</button>
+          </div>
+        )}
       </State>
       <State from="store2">
         {({ counter, inc, dec }) => (
@@ -361,9 +361,7 @@ test("path", () => {
   });
 
   const App = () => (
-    <State path="more.stuff.list[0].item">
-      {item => <div>{item}</div>}
-    </State>
+    <State path="more.stuff.list[0].item">{item => <div>{item}</div>}</State>
   );
 
   const { asFragment, getByText } = render(<App />);
@@ -432,8 +430,8 @@ test("get returns undefined", () => {
   const store = {
     state: ({ set, get }) => ({
       log(msg) {
-        const rslt = get(state => 
-           undefined
+        const rslt = get(
+          state => undefined
           // state.counter = 9999;
           // return state;
         );
@@ -966,12 +964,7 @@ test("constant", () => {
 
 test("constant debug verbose", () => {
   const App = () => (
-    <State
-      register={{ state: { field: "value" } }}
-      constant
-      debug
-      verbose
-    >
+    <State register={{ state: { field: "value" } }} constant debug verbose>
       {state => <div>{state.field.value}</div>}
     </State>
   );

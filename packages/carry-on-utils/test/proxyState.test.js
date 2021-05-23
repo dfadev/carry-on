@@ -41,7 +41,7 @@ describe("proxy", () => {
       key1: 1,
       key2: 2
     };
-    const A3 = { ...A1, key1: 2};
+    const A3 = { ...A1, key1: 2 };
     const A4 = {
       key1: 1,
       key2: {
@@ -82,7 +82,7 @@ describe("proxy", () => {
       key1: 1,
       key2: 2
     };
-    const A3 = { ...A1, key1: 2};
+    const A3 = { ...A1, key1: 2 };
     const A4 = {
       key1: 1,
       key2: A1.key2
@@ -206,7 +206,7 @@ describe("proxy", () => {
     const O2 = Object.freeze(O1);
 
     const trapped = proxyState(O2);
-    const {state} = trapped;
+    const { state } = trapped;
     const read = state.a + state.b + state.c.d;
     expect(read).toEqual(7);
     expect(trapped.affected).toMatchSnapshot();

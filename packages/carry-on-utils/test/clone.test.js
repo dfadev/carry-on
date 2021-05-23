@@ -59,7 +59,7 @@ describe("clone()", () => {
     "objects with object values": { b: ["B"], c: { C: 1 } }
   };
   forOwn(clonable, (object, kind) => {
-    test(`should clone ${  kind}`, () => {
+    test(`should clone ${kind}`, () => {
       const actual = clone(object);
 
       expect(actual).toEqual(object);

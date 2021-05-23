@@ -261,7 +261,7 @@ test("get returns trappedState when populated", () => {
 test("nested set works", () => {
   connect();
   const store = getStore();
-  const {set} = store;
+  const { set } = store;
   const rslt = set(state => {
     state.upper = "value";
     set(state => {

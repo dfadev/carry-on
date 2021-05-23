@@ -32,7 +32,8 @@ describe("withRouter", () => {
   });
 
   it("provides the parent match as a prop to the wrapped component", () => {
-    let parentMatch; let props;
+    let parentMatch;
+    let props;
 
     const PropsChecker = withRouter(p => {
       props = p;
@@ -57,7 +58,8 @@ describe("withRouter", () => {
   });
 
   it("works when parent match is null", () => {
-    let parentMatch; let props;
+    let parentMatch;
+    let props;
 
     const PropChecker = withRouter(p => {
       props = p;

@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { createMemoryHistory } from "history";
-import { register, connect , initStores } from "carry-on-store";
+import { register, connect, initStores } from "carry-on-store";
 import { MemoryRouter, Router } from "../src/components/Router";
 import NavLink from "../src/components/NavLink";
 import withRouter from "../src/components/withRouter";

@@ -418,7 +418,9 @@ describe("A <Route>", () => {
             return <Component ref={forwardedRef} {...rest} />;
           }
         }
-        return React.forwardRef((props, ref) => <ForwardComponent {...props} forwardedRef={ref} />);
+        return React.forwardRef((props, ref) => (
+          <ForwardComponent {...props} forwardedRef={ref} />
+        ));
       }
 
       const history = createHistory();
