@@ -11,7 +11,8 @@ import {
   watch,
   Watch,
   debugStore,
-  debugStores
+  debugStores,
+  devTools
 } from "carry-on-store";
 import { State, carryOn } from "carry-on-react";
 import {
@@ -66,6 +67,7 @@ const ReactLiveScope = {
   getStore,
   debugStore,
   debugStores,
+  devTools,
   StateInspector: ({ from, select = s => ({ ...s }), ...rest }) => (
     <State id="Inspector" from={from} select={select} {...rest}>
       {state => (
