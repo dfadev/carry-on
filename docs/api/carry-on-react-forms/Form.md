@@ -2,16 +2,14 @@
 id: Form
 title: Form
 ---
+
 ## Import
 
 ```js
-
 import { Form } from "carry-on-react-forms";
-
 ```
 
 ## `Form`
-
 
 ```js live noInline
 const storeId = "form";
@@ -34,24 +32,16 @@ render(
   <>
     <Form id="myForm" store={storeId} register={formStateFactory("myForm")}>
       <div>
-        <Field path="field1">
-          {({ element }) => <input {...element} />}
-        </Field>
+        <Field path="field1">{({ element }) => <input {...element} />}</Field>
       </div>
       <div>
-        <Field path="field2">
-          {({ element }) => <input {...element} />}
-        </Field>
+        <Field path="field2">{({ element }) => <input {...element} />}</Field>
       </div>
       <div>
         <button type="submit">Submit</button>
       </div>
     </Form>
-    <State from={storeId} select={s => ({ ...s })}>
-      {state => <Inspector data={state} expandLevel={5} />}
-    </State>
+    <StateInspector from={storeId} />
   </>
 );
-
 ```
-
