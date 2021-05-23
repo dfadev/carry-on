@@ -106,9 +106,9 @@ let stores = {};
 
 // delete a store
 export const deleteStore = id => {
-  if (Debug || store.debug) store.log("delete store");
   const store = stores[id];
   if (!store) return;
+  if (Debug || store.debug) store.log("delete store");
 
   // call all dispose callbacks
   for (let i = 0, len = store.dispose.length; i < len; i += 1)
