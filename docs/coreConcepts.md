@@ -2,6 +2,7 @@
 id: coreConcepts
 title: Core Concepts
 ---
+
 ### A container must be connected before access and mutation can occur.
 
 State can be registered in an unconnected store container, but no access or mutation can occur until the container is connected.
@@ -9,7 +10,7 @@ State can be registered in an unconnected store container, but no access or muta
 ```js live noInline
 register({ state: { value1: 1, value2: 2 } });
 
-connect();  // connect the default store container
+connect(); // connect the default store container
 render(StateInspector);
 ```
 
@@ -28,12 +29,12 @@ set(state => {
 render(<StateInspector />);
 ```
 
-Values can only be read inside a `get` function. 
+Values can only be read inside a `get` function.
 
 ```js live noInline
 import { get } from "carry-on-store";
 
-const values = get(state => [ state.value1, state.value2 ]); 
+const values = get(state => [state.value1, state.value2]);
 // values === [1, 2]
 
 render(<StateInspector />);
@@ -46,5 +47,3 @@ Execute asynchronous code outside of `get` and `set` scopes.
 ### `State.render` maps to a `get` scope.
 
 The `State` component uses a `get` scope to provide access to the store.
-
-

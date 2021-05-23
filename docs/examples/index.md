@@ -3,6 +3,7 @@ id: index
 slug: /examples/
 title: Examples
 ---
+
 ## Default store
 
 ```js live noInline

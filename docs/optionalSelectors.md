@@ -2,7 +2,8 @@
 id: optionalSelectors
 title: Selectors
 ---
-Selectors are not necessary because state field access is tracked by a `Proxy` wrapper.  A selector can optionally be specified using the `select` attribute.
+
+Selectors are not necessary because state field access is tracked by a `Proxy` wrapper. A selector can optionally be specified using the `select` attribute.
 
 ### Register some state
 
@@ -12,8 +13,14 @@ const storeId = "selectors";
 register(storeId, {
   state: ({ set }) => ({
     counter: 0,
-    inc: () => set(state => { state.counter += 1; }),
-    dec: () => set(state => { state.counter -= 1; })
+    inc: () =>
+      set(state => {
+        state.counter += 1;
+      }),
+    dec: () =>
+      set(state => {
+        state.counter -= 1;
+      })
   })
 });
 
@@ -45,9 +52,10 @@ render(
 const storeId = "selectors";
 
 render(
-  <State 
+  <State
     from={storeId}
-    select={({ counter, inc, dec }) => ({ counter, inc, dec })}>
+    select={({ counter, inc, dec }) => ({ counter, inc, dec })}
+  >
     {({ counter, inc, dec }) => (
       <>
         <div>Counter: {counter}</div>
@@ -59,4 +67,3 @@ render(
   </State>
 );
 ```
-

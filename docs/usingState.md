@@ -2,12 +2,11 @@
 id: usingState
 title: Using State
 ---
+
 ## Import
 
 ```js
-
 import { State } from "carry-on-react";
-
 ```
 
 ## Basic usage
@@ -244,10 +243,8 @@ const App = props => (
 Debugging can be turned on for all `State` components:
 
 ```js
-
 State.Debug = true;
 State.Verbose = true;
-
 ```
 
 ## Lifecycle Events
@@ -277,7 +274,6 @@ const App = props => (
 The `carryOn` factory function is available as shorthand for a typical stateful component:
 
 ```js
-
 import { carryOn } from "carry-on-react";
 
 const Nav = carryOn((props, state) => (
@@ -342,5 +338,4 @@ const App = carryOn(
     </div>
   )
 );
-
 ```

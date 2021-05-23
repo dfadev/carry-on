@@ -2,12 +2,11 @@
 id: registeringState
 title: Registering State
 ---
+
 ## Import
 
 ```js
-
 import { register } from "carry-on-store";
-
 ```
 
 ## Define
@@ -27,14 +26,13 @@ store.
 The function must return an object representing the initial state:
 
 ```js
-
 const state = ({ id, get, set }) => ({
   counter: 0,
-  inc: () => set(state => {
-    state.counter += 1;
-  })
+  inc: () =>
+    set(state => {
+      state.counter += 1;
+    })
 });
-
 ```
 
 ### As an object
@@ -42,7 +40,6 @@ const state = ({ id, get, set }) => ({
 State can also be defined as a plain object if there are no actions that require setting and querying state.
 
 ```js
-
 const state = {
   field1: "value1",
   field2: "value2",
@@ -51,7 +48,6 @@ const state = {
     field2: "value2"
   }
 };
-
 ```
 
 ### Actions
@@ -111,21 +107,17 @@ register state with the default store.
 ### Register on default store:
 
 ```js
-
 register({ state });
-
 ```
 
 ### Register on a named store:
 
 ```js
-
 register({ state }, "Store1");
 
 // or
 
 register("Store1", { state });
-
 ```
 
 ## Multiple registrations
@@ -135,17 +127,16 @@ register("Store1", { state });
 When `register` is called multiple times it merges state, potentially into a running store:
 
 ```js
-
 register({
-	state: {
-	  field1: "value1"
-	}
+  state: {
+    field1: "value1"
+  }
 });
 
 register({
-	state: {
-	  field2: "value2"
-	}
+  state: {
+    field2: "value2"
+  }
 });
 
 // The store's state will look like:
@@ -153,7 +144,6 @@ register({
 //	field1: "value1",
 //	field2: "value2"
 //}
-
 ```
 
 ### Array of registrations
@@ -161,7 +151,6 @@ register({
 When registering more than one state, an array of registrations can be passed:
 
 ```js
-
 const state1 = {
   field1: "value1"
 };
@@ -170,9 +159,5 @@ const state2 = {
   field2: "value2"
 };
 
-register([
-{ state: state1 },
-{ state: state2 }
-]);
-
+register([{ state: state1 }, { state: state2 }]);
 ```

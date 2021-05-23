@@ -23,8 +23,14 @@ const storeId = "getStarted";
 register(storeId, {
   state: ({ set }) => ({
     counter: 0,
-    inc: () => set(state => { state.counter += 1; }),
-    dec: () => set(state => { state.counter -= 1; })
+    inc: () =>
+      set(state => {
+        state.counter += 1;
+      }),
+    dec: () =>
+      set(state => {
+        state.counter -= 1;
+      })
   })
 });
 

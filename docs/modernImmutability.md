@@ -2,7 +2,8 @@
 id: modernImmutability
 title: Modern Immutability
 ---
-`carry-on` uses `immer` to manage immutability.  `immer` implements a strategy which allows managing immutable data as if it were mutable data.
+
+`carry-on` uses `immer` to manage immutability. `immer` implements a strategy which allows managing immutable data as if it were mutable data.
 
 ```js live noInline
 const storeId = "immutable";
