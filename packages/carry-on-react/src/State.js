@@ -240,9 +240,6 @@ export default class State extends Component {
     // select children or render as the render function
     const renderFn = children || render;
 
-    // no render function renders nothing
-    if (!renderFn) return null;
-
     // handle select query
     if (select) {
       // log a select render
@@ -253,9 +250,15 @@ export default class State extends Component {
       // update prev store state
       this.prevStoreState = this.storeState;
 
+      // no render function renders select result
+      if (!renderFn) return this.storeState;
+
       // execute the render function with the selected state
       return renderFn(this.storeState);
     }
+
+    // no render function renders nothing
+    if (!renderFn) return null;
 
     // no select specified, trap the render function and return the result
     return this.trapRender(renderFn);
