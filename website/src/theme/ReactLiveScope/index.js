@@ -67,7 +67,7 @@ const ReactLiveScope = {
   debugStore,
   debugStores,
   StateInspector: ({ from, select = s => ({ ...s }), ...rest }) => (
-    <State from={from} select={select} {...rest}>
+    <State id="Inspector" from={from} select={select} {...rest}>
       {state => (
         <div style={{ marginBottom: "12px" }}>
           <Inspector data={state} theme={theme} expandLevel={2} />
