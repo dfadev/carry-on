@@ -1,16 +1,18 @@
 import { keys, isEqual } from "carry-on-utils";
 
 export default function devTools({ timeTravel = true } = {}) {
+  // check for dev tools extension
+  /* eslint-disable no-underscore-dangle */
+  const devToolsExt = window && window.__REDUX_DEVTOOLS_EXTENSION__;
+  /* eslint-enable */
+
+  if (!devToolsExt) return {};
+
   // dev tools connections
   const connections = {};
   const subscriptions = {};
   // time travel state tracking (only for immutable state)
   const time = {};
-  // check for dev tools extension
-  /* eslint-disable no-underscore-dangle */
-  const devToolsExt = window && window.__REDUX_DEVTOOLS_EXTENSION__;
-
-  if (!devToolsExt) return {};
 
   return {
     priority: Number.NEGATIVE_INFINITY,
