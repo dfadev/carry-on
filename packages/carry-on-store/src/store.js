@@ -120,7 +120,6 @@ export const deleteStore = id => {
 // initialize the map of stores (delete all)
 export const initStores = () => {
   // delete all existing stores
-  if (Debug) store.log("init stores");
   const storeKeys = Object.keys(stores);
   for (let i = 0, len = storeKeys.length; i < len; i += 1)
     deleteStore(storeKeys[i]);
