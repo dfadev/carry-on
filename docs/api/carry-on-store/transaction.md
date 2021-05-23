@@ -1,5 +1,0 @@
----
----
-id: transaction
-
-## title: transaction
