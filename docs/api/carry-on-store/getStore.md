@@ -12,8 +12,7 @@ import { getStore } from "carry-on-store";
 
 ## `getStore(`_`storeId`_`)`
 
-Retrieves a store instance. The default store is returned if storeId isn't
-specfied.
+Retrieves a store container instance. The default store is returned if storeId isn't specfied.
 
 | Parameter        | Description                   |
 | ---------------- | ----------------------------- |
@@ -21,8 +20,10 @@ specfied.
 
 ## Example
 
-```js
+```js live noInline
 
-const store = getStore();
+const store = getStore("getStoreExample");
+
+render(<Inspector data={store} />);
 
 ```
