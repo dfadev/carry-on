@@ -211,7 +211,7 @@ export const connect = (id, wrap) => {
       return store.state;
     }
 
-    if (Debug || store.debug) store.log("nested set", action);
+    if (Debug || store.debug) store.log("nested set");
     action(store.nestedState);
     return store.nestedState;
   };
