@@ -9,9 +9,9 @@ title: deleteStore
 import { deleteStore } from "carry-on-store";
 ```
 
-## `deleteStore(`_`id`_`)`
+## `deleteStore(`_`storeId`_`)`
 
-Removes a store. If `id` is not specified the default store is removed.
+Removes a store. If `storeId` is not specified the default store is removed.
 
 ```js live noInline
 register({ state: { field: "value" } });
