@@ -25,9 +25,9 @@ export class Watch {
     if (reg) {
       if (this.debug) this.log("setup", "registering state", reg);
       let state = register(reg, from);
-      if (state === undefined) state = connect(from, this.render);
+      if (state === undefined) state = connect(from);
       this.storeState = state;
-    } else this.storeState = connect(from, this.render);
+    } else this.storeState = connect(from);
 
     // apply throttle or debounce
     if (t) this.onStateChange = throttle(t, this.origOnStateChange);
