@@ -36,7 +36,7 @@ export default function notify() {
             notifyThese[i](state, changes);
         };
 
-        if (!wrap || (opts && opts.immediate)) notifySubs();
+        if (opts && opts.immediate) notifySubs();
         else wrap(notifySubs);
 
         return state;

@@ -27,7 +27,8 @@ test("subscribe/unsubscribe", () => {
   set = notify.plugin.middleware({
     isNested: () => false,
     next: set,
-    getChanges
+    getChanges,
+    wrap: notify => notify()
   });
 
   let msgRecvCount = 0;

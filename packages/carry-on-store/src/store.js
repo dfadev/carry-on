@@ -162,6 +162,7 @@ export const connect = (id, wrap) => {
   const store = getStore(id);
   if (store.connected) {
     // if (Debug || store.debug) store.log("reconnect", store.state);
+    if (wrap) store.wrappedFn = wrap;
     return store.state;
   }
 
@@ -220,7 +221,8 @@ export const connect = (id, wrap) => {
   store.set = (...args) => store.d(...args);
 
   // wrap change notifications to allow for external batch updates
-  store.wrap = wrap;
+  store.wrappedFn = wrap || (fn => fn());
+  store.wrap = notifySubscribers => store.wrappedFn(notifySubscribers);
 
   // populate initial state
   store.state = {};
