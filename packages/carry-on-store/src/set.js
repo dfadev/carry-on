@@ -10,6 +10,5 @@ export default function set(fn, id) {
 
   const store = getStore(id);
   if (!store) throw new Error("store does not exist");
-  if (!store.set) throw new Error("store not connected");
   store.set(fn);
 }

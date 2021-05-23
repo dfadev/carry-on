@@ -79,13 +79,26 @@ const createPlugins = (store, curState, plugins) => {
   return curState;
 };
 
+let realConnect;
+let realGetStore;
+
 // create a store
 const create = id => ({
   id,
   dispose: [],
   pending: [],
   notify: notify(),
-  log: logger(id || "")
+  log: logger(id || ""),
+  get: fn => {
+    realConnect(id);
+    const store = realGetStore(id);
+    return store.get(fn);
+  },
+  set: action => {
+    realConnect(id);
+    const store = realGetStore(id);
+    return store.set(action);
+  }
 });
 
 // a map of stores
@@ -93,6 +106,7 @@ let stores = {};
 
 // delete a store
 export const deleteStore = id => {
+  if (Debug || store.debug) store.log("delete store");
   const store = stores[id];
   if (!store) return;
 
@@ -106,6 +120,7 @@ export const deleteStore = id => {
 // initialize the map of stores (delete all)
 export const initStores = () => {
   // delete all existing stores
+  if (Debug) store.log("init stores");
   const storeKeys = Object.keys(stores);
   for (let i = 0, len = storeKeys.length; i < len; i += 1)
     deleteStore(storeKeys[i]);
@@ -116,6 +131,7 @@ export const initStores = () => {
 // lookup a store
 /* eslint-disable-next-line no-return-assign */
 export const getStore = id => stores[id] || (stores[id] = create(id));
+realGetStore = getStore;
 
 // register state
 export const register = (init, id) => {
@@ -129,7 +145,7 @@ export const register = (init, id) => {
   const store = getStore(id);
   const inits = forceArray(init);
   // queue if no set available yet
-  if (store.set) {
+  if (store.connected) {
     if (Debug || store.debug) store.log("register queued", init);
     return store.set(
       state => createPlugins(store, state, inits),
@@ -145,7 +161,7 @@ export const register = (init, id) => {
 // connect a store --> register pending state, setup dispatch, initialize state
 export const connect = (id, wrap) => {
   const store = getStore(id);
-  if (store.set) {
+  if (store.connected) {
     // if (Debug || store.debug) store.log("reconnect", store.state);
     return store.state;
   }
@@ -215,10 +231,15 @@ export const connect = (id, wrap) => {
 
   // initialize middleware with state
   store.set(state => state, initMessageType);
+
+  // mark store as connected
+  store.connected = true;
+
   if (Debug || store.debug) store.log("connect", "state", store.state);
 
   return store.state;
 };
+realConnect = connect;
 
 // subscribe to state changes
 export const subscribe = (fn, watch, id) =>

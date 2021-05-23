@@ -28,6 +28,7 @@ exports[`get with action 1`] = `
 exports[`getStore 1`] = `
 Object {
   "dispose": Array [],
+  "get": [Function],
   "id": undefined,
   "log": [Function],
   "notify": Object {
@@ -39,12 +40,14 @@ Object {
     "subscribers": Map {},
   },
   "pending": Array [],
+  "set": [Function],
 }
 `;
 
 exports[`getStore named 1`] = `
 Object {
   "dispose": Array [],
+  "get": [Function],
   "id": "store1",
   "log": [Function],
   "notify": Object {
@@ -56,6 +59,7 @@ Object {
     "subscribers": Map {},
   },
   "pending": Array [],
+  "set": [Function],
 }
 `;
 

@@ -10,6 +10,5 @@ export default function get(fn, id) {
 
   const store = getStore(id);
   if (!store) throw new Error("no store name");
-  if (!store.get) throw new Error("store not connected");
   return store.get(fn);
 }
