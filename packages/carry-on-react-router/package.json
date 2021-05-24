@@ -36,7 +36,7 @@
     "react-dom": ">=15.6.0",
     "react-is": ">=15.6.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.47.0"
+    "rollup": "^2.49.0"
   },
   "peerDependencies": {
     "carry-on-react": "^1.0.11",
