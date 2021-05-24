@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.0",
-    "@docusaurus/core": "2.0.0-alpha.75",
-    "@docusaurus/preset-classic": "2.0.0-alpha.75",
-    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.75",
+    "@docusaurus/core": "2.0.0-beta.0",
+    "@docusaurus/preset-classic": "2.0.0-beta.0",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-beta.0",
     "carry-on-react": "file:../packages/carry-on-react",
     "carry-on-react-forms": "file:../packages/carry-on-react-forms",
     "carry-on-react-router": "file:../packages/carry-on-react-router",
