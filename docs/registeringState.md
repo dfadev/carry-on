@@ -9,9 +9,11 @@ title: Registering State
 import { register } from "carry-on-store";
 ```
 
-## Define
+## Define initial state
 
-### As a function
+Initial state can be set by passing state to the `register` function.
+
+### State as a function
 
 State can be defined by a function accepting one parameter. The parameter
 passed is a plain object containing the keys `id`, `get`, and `set`.
@@ -35,7 +37,7 @@ const state = ({ id, get, set }) => ({
 });
 ```
 
-### As an object
+### State as an object
 
 State can also be defined as a plain object if there are no actions that require setting and querying state.
 
@@ -56,10 +58,10 @@ Actions are defined by functions inside the state object:
 
 ```js
 
-const state = ({ get, set }) => {
-  action1() { ... },
-  action2() { ... },
-  action3() { ... }
+const state = ({ id, get, set }) => {
+  action1() { },
+  action2() { },
+  action3() { }
 };
 
 ```
@@ -71,7 +73,7 @@ function:
 
 ```js
 
-const state = ({ get, set }) => {
+const state = ({ id, get, set }) => {
   logValue() {
     get(state => {
       console.log("value is", state.value);
@@ -87,7 +89,7 @@ An action uses the `set` function to change state values.
 
 ```js
 
-const state = ({ get, set }) => {
+const state = ({ id, get, set }) => {
   field: "",
   setField(val) {
     set(state => {
@@ -98,66 +100,60 @@ const state = ({ get, set }) => {
 
 ```
 
-## Register
+## Registration
 
-State is registered with a store instance. You may specify a store instance
-identifier as the second parameter to `register`. Omitting this parameter will
-register state with the default store.
+State can be registered with a store instance at any time. If the store is not connected, the registration will be queued until the store is connected.
 
 ### Register on default store:
 
-```js
-register({ state });
+```js live noInline
+register({ state: { counter: 0 } });
+
+render(<StateInspector />);
 ```
 
 ### Register on a named store:
 
-```js
-register({ state }, "Store1");
+```js live noInline
+const storeId = "Store1";
+
+register({ state: { field1: "value1" } }, storeId);
 
 // or
 
-register("Store1", { state });
+register(storeId, { state: { field2: "value2" } });
+
+render(<StateInspector from="Store1" />);
 ```
 
 ## Multiple registrations
 
 ### Multiple calls
 
-When `register` is called multiple times it merges state, potentially into a running store:
+When `register` is called multiple times it merges state, potentially into a connected store:
 
-```js
-register({
-  state: {
-    field1: "value1"
-  }
-});
+```js live noInline
+const storeId = "multiCalls";
 
-register({
-  state: {
-    field2: "value2"
-  }
-});
+register(storeId, { state: { field1: "value1" } });
 
-// The store's state will look like:
-//{
-//	field1: "value1",
-//	field2: "value2"
-//}
+register(storeId, { state: { field2: "value2" } });
+
+render(<StateInspector from={storeId} />);
 ```
 
 ### Array of registrations
 
 When registering more than one state, an array of registrations can be passed:
 
-```js
-const state1 = {
-  field1: "value1"
-};
+```js live noInline
+const storeId = "arrayOfRegistrations";
 
-const state2 = {
-  field2: "value2"
-};
+const state1 = { field1: "value1" };
 
-register([{ state: state1 }, { state: state2 }]);
+const state2 = { field2: "value2" };
+
+register(storeId, [{ state: state1 }, { state: state2 }]);
+
+render(<StateInspector from={storeId} />);
 ```
