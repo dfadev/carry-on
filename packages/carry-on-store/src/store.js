@@ -17,8 +17,10 @@ export const initMessageType = "Register";
 
 // debug all stores flag
 let Debug = false;
+let log;
 export function debugStores(enabled) {
   Debug = enabled;
+  if (enabled && !log) log = logger("");
 }
 
 // wrap a function with middleware
