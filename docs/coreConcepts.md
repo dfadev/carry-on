@@ -3,19 +3,6 @@ id: coreConcepts
 title: Core Concepts
 ---
 
-### The container becomes connected either by an explicit call to `connect` or by using a `get` or `set` call.
-
-State can be registered in an unconnected store container, but no access or mutation can occur until the container is connected. These registrations are queued until a call to `connect` is made either explicitly or by a call to `get` or `set` which calls `connect` if the store is unconnected. The `connect` function processes the queued registrations in the order specified by the registered state's `priority` key.
-
-The reason a container can be unconnected is to allow for deterministic registration of middleware that is registered in a potentially undeterministic fashion.
-
-```js live noInline
-register({ state: { value1: 1, value2: 2 } });
-
-connect(); // connect the default store container
-render(StateInspector);
-```
-
 ### Access to state is scoped by `get` and `set`.
 
 Code inside a `set` function has read and write access to state values.
@@ -49,3 +36,21 @@ Execute asynchronous code outside of `get` and `set` scopes.
 ### `State.render` maps to a `get` scope.
 
 The `State` component uses a specialized `get` scope that tracks field access to provide access to the store.
+
+
+
+### State is initially registered with an unconnected store container.  
+
+No access or mutation can occur until the container is connected. The store container is connected by a call to `connect`, `get`, or `set`.
+
+These initial registrations are queued until the container is connected. Queued registrations are processed in the order specified by the state's `priority` key.
+
+The reason a container is initially unconnected is to allow for deterministic registration of middleware registered out of order.
+
+```js live noInline
+register({ state: { value1: 1, value2: 2 } });
+
+connect(); // connect the default store container
+render(StateInspector);
+```
+

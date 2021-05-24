@@ -16,36 +16,20 @@ import { State } from "carry-on-react";
 The child node of a `State` component is a render function. The render function
 is given the store state as it's first parameter.
 
-```js
+```js live noInline
+register({ state: { field1: "value" } });
 
-const App = props => (
-  <State>
-    {state => ({
-      <div>
-        {state.field}
-      </div>
-    })}
-  </State>
-);
-
+render(<State>{state => state.field1}</State>);
 ```
 
 ### Named store
 
 A named store can be accessed using the `from` property:
 
-```js
+```js live noInline
+register("Store1", { state: { field1: "value" } });
 
-const App = props => (
-  <State from="Store1">
-    {state => ({
-      <div>
-        {state.field}
-      </div>
-    })}
-  </State>
-);
-
+render(<State from="Store1">{state => state.field1}</State>);
 ```
 
 ## Access tracking
@@ -59,27 +43,15 @@ update.
 In the next example, the first `State` component will update when `field1`
 changes, and the second `State` component will update when `field2` changes.
 
-```js
+```js live noInline
+register({ state: { field1: "value", field2: "value" } });
 
-const App = props => (
+render(
   <div>
-    <State>
-      {state => ({
-        <div>
-          {state.field1}
-        </div>
-      })}
-    </State>
-    <State>
-      {state => ({
-        <div>
-          {state.field2}
-        </div>
-      })}
-    </State>
+    <State>{state => <div>{state.field1}</div>}</State>
+    <State>{state => <div>{state.field2}</div>}</State>
   </div>
 );
-
 ```
 
 ### Strict
@@ -87,18 +59,10 @@ const App = props => (
 The list of monitored state fields does not change once created. You can force
 every render to be monitored by specifying the `strict` property.
 
-```js
+```js live noInline
+register({ state: { field1: "value" } });
 
-const App = props => (
-  <State strict>
-    {state => ({
-      <div>
-        {state.field}
-      </div>
-    })}
-  </State>
-);
-
+render(<State strict>{state => <div>{state.field1}</div>}</State>);
 ```
 
 ## Constant
@@ -106,36 +70,20 @@ const App = props => (
 If the state needed is constant, the `constant` property will prevent any
 render updates after the first render.
 
-```js
+```js live noInline
+register({ state: { field1: "value" } });
 
-const App = props => (
-  <State constant>
-    {state => ({
-      <div>
-        {state.releaseVersion}
-      </div>
-    })}
-  </State>
-);
-
+render(<State constant>{state => <div>{state.field1}</div>}</State>);
 ```
 
 ## Path
 
-A string `path` property can be used to choose a specific object or value:
+A string `path` property can be used to choose a specific object or value. Dotted paths and indexes are supported.
 
-```js
+```js live noInline
+register({ state: { field1: "value" } });
 
-const App = props => (
-  <State path="dotted.path.array[0].field">
-    {field => ({
-      <div>
-        {field}
-      </div>
-    })}
-  </State>
-);
-
+render(<State path="field1">{field1 => <div>{field1}</div>}</State>);
 ```
 
 ## Select
@@ -144,37 +92,29 @@ An optional selector can be used with the `select` property. When the `select`
 property is used, access tracking will be applied to the `select` function and
 not the render function.
 
-```js
+```js live noInline
+register({ state: { field1: "value" } });
 
-const App = props => (
-  <State select={state => state.field}>
-    {field => ({
-      <div>
-        {field}
-      </div>
-    })}
-  </State>
+render(
+  <State select={state => state.field1}>{field1 => <div>{field1}</div>}</State>
 );
-
 ```
 
 ## Default value
 
-The `default` property lets you subsitute a default value when the state is
-undefined.
+The `default` property lets you subsitute a default state value when the store state specified by the path property is undefined.
 
-```js
-
-const App = props => (
-  <State select={state => state.field} default="Undefined state.">
-    {field => ({
-      <div>
-        {field}
-      </div>
-    })}
+```js live noInline
+render(
+  <State
+    id="defaultValueExample"
+    from="unknownStore"
+    path="unknownField"
+    default="Undefined field."
+  >
+    {field => <div>{field}</div>}
   </State>
 );
-
 ```
 
 ## Delayed updates
@@ -186,61 +126,81 @@ subscribed to.
 
 ### Throttle
 
-```js
+```js live noInline
+const eventHandler = e => {
+  set(state => {
+    state.mouseX = e.clientX;
+    state.mouseY = e.clientY;
+  });
+};
 
-const App = props => (
-  <State throttle={100}>
-    {state => ({
+document.addEventListener("mousemove", eventHandler);
+
+render(
+  <State
+    throttle={500}
+    onUnmount={() => {
+      document.removeEventListener("mousemove", eventHandler);
+    }}
+  >
+    {state => (
       <div>
         {state.mouseX}, {state.mouseY}
       </div>
-    })}
+    )}
   </State>
 );
-
 ```
 
 ### Debounce
 
-```js
+```js live noInline
+const eventHandler = e => {
+  set(state => {
+    state.mouseX = e.clientX;
+    state.mouseY = e.clientY;
+  });
+};
 
-const App = props => (
-  <State debounce={500}>
-    {state => ({
+document.addEventListener("mousemove", eventHandler);
+
+render(
+  <State
+    debounce={500}
+    onUnmount={() => {
+      document.removeEventListener("mousemove", eventHandler);
+    }}
+  >
+    {state => (
       <div>
-        {state.documentModel.toHtml()}
+        {state.mouseX}, {state.mouseY}
       </div>
-    })}
+    )}
   </State>
 );
-
 ```
 
 ## Debugging
 
-Three properties are available for debugging.
+Three properties are available for debugging. Debug messages are sent to the console.
 
 `debug` will log debug messages.
 `verbose` will log verbose debug messages.
 `id` will set an identifier to include in the log messages.
 
-```js
+```js live noInline
+register({ state: { field1: "value" } });
 
-const App = props => (
+render(
   <State debug verbose id="Field div">
-    {state => ({
-      <div>
-        {state.field}
-      </div>
-    })}
+    {state => <div>{state.field1}</div>}
   </State>
 );
-
 ```
 
 ### Global
 
-Debugging can be turned on for all `State` components:
+Debugging can be turned on or off for all `State` components:
 
 ```js
 State.Debug = true;
@@ -252,28 +212,28 @@ State.Verbose = true;
 Use the `onMount` and `onUnmount` properties when you need to execute
 actions during those lifecycle events.
 
-```js
+```js live noInline
+register({ state: { field1: "value" } });
 
-const App = props => (
+render(
   <State
-    onMount={state => { console.log("State mounted", state); }}
-    onUnmount={state => { console.log("State unmounted", state); }}
+    onMount={state => {
+      console.log("State mounted", state);
+    }}
+    onUnmount={state => {
+      console.log("State unmounted", state);
+    }}
   >
-    {state => ({
-      <div>
-        {state.field}
-      </div>
-    })}
+    {state => <div>{state.field1}</div>}
   </State>
 );
-
 ```
 
 ## carryOn factory
 
 The `carryOn` factory function is available as shorthand for a typical stateful component:
 
-```js
+```js live noInline
 import { carryOn } from "carry-on-react";
 
 const Nav = carryOn((props, state) => (
@@ -338,4 +298,6 @@ const App = carryOn(
     </div>
   )
 );
+
+render(<App />);
 ```

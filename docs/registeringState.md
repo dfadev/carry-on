@@ -104,6 +104,8 @@ const state = ({ id, get, set }) => {
 
 State can be registered with a store instance at any time. If the store is not connected, the registration will be queued until the store is connected.
 
+It is optional to register initial state.
+
 ### Register on default store:
 
 ```js live noInline
