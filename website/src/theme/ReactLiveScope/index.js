@@ -25,26 +25,34 @@ import {
 import Inspector from "react-inspector";
 import theme from "./inspector-theme";
 
-debugStores(true);
-State.Debug = true;
+const canUseDOM = !!(
+  typeof window !== "undefined" &&
+  window.document &&
+  window.document.createElement
+);
 
-const opts = {
-  objectAssign: Object.assign,
-  transforms: {
-    moduleImport: false,
-    dangerousForOf: true,
-    dangerousTaggedTemplateString: true
-  }
-};
+if (canUseDOM) {
+  debugStores(true);
+  State.Debug = true;
 
-const origTransform = buble.transform;
-buble.transform = code => {
-  const removeImports = code
-    .split("\n")
-    .filter(line => !line.startsWith("import"))
-    .join("\n");
-  return origTransform(removeImports, opts);
-};
+  const opts = {
+    objectAssign: Object.assign,
+    transforms: {
+      moduleImport: false,
+      dangerousForOf: true,
+      dangerousTaggedTemplateString: true
+    }
+  };
+
+  const origTransform = buble.transform;
+  buble.transform = code => {
+    const removeImports = code
+      .split("\n")
+      .filter(line => !line.startsWith("import"))
+      .join("\n");
+    return origTransform(removeImports, opts);
+  };
+}
 
 const ReactLiveScope = {
   React,
