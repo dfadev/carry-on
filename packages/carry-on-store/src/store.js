@@ -148,14 +148,14 @@ export const register = (init, id) => {
   const inits = forceArray(init);
   // queue if no set available yet
   if (store.connected) {
-    if (Debug || store.debug) store.log("register queued", init);
+    if (Debug || store.debug) store.log("register", init);
     return store.set(
       state => createPlugins(store, state, inits),
       initMessageType
     );
   }
 
-  if (Debug || store.debug) store.log("register", init);
+  if (Debug || store.debug) store.log("register queued", init);
   store.pending.push(...inits);
   return undefined;
 };
