@@ -1,7 +1,7 @@
 module.exports = {
   docs: {
     Overview: [
-      "index",
+      "gettingStarted",
       "registeringState",
       "usingState",
       "examples/index",

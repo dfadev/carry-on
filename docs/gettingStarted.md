@@ -1,5 +1,5 @@
 ---
-id: index
+id: gettingStarted
 slug: /
 title: Getting Started
 ---
