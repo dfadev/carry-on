@@ -150,8 +150,8 @@ export class Watch {
     // select children or render as the render function
     const renderFn = this && this.opts && this.opts.if;
 
-    // no render function renders nothing
-    if (!renderFn) return null;
+    // no render function does nothing
+    if (!renderFn) return;
 
     try {
       const result = this.trapRender(renderFn);
