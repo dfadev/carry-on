@@ -8,6 +8,8 @@ title: State Driven Functions
 A `watch` function executes once immediately with the current state and then subsequently as state changes.
 
 ```jsx live noInline
+import { register, watch, set } from "carry-on-store";
+
 const storeId = "stateDrivenFunctions";
 
 register(storeId, {
@@ -15,21 +17,26 @@ register(storeId, {
     value: 1,
     subscriptions: [],
     unsubscribe: () => {
-      get().subscriptions.forEach(fn => typeof fn === "function" && fn());
-      set(state => (state.subscriptions = []));
+      set(state => {
+        state.subscriptions.forEach(fn => fn());
+        state.subscriptions = [];
+      });
     },
     logs: []
   })
 });
-
-// cannot add watches to a store that isn't connected
-connect(storeId);
 
 // simple vocabulary for watch readability
 const positiveValue = ({ value }) => value >= 0;
 const logValue = ({ logs, value }) => logs.push("watch value=" + value);
 const bigLogs = ({ logs: { length } }) => length > 10;
 const trimLogs = ({ logs }) => logs.shift();
+const logSizeOk = () => {
+  throw new Error("log size small");
+};
+const error = (state, error, id) => {
+  console.log(error);
+};
 
 set(storeId, ({ subscriptions }) => {
   const interval = setInterval(() => {
@@ -41,7 +48,13 @@ set(storeId, ({ subscriptions }) => {
 
   subscriptions.push(
     watch({ from: storeId, if: positiveValue, then: logValue }),
-    watch({ from: storeId, if: bigLogs, then: trimLogs }),
+    watch({
+      from: storeId,
+      if: bigLogs,
+      then: trimLogs,
+      else: logSizeOk,
+      error
+    }),
     () => clearInterval(interval)
   );
 });

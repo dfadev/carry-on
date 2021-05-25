@@ -52,7 +52,7 @@ const logValue = ({ logs, value }) => logs.push("watch value=" + value);
 const bigLogs = ({ logs: { length } }) => length > 10;
 const trimLogs = ({ logs }) => logs.shift();
 const logSizeOk = () => {
-  throw new Error("log size OK");
+  throw new Error("log size small");
 };
 const error = (state, error, id) => {
   console.log(error);
