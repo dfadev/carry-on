@@ -36,7 +36,7 @@ if (canUseDOM) {
   State.Debug = true;
 
   const opts = {
-    objectAssign: Object.assign,
+    objectAssign: "Object.assign",
     transforms: {
       moduleImport: false,
       dangerousForOf: true,
