@@ -153,9 +153,14 @@ export class Watch {
     // no render function renders nothing
     if (!renderFn) return null;
 
-    const result = this.trapRender(renderFn);
-    if (result && this.opts.then) set(this.opts.then, this.opts.from);
-    return result;
+    try {
+      const result = this.trapRender(renderFn);
+      if (result && this.opts.then) set(this.opts.then, this.opts.from);
+      else if (this.opts.else) set(this.opts.else, this.opts.from);
+    } catch (e) {
+      if (this.opts.error)
+        set(state => this.opts.error(state, e, this.opts.from));
+    }
   }
 }
 
