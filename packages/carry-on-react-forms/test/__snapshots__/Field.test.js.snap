@@ -72,7 +72,6 @@ Object {
       "submit": [Function],
       "touched": Object {},
       "validate": [Function],
-      "validation": undefined,
       "values": Object {
         "checkbox": false,
         "field1": "value1",
@@ -172,7 +171,6 @@ Object {
       "submit": [Function],
       "touched": Object {},
       "validate": [Function],
-      "validation": undefined,
       "values": Object {
         "checkbox": false,
         "field1": "value1",
