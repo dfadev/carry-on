@@ -47,4 +47,3 @@ import { withState } from "carry-on-react";
 
 const App = withState()(props => <div>I render every state change</div>);
 ```
-

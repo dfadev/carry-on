@@ -57,4 +57,3 @@ No access or mutation can occur until the container is connected. The state cont
 Initial registrations are queued until the container is connected. Queued registrations are processed in the order specified by the state's `priority` key.
 
 The reason a container is initially unconnected is to allow for deterministic registration of middleware registered out of order.
-
