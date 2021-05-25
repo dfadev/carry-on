@@ -5,6 +5,8 @@ title: <Form>
 
 ## `<Form>`
 
+Register a form with a state container.
+
 ## Properties
 
 | Property        | Description                                                                       |
@@ -48,7 +50,6 @@ const myForm = {
 
 render(
   <Form {...myForm} from={storeId}>
-
     {/* Form Controls */}
     <Field path="field1">{({ element }) => <input {...element} />}</Field>
     <Field path="field2">{({ element }) => <input {...element} />}</Field>
@@ -95,7 +96,6 @@ render(
     <h5>Store state:</h5>
     <StateInspector from={storeId} />
     {/********************/}
-
   </Form>
 );
 ```

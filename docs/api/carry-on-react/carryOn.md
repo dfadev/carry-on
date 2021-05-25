@@ -5,14 +5,14 @@ title: carryOn
 
 ## `carryOn(opt, renderFn)`
 
+A convenience function that creates a React component that can access store state.
+
 ## Parameters
 
 | Parameter | Description                                                                            |
 | --------- | -------------------------------------------------------------------------------------- |
 | opt       | An object specifying the props to pass to the underlying `State` component.            |
 | renderFn  | A render function called with props and store state. It should return a React element. |
-
-A convenience function for creating a React component that can access store state.
 
 ```js live noInline
 import { carryOn } from "carry-on-react";

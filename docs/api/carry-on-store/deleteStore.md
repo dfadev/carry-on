@@ -5,11 +5,11 @@ title: deleteStore
 
 ## `deleteStore(storeId)`
 
+Remove a store. If `storeId` is not specified the default store is removed.
+
 | Parameter | Description                   |
 | --------- | ----------------------------- |
 | `storeId` | The name of the store to use. |
-
-Remove a store. If `storeId` is not specified the default store is removed.
 
 ```js live noInline
 import { register, deleteStore } from "carry-on-store";

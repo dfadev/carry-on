@@ -5,11 +5,11 @@ title: getStore
 
 ## `getStore(storeId)`
 
+Retrieves a store. The default store is returned if storeId isn't specfied.
+
 | Parameter | Description                   |
 | --------- | ----------------------------- |
 | `storeId` | The name of the store to use. |
-
-Retrieves a store. The default store is returned if storeId isn't specfied.
 
 ## Example
 

@@ -3,13 +3,27 @@ id: FormState
 title: <FormState>
 ---
 
-## Import
-
-```js
-import { FormState } from "carry-on-react-forms";
-```
-
 ## `FormState`
+
+Retrieves form state.
+
+If this component doesn't have a parent `Form` component, you must use the `form` and `store` properties to choose a form.
+
+## Properties
+
+| Property          | Description                                                                       |
+| ----------------- | --------------------------------------------------------------------------------- |
+| `children`        | Render function, receives a form's state                                          |
+| `from` or `store` | What store to retrieve state from.                                                |
+| `form`            | What form to retrieve state from.                                                 |
+| `select`          | A function that selects the required state.                                       |
+| `throttle`        | Milliseconds to throttle change requests                                          |
+| `debounce`        | Milliseconds to debounce change requests                                          |
+| `debug`           | When true, log messages regarding state changes will be printed to the `console`. |
+| `verbose`         | When true, verbose log messages are printed to the `console`.                     |
+| `id`              | Debug log uses this to identify components                                        |
+| `onMount`         | Called with the current state when the component mounts.                          |
+| `onUnmount`       | Called with the current state when the component unmounts.                        |
 
 ```js live noInline
 import { Form, Field, FormButtons, FormState } from "carry-on-react-forms";
@@ -37,7 +51,6 @@ const myForm = {
 
 render(
   <Form {...myForm} from={storeId}>
-
     {/* Form Controls */}
     <Field path="field1">{({ element }) => <input {...element} />}</Field>
     <Field path="field2">{({ element }) => <input {...element} />}</Field>
@@ -84,7 +97,6 @@ render(
     <h5>Store state:</h5>
     <StateInspector from={storeId} />
     {/********************/}
-
   </Form>
 );
 ```

@@ -5,6 +5,8 @@ title: withState
 
 ## `withState(opt)(Component)`
 
+A higher order component that injects state into the wrapped component.
+
 ### withState options
 
 | Property    | Description                                                                                                                |
@@ -23,10 +25,6 @@ title: withState
 | `id`        | Debug log uses this to identify components                                                                                 |
 | `onMount`   | Called with the current state when the component mounts.                                                                   |
 | `onUnmount` | Called with the current state when the component unmounts.                                                                 |
-
-A higher order component that injects state into the wrapped component.
-
-All properties are optional.
 
 ```js
 import { withState } from "carry-on-react";

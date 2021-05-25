@@ -7,13 +7,13 @@ title: set
 
 ## `set(storeId, fn, type)`
 
+Sets store state.  The only required parameter is the mutation function.
+
 | Parameter | Description                                     |
 | --------- | ----------------------------------------------- |
 | `storeId` | The name of the store to use.                   |
 | `fn`      | The mutation function to execute with the current state. |
 | `type` | A string representing the action type.  Used with `devTools`. |
-
-Sets store state.  The only required parameter is the mutation function.
 
 ```js live noInline
 import { set } from "carry-on-store";

@@ -5,12 +5,15 @@ title: <Field>
 
 ## `Field`
 
+Render a form field using form helpers passed to the render function.
+
 ## Properties
 
 | Property               | Description                                                                                                                |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `render` or `children` | The render function. This function will be called with the state as it's first parameter.                                  |
 | `from`                 | What store to retrieve state from.                                                                                         |
+| `form`                 | What form to retrieve state from.                                                                                          |
 | `path`                 | The state path to retrieve. Specified as a dotted path string, with support for arrays. Sample: `"my.field.path[10].name"` |
 | `constant`             | When true, the `Field` component will query state and render only once.                                                    |
 | `default`              | The default value when the state is undefined.                                                                             |
@@ -47,7 +50,6 @@ const myForm = {
 
 render(
   <Form {...myForm} from={storeId}>
-
     {/* Form Controls */}
     <Field path="field1">{({ element }) => <input {...element} />}</Field>
     <Field path="field2">{({ element }) => <input {...element} />}</Field>
@@ -94,7 +96,6 @@ render(
     <h5>Store state:</h5>
     <StateInspector from={storeId} />
     {/********************/}
-
   </Form>
 );
 ```
