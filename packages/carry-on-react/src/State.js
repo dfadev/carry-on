@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from "react";
+import hoistNonReactStatic from "hoist-non-react-statics";
 import {
   shallowEqual,
   logger,
@@ -12,14 +13,22 @@ import ReactDOM from "react-dom";
 import StoreContext from "./StoreContext";
 
 const ignoreProps = [];
+let State;
 
-export const Data = props => (
-  <StoreContext.Consumer>
-    {from => <State from={from} {...props} />}
-  </StoreContext.Consumer>
-);
+export const withStore = WrappedComponent => {
+  const WithStore = props => (
+    <StoreContext.Consumer>
+      {from => <WrappedComponent {...props} from={props.from || from} />}
+    </StoreContext.Consumer>
+  );
 
-export default class State extends Component {
+  WithStore.displayName = "State";
+  WithStore.WrappedComponent = WrappedComponent;
+
+  return hoistNonReactStatic(WithStore, WrappedComponent);
+};
+
+class InnerState extends Component {
   static Debug = false;
 
   static Verbose = false;
@@ -265,7 +274,9 @@ export default class State extends Component {
   }
 }
 
-State.contextType = StoreContext;
+State = withStore(InnerState);
+
+InnerState.contextType = StoreContext;
 
 State.defaultProps = {
   path: "",
@@ -283,3 +294,7 @@ State.defaultProps = {
   onUnmount: undefined,
   render: undefined
 };
+
+const StateComponent = State;
+
+export default StateComponent;
