@@ -15,13 +15,7 @@ import {
   devTools
 } from "carry-on-store";
 import { State, carryOn } from "carry-on-react";
-import {
-  Form,
-  Field,
-  FormButtons,
-  FormContext,
-  FormState
-} from "carry-on-react-forms";
+import { Form, Field, FormButtons, FormState } from "carry-on-react-forms";
 import Inspector from "react-inspector";
 import theme from "./inspector-theme";
 
@@ -70,7 +64,6 @@ const ReactLiveScope = {
   Form,
   Field,
   FormButtons,
-  FormContext,
   FormState,
   getStore,
   debugStore,
