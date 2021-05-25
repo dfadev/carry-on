@@ -1,4 +1,4 @@
 ---
 id: Switch
-title: Switch
+title: <Switch>
 ---

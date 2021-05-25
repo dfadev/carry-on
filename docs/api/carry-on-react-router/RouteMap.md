@@ -1,4 +1,4 @@
 ---
 id: RouteMap
-title: RouteMap
+title: <RouteMap>
 ---

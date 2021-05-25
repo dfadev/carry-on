@@ -1,4 +1,4 @@
 ---
 id: NavLink
-title: NavLink
+title: <NavLink>
 ---

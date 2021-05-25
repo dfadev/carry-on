@@ -1,4 +1,4 @@
 ---
 id: Link
-title: Link
+title: <Link>
 ---

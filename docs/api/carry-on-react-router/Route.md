@@ -1,4 +1,4 @@
 ---
 id: Route
-title: Route
+title: <Route>
 ---

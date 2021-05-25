@@ -3,17 +3,17 @@ id: deleteStore
 title: deleteStore
 ---
 
-## Import
+## `deleteStore(storeId)`
 
-```js
-import { deleteStore } from "carry-on-store";
-```
+| Parameter | Description                   |
+| --------- | ----------------------------- |
+| `storeId` | The name of the store to use. |
 
-## `deleteStore(`_`storeId`_`)`
-
-Removes a store. If `storeId` is not specified the default store is removed.
+Remove a store. If `storeId` is not specified the default store is removed.
 
 ```js live noInline
+import { register, deleteStore } from "carry-on-store";
+
 register({ state: { field: "value" } });
 const initialState = get();
 deleteStore();

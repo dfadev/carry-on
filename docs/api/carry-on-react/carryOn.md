@@ -3,13 +3,14 @@ id: carryOn
 title: carryOn
 ---
 
-## Import
+## `carryOn(opt, renderFn)`
 
-```js
-import { carryOn } from "carry-on-react";
-```
+## Parameters
 
-## `carryOn(`_`opt`_`,`_`renderFn`_`)`
+| Parameter | Description                                                                            |
+| --------- | -------------------------------------------------------------------------------------- |
+| opt       | An object specifying the props to pass to the underlying `State` component.            |
+| renderFn  | A render function called with props and store state. It should return a React element. |
 
 A convenience function for creating a React component that can access store state.
 
@@ -81,10 +82,3 @@ const App = carryOn(
 
 render(<App title="CarryOn" />);
 ```
-
-## Parameters
-
-| Parameter | Description                                                                            |
-| --------- | -------------------------------------------------------------------------------------- |
-| opt       | An object specifying the props to pass to the underlying `State` component.            |
-| renderFn  | A render function called with props and store state. It should return a React element. |

@@ -3,37 +3,9 @@ id: withState
 title: withState
 ---
 
-## Import
+## `withState(opt)(Component)`
 
-```js
-import { withState } from "carry-on-react";
-```
-
-## `withState(`_`opt`_`)(`_`Component`_`)`
-
-A higher order component that injects state into the wrapped component.
-
-```js
-const App = withState({ path: "counter", asProp: "counter" })(props => (
-  <div>{counter}</div>
-));
-```
-
-The properties used to pass state to the wrapped component are determined by:
-
-- The `asProp` option, if specified
-- If the state or `select` result is an object it will be spread onto multiple props
-- When the state isn't an object it will be passed as the `state` property.
-
-Normally you would always use the `path` or `select` options when using `withState` because without them your component would render on every state change:
-
-```js
-const App = withState()(props => <div>I render every state change</div>);
-```
-
-## Properties
-
-All properties are optional.
+### withState options
 
 | Property    | Description                                                                                                                |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -51,3 +23,30 @@ All properties are optional.
 | `id`        | Debug log uses this to identify components                                                                                 |
 | `onMount`   | Called with the current state when the component mounts.                                                                   |
 | `onUnmount` | Called with the current state when the component unmounts.                                                                 |
+
+A higher order component that injects state into the wrapped component.
+
+All properties are optional.
+
+```js
+import { withState } from "carry-on-react";
+
+const App = withState({ path: "counter", asProp: "counter" })(props => (
+  <div>{counter}</div>
+));
+```
+
+The properties used to pass state to the wrapped component are determined by:
+
+- The `asProp` option, if specified
+- If the state or `select` result is an object it will be spread onto multiple props
+- When the state isn't an object it will be passed as the `state` property.
+
+Normally you would always use the `path` or `select` options when using `withState` because without them your component would render on every state change:
+
+```js
+import { withState } from "carry-on-react";
+
+const App = withState()(props => <div>I render every state change</div>);
+```
+

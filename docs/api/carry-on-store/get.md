@@ -3,19 +3,20 @@ id: get
 title: get
 ---
 
-## Import
+## `get(fn, storeId)`
 
-```js
-import { get } from "carry-on-store";
-```
+## `get(storeId, fn)`
 
-## `get(`_`fn`_`, `_`storeId`_`)`
-
-## `get(`_`storeId`_`, `_`fn`_`)`
+| Parameter | Description                                     |
+| --------- | ----------------------------------------------- |
+| `storeId` | The name of the store to use.                   |
+| `fn`      | The function to execute with the current state. |
 
 Retrieves state from a store. Both parameters are optional.
 
 ```js live noInline
+import { get, set } from "carry-on-store";
+
 const storeId = "getExample";
 
 set(storeId, state => {

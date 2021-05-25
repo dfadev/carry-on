@@ -3,18 +3,20 @@ id: devTools
 title: devTools
 ---
 
-## Import
+## `devTools({ ...opts })`
 
-```js
-import { register, devTools } from "carry-on-store";
-```
+### devTools options
 
-## Redux Dev Tools Extension
+| Property     | Description                            |
+| ------------ | -------------------------------------- |
+| `timeTravel` | Should the plugin support time travel. |
 
-The store can be viewed and time traveled using [Redux Dev Tools Extension](https://github.com/zalmoxisus/redux-devtools-extension).
+The store can be viewed using the [Redux Dev Tools Extension](https://github.com/zalmoxisus/redux-devtools-extension).
 
 If you are using multiple named stores, the `devTools` plugin must be registered on each store you want to use it on.
 
 ```js
-register(devTools());
+import { register, devTools } from "carry-on-store";
+
+register(devTools({ timeTravel: false }));
 ```

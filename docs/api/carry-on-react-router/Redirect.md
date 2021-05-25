@@ -1,4 +1,4 @@
 ---
 id: Redirect
-title: Redirect
+title: <Redirect>
 ---

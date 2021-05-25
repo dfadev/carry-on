@@ -3,13 +3,7 @@ id: watch
 title: watch
 ---
 
-## Import
-
-```js
-import { watch } from "carry-on-store";
-```
-
-## `watch(`_`{ ...opts }`_`)`
+## `watch({ ...opts })`
 
 Executes the specified if/then functions immediately with the current state and subsequently when state accessed changes.
 
@@ -32,6 +26,8 @@ Executes the specified if/then functions immediately with the current state and 
 ## Example
 
 ```jsx live noInline
+import { register, watch, set } from "carry-on-store";
+
 const storeId = "stateDrivenFunctions";
 
 register(storeId, {
@@ -45,9 +41,6 @@ register(storeId, {
     logs: []
   })
 });
-
-// cannot add watches to a store that isn't connected
-connect(storeId);
 
 // simple vocabulary for watch readability
 const positiveValue = ({ value }) => value > -1;

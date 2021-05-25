@@ -1,4 +1,4 @@
 ---
 id: Prompt
-title: Prompt
+title: <Prompt>
 ---

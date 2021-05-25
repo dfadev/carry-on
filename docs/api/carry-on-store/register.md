@@ -3,13 +3,7 @@ id: register
 title: register
 ---
 
-## Import
-
-```js
-import { register } from "carry-on-store";
-```
-
-## `register(`_`[`_`{`_`state`_`,`_`middleware`_`,`_`priority`_`}`_`]`_`,`_`storeId`_`)`
+## `register([ { state, middleware, priority } ], storeId)`
 
 | Parameter    | Description                                                                                                               |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------- |
@@ -28,6 +22,8 @@ The _`set`_ function is used to change state and the _`get`_ function to retriev
 | `get(state => {})`            | Calls a function that queries the passed state and returns the result.                                                                 |
 
 ```js
+import { register } from "carry-on-store";
+
 const state = ({ get, set }) => ({
   field: "value",
   change(val) {

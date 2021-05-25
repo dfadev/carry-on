@@ -11,7 +11,7 @@ import { register } from "carry-on-store";
 
 ## Define initial state
 
-Initial state can be set by passing state to the `register` function.
+Initial state can be set by passing state to the `register` function. It is optional to register initial state.
 
 ### State as a function
 
@@ -103,8 +103,6 @@ const state = ({ id, get, set }) => {
 ## Registration
 
 State can be registered with a store instance at any time. If the store is not connected, the registration will be queued until the store is connected.
-
-It is optional to register initial state.
 
 ### Register on default store:
 

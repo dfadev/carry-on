@@ -1,6 +1,6 @@
 ---
 id: State
-title: "<State ...>"
+title: <State>
 ---
 
 ## Properties
@@ -14,7 +14,7 @@ All properties are optional.
 | `path`                 | The state path to retrieve. Specified as a dotted path string, with support for arrays. Sample: `"my.field.path[10].name"` |
 | `select`               | A function that selects the required state.                                                                                |
 | `constant`             | When true, the `State` component will query state and render only once.                                                    |
-| `strict`               | When true, the `State` will track accessed keys on every update instead of on just the first one.                          |
+| `strict`               | When true, the `State` component will track accessed keys on every update instead of on just the first one.                          |
 | `default`              | The default value when the state is undefined.                                                                             |
 | `throttle`             | Milliseconds to throttle change requests                                                                                   |
 | `debounce`             | Milliseconds to debounce change requests                                                                                   |
