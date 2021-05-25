@@ -211,8 +211,15 @@ export const connect = (id, wrap) => {
         return state;
       };
 
-      store.state = produce(store.state, rootSet, patcher);
-      return store.state;
+      try {
+        const nextState = produce(store.state, rootSet, patcher);
+        store.state = nextState;
+        return store.state;
+      } catch (e) {
+        store.nestedSet = false;
+        store.nestedState = undefined;
+        throw e;
+      }
     }
 
     if (Debug || store.debug) store.log("nested set");
