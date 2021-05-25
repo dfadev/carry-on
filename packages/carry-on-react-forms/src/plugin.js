@@ -49,7 +49,6 @@ export default ({
       isSubmitting: false,
       isValidating: false,
       isValid: true,
-      validation: undefined,
       values: isFunction(initialValues)
         ? initialValues({ set, get, id: storeId })
         : initialValues,
