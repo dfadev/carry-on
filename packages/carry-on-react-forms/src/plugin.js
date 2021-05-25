@@ -18,7 +18,7 @@ export default ({
   onSubmit,
   onReset
 }) => ({
-  state: ({ set, get }) => {
+  state: ({ id: storeId, set, get }) => {
     const idPath = toPath(id);
     const curForm = (state = get()) => getInA(state, idPath, {});
 
@@ -31,10 +31,10 @@ export default ({
     }
 
     const debounceValidate = onValidate
-      ? debouncePromise(onValidate({ set, get }), 200)
+      ? debouncePromise(onValidate({ set, get, id: storeId }), 200)
       : undefined;
 
-    const typeSuffix = ` (${id})`;
+    const typeSuffix = storeId ? ` (${storeId}:${id})` : ` (${id})`;
 
     const calcPristine = form => isEqual(form.origState.values, form.values);
 
@@ -51,7 +51,7 @@ export default ({
       isValid: true,
       validation: undefined,
       values: isFunction(initialValues)
-        ? initialValues({ set, get })
+        ? initialValues({ set, get, id: storeId })
         : initialValues,
 
       validate: (state, onSuccess) => {
@@ -101,7 +101,9 @@ export default ({
       setInitialValues: values =>
         set(state => {
           const form = curForm(state);
-          const vals = isFunction(values) ? values({ set, get }) : values;
+          const vals = isFunction(values)
+            ? values({ set, get, id: storeId })
+            : values;
           form.initialValues = vals;
           form.values = vals;
           form.isPristine = true;
@@ -158,7 +160,7 @@ export default ({
           const formStateOnReset = curForm().onReset;
           if (formStateOnReset) onReset = () => formStateOnReset;
         }
-        const realOnReset = onReset && onReset({ set, get });
+        const realOnReset = onReset && onReset({ set, get, id: storeId });
         if (realOnReset) realOnReset(curForm().values);
         return s;
       },
@@ -178,7 +180,7 @@ export default ({
             const formStateOnSubmit = curForm().onSubmit;
             if (formStateOnSubmit) onSubmit = () => formStateOnSubmit;
           }
-          const realOnSubmit = onSubmit && onSubmit({ set, get });
+          const realOnSubmit = onSubmit && onSubmit({ set, get, id: storeId });
 
           Promise.resolve(realOnSubmit && realOnSubmit(curForm().values))
             .then(rslt => {
