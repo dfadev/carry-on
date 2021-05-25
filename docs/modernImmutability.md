@@ -9,7 +9,6 @@ title: Modern Immutability
 const storeId = "immutable";
 
 deleteStore(storeId);
-connect(storeId);
 
 const store = getStore(storeId);
 
@@ -21,12 +20,20 @@ store.set(state => {
 
 const mutatedState = store.get();
 
+store.set(state => {
+  state.value1 = "def";
+});
+
+const nextMutatedState = store.get();
+
 render(
   <>
     <h6>Initial State:</h6>
     <Inspector data={initialState} />
     <h6>Mutated State:</h6>
     <Inspector data={mutatedState} />
+    <h6>Next Mutated State:</h6>
+    <Inspector data={nextMutatedState} />
   </>
 );
 ```
