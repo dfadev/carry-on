@@ -14,7 +14,7 @@ import {
   debugStores,
   devTools
 } from "carry-on-store";
-import { State, carryOn } from "carry-on-react";
+import { Store, State, carryOn } from "carry-on-react";
 import { Form, Field, FormButtons, FormState } from "carry-on-react-forms";
 import Inspector from "react-inspector";
 import theme from "./inspector-theme";
@@ -51,24 +51,25 @@ if (canUseDOM) {
 const ReactLiveScope = {
   React,
   ...React,
-  connect,
-  register,
-  initStores,
-  deleteStore,
-  get,
-  set,
-  watch,
-  Watch,
-  State,
-  carryOn,
-  Form,
   Field,
+  Form,
   FormButtons,
   FormState,
-  getStore,
+  State,
+  Store,
+  Watch,
+  carryOn,
+  connect,
   debugStore,
   debugStores,
+  deleteStore,
   devTools,
+  get,
+  getStore,
+  initStores,
+  register,
+  set,
+  watch,
   StateInspector: ({ from, select = s => ({ ...s }), ...rest }) => (
     <State id="Inspector" from={from} select={select} {...rest}>
       {state => (
