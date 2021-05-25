@@ -34,7 +34,7 @@
   },
   "peerDependencies": {
     "carry-on-utils": "^1.0.12",
-    "immer": ">=8.0.0 || >= 9.0.0"
+    "immer": ">=8"
   },
   "exports": {
     "require": "./dist/carry-on-store.cjs.js",
