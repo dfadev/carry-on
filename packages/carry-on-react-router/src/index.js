@@ -9,4 +9,10 @@ export { default as Switch } from "./components/Switch";
 export { default as withRouter } from "./components/withRouter";
 export { default as createStaticHistory } from "./createStaticHistory";
 export { default as Routes } from "./components/Routes";
-export * from "./components/Router";
+export {
+  Router,
+  MemoryRouter,
+  BrowserRouter,
+  HashRouter,
+  StaticRouter
+} from "./components/Router";
