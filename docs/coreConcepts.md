@@ -10,7 +10,7 @@ Code inside a `set` function has read and write access to state values.
 ```js live noInline
 import { set } from "carry-on-store";
 
-const storeId = "setExample";
+const storeId = "coreSetExample";
 
 set(storeId, state => {
   state.field1 = 1;
@@ -25,7 +25,7 @@ Values can be read inside a `get` function.
 ```js live noInline
 import { get, set } from "carry-on-store";
 
-const storeId = "getExample";
+const storeId = "coreGetExample";
 
 set(storeId, state => {
   state.field1 = 1;
