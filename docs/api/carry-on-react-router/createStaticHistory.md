@@ -1,4 +1,0 @@
----
-id: createStaticHistory
-title: createStaticHistory
----

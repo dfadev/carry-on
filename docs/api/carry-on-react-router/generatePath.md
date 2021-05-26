@@ -1,4 +1,0 @@
----
-id: generatePath
-title: generatePath
----

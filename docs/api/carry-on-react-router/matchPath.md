@@ -1,4 +1,0 @@
----
-id: matchPath
-title: matchPath
----
