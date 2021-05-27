@@ -3,8 +3,6 @@ id: FormButtons
 title: <FormButtons>
 ---
 
-## `FormButtons`
-
 Render form buttons using form helpers passed to the render function.
 
 If this component doesn't have a parent `Form` component, you must use the `form` and `store` properties to choose a form.

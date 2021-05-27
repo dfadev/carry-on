@@ -3,8 +3,6 @@ id: FormState
 title: <FormState>
 ---
 
-## `FormState`
-
 Retrieves form state.
 
 If this component doesn't have a parent `Form` component, you must use the `form` and `store` properties to choose a form.

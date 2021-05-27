@@ -3,8 +3,6 @@ id: Form
 title: <Form>
 ---
 
-## `<Form>`
-
 Register a form with a state container.
 
 ## Properties

@@ -3,8 +3,6 @@ id: Store
 title: <Store>
 ---
 
-## `<Store>`
-
 Specify a store that child components will use.
 
 ## Properties

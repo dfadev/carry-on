@@ -3,8 +3,6 @@ id: Field
 title: <Field>
 ---
 
-## `Field`
-
 Render a form field using form helpers passed to the render function.
 
 ## Properties
