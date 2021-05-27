@@ -16,22 +16,22 @@ it("Router renders", () => {
 });
 
 it("BrowserRouter renders", () => {
-  const { asFragment } = render(<BrowserRouter history={history} />);
+  const { asFragment } = render(<BrowserRouter />);
   expect(asFragment()).toMatchSnapshot();
 });
 
 it("MemoryRouter renders", () => {
-  const { asFragment } = render(<MemoryRouter history={history} />);
+  const { asFragment } = render(<MemoryRouter />);
   expect(asFragment()).toMatchSnapshot();
 });
 
 it("HashRouter renders", () => {
-  const { asFragment } = render(<HashRouter history={history} />);
+  const { asFragment } = render(<HashRouter />);
   expect(asFragment()).toMatchSnapshot();
 });
 
 it("StaticRouter renders", () => {
-  const { asFragment } = render(<StaticRouter history={history} />);
+  const { asFragment } = render(<StaticRouter />);
   expect(asFragment()).toMatchSnapshot();
 });
 
