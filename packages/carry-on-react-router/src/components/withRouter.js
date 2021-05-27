@@ -5,10 +5,10 @@ import Route from "./Route";
 
 function withRouter(Component) {
   const C = props => {
-    const { wrappedComponentRef, ...remainingProps } = props;
+    const { wrappedComponentRef, from, store, ...remainingProps } = props;
 
     return (
-      <Route>
+      <Route from={from || store}>
         {routeComponentProps => (
           <Component
             {...remainingProps}
