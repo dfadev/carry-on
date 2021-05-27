@@ -17,12 +17,14 @@ export default (renderFn, stateProps) => {
     onUnmountCopy = undefined;
 
     render() {
-      const { from, debug, verbose, ...props } = this.props;
+      const { from, debug, verbose, onMount, onUnmount, ...props } = this.props;
 
       const propProps = {
         from,
         debug,
-        verbose
+        verbose,
+        onMount,
+        onUnmount
       };
       const finalProps = mutateMerge({}, stateProps, propProps);
       finalProps.id = props.id || (stateProps && stateProps.id);
