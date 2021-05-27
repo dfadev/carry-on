@@ -19,14 +19,16 @@ const router = (
     const prevHist = getInA(get(), history);
     if (prevHist !== undefined && prevHist.unlisten) prevHist.unlisten();
 
-    const unlisten = history.listen(
-      () =>
-        !isPaused &&
-        set(s => {
-          const hist = getInA(s, historyPath);
-          mutateMerge(hist, history);
-        }, "History Change")
-    );
+    const unlisten =
+      history.listen &&
+      history.listen(
+        () =>
+          !isPaused &&
+          set(s => {
+            const hist = getInA(s, historyPath);
+            mutateMerge(hist, history);
+          }, "History Change")
+      );
 
     // create an event handler for a link click
     const handleClick =
@@ -74,7 +76,7 @@ const router = (
         path: "/",
         url: "/",
         params: {},
-        isExact: history.location.pathname === "/"
+        isExact: history.location && history.location.pathname === "/"
       },
       handleClick,
       getHref,
