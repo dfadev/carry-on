@@ -1,6 +1,7 @@
 /* eslint-disable max-classes-per-file */
 import { Component } from "react";
-import { register } from "carry-on-store";
+import { register, get } from "carry-on-store";
+import { getIn } from "carry-on-utils";
 import {
   createBrowserHistory,
   createHashHistory,
@@ -9,10 +10,21 @@ import {
 import createStaticHistory from "../createStaticHistory";
 import router from "../router";
 
+const defaultProps = {
+  path: "app.history"
+};
+
 export class Router extends Component {
   constructor(props) {
     super(props);
-    register(router(props.history, props.path), props.store);
+    register(router(props.history, props.path), props.store || props.from);
+  }
+
+  componentWillUnmount() {
+    const { store, from, path } = this.props;
+    const s = get(store || from);
+    const h = getIn(s, path || "");
+    if (h && h.unlisten) h.unlisten();
   }
 
   render() {
@@ -24,7 +36,17 @@ export class Router extends Component {
 export class MemoryRouter extends Component {
   constructor(props) {
     super(props);
-    register(router(createMemoryHistory(props), props.path), props.store);
+    register(
+      router(createMemoryHistory(props), props.path),
+      props.store || props.from
+    );
+  }
+
+  componentWillUnmount() {
+    const { store, from, path } = this.props;
+    const s = get(store || from);
+    const h = getIn(s, path || "");
+    if (h && h.unlisten) h.unlisten();
   }
 
   render() {
@@ -32,11 +54,22 @@ export class MemoryRouter extends Component {
     return children || null;
   }
 }
+MemoryRouter.defaultProps = defaultProps;
 
 export class BrowserRouter extends Component {
   constructor(props) {
     super(props);
-    register(router(createBrowserHistory(props), props.path), props.store);
+    register(
+      router(createBrowserHistory(props), props.path),
+      props.store || props.from
+    );
+  }
+
+  componentWillUnmount() {
+    const { store, from, path } = this.props;
+    const s = get(store || from);
+    const h = getIn(s, path || "");
+    if (h && h.unlisten) h.unlisten();
   }
 
   render() {
@@ -44,11 +77,22 @@ export class BrowserRouter extends Component {
     return children || null;
   }
 }
+BrowserRouter.defaultProps = defaultProps;
 
 export class HashRouter extends Component {
   constructor(props) {
     super(props);
-    register(router(createHashHistory(props), props.path), props.store);
+    register(
+      router(createHashHistory(props), props.path, false),
+      props.store || props.from
+    );
+  }
+
+  componentWillUnmount() {
+    const { store, from, path } = this.props;
+    const s = get(store || from);
+    const h = getIn(s, path || "");
+    if (h && h.unlisten) h.unlisten();
   }
 
   render() {
@@ -56,11 +100,22 @@ export class HashRouter extends Component {
     return children || null;
   }
 }
+HashRouter.defaultProps = defaultProps;
 
 export class StaticRouter extends Component {
   constructor(props) {
     super(props);
-    register(router(createStaticHistory(props), props.path, true), props.store);
+    register(
+      router(createStaticHistory(props), props.path, true),
+      props.store || props.from
+    );
+  }
+
+  componentWillUnmount() {
+    const { store, from, path } = this.props;
+    const s = get(store || from);
+    const h = getIn(s, path || "");
+    if (h && h.unlisten) h.unlisten();
   }
 
   render() {
@@ -68,3 +123,4 @@ export class StaticRouter extends Component {
     return children || null;
   }
 }
+StaticRouter.defaultProps = defaultProps;
