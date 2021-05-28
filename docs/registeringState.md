@@ -58,11 +58,11 @@ Actions are defined by functions inside the state object:
 
 ```js
 
-const state = ({ id, get, set }) => {
+const state = ({ id, get, set }) => ({
   action1() { },
   action2() { },
   action3() { }
-};
+});
 
 ```
 
@@ -73,13 +73,25 @@ function:
 
 ```js
 
-const state = ({ id, get, set }) => {
+const state = ({ id, get, set }) => ({
   logValue() {
     get(state => {
       console.log("value is", state.value);
     });
   },
-};
+});
+
+```
+
+A shorter alternative:
+
+```js
+
+const state = ({ id, get, set }) => ({
+  logValue() {
+    console.log("value is", get().value);
+  },
+});
 
 ```
 
@@ -89,14 +101,14 @@ An action uses the `set` function to change state values.
 
 ```js
 
-const state = ({ id, get, set }) => {
+const state = ({ id, get, set }) => ({
   field: "",
   setField(val) {
     set(state => {
       state.field = val;
     });
   }
-};
+});
 
 ```
 
