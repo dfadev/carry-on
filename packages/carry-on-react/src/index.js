@@ -1,4 +1,20 @@
-export { default as State } from "./State";
+export {
+  default as State,
+  OnMount,
+  OnUnmount,
+  Register,
+  Render,
+  Select,
+  Path,
+  Default,
+  Throttle,
+  Constant,
+  Strict,
+  Debounce,
+  Debug,
+  Verbose,
+  Id
+} from "./State";
 export { default as withState } from "./withState";
 export { default as carryOn } from "./carryOn";
 export { default as DevTools } from "./DevTools";

@@ -11,6 +11,7 @@ import {
 import { register, connect, subscribe, watchGet } from "carry-on-store";
 import ReactDOM from "react-dom";
 import StoreContext from "./StoreContext";
+import withNodesToProps from "./withNodesToProps";
 
 const ignoreProps = [];
 let State;
@@ -22,7 +23,7 @@ export const withStore = WrappedComponent => {
     </StoreContext.Consumer>
   );
 
-  WithStore.displayName = "State";
+  WithStore.displayName = "withStore";
   WithStore.WrappedComponent = WrappedComponent;
 
   return hoistNonReactStatic(WithStore, WrappedComponent);
@@ -274,7 +275,48 @@ class InnerState extends Component {
   }
 }
 
-State = withStore(InnerState);
+export const Register = () => null;
+export const Render = () => null;
+export const OnMount = () => null;
+export const OnUnmount = () => null;
+export const Select = () => null;
+export const Path = () => null;
+export const Default = () => null;
+export const Throttle = () => null;
+export const Constant = () => null;
+export const Strict = () => null;
+export const Debounce = () => null;
+export const Debug = () => null;
+export const Verbose = () => null;
+export const Id = () => null;
+
+const nodeMap = {
+  Register: {
+    prop: "register",
+    val: "children",
+    transform: state => {
+      if (typeof state === "function") {
+        return { state };
+      }
+      return state;
+    }
+  },
+  Render: "render",
+  OnMount: "onMount",
+  OnUnmount: "onUnmount",
+  Select: "select",
+  Path: "path",
+  Default: "default",
+  Throttle: { prop: "throttle", val: "ms", default: 0 },
+  Constant: { prop: "constant", default: true },
+  Strict: { prop: "strict", default: true },
+  Debounce: { prop: "debounce", val: "ms", default: 0 },
+  Debug: { prop: "debug", val: "enabled", default: true },
+  Verbose: { prop: "verbose", val: "enabled", default: true },
+  Id: "id"
+};
+
+State = withStore(withNodesToProps(nodeMap, InnerState));
 
 InnerState.contextType = StoreContext;
 

@@ -47,3 +47,39 @@ render(
   </State>
 );
 ```
+
+## Composing
+
+```js live noInline
+import { Store, State, Register, Render } from "carry-on-react";
+
+render(
+  <Store id={"getStartedComposing"}>
+    <State>
+      <Register>
+        {({ set }) => ({
+          counter: 0,
+          inc: () =>
+            set(state => {
+              state.counter += 1;
+            }),
+          dec: () =>
+            set(state => {
+              state.counter -= 1;
+            })
+        })}
+      </Register>
+      <Render>
+        {({ counter, inc, dec }) => (
+          <>
+            <div>Counter: {counter}</div>
+            <button onClick={inc}>+</button>
+            <button onClick={dec}>-</button>
+            <StateInspector />
+          </>
+        )}
+      </Render>
+    </State>
+  </Store>
+);
+```

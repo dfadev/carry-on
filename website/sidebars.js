@@ -4,6 +4,7 @@ module.exports = {
       "gettingStarted",
       "registeringState",
       "usingState",
+      "composingState",
       "examples/index",
       "optionalSelectors",
       "modernImmutability",
