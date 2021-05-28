@@ -57,13 +57,11 @@ const state = {
 Actions are defined by functions inside the state object:
 
 ```js
-
 const state = ({ id, get, set }) => ({
-  action1() { },
-  action2() { },
-  action3() { }
+  action1() {},
+  action2() {},
+  action3() {}
 });
-
 ```
 
 #### Get
@@ -72,27 +70,23 @@ When an action only needs read access to the current state, it uses the `get`
 function:
 
 ```js
-
 const state = ({ id, get, set }) => ({
   logValue() {
     get(state => {
       console.log("value is", state.value);
     });
-  },
+  }
 });
-
 ```
 
 A shorter alternative:
 
 ```js
-
 const state = ({ id, get, set }) => ({
   logValue() {
     console.log("value is", get().value);
-  },
+  }
 });
-
 ```
 
 #### Set
@@ -100,7 +94,6 @@ const state = ({ id, get, set }) => ({
 An action uses the `set` function to change state values.
 
 ```js
-
 const state = ({ id, get, set }) => ({
   field: "",
   setField(val) {
@@ -109,7 +102,6 @@ const state = ({ id, get, set }) => ({
     });
   }
 });
-
 ```
 
 ## Registration

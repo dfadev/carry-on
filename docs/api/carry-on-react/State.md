@@ -3,7 +3,7 @@ id: State
 title: <State>
 ---
 
-Retrieve state from a store and render content based on it.  Render again when that state changes.
+Retrieve state from a store and render content based on it. Render again when that state changes.
 
 ## Properties
 

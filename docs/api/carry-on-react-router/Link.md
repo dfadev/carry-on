@@ -23,13 +23,19 @@ render(
   <HashRouter id="router">
     <ul>
       <li>
-        <Link id="link1" to="/">Root</Link>
+        <Link id="link1" to="/">
+          Root
+        </Link>
       </li>
       <li>
-        <Link id="link2" to="/page1">Page 1</Link>
+        <Link id="link2" to="/page1">
+          Page 1
+        </Link>
       </li>
       <li>
-        <Link id="link3" to="/page2">Page 2</Link>
+        <Link id="link3" to="/page2">
+          Page 2
+        </Link>
       </li>
     </ul>
     <div style={{ border: "2px solid red", padding: "12px 24px" }}>
