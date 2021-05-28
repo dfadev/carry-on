@@ -267,7 +267,7 @@ class InnerState extends Component {
     }
 
     // no render function renders nothing
-    if (!renderFn) return null;
+    if (!renderFn || typeof renderFn !== "function") return null;
 
     // no select specified, trap the render function and return the result
     return this.trapRender(renderFn);
