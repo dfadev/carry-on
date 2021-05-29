@@ -57,3 +57,43 @@ render(
   </Store>
 );
 ```
+
+`Register` can be specified multiple times.
+
+```js live noInline
+import { Store, State, Register, Render } from "carry-on-react";
+
+render(
+  <Store id={"getStarted2"}>
+    <State>
+      <Register>{{ state: { counter: 0 } }}</Register>
+      <Register>
+        {({ set }) => ({
+          inc: () =>
+            set(state => {
+              state.counter += 1;
+            })
+        })}
+      </Register>
+      <Register>
+        {({ set }) => ({
+          dec: () =>
+            set(state => {
+              state.counter -= 1;
+            })
+        })}
+      </Register>
+      <Render>
+        {({ counter, inc, dec }) => (
+          <>
+            <div>Counter: {counter}</div>
+            <button onClick={inc}>+</button>
+            <button onClick={dec}>-</button>
+            <StateInspector />
+          </>
+        )}
+      </Render>
+    </State>
+  </Store>
+);
+```

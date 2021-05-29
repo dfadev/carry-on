@@ -17,7 +17,15 @@ const withNodesToProps = (nodeMap, WrappedComponent) => {
         const { prop, val, default: def, transform } = mapEntry;
         let v = child.props[val];
         if (v === undefined) v = def;
-        newProps[prop] = transform ? transform(v) : v;
+        v = transform ? transform(v) : v;
+        const curProp = newProps[prop];
+        if (curProp !== undefined) {
+          if (Array.isArray(curProp)) {
+            curProp.push(v);
+          } else {
+            newProps[prop] = [curProp, v];
+          }
+        } else newProps[prop] = v;
       } else newProps[nodeMap[name]] = child.props.children;
     }
 
