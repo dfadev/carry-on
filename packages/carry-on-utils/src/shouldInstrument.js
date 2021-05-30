@@ -43,10 +43,11 @@ const handlers = {
     ? window
     : {};
 
-export function shouldInstrument({ constructor }) {
-  if (!constructor) {
-    return true;
-  }
+export function shouldInstrument(val) {
+  if (val === undefined || val === null) return false;
+  const { constructor } = val;
+  if (!constructor) return true;
+
   const { name } = constructor;
   const isBuiltIn =
     typeof constructor === "function" &&

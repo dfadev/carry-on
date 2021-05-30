@@ -83,6 +83,16 @@ const tests = [
     should: "return false for number",
     obj: 1,
     result: false
+  },
+  {
+    should: "return false for null",
+    obj: null,
+    result: false
+  },
+  {
+    should: "return false for undefined",
+    obj: undefined,
+    result: false
   }
 ];
 
