@@ -111,11 +111,19 @@ function proxyfy(state, onGet, suffix, ProxyMap) {
       throw new Error("can't mutate state here");
     },
 
-    get(_, prop) {
-      const storeValue = state[prop];
-      return typeof prop === "string"
-        ? proxyValue(prop, storeValue)
-        : storeValue;
+    get(target, prop) {
+      let storeValue = state[prop];
+      if (typeof prop === "string") storeValue = proxyValue(prop, storeValue);
+
+      // bind function value if it's not a constructor and not already bound
+      if (
+        typeof storeValue === "function" &&
+        Object.prototype.hasOwnProperty.call(storeValue, "prototype") &&
+        prop !== "constructor"
+      )
+        storeValue = storeValue.bind(target);
+
+      return storeValue;
     }
   };
 

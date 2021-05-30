@@ -48,6 +48,20 @@ Object {
 }
 `;
 
+exports[`proxy deproxify 1`] = `
+Object {
+  "a": 1,
+}
+`;
+
+exports[`proxy deproxify 2`] = `
+Map {
+  1 => Object {
+    "b": 2,
+  },
+}
+`;
+
 exports[`proxy handle empty case 1`] = `undefined`;
 
 exports[`proxy handle empty case 2`] = `undefined`;
