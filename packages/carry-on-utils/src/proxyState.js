@@ -22,12 +22,9 @@ const prepareObject = state => {
 
   // unfreeze
   if (Array.isArray(state)) return state.slice(0);
-  if (state.constructor.name === "Object") {
-    const clone = { ...state };
-    Object.setPrototypeOf(clone, Object.getPrototypeOf(state));
-    return clone;
-  }
-  return state;
+  const clone = { ...state };
+  Object.setPrototypeOf(clone, Object.getPrototypeOf(state));
+  return clone;
 };
 
 const shouldProxy = type => type === "object";
