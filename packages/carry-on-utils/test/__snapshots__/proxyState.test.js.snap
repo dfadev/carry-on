@@ -48,6 +48,28 @@ Object {
 }
 `;
 
+exports[`proxy corners null 1`] = `
+Object {
+  "affected": Object {},
+  "replaceState": [Function],
+  "reset": [Function],
+  "seal": [Function],
+  "state": null,
+  "unseal": [Function],
+}
+`;
+
+exports[`proxy corners undefined 1`] = `
+Object {
+  "affected": Object {},
+  "replaceState": [Function],
+  "reset": [Function],
+  "seal": [Function],
+  "state": undefined,
+  "unseal": [Function],
+}
+`;
+
 exports[`proxy deproxify 1`] = `
 Object {
   "a": 1,

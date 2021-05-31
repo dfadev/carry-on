@@ -338,4 +338,16 @@ describe("proxy", () => {
     const p = proxyState({ a: new Map([[1, { b: 2 }]]) });
     expect(deproxify(p.state.a)).toMatchSnapshot();
   });
+
+  describe("corners", () => {
+    it("undefined", () => {
+      const p = proxyState(undefined);
+      expect(p).toMatchSnapshot();
+    });
+
+    it("null", () => {
+      const p = proxyState(null);
+      expect(p).toMatchSnapshot();
+    });
+  });
 });
