@@ -48,6 +48,25 @@ Object {
 }
 `;
 
+exports[`proxy corners array 1`] = `
+Object {
+  "affected": Object {},
+  "replaceState": [Function],
+  "reset": [Function],
+  "seal": [Function],
+  "state": Array [
+    1,
+    2,
+    3,
+  ],
+  "unseal": [Function],
+}
+`;
+
+exports[`proxy corners deproxify(null) 1`] = `null`;
+
+exports[`proxy corners deproxify(undefined) 1`] = `undefined`;
+
 exports[`proxy corners null 1`] = `
 Object {
   "affected": Object {},
@@ -55,6 +74,28 @@ Object {
   "reset": [Function],
   "seal": [Function],
   "state": null,
+  "unseal": [Function],
+}
+`;
+
+exports[`proxy corners number 1`] = `
+Object {
+  "affected": Object {},
+  "replaceState": [Function],
+  "reset": [Function],
+  "seal": [Function],
+  "state": 99,
+  "unseal": [Function],
+}
+`;
+
+exports[`proxy corners string 1`] = `
+Object {
+  "affected": Object {},
+  "replaceState": [Function],
+  "reset": [Function],
+  "seal": [Function],
+  "state": "abc",
   "unseal": [Function],
 }
 `;

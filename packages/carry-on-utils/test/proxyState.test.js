@@ -349,5 +349,30 @@ describe("proxy", () => {
       const p = proxyState(null);
       expect(p).toMatchSnapshot();
     });
+
+    it("number", () => {
+      const p = proxyState(99);
+      expect(p).toMatchSnapshot();
+    });
+
+    it("string", () => {
+      const p = proxyState("abc");
+      expect(p).toMatchSnapshot();
+    });
+
+    it("array", () => {
+      const p = proxyState([1,2,3]);
+      expect(p).toMatchSnapshot();
+    });
+
+    it("deproxify(undefined)", () => {
+      const p = deproxify(undefined);
+      expect(p).toMatchSnapshot();
+    });
+
+    it("deproxify(null)", () => {
+      const p = deproxify(null);
+      expect(p).toMatchSnapshot();
+    });
   });
 });
