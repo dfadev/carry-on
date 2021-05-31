@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import devTools from "../src/devtools";
 
 test("new devTools", () => {

@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from "react";
 import { render } from "@testing-library/react";
 import { getStore, deleteStore, register } from "carry-on-store";

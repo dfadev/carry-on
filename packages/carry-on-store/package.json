@@ -27,7 +27,7 @@
     "@rollup/plugin-node-resolve": "^13.0.0",
     "carry-on-utils": "^1.0.15",
     "rimraf": "^3.0.2",
-    "rollup": "^2.49.0"
+    "rollup": "^2.50.5"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.0"

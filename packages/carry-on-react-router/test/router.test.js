@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { register, connect } from "carry-on-store";
 import router from "../src/router";
 

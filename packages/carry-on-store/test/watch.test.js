@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { getStore, deleteStore, connect, register, watch, Watch } from "../src";
 
 test("watch", () => {
