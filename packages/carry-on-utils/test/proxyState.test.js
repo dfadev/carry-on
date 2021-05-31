@@ -360,7 +360,7 @@ describe("proxy", () => {
       expect(p).toMatchSnapshot();
     });
 
-    it("array", () => {
+    it("array root", () => {
       const p = proxyState([1,2,3]);
       expect(p).toMatchSnapshot();
     });
@@ -374,5 +374,24 @@ describe("proxy", () => {
       const p = deproxify(null);
       expect(p).toMatchSnapshot();
     });
+
+    it("array first child array", () => {
+      const A1 = {
+        key5: [9, 8, 7],
+        key1: 1,
+        key2: {
+          array: [1, 2, 4]
+        },
+        key3: null,
+        key4: undefined,
+      };
+
+      const p = proxyState(A1);
+      expect(p.state).toMatchSnapshot();
+
+      // next line throws in toMatchSnapshot, why?
+      // expect(p.affected).toMatchSnapshot();
+    });
   });
+
 });

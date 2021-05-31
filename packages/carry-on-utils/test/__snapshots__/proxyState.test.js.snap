@@ -48,7 +48,27 @@ Object {
 }
 `;
 
-exports[`proxy corners array 1`] = `
+exports[`proxy corners array first child array 1`] = `
+Object {
+  "key1": 1,
+  "key2": Object {
+    "array": Array [
+      1,
+      2,
+      4,
+    ],
+  },
+  "key3": null,
+  "key4": undefined,
+  "key5": Array [
+    9,
+    8,
+    7,
+  ],
+}
+`;
+
+exports[`proxy corners array root 1`] = `
 Object {
   "affected": Object {},
   "replaceState": [Function],
