@@ -22,7 +22,7 @@ const prefix = "%c%s %c %s ";
 export default function logger(id, out = console.log) {
   if (document.documentMode || /Edge/.test(navigator.userAgent))
     // eslint-disable-next-line
-    return console.log;
+    return out;
   // eslint-enable
 
   const color = clr[currentClr];
