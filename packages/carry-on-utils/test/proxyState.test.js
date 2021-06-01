@@ -197,7 +197,7 @@ describe("proxy", () => {
     expect(s1.b).toBe(s2.b);
   });
 
-  it("handles freezed objects", () => {
+  it("handles objects that are frozen", () => {
     const O1 = {
       a: 1,
       b: 2,
@@ -210,6 +210,13 @@ describe("proxy", () => {
     const read = state.a + state.b + state.c.d;
     expect(read).toEqual(7);
     expect(trapped.affected).toMatchSnapshot();
+
+    const O3 = [1,2,3];
+    Object.freeze(O3);
+    const trapped2 = proxyState(O3);
+    trapped2.state[0];
+    trapped2.state[1];
+    expect(trapped2).toMatchSnapshot();
   });
 
   it("handles prototype chain", () => {

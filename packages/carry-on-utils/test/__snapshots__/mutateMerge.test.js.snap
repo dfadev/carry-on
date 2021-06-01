@@ -6,3 +6,16 @@ Object {
   "3": 2,
 }
 `;
+
+exports[`merge() mutate merge strip 1`] = `
+Object {
+  "a": Array [
+    Object {
+      "a": 1,
+      "b": 2,
+    },
+    [Function],
+    undefined,
+  ],
+}
+`;

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`logger should log some stuff 1`] = `
+Array [
+  Arguments [
+    "%c%s %c %s ",
+    "color:#F2777A;font-weight:900",
+    "test",
+    "color:#FFCC66;background-color:#0074d9",
+    "test message",
+  ],
+  Arguments [
+    "%c%s %c %s ",
+    "color:#F2777A;font-weight:900",
+    "test",
+    "color:#FFCC66",
+    "continuation",
+  ],
+]
+`;
+
+exports[`logger should log some stuff 2`] = `
+Array [
+  Arguments [
+    "%c%s %c %s ",
+    "color:#F2777A;font-weight:900",
+    "test",
+    "color:#FFCC66;background-color:#0074d9",
+    "test message",
+  ],
+  Arguments [
+    "%c%s %c %s ",
+    "color:#F2777A;font-weight:900",
+    "test",
+    "color:#FFCC66",
+    "continuation",
+  ],
+  Arguments [
+    "%c%s %c %s ",
+    "color:#F2777A;font-weight:900",
+    "test",
+    "color:#FFCC66;background-color:#0074d9",
+    "test message",
+  ],
+  Arguments [
+    "%c%s %c %s ",
+    "color:#F2777A;font-weight:900",
+    "test",
+    "color:#FFCC66",
+    "continuation",
+  ],
+]
+`;

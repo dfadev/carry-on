@@ -156,13 +156,31 @@ exports[`proxy handle empty case 1`] = `undefined`;
 
 exports[`proxy handle empty case 2`] = `undefined`;
 
-exports[`proxy handles freezed objects 1`] = `
+exports[`proxy handles objects that are frozen 1`] = `
 Object {
   "a": true,
   "b": true,
   "c": Object {
     "d": true,
   },
+}
+`;
+
+exports[`proxy handles objects that are frozen 2`] = `
+Object {
+  "affected": Object {
+    "0": true,
+    "1": true,
+  },
+  "replaceState": [Function],
+  "reset": [Function],
+  "seal": [Function],
+  "state": Array [
+    1,
+    2,
+    3,
+  ],
+  "unseal": [Function],
 }
 `;
 

@@ -37,5 +37,8 @@ describe("isObject()", () => {
   test("should return false when passed a string", () => {
     const result = isObject("value");
     expect(result).toBe(false);
+
+    const result2 = isObject(new String("abc"));
+    expect(result2).toBe(true);
   });
 });

@@ -1,4 +1,4 @@
-import merge from "../src/mutateMerge";
+import merge, { mutateMergeStrip } from "../src/mutateMerge";
 import forEach from "../src/forEach";
 
 function reduce(collection, iteratee, accumulator) {
@@ -150,6 +150,13 @@ describe("merge()", () => {
     source2[3] = 2;
 
     const actual = merge({}, source1, source2);
+    expect(actual).toMatchSnapshot();
+  });
+
+  test("mutate merge strip", () => {
+    let source1 = { a: [{ a: 1 }, function () { }] };
+    let source2 = { a: [{ b: 2 }, "abc", undefined] };
+    let actual = mutateMergeStrip({}, source1, source2);
     expect(actual).toMatchSnapshot();
   });
 });

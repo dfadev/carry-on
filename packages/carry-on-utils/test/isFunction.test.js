@@ -37,5 +37,8 @@ describe("isFunction()", () => {
   test("should return false when passed a string", () => {
     const result = isFunction("value");
     expect(result).toBe(false);
+
+    const result2 = isFunction(new String("abc"));
+    expect(result2).toBe(false);
   });
 });

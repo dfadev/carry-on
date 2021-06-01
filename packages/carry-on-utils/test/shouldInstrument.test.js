@@ -93,6 +93,11 @@ const tests = [
     should: "return false for undefined",
     obj: undefined,
     result: false
+  },
+  {
+    should: "return true for Object with no prototype",
+    obj: Object.create(null),
+    result: true
   }
 ];
 

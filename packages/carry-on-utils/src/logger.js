@@ -20,6 +20,7 @@ const prefix = "%c%s %c %s ";
 
 // eslint-disable-next-line
 export default function logger(id, out = console.log) {
+  /* istanbul ignore next */
   if (document.documentMode || /Edge/.test(navigator.userAgent))
     // eslint-disable-next-line
     return out;
