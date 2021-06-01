@@ -203,4 +203,8 @@ test("tt", () => {
     msgFn({ type: "DISPATCH", payload: { type: "JUMP_TO_STATE", index: 0 } });
 
   expect(state).toMatchSnapshot();
+
+  set = plugin.middleware({ isNested: () => false, set, next: set });
+  set(state => ({ field2: "value", field3: "value" }));
+  set(state => ({ field3: "value", none: "field" }));
 });

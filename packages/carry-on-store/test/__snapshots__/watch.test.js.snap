@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`watch 1`] = `
+Object {
+  "a": Object {
+    "field": 3,
+  },
+  "b": 2,
+  "c": 2,
+  "junk": "value",
+}
+`;

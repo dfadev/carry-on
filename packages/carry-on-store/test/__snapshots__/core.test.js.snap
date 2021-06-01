@@ -2,6 +2,108 @@
 
 exports[`connect 1`] = `Object {}`;
 
+exports[`connect via set/get 1`] = `
+Object {
+  "dispose": Array [],
+  "get": [Function],
+  "id": undefined,
+  "log": [Function],
+  "notify": Object {
+    "plugin": Object {
+      "dispose": [Function],
+      "middleware": [Function],
+    },
+    "subscribe": [Function],
+    "subscribers": Map {},
+  },
+  "pending": Array [],
+  "set": [Function],
+}
+`;
+
+exports[`connect via set/get 2`] = `
+Object {
+  "changes": Array [],
+  "connected": true,
+  "d": [Function],
+  "dispose": Array [
+    [Function],
+  ],
+  "get": [Function],
+  "getChanges": [Function],
+  "getPatches": [Function],
+  "id": undefined,
+  "isNested": [Function],
+  "log": [Function],
+  "nestedSet": false,
+  "nestedState": undefined,
+  "notify": Object {
+    "plugin": Object {
+      "dispose": [Function],
+      "middleware": [Function],
+    },
+    "subscribe": [Function],
+    "subscribers": Map {},
+  },
+  "patches": Array [],
+  "set": [Function],
+  "state": Object {},
+  "wrap": [Function],
+  "wrappedFn": [Function],
+}
+`;
+
+exports[`connect via set/get 3`] = `
+Object {
+  "dispose": Array [],
+  "get": [Function],
+  "id": undefined,
+  "log": [Function],
+  "notify": Object {
+    "plugin": Object {
+      "dispose": [Function],
+      "middleware": [Function],
+    },
+    "subscribe": [Function],
+    "subscribers": Map {},
+  },
+  "pending": Array [],
+  "set": [Function],
+}
+`;
+
+exports[`connect via set/get 4`] = `
+Object {
+  "changes": Array [],
+  "connected": true,
+  "d": [Function],
+  "dispose": Array [
+    [Function],
+  ],
+  "get": [Function],
+  "getChanges": [Function],
+  "getPatches": [Function],
+  "id": undefined,
+  "isNested": [Function],
+  "log": [Function],
+  "nestedSet": false,
+  "nestedState": undefined,
+  "notify": Object {
+    "plugin": Object {
+      "dispose": [Function],
+      "middleware": [Function],
+    },
+    "subscribe": [Function],
+    "subscribers": Map {},
+  },
+  "patches": Array [],
+  "set": [Function],
+  "state": Object {},
+  "wrap": [Function],
+  "wrappedFn": [Function],
+}
+`;
+
 exports[`connect with pending function state 1`] = `
 Object {
   "some": "state",
@@ -11,6 +113,65 @@ Object {
 exports[`connect with pending object state 1`] = `
 Object {
   "some": "state",
+}
+`;
+
+exports[`debugStore 1`] = `
+Object {
+  "dispose": Array [],
+  "get": [Function],
+  "id": undefined,
+  "log": [Function],
+  "notify": Object {
+    "plugin": Object {
+      "dispose": [Function],
+      "middleware": [Function],
+    },
+    "subscribe": [Function],
+    "subscribers": Map {},
+  },
+  "pending": Array [],
+  "set": [Function],
+}
+`;
+
+exports[`debugStore 2`] = `
+Object {
+  "debug": true,
+  "dispose": Array [],
+  "get": [Function],
+  "id": undefined,
+  "log": [Function],
+  "notify": Object {
+    "plugin": Object {
+      "dispose": [Function],
+      "middleware": [Function],
+    },
+    "subscribe": [Function],
+    "subscribers": Map {},
+  },
+  "pending": Array [],
+  "set": [Function],
+}
+`;
+
+exports[`debugStore 3`] = `
+Object {
+  "debug": false,
+  "dispose": Array [],
+  "get": [Function],
+  "id": undefined,
+  "log": [Function],
+  "notify": Object {
+    "plugin": Object {
+      "dispose": [Function],
+      "middleware": [Function],
+    },
+    "subscribe": [Function],
+    "subscribers": Map {},
+  },
+  "pending": Array [],
+  "set": [Function],
 }
 `;
 
@@ -78,6 +239,19 @@ Object {
 }
 `;
 
+exports[`nested set works with debug 1`] = `
+Object {
+  "lower": "value",
+  "lower2": "value2",
+  "lower3": "value3",
+  "lower4": "value4",
+  "upper": "value",
+  "upper2": "value2",
+  "upper3": "value3",
+  "upper4": "value4",
+}
+`;
+
 exports[`register on connected store 1`] = `
 "Snapshot Diff:
 - First value
@@ -113,6 +287,18 @@ Object {
   "action": [Function],
   "some": "state",
   "thing": 1,
+}
+`;
+
+exports[`register with store id as first parameter 1`] = `
+Object {
+  "field": "value",
+}
+`;
+
+exports[`register with store id as first parameter 2`] = `
+Object {
+  "field": "value2",
 }
 `;
 

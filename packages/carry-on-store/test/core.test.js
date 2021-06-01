@@ -8,10 +8,16 @@ import {
   connect,
   subscribe,
   register,
-  watchGet
+  watchGet,
+  debugStore,
+  debugStores,
+  set,
+  get
 } from "../src";
 
 test("getStore", () => {
+  debugStores(true);
+  debugStores(true);
   const store = getStore();
   expect(store).toMatchSnapshot();
   deleteStore();
@@ -241,6 +247,10 @@ test("init stores removes all stores", () => {
   initStores();
   const store2 = getStore();
   expect(store1).not.toBe(store2);
+  debugStores(false);
+  initStores();
+  const store3 = getStore();
+  expect(store2).not.toBe(store3);
   deleteStore();
 });
 
@@ -274,6 +284,34 @@ test("nested set works", () => {
         set(state => {
           state.upper4 = "value4";
           state.lower = "value";
+          set(state => { });
+        });
+        state.lower2 = "value2";
+      });
+      state.lower3 = "value3";
+    });
+    state.lower4 = "value4";
+  });
+  expect(rslt).toMatchSnapshot();
+  deleteStore();
+});
+
+test("nested set works with debug", () => {
+  debugStores(false);
+  debugStore(true);
+  connect();
+  const store = getStore();
+  const { set } = store;
+  const rslt = set(state => {
+    state.upper = "value";
+    set(state => {
+      state.upper2 = "value2";
+      set(state => {
+        state.upper3 = "value3";
+        set(state => {
+          state.upper4 = "value4";
+          state.lower = "value";
+          set(state => { });
         });
         state.lower2 = "value2";
       });
@@ -340,6 +378,8 @@ test("subscribe is called", () => {
 });
 
 test("subscribe with a watch works", () => {
+  debugStores(false);
+  debugStore(true);
   connect();
   let fnCalled = 0;
   const fn = (state, changes) => {
@@ -365,6 +405,7 @@ test("subscribe with a watch works", () => {
 });
 
 test("watch subscribe field object change", () => {
+  debugStores(false);
   connect();
   let fnCalled = 0;
   const fn = (state, changes) => {
@@ -450,4 +491,43 @@ test("notify immediate", () => {
   expect(fnCalled).toBe(1);
   expect(wrapCalled).toBe(2); // Register, Register
   deleteStore();
+});
+
+test("connect via set/get", () => {
+  expect(getStore()).toMatchSnapshot();
+  set(state => ({ field: "value" }));
+  expect(getStore()).toMatchSnapshot();
+  deleteStore();
+
+  expect(getStore()).toMatchSnapshot();
+  const s = get();
+  expect(getStore()).toMatchSnapshot();
+  deleteStore();
+});
+
+test("debugStore", () => {
+  expect(getStore()).toMatchSnapshot();
+  debugStore();
+  expect(getStore()).toMatchSnapshot();
+  debugStore(false);
+  expect(getStore()).toMatchSnapshot();
+  deleteStore();
+});
+
+test("register with store id as first parameter", () => {
+  register("store1", { state: { field: "value" } });
+  expect(get("store1")).toMatchSnapshot();
+  set("store1", state => {
+    state.field = "value2";
+  });
+  expect(get("store1")).toMatchSnapshot();
+  deleteStore();
+});
+
+test("wrap", () => {
+  let wrapCalled = 0;
+  connect(undefined, () => (wrapCalled += 1));
+  connect(undefined, () => (wrapCalled += 1));
+
+  expect(wrapCalled).toBe(1);
 });
