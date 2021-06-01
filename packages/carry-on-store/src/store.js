@@ -275,5 +275,6 @@ export function watchGet(state, select, path = "", def, id) {
 }
 
 export function debugStore(id, val = true) {
-  getStore(id).debug = val;
+  if (arguments.length === 1) getStore().debug = id;
+  else getStore(id).debug = val;
 }
