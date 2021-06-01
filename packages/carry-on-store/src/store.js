@@ -203,10 +203,8 @@ export const connect = (id, wrap) => {
         store.nestedSet = true;
         store.nestedState = state;
         action(state, id);
-        if (store.nestedState === state) {
-          store.nestedSet = false;
-          store.nestedState = undefined;
-        }
+        store.nestedSet = false;
+        store.nestedState = undefined;
         if (Debug || store.debug) store.log("set");
         return state;
       };
