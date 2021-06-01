@@ -23,7 +23,7 @@ const prepareObject = state => {
   // unfreeze
   if (Array.isArray(state)) return state.slice(0);
   const clone = { ...state };
-  Object.setPrototypeOf(clone, Object.getPrototypeOf(state));
+  Object.setPrototypeOf(clone, Object.getPrototypeOf(state)); // is this necessary?
   return clone;
 };
 
