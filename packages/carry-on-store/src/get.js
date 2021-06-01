@@ -9,6 +9,5 @@ export default function get(fn, id) {
   }
 
   const store = getStore(id);
-  if (!store) throw new Error("no store name");
   return store.get(fn);
 }

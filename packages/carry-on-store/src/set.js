@@ -9,6 +9,5 @@ export default function set(fn, id, ...args) {
   }
 
   const store = getStore(id);
-  if (!store) throw new Error("store does not exist");
   store.set(fn, ...args);
 }
