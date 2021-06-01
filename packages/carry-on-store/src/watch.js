@@ -52,11 +52,11 @@ export class Watch {
   // setup debugging
   setupDebug = () => {
     // set component debug flag
-    this.debug = Watch.Debug || this.opts.debug;
+    this.debug = this.opts.debug !== undefined ? this.opts.debug : Watch.Debug;
     if (!this.debug) return;
 
     // set component verbose flag
-    this.verbose = Watch.Verbose || this.opts.verbose;
+    this.verbose = this.opts.verbose !== undefined ? this.opts.verbose : Watch.Verbose;
 
     // setup log prefix and logger
     let id = this.opts.id ? `Watch:${this.opts.id}` : "Watch";
