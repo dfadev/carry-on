@@ -10,6 +10,7 @@ const reEscapeChar = /\\(\\)?/g;
 
 export default function toPath(string) {
   const result = [];
+  if (string === undefined || string === null) return result;
   if (reLeadingDot.test(string)) {
     result.push("");
   }

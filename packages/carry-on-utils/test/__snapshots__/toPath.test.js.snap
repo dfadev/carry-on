@@ -8,6 +8,8 @@ Array [
 ]
 `;
 
+exports[`should handle null 1`] = `Array []`;
+
 exports[`should handle quoted keys 1`] = `
 Array [
   "field",
@@ -15,3 +17,5 @@ Array [
   "path",
 ]
 `;
+
+exports[`should handle undefined 1`] = `Array []`;
