@@ -59,10 +59,7 @@ const useCarryOn = (opts, optional = {}) => {
     };
 
     // apply throttle or debounce
-    let r = fn;
-    if (t) r = throttle(t, fn);
-    else if (d) r = debounce(d, fn);
-    return r;
+    return t ? throttle(t, fn) : d ? debounce(d, fn) : fn;
   }, [debug, d, t]);
 
   useEffect(
