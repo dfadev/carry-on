@@ -18,6 +18,5 @@ export function getInA(state, path, def) {
 }
 
 export default function getIn(state, complexKey, def) {
-  const path = toPath(complexKey);
-  return getInA(state, path, def);
+  return getInA(state, toPath(complexKey), def);
 }
