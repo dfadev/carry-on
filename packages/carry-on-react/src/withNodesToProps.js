@@ -27,7 +27,7 @@ const withNodesToProps = (nodeMap, WrappedComponent) => {
           }
         } else newProps[prop] = v;
       } else {
-        let v = child.props.children;
+        const v = child.props.children;
         const curProp = newProps[nodeMap[name]];
         if (curProp !== undefined) {
           if (Array.isArray(curProp)) {
