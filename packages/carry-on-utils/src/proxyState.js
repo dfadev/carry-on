@@ -17,13 +17,15 @@ export const deproxify = object =>
     ? ProxyToState.get(object)
     : object) || object;
 
+// unfreeze object if frozen
 const prepareObject = state => {
   if (!Object.isFrozen(state)) return state;
-
-  // unfreeze
   if (Array.isArray(state)) return state.slice(0);
+
+  // don't use Object.assign because it will call setters while an object spread uses Object.defineProperties
   const clone = { ...state };
-  Object.setPrototypeOf(clone, Object.getPrototypeOf(state)); // is this necessary?
+  // spread does not assign prototype
+  Object.setPrototypeOf(clone, Object.getPrototypeOf(state)); 
   return clone;
 };
 
