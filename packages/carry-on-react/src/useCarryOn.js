@@ -46,6 +46,7 @@ const useCarryOn = (opts, optional = {}) => {
 
   const onStateChange = useMemo(() => {
     const fn = (state, changes) => {
+      /* istanbul ignore if  */
       if (!changes || changes.length === 0) {
         if (debug) log("`no changes`");
         return;

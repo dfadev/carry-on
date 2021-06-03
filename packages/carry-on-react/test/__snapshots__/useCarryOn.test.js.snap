@@ -1,7 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`useCarryOn renders 1`] = `
+exports[`useCarryOn debounce 1`] = `
 <DocumentFragment>
   ok
+</DocumentFragment>
+`;
+
+exports[`useCarryOn renders 1`] = `
+<DocumentFragment>
+  value1
+</DocumentFragment>
+`;
+
+exports[`useCarryOn renders 2`] = `
+<DocumentFragment>
+  value2
+</DocumentFragment>
+`;
+
+exports[`useCarryOn throttle 1`] = `
+<DocumentFragment>
+  value1
 </DocumentFragment>
 `;

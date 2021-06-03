@@ -8,34 +8,26 @@ exports[`carryOn 1`] = `
 </DocumentFragment>
 `;
 
-exports[`carryOn opts last 1`] = `
+exports[`carryOn 2`] = `
 <DocumentFragment>
   <div>
-    value
+    new value
   </div>
 </DocumentFragment>
 `;
 
-exports[`carryOn render(props, state) 1`] = `
+exports[`carryOn alt 1`] = `
 <DocumentFragment>
   <div>
-    ok
+    thing value
   </div>
 </DocumentFragment>
 `;
 
-exports[`carryOn rerender doesnt recreate onmount/onunmount 1`] = `
+exports[`carryOn alt 2`] = `
 <DocumentFragment>
   <div>
-    value
-  </div>
-</DocumentFragment>
-`;
-
-exports[`carryOn rerender doesnt recreate onmount/onunmount 2 1`] = `
-<DocumentFragment>
-  <div>
-    value
+    thing new value
   </div>
 </DocumentFragment>
 `;

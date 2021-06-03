@@ -12,6 +12,36 @@ exports[`withState asProp 1`] = `
 </DocumentFragment>
 `;
 
+exports[`withState constant 1`] = `
+<DocumentFragment>
+  value1
+</DocumentFragment>
+`;
+
+exports[`withState constant 2`] = `
+<DocumentFragment>
+  value1
+</DocumentFragment>
+`;
+
+exports[`withState debounce 1`] = `
+<DocumentFragment>
+  value1
+</DocumentFragment>
+`;
+
+exports[`withState debounce 2`] = `
+<DocumentFragment>
+  value2
+</DocumentFragment>
+`;
+
+exports[`withState debug/verbose 1`] = `
+<DocumentFragment>
+  ok
+</DocumentFragment>
+`;
+
 exports[`withState path, from, and default can be a values 1`] = `
 <DocumentFragment>
   {"lookup":"key1","state":"val1"}
@@ -33,5 +63,17 @@ exports[`withState selection function returns array as state prop 1`] = `
 exports[`withState selection function returns non Object as state prop 1`] = `
 <DocumentFragment>
   {"prop1":"ok","state":"ok"}
+</DocumentFragment>
+`;
+
+exports[`withState throttle 1`] = `
+<DocumentFragment>
+  value1
+</DocumentFragment>
+`;
+
+exports[`withState throttle 2`] = `
+<DocumentFragment>
+  value2
 </DocumentFragment>
 `;

@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import React from "react";
-import { initStores } from "carry-on-store";
+import { set, initStores } from "carry-on-store";
 import { render } from "@testing-library/react";
 import carryOn from "../src/carryOn";
 
@@ -11,6 +11,7 @@ afterEach(() => {
 });
 
 test("carryOn", () => {
+  let onMountCalled = 0;
   const App = carryOn(
     {
       id: "App",
@@ -18,6 +19,9 @@ test("carryOn", () => {
         state: {
           field: "value"
         }
+      },
+      onMount: () => {
+        onMountCalled += 1;
       }
     },
     state => <div>{state.field}</div>
@@ -25,56 +29,51 @@ test("carryOn", () => {
 
   const { asFragment } = render(<App />);
   expect(asFragment()).toMatchSnapshot();
+  set(state => {
+    state.field = "new value";
+  });
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(onMountCalled).toBe(1);
 });
 
-test("carryOn opts last", () => {
-  const App = carryOn(state => <div>{state.field}</div>, {
-    id: "App",
-    register: {
-      state: {
-        field: "value"
+test("carryOn alt", () => {
+  let onMountCalled = 0;
+  let onUnmountCalled = 0;
+  const App = carryOn(
+    (props, state) => (
+      <div>
+        {props.id} {state.field}
+      </div>
+    ),
+    {
+      register: {
+        state: {
+          field: "value"
+        }
       }
     }
+  );
+
+  const { asFragment } = render(
+    <App
+      from="named"
+      debug
+      verbose
+      id="thing"
+      onUnmount={() => {
+        onUnmountCalled += 1;
+      }}
+      onMount={() => {
+        onMountCalled += 1;
+      }}
+    />
+  );
+  expect(asFragment()).toMatchSnapshot();
+  set("named", state => {
+    state.field = "new value";
   });
-
-  const { asFragment } = render(<App />);
   expect(asFragment()).toMatchSnapshot();
-});
 
-test("carryOn rerender doesnt recreate onmount/onunmount", () => {
-  const App = carryOn(state => <div>{state.field}</div>, {
-    register: {
-      state: {
-        field: "value"
-      }
-    },
-    onMount: state => {},
-    onUnmount: state => {}
-  });
-
-  const { asFragment, rerender } = render(<App />);
-  expect(asFragment()).toMatchSnapshot();
-  rerender();
-});
-
-test("carryOn rerender doesnt recreate onmount/onunmount 2", () => {
-  const App = carryOn(state => <div>{state.field}</div>, {
-    register: {
-      state: {
-        field: "value"
-      }
-    },
-    onMount: (state, props) => {},
-    onUnmount: (state, props) => {}
-  });
-
-  const { asFragment, rerender } = render(<App />);
-  expect(asFragment()).toMatchSnapshot();
-  rerender();
-});
-
-test("carryOn render(props, state)", () => {
-  const App = carryOn((props, state) => <div>ok</div>);
-  const { asFragment } = render(<App />);
-  expect(asFragment()).toMatchSnapshot();
+  expect(onMountCalled).toBe(1);
 });
