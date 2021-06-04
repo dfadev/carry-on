@@ -205,7 +205,7 @@ export default ({ id, initialValues, onValidate, onSubmit, onReset }) => ({
             );
         };
 
-        const beginSubmitState = set(state => {
+        set(state => {
           const form = curForm(state);
           form.isSubmitting = true;
           form.validate(state, finishSubmit);
