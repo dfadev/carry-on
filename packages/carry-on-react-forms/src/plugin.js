@@ -94,7 +94,7 @@ export default ({
       setValues: values =>
         set(state => {
           const form = curForm(state);
-          if (form.values !== values) form.values = values;
+          form.values = values;
           const pristine = calcPristine(form);
           if (pristine !== form.isPristine) form.isPristine = pristine;
           form.validate(state);
