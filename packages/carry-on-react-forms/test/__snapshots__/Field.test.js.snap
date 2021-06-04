@@ -1,5 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`should handle onChange 1`] = `
+<DocumentFragment>
+  <form
+    id="theform"
+  >
+    <input
+      value="0"
+    />
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should handle onChange 2`] = `
+<DocumentFragment>
+  <form
+    id="theform"
+  >
+    <input
+      value=""
+    />
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should handle onChange 3`] = `
+<DocumentFragment>
+  <form
+    id="theform"
+  >
+    <input
+      value="true"
+    />
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should handle onChange 4`] = `
+<DocumentFragment>
+  <form
+    id="theform"
+  >
+    <input
+      value=""
+    />
+  </form>
+</DocumentFragment>
+`;
+
 exports[`should render <Field> 1`] = `<DocumentFragment />`;
 
 exports[`should render a simple input field in named form: prop match 1`] = `

@@ -1,9 +1,279 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`handles initialValues specified as a function 1`] = `
+Object {
+  "form": Object {
+    "errors": Object {},
+    "hasError": [Function],
+    "hasVisited": [Function],
+    "isPristine": true,
+    "isSubmitting": false,
+    "isTouched": [Function],
+    "isValid": true,
+    "isValidating": false,
+    "origState": Object {
+      "errors": Object {},
+      "hasError": [Function],
+      "hasVisited": [Function],
+      "isPristine": true,
+      "isSubmitting": false,
+      "isTouched": [Function],
+      "isValid": true,
+      "isValidating": false,
+      "reset": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFieldVisited": [Function],
+      "setInitialValues": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "submit": [Function],
+      "touched": Object {},
+      "validate": [Function],
+      "values": Object {
+        "some": "stuff",
+      },
+      "visited": Object {},
+    },
+    "reset": [Function],
+    "setErrors": [Function],
+    "setFieldError": [Function],
+    "setFieldTouched": [Function],
+    "setFieldValue": [Function],
+    "setFieldVisited": [Function],
+    "setInitialValues": [Function],
+    "setTouched": [Function],
+    "setValues": [Function],
+    "submit": [Function],
+    "touched": Object {},
+    "validate": [Function],
+    "values": Object {
+      "some": "stuff",
+    },
+    "visited": Object {},
+  },
+}
+`;
+
+exports[`handles initialValues specified as prop 1`] = `
+Object {
+  "form": Object {
+    "errors": Object {},
+    "hasError": [Function],
+    "hasVisited": [Function],
+    "isPristine": true,
+    "isSubmitting": false,
+    "isTouched": [Function],
+    "isValid": true,
+    "isValidating": false,
+    "origState": Object {
+      "errors": Object {},
+      "hasError": [Function],
+      "hasVisited": [Function],
+      "isPristine": true,
+      "isSubmitting": false,
+      "isTouched": [Function],
+      "isValid": true,
+      "isValidating": false,
+      "reset": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFieldVisited": [Function],
+      "setInitialValues": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "submit": [Function],
+      "touched": Object {},
+      "validate": [Function],
+      "values": Object {
+        "some": "stuff",
+      },
+      "visited": Object {},
+    },
+    "reset": [Function],
+    "setErrors": [Function],
+    "setFieldError": [Function],
+    "setFieldTouched": [Function],
+    "setFieldValue": [Function],
+    "setFieldVisited": [Function],
+    "setInitialValues": [Function],
+    "setTouched": [Function],
+    "setValues": [Function],
+    "submit": [Function],
+    "touched": Object {},
+    "validate": [Function],
+    "values": Object {
+      "some": "stuff",
+    },
+    "visited": Object {},
+  },
+}
+`;
+
+exports[`renders store id 1`] = `
+<DocumentFragment>
+  <form
+    id="123"
+  />
+</DocumentFragment>
+`;
+
+exports[`should handle reset with no onReset 1`] = `
+Object {
+  "checkbox": false,
+  "field1": "value1",
+  "field2": "value2",
+}
+`;
+
+exports[`should handle setValues using same values 1`] = `
+Object {
+  "checkbox": false,
+  "field1": "value1",
+  "field2": "value2",
+}
+`;
+
 exports[`should render <Form> 1`] = `
 <DocumentFragment>
   <form
     id="form"
   />
 </DocumentFragment>
+`;
+
+exports[`should validate: prop match 1`] = `
+Object {
+  "element": Object {
+    "onBlur": [Function],
+    "onChange": [Function],
+    "onFocus": [Function],
+    "value": "value1",
+  },
+  "error": undefined,
+  "setError": [Function],
+  "setTouched": [Function],
+  "setValue": [Function],
+  "setVisited": [Function],
+  "touched": false,
+  "visited": false,
+}
+`;
+
+exports[`should validate: prop match 2`] = `
+Object {
+  "element": Object {
+    "onBlur": [Function],
+    "onChange": [Function],
+    "onFocus": [Function],
+    "value": "123",
+  },
+  "error": undefined,
+  "setError": [Function],
+  "setTouched": [Function],
+  "setValue": [Function],
+  "setVisited": [Function],
+  "touched": false,
+  "visited": false,
+}
+`;
+
+exports[`should validate: prop match 3`] = `
+Object {
+  "element": Object {
+    "onBlur": [Function],
+    "onChange": [Function],
+    "onFocus": [Function],
+    "value": "345",
+  },
+  "error": undefined,
+  "setError": [Function],
+  "setTouched": [Function],
+  "setValue": [Function],
+  "setVisited": [Function],
+  "touched": false,
+  "visited": false,
+}
+`;
+
+exports[`should validate: render match 1`] = `
+<DocumentFragment>
+  <form
+    id="form"
+  >
+    <input
+      value="value1"
+    />
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should validate: store match 1`] = `
+Object {
+  "form": Object {
+    "errors": Object {},
+    "hasError": [Function],
+    "hasVisited": [Function],
+    "initialValues": Object {
+      "checkbox": false,
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "isPristine": true,
+    "isSubmitting": false,
+    "isTouched": [Function],
+    "isValid": true,
+    "isValidating": false,
+    "origState": Object {
+      "errors": Object {},
+      "hasError": [Function],
+      "hasVisited": [Function],
+      "isPristine": true,
+      "isSubmitting": false,
+      "isTouched": [Function],
+      "isValid": true,
+      "isValidating": false,
+      "reset": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFieldVisited": [Function],
+      "setInitialValues": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "submit": [Function],
+      "touched": Object {},
+      "validate": [Function],
+      "values": Object {
+        "checkbox": false,
+        "field1": "value1",
+        "field2": "value2",
+      },
+      "visited": Object {},
+    },
+    "reset": [Function],
+    "setErrors": [Function],
+    "setFieldError": [Function],
+    "setFieldTouched": [Function],
+    "setFieldValue": [Function],
+    "setFieldVisited": [Function],
+    "setInitialValues": [Function],
+    "setTouched": [Function],
+    "setValues": [Function],
+    "submit": [Function],
+    "touched": Object {},
+    "validate": [Function],
+    "values": Object {
+      "checkbox": false,
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "visited": Object {},
+  },
+}
 `;
