@@ -32,7 +32,7 @@ export default ({
       onMount={onMount}
       onUnmount={onUnmount}
     >
-      {(state = {}) => (
+      {state => (
         <form id={id} onSubmit={state.submit} onReset={state.reset}>
           {children}
         </form>
