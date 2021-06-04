@@ -12,7 +12,7 @@ import {
 } from "carry-on-utils";
 
 export default ({
-  id = "form",
+  id,
   initialValues,
   onValidate,
   onSubmit,
