@@ -75,33 +75,47 @@ test("withState debug/verbose", () => {
 });
 
 test("withState debounce", async () => {
-  set(state => { state.field = "value1"; });
+  set(state => {
+    state.field = "value1";
+  });
   const Comp = withState({ debounce: 1 })(props => props.field || null);
   const { asFragment } = render(<Comp />);
   expect(asFragment()).toMatchSnapshot();
-  set(state => { state.field = "value2"; });
-  await new Promise((r) => setTimeout(r, 5));
+  set(state => {
+    state.field = "value2";
+  });
+  await new Promise(r => setTimeout(r, 5));
   expect(asFragment()).toMatchSnapshot();
   deleteStore();
 });
 
 test("withState throttle", async () => {
-  set(state => { state.field = "value1"; });
+  set(state => {
+    state.field = "value1";
+  });
   const Comp = withState({ throttle: 1 })(props => props.field || null);
   const { asFragment } = render(<Comp />);
   expect(asFragment()).toMatchSnapshot();
-  set(state => { state.field = "value2"; });
-  await new Promise((r) => setTimeout(r, 5));
+  set(state => {
+    state.field = "value2";
+  });
+  await new Promise(r => setTimeout(r, 5));
   expect(asFragment()).toMatchSnapshot();
   deleteStore();
 });
 
 test("withState constant", () => {
-  set(state => { state.field = "value1"; });
-  const Comp = withState({ constant: true, debug: true, verbose: true })(props => props.field || null);
+  set(state => {
+    state.field = "value1";
+  });
+  const Comp = withState({ constant: true, debug: true, verbose: true })(
+    props => props.field || null
+  );
   const { asFragment } = render(<Comp />);
   expect(asFragment()).toMatchSnapshot();
-  set(state => { state.field = "value2"; });
+  set(state => {
+    state.field = "value2";
+  });
   expect(asFragment()).toMatchSnapshot();
   deleteStore();
 });

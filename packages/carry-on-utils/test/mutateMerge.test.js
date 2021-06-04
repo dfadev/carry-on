@@ -154,7 +154,7 @@ describe("merge()", () => {
   });
 
   test("mutate merge strip", () => {
-    let source1 = { a: [{ a: 1 }, function () { }] };
+    let source1 = { a: [{ a: 1 }, function () {}] };
     let source2 = { a: [{ b: 2 }, "abc", undefined] };
     let actual = mutateMergeStrip({}, source1, source2);
     expect(actual).toMatchSnapshot();

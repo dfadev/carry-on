@@ -32,7 +32,7 @@ it("handles clicks", () => {
   expect(onClickCalled).toBe(1);
   expect(preventDefaultCalled).toBe(1);
 
-  handleClick({ })({
+  handleClick({})({
     button: 0,
     preventDefault
   });
@@ -61,9 +61,9 @@ it("handles clicks", () => {
   expect(onClickCalled).toBe(3);
   expect(preventDefaultCalled).toBe(3);
 
-  set(s => { }, undefined, "Time Travel");
+  set(s => {}, undefined, "Time Travel");
   window.location.hash = "abc";
-  set(s => { }, undefined, "Time Travel");
+  set(s => {}, undefined, "Time Travel");
 
   expect(get().app.history.location.pathname).toMatchSnapshot();
 

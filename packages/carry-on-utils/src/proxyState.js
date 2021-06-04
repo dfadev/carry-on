@@ -25,7 +25,7 @@ const prepareObject = state => {
   // don't use Object.assign because it will call setters while an object spread uses Object.defineProperties
   const clone = { ...state };
   // spread does not assign prototype
-  Object.setPrototypeOf(clone, Object.getPrototypeOf(state)); 
+  Object.setPrototypeOf(clone, Object.getPrototypeOf(state));
   return clone;
 };
 

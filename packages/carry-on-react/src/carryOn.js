@@ -9,7 +9,14 @@ export default (renderFn, stateProps) => {
     stateProps = actualStateProps;
   }
 
-  const CarryOnComponent = ({ from, debug, verbose, onMount, onUnmount, ...props }) => {
+  const CarryOnComponent = ({
+    from,
+    debug,
+    verbose,
+    onMount,
+    onUnmount,
+    ...props
+  }) => {
     const finalProps = { ...stateProps };
     if (from !== undefined) finalProps.from = from;
     if (debug !== undefined) finalProps.debug = debug;

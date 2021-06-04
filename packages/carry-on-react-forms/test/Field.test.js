@@ -143,7 +143,6 @@ it("should handle onBlur", () => {
   expect(get().theform.touched.field1).toBe(true);
 });
 
-
 it("should handle setValue", () => {
   let setValue;
   const { asFragment } = render(

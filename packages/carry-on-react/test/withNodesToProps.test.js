@@ -17,7 +17,10 @@ test("withNodesToProps", () => {
   };
 
   const Element = withNodesToProps(nodeMap, ({ inner, val, default: def }) => (
-    <div>{Array.isArray(inner) ? inner.join(", ") : inner} {val} {def ? "true" : "false"}</div>
+    <div>
+      {Array.isArray(inner) ? inner.join(", ") : inner} {val}{" "}
+      {def ? "true" : "false"}
+    </div>
   ));
 
   const { asFragment } = render(

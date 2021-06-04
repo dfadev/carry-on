@@ -24,7 +24,9 @@ const FnComp = () => {
 test("useCarryOn renders", () => {
   const { asFragment } = render(<FnComp />);
   expect(asFragment()).toMatchSnapshot();
-  set(state => { state.item1 = "value2"; });
+  set(state => {
+    state.item1 = "value2";
+  });
   expect(asFragment()).toMatchSnapshot();
   deleteStore();
 });

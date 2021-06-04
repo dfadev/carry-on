@@ -56,7 +56,8 @@ export class Watch {
     if (!this.debug) return;
 
     // set component verbose flag
-    this.verbose = this.opts.verbose !== undefined ? this.opts.verbose : Watch.Verbose;
+    this.verbose =
+      this.opts.verbose !== undefined ? this.opts.verbose : Watch.Verbose;
 
     // setup log prefix and logger
     let id = this.opts.id ? `Watch:${this.opts.id}` : "Watch";

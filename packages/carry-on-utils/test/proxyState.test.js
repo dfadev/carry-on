@@ -211,7 +211,7 @@ describe("proxy", () => {
     expect(read).toEqual(7);
     expect(trapped.affected).toMatchSnapshot();
 
-    const O3 = [1,2,3];
+    const O3 = [1, 2, 3];
     Object.freeze(O3);
     const trapped2 = proxyState(O3);
     trapped2.state[0];

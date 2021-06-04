@@ -150,4 +150,3 @@ describe("matchPath", () => {
     expect(r).toMatchSnapshot();
   });
 });
-

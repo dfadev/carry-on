@@ -6,7 +6,7 @@ import logger from "../src/logger";
 describe("logger", () => {
   it("should log some stuff", () => {
     const rslt = [];
-    const out = function() {
+    const out = function () {
       rslt.push(arguments);
     };
 

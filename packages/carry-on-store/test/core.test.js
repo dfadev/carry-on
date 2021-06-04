@@ -284,7 +284,7 @@ test("nested set works", () => {
         set(state => {
           state.upper4 = "value4";
           state.lower = "value";
-          set(state => { });
+          set(state => {});
         });
         state.lower2 = "value2";
       });
@@ -311,7 +311,7 @@ test("nested set works with debug", () => {
         set(state => {
           state.upper4 = "value4";
           state.lower = "value";
-          set(state => { });
+          set(state => {});
         });
         state.lower2 = "value2";
       });

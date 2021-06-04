@@ -11,13 +11,7 @@ import {
   keys
 } from "carry-on-utils";
 
-export default ({
-  id,
-  initialValues,
-  onValidate,
-  onSubmit,
-  onReset
-}) => ({
+export default ({ id, initialValues, onValidate, onSubmit, onReset }) => ({
   state: ({ id: storeId, set, get }) => {
     const idPath = toPath(id);
     const curForm = (state = get()) => getInA(state, idPath, {});
