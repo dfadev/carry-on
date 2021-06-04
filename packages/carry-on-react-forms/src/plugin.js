@@ -54,7 +54,10 @@ export default ({
         : initialValues,
 
       validate: (state, onSuccess) => {
-        if (!debounceValidate) return;
+        if (!debounceValidate) {
+          if (onSuccess) onSuccess();
+          return;
+        }
 
         const form = curForm(state);
         form.isValidating = true;
