@@ -110,6 +110,11 @@ export default ({
           form.values = vals;
           form.isPristine = true;
           form.isValid = true;
+          form.errors = {};
+          form.visited = {};
+          form.touched = {};
+          form.origState = undefined;
+          form.origState = { ...form };
         }, `Set Initial Values${typeSuffix}`),
 
       setFieldError: (fieldName, error) =>
