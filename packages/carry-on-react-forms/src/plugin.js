@@ -217,8 +217,6 @@ export default ({
           form.isSubmitting = true;
           form.validate(state, finishSubmit);
         }, `Begin Submit${typeSuffix}`);
-
-        if (!curForm(beginSubmitState).isValidating) finishSubmit();
       }
     };
 
