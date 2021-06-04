@@ -65,4 +65,13 @@ describe("generatePath", () => {
       );
     });
   });
+
+  describe("cache exercise", () => {
+    it("handles overflow", () => {
+      for (let i = 0; i < 20000; i += 1) {
+        const generated = generatePath(`/${i}`);
+        expect(generated).toBe(`/${i}`);
+      }
+    });
+  });
 });

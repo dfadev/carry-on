@@ -1,6 +1,31 @@
 import matchPath from "../src/matchPath";
 
 describe("matchPath", () => {
+  describe("without path property on params", () => {
+    it("doesn't throw an exception", () => {
+      expect(() => {
+        matchPath("/milkyway/eridani", { hash: "foo" });
+      }).not.toThrow();
+    });
+  });
+
+  describe('with path=""', () => {
+    it('returns correct url at "/"', () => {
+      const path = "";
+      const pathname = "/";
+      const match = matchPath(pathname, path);
+      // TODO: why is match.url "/" instead of ""?
+      expect(match.url).toBe("/");
+    });
+
+    it('returns correct url at "/somewhere/else"', () => {
+      const path = "";
+      const pathname = "/somewhere/else";
+      const match = matchPath(pathname, path);
+      expect(match.url).toBe("");
+    });
+  });
+
   describe('with path="/"', () => {
     it('returns correct url at "/"', () => {
       const path = "/";
@@ -102,4 +127,27 @@ describe("matchPath", () => {
       expect(!!falseTrue).toBe(false);
     });
   });
+
+  it("handles overflow", () => {
+    for (let i = 0; i < 7000; i += 1) {
+      const trueFalse = matchPath(`/${i}`, {
+        path: `/${i}`,
+        exact: true,
+        strict: false
+      });
+      const falseTrue = matchPath(`/${i}`, {
+        path: `/${i}/`,
+        exact: false,
+        strict: true
+      });
+      expect(!!trueFalse).toBe(true);
+      expect(!!falseTrue).toBe(false);
+    }
+  });
+
+  it("handles undefined options", () => {
+    const r = matchPath("/one/two");
+    expect(r).toMatchSnapshot();
+  });
 });
+

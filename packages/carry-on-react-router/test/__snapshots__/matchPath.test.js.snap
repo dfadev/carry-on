@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matchPath handles undefined options 1`] = `
+Object {
+  "isExact": false,
+  "params": Object {},
+  "path": "",
+  "url": "",
+}
+`;

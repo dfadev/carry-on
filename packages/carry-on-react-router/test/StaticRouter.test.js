@@ -8,6 +8,7 @@ import Route from "../src/components/Route";
 import Prompt from "../src/components/Prompt";
 import Redirect from "../src/components/Redirect";
 import { StaticRouter } from "../src/components/Router";
+import createStaticHistory from "../src/createStaticHistory";
 
 describe("A <StaticRouter>", () => {
   afterEach(() => {
@@ -246,6 +247,22 @@ describe("A <StaticRouter>", () => {
           </StaticRouter>
         );
       }).not.toThrow();
+    });
+  });
+
+  describe("navigation via go", () => {
+    it("throws", () => {
+      expect(() => {
+        const h = createStaticHistory({ basename: "abc" });
+        h.go("nowhere");
+      }).toThrow();
+    });
+
+    it("throws again", () => {
+      expect(() => {
+        const h = createStaticHistory();
+        h.goBack();
+      }).toThrow();
     });
   });
 });
