@@ -106,7 +106,6 @@ export default ({
           const vals = isFunction(values)
             ? values({ set, get, id: storeId })
             : values;
-          form.initialValues = vals;
           form.values = vals;
           form.isPristine = true;
           form.isValid = true;
