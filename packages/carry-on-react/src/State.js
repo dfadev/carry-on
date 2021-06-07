@@ -13,7 +13,7 @@ import ReactDOM from "react-dom";
 import StoreContext from "./StoreContext";
 import withNodesToProps from "./withNodesToProps";
 
-const ignoreProps = [];
+const ignoreProps = ["children"];
 let State;
 
 export const withStore = WrappedComponent => {
