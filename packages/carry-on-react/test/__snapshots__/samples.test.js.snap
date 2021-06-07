@@ -248,13 +248,33 @@ exports[`multiple select 4`] = `
 
 exports[`no changes 1`] = `
 <DocumentFragment>
-  <div />
+  <div>
+    value
+  </div>
+</DocumentFragment>
+`;
+
+exports[`no changes 2`] = `
+<DocumentFragment>
+  <div>
+    value
+  </div>
 </DocumentFragment>
 `;
 
 exports[`no changes with debug 1`] = `
 <DocumentFragment>
-  <div />
+  <div>
+    value
+  </div>
+</DocumentFragment>
+`;
+
+exports[`no changes with debug 2`] = `
+<DocumentFragment>
+  <div>
+    value
+  </div>
 </DocumentFragment>
 `;
 

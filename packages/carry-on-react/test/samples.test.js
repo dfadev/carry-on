@@ -1055,15 +1055,14 @@ test("no changes", () => {
         })
       }}
     >
-      {state => <div>{state.field.value}</div>}
+      {state => <div>{state.field}</div>}
     </State>
   );
 
   const { asFragment, rerender } = render(<App />);
-  // expect(asFragment()).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
   get().nop();
 
-  const rer = rerender(<App />);
   expect(asFragment()).toMatchSnapshot();
 
   deleteStore();
@@ -1084,15 +1083,14 @@ test("no changes with debug", () => {
         })
       }}
     >
-      {state => <div>{state.field.value}</div>}
+      {state => <div>{state.field}</div>}
     </State>
   );
 
   const { asFragment, rerender } = render(<App />);
-  // expect(asFragment()).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
   get().nop();
 
-  const rer = rerender(<App />);
   expect(asFragment()).toMatchSnapshot();
 
   deleteStore();
