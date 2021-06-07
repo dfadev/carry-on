@@ -18,7 +18,8 @@ export default ({
   debug,
   verbose,
   onMount,
-  onUnmount
+  onUnmount,
+  noFormTag
 }) => (
   <FormContext.Provider value={{ store, form: id }}>
     <State
@@ -32,7 +33,7 @@ export default ({
       onMount={onMount}
       onUnmount={onUnmount}
     >
-      {state => (
+      {state => noFormTag ? children : (
         <form id={id} onSubmit={state.submit} onReset={state.reset}>
           {children}
         </form>
