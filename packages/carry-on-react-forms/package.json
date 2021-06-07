@@ -28,8 +28,8 @@
     "carry-on-react": "^1.0.16",
     "carry-on-store": "^1.0.16",
     "carry-on-utils": "^1.0.16",
-    "react": ">=15.6.0",
-    "react-dom": ">=15.6.0",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.50.6"
   },
@@ -37,8 +37,8 @@
     "carry-on-react": "^1.0.16",
     "carry-on-store": "^1.0.16",
     "carry-on-utils": "^1.0.16",
-    "react": ">=15.6.0",
-    "react-dom": ">=15.6.0"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.0"
