@@ -1,32 +1,21 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/jsx-curly-newline */
 import React from "react";
-import { State } from "carry-on-react";
-import FormContext from "./FormContext";
+import FormState from "./FormState";
 
-export default ({
-  from,
-  store: propStore = from,
-  form: propForm = "form",
-  children = () => null,
-  ...rest
-}) => (
-  <FormContext.Consumer>
-    {({ store, form } = { store: propStore, form: propForm }) => (
-      <State from={store} path={form} {...rest}>
-        {({ submit, reset, isPristine, isValidating, isValid } = {}) =>
-          children({
-            submit: {
-              onClick: submit,
-              disabled: isPristine || isValidating || !isValid
-            },
-            reset: {
-              onClick: reset,
-              disabled: isPristine || isValidating
-            }
-          })
+export default ({ children = () => null, ...rest }) => (
+  <FormState {...rest}>
+    {({ submit, reset, isPristine, isValidating, isValid } = {}) =>
+      children({
+        submit: {
+          onClick: submit,
+          disabled: isPristine || isValidating || !isValid
+        },
+        reset: {
+          onClick: reset,
+          disabled: isPristine || isValidating
         }
-      </State>
-    )}
-  </FormContext.Consumer>
+      })
+    }
+  </FormState>
 );
