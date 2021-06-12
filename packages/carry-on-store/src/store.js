@@ -261,7 +261,7 @@ export function watchGet(state, select, path = "", def, id) {
   const trappedState = proxyState(state);
   store.trappedState = trappedState;
   const pathedState = getIn(trappedState.state, path, def);
-  const selectedState = select(pathedState);
+  const selectedState = select(pathedState, id);
   trappedState.seal();
   store.trappedState = undefined;
   const watch = trappedState.affected;
