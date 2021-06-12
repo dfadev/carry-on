@@ -23,34 +23,46 @@ export default ({
   ...rest
 }) => (
   <FormState id={path} {...rest}>
-    {({
-      values,
-      touched,
-      errors,
-      visited,
-      setFieldValue,
-      hasVisited,
-      isTouched,
-      setFieldVisited,
-      setFieldTouched,
-      setFieldError
-    } = {}) =>
-      children({
-        touched: getIn(touched, path, false),
-        error: getIn(errors, path, undefined),
-        visited: getIn(visited, path, false),
-        element: {
-          onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
-          onChange: e => setFieldValue(path, getVal(e)),
-          onBlur: () => !isTouched(path) && setFieldTouched(path, true),
-          [type === "checkbox" || type === "radio" ? "checked" : "value"]:
-            getIn(values, path, def)
+    {(
+      {
+        values,
+        touched,
+        errors,
+        visited,
+        setFieldValue,
+        hasVisited,
+        isTouched,
+        setFieldVisited,
+        setFieldTouched,
+        setFieldError
+      } = {},
+      store
+    ) => {
+      const fieldId = store ? `${store}.${path}` : path;
+      let value = getIn(values, path, def);
+      if (value === undefined || value === null) value = "";
+
+      return children(
+        {
+          touched: getIn(touched, path, false),
+          error: getIn(errors, path, undefined),
+          visited: getIn(visited, path, false),
+          element: {
+            id: fieldId,
+            name: fieldId,
+            onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
+            onChange: e => setFieldValue(path, getVal(e)),
+            onBlur: () => !isTouched(path) && setFieldTouched(path, true),
+            [type === "checkbox" || type === "radio" ? "checked" : "value"]:
+              value
+          },
+          setValue: val => setFieldValue(path, val),
+          setVisited: val => setFieldVisited(path, val),
+          setTouched: val => setFieldTouched(path, val),
+          setError: val => setFieldError(path, val)
         },
-        setValue: val => setFieldValue(path, val),
-        setVisited: val => setFieldVisited(path, val),
-        setTouched: val => setFieldTouched(path, val),
-        setError: val => setFieldError(path, val)
-      })
-    }
+        store
+      );
+    }}
   </FormState>
 );

@@ -33,11 +33,19 @@ export default ({
       onMount={onMount}
       onUnmount={onUnmount}
     >
-      {state => noFormTag ? children : (
-        <form id={id} onSubmit={state.submit} onReset={state.reset}>
-          {children}
-        </form>
-      )}
+      {(state, stateStore) =>
+        noFormTag ? (
+          children
+        ) : (
+          <form
+            id={`${stateStore ? `${stateStore}.` : ""}${id}`}
+            onSubmit={state.submit}
+            onReset={state.reset}
+          >
+            {children}
+          </form>
+        )
+      }
     </State>
   </FormContext.Provider>
 );
