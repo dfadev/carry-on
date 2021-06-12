@@ -276,6 +276,13 @@ class InnerState extends Component {
 }
 
 export const Register = () => null;
+Register.val = "children";
+Register.transform = state => {
+  if (typeof state === "function") {
+    return { state };
+  }
+  return state;
+};
 export const Render = () => null;
 export const OnMount = () => null;
 export const OnUnmount = () => null;
@@ -283,40 +290,25 @@ export const Select = () => null;
 export const Path = () => null;
 export const Default = () => null;
 export const Throttle = () => null;
+Throttle.prop = "throttle";
+Throttle.val = "ms";
+Throttle.default = 0;
 export const Constant = () => null;
+Constant.default = true;
 export const Strict = () => null;
+Strict.default = true;
 export const Debounce = () => null;
+Debounce.val = "ms";
+Debounce.default = 0;
 export const Debug = () => null;
+Debug.val = "enabled";
+Debug.default = true;
 export const Verbose = () => null;
+Verbose.val = "enabled";
+Verbose.default = true;
 export const Id = () => null;
 
-const nodeMap = {
-  Register: {
-    prop: "register",
-    val: "children",
-    transform: state => {
-      if (typeof state === "function") {
-        return { state };
-      }
-      return state;
-    }
-  },
-  Render: "render",
-  OnMount: "onMount",
-  OnUnmount: "onUnmount",
-  Select: "select",
-  Path: "path",
-  Default: "default",
-  Throttle: { prop: "throttle", val: "ms", default: 0 },
-  Constant: { prop: "constant", default: true },
-  Strict: { prop: "strict", default: true },
-  Debounce: { prop: "debounce", val: "ms", default: 0 },
-  Debug: { prop: "debug", val: "enabled", default: true },
-  Verbose: { prop: "verbose", val: "enabled", default: true },
-  Id: "id"
-};
-
-State = withStore(withNodesToProps(nodeMap, InnerState));
+State = withStore(withNodesToProps(InnerState));
 
 InnerState.contextType = StoreContext;
 

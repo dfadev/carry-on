@@ -20,3 +20,4 @@ export { default as carryOn } from "./carryOn";
 export { default as DevTools } from "./DevTools";
 export { default as useCarryOn } from "./useCarryOn";
 export { default as Store } from "./Store";
+export { default as withNodesToProps } from "./withNodesToProps";
