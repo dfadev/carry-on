@@ -52,6 +52,13 @@ import {
   router,
   withRouter
 } from "carry-on-react-router";
+import {
+  FormView,
+  InitialValues,
+  Section,
+  Sections,
+  Fields
+} from "carry-on-react-view";
 import theme from "./inspector-theme";
 
 const canUseDOM = !!(
@@ -92,11 +99,14 @@ const ReactLiveScope = {
   Debug,
   Default,
   Field,
+  Fields,
   Form,
   FormButtons,
   FormState,
+  FormView,
   HashRouter,
   Id,
+  InitialValues,
   Link,
   MemoryRouter,
   NavLink,
@@ -109,6 +119,8 @@ const ReactLiveScope = {
   Render,
   Route,
   Routes,
+  Section,
+  Sections,
   Select,
   State,
   StaticRouter,

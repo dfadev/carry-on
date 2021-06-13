@@ -14,6 +14,7 @@
     "carry-on-react": "file:../packages/carry-on-react",
     "carry-on-react-forms": "file:../packages/carry-on-react-forms",
     "carry-on-react-router": "file:../packages/carry-on-react-router",
+    "carry-on-react-view": "file:../packages/carry-on-react-view",
     "carry-on-store": "file:../packages/carry-on-store",
     "carry-on-utils": "file:../packages/carry-on-utils",
     "clsx": "^1.1.1",

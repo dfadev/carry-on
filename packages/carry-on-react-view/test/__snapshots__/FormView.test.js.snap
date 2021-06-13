@@ -1,0 +1,608 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormView <FormView /> renders 1`] = `
+<DocumentFragment>
+  <form
+    id="form"
+  >
+    <div
+      form="form"
+    />
+  </form>
+</DocumentFragment>
+`;
+
+exports[`FormView renders example 1 1`] = `
+<DocumentFragment>
+  <form
+    id="formViewStore.formView1"
+  >
+    <div
+      style="border: 1px solid purple; padding: 16px;"
+    >
+      <h2>
+        FormViewBox
+      </h2>
+      <div
+        style="border: 1px solid blue; margin: 16px; padding: 16px;"
+      >
+        <h2>
+          SectionBox: Section 1
+        </h2>
+        <div
+          style="border: 1px solid red; margin: 16px; padding: 16px;"
+        >
+          <div>
+            <h2>
+              View
+            </h2>
+          </div>
+          <div
+            style="display: flex;"
+          >
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStore.abc"
+                    >
+                      ABC
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStore.abc"
+                      name="formViewStore.abc"
+                      value="123"
+                    />
+                  </div>
+                  <div>
+                    ABC tooltip
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStore.def"
+                    >
+                      def
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStore.def"
+                      name="formViewStore.def"
+                      value="345"
+                    />
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="border: 1px solid blue; margin: 16px; padding: 16px;"
+      >
+        <h2>
+          SectionBox: Section 2
+        </h2>
+        <div
+          style="border: 1px solid red; margin: 16px; padding: 16px;"
+        >
+          <div>
+            <h2>
+              View
+            </h2>
+          </div>
+          <div
+            style="display: flex;"
+          >
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStore.ghi"
+                    >
+                      ghi
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStore.ghi"
+                      name="formViewStore.ghi"
+                      value=""
+                    />
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="border: 1px solid red; margin: 16px; padding: 16px;"
+        >
+          <div>
+            <h2>
+              View
+            </h2>
+          </div>
+          <div
+            style="display: flex;"
+          >
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStore.jkl"
+                    >
+                      jkl
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStore.jkl"
+                      name="formViewStore.jkl"
+                      value=""
+                    />
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`FormView renders example 2 1`] = `
+<DocumentFragment>
+  <form
+    id="formViewStore2.formView2"
+  >
+    <div
+      style="border: 1px solid purple; padding: 16px;"
+    >
+      <h2>
+        FormViewBox
+      </h2>
+      <div
+        style="border: 1px solid blue; margin: 16px; padding: 16px;"
+      >
+        <h2>
+          SectionBox
+        </h2>
+        <div
+          style="border: 1px solid red; margin: 16px; padding: 16px;"
+        >
+          <div>
+            <h2>
+              View
+            </h2>
+          </div>
+          <div
+            style="display: flex;"
+          >
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStore2.abc"
+                    >
+                      ABC
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStore2.abc"
+                      name="formViewStore2.abc"
+                      value="123"
+                    />
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStore2.def"
+                    >
+                      def
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStore2.def"
+                      name="formViewStore2.def"
+                      value="345"
+                    />
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="border: 1px solid blue; margin: 16px; padding: 16px;"
+      >
+        <h2>
+          SectionBox
+        </h2>
+        <div
+          style="border: 1px solid red; margin: 16px; padding: 16px;"
+        >
+          <div>
+            <h2>
+              View
+            </h2>
+          </div>
+          <div
+            style="display: flex;"
+          >
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStore2.ghi"
+                    >
+                      ghi
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStore2.ghi"
+                      name="formViewStore2.ghi"
+                      value=""
+                    />
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="border: 1px solid red; margin: 16px; padding: 16px;"
+        >
+          <div>
+            <h2>
+              View
+            </h2>
+          </div>
+          <div
+            style="display: flex;"
+          >
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStore2.jkl"
+                    >
+                      jkl
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStore2.jkl"
+                      name="formViewStore2.jkl"
+                      value=""
+                    />
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`FormView renders example 3 1`] = `
+<DocumentFragment>
+  <form
+    id="formViewStoreComposing.formViewComposing"
+  >
+    <div
+      style="border: 1px solid purple; padding: 16px;"
+    >
+      <h2>
+        FormViewBox
+      </h2>
+      <div
+        style="border: 1px solid blue; margin: 16px; padding: 16px;"
+      >
+        <h2>
+          SectionBox: Section 1
+        </h2>
+        <div
+          style="border: 1px solid red; margin: 16px; padding: 16px;"
+        >
+          <div>
+            <h2>
+              View
+            </h2>
+          </div>
+          <div
+            style="display: flex;"
+          >
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStoreComposing.abc"
+                    >
+                      ABC
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStoreComposing.abc"
+                      name="formViewStoreComposing.abc"
+                      value="abc"
+                    />
+                  </div>
+                  The ABC Tooltip
+                  <br />
+                </div>
+              </div>
+            </div>
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStoreComposing.def"
+                    >
+                      def
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStoreComposing.def"
+                      name="formViewStoreComposing.def"
+                      value=""
+                    />
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        style="border: 1px solid blue; margin: 16px; padding: 16px;"
+      >
+        <h2>
+          SectionBox: Section 2
+        </h2>
+        <div
+          style="border: 1px solid red; margin: 16px; padding: 16px;"
+        >
+          <div>
+            <h2>
+              View
+            </h2>
+          </div>
+          <div
+            style="display: flex;"
+          >
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStoreComposing.ghi"
+                    >
+                      ghi
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStoreComposing.ghi"
+                      name="formViewStoreComposing.ghi"
+                      value=""
+                    />
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          style="border: 1px solid red; margin: 16px; padding: 16px;"
+        >
+          <div>
+            <h2>
+              View
+            </h2>
+          </div>
+          <div
+            style="display: flex;"
+          >
+            <div
+              style="border: 1px solid white; margin: 16px; padding: 16px;"
+            >
+              <div>
+                <h2>
+                  ViewItem
+                </h2>
+              </div>
+              <div
+                margin="16px"
+                padding="16px"
+                style="display: block;"
+              >
+                <div>
+                  <div>
+                    <label
+                      for="formViewStoreComposing.jkl"
+                    >
+                      jkl
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      id="formViewStoreComposing.jkl"
+                      name="formViewStoreComposing.jkl"
+                      value=""
+                    />
+                  </div>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
