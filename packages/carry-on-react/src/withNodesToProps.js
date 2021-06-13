@@ -2,7 +2,7 @@
 import React from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 
-const withNodesToProps = (WrappedComponent) => {
+const withNodesToProps = WrappedComponent => {
   const WithNodesToProps = ({ children, ...props }) => {
     if (!Array.isArray(children))
       return <WrappedComponent {...props}>{children}</WrappedComponent>;
@@ -11,16 +11,26 @@ const withNodesToProps = (WrappedComponent) => {
 
     for (let i = 0, len = children.length; i < len; i += 1) {
       const child = children[i];
-      const name = child.type && child.type.name;
+
+      // fetch node map config
+      const name = (child.type && child.type.name) || "nodesToProp";
       const {
         prop = name.charAt(0).toLowerCase() + name.slice(1),
         val = "children",
         transform,
         default: def
-      } = child.type;
+      } = child.type || {};
+
+      // retrieve value
       let v = child.props[val];
+
+      // default value
       if (v === undefined) v = def;
+
+      // transform value
       v = transform ? transform(v) : v;
+
+      // present as array when multiple nodes
       const curProp = newProps[prop];
       if (curProp !== undefined) {
         if (Array.isArray(curProp)) {
