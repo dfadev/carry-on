@@ -9,6 +9,7 @@ const nodesToProps = children => {
 
   for (let i = 0, len = childs.length; i < len; i += 1) {
     const child = childs[i];
+    /* eslint-disable-next-line no-continue */
     if (child === undefined || child === null) continue;
 
     // fetch node map config
