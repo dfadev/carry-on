@@ -41,11 +41,13 @@ class InnerState extends Component {
 
   componentDidMount() {
     // call onMount handler
-    const { onMount, from } = this.props;
+    const { onMount, from, path, default: def } = this.props;
 
     if (!onMount) return;
 
-    const state = connect(from);
+    let state = connect(from);
+    if (path) state = getIn(state, path, def);
+
     if (onMount.length === 2) onMount(this.props, state);
     else onMount(state);
   }
@@ -74,11 +76,13 @@ class InnerState extends Component {
     this.reset();
 
     // call onUnmount handler
-    const { onUnmount, from } = this.props;
+    const { onUnmount, from, path, default: def } = this.props;
 
     if (!onUnmount) return;
 
-    const state = connect(from);
+    let state = connect(from);
+    if (path) state = getIn(state, path, def);
+
     if (onUnmount.length === 2) onUnmount(this.props, state);
     else onUnmount(state);
   }
