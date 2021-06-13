@@ -21,7 +21,7 @@
     "watch": "npm run build -- -w"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.14.0",
+    "@babel/runtime-corejs3": "^7.14.5",
     "history": ">=4.0.0 < 5",
     "hoist-non-react-statics": ">=3.0.0",
     "path-to-regexp": ">=6.0.0",
@@ -39,7 +39,7 @@
     "react-dom": ">=16.8.0",
     "react-is": ">=16.8.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.50.6"
+    "rollup": "^2.51.2"
   },
   "peerDependencies": {
     "carry-on-react": "^1.0.16",
