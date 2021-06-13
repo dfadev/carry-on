@@ -2,11 +2,11 @@
 import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import {
-  shallowEqual,
-  logger,
-  throttle,
   debounce,
-  getIn
+  getIn,
+  logger,
+  shallowEqual,
+  throttle
 } from "carry-on-utils";
 import { register, connect, subscribe, watchGet } from "carry-on-store";
 import ReactDOM from "react-dom";
