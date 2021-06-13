@@ -176,8 +176,10 @@ export const connect = (id, wrap) => {
     else if (store.trappedState) state = store.trappedState.state;
     else state = store.state;
 
-    if (Debug || store.debug) store.log("get", state);
-    return action ? action(state) : state;
+    const result = action ? action(state) : state;
+
+    if (Debug || store.debug) store.log("store.get", deproxify(result));
+    return result;
   };
 
   // patching
