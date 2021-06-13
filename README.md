@@ -10,3 +10,5 @@ This is the monorepo for ```carry-on```.
 - [carry-on-react](packages/carry-on-react) - provides ```State``` component
 - [carry-on-react-forms](packages/carry-on-react-forms) - provides ```Form```, ```Field```, ```FormState```, and ```FormButtons``` components
 - [carry-on-react-router](packages/carry-on-react-router) - provides ```Route```, ```Link```, ```Prompt``` and other routing components
+- [carry-on-react-view](packages/carry-on-react-view) - provides ```FormView```
+- [carry-on-utils](packages/carry-on-utils) - common utility functions
