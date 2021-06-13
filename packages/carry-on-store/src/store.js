@@ -178,7 +178,7 @@ export const connect = (id, wrap) => {
 
     const result = action ? action(state) : state;
 
-    if (Debug || store.debug) store.log("store.get", deproxify(result));
+    if (Debug || store.debug) store.log("get", deproxify(result));
     return result;
   };
 
