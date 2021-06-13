@@ -7,13 +7,14 @@ import withNodesToProps from "../src/withNodesToProps";
 
 test("withNodesToProps", () => {
   const Inner = () => null;
+  Inner.prop = "inner";
   const PropVal = Object.assign(() => null, {
     prop: "val",
     val: "val",
     default: 0
   });
   const Default = () => null;
-  Object.assign(Default, { default: true, transform: s => s });
+  Object.assign(Default, { prop: "default", default: true, transform: s => s });
 
   const Element = withNodesToProps(({ inner, val, default: def }) => (
     <div>

@@ -72,7 +72,9 @@ const FormView = withState(components)(
 export default FormView;
 
 export const InitialValues = () => null;
+InitialValues.prop = "initialValues";
 export const Sections = () => null;
+Sections.prop = "sections";
 Sections.transform = v => {
   const nodes = Array.isArray(v) ? v : [v];
   const sections = [];
@@ -90,6 +92,7 @@ Sections.transform = v => {
 };
 export const Section = () => null;
 export const Fields = () => null;
+Fields.prop = "fields";
 Fields.transform = v => {
   const nodes = Array.isArray(v) ? v : [v];
   const fields = {};

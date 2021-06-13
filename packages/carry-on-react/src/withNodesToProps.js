@@ -13,9 +13,8 @@ const nodesToProps = children => {
     if (child === undefined || child === null) continue;
 
     // fetch node map config
-    const name = (child.type && child.type.name) || "nodesToProp";
     const {
-      prop = name.charAt(0).toLowerCase() + name.slice(1),
+      prop,
       val = "children",
       transform,
       default: def
