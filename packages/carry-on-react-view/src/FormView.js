@@ -24,6 +24,11 @@ const FormView = withState(components)(
       SectionBox: RootSectionBox,
       register = [],
       children,
+      onMount,
+      onUnmount,
+      onValidate,
+      onSubmit,
+      onReset,
       ...rest
     }) => (
       <Form
@@ -37,6 +42,11 @@ const FormView = withState(components)(
           }
         ]}
         store={store}
+        onMount={onMount}
+        onUnmount={onUnmount}
+        onValidate={onValidate}
+        onSubmit={onSubmit}
+        onReset={onReset}
       >
         <FormState form={id}>
           {({
