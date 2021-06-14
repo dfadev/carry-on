@@ -154,8 +154,7 @@ export default ({ id, initialValues, onValidate, onSubmit, onReset }) => ({
           const newFormState = {
             ...formState,
             ...origState,
-            origState,
-            submitCount: 0
+            origState
           };
           mutateSet(state, id, newFormState);
         }, `Reset Form${typeSuffix}`);
