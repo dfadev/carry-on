@@ -27,7 +27,7 @@ const nodesToProps = children => {
     if (v === undefined) v = def;
 
     // transform value
-    v = transform ? transform(v) : v;
+    v = transform ? transform(v, child.props) : v;
 
     // present as array when multiple nodes
     const curProp = newProps[prop];
