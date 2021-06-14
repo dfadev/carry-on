@@ -56,15 +56,15 @@ exports[`FormView renders example 1 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStore.abc"
+                      for="formViewStore.formView1.abc"
                     >
                       ABC
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStore.abc"
-                      name="formViewStore.abc"
+                      id="formViewStore.formView1.abc"
+                      name="formViewStore.formView1.abc"
                       value="123"
                     />
                   </div>
@@ -91,15 +91,15 @@ exports[`FormView renders example 1 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStore.def"
+                      for="formViewStore.formView1.def"
                     >
                       def
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStore.def"
-                      name="formViewStore.def"
+                      id="formViewStore.formView1.def"
+                      name="formViewStore.formView1.def"
                       value="345"
                     />
                   </div>
@@ -143,15 +143,15 @@ exports[`FormView renders example 1 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStore.ghi"
+                      for="formViewStore.formView1.ghi"
                     >
                       ghi
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStore.ghi"
-                      name="formViewStore.ghi"
+                      id="formViewStore.formView1.ghi"
+                      name="formViewStore.formView1.ghi"
                       value=""
                     />
                   </div>
@@ -188,15 +188,15 @@ exports[`FormView renders example 1 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStore.jkl"
+                      for="formViewStore.formView1.jkl"
                     >
                       jkl
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStore.jkl"
-                      name="formViewStore.jkl"
+                      id="formViewStore.formView1.jkl"
+                      name="formViewStore.formView1.jkl"
                       value=""
                     />
                   </div>
@@ -256,15 +256,15 @@ exports[`FormView renders example 2 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStore2.abc"
+                      for="formViewStore2.formView2.abc"
                     >
                       ABC
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStore2.abc"
-                      name="formViewStore2.abc"
+                      id="formViewStore2.formView2.abc"
+                      name="formViewStore2.formView2.abc"
                       value="123"
                     />
                   </div>
@@ -288,15 +288,15 @@ exports[`FormView renders example 2 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStore2.def"
+                      for="formViewStore2.formView2.def"
                     >
                       def
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStore2.def"
-                      name="formViewStore2.def"
+                      id="formViewStore2.formView2.def"
+                      name="formViewStore2.formView2.def"
                       value="345"
                     />
                   </div>
@@ -340,15 +340,15 @@ exports[`FormView renders example 2 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStore2.ghi"
+                      for="formViewStore2.formView2.ghi"
                     >
                       ghi
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStore2.ghi"
-                      name="formViewStore2.ghi"
+                      id="formViewStore2.formView2.ghi"
+                      name="formViewStore2.formView2.ghi"
                       value=""
                     />
                   </div>
@@ -385,15 +385,15 @@ exports[`FormView renders example 2 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStore2.jkl"
+                      for="formViewStore2.formView2.jkl"
                     >
                       jkl
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStore2.jkl"
-                      name="formViewStore2.jkl"
+                      id="formViewStore2.formView2.jkl"
+                      name="formViewStore2.formView2.jkl"
                       value=""
                     />
                   </div>
@@ -453,15 +453,15 @@ exports[`FormView renders example 3 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStoreComposing.abc"
+                      for="formViewStoreComposing.formViewComposing.abc"
                     >
                       ABC
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStoreComposing.abc"
-                      name="formViewStoreComposing.abc"
+                      id="formViewStoreComposing.formViewComposing.abc"
+                      name="formViewStoreComposing.formViewComposing.abc"
                       value="abc"
                     />
                   </div>
@@ -486,15 +486,15 @@ exports[`FormView renders example 3 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStoreComposing.def"
+                      for="formViewStoreComposing.formViewComposing.def"
                     >
                       def
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStoreComposing.def"
-                      name="formViewStoreComposing.def"
+                      id="formViewStoreComposing.formViewComposing.def"
+                      name="formViewStoreComposing.formViewComposing.def"
                       value=""
                     />
                   </div>
@@ -538,15 +538,15 @@ exports[`FormView renders example 3 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStoreComposing.ghi"
+                      for="formViewStoreComposing.formViewComposing.ghi"
                     >
                       ghi
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStoreComposing.ghi"
-                      name="formViewStoreComposing.ghi"
+                      id="formViewStoreComposing.formViewComposing.ghi"
+                      name="formViewStoreComposing.formViewComposing.ghi"
                       value=""
                     />
                   </div>
@@ -583,15 +583,15 @@ exports[`FormView renders example 3 1`] = `
                 <div>
                   <div>
                     <label
-                      for="formViewStoreComposing.jkl"
+                      for="formViewStoreComposing.formViewComposing.jkl"
                     >
                       jkl
                     </label>
                   </div>
                   <div>
                     <input
-                      id="formViewStoreComposing.jkl"
-                      name="formViewStoreComposing.jkl"
+                      id="formViewStoreComposing.formViewComposing.jkl"
+                      name="formViewStoreComposing.formViewComposing.jkl"
                       value=""
                     />
                   </div>
