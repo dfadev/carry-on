@@ -8,6 +8,7 @@ exports[`should handle onChange 1`] = `
     <input
       id="default.theform.field1"
       name="default.theform.field1"
+      type="text"
       value="0"
     />
   </form>
@@ -22,6 +23,7 @@ exports[`should handle onChange 2`] = `
     <input
       id="default.theform.field1"
       name="default.theform.field1"
+      type="text"
       value=""
     />
   </form>
@@ -36,6 +38,7 @@ exports[`should handle onChange 3`] = `
     <input
       id="default.theform.field1"
       name="default.theform.field1"
+      type="text"
       value="true"
     />
   </form>
@@ -50,6 +53,7 @@ exports[`should handle onChange 4`] = `
     <input
       id="default.theform.field1"
       name="default.theform.field1"
+      type="text"
       value=""
     />
   </form>
@@ -66,6 +70,7 @@ Object {
     "onBlur": [Function],
     "onChange": [Function],
     "onFocus": [Function],
+    "type": "text",
     "value": "value1",
   },
   "error": undefined,
@@ -154,6 +159,7 @@ exports[`should render a simple input field in named form: render match 1`] = `
     <input
       id="default.theform.field1"
       name="default.theform.field1"
+      type="text"
       value="value1"
     />
   </form>
@@ -241,6 +247,7 @@ Object {
     "onBlur": [Function],
     "onChange": [Function],
     "onFocus": [Function],
+    "type": "text",
     "value": "value1",
   },
   "error": undefined,
@@ -329,6 +336,7 @@ exports[`should render a simple input field: render match 1`] = `
     <input
       id="default.form.field1"
       name="default.form.field1"
+      type="text"
       value="value1"
     />
   </form>

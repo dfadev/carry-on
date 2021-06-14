@@ -19,7 +19,7 @@ export default ({
   path = "",
   default: def,
   children = () => null,
-  type,
+  type = "text",
   ...rest
 }) => (
   <FormState id={path} {...rest}>
@@ -56,6 +56,7 @@ export default ({
             onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
             onChange: e => setFieldValue(path, getVal(e)),
             onBlur: () => !isTouched(path) && setFieldTouched(path, true),
+            type,
             [type === "checkbox" || type === "radio" ? "checked" : "value"]:
               value
           },

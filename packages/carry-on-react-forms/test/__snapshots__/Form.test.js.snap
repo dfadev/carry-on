@@ -162,6 +162,7 @@ Object {
     "onBlur": [Function],
     "onChange": [Function],
     "onFocus": [Function],
+    "type": "text",
     "value": "value1",
   },
   "error": undefined,
@@ -247,6 +248,7 @@ Object {
     "onBlur": [Function],
     "onChange": [Function],
     "onFocus": [Function],
+    "type": "text",
     "value": "123",
   },
   "error": undefined,
@@ -332,6 +334,7 @@ Object {
     "onBlur": [Function],
     "onChange": [Function],
     "onFocus": [Function],
+    "type": "text",
     "value": "123",
   },
   "error": undefined,
@@ -417,6 +420,7 @@ Object {
     "onBlur": [Function],
     "onChange": [Function],
     "onFocus": [Function],
+    "type": "text",
     "value": "345",
   },
   "error": undefined,
@@ -502,6 +506,7 @@ Object {
     "onBlur": [Function],
     "onChange": [Function],
     "onFocus": [Function],
+    "type": "text",
     "value": "345",
   },
   "error": undefined,
@@ -587,6 +592,7 @@ exports[`should validate: render match 1`] = `
     <input
       id="default.form.field1"
       name="default.form.field1"
+      type="text"
       value="value1"
     />
   </form>
