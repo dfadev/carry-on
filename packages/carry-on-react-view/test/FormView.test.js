@@ -5,13 +5,14 @@ import React from "react";
 import { register, initStores } from "carry-on-store";
 import { Store, State, Register } from "carry-on-react";
 import { render } from "@testing-library/react";
-import FormView, {
+import FormView from "../src/FormView";
+import {
   InitialValues,
   Sections,
   Section,
   Fields,
   Field
-} from "../src/FormView";
+} from "../src/Composables";
 
 describe("FormView", () => {
   beforeEach(() => initStores());

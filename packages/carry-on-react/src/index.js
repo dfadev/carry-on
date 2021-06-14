@@ -1,5 +1,5 @@
+export { default as State } from "./State";
 export {
-  default as State,
   OnMount,
   OnUnmount,
   Register,
@@ -14,7 +14,7 @@ export {
   Debug,
   Verbose,
   Id
-} from "./State";
+} from "./Composables";
 export { default as withState } from "./withState";
 export { default as carryOn } from "./carryOn";
 export { default as DevTools } from "./DevTools";
