@@ -5,9 +5,7 @@ exports[`FormView <FormView /> renders 1`] = `
   <form
     id="form"
   >
-    <div
-      form="form"
-    />
+    <div />
   </form>
 </DocumentFragment>
 `;
