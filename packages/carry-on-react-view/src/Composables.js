@@ -36,3 +36,9 @@ Fields.transform = v => {
   return fields;
 };
 export const Field = () => null;
+export const View = () => null;
+View.prop = "view";
+View.transform = (v, props) => ({
+  ...props,
+  ...v
+});
