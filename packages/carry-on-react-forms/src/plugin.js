@@ -36,6 +36,8 @@ export default ({ id, initialValues, onValidate, onSubmit, onReset }) => ({
       initialValues = curForm().initialValues || {};
 
     const stage1 = {
+      formId: id,
+      submitCount: 0,
       visited: {},
       touched: {},
       errors: {},
@@ -152,7 +154,8 @@ export default ({ id, initialValues, onValidate, onSubmit, onReset }) => ({
           const newFormState = {
             ...formState,
             ...origState,
-            origState
+            origState,
+            submitCount: 0
           };
           mutateSet(state, id, newFormState);
         }, `Reset Form${typeSuffix}`);
@@ -187,6 +190,7 @@ export default ({ id, initialValues, onValidate, onSubmit, onReset }) => ({
               set(curState => {
                 const form = curForm(curState);
                 form.isSubmitting = false;
+                form.submitCount += 1;
                 if (rslt) {
                   if (!form.isPristine) form.isPristine = true;
                   if (keys(form.errors).length > 0) form.errors = {};
