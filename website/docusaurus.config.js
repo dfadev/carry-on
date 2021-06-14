@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   title: "carry-on",
   tagline: "State container for React",
@@ -27,7 +29,17 @@ module.exports = {
       }
     ]
   ],
-  plugins: [],
+  plugins: [
+    [
+      "docusaurus-plugin-module-alias",
+      {
+        alias: {
+          react: path.resolve(__dirname, "../node_modules/react"),
+          "react-dom": path.resolve(__dirname, "../node_modules/react-dom")
+        }
+      }
+    ]
+  ],
   themes: ["@docusaurus/theme-live-codeblock"],
   themeConfig: {
     colorMode: {
