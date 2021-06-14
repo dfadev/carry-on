@@ -23,8 +23,9 @@ export default ({
   ...rest
 }) => (
   <FormState id={path} {...rest}>
-    {(
-      {
+    {(form, store) => {
+      const {
+        formId,
         values,
         touched,
         errors,
@@ -35,10 +36,12 @@ export default ({
         setFieldVisited,
         setFieldTouched,
         setFieldError
-      } = {},
-      store
-    ) => {
-      const fieldId = store ? `${store}.${path}` : path;
+      } = form || {};
+
+      const fieldId = `${
+        store !== undefined ? store : "default"
+      }.${formId}.${path}`;
+
       let value = getIn(values, path, def);
       if (value === undefined || value === null) value = "";
 
@@ -59,7 +62,8 @@ export default ({
           setValue: val => setFieldValue(path, val),
           setVisited: val => setFieldVisited(path, val),
           setTouched: val => setFieldTouched(path, val),
-          setError: val => setFieldError(path, val)
+          setError: val => setFieldError(path, val),
+          form
         },
         store
       );
