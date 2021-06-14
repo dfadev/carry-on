@@ -6,8 +6,8 @@ exports[`should handle onChange 1`] = `
     id="theform"
   >
     <input
-      id="field1"
-      name="field1"
+      id="default.theform.field1"
+      name="default.theform.field1"
       value="0"
     />
   </form>
@@ -20,8 +20,8 @@ exports[`should handle onChange 2`] = `
     id="theform"
   >
     <input
-      id="field1"
-      name="field1"
+      id="default.theform.field1"
+      name="default.theform.field1"
       value=""
     />
   </form>
@@ -34,8 +34,8 @@ exports[`should handle onChange 3`] = `
     id="theform"
   >
     <input
-      id="field1"
-      name="field1"
+      id="default.theform.field1"
+      name="default.theform.field1"
       value="true"
     />
   </form>
@@ -48,8 +48,8 @@ exports[`should handle onChange 4`] = `
     id="theform"
   >
     <input
-      id="field1"
-      name="field1"
+      id="default.theform.field1"
+      name="default.theform.field1"
       value=""
     />
   </form>
@@ -61,14 +61,82 @@ exports[`should render <Field> 1`] = `<DocumentFragment />`;
 exports[`should render a simple input field in named form: prop match 1`] = `
 Object {
   "element": Object {
-    "id": "field1",
-    "name": "field1",
+    "id": "default.theform.field1",
+    "name": "default.theform.field1",
     "onBlur": [Function],
     "onChange": [Function],
     "onFocus": [Function],
     "value": "value1",
   },
   "error": undefined,
+  "form": Object {
+    "errors": Object {},
+    "formId": "theform",
+    "hasError": [Function],
+    "hasVisited": [Function],
+    "initialValues": Object {
+      "checkbox": false,
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "isPristine": true,
+    "isSubmitting": false,
+    "isTouched": [Function],
+    "isValid": true,
+    "isValidating": false,
+    "onReset": [Function],
+    "onSubmit": [Function],
+    "onValidate": undefined,
+    "origState": Object {
+      "errors": Object {},
+      "formId": "theform",
+      "hasError": [Function],
+      "hasVisited": [Function],
+      "isPristine": true,
+      "isSubmitting": false,
+      "isTouched": [Function],
+      "isValid": true,
+      "isValidating": false,
+      "reset": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFieldVisited": [Function],
+      "setInitialValues": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "submit": [Function],
+      "submitCount": 0,
+      "touched": Object {},
+      "validate": [Function],
+      "values": Object {
+        "checkbox": false,
+        "field1": "value1",
+        "field2": "value2",
+      },
+      "visited": Object {},
+    },
+    "reset": [Function],
+    "setErrors": [Function],
+    "setFieldError": [Function],
+    "setFieldTouched": [Function],
+    "setFieldValue": [Function],
+    "setFieldVisited": [Function],
+    "setInitialValues": [Function],
+    "setTouched": [Function],
+    "setValues": [Function],
+    "submit": [Function],
+    "submitCount": 0,
+    "touched": Object {},
+    "validate": [Function],
+    "values": Object {
+      "checkbox": false,
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "visited": Object {},
+  },
   "setError": [Function],
   "setTouched": [Function],
   "setValue": [Function],
@@ -84,8 +152,8 @@ exports[`should render a simple input field in named form: render match 1`] = `
     id="theform"
   >
     <input
-      id="field1"
-      name="field1"
+      id="default.theform.field1"
+      name="default.theform.field1"
       value="value1"
     />
   </form>
@@ -96,6 +164,7 @@ exports[`should render a simple input field in named form: store match 1`] = `
 Object {
   "theform": Object {
     "errors": Object {},
+    "formId": "theform",
     "hasError": [Function],
     "hasVisited": [Function],
     "initialValues": Object {
@@ -113,6 +182,7 @@ Object {
     "onValidate": undefined,
     "origState": Object {
       "errors": Object {},
+      "formId": "theform",
       "hasError": [Function],
       "hasVisited": [Function],
       "isPristine": true,
@@ -130,6 +200,7 @@ Object {
       "setTouched": [Function],
       "setValues": [Function],
       "submit": [Function],
+      "submitCount": 0,
       "touched": Object {},
       "validate": [Function],
       "values": Object {
@@ -149,6 +220,7 @@ Object {
     "setTouched": [Function],
     "setValues": [Function],
     "submit": [Function],
+    "submitCount": 0,
     "touched": Object {},
     "validate": [Function],
     "values": Object {
@@ -164,41 +236,17 @@ Object {
 exports[`should render a simple input field: prop match 1`] = `
 Object {
   "element": Object {
-    "id": "field1",
-    "name": "field1",
+    "id": "default.form.field1",
+    "name": "default.form.field1",
     "onBlur": [Function],
     "onChange": [Function],
     "onFocus": [Function],
     "value": "value1",
   },
   "error": undefined,
-  "setError": [Function],
-  "setTouched": [Function],
-  "setValue": [Function],
-  "setVisited": [Function],
-  "touched": false,
-  "visited": false,
-}
-`;
-
-exports[`should render a simple input field: render match 1`] = `
-<DocumentFragment>
-  <form
-    id="form"
-  >
-    <input
-      id="field1"
-      name="field1"
-      value="value1"
-    />
-  </form>
-</DocumentFragment>
-`;
-
-exports[`should render a simple input field: store match 1`] = `
-Object {
   "form": Object {
     "errors": Object {},
+    "formId": "form",
     "hasError": [Function],
     "hasVisited": [Function],
     "initialValues": Object {
@@ -216,6 +264,7 @@ Object {
     "onValidate": undefined,
     "origState": Object {
       "errors": Object {},
+      "formId": "form",
       "hasError": [Function],
       "hasVisited": [Function],
       "isPristine": true,
@@ -233,6 +282,7 @@ Object {
       "setTouched": [Function],
       "setValues": [Function],
       "submit": [Function],
+      "submitCount": 0,
       "touched": Object {},
       "validate": [Function],
       "values": Object {
@@ -252,6 +302,100 @@ Object {
     "setTouched": [Function],
     "setValues": [Function],
     "submit": [Function],
+    "submitCount": 0,
+    "touched": Object {},
+    "validate": [Function],
+    "values": Object {
+      "checkbox": false,
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "visited": Object {},
+  },
+  "setError": [Function],
+  "setTouched": [Function],
+  "setValue": [Function],
+  "setVisited": [Function],
+  "touched": false,
+  "visited": false,
+}
+`;
+
+exports[`should render a simple input field: render match 1`] = `
+<DocumentFragment>
+  <form
+    id="form"
+  >
+    <input
+      id="default.form.field1"
+      name="default.form.field1"
+      value="value1"
+    />
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should render a simple input field: store match 1`] = `
+Object {
+  "form": Object {
+    "errors": Object {},
+    "formId": "form",
+    "hasError": [Function],
+    "hasVisited": [Function],
+    "initialValues": Object {
+      "checkbox": false,
+      "field1": "value1",
+      "field2": "value2",
+    },
+    "isPristine": true,
+    "isSubmitting": false,
+    "isTouched": [Function],
+    "isValid": true,
+    "isValidating": false,
+    "onReset": [Function],
+    "onSubmit": [Function],
+    "onValidate": undefined,
+    "origState": Object {
+      "errors": Object {},
+      "formId": "form",
+      "hasError": [Function],
+      "hasVisited": [Function],
+      "isPristine": true,
+      "isSubmitting": false,
+      "isTouched": [Function],
+      "isValid": true,
+      "isValidating": false,
+      "reset": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFieldVisited": [Function],
+      "setInitialValues": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "submit": [Function],
+      "submitCount": 0,
+      "touched": Object {},
+      "validate": [Function],
+      "values": Object {
+        "checkbox": false,
+        "field1": "value1",
+        "field2": "value2",
+      },
+      "visited": Object {},
+    },
+    "reset": [Function],
+    "setErrors": [Function],
+    "setFieldError": [Function],
+    "setFieldTouched": [Function],
+    "setFieldValue": [Function],
+    "setFieldVisited": [Function],
+    "setInitialValues": [Function],
+    "setTouched": [Function],
+    "setValues": [Function],
+    "submit": [Function],
+    "submitCount": 0,
     "touched": Object {},
     "validate": [Function],
     "values": Object {
