@@ -33,7 +33,7 @@ export default pkg => [
     external: [
       ...Object.keys(pkg.peerDependencies || {}),
       ...Object.keys(pkg.dependencies || {}),
-      /@babel\/runtime/
+      /@babel\/runtime-corejs3/
     ]
   }
 ];
