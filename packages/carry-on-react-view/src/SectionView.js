@@ -16,7 +16,6 @@ const components = {
 
 const SectionView = withState(components)(
   ({
-    form,
     prefix,
     layout,
     View: RootView,
@@ -24,15 +23,16 @@ const SectionView = withState(components)(
     editors: rootEditors
   }) => (
     <FormState>
-      {(props, store) => {
+      {(form, store) => {
         const {
+          formId,
           fields,
           components: {
             View = RootView,
             ViewItem = RootViewItem,
             editors = rootEditors
           } = {}
-        } = props;
+        } = form;
 
         let processLayout;
         let viewKey = 0;
@@ -48,7 +48,7 @@ const SectionView = withState(components)(
           if (Array.isArray(name)) {
             viewKey += 1;
             return (
-              <View key={viewKey} form={form}>
+              <View key={viewKey}>
                 {processLayouts(name)}
               </View>
             );
@@ -58,7 +58,10 @@ const SectionView = withState(components)(
             const prefixedName = prefix ? `${prefix}.${name}` : name;
 
             const field = (fields && fields[name]) || { label: name };
-            const { editor, name: fieldName, view, ...rest } = field;
+            const { editor = "text", name: fieldName, view, ...rest } = field;
+            const key = `${store ? store : "default"}.${formId}.${
+              prefixedName || fieldName
+            }`;
 
             let Editor;
             if (editor !== undefined && typeof editor !== "string")
@@ -66,15 +69,10 @@ const SectionView = withState(components)(
             else Editor = editors[editor] || GenericInputField;
 
             return (
-              <ViewItem
-                key={prefixedName || fieldName}
-                field={field}
-                form={form}
-              >
+              <ViewItem key={key} field={field}>
                 <Editor
                   {...rest}
                   store={store}
-                  form={form}
                   name={prefixedName || fieldName}
                 />
               </ViewItem>

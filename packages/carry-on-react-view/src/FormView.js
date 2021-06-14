@@ -58,15 +58,14 @@ const FormView = withState(components)(
             } = {}
           }) =>
             sections ? (
-              <FormViewBox form={id}>
+              <FormViewBox>
                 {sections.map((sectionEntry, j) => (
                   <SectionBox
                     key={j /* eslint-disable-line react/no-array-index-key */}
                     {...deproxify(section)}
                     {...deproxify(sectionEntry)}
-                    form={id}
                   >
-                    <SectionView {...deproxify(sectionEntry)} form={id} />
+                    <SectionView {...deproxify(sectionEntry)} />
                   </SectionBox>
                 ))}
               </FormViewBox>
