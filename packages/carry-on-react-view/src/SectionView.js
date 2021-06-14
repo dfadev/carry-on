@@ -27,6 +27,7 @@ const SectionView = withState(components)(
         const {
           formId,
           fields,
+          view,
           components: {
             View = RootView,
             ViewItem = RootViewItem,
@@ -47,18 +48,19 @@ const SectionView = withState(components)(
         processLayout = name => {
           if (Array.isArray(name)) {
             viewKey += 1;
-            return (
-              <View key={viewKey}>
-                {processLayouts(name)}
-              </View>
-            );
+            return <View {...view} key={viewKey}>{processLayouts(name)}</View>;
           }
 
           if (typeof name === "string" || name instanceof String) {
             const prefixedName = prefix ? `${prefix}.${name}` : name;
 
             const field = (fields && fields[name]) || { label: name };
-            const { editor = "text", name: fieldName, view, ...rest } = field;
+            const {
+              editor = "text",
+              name: fieldName,
+              view: fieldView,
+              ...fieldEditorProps
+            } = field;
             const key = `${store ? store : "default"}.${formId}.${
               prefixedName || fieldName
             }`;
@@ -69,9 +71,9 @@ const SectionView = withState(components)(
             else Editor = editors[editor] || GenericInputField;
 
             return (
-              <ViewItem key={key} field={field}>
+              <ViewItem {...fieldView} key={key} field={field}>
                 <Editor
-                  {...rest}
+                  {...fieldEditorProps}
                   store={store}
                   name={prefixedName || fieldName}
                 />
