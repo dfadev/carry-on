@@ -16,6 +16,7 @@ const components = {
 
 const SectionView = withState(components)(
   ({
+    view,
     prefix,
     layout,
     View: RootView,
@@ -26,8 +27,8 @@ const SectionView = withState(components)(
       {(form, store) => {
         const {
           formId,
+          section,
           fields,
-          view,
           components: {
             View = RootView,
             ViewItem = RootViewItem,
@@ -48,7 +49,11 @@ const SectionView = withState(components)(
         processLayout = name => {
           if (Array.isArray(name)) {
             viewKey += 1;
-            return <View {...view} key={viewKey}>{processLayouts(name)}</View>;
+            return (
+              <View {...section} {...view} key={viewKey}>
+                {processLayouts(name)}
+              </View>
+            );
           }
 
           if (typeof name === "string" || name instanceof String) {
