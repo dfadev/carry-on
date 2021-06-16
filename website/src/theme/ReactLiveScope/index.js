@@ -150,7 +150,7 @@ const ReactLiveScope = {
     <State id="Inspector" from={from} select={select} {...rest}>
       {state => (
         <div style={{ marginBottom: "12px" }}>
-          <Inspector data={state} theme={theme} expandLevel={2} />
+          <Inspector data={state} theme={theme} />
         </div>
       )}
     </State>
