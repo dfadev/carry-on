@@ -18,6 +18,7 @@ Sections.transform = v => {
   return sections;
 };
 export const Section = () => null;
+Section.prop = "section";
 export const Fields = () => null;
 Fields.prop = "fields";
 Fields.transform = v => {
@@ -36,9 +37,12 @@ Fields.transform = v => {
   return fields;
 };
 export const Field = () => null;
+Field.prop = "field";
 export const View = () => null;
 View.prop = "view";
 View.transform = (v, props) => ({
   ...props,
   ...v
 });
+export const Children = () => null;
+Children.prop = "children";

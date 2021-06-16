@@ -1,6 +1,7 @@
 export { default as FormView } from "./FormView";
 export { default as SectionView } from "./SectionView";
 export {
+  Children,
   Field,
   Fields,
   InitialValues,
