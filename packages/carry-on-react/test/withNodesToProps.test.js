@@ -16,12 +16,15 @@ test("withNodesToProps", () => {
   const Default = () => null;
   Object.assign(Default, { prop: "default", default: true, transform: s => s });
 
-  const Element = withNodesToProps(({ inner, val, default: def }) => (
+  const InnerElement = ({ inner, val, default: def }) => (
     <div>
       {Array.isArray(inner) ? inner.join(", ") : inner} {val}{" "}
       {def ? "true" : "false"}
     </div>
-  ));
+  );
+  InnerElement.composes = ["inner", "val", "default"];
+
+  const Element = withNodesToProps(InnerElement);
 
   const { asFragment } = render(
     <Element>

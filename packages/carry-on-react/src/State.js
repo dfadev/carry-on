@@ -282,6 +282,24 @@ class InnerState extends Component {
 State = withStore(withNodesToProps(InnerState));
 
 InnerState.contextType = StoreContext;
+InnerState.composes = [
+  "register",
+  "render",
+  "onMount",
+  "onUnmount",
+  "select",
+  "path",
+  "default",
+  "throttle",
+  "ms",
+  "constant",
+  "strict",
+  "debounce",
+  "ms",
+  "debug",
+  "verbose",
+  "id"
+];
 
 State.defaultProps = {
   path: "",

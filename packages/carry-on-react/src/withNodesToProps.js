@@ -2,7 +2,7 @@
 import React from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 
-const nodesToProps = children => {
+const nodesToProps = (WrappedComponent, children) => {
   const childs = Array.isArray(children) ? children : [children];
 
   const newProps = {};
@@ -20,24 +20,31 @@ const nodesToProps = children => {
       default: def
     } = child.type || {};
 
-    // retrieve value
-    let v = child.props && child.props[val];
+    const composes = WrappedComponent.composes || [];
 
-    // default value
-    if (v === undefined) v = def;
+    if (prop === undefined || !composes.includes(prop)) {
+      if (!newProps.children) newProps.children = [];
+      newProps.children.push(child);
+    } else {
+      // retrieve value
+      let v = child.props && child.props[val];
 
-    // transform value
-    v = transform ? transform(v, child.props) : v;
+      // default value
+      if (v === undefined) v = def;
 
-    // present as array when multiple nodes
-    const curProp = newProps[prop];
-    if (curProp !== undefined) {
-      if (Array.isArray(curProp)) {
-        curProp.push(v);
-      } else {
-        newProps[prop] = [curProp, v];
-      }
-    } else newProps[prop] = v;
+      // transform value
+      v = transform ? transform(v, child.props) : v;
+
+      // present as array when multiple nodes
+      const curProp = newProps[prop];
+      if (curProp !== undefined) {
+        if (Array.isArray(curProp)) {
+          curProp.push(v);
+        } else {
+          newProps[prop] = [curProp, v];
+        }
+      } else newProps[prop] = v;
+    }
   }
 
   return newProps;
@@ -48,7 +55,10 @@ const withNodesToProps = WrappedComponent => {
     !Array.isArray(children) && typeof children === "function" ? (
       <WrappedComponent {...props}>{children}</WrappedComponent>
     ) : (
-      <WrappedComponent {...props} {...nodesToProps(children)} />
+      <WrappedComponent
+        {...props}
+        {...nodesToProps(WrappedComponent, children)}
+      />
     );
 
   WithNodesToProps.displayName = "withNodesToProps";
