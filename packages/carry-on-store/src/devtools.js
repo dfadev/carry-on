@@ -17,8 +17,9 @@ export default function devTools({ timeTravel = true } = {}) {
   return {
     priority: Number.NEGATIVE_INFINITY,
     middleware: ({ next, set, id, isNested }) =>
-      function devToolsMiddleware(action, type = "Set", ...args) {
-        const state = next(action, type, ...args);
+      function devToolsMiddleware(action, opts) {
+        const state = next(action, opts);
+        const type = opts && (opts.type || opts);
 
         // exit when no action
         if (!action) return state;

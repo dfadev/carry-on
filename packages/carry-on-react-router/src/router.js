@@ -102,8 +102,9 @@ const router = (
   // router middleware
   const middleware =
     ({ get, next, isNested }) =>
-    (action, type, ...args) => {
-      const nextState = next(action, type, ...args);
+    (action, opts) => {
+      const nextState = next(action, opts);
+      const type = opts && (opts.type || opts);
       if (isNested() || type !== "Time Travel") return nextState;
 
       // time travel should replace history location

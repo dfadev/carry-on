@@ -476,7 +476,6 @@ test("notify immediate", () => {
     state => {
       state.b = 2;
     },
-    "Immed",
     { immediate: true }
   );
 
@@ -484,7 +483,6 @@ test("notify immediate", () => {
     state => {
       state.a.field = 2;
     },
-    "Immed",
     { immediate: true }
   );
 

@@ -12,8 +12,8 @@ export default function notify() {
 
   const plugin = {
     middleware: ({ next, getChanges, wrap, isNested }) =>
-      function notifyMiddleware(action, type, opts, ...args) {
-        const state = next(action, type, opts, ...args);
+      function notifyMiddleware(action, opts) {
+        const state = next(action, opts);
         if (isNested()) return state; // don't notify on nested sets
 
         const changes = getChanges && getChanges();
