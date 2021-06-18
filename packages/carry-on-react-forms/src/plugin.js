@@ -3,11 +3,9 @@ import {
   isEqual,
   debouncePromise,
   getIn,
-  getInA,
   mutateSet,
   makeCancelable,
   mutateMerge,
-  toPath,
   keys
 } from "carry-on-utils";
 
@@ -149,7 +147,7 @@ export default ({ id, initialValues, onValidate, onSubmit, onReset }) => ({
           };
 
           const props = Object.getOwnPropertyNames(form);
-          for (let i = 0, len = props.length; i < len; i++)
+          for (let i = 0, len = props.length; i < len; i += 1)
             delete form[props[i]];
           Object.assign(form, newFormState);
         }, `Reset Form${typeSuffix}`);

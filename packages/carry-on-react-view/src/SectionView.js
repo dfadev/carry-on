@@ -66,7 +66,7 @@ const SectionView = withState(components)(
               view: fieldView,
               ...fieldEditorProps
             } = field;
-            const key = `${store ? store : "default"}.${formId}.${
+            const key = `${store || "default"}.${formId}.${
               prefixedName || fieldName
             }`;
 
