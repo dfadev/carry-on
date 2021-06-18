@@ -43,7 +43,15 @@ export default ({
       }.${formId}.${path}`;
 
       let value = getIn(values, path, def);
-      if (value === undefined || value === null) value = "";
+      let valueAttributeName;
+
+      if (type === "checkbox" || type === "radio") {
+        valueAttributeName = "checked";
+        if (value === undefined || value === null) value = false;
+      } else {
+        valueAttributeName = "value";
+        if (value === undefined || value === null) value = "";
+      }
 
       return children(
         {
@@ -57,8 +65,7 @@ export default ({
             onChange: e => setFieldValue(path, getVal(e)),
             onBlur: () => !isTouched(path) && setFieldTouched(path, true),
             type,
-            [type === "checkbox" || type === "radio" ? "checked" : "value"]:
-              value
+            [valueAttributeName]: value
           },
           setValue: val => setFieldValue(path, val),
           setVisited: val => setFieldVisited(path, val),
