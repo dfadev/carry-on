@@ -33,14 +33,14 @@ export default ({
       onMount={onMount}
       onUnmount={onUnmount}
     >
-      {(state, stateStore) =>
+      {(form, stateStore) =>
         noFormTag ? (
           children
         ) : (
           <form
             id={`${stateStore ? `${stateStore}.` : ""}${id}`}
-            onSubmit={state.submit}
-            onReset={state.reset}
+            onSubmit={form.submit}
+            onReset={form.reset}
           >
             {children}
           </form>

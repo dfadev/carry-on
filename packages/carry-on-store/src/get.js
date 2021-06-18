@@ -1,7 +1,7 @@
 import { isString } from "carry-on-utils";
 import { getStore } from "./store";
 
-export default function get(fn, id) {
+export default function get(fn, id, opts) {
   if (isString(fn)) {
     const actualId = fn;
     fn = id;
@@ -9,5 +9,5 @@ export default function get(fn, id) {
   }
 
   const store = getStore(id);
-  return store.get(fn);
+  return store.get(fn, opts);
 }

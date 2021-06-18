@@ -15,16 +15,14 @@ it("should render <Field>", () => {
 
 const formState = (formId = "form") => ({
   state: ({ get, set }) => ({
-    [formId]: {
-      initialValues: {
-        field1: "value1",
-        field2: "value2",
-        checkbox: false
-      },
-      onSubmit: vals => {},
-      onValidate: undefined,
-      onReset: vals => {}
-    }
+    initialValues: {
+      field1: "value1",
+      field2: "value2",
+      checkbox: false
+    },
+    onSubmit: vals => {},
+    onValidate: undefined,
+    onReset: vals => {}
   })
 });
 

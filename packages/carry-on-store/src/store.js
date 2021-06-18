@@ -7,6 +7,7 @@ import {
   isString,
   logger,
   mutateMerge,
+  mutateSet,
   proxyState
 } from "carry-on-utils";
 import notify from "./notify";
@@ -34,10 +35,21 @@ const applyMiddleware = (middlewares, fn, apply) => {
 
 // merge state and middleware into the store
 const createPlugins = (store, curState, plugins) => {
-  const { id, get, set, getChanges, getPatches, isNested, wrap } = store;
+  const {
+    id,
+    get: rootGet,
+    set: rootSet,
+    getChanges,
+    getPatches,
+    isNested,
+    wrap
+  } = store;
 
   for (let i = 0, len = plugins.length; i < len; i += 1) {
-    const { middleware, state, dispose } = plugins[i];
+    const { middleware, state, dispose, path } = plugins[i];
+    const get = !path ? rootGet : (fn, opts) => rootGet(fn, { path, ...opts });
+    const set = !path ? rootSet : (fn, opts) => rootSet(fn, { path, ...opts });
+    store.log("createPlugin", plugins[i]);
 
     // update middleware chain
     if (middleware) {
@@ -66,11 +78,25 @@ const createPlugins = (store, curState, plugins) => {
       store.plugState = curState;
       const states = forceArray(state);
 
-      for (let j = 0, jlen = states.length; j < jlen; j += 1)
-        mutateMerge(
-          curState,
-          isFunction(states[j]) ? states[j]({ id, get, set }) : states[j]
-        );
+      for (let j = 0, jlen = states.length; j < jlen; j += 1) {
+        const newState = isFunction(states[j])
+          ? states[j]({ id, get, set })
+          : states[j];
+
+        if (path) {
+          let pathedState = getIn(curState, path);
+          if (!pathedState) {
+            pathedState = {};
+            mutateSet(curState, path, pathedState);
+          }
+
+          mutateMerge(pathedState, newState);
+        } else
+          mutateMerge(
+            curState,
+            newState
+          );
+      }
 
       store.plugState = undefined;
     }
@@ -136,7 +162,7 @@ export const getStore = id => stores[id] || (stores[id] = create(id));
 realGetStore = getStore;
 
 // register state
-export const register = (init, id) => {
+export const register = (init, id, path) => {
   // storeId can be the first parameter
   if (isString(init)) {
     const actualId = init;
@@ -145,17 +171,21 @@ export const register = (init, id) => {
   }
 
   const store = getStore(id);
-  const inits = forceArray(init);
+  const inits = forceArray(init).map(item => ({
+    path,
+    ...item
+  }));
+
   // queue if no set available yet
   if (store.connected) {
-    if (Debug || store.debug) store.log("register", init);
+    if (Debug || store.debug) store.log("register", inits);
     return store.set(
       state => createPlugins(store, state, inits),
       initMessageType
     );
   }
 
-  if (Debug || store.debug) store.log("register queued", init);
+  if (Debug || store.debug) store.log("register queued", inits);
   store.pending.push(...inits);
   return undefined;
 };
@@ -170,11 +200,13 @@ export const connect = (id, wrap) => {
   }
 
   // get provides either the current state or the trapped state
-  store.get = action => {
+  store.get = (action, opts) => {
     let state;
     if (store.plugState) state = store.plugState;
     else if (store.trappedState) state = store.trappedState.state;
     else state = store.state;
+
+    if (opts && opts.path) state = getIn(state, opts.path);
 
     const result = action ? action(state) : state;
 
@@ -199,12 +231,14 @@ export const connect = (id, wrap) => {
   store.isNested = () => store.nestedSet;
 
   // run producer action and set state
-  store.d = action => {
+  store.d = (action, opts) => {
     if (!store.nestedSet) {
       const rootSet = function rootSet(state) {
         store.nestedSet = true;
         store.nestedState = state;
-        action(state, id);
+        let pathedState = state;
+        if (opts && opts.path) pathedState = getIn(state, opts.path);
+        action(pathedState, id);
         store.nestedSet = false;
         store.nestedState = undefined;
         if (Debug || store.debug) store.log("set");
@@ -222,8 +256,11 @@ export const connect = (id, wrap) => {
       }
     }
 
-    if (Debug || store.debug) store.log("nested set");
-    action(store.nestedState, id);
+    if (Debug || store.debug) store.log("nested set", opts && opts.path);
+    let pathedState = store.nestedState;
+    if (opts && opts.path) pathedState = getIn(store.nestedState, opts.path);
+    action(pathedState, id);
+
     return store.nestedState;
   };
 

@@ -31,14 +31,7 @@ const FormView = ({
 }) => (
   <Form
     id={id}
-    register={[
-      ...register,
-      {
-        state: {
-          [id]: { ...rest }
-        }
-      }
-    ]}
+    register={[...register, { state: () => ({ ...rest }) }]}
     store={store}
     onMount={onMount}
     onUnmount={onUnmount}

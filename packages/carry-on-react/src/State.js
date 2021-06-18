@@ -93,12 +93,12 @@ class InnerState extends Component {
     this.setupDebug();
     this.reset();
 
-    const { from, throttle: t, debounce: d, register: reg } = this.props;
+    const { from, throttle: t, debounce: d, register: reg, path } = this.props;
 
     // setup the initial store state, registering state if requested
     if (first && reg) {
-      if (this.debug) this.log("setup", "registering state", reg);
-      let state = register(reg, from);
+      if (this.debug) this.log("setup", "registering state", reg, path);
+      let state = register(reg, from, path);
       if (state === undefined)
         state = connect(from, ReactDOM.unstable_batchedUpdates);
       this.trapSelect(state);

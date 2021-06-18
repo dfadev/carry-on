@@ -17,14 +17,12 @@ it("should render <Form>", () => {
 
 const formState = (formId = "form", opts) => ({
   state: ({ get, set }) => ({
-    [formId]: {
-      initialValues: {
-        field1: "value1",
-        field2: "value2",
-        checkbox: false
-      },
-      ...opts
-    }
+    initialValues: {
+      field1: "value1",
+      field2: "value2",
+      checkbox: false
+    },
+    ...opts
   })
 });
 
@@ -209,13 +207,15 @@ it("should handle reset with no onReset", () => {
 it("should handle validate onValidate stored in state", async () => {
   let onValidateCalled = 0;
 
-  register(
-    formState("form", {
-      onValidate: () => {
-        onValidateCalled += 1;
+  register({
+    state: ({ get, set }) => ({
+      form: {
+        onValidate: () => {
+          onValidateCalled += 1;
+        }
       }
     })
-  );
+  });
 
   const { asFragment } = render(
     <Form>

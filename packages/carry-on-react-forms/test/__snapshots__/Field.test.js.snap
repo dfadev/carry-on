@@ -91,7 +91,6 @@ Object {
     "isValidating": false,
     "onReset": [Function],
     "onSubmit": [Function],
-    "onValidate": undefined,
     "origState": Object {
       "errors": Object {},
       "formId": "theform",
@@ -185,7 +184,6 @@ Object {
     "isValidating": false,
     "onReset": [Function],
     "onSubmit": [Function],
-    "onValidate": undefined,
     "origState": Object {
       "errors": Object {},
       "formId": "theform",
@@ -268,7 +266,6 @@ Object {
     "isValidating": false,
     "onReset": [Function],
     "onSubmit": [Function],
-    "onValidate": undefined,
     "origState": Object {
       "errors": Object {},
       "formId": "form",
@@ -362,7 +359,6 @@ Object {
     "isValidating": false,
     "onReset": [Function],
     "onSubmit": [Function],
-    "onValidate": undefined,
     "origState": Object {
       "errors": Object {},
       "formId": "form",
