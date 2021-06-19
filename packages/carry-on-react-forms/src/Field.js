@@ -15,7 +15,7 @@ function getVal({ target: { type, value, checked } }) {
 }
 
 export default ({
-  path = "",
+  path = "field",
   default: def,
   children = () => null,
   type = "text",
