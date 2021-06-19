@@ -291,11 +291,9 @@ InnerState.composes = [
   "path",
   "default",
   "throttle",
-  "ms",
   "constant",
   "strict",
   "debounce",
-  "ms",
   "debug",
   "verbose",
   "id"
