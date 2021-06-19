@@ -9,7 +9,7 @@ function getVal({ target: { type, value, checked } }) {
     return Number.isNaN(parsed) ? "" : parsed;
   }
 
-  if (type === "checkbox" || type === "radio") return checked;
+  if (type === "checkbox") return checked;
 
   return value;
 }
@@ -44,7 +44,7 @@ export default ({
       let value = getIn(values, path, def);
       let valueAttributeName;
 
-      if (type === "checkbox" || type === "radio") {
+      if (type === "checkbox") {
         valueAttributeName = "checked";
         if (value === undefined || value === null) value = false;
       } else {
