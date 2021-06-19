@@ -1,9 +1,9 @@
 import React from "react";
-import { State } from "carry-on-react";
+import { State, withNodesToProps } from "carry-on-react";
 import FormContext from "./FormContext";
 import plugin from "./plugin";
 
-export default ({
+const Form = ({
   from,
   store = from,
   id = "form",
@@ -49,3 +49,15 @@ export default ({
     </State>
   </FormContext.Provider>
 );
+
+Form.composes = [
+  "initialValues",
+  "register",
+  "onMount",
+  "onUnmount",
+  "debug",
+  "verbose",
+  "id"
+];
+
+export default withNodesToProps(Form);
