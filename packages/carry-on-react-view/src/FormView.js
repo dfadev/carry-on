@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import { Form, FormState } from "carry-on-react-forms";
 import { withState, withNodesToProps } from "carry-on-react";

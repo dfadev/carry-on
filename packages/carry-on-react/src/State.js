@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component } from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import {
