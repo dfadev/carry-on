@@ -66,6 +66,13 @@ const FormView = ({
   </Form>
 );
 
-FormView.composes = ["initialValues", "sections", "fields", "view", "children"];
+FormView.composes = [
+  "initialValues",
+  "sections",
+  "fields",
+  "section",
+  "view",
+  "children"
+];
 
 export default withState(components)(withNodesToProps(FormView));
