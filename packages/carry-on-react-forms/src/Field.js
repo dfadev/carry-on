@@ -52,20 +52,24 @@ export default ({
         if (value === undefined || value === null) value = "";
       }
 
+      const element = {
+        id: fieldId,
+        name: fieldId,
+        onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
+        onChange: e => setFieldValue(path, getVal(e)),
+        onBlur: () => !isTouched(path) && setFieldTouched(path, true),
+        type,
+        [valueAttributeName]: value
+      };
+
+      if (type === "button") delete element.name;
+
       return children(
         {
           touched: getIn(touched, path, false),
           error: getIn(errors, path, undefined),
           visited: getIn(visited, path, false),
-          element: {
-            id: fieldId,
-            name: fieldId,
-            onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
-            onChange: e => setFieldValue(path, getVal(e)),
-            onBlur: () => !isTouched(path) && setFieldTouched(path, true),
-            type,
-            [valueAttributeName]: value
-          },
+          element,
           setValue: val => setFieldValue(path, val),
           setVisited: val => setFieldVisited(path, val),
           setTouched: val => setFieldTouched(path, val),
