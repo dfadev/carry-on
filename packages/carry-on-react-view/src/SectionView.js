@@ -78,7 +78,6 @@ const SectionView = withState(components)(
               <ViewItem {...fieldView} key={key} field={field}>
                 <Editor
                   {...fieldEditorProps}
-                  store={store}
                   name={prefixedName || fieldName}
                 />
               </ViewItem>
