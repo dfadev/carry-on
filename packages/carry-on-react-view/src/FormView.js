@@ -1,7 +1,6 @@
 import React from "react";
 import { Form, FormState } from "carry-on-react-forms";
 import { withState, withNodesToProps } from "carry-on-react";
-import { deproxify } from "carry-on-utils";
 import SectionView from "./SectionView";
 
 const components = {
@@ -53,10 +52,10 @@ const FormView = ({
             {sections.map((sectionEntry, j) => (
               <SectionBox
                 key={j /* eslint-disable-line react/no-array-index-key */}
-                {...deproxify(section)}
-                {...deproxify(sectionEntry)}
+                {...section}
+                {...sectionEntry}
               >
-                <SectionView {...deproxify(sectionEntry)} />
+                <SectionView {...sectionEntry} />
               </SectionBox>
             ))}
           </FormViewBox>
