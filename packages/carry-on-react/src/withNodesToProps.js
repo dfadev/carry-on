@@ -4,7 +4,7 @@ import hoistNonReactStatic from "hoist-non-react-statics";
 const nodesToProps = (WrappedComponent, children) => {
   const childs = Array.isArray(children) ? children : [children];
 
-  const newProps = {};
+  const newProperties = {};
 
   for (let i = 0, len = childs.length; i < len; i += 1) {
     const child = childs[i];
@@ -22,8 +22,8 @@ const nodesToProps = (WrappedComponent, children) => {
     const composes = WrappedComponent.composes || [];
 
     if (prop === undefined || !composes.includes(prop)) {
-      if (!newProps.children) newProps.children = [];
-      newProps.children.push(child);
+      if (!newProperties.children) newProperties.children = [];
+      newProperties.children.push(child);
     } else {
       // retrieve value
       let v = child.props && child.props[val];
@@ -35,18 +35,15 @@ const nodesToProps = (WrappedComponent, children) => {
       v = transform ? transform(v, child.props) : v;
 
       // present as array when multiple nodes
-      const curProp = newProps[prop];
-      if (curProp !== undefined) {
-        if (Array.isArray(curProp)) {
-          curProp.push(v);
-        } else {
-          newProps[prop] = [curProp, v];
-        }
-      } else newProps[prop] = v;
+      const currentPropertyValue = newProperties[prop];
+      if (currentPropertyValue === undefined) newProperties[prop] = v;
+      else if (Array.isArray(currentPropertyValue))
+        currentPropertyValue.push(v);
+      else newProperties[prop] = [currentPropertyValue, v];
     }
   }
 
-  return newProps;
+  return newProperties;
 };
 
 const withNodesToProps = WrappedComponent => {
