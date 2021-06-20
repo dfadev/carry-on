@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, FormState } from "carry-on-react-forms";
 import { withState, withNodesToProps } from "carry-on-react";
+import { forceArray } from "carry-on-utils";
 import SectionView from "./SectionView";
 
 const components = {
@@ -29,7 +30,7 @@ const FormView = ({
 }) => (
   <Form
     id={id}
-    register={[...register, { state: () => ({ ...rest }) }]}
+    register={[...forceArray(register), { state: () => ({ ...rest }) }]}
     store={store}
     onMount={onMount}
     onUnmount={onUnmount}
@@ -68,6 +69,7 @@ const FormView = ({
 
 FormView.composes = [
   "initialValues",
+  "register",
   "sections",
   "fields",
   "section",
