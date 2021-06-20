@@ -6,7 +6,7 @@ export default ({
   select,
   from,
   store: propStore = from,
-  form: propForm = "form",
+  form: propForm,
   children,
   ...rest
 }) => (
