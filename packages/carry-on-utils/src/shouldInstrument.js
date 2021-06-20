@@ -45,7 +45,8 @@ const handlers = {
 
 export function shouldInstrument(val) {
   if (val === undefined || val === null) return false;
-  const { constructor } = val;
+  const { constructor, $$typeof } = val;
+  if ($$typeof) return false;
   if (!constructor) return true;
 
   const { name } = constructor;
