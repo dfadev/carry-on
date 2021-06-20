@@ -1,6 +1,7 @@
-import { enableAllPlugins } from "immer";
+import { enableAllPlugins, setAutoFreeze } from "immer";
 
 enableAllPlugins();
+setAutoFreeze(false);
 
 export {
   deleteStore,
