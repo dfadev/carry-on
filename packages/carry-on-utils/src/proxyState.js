@@ -29,8 +29,6 @@ const prepareObject = state => {
   return clone;
 };
 
-const shouldProxy = type => type === "object";
-
 function proxyfy(state, onGet, suffix, ProxyMap) {
   if (!state) return state;
 
@@ -76,9 +74,8 @@ function proxyfy(state, onGet, suffix, ProxyMap) {
 
     onGet(thisId);
 
-    if (shouldProxy(type)) {
+    if (type === "object")
       return proxyfy(value, onGet, thisId, ProxyMap);
-    }
 
     if (hasCollectionHandlers) {
       switch (key) {
