@@ -42,14 +42,14 @@ export default ({
       }.${formId}.${path}`;
 
       let value = getIn(values, path, def);
-      let valueAttributeName;
+      const valueAttributeName = type === "checkbox" ? "checked" : "value";
 
-      if (type === "checkbox") {
-        valueAttributeName = "checked";
-        if (value === undefined || value === null) value = false;
-      } else {
-        valueAttributeName = "value";
-        if (value === undefined || value === null) value = "";
+      if (value === undefined || value === null) {
+        if (type === "checkbox") value = false;
+        else if (type === "date" || type === "time") value = null;
+        else if (type === "button" || type === "reset" || type === "submit")
+          value = undefined;
+        else value = "";
       }
 
       const element = {
