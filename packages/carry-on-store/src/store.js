@@ -91,11 +91,7 @@ const createPlugins = (store, curState, plugins) => {
           }
 
           mutateMerge(pathedState, newState);
-        } else
-          mutateMerge(
-            curState,
-            newState
-          );
+        } else mutateMerge(curState, newState);
       }
 
       store.plugState = undefined;
@@ -232,13 +228,21 @@ export const connect = (id, wrap) => {
 
   // run producer action and set state
   store.d = (action, opts) => {
+    const path = (opts && opts.path) || "";
+    const pathedStore = {
+      id,
+      path,
+      get: !path ? store.get : (fn, o) => store.get(fn, { path, ...o }),
+      set: !path ? store.set : (fn, o) => store.set(fn, { path, ...o })
+    };
+
     if (!store.nestedSet) {
       const rootSet = function rootSet(state) {
         store.nestedSet = true;
         store.nestedState = state;
         let pathedState = state;
         if (opts && opts.path) pathedState = getIn(state, opts.path);
-        action(pathedState, id);
+        action(pathedState, pathedStore);
         store.nestedSet = false;
         store.nestedState = undefined;
         if (Debug || store.debug) store.log("set");
@@ -259,7 +263,7 @@ export const connect = (id, wrap) => {
     if (Debug || store.debug) store.log("nested set", opts && opts.path);
     let pathedState = store.nestedState;
     if (opts && opts.path) pathedState = getIn(store.nestedState, opts.path);
-    action(pathedState, id);
+    action(pathedState, pathedStore);
 
     return store.nestedState;
   };
@@ -300,7 +304,14 @@ export function watchGet(state, select, path = "", def, id) {
   const trappedState = proxyState(state);
   store.trappedState = trappedState;
   const pathedState = getIn(trappedState.state, path, def);
-  const selectedState = select(pathedState, id);
+  const get = !path
+    ? store.get
+    : (fn, opts) => store.get(fn, { path, ...opts });
+  const set = !path
+    ? store.set
+    : (fn, opts) => store.set(fn, { path, ...opts });
+
+  const selectedState = select(pathedState, { get, set, id, path });
   trappedState.seal();
   store.trappedState = undefined;
   const watch = trappedState.affected;

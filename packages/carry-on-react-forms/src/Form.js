@@ -33,12 +33,12 @@ const Form = ({
       onMount={onMount}
       onUnmount={onUnmount}
     >
-      {(form, stateStore) =>
+      {(form, { id: storeId }) =>
         noFormTag ? (
           children
         ) : (
           <form
-            id={`${stateStore ? `${stateStore}.` : ""}${id}`}
+            id={`${storeId ? `${storeId}.` : ""}${id}`}
             onSubmit={form.submit}
             onReset={form.reset}
           >

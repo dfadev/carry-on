@@ -23,7 +23,7 @@ const SectionView = withState(components)(
     editors: rootEditors
   }) => (
     <FormState>
-      {(form, store) => {
+      {(form, { id: storeId }) => {
         const {
           formId,
           section,
@@ -65,7 +65,7 @@ const SectionView = withState(components)(
               view: fieldView,
               ...fieldEditorProps
             } = field;
-            const key = `${store || "default"}.${formId}.${
+            const key = `${storeId || "default"}.${formId}.${
               prefixedName || fieldName
             }`;
 

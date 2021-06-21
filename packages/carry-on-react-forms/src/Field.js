@@ -38,7 +38,7 @@ export default ({
       } = form || {};
 
       const fieldId = `${
-        store !== undefined ? store : "default"
+        store.id !== undefined ? store.id : "default"
       }.${formId}.${path}`;
 
       let value = getIn(values, path, def);
