@@ -33,7 +33,7 @@ const Form = ({
       onMount={onMount}
       onUnmount={onUnmount}
     >
-      {(form, { id: storeId }) =>
+      {(form, { id: storeId } = {}) =>
         noFormTag ? (
           children
         ) : (
