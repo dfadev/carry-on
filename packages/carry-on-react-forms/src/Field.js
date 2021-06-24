@@ -2,6 +2,7 @@
 import React from "react";
 import { getIn } from "carry-on-utils";
 import FormState from "./FormState";
+import FieldContext from "./FieldContext";
 
 function getVal({ target: { type, value, checked } }) {
   if (type === "number" || type === "range") {
@@ -14,7 +15,7 @@ function getVal({ target: { type, value, checked } }) {
   return value;
 }
 
-export default ({
+const Field = ({
   path = "field",
   default: def,
   children = () => null,
@@ -22,7 +23,7 @@ export default ({
   ...rest
 }) => (
   <FormState id={path} {...rest}>
-    {(form, store) => {
+    {(form, store, prefix) => {
       const {
         formId,
         values,
@@ -37,11 +38,13 @@ export default ({
         setFieldError
       } = form || {};
 
+      const prefixedPath = !prefix ? path : `${prefix}.${path}`;
+
       const fieldId = `${
         store.id !== undefined ? store.id : "default"
-      }.${formId}.${path}`;
+      }.${formId}.${prefixedPath}`;
 
-      let value = getIn(values, path, def);
+      let value = getIn(values, prefixedPath, def);
       const valueAttributeName = type === "checkbox" ? "checked" : "value";
 
       if (value === undefined || value === null) {
@@ -55,29 +58,36 @@ export default ({
       const element = {
         id: fieldId,
         name: fieldId,
-        onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
-        onChange: e => setFieldValue(path, getVal(e)),
-        onBlur: () => !isTouched(path) && setFieldTouched(path, true),
+        onFocus: () => !hasVisited(prefixedPath) && setFieldVisited(prefixedPath, true),
+        onChange: e => setFieldValue(prefixedPath, getVal(e)),
+        onBlur: () => !isTouched(prefixedPath) && setFieldTouched(prefixedPath, true),
         type,
         [valueAttributeName]: value
       };
 
       if (type === "button") delete element.name;
 
-      return children(
-        {
-          touched: getIn(touched, path, false),
-          error: getIn(errors, path, undefined),
-          visited: getIn(visited, path, false),
-          element,
-          setValue: val => setFieldValue(path, val),
-          setVisited: val => setFieldVisited(path, val),
-          setTouched: val => setFieldTouched(path, val),
-          setError: val => setFieldError(path, val),
-          form
-        },
-        store
+      return (
+        <FieldContext.Provider value={{ prefix: prefixedPath }}>
+          {children(
+            {
+              touched: getIn(touched, prefixedPath, false),
+              error: getIn(errors, prefixedPath, undefined),
+              visited: getIn(visited, prefixedPath, false),
+              element,
+              setValue: val => setFieldValue(prefixedPath, val),
+              setVisited: val => setFieldVisited(prefixedPath, val),
+              setTouched: val => setFieldTouched(prefixedPath, val),
+              setError: val => setFieldError(prefixedPath, val),
+              form
+            },
+            store,
+            prefix
+          )}
+        </FieldContext.Provider>
       );
     }}
   </FormState>
 );
+
+export default Field;
