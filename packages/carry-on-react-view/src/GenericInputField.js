@@ -3,7 +3,7 @@ import { Field } from "carry-on-react-forms";
 
 const GenericInputField = ({ tooltip, name, label }) => (
   <Field path={name}>
-    {({ element }) => (
+    {({ element = {} }) => (
       <div>
         <div>
           <label htmlFor={element.id}>{label}</label>
