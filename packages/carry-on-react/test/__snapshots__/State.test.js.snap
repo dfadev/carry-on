@@ -44,7 +44,7 @@ exports[`withState debug/verbose 1`] = `
 
 exports[`withState path, from, and default can be a values 1`] = `
 <DocumentFragment>
-  {"lookup":"key1","state":"val1"}
+  {"state":"val1","lookup":"key1"}
 </DocumentFragment>
 `;
 
@@ -56,13 +56,13 @@ exports[`withState renders 1`] = `
 
 exports[`withState selection function returns array as state prop 1`] = `
 <DocumentFragment>
-  {"prop1":"ok","state":[1,2,3]}
+  {"state":[1,2,3],"prop1":"ok"}
 </DocumentFragment>
 `;
 
 exports[`withState selection function returns non Object as state prop 1`] = `
 <DocumentFragment>
-  {"prop1":"ok","state":"ok"}
+  {"state":"ok","prop1":"ok"}
 </DocumentFragment>
 `;
 

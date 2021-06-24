@@ -22,9 +22,9 @@ export default (stateProps = {}) =>
           const type = typeof val;
           // spread object props, or deliver as "state" prop if it's not an object
           return type === "object" && !Array.isArray(state) ? (
-            <WrappedComponent {...props} {...state} />
+            <WrappedComponent {...state} {...props} />
           ) : (
-            <WrappedComponent {...props} state={state} />
+            <WrappedComponent state={state} {...props} />
           );
         }}
       </State>
