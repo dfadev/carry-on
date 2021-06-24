@@ -54,7 +54,7 @@ describe("FormView", () => {
             {children}
           </div>
         ),
-        SectionBox: ({ title, children }) => (
+        SectionBox: ({ section: { title }, children }) => (
           <div
             style={{
               border: "1px solid blue",
@@ -205,7 +205,7 @@ describe("FormView", () => {
             {children}
           </div>
         ),
-        SectionBox: ({ title, children }) => (
+        SectionBox: ({ section: { title }, children }) => (
           <div
             style={{
               border: "1px solid blue",
