@@ -200,8 +200,7 @@ class InnerState extends Component {
     // - not a constant,
     // - not a strict,
     // - has watched field index
-    const finalState = select(getIn(state, path, def));
-    return finalState;
+    return select(getIn(state, path, def));
   };
 
   // trap a select query, tracking fields accessed
