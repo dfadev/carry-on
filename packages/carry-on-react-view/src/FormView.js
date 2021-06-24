@@ -13,32 +13,15 @@ const components = {
   })
 };
 
-const FormView = ({
-  from,
-  store = from,
-  id = "form",
-  FormViewBox: RootFormViewBox,
-  SectionBox: RootSectionBox,
-  register = [],
-  children,
-  onMount,
-  onUnmount,
-  onValidate,
-  onSubmit,
-  onReset,
-  ...rest
-}) => (
-  <Form
-    id={id}
-    register={[...forceArray(register), { state: () => ({ ...rest }) }]}
-    store={store}
-    onMount={onMount}
-    onUnmount={onUnmount}
-    onValidate={onValidate}
-    onSubmit={onSubmit}
-    onReset={onReset}
-  >
-    <FormState form={id}>
+export const FormViewer = withState(components)(
+  ({
+    FormViewBox: RootFormViewBox,
+    SectionBox: RootSectionBox,
+    sections: sectionsProp,
+    fields: fieldsProp,
+    noViewBox
+  }) => (
+    <FormState>
       {({
         view,
         section,
@@ -47,22 +30,68 @@ const FormView = ({
           FormViewBox = RootFormViewBox,
           SectionBox = RootSectionBox
         } = {}
-      }) =>
-        sections && sections.length > 0 ? (
-          <FormViewBox {...view}>
-            {sections.map((sectionEntry, j) => (
+      }) => {
+        const s = sectionsProp || sections;
+        const ViewBox = noViewBox ? React.Fragment : FormViewBox;
+
+        if (!s || s.length === 0) return null;
+
+        return (
+          <ViewBox {...view}>
+            {s.map((sectionEntry, j) => (
               <SectionBox
                 key={j /* eslint-disable-line react/no-array-index-key */}
                 {...section}
-                {...sectionEntry}
+                section={sectionEntry}
               >
-                <SectionView {...sectionEntry} />
+                <SectionView fields={fieldsProp} {...sectionEntry} />
               </SectionBox>
             ))}
-          </FormViewBox>
-        ) : null
-      }
+          </ViewBox>
+        );
+      }}
     </FormState>
+  )
+);
+FormViewer.displayName = "FormViewer";
+
+const FormView = ({
+  from,
+  store = from,
+  id = "form",
+  register = [],
+  children = null,
+  onMount,
+  onUnmount,
+  onValidate,
+  onSubmit,
+  onReset,
+  noFormTag,
+  sections,
+  fields,
+  ...rest
+}) => (
+  <Form
+    id={id}
+    register={[
+      ...forceArray(register),
+      {
+        state: () => ({
+          fields,
+          sections,
+          ...rest
+        })
+      }
+    ]}
+    store={store}
+    onMount={onMount}
+    onUnmount={onUnmount}
+    onValidate={onValidate}
+    onSubmit={onSubmit}
+    onReset={onReset}
+    noFormTag={noFormTag}
+  >
+    <FormViewer fields={fields} sections={sections} />
     {children}
   </Form>
 );
@@ -77,4 +106,4 @@ FormView.composes = [
   "children"
 ];
 
-export default withState(components)(withNodesToProps(FormView));
+export default withNodesToProps(FormView);
