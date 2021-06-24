@@ -21,3 +21,4 @@ export { default as DevTools } from "./DevTools";
 export { default as useCarryOn } from "./useCarryOn";
 export { default as Store } from "./Store";
 export { default as withNodesToProps } from "./withNodesToProps";
+export { default as withNodesToProp } from "./withNodesToProp";
