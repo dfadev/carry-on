@@ -16,7 +16,6 @@ const components = {
 const SectionView = withState(components)(
   ({
     view,
-    prefix,
     layout,
     View: RootView,
     ViewItem: RootViewItem,
@@ -27,7 +26,7 @@ const SectionView = withState(components)(
         const {
           formId,
           section,
-          fields,
+          fields: fieldsStore,
           components: {
             View = RootView,
             ViewItem = RootViewItem,
@@ -56,9 +55,7 @@ const SectionView = withState(components)(
           }
 
           if (typeof name === "string" || name instanceof String) {
-            const prefixedName = prefix ? `${prefix}.${name}` : name;
-
-            const field = (fields && fields[name]) || { label: name };
+            const field = (fieldsStore && fieldsStore[name]) || { label: name };
             const {
               editor = "text",
               name: fieldName,
@@ -66,7 +63,7 @@ const SectionView = withState(components)(
               ...fieldEditorProps
             } = field;
             const key = `${storeId || "default"}.${formId}.${
-              prefixedName || fieldName
+              name || fieldName
             }`;
 
             let Editor;
@@ -76,10 +73,7 @@ const SectionView = withState(components)(
 
             return (
               <ViewItem {...fieldView} key={key} field={field}>
-                <Editor
-                  {...fieldEditorProps}
-                  name={prefixedName || fieldName}
-                />
+                <Editor {...fieldEditorProps} name={name || fieldName} />
               </ViewItem>
             );
           }
