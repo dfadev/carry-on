@@ -20,6 +20,7 @@ const Field = ({
   default: def,
   children = () => null,
   type = "text",
+  readOnly = false,
   ...rest
 }) => (
   <FormState id={path} {...rest}>
@@ -55,12 +56,17 @@ const Field = ({
         else value = "";
       }
 
+      if (readOnly && typeof readOnly === "function")
+        readOnly = readOnly(form, store, prefix);
+
       const element = {
         id: fieldId,
         name: fieldId,
-        onFocus: () => !hasVisited(prefixedPath) && setFieldVisited(prefixedPath, true),
-        onChange: e => setFieldValue(prefixedPath, getVal(e)),
-        onBlur: () => !isTouched(prefixedPath) && setFieldTouched(prefixedPath, true),
+        onFocus: () =>
+          !readOnly && !hasVisited(prefixedPath) && setFieldVisited(prefixedPath, true),
+        onChange: e => !readOnly && setFieldValue(prefixedPath, getVal(e)),
+        onBlur: () =>
+          !readOnly && !isTouched(prefixedPath) && setFieldTouched(prefixedPath, true),
         type,
         [valueAttributeName]: value
       };
@@ -75,10 +81,13 @@ const Field = ({
               error: getIn(errors, prefixedPath, undefined),
               visited: getIn(visited, prefixedPath, false),
               element,
-              setValue: val => setFieldValue(prefixedPath, val),
-              setVisited: val => setFieldVisited(prefixedPath, val),
-              setTouched: val => setFieldTouched(prefixedPath, val),
-              setError: val => setFieldError(prefixedPath, val),
+              readOnly,
+              setValue: val => !readOnly && setFieldValue(prefixedPath, val),
+              setVisited: val =>
+                !readOnly && setFieldVisited(prefixedPath, val),
+              setTouched: val =>
+                !readOnly && setFieldTouched(prefixedPath, val),
+              setError: val => !readOnly && setFieldError(prefixedPath, val),
               form
             },
             store,
