@@ -61,17 +61,23 @@ const Field = ({
 
       const element = {
         id: fieldId,
-        name: fieldId,
         onFocus: () =>
-          !readOnly && !hasVisited(prefixedPath) && setFieldVisited(prefixedPath, true),
-        onChange: e => !readOnly && setFieldValue(prefixedPath, getVal(e)),
+          !readOnly &&
+          !hasVisited(prefixedPath) &&
+          setFieldVisited(prefixedPath, true),
         onBlur: () =>
-          !readOnly && !isTouched(prefixedPath) && setFieldTouched(prefixedPath, true),
-        type,
-        [valueAttributeName]: value
+          !readOnly &&
+          !isTouched(prefixedPath) &&
+          setFieldTouched(prefixedPath, true),
+        type
       };
 
-      if (type === "button") delete element.name;
+      if (type !== "button") {
+        element.onChange = e =>
+          !readOnly && setFieldValue(prefixedPath, getVal(e));
+        element.name = fieldId;
+        element[valueAttributeName] = value;
+      }
 
       return (
         <FieldContext.Provider value={{ prefix: prefixedPath }}>
