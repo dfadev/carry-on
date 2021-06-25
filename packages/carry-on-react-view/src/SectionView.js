@@ -22,7 +22,7 @@ const SectionView = withState(components)(
     editors: rootEditors
   }) => (
     <FormState>
-      {(form, { id: storeId }) => {
+      {(form, store, prefix) => {
         const {
           formId,
           section,
@@ -60,9 +60,18 @@ const SectionView = withState(components)(
               editor = "text",
               name: fieldName,
               view: fieldView,
+              hidden,
               ...fieldEditorProps
             } = field;
-            const key = `${storeId || "default"}.${formId}.${
+
+            if (hidden !== undefined && hidden !== null && hidden) {
+              if (typeof hidden === "function") {
+                const hide = hidden(form, store, prefix);
+                if (hide) return null;
+              } else return null;
+            }
+
+            const key = `${store.id || "default"}.${formId}.${
               name || fieldName
             }`;
 
