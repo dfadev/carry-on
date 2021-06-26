@@ -106,16 +106,16 @@ const useCarryOn = (opts, optional = {}) => {
       // handle watched fields index is not yet available or strict is on
       else if (watch === undefined || strict) {
         // execute a query, watching the fields accessed
-        const [watchState, watches] = watchGet(state, select, path, def, from);
+        const [watchState, watches] = watchGet(state, select, path, def, store);
         setWatch(watches);
 
         // log the newly created watch fields index
         if (debug) log("watch", watches);
 
         // subscribe to changes specified by the watch index
-        // setUnsubscribe(subscribe(stateSubscriber, watches, from));
+        // setUnsubscribe(subscribe(stateSubscriber, watches, store));
 
-        const unsub = subscribe(stateSubscriber, watches, from);
+        const unsub = subscribe(stateSubscriber, watches, store);
         setUnsubscribe(() => unsub);
 
         finalState = watchState;
@@ -130,7 +130,7 @@ const useCarryOn = (opts, optional = {}) => {
       if (storeState !== finalState) setStoreState(finalState);
       return finalState;
     },
-    [from, path, def, constant, watch]
+    [store, path, def, constant, watch]
   );
 
   // setup the initial store state, registering state if requested
@@ -138,13 +138,13 @@ const useCarryOn = (opts, optional = {}) => {
     if (debug && verbose) log("setup");
 
     if (reg) {
-      let state = register(reg, from);
+      let state = register(reg, store);
       if (state === undefined)
-        state = connect(from, ReactDOM.unstable_batchedUpdates);
+        state = connect(store, ReactDOM.unstable_batchedUpdates);
       return trapSelect(state);
     }
-    return trapSelect(connect(from, ReactDOM.unstable_batchedUpdates));
-  }, [from]);
+    return trapSelect(connect(store, ReactDOM.unstable_batchedUpdates));
+  }, [store]);
 
   return [storeState === undefined ? initialState : storeState, storeSet];
 };
