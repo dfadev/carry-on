@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
 import {
   register,
   connect,
@@ -8,12 +8,14 @@ import {
 } from "carry-on-store";
 import { logger, throttle, debounce, getIn } from "carry-on-utils";
 import ReactDOM from "react-dom";
+import StoreContext from "./StoreContext";
 
 const useCarryOn = (opts, optional = {}) => {
   opts = typeof opts === "function" ? { select: opts, ...optional } : opts;
 
   const {
     from,
+    store: propStore = from,
     path,
     select,
     default: def,
@@ -27,7 +29,10 @@ const useCarryOn = (opts, optional = {}) => {
     strict
   } = opts || {};
 
-  const store = getStore(from);
+  const store = propStore || useContext(StoreContext);
+
+  const { set: storeSet } = getStore(store);
+
   const [storeState, setStoreState] = useState();
   const [watch, setWatch] = useState();
   const [unsubscribe, setUnsubscribe] = useState();
@@ -141,7 +146,7 @@ const useCarryOn = (opts, optional = {}) => {
     return trapSelect(connect(from, ReactDOM.unstable_batchedUpdates));
   }, [from]);
 
-  return [storeState === undefined ? initialState : storeState, store.set];
+  return [storeState === undefined ? initialState : storeState, storeSet];
 };
 
 useCarryOn.Debug = false;
