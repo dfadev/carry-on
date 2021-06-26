@@ -1,7 +1,6 @@
-import { useContext } from "react";
 import { useCarryOn } from "carry-on-react";
 import { getIn } from "carry-on-utils";
-import FormContext from "./FormContext";
+import useFormState from "./useFormState";
 
 function getVal({ target: { type, value, checked } }) {
   if (type === "number" || type === "range") {
@@ -14,13 +13,27 @@ function getVal({ target: { type, value, checked } }) {
   return value;
 }
 
-const useField = ({ path, type, default: def, ...opts }) => {
-  const { store, form } = useContext(FormContext);
+const useField = ({
+  form: propForm,
+  from,
+  store: propStore = from,
+  path = "field",
+  type = "text",
+  readOnly = false,
+  default: def,
+  ...opts
+}) => {
+  const { form, store, prefix } = useFormState({
+    store: propStore,
+    form: propForm
+  });
+
   const [storeState] = useCarryOn({
-    from: store,
+    from: store.id,
     path: form,
     ...opts,
     select: ({
+      formId,
       values,
       touched,
       errors,
@@ -31,25 +44,64 @@ const useField = ({ path, type, default: def, ...opts }) => {
       setFieldVisited,
       setFieldTouched,
       setFieldError
-    } = {}) => ({
-      touched: getIn(touched, path, false),
-      error: getIn(errors, path, undefined),
-      visited: getIn(visited, path, false),
-      element: {
-        onFocus: () => !hasVisited(path) && setFieldVisited(path, true),
-        onChange: e => setFieldValue(path, getVal(e)),
-        onBlur: () => !isTouched(path) && setFieldTouched(path, true),
-        [type === "checkbox" || type === "radio" ? "checked" : "value"]: getIn(
-          values,
-          path,
-          def
-        )
-      },
-      setValue: val => setFieldValue(path, val),
-      setVisited: val => setFieldVisited(path, val),
-      setTouched: val => setFieldTouched(path, val),
-      setError: val => setFieldError(path, val)
-    })
+    } = {}) => {
+      const prefixedPath = path;
+
+      const fieldId = `${
+        store.id !== undefined ? store.id : "default"
+      }.${formId}.${prefixedPath}`;
+
+      let value = getIn(values, prefixedPath, def);
+      const valueAttributeName = type === "checkbox" ? "checked" : "value";
+
+      if (value === undefined || value === null) {
+        if (type === "checkbox") value = false;
+        else if (type === "date" || type === "time") value = null;
+        else if (type === "button" || type === "reset" || type === "submit")
+          value = undefined;
+        else value = "";
+      }
+
+      if (readOnly && typeof readOnly === "function")
+        readOnly = readOnly(form, store, prefix);
+
+      const element = {
+        id: fieldId,
+        onFocus: () =>
+          !readOnly &&
+          !hasVisited(prefixedPath) &&
+          setFieldVisited(prefixedPath, true),
+        onBlur: () =>
+          !readOnly &&
+          !isTouched(prefixedPath) &&
+          setFieldTouched(prefixedPath, true),
+        type
+      };
+
+      if (type !== "button") {
+        element.onChange = e =>
+          !readOnly && setFieldValue(prefixedPath, getVal(e));
+        element.name = fieldId;
+        element[valueAttributeName] = value;
+      }
+
+      return [
+        {
+          touched: getIn(touched, path, false),
+          error: getIn(errors, path, undefined),
+          visited: getIn(visited, path, false),
+          element,
+          readOnly,
+          setValue: val => !readOnly && setFieldValue(prefixedPath, val),
+          setVisited: val => !readOnly && setFieldVisited(prefixedPath, val),
+          setTouched: val => !readOnly && setFieldTouched(prefixedPath, val),
+          setError: val => !readOnly && setFieldError(prefixedPath, val),
+          form
+        },
+        store,
+        prefix
+      ];
+    }
   });
 
   return storeState;
