@@ -1,4 +1,5 @@
 export { default as State } from "./State";
+export { default as withStore } from "./withStore";
 export {
   OnMount,
   OnUnmount,

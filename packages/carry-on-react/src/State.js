@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import hoistNonReactStatic from "hoist-non-react-statics";
 import {
   debounce,
   getIn,
@@ -17,22 +16,10 @@ import {
 import ReactDOM from "react-dom";
 import StoreContext from "./StoreContext";
 import withNodesToProps from "./withNodesToProps";
+import withStore from "./withStore";
 
 const ignoreProps = ["children"];
 let State;
-
-export const withStore = WrappedComponent => {
-  const WithStore = props => (
-    <StoreContext.Consumer>
-      {from => <WrappedComponent {...props} from={props.from || from} />}
-    </StoreContext.Consumer>
-  );
-
-  WithStore.displayName = "withStore";
-  WithStore.WrappedComponent = WrappedComponent;
-
-  return hoistNonReactStatic(WithStore, WrappedComponent);
-};
 
 class InnerState extends Component {
   static Debug = false;
