@@ -7,3 +7,4 @@ export { default as FormState } from "./FormState";
 export { default as form } from "./plugin";
 export { default as useField } from "./useField";
 export { default as useForm } from "./useForm";
+export { default as useFormState } from "./useFormState";
