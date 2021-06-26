@@ -7,7 +7,13 @@ import {
   shallowEqual,
   throttle
 } from "carry-on-utils";
-import { register, connect, subscribe, watchGet } from "carry-on-store";
+import {
+  getStore,
+  register,
+  connect,
+  subscribe,
+  watchGet
+} from "carry-on-store";
 import ReactDOM from "react-dom";
 import StoreContext from "./StoreContext";
 import withNodesToProps from "./withNodesToProps";
@@ -200,7 +206,18 @@ class InnerState extends Component {
     // - not a constant,
     // - not a strict,
     // - has watched field index
-    return select(getIn(state, path, def));
+    const pathedState = getIn(state, path, def);
+    const store = getStore(from);
+    const get = !path
+      ? store.get
+      : (fn, opts) => store.get(fn, { path, ...opts });
+    const set = !path
+      ? store.set
+      : (fn, opts) => store.set(fn, { path, ...opts });
+
+    const pathedStore = { get, set, id: from, path };
+
+    return select(pathedState, pathedStore);
   };
 
   // trap a select query, tracking fields accessed
