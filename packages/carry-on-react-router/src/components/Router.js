@@ -1,8 +1,6 @@
 /* eslint-disable max-classes-per-file */
-import React, { Component } from "react";
-import { register, get } from "carry-on-store";
+import React from "react";
 import { withStore, State, Register, OnUnmount, Render } from "carry-on-react";
-import { getIn } from "carry-on-utils";
 import {
   createBrowserHistory,
   createHashHistory,
