@@ -1,6 +1,7 @@
 /* eslint-disable max-classes-per-file */
 import { Component } from "react";
 import { register, get } from "carry-on-store";
+import { withStore } from "carry-on-react";
 import { getIn } from "carry-on-utils";
 import {
   createBrowserHistory,
@@ -14,7 +15,9 @@ const defaultProps = {
   path: "app.history"
 };
 
-export class Router extends Component {
+export const Router = withStore(class Router extends Component {
+  static defaultProps = { path: "app.history" };
+
   constructor(props) {
     super(props);
     register(router(props.history, props.path), props.store || props.from);
@@ -31,9 +34,11 @@ export class Router extends Component {
     const { children } = this.props;
     return children || null;
   }
-}
+});
 
-export class MemoryRouter extends Component {
+export const MemoryRouter = withStore(class MemoryRouter extends Component {
+  static defaultProps = { path: "app.history" };
+
   constructor(props) {
     super(props);
     register(
@@ -53,10 +58,11 @@ export class MemoryRouter extends Component {
     const { children } = this.props;
     return children || null;
   }
-}
-MemoryRouter.defaultProps = defaultProps;
+});
 
-export class BrowserRouter extends Component {
+export const BrowserRouter = withStore(class BrowserRouter extends Component {
+  static defaultProps = { path: "app.history" };
+
   constructor(props) {
     super(props);
     register(
@@ -76,10 +82,11 @@ export class BrowserRouter extends Component {
     const { children } = this.props;
     return children || null;
   }
-}
-BrowserRouter.defaultProps = defaultProps;
+});
 
-export class HashRouter extends Component {
+export const HashRouter = withStore(class HashRouter extends Component {
+  static defaultProps = { path: "app.history" };
+
   constructor(props) {
     super(props);
     register(
@@ -99,10 +106,11 @@ export class HashRouter extends Component {
     const { children } = this.props;
     return children || null;
   }
-}
-HashRouter.defaultProps = defaultProps;
+});
 
-export class StaticRouter extends Component {
+export const StaticRouter = withStore(class StaticRouter extends Component {
+  static defaultProps = { path: "app.history" };
+
   constructor(props) {
     super(props);
     register(
@@ -122,5 +130,4 @@ export class StaticRouter extends Component {
     const { children } = this.props;
     return children || null;
   }
-}
-StaticRouter.defaultProps = defaultProps;
+});
