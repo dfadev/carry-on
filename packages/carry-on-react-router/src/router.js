@@ -6,11 +6,7 @@ function isModifiedEvent(event) {
   return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
 }
 
-const router = (
-  history = createBrowserHistory(),
-  path = "app.history",
-  useSetContext = false
-) => {
+const router = (history = createBrowserHistory(), path = "app.history") => {
   let isPaused = false;
   const historyPath = toPath(path);
 
@@ -84,7 +80,7 @@ const router = (
         matchPath(getInA(get(), historyPath).location.pathname, opts)
     };
 
-    if (useSetContext) {
+    if (history.staticContext) {
       const setContext = cs => {
         set(s => {
           const hist = getInA(s, historyPath);

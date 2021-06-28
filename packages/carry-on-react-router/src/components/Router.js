@@ -1,7 +1,7 @@
 /* eslint-disable max-classes-per-file */
-import { Component } from "react";
+import React, { Component } from "react";
 import { register, get } from "carry-on-store";
-import { withStore } from "carry-on-react";
+import { withStore, State, Register, OnUnmount, Render } from "carry-on-react";
 import { getIn } from "carry-on-utils";
 import {
   createBrowserHistory,
@@ -11,123 +11,25 @@ import {
 import createStaticHistory from "../createStaticHistory";
 import router from "../router";
 
-const defaultProps = {
-  path: "app.history"
-};
+const GenericRouter = (createHistory = createBrowserHistory) =>
+  withStore(({ children = null, path = "app.history", ...props }) => (
+    <State {...props}>
+      <Register>{router(createHistory(props), path)}</Register>
+      <OnUnmount>
+        {state =>
+          state &&
+          state.app &&
+          state.app.history &&
+          state.app.history.unlisten &&
+          state.app.history.unlisten()
+        }
+      </OnUnmount>
+      <Render>{() => children || null}</Render>
+    </State>
+  ));
 
-export const Router = withStore(class Router extends Component {
-  static defaultProps = { path: "app.history" };
-
-  constructor(props) {
-    super(props);
-    register(router(props.history, props.path), props.store || props.from);
-  }
-
-  componentWillUnmount() {
-    const { store, from, path } = this.props;
-    const s = get(store || from);
-    const h = getIn(s, path || "");
-    if (h && h.unlisten) h.unlisten();
-  }
-
-  render() {
-    const { children } = this.props;
-    return children || null;
-  }
-});
-
-export const MemoryRouter = withStore(class MemoryRouter extends Component {
-  static defaultProps = { path: "app.history" };
-
-  constructor(props) {
-    super(props);
-    register(
-      router(createMemoryHistory(props), props.path),
-      props.store || props.from
-    );
-  }
-
-  componentWillUnmount() {
-    const { store, from, path } = this.props;
-    const s = get(store || from);
-    const h = getIn(s, path || "");
-    if (h && h.unlisten) h.unlisten();
-  }
-
-  render() {
-    const { children } = this.props;
-    return children || null;
-  }
-});
-
-export const BrowserRouter = withStore(class BrowserRouter extends Component {
-  static defaultProps = { path: "app.history" };
-
-  constructor(props) {
-    super(props);
-    register(
-      router(createBrowserHistory(props), props.path),
-      props.store || props.from
-    );
-  }
-
-  componentWillUnmount() {
-    const { store, from, path } = this.props;
-    const s = get(store || from);
-    const h = getIn(s, path || "");
-    if (h && h.unlisten) h.unlisten();
-  }
-
-  render() {
-    const { children } = this.props;
-    return children || null;
-  }
-});
-
-export const HashRouter = withStore(class HashRouter extends Component {
-  static defaultProps = { path: "app.history" };
-
-  constructor(props) {
-    super(props);
-    register(
-      router(createHashHistory(props), props.path, false),
-      props.store || props.from
-    );
-  }
-
-  componentWillUnmount() {
-    const { store, from, path } = this.props;
-    const s = get(store || from);
-    const h = getIn(s, path || "");
-    if (h && h.unlisten) h.unlisten();
-  }
-
-  render() {
-    const { children } = this.props;
-    return children || null;
-  }
-});
-
-export const StaticRouter = withStore(class StaticRouter extends Component {
-  static defaultProps = { path: "app.history" };
-
-  constructor(props) {
-    super(props);
-    register(
-      router(createStaticHistory(props), props.path, true),
-      props.store || props.from
-    );
-  }
-
-  componentWillUnmount() {
-    const { store, from, path } = this.props;
-    const s = get(store || from);
-    const h = getIn(s, path || "");
-    if (h && h.unlisten) h.unlisten();
-  }
-
-  render() {
-    const { children } = this.props;
-    return children || null;
-  }
-});
+export const Router = GenericRouter(props => props.history);
+export const MemoryRouter = GenericRouter(createMemoryHistory);
+export const BrowserRouter = GenericRouter(createBrowserHistory);
+export const HashRouter = GenericRouter(createHashHistory);
+export const StaticRouter = GenericRouter(createStaticHistory);
