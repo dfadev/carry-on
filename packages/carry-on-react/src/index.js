@@ -4,6 +4,7 @@ export {
   OnMount,
   OnUnmount,
   Register,
+  Middleware,
   Render,
   Select,
   Path,

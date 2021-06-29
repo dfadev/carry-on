@@ -1,6 +1,13 @@
 /* eslint-disable max-classes-per-file */
-import React from "react";
-import { withStore, State, Register, OnUnmount, Render } from "carry-on-react";
+import React, { useMemo } from "react";
+import {
+  withStore,
+  State,
+  Register,
+  Middleware,
+  OnUnmount,
+  Render
+} from "carry-on-react";
 import {
   createBrowserHistory,
   createHashHistory,
@@ -10,21 +17,26 @@ import createStaticHistory from "../createStaticHistory";
 import router from "../router";
 
 const GenericRouter = (createHistory = createBrowserHistory) =>
-  withStore(({ children = null, path = "app.history", ...props }) => (
-    <State {...props}>
-      <Register>{router(createHistory(props), path)}</Register>
-      <OnUnmount>
-        {state =>
-          state &&
-          state.app &&
-          state.app.history &&
-          state.app.history.unlisten &&
-          state.app.history.unlisten()
-        }
-      </OnUnmount>
-      <Render>{() => children || null}</Render>
-    </State>
-  ));
+  withStore(({ children = null, path = "app.history", ...props }) => {
+    const rtr = useMemo(() => router(createHistory(props), path), [path]);
+
+    return (
+      <State {...props}>
+        <Register>{rtr.state}</Register>
+        <Middleware>{rtr.middleware}</Middleware>
+        <OnUnmount>
+          {state =>
+            state &&
+            state.app &&
+            state.app.history &&
+            state.app.history.unlisten &&
+            state.app.history.unlisten()
+          }
+        </OnUnmount>
+        <Render>{() => children || null}</Render>
+      </State>
+    );
+  });
 
 export const Router = GenericRouter(props => props.history);
 export const MemoryRouter = GenericRouter(createMemoryHistory);

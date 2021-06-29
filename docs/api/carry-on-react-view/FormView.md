@@ -203,7 +203,7 @@ const components = {
 render(
   <Store id="formViewStoreComposing">
     <State>
-      <Register>{{ state: components }}</Register>
+      <Register>{{ components }}</Register>
     </State>
     <FormView id="formViewComposing">
       <InitialValues>

@@ -1,12 +1,18 @@
-export const Register = () => null;
+import React from "react";
+import State from "./State";
+
+export const Register = ({ children, ...props }) => (
+  <State register={{ state: children }} {...props} />
+);
 Register.prop = "register";
 Register.val = "children";
-Register.transform = state => {
-  if (typeof state === "function") {
-    return { state };
-  }
-  return state;
-};
+Register.transform = state => ({ state });
+export const Middleware = ({ children, ...props }) => (
+  <State register={{ middleware: children }} {...props} />
+);
+Middleware.prop = "register";
+Middleware.val = "children";
+Middleware.transform = middleware => ({ middleware });
 export const Render = () => null;
 Render.prop = "render";
 export const OnMount = () => null;

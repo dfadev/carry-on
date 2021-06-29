@@ -66,7 +66,7 @@ import { Store, State, Register, Render } from "carry-on-react";
 render(
   <Store id={"getStarted2"}>
     <State>
-      <Register>{{ state: { counter: 0 } }}</Register>
+      <Register>{{ counter: 0 }}</Register>
       <Register>
         {({ set }) => ({
           inc: () =>
