@@ -13,89 +13,87 @@ const components = {
   })
 };
 
-const SectionView = withState(components)(
-  ({
-    view,
-    layout,
-    View: RootView,
-    ViewItem: RootViewItem,
-    editors: rootEditors
-  }) => (
-    <FormState>
-      {(form, store, prefix) => {
-        const {
-          formId,
-          section,
-          fields: fieldsStore,
-          components: {
-            View = RootView,
-            ViewItem = RootViewItem,
-            editors = rootEditors
-          } = {}
-        } = form;
+const SectionView = ({
+  view,
+  layout,
+  View: RootView,
+  ViewItem: RootViewItem,
+  editors: rootEditors,
+  fields: fieldsProp
+}) => (
+  <FormState>
+    {(form, store, prefix) => {
+      const {
+        formId,
+        section,
+        fields: fieldsStore,
+        components: {
+          View = RootView,
+          ViewItem = RootViewItem,
+          editors = rootEditors
+        } = {}
+      } = form;
 
-        let processLayout;
-        let viewKey = 0;
+      let processLayout;
+      let viewKey = 0;
 
-        const processLayouts = list =>
-          list
-            ? typeof list === "string" || list instanceof String
-              ? processLayout(list)
-              : list.map(processLayout)
-            : null;
+      const processLayouts = list =>
+        list
+          ? typeof list === "string" || list instanceof String
+            ? processLayout(list)
+            : list.map(processLayout)
+          : null;
 
-        processLayout = name => {
-          if (Array.isArray(name)) {
-            viewKey += 1;
-            return (
-              <View {...section} {...view} key={viewKey}>
-                {processLayouts(name)}
-              </View>
-            );
+      processLayout = name => {
+        if (Array.isArray(name)) {
+          viewKey += 1;
+          return (
+            <View {...section} {...view} key={viewKey}>
+              {processLayouts(name)}
+            </View>
+          );
+        }
+
+        if (typeof name === "string" || name instanceof String) {
+          const field = (fieldsStore && fieldsStore[name]) ||
+            (fieldsProp && fieldsProp[name]) || { label: name };
+          const {
+            editor = "text",
+            name: fieldName,
+            view: fieldView,
+            hidden,
+            ...fieldEditorProps
+          } = field;
+
+          if (hidden !== undefined && hidden !== null && hidden) {
+            if (typeof hidden === "function") {
+              const hide = hidden(form, store, prefix);
+              if (hide) return null;
+            } else return null;
           }
 
-          if (typeof name === "string" || name instanceof String) {
-            const field = (fieldsStore && fieldsStore[name]) || { label: name };
-            const {
-              editor = "text",
-              name: fieldName,
-              view: fieldView,
-              hidden,
-              ...fieldEditorProps
-            } = field;
+          const key = `${store.id || "default"}.${formId}.${name || fieldName}`;
 
-            if (hidden !== undefined && hidden !== null && hidden) {
-              if (typeof hidden === "function") {
-                const hide = hidden(form, store, prefix);
-                if (hide) return null;
-              } else return null;
-            }
+          let Editor;
+          if (editor !== undefined && typeof editor !== "string")
+            Editor = editor;
+          else Editor = editors[editor] || GenericInputField;
 
-            const key = `${store.id || "default"}.${formId}.${
-              name || fieldName
-            }`;
+          return (
+            <ViewItem {...fieldView} key={key} field={field}>
+              <Editor {...fieldEditorProps} name={name || fieldName} />
+            </ViewItem>
+          );
+        }
 
-            let Editor;
-            if (editor !== undefined && typeof editor !== "string")
-              Editor = editor;
-            else Editor = editors[editor] || GenericInputField;
+        return null;
+      };
 
-            return (
-              <ViewItem {...fieldView} key={key} field={field}>
-                <Editor {...fieldEditorProps} name={name || fieldName} />
-              </ViewItem>
-            );
-          }
+      if (layout && !Array.isArray(layout[0])) layout = [layout];
 
-          return null;
-        };
-
-        if (layout && !Array.isArray(layout[0])) layout = [layout];
-
-        return processLayouts(layout);
-      }}
-    </FormState>
-  )
+      return processLayouts(layout);
+    }}
+  </FormState>
 );
 
-export default SectionView;
+export default withState(components)(SectionView);
