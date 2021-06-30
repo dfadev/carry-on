@@ -79,8 +79,11 @@ const Field = ({
         element[valueAttributeName] = value;
       }
 
+      const nextPrefix =
+        type === "list" || type === "object" ? prefixedPath : prefix;
+
       return (
-        <FieldContext.Provider value={{ prefix: prefixedPath }}>
+        <FieldContext.Provider value={{ prefix: nextPrefix }}>
           {children(
             {
               touched: getIn(touched, prefixedPath, false),
