@@ -77,7 +77,8 @@ const RadioField = withStyles(
                     }) => {
                       j += 1;
 
-                      if (typeof lbl !== "string") lbl = React.cloneElement(lbl);
+                      if (typeof lbl !== "string")
+                        lbl = React.cloneElement(lbl);
 
                       return (
                         <React.Fragment key={`radio-${name}-${j}`}>

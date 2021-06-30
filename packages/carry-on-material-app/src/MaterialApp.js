@@ -32,7 +32,9 @@ const AppFallbackComponent = ({ error, resetErrorBoundary }) => (
     <p>
       <strong>Error:</strong> {error.toString()}
     </p>
-    <button type="button" onClick={resetErrorBoundary}>Try again</button>
+    <button type="button" onClick={resetErrorBoundary}>
+      Try again
+    </button>
   </div>
 );
 

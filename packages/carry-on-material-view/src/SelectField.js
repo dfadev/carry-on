@@ -38,25 +38,26 @@ const SelectField = withStyles(
             select
             label={label}
             inputProps={{ ...element, value }}
-            onBlur={(element.onBlur) || undefined}
-            onChange={(element.onChange) || undefined}
+            onBlur={element.onBlur || undefined}
+            onChange={element.onChange || undefined}
             value={value}
             error={hasError}
             helperText={hasError && error}
             disabled={disabled}
             {...props}
           >
-            {realOptions && realOptions.map(o =>
-              isNative ? (
-                <option key={o.value} value={o.value}>
-                  {o.label || o.value}
-                </option>
-              ) : (
-                <MenuItem key={o.value} value={o.value}>
-                  {o.label || o.value}
-                </MenuItem>
-              )
-            )}
+            {realOptions &&
+              realOptions.map(o =>
+                isNative ? (
+                  <option key={o.value} value={o.value}>
+                    {o.label || o.value}
+                  </option>
+                ) : (
+                  <MenuItem key={o.value} value={o.value}>
+                    {o.label || o.value}
+                  </MenuItem>
+                )
+              )}
           </TextField>
         );
       }}

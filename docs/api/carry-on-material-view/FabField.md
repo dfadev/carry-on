@@ -21,11 +21,7 @@ title: FabField
   <FormView>
     <Register>{materialViewComponents}</Register>
     <Fields>
-      <Field
-        name="abc"
-        label={<PublishIcon />}
-        editor="fab"
-      />
+      <Field name="abc" label={<PublishIcon />} editor="fab" />
     </Fields>
     <Sections>
       <Section>{["abc"]}</Section>

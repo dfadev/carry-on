@@ -33,7 +33,9 @@ const ToggleButtonGroupField = withStyles(
           disabledProp
         );
 
-        const { element: { id } } = field;
+        const {
+          element: { id }
+        } = field;
         const onFieldChange = (e, val) => {
           if (!neverNull || val !== null) {
             field.setValue(val);

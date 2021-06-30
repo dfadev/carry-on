@@ -46,12 +46,7 @@ const ButtonGroupField = withStyles(
                   key={id}
                   id={id}
                   value={val}
-                  onClick={eventHandler(
-                    onClick,
-                    id,
-                    val,
-                    store
-                  )}
+                  onClick={eventHandler(onClick, id, val, store)}
                   {...rest}
                 >
                   {content}

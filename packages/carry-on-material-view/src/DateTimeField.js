@@ -6,7 +6,7 @@ import {
   KeyboardDateTimePicker
 } from "@material-ui/pickers";
 import { Field } from "carry-on-react-forms";
-import DateFnsUtils from '@date-io/date-fns';
+import DateFnsUtils from "@date-io/date-fns";
 import getFieldStatus from "./getFieldStatus";
 
 const DateTimeField = withStyles(

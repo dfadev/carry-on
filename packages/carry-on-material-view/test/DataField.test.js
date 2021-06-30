@@ -27,15 +27,10 @@ it("should render <DataField> inside a Form", () => {
     render(
       <Store id={"dataFieldForm"}>
         <Form>
-          <InitialValues>
-            {{ abc: "some example data value" }}
-          </InitialValues>
+          <InitialValues>{{ abc: "some example data value" }}</InitialValues>
           <Paper>
             <Box px={3} pt={2} pb={3} mb={2}>
-              <DataField
-                name="abc"
-                label="Example Data"
-              />
+              <DataField name="abc" label="Example Data" />
             </Box>
           </Paper>
         </Form>
@@ -50,15 +45,9 @@ it("should render <DataField> inside a FormView", () => {
       <Store id={"dataFieldFormView"}>
         <FormView>
           <Register>{materialViewComponents}</Register>
-          <InitialValues>
-            {{ abc: "some example data value" }}
-          </InitialValues>
+          <InitialValues>{{ abc: "some example data value" }}</InitialValues>
           <Fields>
-            <Field
-              name="abc"
-              label="Example Data"
-              editor="data"
-            />
+            <Field name="abc" label="Example Data" editor="data" />
           </Fields>
           <Sections>
             <Section>{["abc"]}</Section>

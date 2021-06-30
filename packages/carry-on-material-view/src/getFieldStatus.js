@@ -29,4 +29,3 @@ export default function getFieldStatus(field, store, value, disabled) {
     value: deproxify(fieldValue)
   };
 }
-

@@ -19,12 +19,9 @@ const mask = zipCode => {
   return zipCode.length > 10;
 };
 
-const ZipCodeField = withStyles({}, { name: "CoZipCodeField" })(props => (
-  <MaskedTextField
-    mask={mask}
-    format={format}
-    {...(props || {})}
-  />
-));
+const ZipCodeField = withStyles(
+  {},
+  { name: "CoZipCodeField" }
+)(props => <MaskedTextField mask={mask} format={format} {...(props || {})} />);
 
 export default ZipCodeField;

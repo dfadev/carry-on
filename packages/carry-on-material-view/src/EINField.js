@@ -22,12 +22,6 @@ const mask = ein => {
 const EINField = withStyles(
   {},
   { name: "CoEINField" }
-)(props => (
-  <MaskedTextField
-    mask={mask}
-    format={format}
-    {...(props || {})}
-  />
-));
+)(props => <MaskedTextField mask={mask} format={format} {...(props || {})} />);
 
 export default EINField;

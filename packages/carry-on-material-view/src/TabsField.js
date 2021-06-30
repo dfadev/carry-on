@@ -18,7 +18,9 @@ const TabsField = withNodesToProp("tabs")(
         if (!tabs) return null;
         if (typeof tabs === "string") tabs = getIn(field.form.values, tabs);
 
-        const { element: { id } } = field;
+        const {
+          element: { id }
+        } = field;
 
         const handleChange = (e, val) => {
           field.setValue(val);

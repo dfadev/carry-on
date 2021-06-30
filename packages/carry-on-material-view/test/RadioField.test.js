@@ -24,33 +24,33 @@ beforeEach(() => {
 it("should render <RadioField> inside a Form", () => {
   expect(
     render(
-<Store id={"radioFieldForm"}>
-  <Form>
-    <Paper>
-      <Box px={3} pt={2} pb={3} mb={2}>
-        <RadioField
-          name="abc"
-          label="Example Editor"
-          fullWidth
-          options={[
-            {
-              value: "red",
-              label: <Box style={{ color: "red" }}>Red</Box>
-            },
-            {
-              value: "green",
-              label: <Box style={{ color: "green" }}>Green</Box>
-            },
-            {
-              value: "blue",
-              label: <Box style={{ color: "blue" }}>Blue</Box>
-            }
-          ]}
-        />
-      </Box>
-    </Paper>
-  </Form>
-</Store>
+      <Store id={"radioFieldForm"}>
+        <Form>
+          <Paper>
+            <Box px={3} pt={2} pb={3} mb={2}>
+              <RadioField
+                name="abc"
+                label="Example Editor"
+                fullWidth
+                options={[
+                  {
+                    value: "red",
+                    label: <Box style={{ color: "red" }}>Red</Box>
+                  },
+                  {
+                    value: "green",
+                    label: <Box style={{ color: "green" }}>Green</Box>
+                  },
+                  {
+                    value: "blue",
+                    label: <Box style={{ color: "blue" }}>Blue</Box>
+                  }
+                ]}
+              />
+            </Box>
+          </Paper>
+        </Form>
+      </Store>
     ).asFragment()
   ).toMatchSnapshot();
 });
@@ -58,38 +58,37 @@ it("should render <RadioField> inside a Form", () => {
 it("should render <RadioField> inside a FormView", () => {
   expect(
     render(
-<Store id={"radioFieldFormView"}>
-  <FormView id="myForm">
-    <Register>{materialViewComponents}</Register>
-    <Fields>
-      <Field
-        name="abc"
-        label="Example Editor"
-        editor="radio"
-        fullWidth
-        view={{ xs: 12 }}
-        options={[
-          {
-            value: "red",
-            label: <Box style={{ color: "red" }}>Red</Box>
-          },
-          {
-            value: "green",
-            label: <Box style={{ color: "green" }}>Green</Box>
-          },
-          {
-            value: "blue",
-            label: <Box style={{ color: "blue" }}>Blue</Box>
-          }
-        ]}
-      />
-    </Fields>
-    <Sections>
-      <Section>{["abc"]}</Section>
-    </Sections>
-  </FormView>
-</Store>
+      <Store id={"radioFieldFormView"}>
+        <FormView id="myForm">
+          <Register>{materialViewComponents}</Register>
+          <Fields>
+            <Field
+              name="abc"
+              label="Example Editor"
+              editor="radio"
+              fullWidth
+              view={{ xs: 12 }}
+              options={[
+                {
+                  value: "red",
+                  label: <Box style={{ color: "red" }}>Red</Box>
+                },
+                {
+                  value: "green",
+                  label: <Box style={{ color: "green" }}>Green</Box>
+                },
+                {
+                  value: "blue",
+                  label: <Box style={{ color: "blue" }}>Blue</Box>
+                }
+              ]}
+            />
+          </Fields>
+          <Sections>
+            <Section>{["abc"]}</Section>
+          </Sections>
+        </FormView>
+      </Store>
     ).asFragment()
   ).toMatchSnapshot();
 });
-

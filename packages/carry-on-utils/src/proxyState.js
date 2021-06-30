@@ -74,8 +74,7 @@ function proxyfy(state, onGet, suffix, ProxyMap) {
 
     onGet(thisId);
 
-    if (type === "object")
-      return proxyfy(value, onGet, thisId, ProxyMap);
+    if (type === "object") return proxyfy(value, onGet, thisId, ProxyMap);
 
     if (hasCollectionHandlers) {
       switch (key) {

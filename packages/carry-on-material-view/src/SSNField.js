@@ -23,12 +23,6 @@ const mask = ssn => {
 const SSNField = withStyles(
   {},
   { name: "CoSSNField" }
-)(props => (
-  <MaskedTextField
-    mask={mask}
-    format={format}
-    {...(props || {})}
-  />
-));
+)(props => <MaskedTextField mask={mask} format={format} {...(props || {})} />);
 
 export default SSNField;

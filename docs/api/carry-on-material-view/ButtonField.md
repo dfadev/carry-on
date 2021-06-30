@@ -15,11 +15,7 @@ title: ButtonField
     </Register>
     <Paper>
       <Box px={3} pt={2} pb={3} mb={2}>
-        <ButtonField
-          name="abc"
-          label="Example Button"
-          onClick="clickHandler"
-        />
+        <ButtonField name="abc" label="Example Button" onClick="clickHandler" />
       </Box>
     </Paper>
   </Form>

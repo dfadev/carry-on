@@ -9,10 +9,8 @@ title: MaterialApp
     scopedCss
     title={<title>MaterialApp Example</title>}
     theme={{
-      theme: {
-      },
-      overrides: {
-      }
+      theme: {},
+      overrides: {}
     }}
   >
     <Grid container>
