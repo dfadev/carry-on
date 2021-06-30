@@ -15,7 +15,7 @@ exports[`should render <ImageField> inside a Form 1`] = `
           class="MuiFormControl-root"
         >
           <label
-            class="MuiFormControlLabel-root"
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementBottom"
             component="label"
           >
             <input
@@ -79,7 +79,7 @@ exports[`should render <ImageField> inside a FormView 1`] = `
                   class="MuiFormControl-root"
                 >
                   <label
-                    class="MuiFormControlLabel-root"
+                    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementBottom"
                     component="label"
                   >
                     <input

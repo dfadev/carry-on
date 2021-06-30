@@ -29,7 +29,7 @@ const ImageField = withStyles(
     value: valueProp,
     required,
     fullWidth,
-    labelPlacement,
+    labelPlacement = "bottom",
     imgWidth,
     imgHeight,
     alt = "",
