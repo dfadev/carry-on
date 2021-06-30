@@ -14,7 +14,7 @@ import {
   createMuiTheme,
   responsiveFontSizes
 } from "@material-ui/core/styles";
-import mergeAdvanced from "object-merge-advanced";
+import { mergeAdvanced } from "object-merge-advanced";
 import { ErrorBoundary } from "react-error-boundary";
 import FavIcon from "react-favicon";
 import { State, Register, Render } from "carry-on-react";
