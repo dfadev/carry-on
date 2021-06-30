@@ -11,6 +11,7 @@ import { withNodesToProp } from "carry-on-react";
 import { Field, FieldContext } from "carry-on-react-forms";
 import { getIn, mutateSet } from "carry-on-utils";
 import getFieldStatus from "./getFieldStatus";
+import eventHandler from "./eventHandler";
 
 const addRowToolbarStyles = theme => ({
   leftIcon: {
@@ -36,12 +37,12 @@ const ListField = ({
   delete: { icon: FieldDeleteIcon = DeleteForeverIcon } = {},
   max = -1,
   readOnly = false,
-  defaultValues = {},
   disabled: disabledProp,
   hideRemove,
   dense,
   value: valueProp,
-  renderItem
+  renderItem,
+  factory = {}
 }) => (
   <Field path={name} readOnly={readOnly} type="list">
     {(field, store) => {
@@ -53,6 +54,8 @@ const ListField = ({
       );
 
       if (!value) return null;
+
+      const id = field.element.id;
 
       return (
         <>
@@ -93,10 +96,11 @@ const ListField = ({
                     mutateSet(state.values, name, arr);
                   }
 
-                  const type = typeof defaultValues;
-                  if (type === "object") arr.push({ ...defaultValues });
-                  else if (type === "function") arr.push(defaultValues(store));
-                  else arr.push(defaultValues);
+                  const type = typeof factory;
+                  if (type === "object") arr.push({ ...factory });
+                  else if (type === "function")
+                    arr.push(factory({ id, get: store.get, set: store.set }));
+                  else arr.push(factory);
                 });
               }}
               label={addLabel}
