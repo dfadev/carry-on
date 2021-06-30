@@ -4,7 +4,11 @@ import {
   createGenerateClassName
 } from "@material-ui/core/styles";
 
-const generateClassName = createGenerateClassName({ disableGlobal: true });
+const generateClassName = createGenerateClassName({
+  disableGlobal: true,
+  productionPrefix: "CO",
+  seed: "carryOn"
+});
 
 const Root = ({ children }) => (
   <StylesProvider generateClassName={generateClassName}>

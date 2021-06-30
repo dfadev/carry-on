@@ -28,7 +28,7 @@ import { Form, Field, FormButtons, FormState } from "carry-on-react-forms";
 const storeId = "forms";
 
 const myForm = {
-  id: "examples.myForm",
+  id: "examples.Field",
   initialValues: {
     field1: "value1",
     field2: "value2"

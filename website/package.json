@@ -7,10 +7,16 @@
     "serve": "docusaurus serve"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.14.0",
-    "@docusaurus/core": "2.0.0-beta.0",
-    "@docusaurus/preset-classic": "2.0.0-beta.0",
-    "@docusaurus/theme-live-codeblock": "^2.0.0-beta.0",
+    "@babel/runtime-corejs3": ">=7.0.0",
+    "@date-io/date-fns": "^1.3.13",
+    "@docusaurus/core": "2.0.0-beta.1",
+    "@docusaurus/preset-classic": "2.0.0-beta.1",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-beta.1",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "carry-on-material-app": "file:../packages/carry-on-material-app",
+    "carry-on-material-view": "file:../packages/carry-on-material-view",
     "carry-on-react": "file:../packages/carry-on-react",
     "carry-on-react-forms": "file:../packages/carry-on-react-forms",
     "carry-on-react-router": "file:../packages/carry-on-react-router",
@@ -18,9 +24,14 @@
     "carry-on-store": "file:../packages/carry-on-store",
     "carry-on-utils": "file:../packages/carry-on-utils",
     "clsx": "^1.1.1",
-    "immer": "^9.0.2",
+    "date-fns": "^2.22.1",
+    "docusaurus-plugin-module-alias": "^0.0.2",
+    "immer": "^9.0.3",
+    "jss": "^10.6.0",
+    "libphonenumber-js": "^1.9.20",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-inspector": "^5.1.1"
+    "react-inspector": "^5.1.1",
+    "rifm": "^0.12.0"
   }
 }

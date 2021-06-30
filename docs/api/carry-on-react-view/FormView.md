@@ -37,7 +37,7 @@ const view = {
         {children}
       </div>
     ),
-    SectionBox: ({ title, children }) => (
+    SectionBox: ({ section: { title } = {}, children }) => (
       <div
         style={{ border: "1px solid blue", margin: "16px", padding: "16px" }}
       >
@@ -89,11 +89,11 @@ register("formViewStore2", {
           {children}
         </div>
       ),
-      SectionBox: ({ children }) => (
+      SectionBox: ({ section: { title } = {}, children }) => (
         <div
           style={{ border: "1px solid blue", margin: "16px", padding: "16px" }}
         >
-          <h2>SectionBox</h2>
+          <h2>SectionBox: {title}</h2>
           {children}
         </div>
       ),
@@ -168,7 +168,7 @@ const components = {
         {children}
       </div>
     ),
-    SectionBox: ({ title, children }) => (
+    SectionBox: ({ section: { title } = {}, children }) => (
       <div
         style={{ border: "1px solid blue", margin: "16px", padding: "16px" }}
       >
