@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <DataField> inside a Form 1`] = `
+<DocumentFragment>
+  <form
+    id="dataFieldForm.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-1"
+      >
+        some example data value
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should render <DataField> inside a FormView 1`] = `
+<DocumentFragment>
+  <form
+    id="dataFieldFormView.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-2"
+      >
+        <div
+          class="MuiBox-root MuiBox-root-3"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-4"
+              >
+                some example data value
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

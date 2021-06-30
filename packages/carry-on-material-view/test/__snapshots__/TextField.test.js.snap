@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <TextField> inside a Form 1`] = `
+<DocumentFragment>
+  <form
+    id="textFieldForm.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-1"
+      >
+        <div
+          class="MuiFormControl-root MuiTextField-root CoTextField-root-2 MuiFormControl-fullWidth"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+            data-shrink="false"
+          >
+            Example Editor
+          </label>
+          <div
+            class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiInput-input"
+              id="textFieldForm.form.abc"
+              name="textFieldForm.form.abc"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should render <TextField> inside a FormView 1`] = `
+<DocumentFragment>
+  <form
+    id="textFieldFormView.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-3"
+      >
+        <div
+          class="MuiBox-root MuiBox-root-4"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-5"
+              >
+                <div
+                  class="MuiFormControl-root MuiTextField-root CoTextField-root-6 MuiFormControl-fullWidth"
+                >
+                  <label
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"
+                    data-shrink="false"
+                  >
+                    Example Editor
+                  </label>
+                  <div
+                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-fullWidth MuiInput-fullWidth MuiInputBase-formControl MuiInput-formControl"
+                  >
+                    <input
+                      aria-invalid="false"
+                      class="MuiInputBase-input MuiInput-input"
+                      id="textFieldFormView.form.abc"
+                      name="textFieldFormView.form.abc"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

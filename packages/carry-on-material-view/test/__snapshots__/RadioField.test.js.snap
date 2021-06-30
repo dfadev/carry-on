@@ -1,0 +1,425 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <RadioField> inside a Form 1`] = `
+<DocumentFragment>
+  <form
+    id="radioFieldForm.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-1"
+      >
+        <div
+          class="MuiFormControl-root"
+        >
+          <div
+            class="MuiBox-root MuiBox-root-5"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl CoRadioField-formControl-3 MuiInputLabel-animated MuiInputLabel-shrink CoRadioField-shrink-2"
+              data-shrink="true"
+            >
+              Example Editor
+            </label>
+            <div
+              class="MuiFormGroup-root"
+              role="radiogroup"
+            >
+              <label
+                class="MuiFormControlLabel-root"
+              >
+                <span
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-6 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <input
+                      class="PrivateSwitchBase-input-9"
+                      name="abc"
+                      type="radio"
+                      value="red"
+                    />
+                    <div
+                      class="PrivateRadioButtonIcon-root-10"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                        />
+                      </svg>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-11"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                        />
+                      </svg>
+                    </div>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </span>
+                <span
+                  class="MuiTypography-root MuiFormControlLabel-label CoRadioField-label-4 MuiTypography-body1"
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-13"
+                    style="color: red;"
+                  >
+                    Red
+                  </div>
+                </span>
+              </label>
+              <label
+                class="MuiFormControlLabel-root"
+              >
+                <span
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-6 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <input
+                      class="PrivateSwitchBase-input-9"
+                      name="abc"
+                      type="radio"
+                      value="green"
+                    />
+                    <div
+                      class="PrivateRadioButtonIcon-root-10"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                        />
+                      </svg>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-11"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                        />
+                      </svg>
+                    </div>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </span>
+                <span
+                  class="MuiTypography-root MuiFormControlLabel-label CoRadioField-label-4 MuiTypography-body1"
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-14"
+                    style="color: green;"
+                  >
+                    Green
+                  </div>
+                </span>
+              </label>
+              <label
+                class="MuiFormControlLabel-root"
+              >
+                <span
+                  aria-disabled="false"
+                  class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-6 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <input
+                      class="PrivateSwitchBase-input-9"
+                      name="abc"
+                      type="radio"
+                      value="blue"
+                    />
+                    <div
+                      class="PrivateRadioButtonIcon-root-10"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                        />
+                      </svg>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-11"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                        />
+                      </svg>
+                    </div>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </span>
+                <span
+                  class="MuiTypography-root MuiFormControlLabel-label CoRadioField-label-4 MuiTypography-body1"
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-15"
+                    style="color: blue;"
+                  >
+                    Blue
+                  </div>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should render <RadioField> inside a FormView 1`] = `
+<DocumentFragment>
+  <form
+    id="radioFieldFormView.myForm"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-16"
+      >
+        <div
+          class="MuiBox-root MuiBox-root-17"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-18"
+              >
+                <div
+                  class="MuiFormControl-root"
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-22"
+                  >
+                    <label
+                      class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl CoRadioField-formControl-20 MuiInputLabel-animated MuiInputLabel-shrink CoRadioField-shrink-19"
+                      data-shrink="true"
+                    >
+                      Example Editor
+                    </label>
+                    <div
+                      class="MuiFormGroup-root"
+                      role="radiogroup"
+                    >
+                      <label
+                        class="MuiFormControlLabel-root"
+                      >
+                        <span
+                          aria-disabled="false"
+                          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-23 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <input
+                              class="PrivateSwitchBase-input-26"
+                              name="abc"
+                              type="radio"
+                              value="red"
+                            />
+                            <div
+                              class="PrivateRadioButtonIcon-root-27"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                />
+                              </svg>
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-28"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                                />
+                              </svg>
+                            </div>
+                          </span>
+                          <span
+                            class="MuiTouchRipple-root"
+                          />
+                        </span>
+                        <span
+                          class="MuiTypography-root MuiFormControlLabel-label CoRadioField-label-21 MuiTypography-body1"
+                        >
+                          <div
+                            class="MuiBox-root MuiBox-root-30"
+                            style="color: red;"
+                          >
+                            Red
+                          </div>
+                        </span>
+                      </label>
+                      <label
+                        class="MuiFormControlLabel-root"
+                      >
+                        <span
+                          aria-disabled="false"
+                          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-23 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <input
+                              class="PrivateSwitchBase-input-26"
+                              name="abc"
+                              type="radio"
+                              value="green"
+                            />
+                            <div
+                              class="PrivateRadioButtonIcon-root-27"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                />
+                              </svg>
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-28"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                                />
+                              </svg>
+                            </div>
+                          </span>
+                          <span
+                            class="MuiTouchRipple-root"
+                          />
+                        </span>
+                        <span
+                          class="MuiTypography-root MuiFormControlLabel-label CoRadioField-label-21 MuiTypography-body1"
+                        >
+                          <div
+                            class="MuiBox-root MuiBox-root-31"
+                            style="color: green;"
+                          >
+                            Green
+                          </div>
+                        </span>
+                      </label>
+                      <label
+                        class="MuiFormControlLabel-root"
+                      >
+                        <span
+                          aria-disabled="false"
+                          class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-23 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                        >
+                          <span
+                            class="MuiIconButton-label"
+                          >
+                            <input
+                              class="PrivateSwitchBase-input-26"
+                              name="abc"
+                              type="radio"
+                              value="blue"
+                            />
+                            <div
+                              class="PrivateRadioButtonIcon-root-27"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                                />
+                              </svg>
+                              <svg
+                                aria-hidden="true"
+                                class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-28"
+                                focusable="false"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                                />
+                              </svg>
+                            </div>
+                          </span>
+                          <span
+                            class="MuiTouchRipple-root"
+                          />
+                        </span>
+                        <span
+                          class="MuiTypography-root MuiFormControlLabel-label CoRadioField-label-21 MuiTypography-body1"
+                        >
+                          <div
+                            class="MuiBox-root MuiBox-root-32"
+                            style="color: blue;"
+                          >
+                            Blue
+                          </div>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

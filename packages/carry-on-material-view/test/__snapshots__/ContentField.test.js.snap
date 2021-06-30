@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <ContentField> inside a Form 1`] = `
+<DocumentFragment>
+  <form
+    id="contentFieldForm.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-1"
+      >
+        <div
+          class="MuiPaper-root MuiPaper-elevation10 MuiPaper-rounded"
+        >
+          <div
+            class="MuiBox-root MuiBox-root-2"
+          >
+            Some JSX content
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should render <ContentField> inside a FormView 1`] = `
+<DocumentFragment>
+  <form
+    id="contentFieldFormView.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-3"
+      >
+        <div
+          class="MuiBox-root MuiBox-root-4"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-5"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation10 MuiPaper-rounded"
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-6"
+                  >
+                    Some JSX content
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

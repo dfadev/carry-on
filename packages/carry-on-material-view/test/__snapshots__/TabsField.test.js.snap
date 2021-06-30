@@ -1,0 +1,271 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <TabsField> inside a Form 1`] = `
+<DocumentFragment>
+  <form
+    id="tabsFieldForm.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-1"
+      >
+        <div
+          class="MuiTabs-root"
+        >
+          <div
+            class="MuiTabs-scroller MuiTabs-fixed"
+            style="overflow: hidden;"
+          >
+            <div
+              class="MuiTabs-flexContainer"
+              role="tablist"
+            >
+              <button
+                aria-selected="true"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit Mui-selected"
+                role="tab"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-2"
+                    style="color: red;"
+                  >
+                    Red
+                  </div>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                aria-selected="false"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-7"
+                    style="color: green;"
+                  >
+                    Green
+                  </div>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                aria-selected="false"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+                role="tab"
+                tabindex="-1"
+                type="button"
+              >
+                <span
+                  class="MuiTab-wrapper"
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-8"
+                    style="color: blue;"
+                  >
+                    Blue
+                  </div>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+            <span
+              class="PrivateTabIndicator-root-3 PrivateTabIndicator-colorSecondary-5 MuiTabs-indicator"
+              style="left: 0px; width: 0px;"
+            />
+          </div>
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-9"
+        >
+          <div
+            class="MuiBox-root MuiBox-root-10"
+          >
+            Red Content
+          </div>
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-11"
+          hidden=""
+        >
+          <div
+            class="MuiBox-root MuiBox-root-12"
+          >
+            Green Content
+          </div>
+        </div>
+        <div
+          class="MuiBox-root MuiBox-root-13"
+          hidden=""
+        >
+          <div
+            class="MuiBox-root MuiBox-root-14"
+          >
+            Blue Content
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should render <TabsField> inside a FormView 1`] = `
+<DocumentFragment>
+  <form
+    id="tabsFieldFormView.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-15"
+      >
+        <div
+          class="MuiBox-root MuiBox-root-16"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-17"
+              >
+                <div
+                  class="MuiTabs-root"
+                >
+                  <div
+                    class="MuiTabs-scroller MuiTabs-fixed"
+                    style="overflow: hidden;"
+                  >
+                    <div
+                      class="MuiTabs-flexContainer"
+                      role="tablist"
+                    >
+                      <button
+                        aria-selected="true"
+                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit Mui-selected"
+                        role="tab"
+                        tabindex="0"
+                        type="button"
+                      >
+                        <span
+                          class="MuiTab-wrapper"
+                        >
+                          <div
+                            class="MuiBox-root MuiBox-root-18"
+                            style="color: red;"
+                          >
+                            Red
+                          </div>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root"
+                        />
+                      </button>
+                      <button
+                        aria-selected="false"
+                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+                        role="tab"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="MuiTab-wrapper"
+                        >
+                          <div
+                            class="MuiBox-root MuiBox-root-23"
+                            style="color: green;"
+                          >
+                            Green
+                          </div>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root"
+                        />
+                      </button>
+                      <button
+                        aria-selected="false"
+                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+                        role="tab"
+                        tabindex="-1"
+                        type="button"
+                      >
+                        <span
+                          class="MuiTab-wrapper"
+                        >
+                          <div
+                            class="MuiBox-root MuiBox-root-24"
+                            style="color: blue;"
+                          >
+                            Blue
+                          </div>
+                        </span>
+                        <span
+                          class="MuiTouchRipple-root"
+                        />
+                      </button>
+                    </div>
+                    <span
+                      class="PrivateTabIndicator-root-19 PrivateTabIndicator-colorSecondary-21 MuiTabs-indicator"
+                      style="left: 0px; width: 0px;"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="MuiBox-root MuiBox-root-25"
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-26"
+                  >
+                    Red Content
+                  </div>
+                </div>
+                <div
+                  class="MuiBox-root MuiBox-root-27"
+                  hidden=""
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-28"
+                  >
+                    Green Content
+                  </div>
+                </div>
+                <div
+                  class="MuiBox-root MuiBox-root-29"
+                  hidden=""
+                >
+                  <div
+                    class="MuiBox-root MuiBox-root-30"
+                  >
+                    Blue Content
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

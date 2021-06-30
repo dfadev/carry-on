@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <ResetButtonField> inside a Form 1`] = `
+<DocumentFragment>
+  <form
+    id="resetButtonFieldForm.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-1"
+      >
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text Mui-disabled Mui-disabled"
+          disabled=""
+          id="resetButtonFieldForm.form.abc"
+          name="resetButtonFieldForm.form.abc"
+          tabindex="-1"
+          type="reset"
+        >
+          <span
+            class="MuiButton-label"
+          >
+            Reset
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should render <ResetButtonField> inside a FormView 1`] = `
+<DocumentFragment>
+  <form
+    id="resetButtonFieldFormView.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-2"
+      >
+        <div
+          class="MuiBox-root MuiBox-root-3"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-4"
+              >
+                <button
+                  class="MuiButtonBase-root MuiButton-root MuiButton-text Mui-disabled Mui-disabled"
+                  disabled=""
+                  id="resetButtonFieldFormView.form.abc"
+                  name="resetButtonFieldFormView.form.abc"
+                  tabindex="-1"
+                  type="reset"
+                >
+                  <span
+                    class="MuiButton-label"
+                  >
+                    Reset
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

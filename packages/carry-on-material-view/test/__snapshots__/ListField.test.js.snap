@@ -1,0 +1,635 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <ListField> inside a Form 1`] = `
+<DocumentFragment>
+  <form
+    id="listFieldForm.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-1"
+      >
+        <ul
+          class="MuiList-root MuiList-padding"
+        >
+          <li
+            class="MuiListItem-root MuiListItem-gutters"
+            id="contacts[0]"
+          >
+            <div
+              class="MuiBox-root MuiBox-root-3"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-4"
+              >
+                Sample Greeting:
+                <h4>
+                  Hello John Johnson!
+                </h4>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root CoTextField-root-5"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                  data-shrink="true"
+                >
+                  Name
+                </label>
+                <div
+                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiInput-input"
+                    id="listFieldForm.form.contacts[0].name"
+                    name="listFieldForm.form.contacts[0].name"
+                    type="text"
+                    value="John Johnson"
+                  />
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                  data-shrink="true"
+                >
+                  Phone
+                </label>
+                <div
+                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiInput-input"
+                    id="listFieldForm.form.contacts[0].phone"
+                    name="listFieldForm.form.contacts[0].phone"
+                    type="text"
+                    value="+44 7911 123456"
+                  />
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root CoTextField-root-5"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                  data-shrink="true"
+                >
+                  Email
+                </label>
+                <div
+                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiInput-input"
+                    id="listFieldForm.form.contacts[0].email"
+                    name="listFieldForm.form.contacts[0].email"
+                    type="text"
+                    value="jj@co.uk"
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              class="MuiButtonBase-root MuiIconButton-root CoListField-closeMenuIcon-2"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+          <li
+            class="MuiListItem-root MuiListItem-gutters"
+            id="contacts[1]"
+          >
+            <div
+              class="MuiBox-root MuiBox-root-6"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-7"
+              >
+                Sample Greeting:
+                <h4>
+                  Hello Jan Jansen!
+                </h4>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root CoTextField-root-5"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                  data-shrink="true"
+                >
+                  Name
+                </label>
+                <div
+                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiInput-input"
+                    id="listFieldForm.form.contacts[1].name"
+                    name="listFieldForm.form.contacts[1].name"
+                    type="text"
+                    value="Jan Jansen"
+                  />
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                  data-shrink="true"
+                >
+                  Phone
+                </label>
+                <div
+                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiInput-input"
+                    id="listFieldForm.form.contacts[1].phone"
+                    name="listFieldForm.form.contacts[1].phone"
+                    type="text"
+                    value="(702) 555-1212"
+                  />
+                </div>
+              </div>
+              <div
+                class="MuiFormControl-root MuiTextField-root CoTextField-root-5"
+              >
+                <label
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                  data-shrink="true"
+                >
+                  Email
+                </label>
+                <div
+                  class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                >
+                  <input
+                    aria-invalid="false"
+                    class="MuiInputBase-input MuiInput-input"
+                    id="listFieldForm.form.contacts[1].email"
+                    name="listFieldForm.form.contacts[1].email"
+                    type="text"
+                    value="jj@lv.nv"
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              class="MuiButtonBase-root MuiIconButton-root CoListField-closeMenuIcon-2"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </li>
+        </ul>
+        <div
+          class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-text"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root CoRowListFieldAddRowButton-leftIcon-8 MuiSvgIcon-fontSizeSmall"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                />
+              </svg>
+              Add
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should render <ListField> inside a FormView 1`] = `
+<DocumentFragment>
+  <form
+    id="listFieldFormView.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-9"
+      >
+        <div
+          class="MuiBox-root MuiBox-root-10"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-11"
+              >
+                <ul
+                  class="MuiList-root MuiList-padding"
+                >
+                  <li
+                    class="MuiListItem-root MuiListItem-gutters"
+                    id="contacts[0]"
+                  >
+                    <div
+                      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+                    >
+                      <div
+                        class="MuiBox-root MuiBox-root-13"
+                      >
+                        <div
+                          class="MuiBox-root MuiBox-root-14"
+                        >
+                          <div
+                            class="MuiGrid-root MuiGrid-container"
+                          >
+                            <div
+                              class="MuiGrid-root MuiGrid-item"
+                            >
+                              <div
+                                class="MuiBox-root MuiBox-root-15"
+                              >
+                                <div
+                                  class="MuiBox-root MuiBox-root-16"
+                                >
+                                  Sample Greeting:
+                                  <h4>
+                                    Hello John Johnson!
+                                  </h4>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="MuiGrid-root MuiGrid-container"
+                          >
+                            <div
+                              class="MuiGrid-root MuiGrid-item"
+                            >
+                              <div
+                                class="MuiBox-root MuiBox-root-17"
+                              >
+                                <div
+                                  class="MuiFormControl-root MuiTextField-root CoTextField-root-18"
+                                >
+                                  <label
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                                    data-shrink="true"
+                                  >
+                                    Name
+                                  </label>
+                                  <div
+                                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                                  >
+                                    <input
+                                      aria-invalid="false"
+                                      class="MuiInputBase-input MuiInput-input"
+                                      id="listFieldFormView.form.contacts[0].name"
+                                      name="listFieldFormView.form.contacts[0].name"
+                                      type="text"
+                                      value="John Johnson"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="MuiGrid-root MuiGrid-item"
+                            >
+                              <div
+                                class="MuiBox-root MuiBox-root-19"
+                              >
+                                <div
+                                  class="MuiFormControl-root MuiTextField-root CoTextField-root-18"
+                                >
+                                  <label
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                                    data-shrink="true"
+                                  >
+                                    Email
+                                  </label>
+                                  <div
+                                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                                  >
+                                    <input
+                                      aria-invalid="false"
+                                      class="MuiInputBase-input MuiInput-input"
+                                      id="listFieldFormView.form.contacts[0].email"
+                                      name="listFieldFormView.form.contacts[0].email"
+                                      type="text"
+                                      value="jj@co.uk"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="MuiGrid-root MuiGrid-item"
+                            >
+                              <div
+                                class="MuiBox-root MuiBox-root-20"
+                              >
+                                <div
+                                  class="MuiFormControl-root MuiTextField-root"
+                                >
+                                  <label
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                                    data-shrink="true"
+                                  >
+                                    Mobile
+                                  </label>
+                                  <div
+                                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                                  >
+                                    <input
+                                      aria-invalid="false"
+                                      class="MuiInputBase-input MuiInput-input"
+                                      id="listFieldFormView.form.contacts[0].phone"
+                                      name="listFieldFormView.form.contacts[0].phone"
+                                      type="text"
+                                      value="+44 7911 123456"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      class="MuiButtonBase-root MuiIconButton-root CoListField-closeMenuIcon-12"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <span
+                        class="MuiIconButton-label"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </li>
+                  <li
+                    class="MuiListItem-root MuiListItem-gutters"
+                    id="contacts[1]"
+                  >
+                    <div
+                      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+                    >
+                      <div
+                        class="MuiBox-root MuiBox-root-21"
+                      >
+                        <div
+                          class="MuiBox-root MuiBox-root-22"
+                        >
+                          <div
+                            class="MuiGrid-root MuiGrid-container"
+                          >
+                            <div
+                              class="MuiGrid-root MuiGrid-item"
+                            >
+                              <div
+                                class="MuiBox-root MuiBox-root-23"
+                              >
+                                <div
+                                  class="MuiBox-root MuiBox-root-24"
+                                >
+                                  Sample Greeting:
+                                  <h4>
+                                    Hello Jan Jansen!
+                                  </h4>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="MuiGrid-root MuiGrid-container"
+                          >
+                            <div
+                              class="MuiGrid-root MuiGrid-item"
+                            >
+                              <div
+                                class="MuiBox-root MuiBox-root-25"
+                              >
+                                <div
+                                  class="MuiFormControl-root MuiTextField-root CoTextField-root-18"
+                                >
+                                  <label
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                                    data-shrink="true"
+                                  >
+                                    Name
+                                  </label>
+                                  <div
+                                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                                  >
+                                    <input
+                                      aria-invalid="false"
+                                      class="MuiInputBase-input MuiInput-input"
+                                      id="listFieldFormView.form.contacts[1].name"
+                                      name="listFieldFormView.form.contacts[1].name"
+                                      type="text"
+                                      value="Jan Jansen"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="MuiGrid-root MuiGrid-item"
+                            >
+                              <div
+                                class="MuiBox-root MuiBox-root-26"
+                              >
+                                <div
+                                  class="MuiFormControl-root MuiTextField-root CoTextField-root-18"
+                                >
+                                  <label
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                                    data-shrink="true"
+                                  >
+                                    Email
+                                  </label>
+                                  <div
+                                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                                  >
+                                    <input
+                                      aria-invalid="false"
+                                      class="MuiInputBase-input MuiInput-input"
+                                      id="listFieldFormView.form.contacts[1].email"
+                                      name="listFieldFormView.form.contacts[1].email"
+                                      type="text"
+                                      value="jj@lv.nv"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="MuiGrid-root MuiGrid-item"
+                            >
+                              <div
+                                class="MuiBox-root MuiBox-root-27"
+                              >
+                                <div
+                                  class="MuiFormControl-root MuiTextField-root"
+                                >
+                                  <label
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiFormLabel-filled"
+                                    data-shrink="true"
+                                  >
+                                    Mobile
+                                  </label>
+                                  <div
+                                    class="MuiInputBase-root MuiInput-root MuiInput-underline MuiInputBase-formControl MuiInput-formControl"
+                                  >
+                                    <input
+                                      aria-invalid="false"
+                                      class="MuiInputBase-input MuiInput-input"
+                                      id="listFieldFormView.form.contacts[1].phone"
+                                      name="listFieldFormView.form.contacts[1].phone"
+                                      type="text"
+                                      value="(702) 555-1212"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      class="MuiButtonBase-root MuiIconButton-root CoListField-closeMenuIcon-12"
+                      tabindex="0"
+                      type="button"
+                    >
+                      <span
+                        class="MuiIconButton-label"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z"
+                          />
+                        </svg>
+                      </span>
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </button>
+                  </li>
+                </ul>
+                <div
+                  class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+                >
+                  <button
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <span
+                      class="MuiButton-label"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root CoRowListFieldAddRowButton-leftIcon-28 MuiSvgIcon-fontSizeSmall"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                        />
+                      </svg>
+                      Add
+                    </span>
+                    <span
+                      class="MuiTouchRipple-root"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

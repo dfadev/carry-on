@@ -1,0 +1,271 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render <InspectorField> inside a Form 1`] = `
+<DocumentFragment>
+  <form
+    id="inspectorFieldForm.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-1"
+      >
+        <div
+          class="MuiFormControl-root"
+        >
+          <label
+            class="MuiFormControlLabel-root CoInspectorField-labelRoot-2 MuiFormControlLabel-labelPlacementTop"
+          >
+            <ol
+              role="tree"
+              style="padding: 0px; margin: 0px; list-style-type: none;"
+            >
+              <li
+                aria-expanded="false"
+                role="treeitem"
+                style="color: black; background-color: white; line-height: 1.2; cursor: default; box-sizing: border-box; list-style: none; font-family: Menlo, monospace; font-size: 11px;"
+              >
+                <div>
+                  <span
+                    style="color: rgb(110, 110, 110); display: inline-block; font-size: 12px; margin-right: 3px; user-select: none; transform: rotateZ(0deg);"
+                  >
+                    ▶
+                  </span>
+                  <span
+                    style="font-style: italic;"
+                  />
+                  <span
+                    style="font-style: italic;"
+                  >
+                    {
+                    <span>
+                      <span
+                        style="color: rgb(136, 19, 145);"
+                      >
+                        formId
+                      </span>
+                      : 
+                      <span
+                        style="color: rgb(196, 26, 22);"
+                      >
+                        "form"
+                      </span>
+                    </span>
+                    , 
+                    <span>
+                      <span
+                        style="color: rgb(136, 19, 145);"
+                      >
+                        submitCount
+                      </span>
+                      : 
+                      <span
+                        style="color: rgb(28, 0, 207);"
+                      >
+                        0
+                      </span>
+                    </span>
+                    , 
+                    <span>
+                      <span
+                        style="color: rgb(136, 19, 145);"
+                      >
+                        visited
+                      </span>
+                      : 
+                      <span>
+                        Object
+                      </span>
+                    </span>
+                    , 
+                    <span>
+                      <span
+                        style="color: rgb(136, 19, 145);"
+                      >
+                        touched
+                      </span>
+                      : 
+                      <span>
+                        Object
+                      </span>
+                    </span>
+                    , 
+                    <span>
+                      <span
+                        style="color: rgb(136, 19, 145);"
+                      >
+                        errors
+                      </span>
+                      : 
+                      <span>
+                        Object
+                      </span>
+                      <span>
+                        …
+                      </span>
+                    </span>
+                    }
+                  </span>
+                </div>
+                <ol
+                  role="group"
+                  style="margin: 0px; padding-left: 12px;"
+                />
+              </li>
+            </ol>
+            <span
+              class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+            >
+              Example Editor
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`should render <InspectorField> inside a FormView 1`] = `
+<DocumentFragment>
+  <form
+    id="inspectorFieldFormView.form"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+    >
+      <div
+        class="MuiBox-root MuiBox-root-3"
+      >
+        <div
+          class="MuiBox-root MuiBox-root-4"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item"
+            >
+              <div
+                class="MuiBox-root MuiBox-root-5"
+              >
+                <div
+                  class="MuiFormControl-root"
+                >
+                  <label
+                    class="MuiFormControlLabel-root CoInspectorField-labelRoot-6 MuiFormControlLabel-labelPlacementTop"
+                  >
+                    <ol
+                      role="tree"
+                      style="padding: 0px; margin: 0px; list-style-type: none;"
+                    >
+                      <li
+                        aria-expanded="false"
+                        role="treeitem"
+                        style="color: black; background-color: white; line-height: 1.2; cursor: default; box-sizing: border-box; list-style: none; font-family: Menlo, monospace; font-size: 11px;"
+                      >
+                        <div>
+                          <span
+                            style="color: rgb(110, 110, 110); display: inline-block; font-size: 12px; margin-right: 3px; user-select: none; transform: rotateZ(0deg);"
+                          >
+                            ▶
+                          </span>
+                          <span
+                            style="font-style: italic;"
+                          />
+                          <span
+                            style="font-style: italic;"
+                          >
+                            {
+                            <span>
+                              <span
+                                style="color: rgb(136, 19, 145);"
+                              >
+                                components
+                              </span>
+                              : 
+                              <span>
+                                Object
+                              </span>
+                            </span>
+                            , 
+                            <span>
+                              <span
+                                style="color: rgb(136, 19, 145);"
+                              >
+                                fields
+                              </span>
+                              : 
+                              <span>
+                                Object
+                              </span>
+                            </span>
+                            , 
+                            <span>
+                              <span
+                                style="color: rgb(136, 19, 145);"
+                              >
+                                sections
+                              </span>
+                              : 
+                              <span>
+                                Array(1)
+                              </span>
+                            </span>
+                            , 
+                            <span>
+                              <span
+                                style="color: rgb(136, 19, 145);"
+                              >
+                                formId
+                              </span>
+                              : 
+                              <span
+                                style="color: rgb(196, 26, 22);"
+                              >
+                                "form"
+                              </span>
+                            </span>
+                            , 
+                            <span>
+                              <span
+                                style="color: rgb(136, 19, 145);"
+                              >
+                                submitCount
+                              </span>
+                              : 
+                              <span
+                                style="color: rgb(28, 0, 207);"
+                              >
+                                0
+                              </span>
+                              <span>
+                                …
+                              </span>
+                            </span>
+                            }
+                          </span>
+                        </div>
+                        <ol
+                          role="group"
+                          style="margin: 0px; padding-left: 12px;"
+                        />
+                      </li>
+                    </ol>
+                    <span
+                      class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                    >
+                      Example Editor
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
