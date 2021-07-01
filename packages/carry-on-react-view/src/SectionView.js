@@ -58,7 +58,7 @@ const SectionView = ({
           const field = (fieldsStore && fieldsStore[name]) ||
             (fieldsProp && fieldsProp[name]) || { label: name };
           const {
-            editor = "text",
+            editor,
             name: fieldName,
             view: fieldView,
             hidden,
@@ -75,9 +75,19 @@ const SectionView = ({
           const key = `${store.id || "default"}.${formId}.${name || fieldName}`;
 
           let Editor;
-          if (editor !== undefined && typeof editor !== "string")
-            Editor = editor;
-          else Editor = editors[editor] || GenericInputField;
+          let editorKey = editor;
+          if (
+            editorKey === undefined &&
+            fieldEditorProps &&
+            fieldEditorProps.content
+          )
+            editorKey = "content";
+
+          if (editorKey === undefined) editorKey = "text";
+
+          if (editorKey !== undefined && typeof editorKey !== "string")
+            Editor = editorKey;
+          else Editor = editors[editorKey] || GenericInputField;
 
           return (
             <ViewItem {...fieldView} key={key} field={field}>

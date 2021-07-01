@@ -15,7 +15,6 @@ title: ContentField
               <Box p={2}>Some JSX content</Box>
             </Paper>
           }
-          editor="content"
         />
       </Box>
     </Paper>
@@ -31,7 +30,6 @@ title: ContentField
     <Fields>
       <Field
         name="abc"
-        editor="content"
         view={{ xs: 12 }}
         content={
           <Paper elevation={10}>
