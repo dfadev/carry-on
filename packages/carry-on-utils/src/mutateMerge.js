@@ -7,7 +7,12 @@ export default function mutateMerge(object, ...sources) {
     forEach(source, (value, key) => {
       const myValue = object[key];
       // original micro-dash tries to clone functions
-      if (myValue instanceof Object && typeof myValue !== "function") {
+      // don't clone react.element's either
+      if (
+        myValue instanceof Object &&
+        typeof myValue !== "function" &&
+        !myValue.$$typeof
+      ) {
         value = mutateMerge(clone(myValue), value);
       }
       // assign undefined to maybe sparse array
