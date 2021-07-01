@@ -10,7 +10,6 @@ title: ContentField
       <Box px={3} pt={2} pb={3} mb={2}>
         <ContentField
           name="abc"
-          wrapper="div"
           content={
             <Paper elevation={10}>
               <Box p={2}>Some JSX content</Box>
