@@ -38,6 +38,7 @@ const ListField = ({
   max = -1,
   readOnly = false,
   disabled: disabledProp,
+  hideAdd,
   hideRemove,
   dense,
   value: valueProp,
@@ -85,7 +86,7 @@ const ListField = ({
               );
             })}
           </List>
-          {!field.readOnly && (max === -1 || max > value.length) && (
+          {!hideAdd && !field.readOnly && (max === -1 || max > value.length) && (
             <AddRowButton
               disabled={disabled}
               onClick={() => {
