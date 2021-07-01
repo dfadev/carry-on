@@ -26,7 +26,7 @@ Fields.transform = v => {
   const fields = {};
   for (let i = 0, len = nodes.length; i < len; i += 1) {
     const node = nodes[i];
-    const { children, name, ...props } = node.props;
+    const { children, name = children && children.name, ...props } = node.props;
     const field = {
       ...children,
       ...props
