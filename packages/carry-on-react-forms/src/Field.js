@@ -16,7 +16,7 @@ function getVal({ target: { type, value, checked } }) {
 }
 
 const Field = ({
-  path = "field",
+  path,
   default: def,
   children = () => null,
   type = "text",
@@ -39,7 +39,13 @@ const Field = ({
         setFieldError
       } = form || {};
 
-      const prefixedPath = !prefix ? path : `${prefix}.${path}`;
+      let prefixedPath;
+      if (path === undefined)
+        prefixedPath = prefix || "field";
+      else if (prefix !== undefined)
+        prefixedPath = `${prefix}.${path}`;
+      else
+        prefixedPath = path;
 
       const fieldId = `${
         store.id !== undefined ? store.id : "default"
