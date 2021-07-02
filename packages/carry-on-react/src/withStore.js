@@ -9,7 +9,9 @@ const withStore = WrappedComponent => {
     </StoreContext.Consumer>
   );
 
-  WithStore.displayName = "withStore";
+  WithStore.displayName = `withStore(${
+    WrappedComponent.displayName || WrappedComponent.name
+  })`;
   WithStore.WrappedComponent = WrappedComponent;
 
   return hoistNonReactStatic(WithStore, WrappedComponent);

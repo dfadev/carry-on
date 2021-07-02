@@ -57,7 +57,10 @@ const withNodesToProps = WrappedComponent => {
       />
     );
 
-  WithNodesToProps.displayName = "withNodesToProps";
+  WithNodesToProps.displayName = `withNodesToProps(${
+    WrappedComponent.displayName || WrappedComponent.name
+  })`;
+
   WithNodesToProps.WrappedComponent = WrappedComponent;
 
   return hoistNonReactStatic(WithNodesToProps, WrappedComponent);
