@@ -5,7 +5,13 @@ import GenericInputField from "./GenericInputField";
 
 const components = {
   select: ({
-    components: { View = "div", ViewItem = "div", editors = {} } = {}
+    components: {
+      View = ({ children }) => (
+        <div style={{ display: "flex" }}>{children}</div>
+      ),
+      ViewItem = ({ children }) => children,
+      editors = {}
+    } = {}
   }) => ({
     View,
     ViewItem,

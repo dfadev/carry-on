@@ -5,7 +5,10 @@ import SectionView from "./SectionView";
 
 const components = {
   select: ({
-    components: { FormViewBox = "div", SectionBox = "div" } = {}
+    components: {
+      FormViewBox = ({ children }) => children,
+      SectionBox = ({ children }) => children
+    } = {}
   }) => ({
     FormViewBox,
     SectionBox
