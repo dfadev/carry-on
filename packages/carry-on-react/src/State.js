@@ -19,9 +19,8 @@ import withNodesToProps from "./withNodesToProps";
 import withStore from "./withStore";
 
 const ignoreProps = ["children"];
-let State;
 
-class InnerState extends Component {
+class State extends Component {
   static Debug = false;
 
   static Verbose = false;
@@ -281,10 +280,8 @@ class InnerState extends Component {
   }
 }
 
-State = withStore(withNodesToProps(InnerState));
-
-InnerState.contextType = StoreContext;
-InnerState.composes = [
+State.contextType = StoreContext;
+State.composes = [
   "register",
   "render",
   "onMount",
@@ -318,6 +315,4 @@ State.defaultProps = {
   render: undefined
 };
 
-const StateComponent = State;
-
-export default StateComponent;
+export default withStore(withNodesToProps(State));
