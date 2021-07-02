@@ -56,7 +56,7 @@ const ListField = ({
 
       if (!value) return null;
 
-      const id = field.element.id;
+      const { element: { id } } = field;
 
       return (
         <>
