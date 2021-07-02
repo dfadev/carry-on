@@ -27,14 +27,14 @@
     "@rollup/plugin-node-resolve": "^13.0.0",
     "carry-on-utils": "^1.0.19",
     "rimraf": "^3.0.2",
-    "rollup": "^2.52.1"
+    "rollup": "^2.52.7"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": ">=7.0.0"
+    "@babel/runtime-corejs3": "^7.14.7"
   },
   "peerDependencies": {
     "carry-on-utils": "^1.0.19",
-    "immer": ">=8"
+    "immer": "^9.0.3"
   },
   "exports": {
     "require": "./dist/carry-on-store.cjs.js",

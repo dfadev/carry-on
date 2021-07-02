@@ -20,8 +20,8 @@
     "watch": "npm run build -- -w"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": ">=7.0.0",
-    "hoist-non-react-statics": ">=3.0.0"
+    "@babel/runtime-corejs3": "^7.14.7",
+    "hoist-non-react-statics": "^3.3.2"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
@@ -30,16 +30,16 @@
     "@rollup/plugin-node-resolve": "^13.0.0",
     "carry-on-store": "^1.0.19",
     "carry-on-utils": "^1.0.19",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.52.1"
+    "rollup": "^2.52.7"
   },
   "peerDependencies": {
     "carry-on-store": "^1.0.19",
     "carry-on-utils": "^1.0.19",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "exports": {
     "require": "./dist/carry-on-react.cjs.js",

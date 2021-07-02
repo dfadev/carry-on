@@ -21,7 +21,7 @@
     "watch": "npm run build -- -w"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": ">=7.0.0",
+    "@babel/runtime-corejs3": "^7.14.7",
     "debounce-promise": "^3.1.2",
     "react-fast-compare": "^3.2.0",
     "throttle-debounce": "^3.0.1"
@@ -32,7 +32,7 @@
     "@rollup/plugin-eslint": "^8.0.1",
     "@rollup/plugin-node-resolve": "^13.0.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.52.1"
+    "rollup": "^2.52.7"
   },
   "exports": {
     "require": "./dist/carry-on-utils.cjs.js",

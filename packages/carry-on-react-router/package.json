@@ -21,11 +21,11 @@
     "watch": "npm run build -- -w"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": ">=7.0.0",
-    "history": ">=4.0.0 < 5",
-    "hoist-non-react-statics": ">=3.0.0",
-    "path-to-regexp": ">=6.0.0",
-    "react-is": ">=16.8.0"
+    "@babel/runtime-corejs3": "^7.14.7",
+    "history": "=4.10.1",
+    "hoist-non-react-statics": "^3.3.2",
+    "path-to-regexp": "^6.2.0",
+    "react-is": "^17.0.2"
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^5.3.0",
@@ -35,18 +35,18 @@
     "carry-on-react": "^1.0.19",
     "carry-on-store": "^1.0.19",
     "carry-on-utils": "^1.0.19",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "react-is": ">=16.8.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.52.1"
+    "rollup": "^2.52.7"
   },
   "peerDependencies": {
     "carry-on-react": "^1.0.19",
     "carry-on-store": "^1.0.19",
     "carry-on-utils": "^1.0.19",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "exports": {
     "require": "./dist/carry-on-react-router.cjs.js",
