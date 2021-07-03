@@ -11,7 +11,6 @@ import { withNodesToProp } from "carry-on-react";
 import { Field, FieldContext } from "carry-on-react-forms";
 import { getIn, mutateSet } from "carry-on-utils";
 import getFieldStatus from "./getFieldStatus";
-import eventHandler from "./eventHandler";
 
 const addRowToolbarStyles = theme => ({
   leftIcon: {
