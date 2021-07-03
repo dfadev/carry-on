@@ -15,6 +15,7 @@ const IconButtonField = withStyles(
     value: valueProp,
     disabled: disabledProp,
     onClick,
+    children,
     ...props
   }) => (
     <Field path={name} type="button">
@@ -39,7 +40,7 @@ const IconButtonField = withStyles(
               store
             )}
           >
-            {label}
+            {children || label}
           </IconButton>
         );
       }}
