@@ -49,7 +49,7 @@ const createPlugins = (store, curState, plugins) => {
     const { middleware, state, dispose, path } = plugins[i];
     const get = !path ? rootGet : (fn, opts) => rootGet(fn, { path, ...opts });
     const set = !path ? rootSet : (fn, opts) => rootSet(fn, { path, ...opts });
-    store.log("createPlugin", plugins[i]);
+    if (Debug || store.debug) store.log("createPlugin", plugins[i]);
 
     // update middleware chain
     if (middleware) {
