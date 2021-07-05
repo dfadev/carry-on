@@ -60,49 +60,47 @@ const SectionView = ({
           );
         }
 
-        if (typeof name === "string" || name instanceof String) {
-          const field = (fieldsStore && fieldsStore[name]) ||
-            (fieldsProp && fieldsProp[name]) || { label: name };
-          const {
-            editor,
-            name: fieldName,
-            view: fieldView,
-            hidden,
-            ...fieldEditorProps
-          } = field;
+        if (typeof name !== "string" && !(name instanceof String)) return null;
 
-          if (hidden !== undefined && hidden !== null && hidden) {
-            if (typeof hidden === "function") {
-              const hide = hidden(form, store, prefix);
-              if (hide) return null;
-            } else return null;
-          }
+        const field = (fieldsStore && fieldsStore[name]) ||
+          (fieldsProp && fieldsProp[name]) || { label: name };
+        const {
+          editor,
+          name: fieldName,
+          view: fieldView,
+          hidden,
+          ...fieldEditorProps
+        } = field;
 
-          const key = `${store.id || "default"}.${formId}.${name || fieldName}`;
-
-          let Editor;
-          let editorKey = editor;
-          if (
-            editorKey === undefined &&
-            fieldEditorProps &&
-            fieldEditorProps.content
-          )
-            editorKey = "content";
-
-          if (editorKey === undefined) editorKey = "text";
-
-          if (editorKey !== undefined && typeof editorKey !== "string")
-            Editor = editorKey;
-          else Editor = editors[editorKey] || GenericInputField;
-
-          return (
-            <ViewItem {...fieldView} key={key} field={field}>
-              <Editor {...fieldEditorProps} name={name || fieldName} />
-            </ViewItem>
-          );
+        if (hidden !== undefined && hidden !== null && hidden) {
+          if (typeof hidden === "function") {
+            const hide = hidden(form, store, prefix);
+            if (hide) return null;
+          } else return null;
         }
 
-        return null;
+        const key = `${store.id || "default"}.${formId}.${name || fieldName}`;
+
+        let Editor;
+        let editorKey = editor;
+        if (
+          editorKey === undefined &&
+          fieldEditorProps &&
+          fieldEditorProps.content
+        )
+          editorKey = "content";
+
+        if (editorKey === undefined) editorKey = "text";
+
+        if (editorKey !== undefined && typeof editorKey !== "string")
+          Editor = editorKey;
+        else Editor = editors[editorKey] || GenericInputField;
+
+        return (
+          <ViewItem {...fieldView} key={key} field={field}>
+            <Editor {...fieldEditorProps} name={name || fieldName} />
+          </ViewItem>
+        );
       };
 
       if (layout && !Array.isArray(layout[0])) layout = [layout];
