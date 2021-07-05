@@ -6,8 +6,8 @@ import SectionView from "./SectionView";
 const components = {
   select: ({
     components: {
-      FormViewBox = React.Fragment,
-      SectionBox = React.Fragment
+      FormViewBox = ({ children }) => children,
+      SectionBox = ({ children }) => children
     } = {}
   }) => ({
     FormViewBox,
@@ -34,7 +34,7 @@ const FormViewer = ({
         } = {}
       } = form;
 
-      const ViewBox = noViewBox ? React.Fragment : FormViewBox;
+      const ViewBox = noViewBox ? ({ children }) => children : FormViewBox;
 
       let s = sectionsProp || sections;
       if (typeof s === "function") s = s(form, store, prefix);
