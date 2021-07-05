@@ -6,8 +6,8 @@ import SectionView from "./SectionView";
 const components = {
   select: ({
     components: {
-      FormViewBox = ({ children }) => children,
-      SectionBox = ({ children }) => children
+      FormViewBox = React.Fragment,
+      SectionBox = React.Fragment
     } = {}
   }) => ({
     FormViewBox,

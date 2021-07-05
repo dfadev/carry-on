@@ -9,7 +9,7 @@ const components = {
       View = ({ children }) => (
         <div style={{ display: "flex" }}>{children}</div>
       ),
-      ViewItem = ({ children }) => children,
+      ViewItem = React.Fragment,
       editors = {}
     } = {}
   }) => ({
