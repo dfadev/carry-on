@@ -1,22 +1,19 @@
 import React from "react";
-import MuiTextField from "@material-ui/core/TextField";
-import withStyles from "@material-ui/core/styles/withStyles";
+import MuiTextField from "@mui/material/TextField";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";
 
-const TextField = withStyles(
-  { root: { whiteSpace: "nowrap" } },
-  { name: "CoTextField" }
-)(
-  ({
-    name,
-    label = name,
-    disabled: disabledProp,
-    value: valueProp,
-    readOnly,
-    InputProps,
-    ...props
-  }) => (
+function TextField({
+  name,
+  label = name,
+  disabled: disabledProp,
+  value: valueProp,
+  readOnly,
+  InputProps,
+  ...props
+}) {
+  return (
     <Field path={name} readOnly={readOnly}>
       {(field, store) => {
         const { element } = field;
@@ -45,7 +42,13 @@ const TextField = withStyles(
         );
       }}
     </Field>
-  )
+  );
+}
+
+const StyledTextField = withStyles(
+  TextField,
+  { root: { whiteSpace: "nowrap" } },
+  { name: "CoTextField" }
 );
 
-export default TextField;
+export default StyledTextField;

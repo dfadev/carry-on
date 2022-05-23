@@ -1,5 +1,5 @@
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
+import { withStyles } from "tss-react/mui";
 import MaskedTextField from "./MaskedTextField";
 
 const parseDigits = string => (string.match(/\d+/g) || []).join("");
@@ -20,9 +20,10 @@ const mask = ssn => {
   return ssn.length > 11;
 };
 
-const SSNField = withStyles(
-  {},
-  { name: "CoSSNField" }
-)(props => <MaskedTextField mask={mask} format={format} {...(props || {})} />);
+function SSNField(props) {
+  return <MaskedTextField mask={mask} format={format} {...(props || {})} />;
+}
 
-export default SSNField;
+const StyledSSNField = withStyles(SSNField, {}, { name: "CoSSNField" });
+
+export default StyledSSNField;

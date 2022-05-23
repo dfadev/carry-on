@@ -1,29 +1,22 @@
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import {
-  MuiPickersUtilsProvider,
-  DateTimePicker,
-  KeyboardDateTimePicker
-} from "@material-ui/pickers";
+import { TextField } from "@mui/material";
+import { withStyles } from "tss-react/mui";
+import { LocalizationProvider, DateTimePicker } from "@mui/x-date-pickers";
 import { Field } from "carry-on-react-forms";
-import DateFnsUtils from "@date-io/date-fns";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import getFieldStatus from "./getFieldStatus";
 
-const DateTimeField = withStyles(
-  {},
-  { name: "CoDateTimeField" }
-)(
-  ({
-    classes,
-    name,
-    label = name,
-    disabled: disabledProp,
-    value: valueProp,
-    DateUtils = DateFnsUtils,
-    keyboard = true,
-    readOnly,
-    ...props
-  }) => (
+function DateTimeField({
+  classes,
+  name,
+  label = name,
+  disabled: disabledProp,
+  value: valueProp,
+  dateAdapter = AdapterDateFns,
+  readOnly,
+  ...props
+}) {
+  return (
     <Field path={name} type="date" readOnly={readOnly}>
       {(field, store) => {
         const { error, hasError, disabled, value } = getFieldStatus(
@@ -33,16 +26,14 @@ const DateTimeField = withStyles(
           disabledProp
         );
 
-        function handleDateTimeChange(dt) {
+        const handleDateTimeChange = dt => {
           field.setValue(dt);
           field.setTouched(true);
-        }
-
-        const Picker = keyboard ? KeyboardDateTimePicker : DateTimePicker;
+        };
 
         return (
-          <MuiPickersUtilsProvider utils={DateUtils}>
-            <Picker
+          <LocalizationProvider dateAdapter={dateAdapter}>
+            <DateTimePicker
               id={field.element.id}
               name={field.element.name}
               disabled={disabled}
@@ -54,13 +45,20 @@ const DateTimeField = withStyles(
               error={hasError}
               helperText={hasError && error}
               autoOk
+              renderInput={params => <TextField {...params} />}
               {...props}
             />
-          </MuiPickersUtilsProvider>
+          </LocalizationProvider>
         );
       }}
     </Field>
-  )
+  );
+}
+
+const StyledDateTimeField = withStyles(
+  DateTimeField,
+  {},
+  { name: "CoDateTimeField" }
 );
 
-export default DateTimeField;
+export default StyledDateTimeField;

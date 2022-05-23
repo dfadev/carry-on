@@ -1,6 +1,6 @@
 import React from "react";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import withStyles from "@material-ui/core/styles/withStyles";
+import InputAdornment from "@mui/material/InputAdornment";
+import { withStyles } from "tss-react/mui";
 import MaskedTextField from "./MaskedTextField";
 
 const numberAccept = /[\d.]+/g;
@@ -54,21 +54,31 @@ const format = maxDigits => string =>
 
 const accept = /[\d.$]/g;
 
-const PercentageField = withStyles(
+function PercentageField({
+  InputProps,
+  maximumFractionDigits = 2,
+  symbol = "%",
+  ...props
+}) {
+  return (
+    <MaskedTextField
+      accept={accept}
+      format={format(maximumFractionDigits)}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">{symbol}</InputAdornment>
+        ),
+        ...(InputProps || {})
+      }}
+      {...(props || {})}
+    />
+  );
+}
+
+const StyledPercentageField = withStyles(
+  PercentageField,
   {},
   { name: "CoPercentageField" }
-)(({ InputProps, maximumFractionDigits = 2, symbol = "%", ...props }) => (
-  <MaskedTextField
-    accept={accept}
-    format={format(maximumFractionDigits)}
-    InputProps={{
-      startAdornment: (
-        <InputAdornment position="start">{symbol}</InputAdornment>
-      ),
-      ...(InputProps || {})
-    }}
-    {...(props || {})}
-  />
-));
+);
 
-export default PercentageField;
+export default StyledPercentageField;

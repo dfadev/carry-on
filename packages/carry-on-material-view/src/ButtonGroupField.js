@@ -1,23 +1,20 @@
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Grid from "@material-ui/core/Grid";
+import { withStyles } from "tss-react/mui";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Grid from "@mui/material/Grid";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";
 import eventHandler from "./eventHandler";
 
-const ButtonGroupField = withStyles(
-  {},
-  { name: "CoButtonGroupField" }
-)(
-  ({
-    name,
-    label = null,
-    value: valueProp,
-    disabled: disabledProp,
-    buttons
-  }) => (
+function ButtonGroupField({
+  name,
+  label = null,
+  value: valueProp,
+  disabled: disabledProp,
+  buttons
+}) {
+  return (
     <Field path={name}>
       {(field, store) => {
         if (!buttons || buttons.length === 0) return null;
@@ -70,7 +67,13 @@ const ButtonGroupField = withStyles(
         return buttonGroup;
       }}
     </Field>
-  )
+  );
+}
+
+const StyledButtonGroupField = withStyles(
+  ButtonGroupField,
+  {},
+  { name: "CoButtonGroupField" }
 );
 
-export default ButtonGroupField;
+export default StyledButtonGroupField;

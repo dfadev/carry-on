@@ -1,18 +1,15 @@
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import Box from "@material-ui/core/Box";
-import Tab from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import { withStyles } from "tss-react/mui";
 import { withNodesToProp } from "carry-on-react";
 import { Field } from "carry-on-react-forms";
 import { getIn } from "carry-on-utils";
 import eventHandler from "./eventHandler";
 
-const TabsField = withNodesToProp("tabs")(
-  withStyles(
-    {},
-    { name: "CoTabsField" }
-  )(({ name, tabs, tabsProps, onTabChange }) => (
+function TabsField({ name, tabs, tabsProps, onTabChange }) {
+  return (
     <Field path={name}>
       {(field, store) => {
         if (!tabs) return null;
@@ -98,7 +95,9 @@ const TabsField = withNodesToProp("tabs")(
         );
       }}
     </Field>
-  ))
-);
+  );
+}
 
-export default TabsField;
+const StyledTabsField = withStyles(TabsField, {}, { name: "CoTabsField" });
+
+export default withNodesToProp("tabs")(StyledTabsField);

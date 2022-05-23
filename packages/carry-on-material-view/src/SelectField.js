@@ -1,23 +1,20 @@
 import React from "react";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
-import withStyles from "@material-ui/core/styles/withStyles";
+import MenuItem from "@mui/material/MenuItem";
+import TextField from "@mui/material/TextField";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";
 
-const SelectField = withStyles(
-  {},
-  { name: "CoSelectField" }
-)(
-  ({
-    name,
-    options,
-    label = name,
-    disabled: disabledProp,
-    value: valueProp,
-    readOnly = false,
-    ...props
-  }) => (
+function SelectField({
+  name,
+  options,
+  label = name,
+  disabled: disabledProp,
+  value: valueProp,
+  readOnly = false,
+  ...props
+}) {
+  return (
     <Field path={name} readOnly={readOnly}>
       {(field, store) => {
         const { element } = field;
@@ -62,7 +59,13 @@ const SelectField = withStyles(
         );
       }}
     </Field>
-  )
+  );
+}
+
+const StyledSelectField = withStyles(
+  SelectField,
+  {},
+  { name: "CoSelectField" }
 );
 
-export default SelectField;
+export default StyledSelectField;

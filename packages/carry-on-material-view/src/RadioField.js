@@ -1,38 +1,27 @@
 import React from "react";
-import Box from "@material-ui/core/Box";
-import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import InputLabel from "@material-ui/core/InputLabel";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import withStyles from "@material-ui/core/styles/withStyles";
+import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import InputLabel from "@mui/material/InputLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";
 
-const RadioField = withStyles(
-  {
-    shrink: {
-      transform: "scale(0.85)"
-    },
-    formControl: {
-      position: "inherit"
-    },
-    label: {}
-  },
-  { name: "CoRadioField" }
-)(
-  ({
-    classes = {},
-    name,
-    readOnly,
-    label = name,
-    options,
-    row,
-    disabled: disabledProp,
-    value: valueProp,
-    j = 0
-  }) => (
+function RadioField({
+  classes = {},
+  name,
+  readOnly,
+  label = name,
+  options,
+  row,
+  disabled: disabledProp,
+  value: valueProp,
+  j = 0
+}) {
+  return (
     <Field path={name} readOnly={readOnly}>
       {(field, store) => {
         const { error, hasError, disabled, value } = getFieldStatus(
@@ -105,7 +94,21 @@ const RadioField = withStyles(
         );
       }}
     </Field>
-  )
+  );
+}
+
+const StyledRadioField = withStyles(
+  RadioField,
+  {
+    shrink: {
+      transform: "scale(0.85)"
+    },
+    formControl: {
+      position: "inherit"
+    },
+    label: {}
+  },
+  { name: "CoRadioField" }
 );
 
-export default RadioField;
+export default StyledRadioField;

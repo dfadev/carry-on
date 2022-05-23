@@ -1,28 +1,21 @@
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import {
-  MuiPickersUtilsProvider,
-  TimePicker,
-  KeyboardTimePicker
-} from "@material-ui/pickers";
+import { TextField } from "@mui/material";
+import { withStyles } from "tss-react/mui";
+import { LocalizationProvider, TimePicker } from "@mui/x-date-pickers";
 import { Field } from "carry-on-react-forms";
-import DateFnsUtils from "@date-io/date-fns";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import getFieldStatus from "./getFieldStatus";
 
-const TimeField = withStyles(
-  {},
-  { name: "CoTimeField" }
-)(
-  ({
-    classes,
-    name,
-    label = name,
-    disabled: disabledProp,
-    value: valueProp,
-    TimeUtils = DateFnsUtils,
-    keyboard = false,
-    ...props
-  }) => (
+function TimeField({
+  classes,
+  name,
+  label = name,
+  disabled: disabledProp,
+  value: valueProp,
+  dateAdapter = AdapterDateFns,
+  ...props
+}) {
+  return (
     <Field path={name} type="date">
       {(field, store) => {
         const { error, hasError, disabled, value } = getFieldStatus(
@@ -32,16 +25,14 @@ const TimeField = withStyles(
           disabledProp
         );
 
-        function handleTimeChange(dt) {
+        const handleTimeChange = dt => {
           field.setValue(dt);
           field.setTouched(true);
-        }
-
-        const Picker = keyboard ? KeyboardTimePicker : TimePicker;
+        };
 
         return (
-          <MuiPickersUtilsProvider utils={TimeUtils}>
-            <Picker
+          <LocalizationProvider dateAdapter={dateAdapter}>
+            <TimePicker
               id={field.element.id}
               name={field.element.name}
               disabled={disabled}
@@ -54,13 +45,16 @@ const TimeField = withStyles(
               error={hasError}
               helperText={hasError && error}
               autoOk
+              renderInput={params => <TextField {...params} />}
               {...props}
             />
-          </MuiPickersUtilsProvider>
+          </LocalizationProvider>
         );
       }}
     </Field>
-  )
-);
+  );
+}
 
-export default TimeField;
+const StyledTimeField = withStyles(TimeField, {}, { name: "CoTimeField" });
+
+export default StyledTimeField;

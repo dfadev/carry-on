@@ -1,27 +1,24 @@
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
-import Grid from "@material-ui/core/Grid";
+import { withStyles } from "tss-react/mui";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import Grid from "@mui/material/Grid";
 import { Field } from "carry-on-react-forms";
 import { deproxify } from "carry-on-utils";
 import getFieldStatus from "./getFieldStatus";
 import eventHandler from "./eventHandler";
 
-const ToggleButtonGroupField = withStyles(
-  {},
-  { name: "CoToggleButtonGroupField" }
-)(
-  ({
-    name,
-    label = name,
-    value: valueProp,
-    disabled: disabledProp,
-    onChange,
-    exclusive,
-    neverNull,
-    buttons
-  }) => (
+function ToggleButtonGroupField({
+  name,
+  label = name,
+  value: valueProp,
+  disabled: disabledProp,
+  onChange,
+  exclusive,
+  neverNull,
+  buttons
+}) {
+  return (
     <Field path={name}>
       {(field, store) => {
         if (!buttons || buttons.length === 0) return null;
@@ -76,7 +73,13 @@ const ToggleButtonGroupField = withStyles(
         return buttonGroup;
       }}
     </Field>
-  )
+  );
+}
+
+const StyledToggleButtonGroupField = withStyles(
+  ToggleButtonGroupField,
+  {},
+  { name: "CoToggleButtonGroupField" }
 );
 
-export default ToggleButtonGroupField;
+export default StyledToggleButtonGroupField;

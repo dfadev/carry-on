@@ -1,14 +1,11 @@
 import React, { useMemo } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
+import { withStyles } from "tss-react/mui";
 import { AsYouType } from "libphonenumber-js";
 import MaskedTextField from "./MaskedTextField";
 
 const accept = /\d|\+/g;
 
-const PhoneField = withStyles(
-  {},
-  { name: "CoPhoneField" }
-)(({ defaultCountry = "US", defaultCallingCode, ...props }) => {
+function PhoneField({ defaultCountry = "US", defaultCallingCode, ...props }) {
   const format = useMemo(() => {
     const asYouType = new AsYouType({ defaultCountry, defaultCallingCode });
     return string => {
@@ -19,6 +16,8 @@ const PhoneField = withStyles(
   }, [defaultCountry, defaultCallingCode]);
 
   return <MaskedTextField accept={accept} format={format} {...(props || {})} />;
-});
+}
 
-export default PhoneField;
+const StyledPhoneField = withStyles(PhoneField, {}, { name: "CoPhoneField" });
+
+export default StyledPhoneField;

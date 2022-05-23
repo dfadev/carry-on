@@ -1,27 +1,32 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import withStyles from "@material-ui/core/styles/withStyles";
+import Button from "@mui/material/Button";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 
-const ResetButtonField = withStyles(
+function ResetButtonField({ name, label = name, ...props }) {
+  return (
+    <Field path={name} type="reset">
+      {({
+        element,
+        form: { isSubmitting, isValidating, reset, isPristine } = {}
+      }) => (
+        <Button
+          {...props}
+          disabled={isSubmitting || isValidating || isPristine}
+          {...element}
+          onClick={reset}
+        >
+          {label}
+        </Button>
+      )}
+    </Field>
+  );
+}
+
+const StyledResetButtonField = withStyles(
+  ResetButtonField,
   {},
   { name: "CoResetButtonField" }
-)(({ name, label = name, ...props }) => (
-  <Field path={name} type="reset">
-    {({
-      element,
-      form: { isSubmitting, isValidating, reset, isPristine } = {}
-    }) => (
-      <Button
-        {...props}
-        disabled={isSubmitting || isValidating || isPristine}
-        {...element}
-        onClick={reset}
-      >
-        {label}
-      </Button>
-    )}
-  </Field>
-));
+);
 
-export default ResetButtonField;
+export default StyledResetButtonField;

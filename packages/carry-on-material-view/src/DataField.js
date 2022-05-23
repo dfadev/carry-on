@@ -1,25 +1,27 @@
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 
-const DataField = withStyles(
-  {},
-  { name: "CoDataField" }
-)(({ name, value, transform }) => (
-  <Field path={name} readOnly>
-    {(field, store) => {
-      let fieldValue;
-      if (value !== undefined) {
-        fieldValue = typeof value === "function" ? value(field, store) : value;
-      } else {
-        fieldValue = field.element.value;
-      }
+function DataField({ name, value, transform }) {
+  return (
+    <Field path={name} readOnly>
+      {(field, store) => {
+        let fieldValue;
+        if (value !== undefined) {
+          fieldValue =
+            typeof value === "function" ? value(field, store) : value;
+        } else {
+          fieldValue = field.element.value;
+        }
 
-      if (transform) fieldValue = transform(fieldValue);
+        if (transform) fieldValue = transform(fieldValue);
 
-      return fieldValue;
-    }}
-  </Field>
-));
+        return fieldValue;
+      }}
+    </Field>
+  );
+}
 
-export default DataField;
+const StyledDataField = withStyles(DataField, {}, { name: "CoDataField" });
+
+export default StyledDataField;

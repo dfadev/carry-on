@@ -1,29 +1,22 @@
 import React from "react";
-import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
 import Inspector from "react-inspector";
-import withStyles from "@material-ui/core/styles/withStyles";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";
 
-const InspectorField = withStyles(
-  {
-    labelRoot: {
-      alignItems: "start"
-    }
-  },
-  { name: "CoInspectorField" }
-)(
-  ({
-    classes,
-    name,
-    label,
-    value: valueProp,
-    disabled: disabledProp,
-    labelPlacement = "top",
-    ...props
-  }) => (
+function InspectorField({
+  classes,
+  name,
+  label,
+  value: valueProp,
+  disabled: disabledProp,
+  labelPlacement = "top",
+  ...props
+}) {
+  return (
     <Field path={name} type="button">
       {(field, store) => {
         const { hasError, error, disabled } = getFieldStatus(
@@ -47,7 +40,17 @@ const InspectorField = withStyles(
         );
       }}
     </Field>
-  )
+  );
+}
+
+const StyledInspectorField = withStyles(
+  InspectorField,
+  {
+    labelRoot: {
+      alignItems: "start"
+    }
+  },
+  { name: "CoInspectorField" }
 );
 
-export default InspectorField;
+export default StyledInspectorField;

@@ -1,22 +1,19 @@
 import React from "react";
-import Fab from "@material-ui/core/Fab";
-import withStyles from "@material-ui/core/styles/withStyles";
+import Fab from "@mui/material/Fab";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";
 import eventHandler from "./eventHandler";
 
-const FabField = withStyles(
-  {},
-  { name: "CoFabField" }
-)(
-  ({
-    name,
-    label = name,
-    value: valueProp,
-    disabled: disabledProp,
-    onClick,
-    ...props
-  }) => (
+function FabField({
+  name,
+  label = name,
+  value: valueProp,
+  disabled: disabledProp,
+  onClick,
+  ...props
+}) {
+  return (
     <Field path={name} type="button">
       {(field, store) => {
         const { disabled, value } = getFieldStatus(
@@ -44,7 +41,9 @@ const FabField = withStyles(
         );
       }}
     </Field>
-  )
-);
+  );
+}
 
-export default FabField;
+const StyledFabField = withStyles(FabField, {}, { name: "CoFabField" });
+
+export default StyledFabField;

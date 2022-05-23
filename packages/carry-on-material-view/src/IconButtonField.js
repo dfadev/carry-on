@@ -1,23 +1,20 @@
 import React from "react";
-import IconButton from "@material-ui/core/IconButton";
-import withStyles from "@material-ui/core/styles/withStyles";
+import IconButton from "@mui/material/IconButton";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";
 import eventHandler from "./eventHandler";
 
-const IconButtonField = withStyles(
-  {},
-  { name: "CoIconButtonField" }
-)(
-  ({
-    name,
-    label = name,
-    value: valueProp,
-    disabled: disabledProp,
-    onClick,
-    children,
-    ...props
-  }) => (
+function IconButtonField({
+  name,
+  label = name,
+  value: valueProp,
+  disabled: disabledProp,
+  onClick,
+  children,
+  ...props
+}) {
+  return (
     <Field path={name} type="button">
       {(field, store) => {
         const { disabled, value } = getFieldStatus(
@@ -45,7 +42,13 @@ const IconButtonField = withStyles(
         );
       }}
     </Field>
-  )
+  );
+}
+
+const StyledIconButtonField = withStyles(
+  IconButtonField,
+  {},
+  { name: "CoIconButtonField" }
 );
 
-export default IconButtonField;
+export default StyledIconButtonField;

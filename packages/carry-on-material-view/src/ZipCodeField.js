@@ -1,5 +1,5 @@
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
+import { withStyles } from "tss-react/mui";
 import MaskedTextField from "./MaskedTextField";
 
 const parseDigits = string => (string.match(/\d+/g) || []).join("");
@@ -19,9 +19,14 @@ const mask = zipCode => {
   return zipCode.length > 10;
 };
 
-const ZipCodeField = withStyles(
+function ZipCodeField(props) {
+  return <MaskedTextField mask={mask} format={format} {...(props || {})} />;
+}
+
+const StyledZipCodeField = withStyles(
+  ZipCodeField,
   {},
   { name: "CoZipCodeField" }
-)(props => <MaskedTextField mask={mask} format={format} {...(props || {})} />);
+);
 
-export default ZipCodeField;
+export default StyledZipCodeField;

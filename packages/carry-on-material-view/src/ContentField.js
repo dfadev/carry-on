@@ -1,16 +1,23 @@
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 
-const ContentField = withStyles(
+function ContentField({ name, content }) {
+  return (
+    <Field path={name}>
+      {field =>
+        content === undefined && content !== null
+          ? field.element.value
+          : content
+      }
+    </Field>
+  );
+}
+
+const StyledContentField = withStyles(
+  ContentField,
   {},
   { name: "CoContentField" }
-)(({ name, content }) => (
-  <Field path={name}>
-    {field =>
-      content === undefined && content !== null ? field.element.value : content
-    }
-  </Field>
-));
+);
 
-export default ContentField;
+export default StyledContentField;

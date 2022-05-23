@@ -1,6 +1,6 @@
 import React from "react";
 import { register } from "carry-on-store";
-import { Box, Paper, Grid } from "@material-ui/core";
+import { Box, Paper, Grid } from "@mui/material";
 import TextField from "./TextField";
 import CheckboxField from "./CheckboxField";
 import ButtonField from "./ButtonField";
@@ -32,31 +32,37 @@ import FabField from "./FabField";
 import ImageField from "./ImageField";
 import ButtonGroupField from "./ButtonGroupField";
 
-const FormViewBox = ({ children }) => (
-  <Paper elevation={3}>
-    <Box m={1} p={1}>
+function FormViewBox({ children }) {
+  return (
+    <Paper elevation={3}>
+      <Box m={1} p={1}>
+        {children}
+      </Box>
+    </Paper>
+  );
+}
+
+function SectionBox({ section, children, ...props }) {
+  return <Box {...props}>{children}</Box>;
+}
+
+function View({ children, ...props }) {
+  return (
+    <Grid {...props} container>
       {children}
-    </Box>
-  </Paper>
-);
+    </Grid>
+  );
+}
 
-const SectionBox = ({ section, children, ...props }) => (
-  <Box {...props}>{children}</Box>
-);
-
-const View = ({ children, ...props }) => (
-  <Grid {...props} container>
-    {children}
-  </Grid>
-);
-
-const ViewItem = ({ children, field, ...props }) => (
-  <Grid {...props} item>
-    <Box mb={1} p={1}>
-      {children}
-    </Box>
-  </Grid>
-);
+function ViewItem({ children, field, ...props }) {
+  return (
+    <Grid {...props} item>
+      <Box mb={1} p={1}>
+        {children}
+      </Box>
+    </Grid>
+  );
+}
 
 export const materialViewComponents = {
   components: {
@@ -99,8 +105,8 @@ export const materialViewComponents = {
   }
 };
 
-const registerComponents = (...args) => {
+function registerComponents(...args) {
   register({ state: materialViewComponents }, ...args);
-};
+}
 
 export default registerComponents;

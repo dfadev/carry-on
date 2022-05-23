@@ -1,31 +1,24 @@
 import React from "react";
-import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import Switch from "@material-ui/core/Switch";
-import withStyles from "@material-ui/core/styles/withStyles";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import Switch from "@mui/material/Switch";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";
 
-export default withStyles(
-  {
-    formControlRoot: {
-      verticalAlign: "middle"
-    }
-  },
-  { name: "CoSwitchField" }
-)(
-  ({
-    classes,
-    name,
-    readOnly,
-    label = name,
-    disabled: disabledProp,
-    value: valueProp,
-    labelPlacement,
-    required,
-    ...rest
-  }) => (
+function SwitchField({
+  classes,
+  name,
+  readOnly,
+  label = name,
+  disabled: disabledProp,
+  value: valueProp,
+  labelPlacement,
+  required,
+  ...rest
+}) {
+  return (
     <Field path={name} type="checkbox" readOnly={readOnly}>
       {(field, store) => {
         const { error, hasError, disabled, value } = getFieldStatus(
@@ -58,5 +51,17 @@ export default withStyles(
         );
       }}
     </Field>
-  )
+  );
+}
+
+const StyledSwitchField = withStyles(
+  SwitchField,
+  {
+    formControlRoot: {
+      verticalAlign: "middle"
+    }
+  },
+  { name: "CoSwitchField" }
 );
+
+export default StyledSwitchField;

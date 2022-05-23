@@ -1,104 +1,78 @@
 import React from "react";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import ScopedCssBaseline from "@material-ui/core/ScopedCssBaseline";
-import Container from "@material-ui/core/Container";
-import AppBar from "@material-ui/core/AppBar";
+import createCache from "@emotion/cache";
+import { CacheProvider } from "@emotion/react";
 import { BrowserRouter } from "carry-on-react-router";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-import { create } from "jss";
-import {
-  StylesProvider,
-  createGenerateClassName,
-  jssPreset,
-  MuiThemeProvider,
-  createMuiTheme,
-  responsiveFontSizes
-} from "@material-ui/core/styles";
-import { mergeAdvanced } from "object-merge-advanced";
 import { ErrorBoundary } from "react-error-boundary";
-import FavIcon from "react-favicon";
 import { State, Register, Render } from "carry-on-react";
-import { deproxify } from "carry-on-utils";
+import { FormView } from "carry-on-react-view";
 
-const generateClassName = createGenerateClassName({ productionPrefix: "_" });
-const jss = create(jssPreset());
+export const muiCache = createCache({
+  key: "mui",
+  prepend: true
+});
+
+function AppFallbackComponent({ error, resetErrorBoundary }) {
+  return (
+    <div>
+      <p>
+        <strong>Oops! An error occured!</strong>
+      </p>
+      <p>
+        <strong>Error:</strong> {error.toString()}
+      </p>
+      <button type="button" onClick={resetErrorBoundary}>
+        Try again
+      </button>
+    </div>
+  );
+}
+
 const helmetContext = {};
+function DefaultSiteWrapper({ children }) {
+  return (
+    <State>
+      <Render>
+        {({ title }) => (
+          <HelmetProvider context={helmetContext}>
+            <Helmet>{title}</Helmet>
+            {children}
+          </HelmetProvider>
+        )}
+      </Render>
+    </State>
+  );
+}
 
-const AppFallbackComponent = ({ error, resetErrorBoundary }) => (
-  <div>
-    <p>
-      <strong>Oops! An error occured!</strong>
-    </p>
-    <p>
-      <strong>Error:</strong> {error.toString()}
-    </p>
-    <button type="button" onClick={resetErrorBoundary}>
-      Try again
-    </button>
-  </div>
-);
-
-const themeState =
-  theme =>
-  ({ set }) => ({
-    initialTheme: theme || {},
-    theme: responsiveFontSizes(createMuiTheme(theme)),
-    setTheme: t => {
-      set(state => {
-        state.initialTheme = t;
-        state.theme = responsiveFontSizes(createMuiTheme(t));
-      });
-    },
-    mergeTheme: t => {
-      set(state => {
-        const merged = mergeAdvanced(state.initialTheme, t);
-        state.theme = responsiveFontSizes(createMuiTheme(merged));
-      });
-    }
-  });
-
-const MaterialApp = ({ children, ...props }) => (
-  <State>
-    <Register>{{ ...props }}</Register>
-    <Register>{themeState(props.theme)}</Register>
-    <Render>
-      {({
-        FallbackComponent = AppFallbackComponent,
-        Router = BrowserRouter,
-        basename,
-        onError,
-        theme,
-        favIcon,
-        title,
-        scopedCss,
-        CssBaselineComponent = scopedCss ? ScopedCssBaseline : CssBaseline,
-        container
-      }) => (
-        <Router basename={basename}>
-          <StylesProvider jss={jss} generateClassName={generateClassName}>
-            <MuiThemeProvider theme={deproxify(theme)}>
-              <CssBaselineComponent>
-                <Container {...container}>
-                  <ErrorBoundary
-                    onError={onError}
-                    FallbackComponent={FallbackComponent}
-                  >
-                    <HelmetProvider context={helmetContext}>
-                      <Helmet>{title}</Helmet>
-                      <FavIcon url="" {...favIcon} />
-                      <AppBar />
-                      {children}
-                    </HelmetProvider>
-                  </ErrorBoundary>
-                </Container>
-              </CssBaselineComponent>
-            </MuiThemeProvider>
-          </StylesProvider>
-        </Router>
-      )}
-    </Render>
-  </State>
-);
+function MaterialApp({ children, ...props }) {
+  return (
+    <State>
+      <Register>{{ ...props }}</Register>
+      <Render>
+        {({
+          FallbackComponent = AppFallbackComponent,
+          Router = BrowserRouter,
+          SiteWrapper = DefaultSiteWrapper,
+          basename,
+          onError
+        }) => (
+          <Router basename={basename}>
+            <CacheProvider value={muiCache}>
+              <ErrorBoundary
+                onError={onError}
+                FallbackComponent={FallbackComponent}
+              >
+                <SiteWrapper>
+                  <FormView id="app" noFormTag />
+                </SiteWrapper>
+              </ErrorBoundary>
+            </CacheProvider>
+          </Router>
+        )}
+      </Render>
+    </State>
+  );
+}
 
 /*
 y = {

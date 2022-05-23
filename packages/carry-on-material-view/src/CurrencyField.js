@@ -1,6 +1,6 @@
 import React from "react";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import withStyles from "@material-ui/core/styles/withStyles";
+import InputAdornment from "@mui/material/InputAdornment";
+import { withStyles } from "tss-react/mui";
 import MaskedTextField from "./MaskedTextField";
 
 const numberAccept = /[\d.]+/g;
@@ -53,21 +53,30 @@ const formatCurrency = maxDigits => string =>
 
 const accept = /[\d.$]/g;
 
-const CurrencyField = withStyles(
+function CurrencyField({
+  InputProps,
+  maximumFractionDigits = 2,
+  symbol = "$",
+  ...props
+}) {
+  return (
+    <MaskedTextField
+      accept={accept}
+      format={formatCurrency(maximumFractionDigits)}
+      InputProps={{
+        startAdornment: (
+          <InputAdornment position="start">{symbol}</InputAdornment>
+        ),
+        ...(InputProps || {})
+      }}
+      {...(props || {})}
+    />
+  );
+}
+const StyledCurrencyField = withStyles(
+  CurrencyField,
   {},
   { name: "CoCurrencyField" }
-)(({ InputProps, maximumFractionDigits = 2, symbol = "$", ...props }) => (
-  <MaskedTextField
-    accept={accept}
-    format={formatCurrency(maximumFractionDigits)}
-    InputProps={{
-      startAdornment: (
-        <InputAdornment position="start">{symbol}</InputAdornment>
-      ),
-      ...(InputProps || {})
-    }}
-    {...(props || {})}
-  />
-));
+);
 
-export default CurrencyField;
+export default StyledCurrencyField;

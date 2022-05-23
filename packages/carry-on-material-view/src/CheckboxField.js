@@ -1,26 +1,23 @@
 import React from "react";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControl from "@material-ui/core/FormControl";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import withStyles from "@material-ui/core/styles/withStyles";
+import Checkbox from "@mui/material/Checkbox";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";
 
-const CheckboxField = withStyles(
-  {},
-  { name: "CoCheckboxField" }
-)(
-  ({
-    name,
-    label = name,
-    readOnly,
-    required,
-    disabled: disabledProp,
-    value: valueProp,
-    labelPlacement,
-    ...props
-  }) => (
+function CheckboxField({
+  name,
+  label = name,
+  readOnly,
+  required,
+  disabled: disabledProp,
+  value: valueProp,
+  labelPlacement,
+  ...props
+}) {
+  return (
     <Field path={name} type="checkbox" readOnly={readOnly}>
       {(field, store) => {
         const { element } = field;
@@ -50,7 +47,13 @@ const CheckboxField = withStyles(
         );
       }}
     </Field>
-  )
+  );
+}
+
+const StyledCheckboxField = withStyles(
+  CheckboxField,
+  {},
+  { name: "CoCheckboxField" }
 );
 
-export default CheckboxField;
+export default StyledCheckboxField;

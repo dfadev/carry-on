@@ -1,33 +1,26 @@
 import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import {
-  MuiPickersUtilsProvider,
-  DatePicker,
-  KeyboardDatePicker
-} from "@material-ui/pickers";
+import { TextField } from "@mui/material";
+import { withStyles } from "tss-react/mui";
+import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import { Field } from "carry-on-react-forms";
-import DateFnsUtils from "@date-io/date-fns";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import getFieldStatus from "./getFieldStatus";
 
 const defaultInitialDate = new Date();
 defaultInitialDate.setFullYear(defaultInitialDate.getFullYear() - 18);
 
-const DobField = withStyles(
-  {},
-  { name: "CoDobField" }
-)(
-  ({
-    classes,
-    name,
-    label = name,
-    disabled: disabledProp,
-    value: valueProp,
-    initialDate = defaultInitialDate,
-    DateUtils = DateFnsUtils,
-    keyboard = true,
-    readOnly,
-    ...props
-  }) => (
+function DobField({
+  classes,
+  name,
+  label = name,
+  disabled: disabledProp,
+  value: valueProp,
+  initialDate = defaultInitialDate,
+  dateAdapter = AdapterDateFns,
+  readOnly,
+  ...props
+}) {
+  return (
     <Field path={name} type="date" readOnly={readOnly}>
       {(field, store) => {
         const { error, hasError, disabled, value } = getFieldStatus(
@@ -37,23 +30,21 @@ const DobField = withStyles(
           disabledProp
         );
 
-        function handleDateChange(dt) {
+        const handleDateChange = dt => {
           field.setValue(dt);
           field.setTouched(true);
-        }
-
-        const Picker = keyboard ? KeyboardDatePicker : DatePicker;
+        };
 
         return (
-          <MuiPickersUtilsProvider utils={DateUtils}>
-            <Picker
+          <LocalizationProvider dateAdapter={dateAdapter}>
+            <DatePicker
               id={field.element.id}
               name={field.element.name}
               disabled={disabled}
               disableFuture
               initialFocusedDate={initialDate}
               openTo="year"
-              views={["year", "month", "date"]}
+              views={["year", "month", "day"]}
               variant="inline"
               label={label}
               value={value}
@@ -62,13 +53,16 @@ const DobField = withStyles(
               error={hasError}
               helperText={hasError && error}
               autoOk
+              renderInput={params => <TextField {...params} />}
               {...props}
             />
-          </MuiPickersUtilsProvider>
+          </LocalizationProvider>
         );
       }}
     </Field>
-  )
-);
+  );
+}
 
-export default DobField;
+const StyledDobField = withStyles(DobField, {}, { name: "CoDobField" });
+
+export default StyledDobField;

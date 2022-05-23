@@ -1,27 +1,24 @@
 import React from "react";
-import MuiTextField from "@material-ui/core/TextField";
-import withStyles from "@material-ui/core/styles/withStyles";
+import MuiTextField from "@mui/material/TextField";
+import { withStyles } from "tss-react/mui";
 import { Rifm } from "rifm";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";
 
-const MaskedTextField = withStyles(
-  {},
-  { name: "CoMaskedTextField" }
-)(
-  ({
-    name,
-    label = name,
-    format,
-    refuse,
-    accept,
-    mask,
-    disabled: disabledProp,
-    value: valueProp,
-    readOnly = false,
-    InputProps,
-    ...props
-  }) => (
+function MaskedTextField({
+  name,
+  label = name,
+  format,
+  refuse,
+  accept,
+  mask,
+  disabled: disabledProp,
+  value: valueProp,
+  readOnly = false,
+  InputProps,
+  ...props
+}) {
+  return (
     <Field path={name} readOnly={readOnly}>
       {(field, store, prefix) => {
         const { error, hasError, disabled, value } = getFieldStatus(
@@ -63,7 +60,13 @@ const MaskedTextField = withStyles(
         );
       }}
     </Field>
-  )
+  );
+}
+
+const StyledMaskedTextField = withStyles(
+  MaskedTextField,
+  {},
+  { name: "CoMaskedTextField" }
 );
 
-export default MaskedTextField;
+export default StyledMaskedTextField;
