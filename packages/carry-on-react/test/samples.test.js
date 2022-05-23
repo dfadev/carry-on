@@ -10,6 +10,7 @@ import {
   initStores,
   get
 } from "carry-on-store";
+import { setLoggerOutput } from "carry-on-utils";
 import {
   wait,
   render,
@@ -17,6 +18,8 @@ import {
   waitForElement
 } from "@testing-library/react";
 import { State } from "../src";
+
+setLoggerOutput(() => {});
 
 afterEach(() => {
   initStores();

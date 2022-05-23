@@ -2,9 +2,12 @@
  * @jest-environment jsdom
  */
 import React from "react";
-import { render } from "@testing-library/react";
+import { act, render, waitFor } from "@testing-library/react";
 import { set, getStore, deleteStore, register } from "carry-on-store";
+import { setLoggerOutput } from "carry-on-utils";
 import { withState, State } from "../src";
+
+setLoggerOutput(() => {});
 
 test("<State /> renders", () => {
   const { asFragment } = render(<State>{() => "ok"}</State>);
@@ -80,13 +83,15 @@ test("withState debounce", async () => {
   });
   const Comp = withState({ debounce: 1 })(props => props.field || null);
   const { asFragment } = render(<Comp />);
-  expect(asFragment()).toMatchSnapshot();
-  set(state => {
-    state.field = "value2";
+  await waitFor(async () => {
+    expect(asFragment()).toMatchSnapshot();
+    set(state => {
+      state.field = "value2";
+    });
+    await new Promise(r => setTimeout(r, 5));
+    expect(asFragment()).toMatchSnapshot();
+    deleteStore();
   });
-  await new Promise(r => setTimeout(r, 5));
-  expect(asFragment()).toMatchSnapshot();
-  deleteStore();
 });
 
 test("withState throttle", async () => {
@@ -95,13 +100,15 @@ test("withState throttle", async () => {
   });
   const Comp = withState({ throttle: 1 })(props => props.field || null);
   const { asFragment } = render(<Comp />);
-  expect(asFragment()).toMatchSnapshot();
-  set(state => {
-    state.field = "value2";
+  await waitFor(async () => {
+    expect(asFragment()).toMatchSnapshot();
+    set(state => {
+      state.field = "value2";
+    });
+    await new Promise(r => setTimeout(r, 5));
+    expect(asFragment()).toMatchSnapshot();
+    deleteStore();
   });
-  await new Promise(r => setTimeout(r, 5));
-  expect(asFragment()).toMatchSnapshot();
-  deleteStore();
 });
 
 test("withState constant", () => {

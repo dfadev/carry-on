@@ -4,10 +4,13 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { set, getStore, deleteStore, register } from "carry-on-store";
+import { setLoggerOutput } from "carry-on-utils";
 import { withState, State, useCarryOn } from "../src";
 
+setLoggerOutput(() => {});
+
 const FnComp = () => {
-  const stuff = useCarryOn({
+  const [stuff, set] = useCarryOn({
     debug: true,
     verbose: true,
     register: {
@@ -32,7 +35,7 @@ test("useCarryOn renders", () => {
 });
 
 const FnComp2 = () => {
-  const stuff = useCarryOn({
+  const [stuff, set] = useCarryOn({
     throttle: 1000,
     debug: true,
     verbose: true,
@@ -54,7 +57,7 @@ test("useCarryOn throttle", () => {
 });
 
 const FnComp3 = () => {
-  const stuff = useCarryOn({
+  const [stuff, set] = useCarryOn({
     debounce: 1000,
     debug: true,
     verbose: true,
