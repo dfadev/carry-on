@@ -55,8 +55,7 @@ function proxyfy(state, onGet, suffix, ProxyMap) {
       return {
         ...nextItem,
         get value() {
-          if (nextItem.done && !nextItem.value)
-            return nextItem.value;
+          if (nextItem.done && !nextItem.value) return nextItem.value;
           return proxyValue(subKey, nextItem.value);
         }
       };
