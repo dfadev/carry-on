@@ -1,5 +1,5 @@
-import { toMatchDiffSnapshot } from "snapshot-diff";
-import { cleanup } from "@testing-library/react";
+const { toMatchDiffSnapshot } = require("snapshot-diff");
+const { cleanup } = require("@testing-library/react");
 
 expect.extend({ toMatchDiffSnapshot });
 afterEach(cleanup);

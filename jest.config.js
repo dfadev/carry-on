@@ -1,7 +1,7 @@
-/* eslint-disable no-restricted-syntax */
 const { guessRootConfig } = require("lerna-jest");
 
 const config = guessRootConfig(__dirname);
+config.collectCoverageFrom = ["**/src/*.js"];
 
 const reactProjects = [
   "carry-on-react",
@@ -21,8 +21,13 @@ const reactProject = {
 
 for (const entry of config.projects) {
   const nm = entry.name.slice(0, -12);
-  if (reactProjects.includes(nm)) Object.assign(entry, reactProject);
+  if (reactProjects.includes(nm)) {
+    Object.assign(entry, reactProject);
+    entry.snapshotSerializers = ["@emotion/jest/serializer"];
+  }
+
+  entry.transform = { "\\.(js|jsx|ts|tsx)$": "@sucrase/jest-plugin" };
+  delete entry.name
 }
 
-config.collectCoverageFrom = ["**/src/*.js"];
 module.exports = config;
