@@ -8,7 +8,7 @@ export { default as isMap } from "./isMap";
 export { default as isSet } from "./isSet";
 export { default as isString } from "./isString";
 export { default as keys } from "./keys";
-export { default as logger } from "./logger";
+export { default as logger, setLoggerOutput } from "./logger";
 export { default as makeCancelable } from "./makeCancelable";
 export { default as mutateMerge, mutateMergeStrip } from "./mutateMerge";
 export { default as mutateSet, mutateSetA } from "./mutateSet";
