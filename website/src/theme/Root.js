@@ -1,19 +1,19 @@
 import React from "react";
-import {
-  StylesProvider,
-  createGenerateClassName
-} from "@material-ui/core/styles";
+import createCache from '@emotion/cache';
+import { CacheProvider } from "@emotion/react";
+import { ColorModeProvider } from '@docusaurus/theme-common';
 
-const generateClassName = createGenerateClassName({
-  disableGlobal: true,
-  productionPrefix: "CO",
-  seed: "carryOn"
+export const muiCache = createCache({
+  'key': 'mui',
+  'prepend': true,
 });
 
 const Root = ({ children }) => (
-  <StylesProvider generateClassName={generateClassName}>
-    {children}
-  </StylesProvider>
+  <CacheProvider value={muiCache}>
+    <ColorModeProvider>
+      {children}
+    </ColorModeProvider>
+  </CacheProvider>
 );
 
 export default Root;

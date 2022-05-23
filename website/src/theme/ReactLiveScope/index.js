@@ -1,13 +1,26 @@
 import React from "react";
-import * as buble from "buble";
 import Inspector from "react-inspector";
-import { Typography, Box, Grid, Paper } from "@material-ui/core";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import PauseIcon from "@material-ui/icons/Pause";
-import StopIcon from "@material-ui/icons/Stop";
-import FastForwardIcon from "@material-ui/icons/FastForward";
-import FastRewindIcon from "@material-ui/icons/FastRewind";
-import PublishIcon from "@material-ui/icons/Publish";
+import {
+  Container,
+  AppBar,
+  Toolbar,
+  Menu,
+  Typography,
+  Box,
+  Grid,
+  Paper,
+  List,
+  ListItem
+} from "@mui/material";
+import purple from "@mui/material/colors/purple";
+import green from "@mui/material/colors/green";
+import MenuIcon from "@mui/icons-material/Menu";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
+import StopIcon from "@mui/icons-material/Stop";
+import FastForwardIcon from "@mui/icons-material/FastForward";
+import FastRewindIcon from "@mui/icons-material/FastRewind";
+import PublishIcon from "@mui/icons-material/Publish";
 import {
   register,
   initStores,
@@ -39,7 +52,7 @@ import {
   Strict,
   Throttle,
   Verbose,
-  carryOn
+  useCarryOn
 } from "carry-on-react";
 import {
   Form,
@@ -125,30 +138,12 @@ const canUseDOM = !!(
 if (canUseDOM) {
   debugStores(true);
   State.Debug = true;
-
-  const opts = {
-    objectAssign: "Object.assign",
-    transforms: {
-      moduleImport: false,
-      dangerousForOf: true,
-      dangerousTaggedTemplateString: true
-    }
-  };
-
-  const origTransform = buble.transform;
-  buble.transform = code => {
-    const removeImports = code
-      .split("\n")
-      .filter(line => !line.startsWith("import"))
-      .join("\n");
-    return origTransform(removeImports, opts);
-  };
 }
 
 const ReactLiveScope = {
   React,
   ...React,
-  MaterialApp,
+  AppBar,
   Box,
   BrowserRouter,
   ButtonField,
@@ -156,6 +151,7 @@ const ReactLiveScope = {
   CheckboxField,
   Children,
   Constant,
+  Container,
   ContentField,
   CurrencyField,
   DataField,
@@ -184,9 +180,14 @@ const ReactLiveScope = {
   InitialValues,
   InspectorField,
   Link,
+  List,
   ListField,
+  ListItem,
   MaskedTextField,
+  MaterialApp,
   MemoryRouter,
+  Menu,
+  MenuIcon,
   NavLink,
   OnMount,
   OnUnmount,
@@ -226,12 +227,12 @@ const ReactLiveScope = {
   Throttle,
   TimeField,
   ToggleButtonGroupField,
+  Toolbar,
   Typography,
   Verbose,
   View,
   Watch,
   ZipCodeField,
-  carryOn,
   connect,
   createStaticHistory,
   debugStore,
@@ -240,13 +241,16 @@ const ReactLiveScope = {
   devTools,
   get,
   getStore,
+  green,
   initStores,
   matchPath,
+  purple,
   register,
   registerComponents,
   router,
   set,
   materialViewComponents,
+  useCarryOn,
   useField,
   useForm,
   useFormState,
