@@ -298,6 +298,7 @@ export const subscribe = (fn, watch, id) =>
   getStore(id).notify.subscribe(fn, watch);
 
 // watch fields a select function uses
+/* eslint-disable-next-line default-param-last */
 export function watchGet(state, select, path = "", def, id) {
   const store = getStore(id);
 
