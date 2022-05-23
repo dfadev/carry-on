@@ -359,7 +359,6 @@ Object {
         "sub2": true,
       },
       "asymmetricMatch": true,
-      "length": true,
       "nodeType": true,
     },
   },

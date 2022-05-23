@@ -2,20 +2,96 @@
 
 exports[`should render <InspectorField> inside a Form 1`] = `
 <DocumentFragment>
-  <form
+  .emotion-0 {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+.emotion-1 {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 16px;
+  padding-bottom: 24px;
+  margin-bottom: 16px;
+}
+
+.emotion-2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: top;
+}
+
+.emotion-3 {
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+
+.emotion-4 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  margin-left: 16px;
+  margin-right: 16px;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+.emotion-4.Mui-disabled {
+  cursor: default;
+}
+
+.emotion-4 .MuiFormControlLabel-label.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-5 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+
+<form
     id="inspectorFieldForm.form"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 emotion-0"
     >
       <div
-        class="MuiBox-root MuiBox-root-1"
+        class="MuiBox-root emotion-1"
       >
         <div
-          class="MuiFormControl-root"
+          class="MuiFormControl-root emotion-2"
         >
           <label
-            class="MuiFormControlLabel-root CoInspectorField-labelRoot-2 MuiFormControlLabel-labelPlacementTop"
+            class="emotion-3 MuiFormControlLabel-root MuiFormControlLabel-labelPlacementTop emotion-4"
           >
             <ol
               role="tree"
@@ -115,7 +191,7 @@ exports[`should render <InspectorField> inside a Form 1`] = `
               </li>
             </ol>
             <span
-              class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label emotion-5"
             >
               Example Editor
             </span>
@@ -129,32 +205,134 @@ exports[`should render <InspectorField> inside a Form 1`] = `
 
 exports[`should render <InspectorField> inside a FormView 1`] = `
 <DocumentFragment>
-  <form
+  .emotion-0 {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
+}
+
+.emotion-1 {
+  margin: 8px;
+  padding: 8px;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.emotion-5 {
+  margin-bottom: 8px;
+  padding: 8px;
+}
+
+.emotion-6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: top;
+}
+
+.emotion-7 {
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+
+.emotion-8 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  margin-left: 16px;
+  margin-right: 16px;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+.emotion-8.Mui-disabled {
+  cursor: default;
+}
+
+.emotion-8 .MuiFormControlLabel-label.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-9 {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+
+<form
     id="inspectorFieldFormView.form"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 emotion-0"
     >
       <div
-        class="MuiBox-root MuiBox-root-3"
+        class="MuiBox-root emotion-1"
       >
         <div
-          class="MuiBox-root MuiBox-root-4"
+          class="MuiBox-root emotion-2"
         >
           <div
-            class="MuiGrid-root MuiGrid-container"
+            class="MuiGrid-root MuiGrid-container emotion-3"
           >
             <div
-              class="MuiGrid-root MuiGrid-item"
+              class="MuiGrid-root MuiGrid-item emotion-4"
             >
               <div
-                class="MuiBox-root MuiBox-root-5"
+                class="MuiBox-root emotion-5"
               >
                 <div
-                  class="MuiFormControl-root"
+                  class="MuiFormControl-root emotion-6"
                 >
                   <label
-                    class="MuiFormControlLabel-root CoInspectorField-labelRoot-6 MuiFormControlLabel-labelPlacementTop"
+                    class="emotion-7 MuiFormControlLabel-root MuiFormControlLabel-labelPlacementTop emotion-8"
                   >
                     <ol
                       role="tree"
@@ -254,7 +432,7 @@ exports[`should render <InspectorField> inside a FormView 1`] = `
                       </li>
                     </ol>
                     <span
-                      class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+                      class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label emotion-9"
                     >
                       Example Editor
                     </span>

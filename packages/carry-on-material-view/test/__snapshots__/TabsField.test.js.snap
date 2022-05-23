@@ -2,121 +2,266 @@
 
 exports[`should render <TabsField> inside a Form 1`] = `
 <DocumentFragment>
-  <form
+  .emotion-0 {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+}
+
+.emotion-1 {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 16px;
+  padding-bottom: 24px;
+  margin-bottom: 16px;
+}
+
+.emotion-2 {
+  overflow: hidden;
+  min-height: 48px;
+  -webkit-overflow-scrolling: touch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width:599.95px) {
+  .emotion-2 .MuiTabs-scrollButtons {
+    display: none;
+  }
+}
+
+.emotion-3 {
+  position: relative;
+  display: inline-block;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.emotion-4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-5 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  max-width: 360px;
+  min-width: 90px;
+  position: relative;
+  min-height: 48px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding: 12px 16px;
+  overflow: hidden;
+  white-space: normal;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.emotion-5::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-5.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-5 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-5.Mui-selected {
+  color: #1976d2;
+}
+
+.emotion-5.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-7 {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
+.emotion-14 {
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  width: 100%;
+  -webkit-transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #1976d2;
+}
+
+.emotion-16 {
+  padding-top: 8px;
+}
+
+<form
     id="tabsFieldForm.form"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 emotion-0"
     >
       <div
-        class="MuiBox-root MuiBox-root-1"
+        class="MuiBox-root emotion-1"
       >
         <div
-          class="MuiTabs-root"
+          class="MuiTabs-root emotion-2"
         >
           <div
-            class="MuiTabs-scroller MuiTabs-fixed"
-            style="overflow: hidden;"
+            class="MuiTabs-scroller MuiTabs-fixed emotion-3"
+            style="overflow: hidden; margin-bottom: 0px;"
           >
             <div
-              class="MuiTabs-flexContainer"
+              class="MuiTabs-flexContainer emotion-4"
               role="tablist"
             >
               <button
                 aria-selected="true"
-                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit Mui-selected"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected emotion-5"
                 role="tab"
                 tabindex="0"
                 type="button"
               >
-                <span
-                  class="MuiTab-wrapper"
+                <div
+                  class="MuiBox-root emotion-6"
+                  style="color: red;"
                 >
-                  <div
-                    class="MuiBox-root MuiBox-root-2"
-                    style="color: red;"
-                  >
-                    Red
-                  </div>
-                </span>
+                  Red
+                </div>
                 <span
-                  class="MuiTouchRipple-root"
+                  class="MuiTouchRipple-root emotion-7"
                 />
               </button>
               <button
                 aria-selected="false"
-                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary emotion-5"
                 role="tab"
                 tabindex="-1"
                 type="button"
               >
-                <span
-                  class="MuiTab-wrapper"
+                <div
+                  class="MuiBox-root emotion-6"
+                  style="color: green;"
                 >
-                  <div
-                    class="MuiBox-root MuiBox-root-7"
-                    style="color: green;"
-                  >
-                    Green
-                  </div>
-                </span>
+                  Green
+                </div>
                 <span
-                  class="MuiTouchRipple-root"
+                  class="MuiTouchRipple-root emotion-7"
                 />
               </button>
               <button
                 aria-selected="false"
-                class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+                class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary emotion-5"
                 role="tab"
                 tabindex="-1"
                 type="button"
               >
-                <span
-                  class="MuiTab-wrapper"
+                <div
+                  class="MuiBox-root emotion-6"
+                  style="color: blue;"
                 >
-                  <div
-                    class="MuiBox-root MuiBox-root-8"
-                    style="color: blue;"
-                  >
-                    Blue
-                  </div>
-                </span>
+                  Blue
+                </div>
                 <span
-                  class="MuiTouchRipple-root"
+                  class="MuiTouchRipple-root emotion-7"
                 />
               </button>
             </div>
             <span
-              class="PrivateTabIndicator-root-3 PrivateTabIndicator-colorSecondary-5 MuiTabs-indicator"
+              class="MuiTabs-indicator emotion-14"
               style="left: 0px; width: 0px;"
             />
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-9"
+          class="MuiBox-root emotion-6"
         >
           <div
-            class="MuiBox-root MuiBox-root-10"
+            class="MuiBox-root emotion-16"
           >
             Red Content
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-11"
+          class="MuiBox-root emotion-6"
           hidden=""
         >
           <div
-            class="MuiBox-root MuiBox-root-12"
+            class="MuiBox-root emotion-16"
           >
             Green Content
           </div>
         </div>
         <div
-          class="MuiBox-root MuiBox-root-13"
+          class="MuiBox-root emotion-6"
           hidden=""
         >
           <div
-            class="MuiBox-root MuiBox-root-14"
+            class="MuiBox-root emotion-16"
           >
             Blue Content
           </div>
@@ -129,133 +274,304 @@ exports[`should render <TabsField> inside a Form 1`] = `
 
 exports[`should render <TabsField> inside a FormView 1`] = `
 <DocumentFragment>
-  <form
+  .emotion-0 {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
+}
+
+.emotion-1 {
+  margin: 8px;
+  padding: 8px;
+}
+
+.emotion-3 {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.emotion-4 {
+  box-sizing: border-box;
+  margin: 0;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.emotion-5 {
+  margin-bottom: 8px;
+  padding: 8px;
+}
+
+.emotion-6 {
+  overflow: hidden;
+  min-height: 48px;
+  -webkit-overflow-scrolling: touch;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (max-width:599.95px) {
+  .emotion-6 .MuiTabs-scrollButtons {
+    display: none;
+  }
+}
+
+.emotion-7 {
+  position: relative;
+  display: inline-block;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.emotion-8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.emotion-9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  background-color: transparent;
+  outline: 0;
+  border: 0;
+  margin: 0;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25;
+  letter-spacing: 0.02857em;
+  text-transform: uppercase;
+  max-width: 360px;
+  min-width: 90px;
+  position: relative;
+  min-height: 48px;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding: 12px 16px;
+  overflow: hidden;
+  white-space: normal;
+  text-align: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.emotion-9::-moz-focus-inner {
+  border-style: none;
+}
+
+.emotion-9.Mui-disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+@media print {
+  .emotion-9 {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+.emotion-9.Mui-selected {
+  color: #1976d2;
+}
+
+.emotion-9.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.emotion-11 {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+}
+
+.emotion-18 {
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  width: 100%;
+  -webkit-transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #1976d2;
+}
+
+.emotion-20 {
+  padding-top: 8px;
+}
+
+<form
     id="tabsFieldFormView.form"
   >
     <div
-      class="MuiPaper-root MuiPaper-elevation3 MuiPaper-rounded"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 emotion-0"
     >
       <div
-        class="MuiBox-root MuiBox-root-15"
+        class="MuiBox-root emotion-1"
       >
         <div
-          class="MuiBox-root MuiBox-root-16"
+          class="MuiBox-root emotion-2"
         >
           <div
-            class="MuiGrid-root MuiGrid-container"
+            class="MuiGrid-root MuiGrid-container emotion-3"
           >
             <div
-              class="MuiGrid-root MuiGrid-item"
+              class="MuiGrid-root MuiGrid-item emotion-4"
             >
               <div
-                class="MuiBox-root MuiBox-root-17"
+                class="MuiBox-root emotion-5"
               >
                 <div
-                  class="MuiTabs-root"
+                  class="MuiTabs-root emotion-6"
                 >
                   <div
-                    class="MuiTabs-scroller MuiTabs-fixed"
-                    style="overflow: hidden;"
+                    class="MuiTabs-scroller MuiTabs-fixed emotion-7"
+                    style="overflow: hidden; margin-bottom: 0px;"
                   >
                     <div
-                      class="MuiTabs-flexContainer"
+                      class="MuiTabs-flexContainer emotion-8"
                       role="tablist"
                     >
                       <button
                         aria-selected="true"
-                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit Mui-selected"
+                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected emotion-9"
                         role="tab"
                         tabindex="0"
                         type="button"
                       >
-                        <span
-                          class="MuiTab-wrapper"
+                        <div
+                          class="MuiBox-root emotion-2"
+                          style="color: red;"
                         >
-                          <div
-                            class="MuiBox-root MuiBox-root-18"
-                            style="color: red;"
-                          >
-                            Red
-                          </div>
-                        </span>
+                          Red
+                        </div>
                         <span
-                          class="MuiTouchRipple-root"
+                          class="MuiTouchRipple-root emotion-11"
                         />
                       </button>
                       <button
                         aria-selected="false"
-                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary emotion-9"
                         role="tab"
                         tabindex="-1"
                         type="button"
                       >
-                        <span
-                          class="MuiTab-wrapper"
+                        <div
+                          class="MuiBox-root emotion-2"
+                          style="color: green;"
                         >
-                          <div
-                            class="MuiBox-root MuiBox-root-23"
-                            style="color: green;"
-                          >
-                            Green
-                          </div>
-                        </span>
+                          Green
+                        </div>
                         <span
-                          class="MuiTouchRipple-root"
+                          class="MuiTouchRipple-root emotion-11"
                         />
                       </button>
                       <button
                         aria-selected="false"
-                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorInherit"
+                        class="MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary emotion-9"
                         role="tab"
                         tabindex="-1"
                         type="button"
                       >
-                        <span
-                          class="MuiTab-wrapper"
+                        <div
+                          class="MuiBox-root emotion-2"
+                          style="color: blue;"
                         >
-                          <div
-                            class="MuiBox-root MuiBox-root-24"
-                            style="color: blue;"
-                          >
-                            Blue
-                          </div>
-                        </span>
+                          Blue
+                        </div>
                         <span
-                          class="MuiTouchRipple-root"
+                          class="MuiTouchRipple-root emotion-11"
                         />
                       </button>
                     </div>
                     <span
-                      class="PrivateTabIndicator-root-19 PrivateTabIndicator-colorSecondary-21 MuiTabs-indicator"
+                      class="MuiTabs-indicator emotion-18"
                       style="left: 0px; width: 0px;"
                     />
                   </div>
                 </div>
                 <div
-                  class="MuiBox-root MuiBox-root-25"
+                  class="MuiBox-root emotion-2"
                 >
                   <div
-                    class="MuiBox-root MuiBox-root-26"
+                    class="MuiBox-root emotion-20"
                   >
                     Red Content
                   </div>
                 </div>
                 <div
-                  class="MuiBox-root MuiBox-root-27"
+                  class="MuiBox-root emotion-2"
                   hidden=""
                 >
                   <div
-                    class="MuiBox-root MuiBox-root-28"
+                    class="MuiBox-root emotion-20"
                   >
                     Green Content
                   </div>
                 </div>
                 <div
-                  class="MuiBox-root MuiBox-root-29"
+                  class="MuiBox-root emotion-2"
                   hidden=""
                 >
                   <div
-                    class="MuiBox-root MuiBox-root-30"
+                    class="MuiBox-root emotion-20"
                   >
                     Blue Content
                   </div>
