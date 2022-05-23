@@ -27,6 +27,7 @@
     "carry-on-utils": "file:../packages/carry-on-utils",
     "clsx": "^1.1.1",
     "date-fns": "^2.28.0",
+    "docusaurus-plugin-module-alias": "^0.0.2",
     "immer": "^9.0.14",
     "libphonenumber-js": "^1.10.4",
     "object-merge-advanced": "^13.1.2",
