@@ -4,7 +4,6 @@
 import React from "react";
 import { initStores } from "carry-on-store";
 import { render } from "@testing-library/react";
-import carryOn from "../src/carryOn";
 import DevTools from "../src/DevTools";
 
 afterEach(() => {
