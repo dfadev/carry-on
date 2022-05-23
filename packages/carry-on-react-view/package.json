@@ -1,6 +1,6 @@
 {
   "name": "carry-on-react-view",
-  "version": "1.0.20",
+  "version": "2.0.0-alpha.0",
   "description": "View container for React.",
   "repository": {
     "type": "git",
@@ -22,10 +22,10 @@
     "hoist-non-react-statics": ">=3.3.2"
   },
   "devDependencies": {
-    "carry-on-react": "^1.0.20",
-    "carry-on-react-forms": "^1.0.20",
-    "carry-on-store": "^1.0.20",
-    "carry-on-utils": "^1.0.20",
+    "carry-on-react": "^2.0.0-alpha.0",
+    "carry-on-react-forms": "^2.0.0-alpha.0",
+    "carry-on-store": "^2.0.0-alpha.0",
+    "carry-on-utils": "^2.0.0-alpha.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
