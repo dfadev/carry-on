@@ -29,9 +29,9 @@
     "rollup": "^2.74.1"
   },
   "peerDependencies": {
-    "carry-on-react": "^1.0.20",
-    "carry-on-store": "^1.0.20",
-    "carry-on-utils": "^1.0.20",
+    "carry-on-react": "^2.0.0-alpha.1",
+    "carry-on-store": "^2.0.0-alpha.1",
+    "carry-on-utils": "^2.0.0-alpha.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
