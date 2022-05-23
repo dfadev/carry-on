@@ -1,7 +1,10 @@
 /**
  * @jest-environment jsdom
  */
+import { setLoggerOutput } from "carry-on-utils";
 import { getStore, deleteStore, connect, register, watch, Watch } from "../src";
+
+setLoggerOutput(() => {});
 
 test("watch", () => {
   Watch.Debug = true;

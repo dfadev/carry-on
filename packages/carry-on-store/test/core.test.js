@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+import { setLoggerOutput } from "carry-on-utils";
 import {
   getStore,
   initStores,
@@ -14,6 +15,8 @@ import {
   set,
   get
 } from "../src";
+
+setLoggerOutput(() => {});
 
 test("getStore", () => {
   debugStores(true);
