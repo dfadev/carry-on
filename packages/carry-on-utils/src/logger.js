@@ -18,13 +18,16 @@ const clr = keys(colors).map(item => colors[item]);
 let currentClr = 0;
 const prefix = "%c%s %c %s ";
 
-// eslint-disable-next-line
-export default function logger(id, out = console.log) {
+// eslint-disable-next-line no-console
+let output = console.log;
+
+export function setLoggerOutput(out) {
+  output = out;
+}
+
+export default function logger(id, out = output) {
   /* istanbul ignore next */
-  if (document.documentMode || /Edge/.test(navigator.userAgent))
-    // eslint-disable-next-line
-    return out;
-  // eslint-enable
+  if (document.documentMode || /Edge/.test(navigator.userAgent)) return out;
 
   const color = clr[currentClr];
   currentClr += 1;
