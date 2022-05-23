@@ -32,11 +32,35 @@ register("Store1", { state: { field1: "value" } });
 render(<State from="Store1">{state => state.field1}</State>);
 ```
 
+### Use Hook
+
+Functional components have the `useCarryOn` hook to access state.
+
+```js live noInline
+const Component = () => {
+  const [field1, set] = useCarryOn({
+    from: "Store1",
+    register: {
+      state: {
+        field1: "value"
+      }
+    },
+    select: state => state.field1
+  });
+  return <div>{field1}</div>;
+};
+
+render(
+  <>
+    <Component />
+    <StateInspector from="Store1" />
+  </>
+);
+```
+
 ## Access tracking
 
-In the above examples there are no selectors indicating which fields the `State`
-component should subscribe to. This is because when the render function is
-executed the state is monitored for usage via a Proxy. The usage tracking is
+When using the `State` component, selectors indicating which fields should be subscribed to are optional. This is because when the render function executes the state is monitored for usage via a `Proxy`. The usage tracking is
 then used to determine which state fields will cause the `State` component to
 update.
 
@@ -198,7 +222,7 @@ render(
 );
 ```
 
-### Global
+### Global Debugging
 
 Debugging can be turned on or off for all `State` components:
 
