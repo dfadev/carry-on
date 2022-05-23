@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import immer from "immer";
+import { produce as immer } from "immer";
 import transaction from "../src/transaction";
 import { deleteStore, register, getStore, connect, get, set } from "../src";
 
