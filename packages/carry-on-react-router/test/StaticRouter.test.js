@@ -3,7 +3,7 @@
  */
 import React from "react";
 import { render } from "@testing-library/react";
-import { initStores, connect, get } from "carry-on-store";
+import { initStores, get } from "carry-on-store";
 import Route from "../src/components/Route";
 import Prompt from "../src/components/Prompt";
 import Redirect from "../src/components/Redirect";

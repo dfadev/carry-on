@@ -4,7 +4,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import { initStores } from "carry-on-store";
-import { MemoryRouter, Router } from "../src/components/Router";
+import { MemoryRouter } from "../src/components/Router";
 import Route from "../src/components/Route";
 
 describe("Integration Tests", () => {

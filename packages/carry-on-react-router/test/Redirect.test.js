@@ -3,16 +3,11 @@
  */
 import React from "react";
 import { render } from "@testing-library/react";
-import { createMemoryHistory } from "history";
-import { register, connect, initStores } from "carry-on-store";
-import { MemoryRouter, Router } from "../src/components/Router";
-import NavLink from "../src/components/NavLink";
-import withRouter from "../src/components/withRouter";
+import { initStores } from "carry-on-store";
+import { MemoryRouter } from "../src/components/Router";
 import Redirect from "../src/components/Redirect";
 import Switch from "../src/components/Switch";
 import Route from "../src/components/Route";
-
-import router from "../src/router";
 
 describe("A <Redirect>", () => {
   afterEach(() => {

@@ -3,7 +3,7 @@
  */
 import React from "react";
 import { render } from "@testing-library/react";
-import { initStores, connect } from "carry-on-store";
+import { initStores } from "carry-on-store";
 import * as ReactIs from "react-is";
 import { MemoryRouter, StaticRouter } from "../src/components/Router";
 import Route from "../src/components/Route";
