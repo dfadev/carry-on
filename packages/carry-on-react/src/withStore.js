@@ -2,12 +2,16 @@ import React from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 import StoreContext from "./StoreContext";
 
-const withStore = WrappedComponent => {
-  const WithStore = props => (
-    <StoreContext.Consumer>
-      {from => <WrappedComponent {...props} from={props.from || from} />}
-    </StoreContext.Consumer>
-  );
+function withStore(WrappedComponent) {
+  function WithStore({ from: propsFrom, ...props }) {
+    return (
+      <StoreContext.Consumer>
+        {providerFrom => (
+          <WrappedComponent {...props} from={propsFrom || providerFrom} />
+        )}
+      </StoreContext.Consumer>
+    );
+  }
 
   WithStore.displayName = `withStore(${
     WrappedComponent.displayName || WrappedComponent.name
@@ -15,6 +19,6 @@ const withStore = WrappedComponent => {
   WithStore.WrappedComponent = WrappedComponent;
 
   return hoistNonReactStatic(WithStore, WrappedComponent);
-};
+}
 
 export default withStore;

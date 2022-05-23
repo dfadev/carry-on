@@ -1,21 +1,23 @@
 import React from "react";
 import { Field } from "carry-on-react-forms";
 
-const GenericInputField = ({ tooltip, name, label }) => (
-  <Field path={name}>
-    {({ element = {} }) => (
-      <div>
+function GenericInputField({ tooltip, name, label }) {
+  return (
+    <Field path={name}>
+      {({ element = {} }) => (
         <div>
-          <label htmlFor={element.id}>{label}</label>
+          <div>
+            <label htmlFor={element.id}>{label}</label>
+          </div>
+          <div>
+            <input {...element} />
+          </div>
+          {tooltip && typeof tooltip === "function" ? tooltip() : tooltip}
+          <br />
         </div>
-        <div>
-          <input {...element} />
-        </div>
-        {tooltip && typeof tooltip === "function" ? tooltip() : tooltip}
-        <br />
-      </div>
-    )}
-  </Field>
-);
+      )}
+    </Field>
+  );
+}
 
 export default GenericInputField;

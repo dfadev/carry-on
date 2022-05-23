@@ -16,8 +16,8 @@ import {
 import createStaticHistory from "../createStaticHistory";
 import router from "../router";
 
-const GenericRouter = (createHistory = createBrowserHistory) =>
-  withStore(({ children = null, path = "app.history", ...props }) => {
+function GenericRouter(createHistory = createBrowserHistory) {
+  return withStore(({ children = null, path = "app.history", ...props }) => {
     const rtr = useMemo(() => router(createHistory(props), path), [path]);
 
     return (
@@ -37,6 +37,7 @@ const GenericRouter = (createHistory = createBrowserHistory) =>
       </State>
     );
   });
+}
 
 export const Router = GenericRouter(props => props.history);
 export const MemoryRouter = GenericRouter(createMemoryHistory);

@@ -1,6 +1,13 @@
-import { createContext } from "react";
+import React, { createContext, useMemo } from "react";
 
-const context = createContext();
-context.displayName = "FieldContext";
+const FieldContext = createContext();
+FieldContext.displayName = "FieldContext";
 
-export default context;
+export function MemoizedFieldContextProvider({ prefix, children }) {
+  const value = useMemo(() => ({ prefix }), [prefix]);
+  return (
+    <FieldContext.Provider value={value}>{children}</FieldContext.Provider>
+  );
+}
+
+export default FieldContext;

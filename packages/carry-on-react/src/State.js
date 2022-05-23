@@ -315,4 +315,5 @@ State.defaultProps = {
   render: undefined
 };
 
-export default withStore(withNodesToProps(State));
+const ComposableState = withStore(withNodesToProps(State));
+export default ComposableState;

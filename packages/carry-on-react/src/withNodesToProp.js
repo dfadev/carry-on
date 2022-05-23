@@ -1,20 +1,21 @@
 import React from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 
-const withNodesToProp = propName => WrappedComponent => {
-  const WithNodesToProp = ({ children, ...props }) =>
-    children ? (
-      <WrappedComponent {...{ ...props, [propName]: children }} />
-    ) : (
-      <WrappedComponent {...props} />
-    );
+function withNodesToProp(propName) {
+  return function inner(WrappedComponent) {
+    function WithNodesToProp({ children, ...props }) {
+      if (children)
+        return <WrappedComponent {...{ ...props, [propName]: children }} />;
+      return <WrappedComponent {...props} />;
+    }
 
-  WithNodesToProp.displayName = `withNodesToProp(${
-    WrappedComponent.displayName || WrappedComponent.name
-  })`;
-  WithNodesToProp.WrappedComponent = WrappedComponent;
+    WithNodesToProp.displayName = `withNodesToProp(${
+      WrappedComponent.displayName || WrappedComponent.name
+    })`;
+    WithNodesToProp.WrappedComponent = WrappedComponent;
 
-  return hoistNonReactStatic(WithNodesToProp, WrappedComponent);
-};
+    return hoistNonReactStatic(WithNodesToProp, WrappedComponent);
+  };
+}
 
 export default withNodesToProp;

@@ -1,15 +1,15 @@
 import React from "react";
 import State from "./State";
 
-export const Register = ({ children, ...props }) => (
-  <State register={{ state: children }} {...props} />
-);
+export function Register({ children, ...props }) {
+  return <State register={{ state: children }} {...props} />;
+}
 Register.prop = "register";
 Register.val = "children";
 Register.transform = state => ({ state });
-export const Middleware = ({ children, ...props }) => (
-  <State register={{ middleware: children }} {...props} />
-);
+export function Middleware({ children, ...props }) {
+  return <State register={{ middleware: children }} {...props} />;
+}
 Middleware.prop = "register";
 Middleware.val = "children";
 Middleware.transform = middleware => ({ middleware });

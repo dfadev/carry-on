@@ -1,7 +1,7 @@
 import React from "react";
 import hoistNonReactStatic from "hoist-non-react-statics";
 
-const nodesToProps = (WrappedComponent, children) => {
+function nodesToProps(WrappedComponent, children) {
   const childs = Array.isArray(children) ? children : [children];
 
   const newProperties = {};
@@ -44,18 +44,19 @@ const nodesToProps = (WrappedComponent, children) => {
   }
 
   return newProperties;
-};
+}
 
-const withNodesToProps = WrappedComponent => {
-  const WithNodesToProps = ({ children, ...props }) =>
-    !Array.isArray(children) && typeof children === "function" ? (
-      <WrappedComponent {...props}>{children}</WrappedComponent>
-    ) : (
+function withNodesToProps(WrappedComponent) {
+  function WithNodesToProps({ children, ...props }) {
+    if (!Array.isArray(children) && typeof children === "function")
+      return <WrappedComponent {...props}>{children}</WrappedComponent>;
+    return (
       <WrappedComponent
         {...props}
         {...nodesToProps(WrappedComponent, children)}
       />
     );
+  }
 
   WithNodesToProps.displayName = `withNodesToProps(${
     WrappedComponent.displayName || WrappedComponent.name
@@ -64,6 +65,6 @@ const withNodesToProps = WrappedComponent => {
   WithNodesToProps.WrappedComponent = WrappedComponent;
 
   return hoistNonReactStatic(WithNodesToProps, WrappedComponent);
-};
+}
 
 export default withNodesToProps;

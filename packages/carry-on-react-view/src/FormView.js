@@ -4,7 +4,7 @@ import { withNodesToProps } from "carry-on-react";
 import { forceArray } from "carry-on-utils";
 import FormViewer from "./FormViewer";
 
-const FormView = ({
+function FormView({
   from,
   store = from,
   id = "form",
@@ -19,31 +19,33 @@ const FormView = ({
   sections,
   fields,
   ...rest
-}) => (
-  <Form
-    id={id}
-    register={[
-      ...forceArray(register),
-      {
-        state: () => ({
-          fields,
-          sections,
-          ...rest
-        })
-      }
-    ]}
-    store={store}
-    onMount={onMount}
-    onUnmount={onUnmount}
-    onValidate={onValidate}
-    onSubmit={onSubmit}
-    onReset={onReset}
-    noFormTag={noFormTag}
-  >
-    <FormViewer fields={fields} sections={sections} />
-    {children}
-  </Form>
-);
+}) {
+  return (
+    <Form
+      id={id}
+      register={[
+        ...forceArray(register),
+        {
+          state: () => ({
+            fields,
+            sections,
+            ...rest
+          })
+        }
+      ]}
+      store={store}
+      onMount={onMount}
+      onUnmount={onUnmount}
+      onValidate={onValidate}
+      onSubmit={onSubmit}
+      onReset={onReset}
+      noFormTag={noFormTag}
+    >
+      <FormViewer fields={fields} sections={sections} />
+      {children}
+    </Form>
+  );
+}
 
 FormView.composes = [
   "initialValues",
