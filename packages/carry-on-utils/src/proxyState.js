@@ -111,9 +111,10 @@ function proxyfy(state, onGet, suffix, ProxyMap) {
 
       // bind function value if it's not a constructor and not already bound
       if (
-        typeof storeValue === "function" &&
-        Object.prototype.hasOwnProperty.call(storeValue, "prototype") &&
-        prop !== "constructor"
+        prop !== "constructor" &&
+        typeof storeValue === "function"
+        // FIXME: causes test to fail with "Method called on incompatible receiver"
+        // && Object.prototype.hasOwnProperty.call(storeValue, "prototype")
       )
         storeValue = storeValue.bind(target);
 
