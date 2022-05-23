@@ -4,7 +4,7 @@
 import React from "react";
 import { initStores } from "carry-on-store";
 import { render } from "@testing-library/react";
-import { Paper, Box, Grid } from "@material-ui/core";
+import { Paper, Box, Grid } from "@mui/material";
 import { Store, Register } from "carry-on-react";
 import { Form } from "carry-on-react-forms";
 import {

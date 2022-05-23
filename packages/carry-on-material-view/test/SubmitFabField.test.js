@@ -4,8 +4,8 @@
 import React from "react";
 import { initStores } from "carry-on-store";
 import { render } from "@testing-library/react";
-import { Paper, Box } from "@material-ui/core";
-import PublishIcon from "@material-ui/icons/Publish";
+import { Paper, Box } from "@mui/material";
+import PublishIcon from "@mui/icons-material/Publish";
 import { Store, Register } from "carry-on-react";
 import { Form } from "carry-on-react-forms";
 import {

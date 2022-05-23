@@ -4,12 +4,12 @@
 import React from "react";
 import { initStores } from "carry-on-store";
 import { render } from "@testing-library/react";
-import { Paper, Box, Grid } from "@material-ui/core";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import PauseIcon from "@material-ui/icons/Pause";
-import StopIcon from "@material-ui/icons/Stop";
-import FastForwardIcon from "@material-ui/icons/FastForward";
-import FastRewindIcon from "@material-ui/icons/FastRewind";
+import { Paper, Box, Grid } from "@mui/material";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
+import StopIcon from "@mui/icons-material/Stop";
+import FastForwardIcon from "@mui/icons-material/FastForward";
+import FastRewindIcon from "@mui/icons-material/FastRewind";
 import { Store, Register } from "carry-on-react";
 import { Form } from "carry-on-react-forms";
 import {
