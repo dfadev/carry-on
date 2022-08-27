@@ -45,7 +45,7 @@
     "react-inspector": "^5.1.1",
     "rifm": "^0.12.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.74.1"
+    "rollup": "^2.78.1"
   },
   "peerDependencies": {
     "@date-io/date-fns": "=2.14.0",

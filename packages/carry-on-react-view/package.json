@@ -29,7 +29,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.74.1"
+    "rollup": "^2.78.1"
   },
   "peerDependencies": {
     "carry-on-react": "^2.0.0-alpha.1",

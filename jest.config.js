@@ -26,6 +26,11 @@ for (const entry of config.projects) {
     entry.snapshotSerializers = ["@emotion/jest/serializer"];
   }
 
+  entry.snapshotFormat = {
+    escapeString: true,
+    printBasicPrototype: true
+  }
+
   entry.transform = { "\\.(js|jsx|ts|tsx)$": "@sucrase/jest-plugin" };
   delete entry.name
 }
