@@ -23,15 +23,15 @@
     "history": "=4.10.1",
     "hoist-non-react-statics": "^3.3.2",
     "path-to-regexp": "^6.2.1",
-    "react-is": "^18.2.0"
+    "react-is": "^17.0.2 || ^18.2.0"
   },
   "devDependencies": {
     "carry-on-react": "^2.0.0-alpha.2",
     "carry-on-store": "^2.0.0-alpha.2",
     "carry-on-utils": "^2.0.0-alpha.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-is": "^18.2.0",
+    "react": "^17.0.2 || ^18.2.0",
+    "react-dom": "^17.0.2 || ^18.2.0",
+    "react-is": "^17.0.2 || ^18.2.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.78.1"
   },
@@ -39,8 +39,8 @@
     "carry-on-react": "^2.0.0-alpha.1",
     "carry-on-store": "^2.0.0-alpha.1",
     "carry-on-utils": "^2.0.0-alpha.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^17.0.2 || ^18.2.0",
+    "react-dom": "^17.0.2 || ^18.2.0"
   },
   "exports": {
     "require": "./dist/carry-on-react-router.cjs.js",
