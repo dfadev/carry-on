@@ -7,10 +7,10 @@ title: state
 
 Register initial state with a store.
 
-| Parameter    | Description                                                                                                               |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| `state`      | Function or object that represents the state to register                                                                  |
-| `storeId`    | The name of the store to register state in.                                                                               |
+| Parameter | Description                                              |
+| --------- | -------------------------------------------------------- |
+| `state`   | Function or object that represents the state to register |
+| `storeId` | The name of the store to register state in.              |
 
 ## Registering state:
 

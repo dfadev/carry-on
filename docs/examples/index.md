@@ -36,7 +36,7 @@ const counter = ({ set }) => ({
   counter: 0,
   inc: () => set(state => state.counter++),
   dec: () => set(state => state.counter--)
-})
+});
 
 state("store1", counter);
 state("store2", counter);
