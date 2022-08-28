@@ -10,8 +10,10 @@ import {
   Grid,
   Paper,
   List,
-  ListItem
+  ListItem,
+  ScopedCssBaseline
 } from "@mui/material";
+import { responsiveFontSizes, createMuiTheme } from "@mui/material/styles";
 import purple from "@mui/material/colors/purple";
 import green from "@mui/material/colors/green";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -209,6 +211,7 @@ const ReactLiveScope = {
   ResetButtonField,
   Route,
   Routes,
+  ScopedCssBaseline,
   SSNField,
   Section,
   Sections,
@@ -251,6 +254,8 @@ const ReactLiveScope = {
   state,
   middleware,
   registerComponents,
+  createMuiTheme,
+  responsiveFontSizes,
   router,
   set,
   materialViewComponents,
