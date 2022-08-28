@@ -166,13 +166,13 @@ export const register = (init, id, path) => {
     id = actualId;
   }
 
-  const store = getStore(id);
   const inits = forceArray(init).map(item => ({
     path,
     ...item
   }));
 
   // queue if no set available yet
+  const store = getStore(id);
   if (store.connected) {
     if (Debug || store.debug) store.log("register", inits);
     return store.set(

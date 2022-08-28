@@ -9,6 +9,8 @@ import {
   connect,
   subscribe,
   register,
+  state,
+  middleware,
   watchGet,
   debugStore,
   debugStores,
@@ -46,6 +48,25 @@ test("deleteStore", () => {
 test("register", () => {
   const store = getStore();
   register({ state: { some: "state" } });
+  expect(store.pending.length).toBe(1);
+  deleteStore();
+});
+
+test("state", () => {
+  const store = getStore();
+  state({ some: "state" });
+  expect(store.pending.length).toBe(1);
+  deleteStore();
+});
+
+test("state fn", () => {
+  const store = getStore();
+  state(({ set }) => ({
+    some: "state",
+    fn() {
+      set(state => (state.some = "other"));
+    }
+  }));
   expect(store.pending.length).toBe(1);
   deleteStore();
 });

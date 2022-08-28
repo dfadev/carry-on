@@ -15,6 +15,7 @@ export {
   debugStore,
   debugStores
 } from "./store";
+export { state, middleware } from "./alias";
 export { compareChanges, calculateChanges } from "./changeTracking";
 export { watch, Watch } from "./watch";
 export { default as notify } from "./notify";
