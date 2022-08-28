@@ -12,19 +12,21 @@ module.exports = {
   customFields: {},
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "log",
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en"]
+  },
   presets: [
     [
       "@docusaurus/preset-classic",
       {
         docs: {
-          showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
           path: "../docs",
           sidebarPath: require.resolve("./sidebars.js")
         },
         blog: {},
         theme: {
-          customCss: [require.resolve('./src/css/customTheme.css')]
+          customCss: [require.resolve("./src/css/customTheme.css")]
         }
       }
     ]
@@ -149,7 +151,7 @@ module.exports = {
     image: "img/docusaurus.png",
     footer: {
       links: [],
-      copyright: "Copyright © 2022 Russ Panula",
+      copyright: `Copyright © ${new Date().getFullYear()}`,
       logo: {
         src: "img/card-travel.svg"
       }
