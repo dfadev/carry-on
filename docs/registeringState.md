@@ -6,12 +6,12 @@ title: Registering State
 ## Import
 
 ```js
-import { register } from "carry-on-store";
+import { state } from "carry-on-store";
 ```
 
 ## Define initial state
 
-Initial state can be set by passing state to the `register` function. It is optional to register initial state.
+Initial state can be set by passing state to the `state` function. It is optional to register initial state.
 
 ### State as a function
 
@@ -28,7 +28,7 @@ store.
 The function must return an object representing the initial state:
 
 ```js
-const state = ({ id, get, set }) => ({
+const counter = ({ id, get, set }) => ({
   counter: 0,
   inc: () =>
     set(state => {
@@ -42,7 +42,7 @@ const state = ({ id, get, set }) => ({
 State can also be defined as a plain object if there are no actions that require setting and querying state.
 
 ```js
-const state = {
+const plain = {
   field1: "value1",
   field2: "value2",
   nested: {
@@ -54,10 +54,10 @@ const state = {
 
 ### Actions
 
-Actions are defined by functions inside the state object:
+Actions are defined by functions inside a state object:
 
 ```js
-const state = ({ id, get, set }) => ({
+const actions = ({ id, get, set }) => ({
   action1() {},
   action2() {},
   action3() {}
@@ -70,7 +70,7 @@ When an action only needs read access to the current state, it uses the `get`
 function:
 
 ```js
-const state = ({ id, get, set }) => ({
+const gets = ({ id, get, set }) => ({
   logValue() {
     get(state => {
       console.log("value is", state.value);
@@ -82,7 +82,7 @@ const state = ({ id, get, set }) => ({
 A shorter alternative:
 
 ```js
-const state = ({ id, get, set }) => ({
+const gets = ({ id, get, set }) => ({
   logValue() {
     console.log("value is", get().value);
   }
@@ -94,7 +94,7 @@ const state = ({ id, get, set }) => ({
 An action uses the `set` function to change state values.
 
 ```js
-const state = ({ id, get, set }) => ({
+const sets = ({ id, get, set }) => ({
   field: "",
   setField(val) {
     set(state => {
@@ -111,7 +111,7 @@ State can be registered with a store instance at any time. If the store is not c
 ### Register on default store:
 
 ```js live noInline
-register({ state: { counter: 0 } });
+state({ counter: 0 });
 
 render(<StateInspector />);
 ```
@@ -121,11 +121,11 @@ render(<StateInspector />);
 ```js live noInline
 const storeId = "Store1";
 
-register({ state: { field1: "value1" } }, storeId);
+state({ field1: "value1" }, storeId);
 
 // or
 
-register(storeId, { state: { field2: "value2" } });
+state(storeId, { field2: "value2" });
 
 render(<StateInspector from="Store1" />);
 ```
@@ -139,9 +139,9 @@ When `register` is called multiple times it merges state, potentially into a con
 ```js live noInline
 const storeId = "multiCalls";
 
-register(storeId, { state: { field1: "value1" } });
+state(storeId, { field1: "value1" });
 
-register(storeId, { state: { field2: "value2" } });
+state(storeId, { field2: "value2" });
 
 render(<StateInspector from={storeId} />);
 ```
@@ -157,7 +157,7 @@ const state1 = { field1: "value1" };
 
 const state2 = { field2: "value2" };
 
-register(storeId, [{ state: state1 }, { state: state2 }]);
+state(storeId, [state1, state2]);
 
 render(<StateInspector from={storeId} />);
 ```
