@@ -13,21 +13,18 @@ import { State } from "carry-on-react";
 
 const storeId = "actionsAreFunctions";
 
-register(storeId, {
-  // "get" and "set" functions are provided by store
-  state: ({ get, set }) => ({
-    counter: 0,
-    // action functions:
-    inc: () =>
-      set(state => {
-        state.counter++;
-      }),
-    dec: () =>
-      set(state => {
-        state.counter--;
-      })
-  })
-});
+state(storeId, ({ get, set }) => ({
+  counter: 0,
+  // action functions:
+  inc: () =>
+    set(state => {
+      state.counter++;
+    }),
+  dec: () =>
+    set(state => {
+      state.counter--;
+    })
+}));
 
 render(
   <State from={storeId}>

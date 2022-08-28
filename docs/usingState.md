@@ -213,7 +213,7 @@ Three properties are available for debugging. Debug messages are sent to the con
 `id` will set an identifier to include in the log messages.
 
 ```js live noInline
-register({ state: { field1: "value" } });
+state({ field1: "value" });
 
 render(
   <State debug verbose id="Field div">
@@ -237,7 +237,7 @@ Use the `onMount` and `onUnmount` properties when you need to execute
 actions during those lifecycle events.
 
 ```js live noInline
-register({ state: { field1: "value" } });
+state({ field1: "value" });
 
 render(
   <State

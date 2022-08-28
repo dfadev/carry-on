@@ -20,19 +20,17 @@ import { register } from "carry-on-store";
 
 const storeId = "getStarted";
 
-register(storeId, {
-  state: ({ set }) => ({
-    counter: 0,
-    inc: () =>
-      set(state => {
-        state.counter += 1;
-      }),
-    dec: () =>
-      set(state => {
-        state.counter -= 1;
-      })
-  })
-});
+state(storeId, ({ set }) => ({
+  counter: 0,
+  inc: () =>
+    set(state => {
+      state.counter += 1;
+    }),
+  dec: () =>
+    set(state => {
+      state.counter -= 1;
+    })
+}));
 
 render(
   <State from={storeId}>
@@ -55,20 +53,20 @@ import { Store, State, Register, Render } from "carry-on-react";
 
 render(
   <Store id={"getStartedComposing"}>
+    <Register>
+      {({ set }) => ({
+        counter: 0,
+        inc: () =>
+          set(state => {
+            state.counter += 1;
+          }),
+        dec: () =>
+          set(state => {
+            state.counter -= 1;
+          })
+      })}
+    </Register>
     <State>
-      <Register>
-        {({ set }) => ({
-          counter: 0,
-          inc: () =>
-            set(state => {
-              state.counter += 1;
-            }),
-          dec: () =>
-            set(state => {
-              state.counter -= 1;
-            })
-        })}
-      </Register>
       <Render>
         {({ counter, inc, dec }) => (
           <>

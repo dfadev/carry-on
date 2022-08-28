@@ -7,13 +7,11 @@ title: Examples
 ## Default store
 
 ```js live noInline
-register({
-  state: ({ set }) => ({
-    counter: 0,
-    inc: () => set(state => void state.counter++),
-    dec: () => set(state => void state.counter--)
-  })
-});
+state(({ set }) => ({
+  counter: 0,
+  inc: () => set(state => void state.counter++),
+  dec: () => set(state => void state.counter--)
+}));
 
 render(
   <>
@@ -34,16 +32,14 @@ render(
 ## Two named stores
 
 ```js live noInline
-const state = {
-  state: ({ set }) => ({
-    counter: 0,
-    inc: () => set(state => void state.counter++),
-    dec: () => set(state => void state.counter--)
-  })
-};
+const counter = ({ set }) => ({
+  counter: 0,
+  inc: () => set(state => state.counter++),
+  dec: () => set(state => state.counter--)
+})
 
-register("store1", state);
-register("store2", state);
+state("store1", counter);
+state("store2", counter);
 
 render(
   <>
@@ -79,14 +75,12 @@ render(
 ```js live noInline
 const storeId = "stateSelect";
 
-register(storeId, {
-  state: ({ set }) => ({
-    notSelected: "item",
-    counter: 0,
-    inc: () => set(state => void state.counter++),
-    dec: () => set(state => void state.counter--)
-  })
-});
+state(storeId, ({ set }) => ({
+  notSelected: "item",
+  counter: 0,
+  inc: () => set(state => void state.counter++),
+  dec: () => set(state => void state.counter--)
+}));
 
 const select = ({ counter, inc, dec }) => ({ counter, inc, dec });
 
@@ -114,13 +108,11 @@ render(
 ```js live noInline
 const storeId = "registerState";
 
-register(storeId, {
-  state: ({ set }) => ({
-    counter: 0,
-    inc: () => set(state => void state.counter++),
-    dec: () => set(state => void state.counter--)
-  })
-});
+state(storeId, ({ set }) => ({
+  counter: 0,
+  inc: () => set(state => void state.counter++),
+  dec: () => set(state => void state.counter--)
+}));
 
 render(
   <>
@@ -143,13 +135,11 @@ render(
 ```js live noInline
 const storeId = "store1";
 
-register(storeId, {
-  state: ({ set }) => ({
-    counter: 0,
-    inc: () => set(state => void state.counter++),
-    dec: () => set(state => void state.counter--)
-  })
-});
+state(storeId, ({ set }) => ({
+  counter: 0,
+  inc: () => set(state => void state.counter++),
+  dec: () => set(state => void state.counter--)
+}));
 
 render(
   <>
@@ -172,15 +162,13 @@ render(
 ```js live noInline
 const storeId = "statePath";
 
-register(storeId, {
-  state: ({ set }) => ({
-    more: {
-      stuff: {
-        list: [{ item: "one" }, { item: "two" }]
-      }
+state(storeId, ({ set }) => ({
+  more: {
+    stuff: {
+      list: [{ item: "one" }, { item: "two" }]
     }
-  })
-});
+  }
+}));
 
 render(
   <>
@@ -199,15 +187,13 @@ render(
 ```js live noInline
 const storeId = "statePathDefault";
 
-register(storeId, {
-  state: ({ set }) => ({
-    more: {
-      stuff: {
-        list: [{ item: "one" }, { item: "two" }]
-      }
+state(storeId, ({ set }) => ({
+  more: {
+    stuff: {
+      list: [{ item: "one" }, { item: "two" }]
     }
-  })
-});
+  }
+}));
 
 render(
   <>
@@ -226,15 +212,13 @@ render(
 ```js live noInline
 const storeId = "statePathNamedStore";
 
-register(storeId, {
-  state: ({ set }) => ({
-    more: {
-      stuff: {
-        list: [{ item: "one" }, { item: "two" }]
-      }
+state(storeId, ({ set }) => ({
+  more: {
+    stuff: {
+      list: [{ item: "one" }, { item: "two" }]
     }
-  })
-});
+  }
+}));
 
 render(
   <>
@@ -251,13 +235,11 @@ render(
 ```js live noInline
 const storeId = "multipleSelect";
 
-register(storeId, {
-  state: ({ set }) => ({
-    counter: 0,
-    inc: () => set(state => void state.counter++),
-    dec: () => set(state => void state.counter--)
-  })
-});
+state(storeId, ({ set }) => ({
+  counter: 0,
+  inc: () => set(state => void state.counter++),
+  dec: () => set(state => void state.counter--)
+}));
 
 const selectCounter = ({ counter }) => counter;
 const selectActions = ({ inc, dec }) => ({ inc, dec });

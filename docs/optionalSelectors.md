@@ -10,19 +10,17 @@ Selectors are not necessary because state field access is tracked by a `Proxy` w
 ```js live noInline
 const storeId = "selectors";
 
-register(storeId, {
-  state: ({ set }) => ({
-    counter: 0,
-    inc: () =>
-      set(state => {
-        state.counter += 1;
-      }),
-    dec: () =>
-      set(state => {
-        state.counter -= 1;
-      })
-  })
-});
+state(storeId, ({ set }) => ({
+  counter: 0,
+  inc: () =>
+    set(state => {
+      state.counter += 1;
+    }),
+  dec: () =>
+    set(state => {
+      state.counter -= 1;
+    })
+}));
 
 render(<StateInspector from={storeId} />);
 ```

@@ -12,19 +12,17 @@ import { register, watch, set } from "carry-on-store";
 
 const storeId = "stateDrivenFunctions";
 
-register(storeId, {
-  state: ({ get, set }) => ({
-    value: 1,
-    subscriptions: [],
-    unsubscribe: () => {
-      set(state => {
-        state.subscriptions.forEach(fn => fn());
-        state.subscriptions = [];
-      });
-    },
-    logs: []
-  })
-});
+state(storeId, ({ get, set }) => ({
+  value: 1,
+  subscriptions: [],
+  unsubscribe: () => {
+    set(state => {
+      state.subscriptions.forEach(fn => fn());
+      state.subscriptions = [];
+    });
+  },
+  logs: []
+}));
 
 // simple vocabulary for watch readability
 const positiveValue = ({ value }) => value >= 0;

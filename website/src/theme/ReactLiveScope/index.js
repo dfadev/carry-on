@@ -1,5 +1,5 @@
 import React from "react";
-import Inspector from "react-inspector";
+import { Inspector } from "react-inspector";
 import {
   Container,
   AppBar,
@@ -23,6 +23,8 @@ import FastRewindIcon from "@mui/icons-material/FastRewind";
 import PublishIcon from "@mui/icons-material/Publish";
 import {
   register,
+  state,
+  middleware,
   initStores,
   getStore,
   connect,
@@ -246,6 +248,8 @@ const ReactLiveScope = {
   matchPath,
   purple,
   register,
+  state,
+  middleware,
   registerComponents,
   router,
   set,
