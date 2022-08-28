@@ -108,7 +108,7 @@ exports[`should render <ResetButtonField> inside a Form 1`] = `
         class="MuiBox-root emotion-1"
       >
         <button
-          class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled  emotion-2"
+          class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium emotion-2"
           disabled=""
           id="resetButtonFieldForm.form.abc"
           name="resetButtonFieldForm.form.abc"
@@ -269,7 +269,7 @@ exports[`should render <ResetButtonField> inside a FormView 1`] = `
                 class="MuiBox-root emotion-5"
               >
                 <button
-                  class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled  emotion-6"
+                  class="MuiButtonBase-root Mui-disabled MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium emotion-6"
                   disabled=""
                   id="resetButtonFieldFormView.form.abc"
                   name="resetButtonFieldFormView.form.abc"

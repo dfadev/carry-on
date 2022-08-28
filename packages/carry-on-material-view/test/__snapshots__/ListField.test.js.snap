@@ -77,10 +77,6 @@ exports[`should render <ListField> inside a Form 1`] = `
 }
 
 .emotion-6 {
-  white-space: nowrap;
-}
-
-.emotion-8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -94,9 +90,11 @@ exports[`should render <ListField> inside a Form 1`] = `
   margin: 0;
   border: 0;
   vertical-align: top;
+  white-space: nowrap;
+  white-space: nowrap;
 }
 
-.emotion-9 {
+.emotion-7 {
   color: rgba(0, 0, 0, 0.6);
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
@@ -128,19 +126,19 @@ exports[`should render <ListField> inside a Form 1`] = `
   user-select: none;
 }
 
-.emotion-9.Mui-focused {
+.emotion-7.Mui-focused {
   color: #1976d2;
 }
 
-.emotion-9.Mui-disabled {
+.emotion-7.Mui-disabled {
   color: rgba(0, 0, 0, 0.38);
 }
 
-.emotion-9.Mui-error {
+.emotion-7.Mui-error {
   color: #d32f2f;
 }
 
-.emotion-10 {
+.emotion-8 {
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
   font-size: 1rem;
@@ -162,35 +160,35 @@ exports[`should render <ListField> inside a Form 1`] = `
   border-radius: 4px;
 }
 
-.emotion-10.Mui-disabled {
+.emotion-8.Mui-disabled {
   color: rgba(0, 0, 0, 0.38);
   cursor: default;
 }
 
-.emotion-10:hover .MuiOutlinedInput-notchedOutline {
+.emotion-8:hover .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.87);
 }
 
 @media (hover: none) {
-  .emotion-10:hover .MuiOutlinedInput-notchedOutline {
+  .emotion-8:hover .MuiOutlinedInput-notchedOutline {
     border-color: rgba(0, 0, 0, 0.23);
   }
 }
 
-.emotion-10.Mui-focused .MuiOutlinedInput-notchedOutline {
+.emotion-8.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: #1976d2;
   border-width: 2px;
 }
 
-.emotion-10.Mui-error .MuiOutlinedInput-notchedOutline {
+.emotion-8.Mui-error .MuiOutlinedInput-notchedOutline {
   border-color: #d32f2f;
 }
 
-.emotion-10.Mui-disabled .MuiOutlinedInput-notchedOutline {
+.emotion-8.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
 }
 
-.emotion-11 {
+.emotion-9 {
   font: inherit;
   letter-spacing: inherit;
   color: currentColor;
@@ -211,95 +209,95 @@ exports[`should render <ListField> inside a Form 1`] = `
   padding: 16.5px 14px;
 }
 
-.emotion-11::-webkit-input-placeholder {
+.emotion-9::-webkit-input-placeholder {
   color: currentColor;
   opacity: 0.42;
   -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.emotion-11::-moz-placeholder {
+.emotion-9::-moz-placeholder {
   color: currentColor;
   opacity: 0.42;
   -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.emotion-11:-ms-input-placeholder {
+.emotion-9:-ms-input-placeholder {
   color: currentColor;
   opacity: 0.42;
   -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.emotion-11::-ms-input-placeholder {
+.emotion-9::-ms-input-placeholder {
   color: currentColor;
   opacity: 0.42;
   -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.emotion-11:focus {
+.emotion-9:focus {
   outline: 0;
 }
 
-.emotion-11:invalid {
+.emotion-9:invalid {
   box-shadow: none;
 }
 
-.emotion-11::-webkit-search-decoration {
+.emotion-9::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-11::-webkit-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-9::-webkit-input-placeholder {
   opacity: 0!important;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-11::-moz-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-9::-moz-placeholder {
   opacity: 0!important;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:-ms-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:-ms-input-placeholder {
   opacity: 0!important;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-11::-ms-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-9::-ms-input-placeholder {
   opacity: 0!important;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-webkit-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-webkit-input-placeholder {
   opacity: 0.42;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-moz-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-moz-placeholder {
   opacity: 0.42;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus:-ms-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus:-ms-input-placeholder {
   opacity: 0.42;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-placeholder {
   opacity: 0.42;
 }
 
-.emotion-11.Mui-disabled {
+.emotion-9.Mui-disabled {
   opacity: 1;
   -webkit-text-fill-color: rgba(0, 0, 0, 0.38);
 }
 
-.emotion-11:-webkit-autofill {
+.emotion-9:-webkit-autofill {
   -webkit-animation-duration: 5000s;
   animation-duration: 5000s;
   -webkit-animation-name: mui-auto-fill;
   animation-name: mui-auto-fill;
 }
 
-.emotion-11:-webkit-autofill {
+.emotion-9:-webkit-autofill {
   border-radius: inherit;
 }
 
-.emotion-12 {
+.emotion-10 {
   text-align: left;
   position: absolute;
   bottom: 0;
@@ -317,7 +315,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
   border-color: rgba(0, 0, 0, 0.23);
 }
 
-.emotion-13 {
+.emotion-11 {
   float: unset;
   overflow: hidden;
   display: block;
@@ -332,7 +330,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
   white-space: nowrap;
 }
 
-.emotion-13>span {
+.emotion-11>span {
   padding-left: 5px;
   padding-right: 5px;
   display: inline-block;
@@ -340,11 +338,23 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
   visibility: visible;
 }
 
-.emotion-28 {
-  margin-left: auto;
+.emotion-12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: top;
 }
 
-.emotion-29 {
+.emotion-24 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -388,40 +398,41 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  margin-left: auto;
 }
 
-.emotion-29::-moz-focus-inner {
+.emotion-24::-moz-focus-inner {
   border-style: none;
 }
 
-.emotion-29.Mui-disabled {
+.emotion-24.Mui-disabled {
   pointer-events: none;
   cursor: default;
 }
 
 @media print {
-  .emotion-29 {
+  .emotion-24 {
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
   }
 }
 
-.emotion-29:hover {
+.emotion-24:hover {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
 @media (hover: none) {
-  .emotion-29:hover {
+  .emotion-24:hover {
     background-color: transparent;
   }
 }
 
-.emotion-29.Mui-disabled {
+.emotion-24.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
 }
 
-.emotion-30 {
+.emotion-25 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -438,7 +449,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
   font-size: 1.5rem;
 }
 
-.emotion-31 {
+.emotion-26 {
   overflow: hidden;
   pointer-events: none;
   position: absolute;
@@ -450,7 +461,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
   border-radius: inherit;
 }
 
-.emotion-61 {
+.emotion-51 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -466,25 +477,27 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
 }
 
 @media (min-width:600px) {
-  .emotion-61 {
+  .emotion-51 {
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 
-@media (min-width:0px) and (orientation: landscape) {
-  .emotion-61 {
-    min-height: 48px;
+@media (min-width:0px) {
+  @media (orientation: landscape) {
+    .emotion-51 {
+      min-height: 48px;
+    }
   }
 }
 
 @media (min-width:600px) {
-  .emotion-61 {
+  .emotion-51 {
     min-height: 64px;
   }
 }
 
-.emotion-62 {
+.emotion-52 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -531,43 +544,39 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
   color: #1976d2;
 }
 
-.emotion-62::-moz-focus-inner {
+.emotion-52::-moz-focus-inner {
   border-style: none;
 }
 
-.emotion-62.Mui-disabled {
+.emotion-52.Mui-disabled {
   pointer-events: none;
   cursor: default;
 }
 
 @media print {
-  .emotion-62 {
+  .emotion-52 {
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
   }
 }
 
-.emotion-62:hover {
+.emotion-52:hover {
   -webkit-text-decoration: none;
   text-decoration: none;
   background-color: rgba(25, 118, 210, 0.04);
 }
 
 @media (hover: none) {
-  .emotion-62:hover {
+  .emotion-52:hover {
     background-color: transparent;
   }
 }
 
-.emotion-62.Mui-disabled {
+.emotion-52.Mui-disabled {
   color: rgba(0, 0, 0, 0.26);
 }
 
-.emotion-63 {
-  margin-right: 8px;
-}
-
-.emotion-64 {
+.emotion-53 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -582,6 +591,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-size: 1.25rem;
+  margin-right: 8px;
 }
 
 <form
@@ -612,22 +622,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                 </h4>
               </div>
               <div
-                class="MuiFormControl-root emotion-6 MuiTextField-root emotion-6 emotion-8"
+                class="MuiFormControl-root MuiTextField-root emotion-6"
               >
                 <label
-                  class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-9"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-7"
                   data-shrink="true"
-                  for="mui-1"
-                  id="mui-1-label"
+                  for=":r0:"
+                  id=":r0:-label"
                 >
                   Name
                 </label>
                 <div
-                  class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-10"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-8"
                 >
                   <input
                     aria-invalid="false"
-                    class="MuiOutlinedInput-input MuiInputBase-input emotion-11"
+                    class="MuiInputBase-input MuiOutlinedInput-input emotion-9"
                     id="listFieldForm.form.contacts[0].name"
                     name="listFieldForm.form.contacts[0].name"
                     type="text"
@@ -635,10 +645,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="MuiOutlinedInput-notchedOutline emotion-12"
+                    class="MuiOutlinedInput-notchedOutline emotion-10"
                   >
                     <legend
-                      class="emotion-13"
+                      class="emotion-11"
                     >
                       <span>
                         Name
@@ -648,22 +658,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                 </div>
               </div>
               <div
-                class="MuiFormControl-root MuiTextField-root emotion-8"
+                class="MuiFormControl-root MuiTextField-root emotion-12"
               >
                 <label
-                  class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-9"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-7"
                   data-shrink="true"
-                  for="mui-2"
-                  id="mui-2-label"
+                  for=":r1:"
+                  id=":r1:-label"
                 >
                   Phone
                 </label>
                 <div
-                  class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-10"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-8"
                 >
                   <input
                     aria-invalid="false"
-                    class="MuiOutlinedInput-input MuiInputBase-input emotion-11"
+                    class="MuiInputBase-input MuiOutlinedInput-input emotion-9"
                     id="listFieldForm.form.contacts[0].phone"
                     name="listFieldForm.form.contacts[0].phone"
                     type="text"
@@ -671,10 +681,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="MuiOutlinedInput-notchedOutline emotion-12"
+                    class="MuiOutlinedInput-notchedOutline emotion-10"
                   >
                     <legend
-                      class="emotion-13"
+                      class="emotion-11"
                     >
                       <span>
                         Phone
@@ -684,22 +694,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                 </div>
               </div>
               <div
-                class="MuiFormControl-root emotion-6 MuiTextField-root emotion-6 emotion-8"
+                class="MuiFormControl-root MuiTextField-root emotion-6"
               >
                 <label
-                  class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-9"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-7"
                   data-shrink="true"
-                  for="mui-3"
-                  id="mui-3-label"
+                  for=":r2:"
+                  id=":r2:-label"
                 >
                   Email
                 </label>
                 <div
-                  class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-10"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-8"
                 >
                   <input
                     aria-invalid="false"
-                    class="MuiOutlinedInput-input MuiInputBase-input emotion-11"
+                    class="MuiInputBase-input MuiOutlinedInput-input emotion-9"
                     id="listFieldForm.form.contacts[0].email"
                     name="listFieldForm.form.contacts[0].email"
                     type="text"
@@ -707,10 +717,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="MuiOutlinedInput-notchedOutline emotion-12"
+                    class="MuiOutlinedInput-notchedOutline emotion-10"
                   >
                     <legend
-                      class="emotion-13"
+                      class="emotion-11"
                     >
                       <span>
                         Email
@@ -721,13 +731,13 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
               </div>
             </div>
             <button
-              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-28 emotion-29"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-24"
               tabindex="0"
               type="button"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-30"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-25"
                 data-testid="DeleteForeverIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -737,7 +747,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                 />
               </svg>
               <span
-                class="MuiTouchRipple-root emotion-31"
+                class="MuiTouchRipple-root emotion-26"
               />
             </button>
           </li>
@@ -757,22 +767,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                 </h4>
               </div>
               <div
-                class="MuiFormControl-root emotion-6 MuiTextField-root emotion-6 emotion-8"
+                class="MuiFormControl-root MuiTextField-root emotion-6"
               >
                 <label
-                  class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-9"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-7"
                   data-shrink="true"
-                  for="mui-4"
-                  id="mui-4-label"
+                  for=":r3:"
+                  id=":r3:-label"
                 >
                   Name
                 </label>
                 <div
-                  class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-10"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-8"
                 >
                   <input
                     aria-invalid="false"
-                    class="MuiOutlinedInput-input MuiInputBase-input emotion-11"
+                    class="MuiInputBase-input MuiOutlinedInput-input emotion-9"
                     id="listFieldForm.form.contacts[1].name"
                     name="listFieldForm.form.contacts[1].name"
                     type="text"
@@ -780,10 +790,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="MuiOutlinedInput-notchedOutline emotion-12"
+                    class="MuiOutlinedInput-notchedOutline emotion-10"
                   >
                     <legend
-                      class="emotion-13"
+                      class="emotion-11"
                     >
                       <span>
                         Name
@@ -793,22 +803,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                 </div>
               </div>
               <div
-                class="MuiFormControl-root MuiTextField-root emotion-8"
+                class="MuiFormControl-root MuiTextField-root emotion-12"
               >
                 <label
-                  class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-9"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-7"
                   data-shrink="true"
-                  for="mui-5"
-                  id="mui-5-label"
+                  for=":r4:"
+                  id=":r4:-label"
                 >
                   Phone
                 </label>
                 <div
-                  class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-10"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-8"
                 >
                   <input
                     aria-invalid="false"
-                    class="MuiOutlinedInput-input MuiInputBase-input emotion-11"
+                    class="MuiInputBase-input MuiOutlinedInput-input emotion-9"
                     id="listFieldForm.form.contacts[1].phone"
                     name="listFieldForm.form.contacts[1].phone"
                     type="text"
@@ -816,10 +826,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="MuiOutlinedInput-notchedOutline emotion-12"
+                    class="MuiOutlinedInput-notchedOutline emotion-10"
                   >
                     <legend
-                      class="emotion-13"
+                      class="emotion-11"
                     >
                       <span>
                         Phone
@@ -829,22 +839,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                 </div>
               </div>
               <div
-                class="MuiFormControl-root emotion-6 MuiTextField-root emotion-6 emotion-8"
+                class="MuiFormControl-root MuiTextField-root emotion-6"
               >
                 <label
-                  class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-9"
+                  class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-7"
                   data-shrink="true"
-                  for="mui-6"
-                  id="mui-6-label"
+                  for=":r5:"
+                  id=":r5:-label"
                 >
                   Email
                 </label>
                 <div
-                  class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-10"
+                  class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-8"
                 >
                   <input
                     aria-invalid="false"
-                    class="MuiOutlinedInput-input MuiInputBase-input emotion-11"
+                    class="MuiInputBase-input MuiOutlinedInput-input emotion-9"
                     id="listFieldForm.form.contacts[1].email"
                     name="listFieldForm.form.contacts[1].email"
                     type="text"
@@ -852,10 +862,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   />
                   <fieldset
                     aria-hidden="true"
-                    class="MuiOutlinedInput-notchedOutline emotion-12"
+                    class="MuiOutlinedInput-notchedOutline emotion-10"
                   >
                     <legend
-                      class="emotion-13"
+                      class="emotion-11"
                     >
                       <span>
                         Email
@@ -866,13 +876,13 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
               </div>
             </div>
             <button
-              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-28 emotion-29"
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-24"
               tabindex="0"
               type="button"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-30"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-25"
                 data-testid="DeleteForeverIcon"
                 focusable="false"
                 viewBox="0 0 24 24"
@@ -882,22 +892,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                 />
               </svg>
               <span
-                class="MuiTouchRipple-root emotion-31"
+                class="MuiTouchRipple-root emotion-26"
               />
             </button>
           </li>
         </ul>
         <div
-          class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular emotion-61"
+          class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular emotion-51"
         >
           <button
-            class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root  emotion-62"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium emotion-52"
             tabindex="0"
             type="button"
           >
             <svg
               aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall emotion-63 emotion-64"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall emotion-53"
               data-testid="AddIcon"
               focusable="false"
               viewBox="0 0 24 24"
@@ -908,7 +918,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
             </svg>
             Add
             <span
-              class="MuiTouchRipple-root emotion-31"
+              class="MuiTouchRipple-root emotion-26"
             />
           </button>
         </div>
@@ -1014,10 +1024,6 @@ exports[`should render <ListField> inside a FormView 1`] = `
 }
 
 .emotion-18 {
-  white-space: nowrap;
-}
-
-.emotion-20 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1031,9 +1037,11 @@ exports[`should render <ListField> inside a FormView 1`] = `
   margin: 0;
   border: 0;
   vertical-align: top;
+  white-space: nowrap;
+  white-space: nowrap;
 }
 
-.emotion-21 {
+.emotion-19 {
   color: rgba(0, 0, 0, 0.6);
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
@@ -1065,19 +1073,19 @@ exports[`should render <ListField> inside a FormView 1`] = `
   user-select: none;
 }
 
-.emotion-21.Mui-focused {
+.emotion-19.Mui-focused {
   color: #1976d2;
 }
 
-.emotion-21.Mui-disabled {
+.emotion-19.Mui-disabled {
   color: rgba(0, 0, 0, 0.38);
 }
 
-.emotion-21.Mui-error {
+.emotion-19.Mui-error {
   color: #d32f2f;
 }
 
-.emotion-22 {
+.emotion-20 {
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
   font-size: 1rem;
@@ -1099,35 +1107,35 @@ exports[`should render <ListField> inside a FormView 1`] = `
   border-radius: 4px;
 }
 
-.emotion-22.Mui-disabled {
+.emotion-20.Mui-disabled {
   color: rgba(0, 0, 0, 0.38);
   cursor: default;
 }
 
-.emotion-22:hover .MuiOutlinedInput-notchedOutline {
+.emotion-20:hover .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.87);
 }
 
 @media (hover: none) {
-  .emotion-22:hover .MuiOutlinedInput-notchedOutline {
+  .emotion-20:hover .MuiOutlinedInput-notchedOutline {
     border-color: rgba(0, 0, 0, 0.23);
   }
 }
 
-.emotion-22.Mui-focused .MuiOutlinedInput-notchedOutline {
+.emotion-20.Mui-focused .MuiOutlinedInput-notchedOutline {
   border-color: #1976d2;
   border-width: 2px;
 }
 
-.emotion-22.Mui-error .MuiOutlinedInput-notchedOutline {
+.emotion-20.Mui-error .MuiOutlinedInput-notchedOutline {
   border-color: #d32f2f;
 }
 
-.emotion-22.Mui-disabled .MuiOutlinedInput-notchedOutline {
+.emotion-20.Mui-disabled .MuiOutlinedInput-notchedOutline {
   border-color: rgba(0, 0, 0, 0.26);
 }
 
-.emotion-23 {
+.emotion-21 {
   font: inherit;
   letter-spacing: inherit;
   color: currentColor;
@@ -1148,95 +1156,95 @@ exports[`should render <ListField> inside a FormView 1`] = `
   padding: 16.5px 14px;
 }
 
-.emotion-23::-webkit-input-placeholder {
+.emotion-21::-webkit-input-placeholder {
   color: currentColor;
   opacity: 0.42;
   -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.emotion-23::-moz-placeholder {
+.emotion-21::-moz-placeholder {
   color: currentColor;
   opacity: 0.42;
   -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.emotion-23:-ms-input-placeholder {
+.emotion-21:-ms-input-placeholder {
   color: currentColor;
   opacity: 0.42;
   -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.emotion-23::-ms-input-placeholder {
+.emotion-21::-ms-input-placeholder {
   color: currentColor;
   opacity: 0.42;
   -webkit-transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
-.emotion-23:focus {
+.emotion-21:focus {
   outline: 0;
 }
 
-.emotion-23:invalid {
+.emotion-21:invalid {
   box-shadow: none;
 }
 
-.emotion-23::-webkit-search-decoration {
+.emotion-21::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-23::-webkit-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-21::-webkit-input-placeholder {
   opacity: 0!important;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-23::-moz-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-21::-moz-placeholder {
   opacity: 0!important;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:-ms-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-21:-ms-input-placeholder {
   opacity: 0!important;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-23::-ms-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-21::-ms-input-placeholder {
   opacity: 0!important;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-webkit-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-21:focus::-webkit-input-placeholder {
   opacity: 0.42;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-moz-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-21:focus::-moz-placeholder {
   opacity: 0.42;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus:-ms-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-21:focus:-ms-input-placeholder {
   opacity: 0.42;
 }
 
-label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-placeholder {
+label[data-shrink=false]+.MuiInputBase-formControl .emotion-21:focus::-ms-input-placeholder {
   opacity: 0.42;
 }
 
-.emotion-23.Mui-disabled {
+.emotion-21.Mui-disabled {
   opacity: 1;
   -webkit-text-fill-color: rgba(0, 0, 0, 0.38);
 }
 
-.emotion-23:-webkit-autofill {
+.emotion-21:-webkit-autofill {
   -webkit-animation-duration: 5000s;
   animation-duration: 5000s;
   -webkit-animation-name: mui-auto-fill;
   animation-name: mui-auto-fill;
 }
 
-.emotion-23:-webkit-autofill {
+.emotion-21:-webkit-autofill {
   border-radius: inherit;
 }
 
-.emotion-24 {
+.emotion-22 {
   text-align: left;
   position: absolute;
   bottom: 0;
@@ -1254,7 +1262,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
   border-color: rgba(0, 0, 0, 0.23);
 }
 
-.emotion-25 {
+.emotion-23 {
   float: unset;
   overflow: hidden;
   display: block;
@@ -1269,7 +1277,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
   white-space: nowrap;
 }
 
-.emotion-25>span {
+.emotion-23>span {
   padding-left: 5px;
   padding-right: 5px;
   display: inline-block;
@@ -1277,11 +1285,23 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
   visibility: visible;
 }
 
-.emotion-44 {
-  margin-left: auto;
+.emotion-34 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  vertical-align: top;
 }
 
-.emotion-45 {
+.emotion-40 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1325,40 +1345,41 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
   color: rgba(0, 0, 0, 0.54);
   -webkit-transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  margin-left: auto;
 }
 
-.emotion-45::-moz-focus-inner {
+.emotion-40::-moz-focus-inner {
   border-style: none;
 }
 
-.emotion-45.Mui-disabled {
+.emotion-40.Mui-disabled {
   pointer-events: none;
   cursor: default;
 }
 
 @media print {
-  .emotion-45 {
+  .emotion-40 {
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
   }
 }
 
-.emotion-45:hover {
+.emotion-40:hover {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
 @media (hover: none) {
-  .emotion-45:hover {
+  .emotion-40:hover {
     background-color: transparent;
   }
 }
 
-.emotion-45.Mui-disabled {
+.emotion-40.Mui-disabled {
   background-color: transparent;
   color: rgba(0, 0, 0, 0.26);
 }
 
-.emotion-46 {
+.emotion-41 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1375,7 +1396,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
   font-size: 1.5rem;
 }
 
-.emotion-47 {
+.emotion-42 {
   overflow: hidden;
   pointer-events: none;
   position: absolute;
@@ -1387,7 +1408,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
   border-radius: inherit;
 }
 
-.emotion-89 {
+.emotion-79 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1403,25 +1424,27 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
 }
 
 @media (min-width:600px) {
-  .emotion-89 {
+  .emotion-79 {
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 
-@media (min-width:0px) and (orientation: landscape) {
-  .emotion-89 {
-    min-height: 48px;
+@media (min-width:0px) {
+  @media (orientation: landscape) {
+    .emotion-79 {
+      min-height: 48px;
+    }
   }
 }
 
 @media (min-width:600px) {
-  .emotion-89 {
+  .emotion-79 {
     min-height: 64px;
   }
 }
 
-.emotion-90 {
+.emotion-80 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1468,43 +1491,39 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
   color: #1976d2;
 }
 
-.emotion-90::-moz-focus-inner {
+.emotion-80::-moz-focus-inner {
   border-style: none;
 }
 
-.emotion-90.Mui-disabled {
+.emotion-80.Mui-disabled {
   pointer-events: none;
   cursor: default;
 }
 
 @media print {
-  .emotion-90 {
+  .emotion-80 {
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
   }
 }
 
-.emotion-90:hover {
+.emotion-80:hover {
   -webkit-text-decoration: none;
   text-decoration: none;
   background-color: rgba(25, 118, 210, 0.04);
 }
 
 @media (hover: none) {
-  .emotion-90:hover {
+  .emotion-80:hover {
     background-color: transparent;
   }
 }
 
-.emotion-90.Mui-disabled {
+.emotion-80.Mui-disabled {
   color: rgba(0, 0, 0, 0.26);
 }
 
-.emotion-91 {
-  margin-right: 8px;
-}
-
-.emotion-92 {
+.emotion-81 {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -1519,6 +1538,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
   -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   font-size: 1.25rem;
+  margin-right: 8px;
 }
 
 <form
@@ -1588,22 +1608,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                 class="MuiBox-root emotion-5"
                               >
                                 <div
-                                  class="MuiFormControl-root emotion-18 MuiTextField-root emotion-18 emotion-20"
+                                  class="MuiFormControl-root MuiTextField-root emotion-18"
                                 >
                                   <label
-                                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-21"
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-19"
                                     data-shrink="true"
-                                    for="mui-7"
-                                    id="mui-7-label"
+                                    for=":r6:"
+                                    id=":r6:-label"
                                   >
                                     Name
                                   </label>
                                   <div
-                                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-22"
+                                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-20"
                                   >
                                     <input
                                       aria-invalid="false"
-                                      class="MuiOutlinedInput-input MuiInputBase-input emotion-23"
+                                      class="MuiInputBase-input MuiOutlinedInput-input emotion-21"
                                       id="listFieldFormView.form.contacts[0].name"
                                       name="listFieldFormView.form.contacts[0].name"
                                       type="text"
@@ -1611,10 +1631,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                     />
                                     <fieldset
                                       aria-hidden="true"
-                                      class="MuiOutlinedInput-notchedOutline emotion-24"
+                                      class="MuiOutlinedInput-notchedOutline emotion-22"
                                     >
                                       <legend
-                                        class="emotion-25"
+                                        class="emotion-23"
                                       >
                                         <span>
                                           Name
@@ -1632,22 +1652,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                 class="MuiBox-root emotion-5"
                               >
                                 <div
-                                  class="MuiFormControl-root emotion-18 MuiTextField-root emotion-18 emotion-20"
+                                  class="MuiFormControl-root MuiTextField-root emotion-18"
                                 >
                                   <label
-                                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-21"
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-19"
                                     data-shrink="true"
-                                    for="mui-8"
-                                    id="mui-8-label"
+                                    for=":r7:"
+                                    id=":r7:-label"
                                   >
                                     Email
                                   </label>
                                   <div
-                                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-22"
+                                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-20"
                                   >
                                     <input
                                       aria-invalid="false"
-                                      class="MuiOutlinedInput-input MuiInputBase-input emotion-23"
+                                      class="MuiInputBase-input MuiOutlinedInput-input emotion-21"
                                       id="listFieldFormView.form.contacts[0].email"
                                       name="listFieldFormView.form.contacts[0].email"
                                       type="text"
@@ -1655,10 +1675,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                     />
                                     <fieldset
                                       aria-hidden="true"
-                                      class="MuiOutlinedInput-notchedOutline emotion-24"
+                                      class="MuiOutlinedInput-notchedOutline emotion-22"
                                     >
                                       <legend
-                                        class="emotion-25"
+                                        class="emotion-23"
                                       >
                                         <span>
                                           Email
@@ -1676,22 +1696,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                 class="MuiBox-root emotion-5"
                               >
                                 <div
-                                  class="MuiFormControl-root MuiTextField-root emotion-20"
+                                  class="MuiFormControl-root MuiTextField-root emotion-34"
                                 >
                                   <label
-                                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-21"
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-19"
                                     data-shrink="true"
-                                    for="mui-9"
-                                    id="mui-9-label"
+                                    for=":r8:"
+                                    id=":r8:-label"
                                   >
                                     Mobile
                                   </label>
                                   <div
-                                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-22"
+                                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-20"
                                   >
                                     <input
                                       aria-invalid="false"
-                                      class="MuiOutlinedInput-input MuiInputBase-input emotion-23"
+                                      class="MuiInputBase-input MuiOutlinedInput-input emotion-21"
                                       id="listFieldFormView.form.contacts[0].phone"
                                       name="listFieldFormView.form.contacts[0].phone"
                                       type="text"
@@ -1699,10 +1719,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                     />
                                     <fieldset
                                       aria-hidden="true"
-                                      class="MuiOutlinedInput-notchedOutline emotion-24"
+                                      class="MuiOutlinedInput-notchedOutline emotion-22"
                                     >
                                       <legend
-                                        class="emotion-25"
+                                        class="emotion-23"
                                       >
                                         <span>
                                           Mobile
@@ -1718,13 +1738,13 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                       </div>
                     </div>
                     <button
-                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-44 emotion-45"
+                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-40"
                       tabindex="0"
                       type="button"
                     >
                       <svg
                         aria-hidden="true"
-                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-46"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-41"
                         data-testid="DeleteForeverIcon"
                         focusable="false"
                         viewBox="0 0 24 24"
@@ -1734,7 +1754,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                         />
                       </svg>
                       <span
-                        class="MuiTouchRipple-root emotion-47"
+                        class="MuiTouchRipple-root emotion-42"
                       />
                     </button>
                   </li>
@@ -1781,22 +1801,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                 class="MuiBox-root emotion-5"
                               >
                                 <div
-                                  class="MuiFormControl-root emotion-18 MuiTextField-root emotion-18 emotion-20"
+                                  class="MuiFormControl-root MuiTextField-root emotion-18"
                                 >
                                   <label
-                                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-21"
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-19"
                                     data-shrink="true"
-                                    for="mui-10"
-                                    id="mui-10-label"
+                                    for=":r9:"
+                                    id=":r9:-label"
                                   >
                                     Name
                                   </label>
                                   <div
-                                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-22"
+                                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-20"
                                   >
                                     <input
                                       aria-invalid="false"
-                                      class="MuiOutlinedInput-input MuiInputBase-input emotion-23"
+                                      class="MuiInputBase-input MuiOutlinedInput-input emotion-21"
                                       id="listFieldFormView.form.contacts[1].name"
                                       name="listFieldFormView.form.contacts[1].name"
                                       type="text"
@@ -1804,10 +1824,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                     />
                                     <fieldset
                                       aria-hidden="true"
-                                      class="MuiOutlinedInput-notchedOutline emotion-24"
+                                      class="MuiOutlinedInput-notchedOutline emotion-22"
                                     >
                                       <legend
-                                        class="emotion-25"
+                                        class="emotion-23"
                                       >
                                         <span>
                                           Name
@@ -1825,22 +1845,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                 class="MuiBox-root emotion-5"
                               >
                                 <div
-                                  class="MuiFormControl-root emotion-18 MuiTextField-root emotion-18 emotion-20"
+                                  class="MuiFormControl-root MuiTextField-root emotion-18"
                                 >
                                   <label
-                                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-21"
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-19"
                                     data-shrink="true"
-                                    for="mui-11"
-                                    id="mui-11-label"
+                                    for=":ra:"
+                                    id=":ra:-label"
                                   >
                                     Email
                                   </label>
                                   <div
-                                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-22"
+                                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-20"
                                   >
                                     <input
                                       aria-invalid="false"
-                                      class="MuiOutlinedInput-input MuiInputBase-input emotion-23"
+                                      class="MuiInputBase-input MuiOutlinedInput-input emotion-21"
                                       id="listFieldFormView.form.contacts[1].email"
                                       name="listFieldFormView.form.contacts[1].email"
                                       type="text"
@@ -1848,10 +1868,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                     />
                                     <fieldset
                                       aria-hidden="true"
-                                      class="MuiOutlinedInput-notchedOutline emotion-24"
+                                      class="MuiOutlinedInput-notchedOutline emotion-22"
                                     >
                                       <legend
-                                        class="emotion-25"
+                                        class="emotion-23"
                                       >
                                         <span>
                                           Email
@@ -1869,22 +1889,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                 class="MuiBox-root emotion-5"
                               >
                                 <div
-                                  class="MuiFormControl-root MuiTextField-root emotion-20"
+                                  class="MuiFormControl-root MuiTextField-root emotion-34"
                                 >
                                   <label
-                                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-21"
+                                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-19"
                                     data-shrink="true"
-                                    for="mui-12"
-                                    id="mui-12-label"
+                                    for=":rb:"
+                                    id=":rb:-label"
                                   >
                                     Mobile
                                   </label>
                                   <div
-                                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-22"
+                                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-20"
                                   >
                                     <input
                                       aria-invalid="false"
-                                      class="MuiOutlinedInput-input MuiInputBase-input emotion-23"
+                                      class="MuiInputBase-input MuiOutlinedInput-input emotion-21"
                                       id="listFieldFormView.form.contacts[1].phone"
                                       name="listFieldFormView.form.contacts[1].phone"
                                       type="text"
@@ -1892,10 +1912,10 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                                     />
                                     <fieldset
                                       aria-hidden="true"
-                                      class="MuiOutlinedInput-notchedOutline emotion-24"
+                                      class="MuiOutlinedInput-notchedOutline emotion-22"
                                     >
                                       <legend
-                                        class="emotion-25"
+                                        class="emotion-23"
                                       >
                                         <span>
                                           Mobile
@@ -1911,13 +1931,13 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                       </div>
                     </div>
                     <button
-                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-44 emotion-45"
+                      class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium emotion-40"
                       tabindex="0"
                       type="button"
                     >
                       <svg
                         aria-hidden="true"
-                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-46"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium emotion-41"
                         data-testid="DeleteForeverIcon"
                         focusable="false"
                         viewBox="0 0 24 24"
@@ -1927,22 +1947,22 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                         />
                       </svg>
                       <span
-                        class="MuiTouchRipple-root emotion-47"
+                        class="MuiTouchRipple-root emotion-42"
                       />
                     </button>
                   </li>
                 </ul>
                 <div
-                  class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular emotion-89"
+                  class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular emotion-79"
                 >
                   <button
-                    class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root  emotion-90"
+                    class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium emotion-80"
                     tabindex="0"
                     type="button"
                   >
                     <svg
                       aria-hidden="true"
-                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall emotion-91 emotion-92"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall emotion-81"
                       data-testid="AddIcon"
                       focusable="false"
                       viewBox="0 0 24 24"
@@ -1953,7 +1973,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-23:focus::-ms-input-
                     </svg>
                     Add
                     <span
-                      class="MuiTouchRipple-root emotion-47"
+                      class="MuiTouchRipple-root emotion-42"
                     />
                   </button>
                 </div>

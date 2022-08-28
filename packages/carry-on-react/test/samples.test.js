@@ -1,22 +1,17 @@
 /**
  * @jest-environment jsdom
  */
-import React, { Fragment } from "react";
+import { act, fireEvent, render } from "@testing-library/react";
 import {
-  register,
   deleteStore,
-  notify as notifyListeners,
-  transaction,
+  get,
   initStores,
-  get
+  notify as notifyListeners,
+  register,
+  transaction
 } from "carry-on-store";
 import { setLoggerOutput } from "carry-on-utils";
-import {
-  wait,
-  render,
-  fireEvent,
-  waitForElement
-} from "@testing-library/react";
+import React from "react";
 import { State } from "../src";
 
 setLoggerOutput(() => {});
@@ -694,9 +689,11 @@ test("register state on connected store with init as a function", () => {
   const { asFragment, getByText } = render(<App />);
 
   const dom = asFragment();
-  register({
-    state: ({ set }) => ({ value: 1 })
-  });
+  act(() =>
+    register({
+      state: ({ set }) => ({ value: 1 })
+    })
+  );
   const dom2 = asFragment();
 
   expect(dom).toMatchDiffSnapshot(dom2);
@@ -709,7 +706,7 @@ test("register state on connected store", () => {
   const { asFragment, getByText } = render(<App />);
 
   const dom = asFragment();
-  register({ state: { value: 1 } });
+  act(() => register({ state: { value: 1 } }));
   const dom2 = asFragment();
 
   expect(dom).toMatchDiffSnapshot(dom2);

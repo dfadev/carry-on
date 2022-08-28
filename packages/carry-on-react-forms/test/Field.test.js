@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import { get, initStores } from "carry-on-store";
 import Form from "../src/Form";
 import Field from "../src/Field";
@@ -71,37 +71,45 @@ it("should handle onChange", () => {
     </Form>
   );
 
-  onChange({
-    target: {
-      type: "number",
-      value: 0
-    }
+  act(() => {
+    onChange({
+      target: {
+        type: "number",
+        value: 0
+      }
+    });
   });
 
   expect(asFragment()).toMatchSnapshot();
 
-  onChange({
-    target: {
-      type: "number",
-      value: NaN
-    }
+  act(() => {
+    onChange({
+      target: {
+        type: "number",
+        value: NaN
+      }
+    });
   });
 
   expect(asFragment()).toMatchSnapshot();
 
-  onChange({
-    target: {
-      type: "checkbox",
-      checked: true
-    }
+  act(() => {
+    onChange({
+      target: {
+        type: "checkbox",
+        checked: true
+      }
+    });
   });
 
   expect(asFragment()).toMatchSnapshot();
 
-  onChange({
-    target: {
-      value: ""
-    }
+  act(() => {
+    onChange({
+      target: {
+        value: ""
+      }
+    });
   });
 
   expect(asFragment()).toMatchSnapshot();
@@ -120,7 +128,7 @@ it("should handle onFocus", () => {
     </Form>
   );
 
-  onFocus();
+  act(() => onFocus());
   expect(get().theform.visited.field1).toBe(true);
 });
 
@@ -137,7 +145,7 @@ it("should handle onBlur", () => {
     </Form>
   );
 
-  onBlur();
+  act(() => onBlur());
   expect(get().theform.touched.field1).toBe(true);
 });
 
@@ -154,7 +162,7 @@ it("should handle setValue", () => {
     </Form>
   );
 
-  setValue("123");
+  act(() => setValue("123"));
   expect(get().theform.values.field1).toBe("123");
 });
 
@@ -171,7 +179,7 @@ it("should handle setVisited", () => {
     </Form>
   );
 
-  setVisited(true);
+  act(() => setVisited(true));
   expect(get().theform.visited.field1).toBe(true);
 });
 
@@ -188,7 +196,7 @@ it("should handle setTouched", () => {
     </Form>
   );
 
-  setTouched(true);
+  act(() => setTouched(true));
   expect(get().theform.touched.field1).toBe(true);
 });
 
@@ -205,7 +213,7 @@ it("should handle setError", () => {
     </Form>
   );
 
-  setError(true);
+  act(() => setError(true));
   expect(get().theform.errors.field1).toBe(true);
 });
 

@@ -88,7 +88,7 @@ test("withState debounce", async () => {
     set(state => {
       state.field = "value2";
     });
-    await new Promise(r => setTimeout(r, 5));
+    await act(() => new Promise(r => setTimeout(r, 5)));
     expect(asFragment()).toMatchSnapshot();
     deleteStore();
   });
@@ -105,7 +105,7 @@ test("withState throttle", async () => {
     set(state => {
       state.field = "value2";
     });
-    await new Promise(r => setTimeout(r, 5));
+    await act(() => new Promise(r => setTimeout(r, 5)));
     expect(asFragment()).toMatchSnapshot();
     deleteStore();
   });

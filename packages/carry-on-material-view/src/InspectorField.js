@@ -2,7 +2,7 @@ import React from "react";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormHelperText from "@mui/material/FormHelperText";
-import Inspector from "react-inspector";
+import { Inspector } from "react-inspector";
 import { withStyles } from "tss-react/mui";
 import { Field } from "carry-on-react-forms";
 import getFieldStatus from "./getFieldStatus";

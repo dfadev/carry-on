@@ -320,15 +320,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-7:focus::-ms-input-p
           class="MuiFormControl-root MuiTextField-root emotion-2"
         >
           <label
-            class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-3"
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-3"
             data-shrink="true"
-            for="mui-1"
-            id="mui-1-label"
+            for=":r0:"
+            id=":r0:-label"
           >
             Example Editor
           </label>
           <div
-            class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-4"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-4"
           >
             <div
               class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium emotion-5"
@@ -341,7 +341,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-7:focus::-ms-input-p
             </div>
             <input
               aria-invalid="false"
-              class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart emotion-7"
+              class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart emotion-7"
               id="percentageFieldForm.form.abc"
               name="percentageFieldForm.form.abc"
               type="text"
@@ -725,15 +725,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   class="MuiFormControl-root MuiTextField-root emotion-6"
                 >
                   <label
-                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-7"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-7"
                     data-shrink="true"
-                    for="mui-2"
-                    id="mui-2-label"
+                    for=":r1:"
+                    id=":r1:-label"
                   >
                     Example Editor
                   </label>
                   <div
-                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-8"
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-8"
                   >
                     <div
                       class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium emotion-9"
@@ -746,7 +746,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                     </div>
                     <input
                       aria-invalid="false"
-                      class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart emotion-11"
+                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart emotion-11"
                       id="percentageFieldFormView.form.abc"
                       name="percentageFieldFormView.form.abc"
                       type="text"

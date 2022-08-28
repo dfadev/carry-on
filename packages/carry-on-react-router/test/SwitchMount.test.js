@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import { initStores } from "carry-on-store";
 import { MemoryRouter } from "../src/components/Router";
 import Route from "../src/components/Route";
@@ -38,10 +38,10 @@ describe("A <Switch>", () => {
     );
 
     expect(mountCount).toBe(1);
-    push("/two");
+    act(() => push("/two"));
 
     expect(mountCount).toBe(1);
-    push("/one");
+    act(() => push("/one"));
 
     expect(mountCount).toBe(1);
   });

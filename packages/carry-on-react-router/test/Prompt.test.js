@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import { createMemoryHistory as createHistory } from "history";
 import { initStores } from "carry-on-store";
 import { MemoryRouter, Router } from "../src/components/Router";
@@ -40,7 +40,7 @@ describe("A <Prompt>", () => {
       </Router>
     );
 
-    history.push("/somewhere");
+    act(() => history.push("/somewhere"));
 
     expect(getUserConfirmation).toHaveBeenCalledWith(
       expect.stringMatching("Are you sure?"),
@@ -64,7 +64,7 @@ describe("A <Prompt>", () => {
         </Router>
       );
 
-      history.push("/somewhere");
+      act(() => history.push("/somewhere"));
 
       expect(getUserConfirmation).not.toHaveBeenCalled();
     });

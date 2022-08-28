@@ -292,19 +292,19 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
           class="MuiFormControl-root MuiTextField-root emotion-2"
         >
           <label
-            class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-3"
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-3"
             data-shrink="true"
-            for="mui-1"
-            id="mui-1-label"
+            for=":r0:"
+            id=":r0:-label"
           >
             US Phone
           </label>
           <div
-            class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-4"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-4"
           >
             <input
               aria-invalid="false"
-              class="MuiOutlinedInput-input MuiInputBase-input emotion-5"
+              class="MuiInputBase-input MuiOutlinedInput-input emotion-5"
               id="phoneFieldForm.form.phone1"
               name="phoneFieldForm.form.phone1"
               type="text"
@@ -328,23 +328,23 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-5:focus::-ms-input-p
           class="MuiFormControl-root MuiTextField-root emotion-2"
         >
           <label
-            class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-3"
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled emotion-3"
             data-shrink="true"
-            for="mui-2"
-            id="mui-2-label"
+            for=":r1:"
+            id=":r1:-label"
           >
             GB Phone
           </label>
           <div
-            class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-4"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-4"
           >
             <input
               aria-invalid="false"
-              class="MuiOutlinedInput-input MuiInputBase-input emotion-5"
+              class="MuiInputBase-input MuiOutlinedInput-input emotion-5"
               id="phoneFieldForm.form.phone2"
               name="phoneFieldForm.form.phone2"
               type="text"
-              value="44 7911123456"
+              value="44 7911 123456"
             />
             <fieldset
               aria-hidden="true"
@@ -692,19 +692,19 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-p
                   class="MuiFormControl-root MuiTextField-root emotion-6"
                 >
                   <label
-                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-7"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-7"
                     data-shrink="false"
-                    for="mui-3"
-                    id="mui-3-label"
+                    for=":r2:"
+                    id=":r2:-label"
                   >
                     US Phone
                   </label>
                   <div
-                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-8"
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-8"
                   >
                     <input
                       aria-invalid="false"
-                      class="MuiOutlinedInput-input MuiInputBase-input emotion-9"
+                      class="MuiInputBase-input MuiOutlinedInput-input emotion-9"
                       id="phoneFieldFormView.form.phone1"
                       name="phoneFieldFormView.form.phone1"
                       type="text"
@@ -736,19 +736,19 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-p
                   class="MuiFormControl-root MuiTextField-root emotion-6"
                 >
                   <label
-                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-7"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-7"
                     data-shrink="false"
-                    for="mui-4"
-                    id="mui-4-label"
+                    for=":r3:"
+                    id=":r3:-label"
                   >
                     UK Phone
                   </label>
                   <div
-                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-8"
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl emotion-8"
                   >
                     <input
                       aria-invalid="false"
-                      class="MuiOutlinedInput-input MuiInputBase-input emotion-9"
+                      class="MuiInputBase-input MuiOutlinedInput-input emotion-9"
                       id="phoneFieldFormView.form.phone2"
                       name="phoneFieldFormView.form.phone2"
                       type="text"

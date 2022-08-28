@@ -160,50 +160,46 @@ render(
 Composing
 
 ```js live noInline
-const components = {
-  components: {
-    FormViewBox: ({ children }) => (
-      <div style={{ border: "1px solid purple", padding: "16px" }}>
-        <h2>FormViewBox</h2>
-        {children}
-      </div>
-    ),
-    SectionBox: ({ section: { title } = {}, children }) => (
-      <div
-        style={{ border: "1px solid blue", margin: "16px", padding: "16px" }}
-      >
-        <h2>SectionBox: {title}</h2>
-        {children}
-      </div>
-    ),
-    View: ({ children }) => (
-      <div style={{ border: "1px solid red", margin: "16px", padding: "16px" }}>
-        <div>
-          <h2>View</h2>
-        </div>
-        <div style={{ display: "flex" }}>{children}</div>
-      </div>
-    ),
-    ViewItem: ({ children }) => (
-      <div
-        style={{ border: "1px solid white", margin: "16px", padding: "16px" }}
-      >
-        <div>
-          <h2>ViewItem</h2>
-        </div>
-        <div style={{ display: "block" }} margin="16px" padding="16px">
-          {children}
-        </div>
-      </div>
-    ),
-    editors: {}
-  }
-};
+const FormViewBox = ({ children }) => (
+  <div style={{ border: "1px solid purple", padding: "16px" }}>
+    <h2>FormViewBox</h2>
+    {children}
+  </div>
+);
+
+const SectionBox = ({ section: { title } = {}, children }) => (
+  <div style={{ border: "1px solid blue", margin: "16px", padding: "16px" }}>
+    <h2>SectionBox: {title}</h2>
+    {children}
+  </div>
+);
+
+const View = ({ children }) => (
+  <div style={{ border: "1px solid red", margin: "16px", padding: "16px" }}>
+    <div>
+      <h2>View</h2>
+    </div>
+    <div style={{ display: "flex" }}>{children}</div>
+  </div>
+);
+
+const ViewItem = ({ children }) => (
+  <div style={{ border: "1px solid white", margin: "16px", padding: "16px" }}>
+    <div>
+      <h2>ViewItem</h2>
+    </div>
+    <div style={{ display: "block" }} margin="16px" padding="16px">
+      {children}
+    </div>
+  </div>
+);
 
 render(
   <Store id="formViewStoreComposing">
     <State>
-      <Register>{{ components }}</Register>
+      <Register>
+        {{ components: { FormViewBox, SectionBox, View, ViewItem } }}
+      </Register>
     </State>
     <FormView id="formViewComposing">
       <InitialValues>

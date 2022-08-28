@@ -199,7 +199,7 @@ exports[`should render <CheckboxField> inside a Form 1`] = `
             class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd emotion-3"
           >
             <span
-              class="MuiCheckbox-root MuiCheckbox-colorPrimary MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root  emotion-4"
+              class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary  emotion-4"
             >
               <input
                 class="PrivateSwitchBase-input emotion-5"
@@ -473,7 +473,7 @@ exports[`should render <CheckboxField> inside a FormView 1`] = `
                     class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd emotion-7"
                   >
                     <span
-                      class="MuiCheckbox-root MuiCheckbox-colorPrimary MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root  emotion-8"
+                      class="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorPrimary PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorPrimary  emotion-8"
                     >
                       <input
                         class="PrivateSwitchBase-input emotion-9"

@@ -4,7 +4,7 @@
 import React from "react";
 import { initStores, register, connect, get, set } from "carry-on-store";
 import { Store } from "carry-on-react";
-import { render } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import Form from "../src/Form";
 import Field from "../src/Field";
 import plugin from "../src/plugin";
@@ -28,6 +28,7 @@ const formState = (formId = "form", opts) => ({
 
 it("should validate", async () => {
   let validateCalled = 0;
+  //let thing;
   const { asFragment } = render(
     <Form
       register={formState()}
@@ -47,14 +48,14 @@ it("should validate", async () => {
   expect(asFragment()).toMatchSnapshot("render match");
   expect(get()).toMatchSnapshot("store match");
 
-  get().form.setFieldValue("field1", "123");
-  await new Promise(r => setTimeout(r, 201));
+  act(() => get().form.setFieldValue("field1", "123"));
+  await act(() => new Promise(r => setTimeout(r, 201)));
 
   expect(validateCalled).toBe(1);
 
-  get().form.setFieldValue("field1", "345");
+  act(() => get().form.setFieldValue("field1", "345"));
 
-  await new Promise(r => setTimeout(r, 201));
+  await act(() => new Promise(r => setTimeout(r, 201)));
   expect(validateCalled).toBe(2);
 });
 
@@ -75,7 +76,7 @@ it("should handle setValues", () => {
     </Form>
   );
 
-  get().form.setValues({ field1: "zzz" });
+  act(() => get().form.setValues({ field1: "zzz" }));
 
   expect(get().form.values).toStrictEqual({ field1: "zzz" });
 });
@@ -89,7 +90,7 @@ it("should handle setInitialValues", () => {
     </Form>
   );
 
-  get().form.setInitialValues({ thing: "1" });
+  act(() => get().form.setInitialValues({ thing: "1" }));
 
   expect(get().form.values).toStrictEqual({ thing: "1" });
 });
@@ -103,7 +104,7 @@ it("should handle setInitialValues specified as a function", () => {
     </Form>
   );
 
-  get().form.setInitialValues(() => ({ thing: "1" }));
+  act(() => get().form.setInitialValues(() => ({ thing: "1" })));
 
   expect(get().form.values).toStrictEqual({ thing: "1" });
 });
@@ -117,11 +118,11 @@ it("should handle setErrors", () => {
     </Form>
   );
 
-  get().form.setErrors({});
+  act(() => get().form.setErrors({}));
 
   expect(get().form.errors).toStrictEqual({});
 
-  get().form.setErrors({ merge: false });
+  act(() => get().form.setErrors({ merge: false }));
   expect(get().form.errors).toStrictEqual(undefined);
 });
 
@@ -134,11 +135,11 @@ it("should handle setTouched", () => {
     </Form>
   );
 
-  get().form.setTouched({});
+  act(() => get().form.setTouched({}));
 
   expect(get().form.touched).toStrictEqual({});
 
-  get().form.setTouched({}, false);
+  act(() => get().form.setTouched({}, false));
   expect(get().form.touched).toStrictEqual({});
 });
 
@@ -158,11 +159,13 @@ it("should handle reset specified as prop", () => {
   );
 
   let preventDefaultCalled = 0;
-  get().form.reset({
-    preventDefault: () => {
-      preventDefaultCalled += 1;
-    }
-  });
+  act(() =>
+    get().form.reset({
+      preventDefault: () => {
+        preventDefaultCalled += 1;
+      }
+    })
+  );
 
   expect(onResetCalled).toBe(1);
   expect(preventDefaultCalled).toBe(1);
@@ -185,7 +188,7 @@ it("should handle reset stored in state", () => {
     </Form>
   );
 
-  get().form.reset();
+  act(() => get().form.reset());
 
   expect(onResetCalled).toBe(1);
 });
@@ -199,8 +202,11 @@ it("should handle reset with no onReset", () => {
     </Form>
   );
 
-  get().form.setFieldValue("field1", "zzz");
-  get().form.reset();
+  act(() => {
+    get().form.setFieldValue("field1", "zzz");
+    get().form.reset();
+  });
+
   expect(get().form.values).toMatchSnapshot();
 });
 
@@ -225,8 +231,8 @@ it("should handle validate onValidate stored in state", async () => {
     </Form>
   );
 
-  get().form.setFieldValue("field1", "zzz");
-  await new Promise(r => setTimeout(r, 201));
+  act(() => get().form.setFieldValue("field1", "zzz"));
+  await act(() => new Promise(r => setTimeout(r, 201)));
   expect(onValidateCalled).toBe(1);
 });
 
@@ -247,14 +253,16 @@ it("should handle submit specified as prop", async () => {
     </Form>
   );
 
-  get().form.setFieldValue("field1", "zzz");
+  act(() => get().form.setFieldValue("field1", "zzz"));
   await new Promise(r => setTimeout(r, 1));
   let preventDefaultCalled = 0;
-  get().form.submit({
-    preventDefault: () => {
-      preventDefaultCalled += 1;
-    }
-  });
+  act(() =>
+    get().form.submit({
+      preventDefault: () => {
+        preventDefaultCalled += 1;
+      }
+    })
+  );
   await new Promise(r => setTimeout(r, 1));
   expect(onSubmitCalled).toBe(1);
   expect(preventDefaultCalled).toBe(1);
@@ -277,7 +285,7 @@ it("should handle submit stored as state", () => {
     </Form>
   );
 
-  get().form.submit();
+  act(() => get().form.submit());
   expect(onSubmitCalled).toBe(1);
 });
 
@@ -290,7 +298,7 @@ it("should handle no onSubmit specified", async () => {
     </Form>
   );
 
-  get().form.submit();
+  act(() => get().form.submit());
   await new Promise(r => setTimeout(r, 1));
   expect(get().form.isSubmitting).toBe(false);
 });
@@ -315,8 +323,10 @@ it("should ignore submit when validating", async () => {
     </Form>
   );
 
-  get().form.setFieldValue("field1", "def");
-  get().form.submit();
+  act(() => {
+    get().form.setFieldValue("field1", "def");
+    get().form.submit();
+  });
   await new Promise(r => setTimeout(r, 201));
 
   expect(onSubmitCalled).toBe(0);
@@ -340,11 +350,13 @@ it("should reset errors/visited/touched/isPristine after submit", async () => {
     </Form>
   );
 
-  get().form.setFieldTouched("field1", true);
-  get().form.setFieldVisited("field1", true);
-  get().form.setFieldError("field1", "abc");
-  get().form.submit();
-  await new Promise(r => setTimeout(r, 500));
+  act(() => {
+    get().form.setFieldTouched("field1", true);
+    get().form.setFieldVisited("field1", true);
+    get().form.setFieldError("field1", "abc");
+    get().form.submit();
+  });
+  await act(() => new Promise(r => setTimeout(r, 500)));
 
   expect(onSubmitCalled).toBe(1);
 
@@ -375,7 +387,7 @@ it("should gracefully handle exception in submit", async () => {
     </Form>
   );
 
-  get().form.submit();
+  act(() => get().form.submit());
   await new Promise(r => setTimeout(r, 500));
 
   expect(onSubmitCalled).toBe(1);
@@ -416,7 +428,7 @@ it("handles submit with no validate", () => {
       }}
     />
   );
-  get().form.submit();
+  act(() => get().form.submit());
   expect(onSubmitCalled).toBe(1);
 });
 
@@ -427,7 +439,7 @@ it("should handle setValues using same values", () => {
     </Form>
   );
 
-  get().form.setValues(get().form.values);
+  act(() => get().form.setValues(get().form.values));
 
   expect(get().form.values).toMatchSnapshot();
 });

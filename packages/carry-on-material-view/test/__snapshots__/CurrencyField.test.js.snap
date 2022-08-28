@@ -357,15 +357,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-p
               class="MuiFormControl-root MuiTextField-root emotion-4"
             >
               <label
-                class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-5"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-5"
                 data-shrink="true"
-                for="mui-1"
-                id="mui-1-label"
+                for=":r0:"
+                id=":r0:-label"
               >
                 Example Editor
               </label>
               <div
-                class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-6"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-6"
               >
                 <div
                   class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium emotion-7"
@@ -378,7 +378,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-p
                 </div>
                 <input
                   aria-invalid="false"
-                  class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart emotion-9"
+                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart emotion-9"
                   id="currencyFieldForm.form.USD"
                   name="currencyFieldForm.form.USD"
                   type="text"
@@ -406,15 +406,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-p
               class="MuiFormControl-root MuiTextField-root emotion-4"
             >
               <label
-                class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-5"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-5"
                 data-shrink="true"
-                for="mui-2"
-                id="mui-2-label"
+                for=":r1:"
+                id=":r1:-label"
               >
                 Example Editor
               </label>
               <div
-                class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-6"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-6"
               >
                 <div
                   class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium emotion-7"
@@ -427,7 +427,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-p
                 </div>
                 <input
                   aria-invalid="false"
-                  class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart emotion-9"
+                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart emotion-9"
                   id="currencyFieldForm.form.GBP"
                   name="currencyFieldForm.form.GBP"
                   type="text"
@@ -455,15 +455,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-p
               class="MuiFormControl-root MuiTextField-root emotion-4"
             >
               <label
-                class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-5"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-5"
                 data-shrink="true"
-                for="mui-3"
-                id="mui-3-label"
+                for=":r2:"
+                id=":r2:-label"
               >
                 Example Editor
               </label>
               <div
-                class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-6"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-6"
               >
                 <div
                   class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium emotion-7"
@@ -476,7 +476,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-p
                 </div>
                 <input
                   aria-invalid="false"
-                  class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart emotion-9"
+                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart emotion-9"
                   id="currencyFieldForm.form.EUR"
                   name="currencyFieldForm.form.EUR"
                   type="text"
@@ -504,15 +504,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-p
               class="MuiFormControl-root MuiTextField-root emotion-4"
             >
               <label
-                class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-5"
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-5"
                 data-shrink="true"
-                for="mui-4"
-                id="mui-4-label"
+                for=":r3:"
+                id=":r3:-label"
               >
                 Example Editor
               </label>
               <div
-                class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-6"
+                class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-6"
               >
                 <div
                   class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium emotion-7"
@@ -525,7 +525,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-9:focus::-ms-input-p
                 </div>
                 <input
                   aria-invalid="false"
-                  class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart emotion-9"
+                  class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart emotion-9"
                   id="currencyFieldForm.form.YEN"
                   name="currencyFieldForm.form.YEN"
                   type="text"
@@ -911,15 +911,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   class="MuiFormControl-root MuiTextField-root emotion-6"
                 >
                   <label
-                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-7"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-7"
                     data-shrink="true"
-                    for="mui-5"
-                    id="mui-5-label"
+                    for=":r4:"
+                    id=":r4:-label"
                   >
                     US Dollar Example Editor
                   </label>
                   <div
-                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-8"
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-8"
                   >
                     <div
                       class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium emotion-9"
@@ -932,7 +932,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                     </div>
                     <input
                       aria-invalid="false"
-                      class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart emotion-11"
+                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart emotion-11"
                       id="currencyFieldFormView.form.USD"
                       name="currencyFieldFormView.form.USD"
                       type="text"
@@ -964,15 +964,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   class="MuiFormControl-root MuiTextField-root emotion-6"
                 >
                   <label
-                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-7"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-7"
                     data-shrink="true"
-                    for="mui-6"
-                    id="mui-6-label"
+                    for=":r5:"
+                    id=":r5:-label"
                   >
                     UK Pound Example Editor
                   </label>
                   <div
-                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-8"
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-8"
                   >
                     <div
                       class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium emotion-9"
@@ -985,7 +985,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                     </div>
                     <input
                       aria-invalid="false"
-                      class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart emotion-11"
+                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart emotion-11"
                       id="currencyFieldFormView.form.GBP"
                       name="currencyFieldFormView.form.GBP"
                       type="text"
@@ -1017,15 +1017,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   class="MuiFormControl-root MuiTextField-root emotion-6"
                 >
                   <label
-                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-7"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-7"
                     data-shrink="true"
-                    for="mui-7"
-                    id="mui-7-label"
+                    for=":r6:"
+                    id=":r6:-label"
                   >
                     Euro Example Editor
                   </label>
                   <div
-                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-8"
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-8"
                   >
                     <div
                       class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium emotion-9"
@@ -1038,7 +1038,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                     </div>
                     <input
                       aria-invalid="false"
-                      class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart emotion-11"
+                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart emotion-11"
                       id="currencyFieldFormView.form.EUR"
                       name="currencyFieldFormView.form.EUR"
                       type="text"
@@ -1070,15 +1070,15 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                   class="MuiFormControl-root MuiTextField-root emotion-6"
                 >
                   <label
-                    class="MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-root MuiFormLabel-colorPrimary emotion-7"
+                    class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-colorPrimary emotion-7"
                     data-shrink="true"
-                    for="mui-8"
-                    id="mui-8-label"
+                    for=":r7:"
+                    id=":r7:-label"
                   >
                     Yen Example Editor
                   </label>
                   <div
-                    class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-8"
+                    class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-adornedStart emotion-8"
                   >
                     <div
                       class="MuiInputAdornment-root MuiInputAdornment-positionStart MuiInputAdornment-outlined MuiInputAdornment-sizeMedium emotion-9"
@@ -1091,7 +1091,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .emotion-11:focus::-ms-input-
                     </div>
                     <input
                       aria-invalid="false"
-                      class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputAdornedStart emotion-11"
+                      class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart emotion-11"
                       id="currencyFieldFormView.form.YEN"
                       name="currencyFieldFormView.form.YEN"
                       type="text"

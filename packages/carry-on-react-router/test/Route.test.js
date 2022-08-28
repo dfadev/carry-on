@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import { createMemoryHistory as createHistory } from "history";
 import { initStores } from "carry-on-store";
 import { MemoryRouter, Router } from "../src/components/Router";
@@ -85,7 +85,7 @@ describe("A <Route>", () => {
       </Router>
     );
 
-    history.push("/sushi/spicy-tuna");
+    act(() => history.push("/sushi/spicy-tuna"));
 
     expect(asFragment()).toMatchSnapshot();
   });
@@ -157,7 +157,7 @@ describe("A <Route>", () => {
           return <div>Hello World</div>;
         }
       }
-      history.push("/hello");
+      act(() => history.push("/hello"));
       const { asFragment } = render(
         <Router history={history}>
           <Route path={["/hello", "/world"]} component={MatchedRoute} />
@@ -168,7 +168,7 @@ describe("A <Route>", () => {
       // expect(node.innerHTML).toContain("Hello World");
       expect(asFragment()).toMatchSnapshot();
 
-      history.push("/world/somewhere/else");
+      act(() => history.push("/world/somewhere/else"));
 
       expect(mount).toHaveBeenCalledTimes(1);
       // expect(node.innerHTML).toContain("Hello World");

@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, act } from "@testing-library/react";
 import { set, getStore, deleteStore, register } from "carry-on-store";
 import { setLoggerOutput } from "carry-on-utils";
 import { withState, State, useCarryOn } from "../src";
@@ -27,9 +27,11 @@ const FnComp = () => {
 test("useCarryOn renders", () => {
   const { asFragment } = render(<FnComp />);
   expect(asFragment()).toMatchSnapshot();
-  set(state => {
-    state.item1 = "value2";
-  });
+  act(() =>
+    set(state => {
+      state.item1 = "value2";
+    })
+  );
   expect(asFragment()).toMatchSnapshot();
   deleteStore();
 });

@@ -1,8 +1,8 @@
 import React from "react";
 import State from "./State";
 
-export function Register({ children, ...props }) {
-  return <State register={{ state: children }} {...props} />;
+export function Register({ children, state, ...props }) {
+  return <State register={{ state: state || children }} {...props} />;
 }
 Register.prop = "register";
 Register.val = "children";

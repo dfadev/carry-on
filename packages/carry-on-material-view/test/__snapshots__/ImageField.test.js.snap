@@ -193,7 +193,7 @@ exports[`should render <ImageField> inside a Form 1`] = `
               type="file"
             />
             <button
-              class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root  emotion-5"
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium emotion-5"
               tabindex="0"
               type="button"
             >
@@ -449,7 +449,7 @@ exports[`should render <ImageField> inside a FormView 1`] = `
                       type="file"
                     />
                     <button
-                      class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root  emotion-9"
+                      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium emotion-9"
                       tabindex="0"
                       type="button"
                     >

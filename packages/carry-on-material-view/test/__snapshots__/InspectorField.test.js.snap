@@ -36,13 +36,6 @@ exports[`should render <InspectorField> inside a Form 1`] = `
 }
 
 .emotion-3 {
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
-}
-
-.emotion-4 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -59,17 +52,21 @@ exports[`should render <InspectorField> inside a Form 1`] = `
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 
-.emotion-4.Mui-disabled {
+.emotion-3.Mui-disabled {
   cursor: default;
 }
 
-.emotion-4 .MuiFormControlLabel-label.Mui-disabled {
+.emotion-3 .MuiFormControlLabel-label.Mui-disabled {
   color: rgba(0, 0, 0, 0.38);
 }
 
-.emotion-5 {
+.emotion-4 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
@@ -91,7 +88,7 @@ exports[`should render <InspectorField> inside a Form 1`] = `
           class="MuiFormControl-root emotion-2"
         >
           <label
-            class="emotion-3 MuiFormControlLabel-root MuiFormControlLabel-labelPlacementTop emotion-4"
+            class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementTop emotion-3"
           >
             <ol
               role="tree"
@@ -191,7 +188,7 @@ exports[`should render <InspectorField> inside a Form 1`] = `
               </li>
             </ol>
             <span
-              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label emotion-5"
+              class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label emotion-4"
             >
               Example Editor
             </span>
@@ -265,13 +262,6 @@ exports[`should render <InspectorField> inside a FormView 1`] = `
 }
 
 .emotion-7 {
-  -webkit-align-items: start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
-}
-
-.emotion-8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -288,17 +278,21 @@ exports[`should render <InspectorField> inside a FormView 1`] = `
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
 }
 
-.emotion-8.Mui-disabled {
+.emotion-7.Mui-disabled {
   cursor: default;
 }
 
-.emotion-8 .MuiFormControlLabel-label.Mui-disabled {
+.emotion-7 .MuiFormControlLabel-label.Mui-disabled {
   color: rgba(0, 0, 0, 0.38);
 }
 
-.emotion-9 {
+.emotion-8 {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 400;
@@ -332,7 +326,7 @@ exports[`should render <InspectorField> inside a FormView 1`] = `
                   class="MuiFormControl-root emotion-6"
                 >
                   <label
-                    class="emotion-7 MuiFormControlLabel-root MuiFormControlLabel-labelPlacementTop emotion-8"
+                    class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementTop emotion-7"
                   >
                     <ol
                       role="tree"
@@ -432,7 +426,7 @@ exports[`should render <InspectorField> inside a FormView 1`] = `
                       </li>
                     </ol>
                     <span
-                      class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label emotion-9"
+                      class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label emotion-8"
                     >
                       Example Editor
                     </span>
