@@ -12,11 +12,12 @@ function DefaultView({ children }) {
   return <div style={{ display: "flex" }}>{children}</div>;
 }
 const DefaultViewItem = PassThru;
+const DefaultEditors = undefined;
 
 const storeComponents = {
   select: ({
-    components: { FormViewBox, SectionBox, View, ViewItem } = {}
-  }) => ({ components: { FormViewBox, SectionBox, View, ViewItem } })
+    components: { FormViewBox, SectionBox, View, ViewItem, editors } = {}
+  }) => ({ components: { FormViewBox, SectionBox, View, ViewItem, editors } })
 };
 
 function FormViewer({
@@ -24,7 +25,8 @@ function FormViewer({
     FormViewBox: StoreFormViewBox,
     SectionBox: StoreSectionBox,
     View: StoreView,
-    ViewItem: StoreViewItem
+    ViewItem: StoreViewItem,
+    editors: StoreEditors
   },
   FormViewBox: RootFormViewBox = StoreFormViewBox || DefaultFormViewBox,
   SectionBox: RootSectionBox = StoreSectionBox || DefaultSectionBox,
@@ -33,7 +35,8 @@ function FormViewer({
   sections: sectionsProp,
   fields: fieldsProp,
   editorPath,
-  noViewBox
+  noViewBox,
+  editors: RootEditors = StoreEditors || DefaultEditors
 }) {
   return (
     <FormState>
@@ -46,7 +49,8 @@ function FormViewer({
             FormViewBox = RootFormViewBox,
             SectionBox = RootSectionBox,
             View = RootView,
-            ViewItem = RootViewItem
+            ViewItem = RootViewItem,
+            editors = RootEditors
           } = {}
         } = form;
 
@@ -76,6 +80,7 @@ function FormViewer({
                     ViewItem={ViewItem}
                     editorPath={editorPath}
                     fields={fieldsProp}
+                    editors={editors}
                     {...sectionEntry}
                   />
                 </SectionBox>
