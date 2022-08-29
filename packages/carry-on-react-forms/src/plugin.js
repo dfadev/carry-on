@@ -162,9 +162,16 @@ export default ({ id, initialValues, onValidate, onSubmit, onReset }) => ({
 
       submit: e => {
         if (e) e.preventDefault();
-        if (get(form => form.isValidating || form.isSubmitting)) return;
+        if (get().isSubmitting) return;
 
         const finishSubmit = () => {
+          if (!get().isValid) {
+            set(form => {
+              if (form.isSubmitting) form.isSubmitting = false;
+            })
+            return
+          }
+
           if (onSubmit === undefined) {
             const formStateOnSubmit = get().onSubmit;
             if (formStateOnSubmit) onSubmit = () => formStateOnSubmit;

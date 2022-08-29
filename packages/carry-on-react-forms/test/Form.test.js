@@ -325,12 +325,20 @@ it("should ignore submit when validating", async () => {
 
   act(() => {
     get().form.setFieldValue("field1", "def");
+  });
+  await act(() => new Promise(r => setTimeout(r, 201)));
+  act(() => {
+    get().form.setFieldValue("field1", "def");
+  });
+  await act(() => new Promise(r => setTimeout(r, 51)));
+  act(() => {
+    get().form.setFieldValue("field1", "def");
     get().form.submit();
   });
-  await new Promise(r => setTimeout(r, 201));
+  await act(() => new Promise(r => setTimeout(r, 252)));
 
-  expect(onSubmitCalled).toBe(0);
-  expect(onValidateCalled).toBe(1);
+  expect(onSubmitCalled).toBe(1);
+  expect(onValidateCalled).toBe(2);
 });
 
 it("should reset errors/visited/touched/isPristine after submit", async () => {

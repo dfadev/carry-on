@@ -7,7 +7,6 @@ export default function getFieldStatus(field, store, value, disabled) {
 
   const dis = Boolean(
     form.isSubmitting ||
-      form.isValidating ||
       (typeof disabled === "function" ? disabled(field, store) : disabled)
   );
 

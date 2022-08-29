@@ -10,7 +10,6 @@ function SubmitFabField({ name, label = "Submit", ...props }) {
         element,
         form: {
           isSubmitting,
-          isValidating,
           isValid,
           isPristine,
           errors,
@@ -21,7 +20,6 @@ function SubmitFabField({ name, label = "Submit", ...props }) {
           onClick={submit}
           disabled={
             isSubmitting ||
-            isValidating ||
             !isValid ||
             (isPristine && errors && Object.keys(errors).length > 0)
           }

@@ -8,11 +8,11 @@ function ResetButtonField({ name, label = name, ...props }) {
     <Field path={name} type="reset">
       {({
         element,
-        form: { isSubmitting, isValidating, reset, isPristine } = {}
+        form: { isSubmitting, reset, isPristine } = {}
       }) => (
         <Button
           {...props}
-          disabled={isSubmitting || isValidating || isPristine}
+          disabled={isSubmitting || isPristine}
           {...element}
           onClick={reset}
         >

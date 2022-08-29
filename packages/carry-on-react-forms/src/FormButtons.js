@@ -5,15 +5,15 @@ import FormState from "./FormState";
 export default function FormButtons({ children = () => null, ...rest }) {
   return (
     <FormState {...rest}>
-      {({ submit, reset, isPristine, isValidating, isValid } = {}) =>
+      {({ submit, reset, isPristine, isValid } = {}) =>
         children({
           submit: {
             onClick: submit,
-            disabled: isPristine || isValidating || !isValid
+            disabled: isPristine || !isValid
           },
           reset: {
             onClick: reset,
-            disabled: isPristine || isValidating
+            disabled: isPristine
           }
         })
       }
