@@ -1,6 +1,6 @@
 {
   "name": "carry-on-store",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "State manager",
   "repository": {
     "type": "git",
@@ -20,12 +20,12 @@
     "watch": "npm run build -- -w"
   },
   "devDependencies": {
-    "carry-on-utils": "^2.0.0-alpha.4",
+    "carry-on-utils": "^2.0.0-alpha.5",
     "rimraf": "^3.0.2",
     "rollup": "^2.79.0"
   },
   "peerDependencies": {
-    "carry-on-utils": "^2.0.0-alpha.4",
+    "carry-on-utils": "^2.0.0-alpha.5",
     "immer": "^9.0.14"
   },
   "exports": {
